@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - Zend Framework</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/26/windows-xdebug-wincachegrind-zend-server/">windows xdebug, wincachegrind, Zend server</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2011-06-21T00:48:00">
+                二 21 6月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/zend-framework.html">Zend Framework</a>. </p>
+
+</footer><!-- /.post-info --><p>最近在想辦法加速 zend framework 的執行速度，弄了超久。下次有這種 case，我死都不用 zend 了= =。</p>
+<p>這次要用的是利用 xdebug 和 wincachegrind 來分析一下 php 執行的速度和呼叫情況之類的。首先要裝的是<a href="http://xdebug.org/">xdebug</a>這個工具，進去官網後的下載頁面後可以看到幾種執行檔，我這邊用的是 php5.2 版 有兩種可以選 <a href="http://xdebug.org/files/php_xdebug-2.1.1-5.2-vc6-nts.dll">PHP 5.2 VC6 (32 bit)</a>, <a href="http://xdebug.org/files/php_xdebug-2.1.1-5.2-vc6.dll">PHP 5.2 VC6
+TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分不太清楚前後兩種的差別 不過如果是用一般的 apache server 的話可以用後面那種試試看。</p>
+<p>下載後放至 <code>php</code> 目錄的 <code>ext</code> 資料夾底下，在 <code>php.ini</code> 檔裡加上以下幾行</p>
+<div class="highlight"><pre><span class="k">[Xdebug]</span>
+<span class="na">extension</span><span class="o">=</span><span class="s">php_xdebug.dll</span>
+<span class="na">xdebug.profiler_enable</span><span class="o">=</span><span class="s">On</span>
+<span class="na">xdebug.profiler_output_dir</span><span class="o">=</span><span class="s">&quot;C:xdebug&quot;</span>
+</pre></div>
+
+
+<p>通常 <code>php_xdebug.dll</code> 下載檔名後後面會接一長串版本名，所以我會修改一下檔名 這樣比較不會打錯，<code>xdebug.profiler_output_dir</code> 這邊的資料夾要自己建，為了方便 我通常就直接在 <code>C</code> 底下直接建一個 <code>xdebug</code> 資料夾來用。</p>
+<p>接著要用 <a href="http://sourceforge.net/projects/wincachegrind/files/wincachegrind/wincachegrind-10.0.0.14/">wincachegrind</a> 來作分析，下載回來後直接開就能用了 這邊要先在 <code>Tools/Options</code> 底下去修改 <code>working folder</code>，這邊的目錄跟之前 <code>xdebug.profiler_output_dir</code> 的目錄會是一樣的，這樣才有辦法分析 xdebug 所產生的檔案。</p>
+<p>另外，後來 Web server 我改用 <a href="http://www.zend.com/en/products/server-ce/">zend server CE</a>，速度好像增快了不少，不過在開啟 web 服務的時候遇到了點問題，後來查到，要到 <code>ZendZendServeretc</code> 將 <code>ZendEnablerConf.xml</code> 前面的亂碼修改成 <code>&lt;?xml</code> 並另存成 <code>UTF-8</code> 就 ok 了。</p>
+<p>但是接著想找怎麼重開 web server，卻找不到地方可以按 orz，只找到輸入 commadn Line 的方式:</p>
+<div class="highlight"><pre>net stop Apache2.2-Zend &amp;&amp; net start Apache2.2-Zend
+</pre></div>
+
+
+<p>但是想用 xdebug 實際量測的時候卻發現好像不能直接用之前的設定= =||，後來查了一些資料 大致要修改一些東西。首先 xdebug 的 dll 檔要選擇前面 <a href="http://xdebug.org/files/php_xdebug-2.1.1-5.2-vc6-nts.dll">PHP 5.2 VC6 (32 bit)</a>，接著修改 <code>C:Program FilesZendZendServeretccfgdebugger.ini</code>，將 <code>zend_extension_manager.dir.debugger=......</code>，這行前面加個分號註解掉，<code>php.ini</code> 檔裡，<code>xdebug</code> 移到最前面並作一點修改。</p>
+<div class="highlight"><pre><span class="k">[Xdebug]</span>
+<span class="na">zend_extension</span><span class="o">=</span><span class="s">&quot;你的php目錄extphp_xdebug.dll&quot;</span>
+<span class="na">xdebug.profiler_enable</span><span class="o">=</span><span class="s">Onxdebug.profiler_output_dir=&quot;C:xdebug&quot;</span>
+</pre></div>
+
+
+<p><code>zend_extensioln</code> 記得是改成自己安裝的對應目錄，安裝的部份差不多這樣就 ok 了。</p>
+<p>參考網頁:<br />
+<a href="http://daimajishu.iteye.com/blog/958684">http://daimajishu.iteye.com/blog/958684</a><br />
+<a href="http://www.antennule.net/?p=255">http://www.antennule.net/?p=255</a><br />
+<a href="http://galide.jazar.co.uk/2011/02/zend-server-hosted-on-windows-restart.html">http://galide.jazar.co.uk/2011/02/zend-server-hosted-on-windows-restart.html</a>  </p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/18/zend-framework-add-acl-setting/" rel="bookmark"
+                           title="Permalink to Zend Framework add Acl setting">Zend Framework add Acl setting</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-04-24T15:22:00">
+                日 24 4月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/zend-framework.html">Zend Framework</a>. </p>
+
+</footer><!-- /.post-info -->                <p>首先先在 <code>bootstrap.php</code> 檔案裡加上下面這個 function<!--more--></p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">protected</span> <span class="k">function</span> <span class="nf">_initControllers</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bootstrap</span><span class="p">(</span><span class="s1">&#39;FrontController&#39;</span><span class="p">);</span>
+    <span class="c1">//require_once &#39;../library/Controller/Helper/Acl.php&#39;;</span>
+    <span class="c1">//require_once &#39;../library/Controller/Plugin/Auth.php&#39;;</span>
+    <span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Controller_Helper_Acl</span><span class="p">();</span>
+    <span class="nv">$auth</span> <span class="o">=</span> <span class="nx">Zend_Auth</span><span class="o">::</span><span class="na">getInstance</span><span class="p">();</span>
+    <span class="nv">$front</span> <span class="o">=</span> <span class="nx">Zend_Controller_Front</span><span class="o">::</span><span class="na">getInstance</span><span class="p">();</span>
+    <span class="nv">$front</span><span class="o">-&gt;</span><span class="na">registerPlugin</span><span class="p">(</span><span class="k">new</span> <span class="nx">Controller_Plugin_Auth</span><span class="p">(</span><span class="nv">$auth</span><span class="p">,</span> <span class="nv">$acl</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><code>$acl</code> 和 <code>$auth</code> 這兩個都需要實作，我分別把 <code>auth</code> 和 <code>acl</code> 這兩個 class 放在 ...</p>
+                <a class="readmore" href="/18/zend-framework-add-acl-setting/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

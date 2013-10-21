@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/808/git-cross-firewall/" rel="bookmark"
+                           title="Permalink to git cross firewall">git cross firewall</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-03-17T23:33:00">
+                日 17 3月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/ban-ben-guan-li.html">版本管理</a>. </p>
+
+</footer><!-- /.post-info -->                <p><code>git://</code> readonly 的 port 是使用
+9418，雖然速度較快，但是也容易被防火牆擋掉，查了一下資料，發現一個不錯的方法：</p>
+<div class="highlight"><pre>git config --global url.<span class="s2">&quot;https://&quot;</span>.insteadOf git://
+</pre></div>
+
+
+<p>輸入以上指令就可以把 git 開頭的自動轉爲 https
+協定的了，自然就不會無緣無故被擋掉。那爲什麼不直接一開始就改掉就好呢？以我的例子來說，如果我抓了一個別人的
+git repo，裏面包含 submodule，且是
+<code>git://</code>，因爲我沒辦法直接改他的設定，這時就可以考慮這樣用。</p>
+<p>設定的部分存在 <code>~/.gitconfig</code>，不需要的話可以直接從這邊拿掉。</p>
+<p>參考網址：  </p>
+<p><a href="http://stackoverflow.com/questions/4891527/git-protocol-blocked-by-company-how-can-i-get-around-that">http://stackoverflow.com/questions/4891527/git-protocol-blocked-by-company-how-can-i-get-around-that</a></p>
+                <a class="readmore" href="/808/git-cross-firewall/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/799/osx-svn-checkout-fail/" rel="bookmark"
+                           title="Permalink to OSX svn checkout fail">OSX svn checkout fail</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-03-13T15:36:00">
+                三 13 3月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/mac-ban-ben-guan-li.html">Mac, 版本管理</a>. </p>
+<p>tags: <a href="/tag/hdiutil.html">hdiutil</a><a href="/tag/svn.html">svn</a></p>
+</footer><!-- /.post-info -->                <p>在 OSX 上 checkout svn 的 repo 遇到了 error，跟我說 .svn
+底下少了某個檔案，後來才發現有兩個同樣名稱的檔案，只是大小寫不一樣，看來好像是因為
+OSX 的檔案系統預設大小寫視為一樣的。如果要解決這個問題除了換個名稱，要不然就是做個
+case sensitive 的 image mount 上去，指令如下：<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="c"># 建立 image 檔案</span>
+hdiutil create -size 100m -fs <span class="s2">&quot;Case-sensitive HFS+&quot;</span> -volname xxx xxx.dmg
+<span class="c"># size 後面的參數表示 image 大小</span>
+<span class="c"># volname 後面的參數表示掛載後的名稱</span>
+<span class="c"># xxx.dmg 是 image ...</span></pre></div>
+                <a class="readmore" href="/799/osx-svn-checkout-fail/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/794/kde-dolphin-network-folder-ssh-fail/" rel="bookmark"
+                           title="Permalink to KDE dolphin network folder ssh fail">KDE dolphin network folder ssh fail</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-02-28T02:02:00">
+                四 28 2月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/kde-linux.html">KDE, linux</a>. </p>
+<p>tags: <a href="/tag/dolphin.html">dolphin</a><a href="/tag/ssh.html">ssh</a></p>
+</footer><!-- /.post-info -->                <p>鬼打牆的小問題，感覺比較像 bug ，想說還是筆記下來好了。</p>
+<p>解決方法：<br />
+把 <code>~/.ssh/known_hosts</code> 中，找到要連線的 host 那行，然後把那行刪掉，
+dolphin 這邊再重連就能夠連上了。</p>
+<p>參考連結：  </p>
+<p><a href="http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder">http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder</a></p>
+                <a class="readmore" href="/794/kde-dolphin-network-folder-ssh-fail/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/788/bootstrap-input-align/" rel="bookmark"
+                           title="Permalink to bootstrap input align">bootstrap input align</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-02-22T03:07:00">
+                五 22 2月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/css.html">css</a>. </p>
+<p>tags: <a href="/tag/bootstrap.html">bootstrap</a></p>
+</footer><!-- /.post-info -->                <p>使用 bootstrap 的 input element 的時候遇到 text 和 button
+位置不齊的情況，去 stackoverflow 找了一下就看到<a href="http://stackoverflow.com/questions/10615872/bootstrap-align-input-with-button">解決的辦法</a>了：<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">&quot;search&quot;</span> <span class="na">id=</span><span class="s">&quot;search&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn&quot;</span><span class="nt">&gt;</span>button<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+
+<p>簡單說就是在外面那層加上 <code>form-horizontal</code> 這個 class 屬性，另外
+<code>input-append</code> 雖然也可以達到類似的效果，不過由於 input element
+會貼在一起，所以不建議用。</p>
+                <a class="readmore" href="/788/bootstrap-input-align/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/785/vim-syntastic-disable-html-check/" rel="bookmark"
+                           title="Permalink to vim syntastic disable html check">vim syntastic disable html check</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-02-22T02:58:00">
+                五 22 2月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/vim.html">vim</a>. </p>
+<p>tags: <a href="/tag/syntastic.html">syntastic</a><a href="/tag/vim.html">vim</a></p>
+</footer><!-- /.post-info -->                <p>最近在用 vim 修改 html 的時候會在儲存的時候爛掉，後來發現好像是
+<a href="https://github.com/scrooloose/syntastic">syntastic</a> 的問題，而且只有 html 會有這個問題，所以看了一下有沒有關掉
+html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverflow.com/questions/12215710/how-to-invalid-syntastic-check-for-html-file-with-vim">解答</a>：<br />
+<!--more--></p>
+<div class="highlight"><pre>let g:syntastic_mode_map={ &#39;mode&#39;: &#39;active&#39;,
+                      &#39;active_filetypes&#39;: [],
+                      &#39;passive_filetypes&#39;: [&#39;html&#39;] }
+</pre></div>
+
+
+<p>將以上內容複製到 <code>.vimrc</code> 內即可。</p>
+                <a class="readmore" href="/785/vim-syntastic-disable-html-check/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/772/python-argparse/" rel="bookmark"
+                           title="Permalink to python argparse">python argparse</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-01-29T16:50:00">
+                二 29 1月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/argparse.html">argparse</a></p>
+</footer><!-- /.post-info -->                <p>紀錄一些 python argparse module 的使用方法和問題：<br />
+<!--more--></p>
+<h3>選項的參數為 optional</h3>
+<p>譬如說 <code>-f</code> 這選項允許一個檔案的路徑名稱： <code>-f test.txt</code>，如果沒給檔案名稱就預設使用 example.txt：</p>
+<div class="highlight"><pre><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;example.txt&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>設定各個選項分開，不允許放在一起使用</h3>
+<p>如果我希望 <code>-f</code> 和 <code>-b</code> 只有其中一個能被執行而已的話，這時候要用 <code>add_mutually_exclusive_group</code> 產生一個 group ，之後被加入這個 group 的參數就會套用這個分開使用的規則：</p>
+<div class="highlight"><pre><span class="n">group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
+<span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">)</span>
+<span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-b&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true ...</span></pre></div>
+                <a class="readmore" href="/772/python-argparse/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/759/python-logging/" rel="bookmark"
+                           title="Permalink to python logging">python logging</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-01-28T15:08:00">
+                一 28 1月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/logging.html">logging</a></p>
+</footer><!-- /.post-info -->                <p>紀錄一下 python logging 的一些簡單設定。<br />
+<!--more--></p>
+<h3>可以在一開始設定 log 訊息顯示的等級：</h3>
+<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>設定顯示的訊息格式, ex: <code>ERROR: error message</code></h3>
+<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(levelname)s</span><span class="s">: </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>log message 加上變數</h3>
+<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;The value is </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+
+<p>有人可能會想用另外一個較基本的方法：</p>
+<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;The value is </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+
+<p>但是這種方法，就會變成不管 log 不 log，都會執行組合字串的動作，所以並不建議，這邊可以參考 ...</p>
+                <a class="readmore" href="/759/python-logging/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/742/webconf-2013/" rel="bookmark"
+                           title="Permalink to WebConf 2013">WebConf 2013</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-01-20T23:25:00">
+                日 20 1月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/za-ji.html">雜記</a>. </p>
+<p>tags: <a href="/tag/webconf.html">WebConf</a></p>
+</footer><!-- /.post-info -->                <p><img alt="http://i.imgur.com/jDquPl.jpg" src="http://i.imgur.com/jDquPl.jpg" title="Hosted by imgur.com" /></p>
+<p>最近這一年開始參加這類的 conf，而這次的 WebConf
+也不例外啦，本來在去年年底就有在關注這個 conf
+了，無奈開始賣票的時候我正在軍中新訓，當新訓結束的時候才發現票已經售完了囧。所幸後來同學那邊有多買一張賣我，我後來才有這個機會能夠參加這次的
+WebConf。(這次的 WebConf 官方網站作得還滿不錯的，再加上這背景樣式，個人還滿喜歡的:P)<br />
+<!--more-->  </p>
+<p>這次的議程分為兩天三軌，不過大部分的場次都有決定好了，不外乎就是~~正妹先決模式~~選擇涉獵較多方面的領域，以擴充所學，增廣見聞。不過也可惜因此錯過了幾場想聽的主題，像是
+TonyQ 的「網站效能調整」，感覺上就滿實用的，後來也有去找 slide
+來看；「敏捷 Web 開發之 Python 工具菜單」這場也沒有聽到，後來看了一下相片，似乎聽的人不多，可能是因為~~打對台的講者太強大了~~大家聽一整天程式相關的議題都累了，所以都想聽聽其他領域的分享吧。</p>
+<p>「在家也能架出好網站」是我覺得很實用的主題，我後來也有把這份 ...</p>
+                <a class="readmore" href="/742/webconf-2013/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/738/another-plugin-set-completefunc-disabled-neocomplcache/" rel="bookmark"
+                           title="Permalink to Another plugin set completefunc! Disabled neocomplcache">Another plugin set completefunc! Disabled neocomplcache</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-01-10T20:33:00">
+                四 10 1月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/vim.html">vim</a>. </p>
+<p>tags: <a href="/tag/neocomplcache.html">neocomplcache</a><a href="/tag/vim.html">vim</a></p>
+</footer><!-- /.post-info -->                <p>最近替 vim 加上了 cscope
+的設定後，<code>neocomplcache</code>突然有時候會出現問題，查了一下資料發現只要加上一行就可以解決了：</p>
+<div class="highlight"><pre><span class="nb">let </span>g:neocomplcache_force_overwrite_completefunc <span class="o">=</span> 1
+</pre></div>
+
+
+<p>參考資料：  </p>
+<p><a href="http://stackoverflow.com/questions/12975098/using-neocomplcache-and-clang-complete">http://stackoverflow.com/questions/12975098/using-neocomplcache-and-clang-complete</a><br />
+<a href="https://github.com/Shougo/neocomplcache/issues/276">https://github.com/Shougo/neocomplcache/issues/276</a></p>
+                <a class="readmore" href="/738/another-plugin-set-completefunc-disabled-neocomplcache/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/726/kde-hide-decoration/" rel="bookmark"
+                           title="Permalink to KDE hide decoration">KDE hide decoration</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-12-02T08:45:00">
+                日 02 12月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/kde-linux.html">KDE, linux</a>. </p>
+<p>tags: <a href="/tag/kde.html">KDE</a></p>
+</footer><!-- /.post-info -->                <p>之前為了隱藏 KDE 視窗的 decoration
+找方法找好久，結果後來不經意就看到了這個資訊囧，不過可惜只能透過改設定檔的方式，GUI
+上似乎沒有這個設定。</p>
+<!--more-->
+
+<p>修改 <code>.kde4/share/config/kwinrc</code>，找到 <code>[Windows]</code>，在下一行加上：</p>
+<div class="highlight"><pre><span class="n">BorderlessMaximizedWindows</span><span class="o">=</span><span class="nb">true</span>
+</pre></div>
+
+
+<p>如果找不到 <code>[Windows]</code> ，就自己在檔案裡面補上去就可以了：</p>
+<div class="highlight"><pre><span class="k">[Windows]</span>
+<span class="na">BorderlessMaximizedWindows</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+
+
+<p>用好之後，可以再搭配 <a href="http://kde-apps.org/content/show.php?content=143971">KWin Button applet
+improved</a>，個人覺得還滿方便的～。</p>
+<p>參考網址：<br />
+<a href="http://majewsky.wordpress.com/2010/03/24/the-kwin-button-applet/">http://majewsky.wordpress.com/2010/03/24/the-kwin-button-applet/</a></p>
+                <a class="readmore" href="/726/kde-hide-decoration/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/index4.html">&laquo;</a>
+    Page 5 / 16
+        <a href="/index6.html">&raquo;</a>
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

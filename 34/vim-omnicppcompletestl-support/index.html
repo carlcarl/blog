@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>vim OmniCppComplete+STL support</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/34/vim-omnicppcompletestl-support/" rel="bookmark"
+           title="Permalink to vim OmniCppComplete+STL support">vim OmniCppComplete+STL support</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-13T13:41:00">
+                三 13 7月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/vim.html">vim</a>. </p>
+
+</footer><!-- /.post-info -->      <p>搞了很久 一直自己鬼打牆 好不容易終於裝好了orz</p>
+<p>首先先去 <a href="http://www.vim.org/scripts/script.php?script_id=1520">http://www.vim.org/scripts/script.php?script_id=1520</a>
+下載 OmniCppComplete的 plugin，將其解壓縮在 <code>.vim</code> 底下。</p>
+<p>再來去下載支援 STL 的 plugin
+<a href="http://www.vim.org/scripts/script.php?script_id=2358">http://www.vim.org/scripts/script.php?script_id=2358</a><br />
+解壓縮至 <code>.vim</code> 底下，再來在 <code>.vim</code> 底下執行</p>
+<div class="highlight"><pre>ctags -R --c++-kinds<span class="o">=</span>+p --fields<span class="o">=</span>+iaS --extra<span class="o">=</span>+q --language-force<span class="o">=</span>C++ cpp_src
+</pre></div>
+
+
+<p>在 <code>.vim</code> 底下會出現一個 <code>tags</code> 檔，將其作個簡單的改名，如 <code>stl_tags</code> 之類的。</p>
+<p>然後，在 <code>.vimrc</code> 裡加上:</p>
+<div class="highlight"><pre><span class="nb">set </span>tags+<span class="o">=</span>/my/path/to/tags/
+</pre></div>
+
+
+<p><code>/my/path/tags/</code> 是剛才的 <code>tag</code> 檔完整路徑，以這裡來說的話就是在這裡
+ <code>~/.vim/stl_tags</code>。</p>
+<p>照理來說到這裡應該就ok了。我卡住的點就在於忘記把原本程式產生 tag 的指令從</p>
+<div class="highlight"><pre>ctags -R
+</pre></div>
+
+
+<p>改成</p>
+<div class="highlight"><pre>ctags -R --c++-kinds<span class="o">=</span>+p --fields<span class="o">=</span>+iaS --extra<span class="o">=</span>+q .
+</pre></div>
+
+
+<p>沒錯，不只那個 STL 需要用 c++ 建 tag，原本的程式部份也別忘了要用這個指令來建，因為指令有點長，為了方便，可以將這個指令作 alias 存到 <code>.bashrc</code> 之類的檔案。</p>
+<p>或是在 <code>.vimrc</code> 裡設定快捷建:</p>
+<div class="highlight"><pre>map &lt;C-F12&gt; :!ctags -R --c++-kinds<span class="o">=</span>+p --fields<span class="o">=</span>+iaS --extra<span class="o">=</span>+q .&lt;CR&gt;
+</pre></div>
+
+
+<p>上面這個指令在 vim 模式裡，按下 <code>ctrl</code> 加上 <code>F12</code> 就會自動產生 tags 檔。</p>
+<p>參考網址<br />
+<a href="http://www.vim.org/scripts/script.php?script_id=1520">http://www.vim.org/scripts/script.php?script_id=1520</a><br />
+<a href="http://www.vim.org/scripts/script.php?script_id=2358">http://www.vim.org/scripts/script.php?script_id=2358</a><br />
+<a href="http://liuyix.com/vim-stl-auto-complete">http://liuyix.com/vim-stl-auto-complete</a><br />
+<a href="http://hi.baidu.com/dtzw/blog/item/a66aa8ec1cdab63027979177.html">http://hi.baidu.com/dtzw/blog/item/a66aa8ec1cdab63027979177.html</a><br />
+<a href="http://blog.csdn.net/hjs1122/article/details/6025150">http://blog.csdn.net/hjs1122/article/details/6025150</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

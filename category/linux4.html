@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - linux</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/32/xrdp-shortcut-d-with-remote-connection/" rel="bookmark"
+                           title="Permalink to XRDP shortcut d with remote connection">XRDP shortcut d with remote connection</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-07T18:35:00">
+                四 07 7月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+
+</footer><!-- /.post-info -->                <p>之前裝了 XRDP，還滿不錯用的。不僅可以用 Linux 的 Terminal server client，也可以用 Windows 內建的遠端連線直接連進去。</p>
+<p>但是卻發現了一個很討厭的問題，那就是按 <code>d</code> 的時候會發現，怎麼視窗被縮小跑到桌面去orz，後來查了一些資料好不容易才找到，我以為這個問題很多人都會遇到的說......。
+ </p>
+<p>首先，問題是出在裝 XRDP 的主機上沒錯，且就是因為快捷鍵的問題，所以只要修改這個設定就 OK 了，這邊假設裝 XRDP 的主機是有 GUI 介面的(沒有的話用 ssh 就好啦XD)</p>
+<p>先輸入:</p>
+<div class="highlight"><pre>gconf-editor
+</pre></div>
+
+
+<p>應該會出現一個視窗。</p>
+<p>接著根據 <code>apps</code> : <code>metacity</code> : <code>global_keybindings</code> 的順序下去找，應該可以找到一個叫做 <code>show_desktop</code> 的設定。然後對應的值應該會是 <code>&lt;Super&gt;d</code>，這邊就直接把這個值刪掉就好了 ...</p>
+                <a class="readmore" href="/32/xrdp-shortcut-d-with-remote-connection/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/31/awstats-analyze-large-logs-at-once-include-gz-files/" rel="bookmark"
+                           title="Permalink to awstats analyze large logs at once (include gz files)">awstats analyze large logs at once (include gz files)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-04T14:22:00">
+                一 04 7月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/awstats.html">awstats</a></p>
+</footer><!-- /.post-info -->                <p><a href="http://carl830.pixnet.net/blog/post/66466219">awstats的簡易安裝教學</a></p>
+<p>因為在維護的網站log檔有一年份，而且都已經壓縮成gz檔，要用awstats分析的話實在很費工夫，後來發現awstats有好用的工具可以用：<span style="color: #3366ff;">logresolvemerge.pl</span>。</p>
+<p>簡單講就是用這個工具將log檔(包含gz壓縮檔)都merge起來為一個大檔案後，再用awstats作分析。</p>
+<p>這邊首先要注意的就是
+<span style="color: #ff0000;">awstats不會讀較舊的log檔</span>，所以像我之閒已經讀了最新的log檔後想讀舊的，就只能直接砍掉紀錄檔重新開始，到
+/var/lib/awstats/底下將底下的檔案刪光，如此就能回到最初的狀態</p>
+<p>logresolvemerge.pl預設是在<span style="color: #3366ff;">/usr/share/doc/awstats/examples/</span>裡<br />
+可以移到其他地方，不然每次打路徑應該會打到手很酸XD</p>
+<p>這裡給個幾個簡單的範例</p>
+<h3>將多個log檔merge成一個log檔</h3>
+<div class="highlight"><pre>logresolvemerge.pl /var/log/apache2/.log &gt; temp.log
+</pre></div>
+
+
+<h3>將多個gz檔merge成一個log檔(其實跟上面的差不多~)</h3>
+<div class="highlight"><pre>logresolvemerge.pl /var/log/apache2/.gz &gt; temp ...</pre></div>
+                <a class="readmore" href="/31/awstats-analyze-large-logs-at-once-include-gz-files/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/30/ubuntu-install-awstats-to-analyze-web-traffic/" rel="bookmark"
+                           title="Permalink to ubuntu install awstats to analyze web traffic">ubuntu install awstats to analyze web traffic</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-04T13:04:00">
+                一 04 7月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/awstats.html">awstats</a></p>
+</footer><!-- /.post-info -->                <p><a href="http://i.imgur.com/gjdRNUQl.png"><img alt="1309785078-4e7966370fbebe6c564d5c251d18d3da_n" src="http://i.imgur.com/gjdRNUQl.png" /></a></p>
+<p>awstats 這個工具可以透過分析 Server 的access log 檔來統計網站流量，資料的部份可以透過時間長短、來訪者的資料(國籍之類的)、瀏覽器種類來作分類，這些統計資訊則透過Web介面顯示出來。而上面這個圖是裝完 awstats 後的 Web 介面(還不錯精美= =+)</p>
+<!--more-->
+
+<p>接下來就是安裝的部份啦，首先先安裝套件:</p>
+<div class="highlight"><pre>sudo apt-get install awstats
+</pre></div>
+
+
+<p>接著到 <code>/etc/awstats/</code> 底下可以看到預設的 <code>awstats.conf</code> 檔，把這個檔複製並更名 假如網站名稱為 <code>www.domain.com</code> 的話</p>
+<div class="highlight"><pre>cp awstats.conf awstats.www.domain.com.conf
+</pre></div>
+
+
+<p>到時候指定好 config 的參數 他就會去讀這個檔案的設定，然後要稍微修改一下 <code>awstats ...</code></p></!--more-->
+                <a class="readmore" href="/30/ubuntu-install-awstats-to-analyze-web-traffic/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/25/ubuntu-nginx-installation-easier/" rel="bookmark"
+                           title="Permalink to Ubuntu nginx installation(easier)">Ubuntu nginx installation(easier)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-06-21T00:31:00">
+                二 21 6月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+
+</footer><!-- /.post-info -->                <p>從 <a href="/24/ubuntu-nginx-installation">之前這篇</a> 做了點修改</p>
+<div class="highlight"><pre>apt-get install nginx php5-cli php5-cgi spawn-fcgi psmisc
+</pre></div>
+
+
+<p>接著在 <code>/etc/nginx/sites-available/</code> 底下會有個 <code>default</code>，直接來修改這個檔案:</p>
+<div class="highlight"><pre>server {
+    listen   80 default;
+    server_name  localhost;
+    access_log  /var/log/nginx/localhost.access.log;
+    location / {
+        root   /var/www/nginx-default;
+        index   index.php;
+    }
+    location /phpmyadmin {
+    root /usr/share;
+    index index.php;
+    }
+    location ~ .php$ {
+        set $php_root ...</pre></div>
+                <a class="readmore" href="/25/ubuntu-nginx-installation-easier/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/24/ubuntu-nginx-installation/" rel="bookmark"
+                           title="Permalink to Ubuntu Nginx installation">Ubuntu Nginx installation</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-06-13T15:51:00">
+                一 13 6月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+
+</footer><!-- /.post-info -->                <p>[更新] 這邊有修改過的<a href="/25/ubuntu-nginx-installation-easier/">簡單版</a></p>
+<p>弄了好久，參考了幾篇教學，應該算是能跑了吧囧a。話說有幾篇教學講得都不太一樣 害我也不知道該看哪篇才好，後來是找了<a href="http://library.linode.com/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid">這一篇</a>來作看看。</p>
+<p>首先先抓套件來安裝吧:</p>
+<div class="highlight"><pre>apt-get install nginx php5-cli php5-cgi spawn-fcgi psmisc
+</pre></div>
+
+
+<p>接著在 <code>/etc/nginx/sites-available/</code>，底下應該會有個 <code>default</code> 設定檔，直接來修改這個檔案:</p>
+<div class="highlight"><pre>server {
+    listen   80 default;
+    server_name  localhost;
+    access_log  /var/log/nginx/localhost.access.log;
+    location / {
+        root   /var/www/nginx-default;
+        index   index.php;
+    }
+    location /phpmyadmin ...</pre></div>
+                <a class="readmore" href="/24/ubuntu-nginx-installation/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/23/linux-check-dist-io/" rel="bookmark"
+                           title="Permalink to Linux check disk IO">Linux check disk IO</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-06-13T10:44:00">
+                一 13 6月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+
+</footer><!-- /.post-info -->                <p>讀取速度 輸入下面這行指令</p>
+<div class="highlight"><pre>hdparm -t /dev/sda
+</pre></div>
+
+
+<p><code>/dev/sda</code> 可以換成想測的硬碟裝置</p>
+<p>輸入之後會產生類似以下的輸出</p>
+<div class="highlight"><pre>Timing buffered disk reads:  1168 MB in  3.00 seconds = 389.29 MB/sec
+</pre></div>
+
+
+<p>組 RAID5 速度快很多= =+</p>
+<p>寫入速度 輸入下面這行指令</p>
+<div class="highlight"><pre><span class="nb">time </span>sh -c <span class="s2">&quot;dd if=/dev/zero of=tmp.dd bs=1000k count=100; sync&quot;</span>
+</pre></div>
+
+
+<p>會產生類似以下的輸入</p>
+<div class="highlight"><pre>100+0 records in
+100 ...</pre></div>
+                <a class="readmore" href="/23/linux-check-dist-io/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/20/linux-several-ways-to-open-or-close-service/" rel="bookmark"
+                           title="Permalink to linux several ways to open or close service">linux several ways to open or close service</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-05-12T07:29:00">
+                四 12 5月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+
+</footer><!-- /.post-info -->                <p>(如果想立即開啟或關掉就要用 service 或是直接到 /etc/init.d/ 底下去操作)</p>
+<p>以下是用來設定在系統開啟時預設要執行的 service</p>
+<p>在 RedHat 系列底下可以用 <code>chkconfig</code>，啟用 httpd (如果已經加到 chkconfig 裡了 就可以不用輸入第一行)</p>
+<div class="highlight"><pre>chkconfig httpd --add
+chkconfig http on
+</pre></div>
+
+
+<p>停用 httpd (第二行是把 httpd 從 chkconfig 的管理中移除，我的建議是輸入第一行就好了)</p>
+<div class="highlight"><pre>chkconfig httpd off
+chkconfig httpd --del
+</pre></div>
+
+
+<p>在 Debian 或 Ubuntu 底下的話 可以用 <code>update-rc.d</code> 開啟 apache2:</p>
+<div class="highlight"><pre>update-rc ...</pre></div>
+                <a class="readmore" href="/20/linux-several-ways-to-open-or-close-service/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/19/vim-auto-complete-with-clang_complete/" rel="bookmark"
+                           title="Permalink to vim auto complete with clang_complete">vim auto complete with clang_complete</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-05-04T13:55:00">
+                三 04 5月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+
+</footer><!-- /.post-info -->                <p>剛才裝完了，其實安裝還滿簡單的。</p>
+<p>首先先到<a href="https://github.com/Rip-Rip/clang_complete/tree/master/plugin">下載頁面</a>，下面會有個 <code>clang_complete.vim</code> 檔案</p>
+<p>下載這個檔案後 將其放置在 <code>~/.vim/plugin/</code> 底下
+(如果找不到 <code>plugin</code> 資料夾的話可以自己建)</p>
+<p>接著到這個<a href="https://github.com/Rip-Rip/clang_complete/wiki">wiki</a>頁面，照你的作業系統版本來決定要怎麼安裝 clang 這個套件(這個套件還滿肥的，
+好像有7X MB)</p>
+<p>裝完之後咧? 就可以用啦XDD，超快。</p>
+<p>以下這張是功能截圖。以這張圖來說，輸入 <code>-&gt;</code> 或是 <code>.</code> 之類的，他就會出現提示，這時候就可以用鍵盤上下鍵來選擇要選哪一個來用。</p>
+<p><img alt="clang_complete" src="http://i.imgur.com/PyNjikJ.png" title="clang_complete" />  </p>
+                <a class="readmore" href="/19/vim-auto-complete-with-clang_complete/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/17/how-to-connect-the-server-in-virtualbox/" rel="bookmark"
+                           title="Permalink to How to connect the server in virtualbox">How to connect the server in virtualbox</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-04-21T18:55:00">
+                四 21 4月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+
+</footer><!-- /.post-info -->                <p>如果是要用ssh連的話 就輸入以下指令<!--more--></p>
+<p><code>C:Program FilesOracleVirtualBoxVBoxManage.exe" modifyvm "VM name" --natpf1
+"guestssh,tcp,,2222,,22"</code></p>
+<p>前面如果有改 virtualbox 的安裝位置的話 就要跟著改</p>
+<p><code>VM name</code> 請輸入當初在建VM時所輸入的名稱</p>
+<p>後面指的是如果連到本機的 2222 port 的話 就轉向到VM中的 22 port</p>
+<p>同樣的也可以用 <code>guesthttp,tcp,,80,,80</code> 的方式來把連到本機 80 port的轉向連到VM中的 80 port</p>
+<p>把server建在VM中這樣還可以降低本機被攻擊的危險(如果不考慮效能的因素的話):P</p>
+<p>而且系統備份也很方便~~</p>
+<p>參考資料:</p>
+<p><a href="http://slo.twbbs.org/?p=417">http://slo.twbbs.org/?p=417</a></p>
+                <a class="readmore" href="/17/how-to-connect-the-server-in-virtualbox/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/16/postfix-modify-setting-after-installation/" rel="bookmark"
+                           title="Permalink to postfix-modify-setting-after-installation">postfix-modify-setting-after-installation</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-04-17T11:31:00">
+                日 17 4月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+
+</footer><!-- /.post-info -->                <p>之前在裝的時候沒有設定到，結果後來也不知道怎麼再去設定畫面，後來查到了:</p>
+<div class="highlight"><pre>sudo apt-get install --reinstall postfix
+sudo dpkg-reconfigure postfix
+</pre></div>
+
+
+<p>第一行是重新安裝，第二行是再次設定。下完後就會進入設定畫面了~。</p>
+                <a class="readmore" href="/16/postfix-modify-setting-after-installation/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/category/linux3.html">&laquo;</a>
+    Page 4 / 5
+        <a href="/category/linux5.html">&raquo;</a>
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

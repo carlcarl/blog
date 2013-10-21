@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - firefox</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1095/firefox-developer-tool-screenshot/">firefox developer tool screenshot</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-06-27T19:00:00">
+                四 27 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/wei-fen-lei.html">未分類</a>. </p>
+<p>tags: <a href="/tag/firefox.html">firefox</a></p>
+</footer><!-- /.post-info --><p>雖然也可以用另外的軟體截圖，不過有時候截的大小不是很準確
+orz。這邊我是要對某個 element 做截圖，而且大小要很精確，後來剛好看到
+firefox 的 developer tool 也有這樣的功能，所以就試了一下。</p>
+<!--more-->
+
+<p>一開始按 <code>shift+F2</code> 就會出現一個輸入視窗。嗯，沒錯，它的 screenshot 是
+CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 叫做 target
+的區塊，可以這樣下：</p>
+<div class="highlight"><pre>screenshot test.png --selector #target
+</pre></div>
+
+
+<p>這樣就會把 <code>#target</code> 這個部分存成一個圖片檔，名稱為 <code>test.png</code>。其他還有
+<code>--delay</code>, <code>--clipboard</code>...等選項，只要輸入 <code>-</code>
+就會出現選項的提示，詳細的可以直接從裡面看。</p>
+<p>參考資料：<br />
+<a href="http://www.ghacks.net/2012/11/02/take-screenshots-straight-from-firefoxs-developer-toolbar/">Take screenshots straight from Firefox’s Developer
+Toolbar(裡面前面是舊版的 API，要注意)</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/512/chakra-firefox-kde-opensuse-repo/" rel="bookmark"
+                           title="Permalink to Chakra firefox-kde-opensuse repo">Chakra firefox-kde-opensuse repo</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-06-09T01:29:00">
+                六 09 6月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/chakra.html">chakra</a><a href="/tag/firefox.html">firefox</a><a href="/tag/firefox-kde-opensuse.html">firefox-kde-opensuse</a></p>
+</footer><!-- /.post-info -->                <p>2012/10/14 更新<br />
+firefox-kde-opensuse 已經進 chakra 的 bundle 了，就叫 firefox ，以後從
+bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
+畢竟不是官方的，所以更新維護上可能也會有點問題。</p>
+<hr />
+<p>因為 firefox-kde-opensuse 要自己編太麻煩了，所以加個 repo
+這樣以後安裝比較省時，是說要不是 <a href="http://www.plurk.com/maxwux">Whiksy</a>
+有提供我還真的不知道原來有......。<br />
+<!--more--><br />
+以下複製到 <code>/etc/pacman.conf</code> 中：</p>
+<div class="highlight"><pre><span class="k">[chakra-gtk-repo]</span>
+<span class="na">Server</span> <span class="o">=</span> <span class="s">http://chakra-gtk-repo.tk/repo/x86_64/</span>
+<span class="k">[packccr]</span>
+<span class="na">Server</span> <span class="o">=</span> <span class="s">http://repo.stephenmac.com/</span>
+</pre></div>
+
+
+<p>這樣就 OK ...</p>
+                <a class="readmore" href="/512/chakra-firefox-kde-opensuse-repo/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

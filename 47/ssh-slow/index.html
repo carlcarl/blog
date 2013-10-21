@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>ssh slow</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/47/ssh-slow/" rel="bookmark"
+           title="Permalink to ssh slow">ssh slow</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-10-27T20:41:00">
+                四 27 10月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/ssh.html">ssh</a></p>
+</footer><!-- /.post-info -->      <p>貌似是學校最近 DNS 常出問題還是怎樣，ssh 的速度非常緩慢，後來決定把 config 檔案改一改，改完之後速度果然快很多= =+。</p>
+<p>修改 <code>/etc/ssh/sshd_config</code>，以下是修改內容：</p>
+<div class="highlight"><pre>UseDNS no
+GSSAPIAuthentication no
+</pre></div>
+
+
+<p>修改完後執行：</p>
+<div class="highlight"><pre>sudo /etc/init.d/ssh restart
+</pre></div>
+
+
+<p>收工~，不過如果 DNS 沒問題的話，可能修改這個設定速度不會差太多。</p>
+<p>參考網址：</p>
+<p><a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://jeffxie.blog.51cto.com/1365360/293869</a><br />
+<a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://www.dk101.com/Discuz/viewthread.php?tid=157716</a>  </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

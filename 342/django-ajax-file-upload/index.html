@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Django ajax file upload</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/342/django-ajax-file-upload/" rel="bookmark"
+           title="Permalink to Django ajax file upload">Django ajax file upload</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-04-03T21:56:00">
+                二 03 4月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js-python.html">js, python</a>. </p>
+<p>tags: <a href="/tag/ajax.html">ajax</a><a href="/tag/ajaxfileupload.html">ajaxfileupload</a><a href="/tag/csrf.html">csrf</a><a href="/tag/django.html">django</a><a href="/tag/python.html">python</a></p>
+</footer><!-- /.post-info -->      <p>原本以為很簡單可以完成的東西，結果花了我不少時間解決囧。</p>
+<p>Ajax 檔案上傳我用的是 <a href="http://www.phpletter.com/Our-Projects/AjaxFileUpload/">ajaxfileupload</a> 這個 jQuery 套件，問題在於
+Django 會檢查 csrf 的問題，如果我不在 settings.py 裡的
+<code>MIDDLEWARE_CLASSES</code> 加上
+<code>django.middleware.csrf.CsrfViewMiddleware</code>，上傳會出現 syntax
+error，如果我加上了，則是會跟我說 csrf token 找不到。</p>
+<p>後來找到的解決辦法就是在 views.py 裡拿到 csrf token 並傳到 template
+中，然後再改寫 ajaxfileupload.js 中的內容，讓它支援傳送參數，接著將 csrf
+token 當作參數傳送回去就 OK 了。</p>
+<p>​1. 在 settings.py 中確認 <code>django.middleware.csrf.CsrfViewMiddleware</code> 是否在
+ <code>MIDDLEWARE_CLASSES</code> 中，沒有的話就加進去，如以下範例：</p>
+<div class="highlight"><pre><span class="n">MIDDLEWARE_CLASSES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.middleware.csrf.CsrfViewMiddleware&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>​2. 在你的 views.py 中 <code>import get_token</code> ，然後將拿到的 token 傳到
+template，以下是個簡單的範例：</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render_to_response</span>
+<span class="kn">from</span> <span class="nn">django.middleware.csrf</span> <span class="kn">import</span> <span class="n">get_token</span>
+<span class="kn">from</span> <span class="nn">django.template</span> <span class="kn">import</span> <span class="n">RequestContext</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">csrf_token</span> <span class="o">=</span> <span class="n">get_token</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;test.html&#39;</span><span class="p">,</span>
+            <span class="p">{</span>
+                <span class="s">&#39;csrf_token&#39;</span><span class="p">:</span> <span class="n">csrf_token</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="n">context_instance</span> <span class="o">=</span> <span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+
+
+<p>​3. 改寫 ajaxfileupload.js<br />
+這裡可以參考<a href="http://www.linuxfly.org/post/519/">這邊</a>的「三、支持額外參數」的部份。<br />
+4. 在 call ajaxfileupload 的 function 加上 csrf token 的參數</p>
+<div class="highlight"><pre><span class="nx">secureuri</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+<span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;csrfmiddlewaretoken&#39;</span><span class="o">:</span> <span class="s1">&#39;{{ csrf_token }}&#39;</span><span class="p">,</span>
+<span class="p">},</span>
+<span class="nx">fileElementId</span><span class="o">:</span><span class="s1">&#39;fileToUpload&#39;</span><span class="p">,</span>
+<span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+</pre></div>
+
+
+<p>​5. 大功告成！</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

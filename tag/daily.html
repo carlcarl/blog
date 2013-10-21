@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - daily</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/233/naming-apache-log-with-date/">naming apache log with date</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2011-12-19T17:01:00">
+                一 19 12月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/apache.html">apache</a><a href="/tag/daily.html">daily</a><a href="/tag/logrotate.html">logrotate</a></p>
+</footer><!-- /.post-info --><p>目前是用 <code>logrotate</code> 來作，只要在 <code>/etc/logrotate.d/apache2</code> 裡加入下面這個參數即可：</p>
+<ul>
+<li>dateext</li>
+</ul>
+<p>另外可以根據需求看要不要把 <code>weekly</code> 改為 <code>daily</code> 這樣。</p>
+<p>處理過後的檔名就會像這樣 <code>access.log-20111218.gz</code>，這樣在之後處理和分析
+log 會比較方便，另外記得數量也要根據需求改，因為改完後變成能保存的 log
+日期也會跟著減少，要增多的話也是直接修改上面 <code>/etc/logrotate.d/apache2</code> 這個檔案，將 <code>rotate</code> 後面的數字加大，後面的數字表示要存的 log 數量，超過的話就會將最舊的刪除這樣。</p>
+<p>後記：<br />
+如果要跟 awstats 搭配的話可以在裡面加入：</p>
+<div class="highlight"><pre>prerotate
+    /usr/lib/cgi-bin/awstats.pl -config<span class="o">=</span>你的config檔  -update &gt; /dev/null
+endscript
+</pre></div>
+
+
+<p>這樣才能在壓縮 log 檔之前確保 awstats 不會漏掉log檔的資料</p>
+<p>參考網址：  </p>
+<p><a href="http://groups.google.com/group/linux.debian.user/browse_thread/thread/d1a86eebd2d2e862?pli=1">http://groups.google.com/group/linux.debian.user/browse_thread/thread/d1a86eebd2d2e862?pli=1</a>  </p>
+<p><a href="http://www.doubleservice.com/2011/02/configuration-of-logrotate-with-awstats/">http://www.doubleservice.com/2011/02/configuration-of-logrotate-with-awstats/</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

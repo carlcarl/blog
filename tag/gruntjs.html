@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - grunt.js</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1131/python-pyramid-with-grunt-js/">Python Pyramid with Grunt.js</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-07-14T05:11:00">
+                日 14 7月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/grunt.html">grunt</a><a href="/tag/gruntjs.html">grunt.js</a><a href="/tag/pyramid.html">pyramid</a></p>
+</footer><!-- /.post-info --><p>這幾天試玩了一下
+<a href="http://gruntjs.com">Grunt.js</a>，感覺還不錯方便，所以來筆記一些自己的設定。一開始還在想
+<a href="http://www.pylonsproject.org">Pyramid</a> 和 Grunt 要怎麼結合，雖然有 Google
+了一下，不過好像都沒有一個比較準確的答案，所以這邊我就照自己想的來做
+XD。</p>
+<p>我主要在 Grunt 中用的功能有：</p>
+<ol>
+<li>minify 和 combine css, js</li>
+<li>監控檔案的變化，有變動的話就做 1 的步驟</li>
+<li>做完 1 的步驟就自動 reload browser (livereload)</li>
+</ol>
+<p>livereload 這邊是透過 Grunt bind 一個 port
+並監視檔案的變化，接著網頁的部分加入這個 port 底下所提供的
+javascript，一旦檔案發生變化，Grunt 就會 push 消息，通知 browser 做
+reload 的動作。</p>
+<!--more-->
+
+<h3>Project 架構</h3>
+<p>下面是整個 project 的大致架構，架構應該還算簡單 XD。附帶一提，template
+我是使用 <a href="http://docs.pylonsproject.org/projects/pyramid_jinja2/en/latest/">jinja2</a>。</p>
+<div class="highlight"><pre>.
+├── CHANGES.txt
+├── Gruntfile.js
+├── LICENSE
+├── MANIFEST.in
+├── README.txt
+├── development.ini
+├── package.json
+├── production.ini
+├── requirements.txt
+├── setup.cfg
+├── setup.py
+├── node_modules
+└── my_project
+    ├── __init__.py
+    ├── static
+    │   ├── dist
+    │   │   ├── css
+    │   │   ├── favicon.ico
+    │   │   ├── images
+    │   │   ├── img
+    │   │   ├── js
+    │   │   └── manifest.mf
+    │   └── src
+    │       ├── css
+    │       └── js
+    ├── templates
+    │   └── root.jinja2
+    ├── tests.py
+    └── views.py
+</pre></div>
+
+
+<p><code>static</code> 底下該怎麼分類想了很久，Pyramid 的官方 doc
+好像都沒提到該怎麼規劃比較好 orz，後來我是自己分類成 <code>src</code> 和 <code>dist</code>
+兩個資料夾，處理過的 css, js 以及其他需要公開的檔案就放在 <code>dist</code>
+裡頭。記得 route 也要改一下：</p>
+<div class="highlight"><pre><span class="n">config</span><span class="o">.</span><span class="n">add_static_view</span><span class="p">(</span><span class="s">&#39;static&#39;</span><span class="p">,</span> <span class="s">&#39;my_project:static/dist&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Grunt CLI 安装</h3>
+<p>準備工作完成後，就可以來安裝 Grunt command line 了。</p>
+<div class="highlight"><pre>npm install -g grunt-cli
+</pre></div>
+
+
+<h3>Grunt 設定檔</h3>
+<p>Grunt 基本需要兩個設定檔：第一個是 <code>package.json</code>，用來指定裝 <code>grunt</code>
+以及其他一些外掛，像是上面提到的 minify, combine
+這些功能都需要在這裡指定額外的外掛才能使用；第二個是
+<code>Gruntfile.js</code>，這個則是用來設定這些外掛的參數和如何執行。基本上這兩個檔案直接放在同一層會比較好，我自己後來是決定都放在最上層，當然，如果確定只需要操縱
+<code>static</code> 資料夾底下的檔案的話，也可以考慮都放在 <code>static</code> 底下，要執行
+grunt 指令的時候再移到那一層執行就 OK 了。</p>
+<p>下面是我的 package.json 內容：</p>
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;my_project&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;devDependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;grunt&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;grunt-contrib-uglify&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;grunt-contrib-cssmin&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;grunt-contrib-watch&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>要裝的外掛就寫在 <code>devDependencies</code> 裡面。這邊 <a href="https://github.com/gruntjs/grunt-contrib-uglify">grunt-contrib-uglify</a>
+和 <a href="https://github.com/gruntjs/grunt-contrib-cssmin">grunt-contrib-cssmin</a> 分別是用來 minify, combine js 以及 css
+用的，<a href="https://github.com/gruntjs/grunt-contrib-watch">grunt-contrib-watch</a> 則是用來監控檔案變化和 livereload。</p>
+<p>接下來則是 Gruntfile.js 的內容：</p>
+<div class="highlight"><pre><span class="cm">/*global node:true, module:true*/</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+    <span class="c1">// Project configuration.</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+        <span class="nx">pkg</span><span class="o">:</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">readJSON</span><span class="p">(</span><span class="s1">&#39;package.json&#39;</span><span class="p">),</span>
+        <span class="nx">uglify</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">release</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">files</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;my_project/static/dist/js/index.min.js&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;my_project/static/src/js/jquery-1.8.3.min.js&#39;</span><span class="p">,</span> <span class="s1">&#39;my_project/static/src/js/bootstrap.min.js&#39;</span><span class="p">,</span> <span class="s1">&#39;my_project/static/src/js/index.js&#39;</span><span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">cssmin</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">keepSpecialComments</span><span class="o">:</span> <span class="mi">0</span>
+            <span class="p">},</span>
+            <span class="nx">release</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">files</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;my_project/static/dist/css/style.min.css&#39;</span><span class="o">:</span> <span class="p">[</span>
+                        <span class="s1">&#39;my_project/static/src/css/bootstrap.css&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;my_project/static/src/css/bootstrap-responsive.css&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;my_project/static/src/css/style.css&#39;</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">watch</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">css</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">files</span><span class="o">:</span> <span class="s1">&#39;my_project/static/src/css/*.css&#39;</span><span class="p">,</span>
+                <span class="nx">tasks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;cssmin&#39;</span><span class="p">],</span>
+                <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">livereload</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">js</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">files</span><span class="o">:</span> <span class="s1">&#39;my_project/static/src/js/*.js&#39;</span><span class="p">,</span>
+                <span class="nx">tasks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;uglify&#39;</span><span class="p">],</span>
+                <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">livereload</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Load the plugins</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-uglify&#39;</span><span class="p">);</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-cssmin&#39;</span><span class="p">);</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-watch&#39;</span><span class="p">);</span>
+
+    <span class="c1">// Default task(s).</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;uglify&#39;</span><span class="p">,</span> <span class="s1">&#39;cssmin&#39;</span><span class="p">,</span> <span class="s1">&#39;watch&#39;</span><span class="p">]);</span>
+
+<span class="p">};</span>
+</pre></div>
+
+
+<p>首先第一個是 <code>uglify</code>，<code>uglify</code> 除了 minify 和 combine
+外，預設還會將所有變數名稱用較短的名稱來取代 (超貼心)，<code>files</code> 的 key
+值是處理完後的檔案，array 裡則是要處理的檔案，以這裡的例子來看，就是把
+<code>myproject/static/src/js</code> 底下的三個 js 檔案 combine 在一起，做 minify
+和 mangle(將變數取代為較短的名稱)，最後放到 <code>my_project/static/dist/js</code>
+底下，並命名為 <code>index.min.js</code>，如果不想要 combine 在一起的話就必須在
+<code>files</code> 裡分開來寫；<code>cssmin</code> 也是 minify 和 combine，<code>options</code> 裡的
+<code>keepSpecialComments: 0</code> 表示將 comment 拿掉；<code>watch</code>
+則是指定要監控的檔案和要做的 task，另外還有設定 <code>livereload</code>，不過
+<code>livereload</code> 的設定還沒結束，在 template 裡還需要加入一個
+script，下面會提到。</p>
+<h3>Grunt plugins 安裝</h3>
+<p>設定完後，在資料夾最上層輸入指令
+<code>npm install</code>，接著會發現在現在的位置底下多了個
+<code>node_modules</code>(可以回去對照一下一開始列出的 project 架構)，不過這個
+node_modules 不需要加入到 version control
+中，所以可以設定一下，把這個資料夾忽略掉。</p>
+<h3>Livereload</h3>
+<p>接著是設定 <code>livereload</code>，<code>livereload</code> 需要在 template 中加入
+script，但是我不希望 production 環境中也跑出這個，所以我需要一個 flag
+來幫助我判斷，於是我在 <code>development.ini</code> 以及 <code>production.ini</code>
+分別加入了 <code>dev = true</code> 以及 <code>dev = false</code>，並在
+<code>my_project/__init__.py</code> 的 <code>main</code> function 裡加入下面程式，在透過
+subscriber 註冊的 function 會帶一個參數，這裡命名為
+<code>event</code>，在這裡設值後，在 template 中就可以直接用 dev 這個變數。</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="n">settings</span><span class="p">[</span><span class="s">&#39;dev&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;true&#39;</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">add_global</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+        <span class="n">event</span><span class="p">[</span><span class="s">&#39;dev&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_subscriber</span><span class="p">(</span><span class="n">add_global</span><span class="p">,</span> <span class="s">&#39;pyramid.events.BeforeRender&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>在 <code>root.jinja2</code> 這個 template 的 <code>&lt;/body&gt;</code> 上面加入以下程式就 OK 了：</p>
+<div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nx">dev</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="nb">script</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:35729/livereload.js&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">script</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endif</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+
+
+<h3>Test</h3>
+<p>寫完後先執行網頁，設定檔用 <code>development.ini</code>(ex:
+<code>pserve development.ini</code>)，然後執行 <code>grunt watch</code>，接著嘗試改個 css 或
+js 檔案並儲存看看，應該會自動產生處理後的檔案並自動 reload
+網頁。<code>grunt watch</code>
+預設不會放到背景執行，所以需要另外開個視窗來編輯檔案。</p>
+<p>參考資料：<br />
+<a href="http://docs.spmjs.org/contrib/simple-grunt">關於Grunt，從一個簡單的配置開始！</a><br />
+<a href="http://gibuloto.com/blog/grunt-plus-requirejs-with-multi-page-website/">Grunt + RequireJS with multi-page website</a><br />
+<a href="http://blog.wu-boy.com/2013/03/javascript-command-line-tool-gruntjs/">Javascript command line tool GruntJS 介紹</a><br />
+<a href="https://gist.github.com/appLhui/5283784/raw/093685c9971ac941be75d7ff7a718eca5173fcb1/初学grunt进行项目构建(二).md">初学grunt进行项目构建 二</a><br />
+<a href="http://www.jankerli.com/?p=1628">Grunt.js 初使用</a><br />
+<a href="http://www.k68.org/?p=1232">使用Grunt進行js、css壓縮合併</a><br />
+<a href="http://stackoverflow.com/questions/16371022/how-to-use-grunt-contrib-livereload">How to use grunt-contrib-livereload?</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

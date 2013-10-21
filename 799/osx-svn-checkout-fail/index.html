@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>OSX svn checkout fail</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/799/osx-svn-checkout-fail/" rel="bookmark"
+           title="Permalink to OSX svn checkout fail">OSX svn checkout fail</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-03-13T15:36:00">
+                三 13 3月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/mac-ban-ben-guan-li.html">Mac, 版本管理</a>. </p>
+<p>tags: <a href="/tag/hdiutil.html">hdiutil</a><a href="/tag/svn.html">svn</a></p>
+</footer><!-- /.post-info -->      <p>在 OSX 上 checkout svn 的 repo 遇到了 error，跟我說 .svn
+底下少了某個檔案，後來才發現有兩個同樣名稱的檔案，只是大小寫不一樣，看來好像是因為
+OSX 的檔案系統預設大小寫視為一樣的。如果要解決這個問題除了換個名稱，要不然就是做個
+case sensitive 的 image mount 上去，指令如下：<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="c"># 建立 image 檔案</span>
+hdiutil create -size 100m -fs <span class="s2">&quot;Case-sensitive HFS+&quot;</span> -volname xxx xxx.dmg
+<span class="c"># size 後面的參數表示 image 大小</span>
+<span class="c"># volname 後面的參數表示掛載後的名稱</span>
+<span class="c"># xxx.dmg 是 image 檔案的名稱</span>
+
+<span class="c"># 掛載 image 檔案</span>
+hdiutil attach xxx.dmg
+</pre></div>
+
+
+<p>接著就可以在 <code>/Volumes/</code> 底下看到剛才掛上去的 image 資料夾。</p>
+<p>參考網址：<br />
+<a href="http://stackoverflow.com/questions/2986786">http://stackoverflow.com/questions/2986786</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

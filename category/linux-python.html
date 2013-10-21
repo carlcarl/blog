@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - linux, python</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/515/chakra-vim-not-support-pythoncomplete/">Chakra vim not support pythoncomplete</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-06-17T22:47:00">
+                日 17 6月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux-python.html">linux, python</a>. </p>
+<p>tags: <a href="/tag/chakra.html">chakra</a><a href="/tag/python.html">python</a><a href="/tag/vim.html">vim</a></p>
+</footer><!-- /.post-info --><p>最近在 Chakra 上用 vim 寫 python
+的時候才突然發現這個問題，原因似乎是因為 vim 在編譯的時候沒有加上 python
+的編譯參數，解決這個問題很簡單，只要改安裝 <code>vim-qt-git</code> 就 OK
+了，因為它所提供的 vim 是有支援 pythoncomplete 的。vim-qt-git
+本身包含一套完整的 vim 以及加上 GUI 的套件，所以安裝的時候會要求將原本的
+vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的補完功能了。</p>
+<p>參考網址：<br />
+<a href="https://bbs.archlinux.org/viewtopic.php?id=122091">https://bbs.archlinux.org/viewtopic.php?id=122091</a><br />
+<a href="https://wiki.archlinux.org/index.php/Vim">https://wiki.archlinux.org/index.php/Vim</a>  </p>
+<p><a href="http://blog.linuxtty.com/post/13022099749/archlinux-vim-python-support">http://blog.linuxtty.com/post/13022099749/archlinux-vim-python-support</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

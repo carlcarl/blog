@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - carlcarl</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/262/xenserver-enable-snmpd/" rel="bookmark"
+                           title="Permalink to xenserver enable snmpd">xenserver enable snmpd</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-19T16:06:00">
+                日 19 2月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/cloud-linux.html">cloud, linux</a>. </p>
+<p>tags: <a href="/tag/iptables.html">iptables</a><a href="/tag/snmp.html">snmp</a><a href="/tag/snmpd.html">snmpd</a><a href="/tag/xenserver.html">xenserver</a></p>
+</footer><!-- /.post-info -->                <p>我用的 xenserver 版本為「5.6」，6 以上的版本就不能確定能否這樣做囉。</p>
+<h3>首先要先修改防火牆規則</h3>
+<p>xenserver 雖然本身就有 snmpd 了，不過只單純打開 snmpd 是沒用的，會被防火牆擋下。用 vi
+    編輯 <code>/etc/sysconfig/iptables</code>，找到 <code>-A RH-Firewall-1-INPUT –p udp
+    –dport 5353</code> 這行：</p>
+<div class="highlight"><pre>-A RH-Firewall-1-INPUT -p ah -j ACCEPT
+-A RH-Firewall-1-INPUT -d 224.0.0.251 -p udp -m udp --dport 5353 -j ...</pre></div>
+                <a class="readmore" href="/262/xenserver-enable-snmpd/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/258/vsphere-failed-to-open-disk-scsi00/" rel="bookmark"
+                           title="Permalink to [vsphere]Failed to open disk scsi0:0">[vsphere]Failed to open disk scsi0:0</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-19T00:55:00">
+                日 19 2月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/cloud.html">cloud</a>. </p>
+<p>tags: <a href="/tag/esx.html">esx</a><a href="/tag/esxi.html">esxi</a><a href="/tag/vsphere.html">vsphere</a></p>
+</footer><!-- /.post-info -->                <p>今天想試試看利用網路上的 Virtual Appliance 開 VM，下載完後利用 client
+介面就可以上傳到 datastore，可是在新增 VM，並選擇完 vmdk
+檔後，開啟VM時就出現了錯誤訊息囧。</p>
+<p>錯誤訊息內容: <code>Failed to open disk scsi0:0: Unsupported and/or invalid
+disk type 7.</code></p>
+<p>Google 了一下，似乎是下載下來後還要做轉換（後來看官方的安裝手冊也是的確講要這樣做 orz）。<br />
+首先要先連到有和上傳的 datastore 連線的 esxi server，接著進到 <code>/vmfs/volumes/你的datastore/</code>，利用以下指令做轉換：</p>
+<div class="highlight"><pre>vmkfstools -i 你原來的vmdk檔 轉完的vmdk檔名
+</pre></div>
+
+
+<p>兩個檔案名稱不要重複，轉完之後 ...</p>
+                <a class="readmore" href="/258/vsphere-failed-to-open-disk-scsi00/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/254/quorum-read/" rel="bookmark"
+                           title="Permalink to Quorum read">Quorum read</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-17T21:43:00">
+                五 17 2月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database.html">database</a>. </p>
+<p>tags: <a href="/tag/cassandra.html">Cassandra</a><a href="/tag/hbase.html">hbase</a></p>
+</footer><!-- /.post-info -->                <p>最近在看 paper，剛好看到這個名詞，似乎是 Cassandra 有用到的一個技巧。</p>
+<p>在 cluster
+的環境中，有時候並不能保證說讀取到的值一定會是最新的，可能會因為架構或設計上的不同，可能在做
+replication 的部份是非同步進行的，所以更大大增加拿到舊值的機率。</p>
+<p>此方法簡單說就是讀取多個 node 的值來作比較，基本上這些值都會有
+timestamp，所以可以根據時間的新舊來決定該用哪個值，但是還是會有一些問題，像是如果讀到的值都是舊的那該怎麼辦，如果變成一次測全部
+node 的值，效能上不用說一定會很慢，所以這個問題我不知道是怎麼解決的。</p>
+<p>其實還滿詭異的，如果真的要要求資料一致性的話，我覺得還不如就選資料一致性較強的
+HBase（不過我不太喜歡要分一堆角色的分散式系統，感覺在架構配置上會比較麻煩）。</p>
+                <a class="readmore" href="/254/quorum-read/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/249/svn-status/" rel="bookmark"
+                           title="Permalink to svn status appear「~」">svn status appear「~」</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-14T23:46:00">
+                二 14 2月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux-ban-ben-guan-li.html">linux, 版本管理</a>. </p>
+<p>tags: <a href="/tag/svn.html">svn</a></p>
+</footer><!-- /.post-info -->                <p>最近遇到有人有這個問題，查了一下，這個問題的原因是因為從「一般檔案, 資料夾, 連結」這三種屬性，該檔案從其中一個屬性換成另外一種屬性就會出現這個波浪號狀態。</p>
+<p>不過當然有時候事情不是那麼簡單......，這次遇到的主要原因應該是因為資料夾內的
+<code>.svn</code> 被刪掉了，所以從外面看就會出現這種情形，以下是查到的解決方法：</p>
+<div class="highlight"><pre>mv <span class="nb">test </span>test2
+svn delete <span class="nb">test</span>
+mv test2 <span class="nb">test</span>
+svn add <span class="nb">test</span>
+</pre></div>
+
+
+<p>首先先改資料夾名稱，因為等下要刪掉原本這個資料夾的 svn 紀錄，直接 delete
+的話，資料夾就真的會被刪掉，刪完之後再把改過名稱的資料夾改回原來的名稱，改完之後再重新
+add，應該就會顯示正常了。</p>
+                <a class="readmore" href="/249/svn-status/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/245/different-color-in-screen-and-normal-mode/" rel="bookmark"
+                           title="Permalink to Different color in screen and normal mode">Different color in screen and normal mode</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-10T00:43:00">
+                五 10 2月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/screen.html">screen</a><a href="/tag/screenrc.html">screenrc</a><a href="/tag/vim.html">vim</a></p>
+</footer><!-- /.post-info -->                <p>查了一下資料，發現應該是跟顏色的支援有關，要在 <code>.screerc</code> 裡加上一行：</p>
+<div class="highlight"><pre>termcapinfo xterm &#39;Co#256:AB=E[48;5;%dm:AF=E[38;5;%dm&#39;
+</pre></div>
+
+
+<p>參考網址：<br />
+<a href="http://fcamel-fc.blogspot.com/2009/04/python-vim.html">http://fcamel-fc.blogspot.com/2009/04/python-vim.html</a></p>
+                <a class="readmore" href="/245/different-color-in-screen-and-normal-mode/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/239/linux-mint-cinnanmon-change-position-of-window-buttons/" rel="bookmark"
+                           title="Permalink to Linux Mint cinnamon change position of window buttons">Linux Mint cinnamon change position of window buttons</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-04T18:56:00">
+                六 04 2月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/cinnanmon.html">cinnanmon</a><a href="/tag/gconf-editor.html">gconf-editor</a></p>
+</footer><!-- /.post-info -->                <p>==================================================<br />
+2012/03/28更新</p>
+<h1>cinnamon 已經有提供修改按鈕位置的設定了，所以就不用照以下的方法來改哩。</h1>
+<p>最近裝了 cinnamon 來玩玩，是有一些有趣的東西沒錯，像是視窗動畫，不過整體來說，我覺得並沒有好到值得我換成這套，所以用了沒多久我就換回來 Gnome 啦～～。</p>
+<p>不過這邊還是來講一下 cinnamon 怎麼改變視窗按鈕位置的方法吧。</p>
+<p>首先先裝編輯設定的套件</p>
+<div class="highlight"><pre>apt-get install gconf-editor
+</pre></div>
+
+
+<p>執行後會出現一個視窗，接著如以下圖片，可以看到右邊有 <code>button layout</code> 這個欄位，有關閉，最小化，最大化的值，<code>:</code> 代表相對位置，如下圖的話指的是放在左邊，如果要放在右邊的話就把 <code>:</code> 移到前面就
+OK 了。</p>
+<p><img alt="gconf-editor" src="http://198.199.117.21/wp-content/uploads/2012/02/502.png" /></p>
+                <a class="readmore" href="/239/linux-mint-cinnanmon-change-position-of-window-buttons/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/233/naming-apache-log-with-date/" rel="bookmark"
+                           title="Permalink to naming apache log with date">naming apache log with date</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-12-19T17:01:00">
+                一 19 12月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/apache.html">apache</a><a href="/tag/daily.html">daily</a><a href="/tag/logrotate.html">logrotate</a></p>
+</footer><!-- /.post-info -->                <p>目前是用 <code>logrotate</code> 來作，只要在 <code>/etc/logrotate.d/apache2</code> 裡加入下面這個參數即可：</p>
+<ul>
+<li>dateext</li>
+</ul>
+<p>另外可以根據需求看要不要把 <code>weekly</code> 改為 <code>daily</code> 這樣。</p>
+<p>處理過後的檔名就會像這樣 <code>access.log-20111218.gz</code>，這樣在之後處理和分析
+log 會比較方便，另外記得數量也要根據需求改，因為改完後變成能保存的 log
+日期也會跟著減少，要增多的話也是直接修改上面 <code>/etc/logrotate.d/apache2</code> 這個檔案，將 <code>rotate</code> 後面的數字加大，後面的數字表示要存的 log 數量，超過的話就會將最舊的刪除這樣。</p>
+<p>後記：<br />
+如果要跟 awstats 搭配的話可以在裡面加入：</p>
+<div class="highlight"><pre>prerotate
+    /usr/lib/cgi-bin/awstats.pl -config ...</pre></div>
+                <a class="readmore" href="/233/naming-apache-log-with-date/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/226/mysql-db-engine-with-log-archive/" rel="bookmark"
+                           title="Permalink to MySQL DB engine with log: Archive">MySQL DB engine with log: Archive</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-12-17T18:00:00">
+                六 17 12月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/mysql.html">mysql</a>. </p>
+<p>tags: <a href="/tag/archive.html">archive</a><a href="/tag/innodb.html">innodb</a><a href="/tag/mariadb.html">mariadb</a><a href="/tag/myisam.html">myisam</a><a href="/tag/mysql.html">mysql</a></p>
+</footer><!-- /.post-info -->                <p>前一陣子在看什麼 engine 比較適合拿來單純存
+log，後來看到 <code>Archive</code> 這個似乎不錯，主要有以下優點：</p>
+<ul>
+<li>insert 速度更快。</li>
+<li>佔的資料量較 Myisam 少。</li>
+</ul>
+<p>但是有優勢，就會有相對的劣勢，Archive 有以下缺點：</p>
+<ul>
+<li>不支援 delete 和 update，只能 insert 和 select。</li>
+<li>不支援 index。</li>
+</ul>
+<p>（如果你是想要存每次最後登入時間的話，那 Archive 的確是不適合，因為不支援
+index 和 update。）</p>
+<p>但是以現實角度來看單純的 log 表，像是存每次登入的紀錄：</p>
+<ul>
+<li>其實真的就只會用到 insert，會用到 delete 和 update 那這個應該不太叫
+    log。</li>
+<li>作 select 的機率也是微乎其微 ...</li></ul>
+                <a class="readmore" href="/226/mysql-db-engine-with-log-archive/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/218/several-ways-to-check-process-port/" rel="bookmark"
+                           title="Permalink to Several ways to check process port">Several ways to check process port</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-12-15T02:51:00">
+                四 15 12月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/fuser.html">fuser</a><a href="/tag/lsof.html">lsof</a><a href="/tag/netstat.html">netstat</a><a href="/tag/port.html">port</a><a href="/tag/rpcinfo.html">rpcinfo</a></p>
+</footer><!-- /.post-info -->                <p>目前知道的就以下四種，記得用 root
+權限來看，或者是指令前面加 <code>sudo</code>，不然有些 process 會看不到。</p>
+<ul>
+<li>netstat -antp</li>
+<li>rpcinfo -p</li>
+<li>lsof -i :port</li>
+<li>fuser port/tcp</li>
+</ul>
+<p>以上指令的 <code>port</code> 為你要的 port
+數字。基本上用 <code>netstat</code> 會列出一堆清單，通常就可以在其中找到，不行的話就使用 <code>lsof</code>，還是沒有的話，接下來就用 <code>fuser</code>，如果真的還是沒有，最後就用 <code>rpcinfo</code> 查看，再沒有我就沒辦法了 XD。</p>
+<p>如果是要看 80 port 被什麼所佔用，可以如下使用：</p>
+<div class="highlight"><pre>lsof -i :80
+fuser 80:tcp ...</pre></div>
+                <a class="readmore" href="/218/several-ways-to-check-process-port/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/170/mysql-change-engine-of-all-tables/" rel="bookmark"
+                           title="Permalink to MySQL change engine of all tables">MySQL change engine of all tables</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-12-10T00:22:00">
+                六 10 12月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/mysql.html">mysql</a>. </p>
+<p>tags: <a href="/tag/aria.html">aria</a><a href="/tag/mariadb.html">mariadb</a><a href="/tag/mysql.html">mysql</a></p>
+</footer><!-- /.post-info -->                <p>最近裝好<a href="http://mariadb.org/">mariaDB</a>，想順便把之前用的 <code>Myisam</code> 改成新的 <code>Aria</code> engine，可是
+table 一堆，在 phpmyadmin 介面上也找不到比較方便的功能可以直接轉換所有的
+table engine。</p>
+<p>後來查了一下，有幾種作法，一種是寫 php，然後 for 迴圈用 sql 修改
+engine，不過為了這個寫 php 總是覺得很奇怪。後來查到另外一個作法：</p>
+<div class="highlight"><pre><span class="k">select</span> <span class="n">concat</span><span class="p">(</span><span class="s1">&#39;alter table &#39;</span><span class="p">,</span><span class="k">table_name</span><span class="p">,</span> <span class="s1">&#39; engine = Aria;&#39;</span><span class="p">)</span>
+<span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">tables</span>
+<span class="k">where</span> <span class="n">table_schema</span> <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;db1&#39;</span><span class="p">,</span><span class="s1">&#39;db2&#39;</span><span class="p">,....,</span><span class="s1">&#39;dbN&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>要注意 <code>table_name</code> 不用改，這個是 <code>informatio_schema ...</code></p>
+                <a class="readmore" href="/170/mysql-change-engine-of-all-tables/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/author/carlcarl9.html">&laquo;</a>
+    Page 10 / 16
+        <a href="/author/carlcarl11.html">&raquo;</a>
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

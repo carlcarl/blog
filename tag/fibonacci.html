@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - fibonacci</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1240/python-fibonacci-number/">Python fibonacci number</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-08-04T02:35:00">
+                日 04 8月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/fibonacci.html">fibonacci</a></p>
+</footer><!-- /.post-info --><p>在 Python Taiwan 社團看到的寫法：</p>
+<!--more-->
+
+<div class="highlight"><pre><span class="k">print</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="p">(([</span><span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)])</span> <span class="ow">and</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">or</span> <span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+
+<p><code>n</code> 和 <code>p</code> 分別對應 <code>10</code> 和 <code>[1,1]</code> 這兩個參數，<code>10</code> 表示要 fibonacci
+的第十個項數，<code>[1,1]</code> 是第一項和第二項的值。然後是一個 loop 將 <code>p</code>
+陣列中最後兩個值加起來再 append 進 <code>p</code>，比較妙的是，因為這邊 loop append
+完之後，整個會是一個
+list，但是因為這邊只要最後一個值，而且又要忽略掉前面這個
+list，於是用了 <code>and False</code> 將整個值算成 <code>False</code>，接著又由於
+<code>False</code> 與 <code>or</code> 放在一起，所以會再進一步取後面的值，也就是
+<code>p[-1]</code>，也就是算完後的最後一個值。</p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

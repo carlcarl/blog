@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Python Yahoo weather</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/1212/python-yahoo-weather/" rel="bookmark"
+           title="Permalink to Python Yahoo weather">Python Yahoo weather</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-07-16T18:30:00">
+                二 16 7月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/weather.html">weather</a><a href="/tag/yahoo.html">yahoo</a><a href="/tag/yql.html">yql</a></p>
+</footer><!-- /.post-info -->      <p>實際做起來不難，是說弄完才發現有 <a href="https://pypi.python.org/pypi/yweather/0.1">yweather</a> 這個可以用囧。</p>
+<!--more-->
+
+<p>首先到 <a href="http://developer.yahoo.com/yql/console/">YQL</a> 這邊下 query，這邊可以參考<a href="http://my.opera.com/weiyu/blog/2012/04/08/yql-yahoo">這篇</a>最下面的兩種 query
+方法。格式可以選 JSON 然後把 callback 名稱拿掉，下完 query
+就可以產生一段網址，以新竹的例子來說就是:</p>
+<div class="highlight"><pre>http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D%22TWXX0009%22%20and%20u%3D%22c%22&amp;format=json&amp;diagnostics=true&amp;callback=
+</pre></div>
+
+
+<p>接著用 python 處理一下就可以了：</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;blahblah..&#39;</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+</pre></div>
+
+
+<p><code>requests</code> 很方便，不過不是內建的，要先安裝：<code>pip install requests</code>，最後得到的
+<code>json_data</code> 就是天氣資料。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

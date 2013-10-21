@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - rsync</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/40/rsync-exclude-file/">rsync exclude file</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2011-08-27T11:18:00">
+                六 27 8月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/rsync.html">rsync</a></p>
+</footer><!-- /.post-info --><p>最近想打包線上在跑的網站(在 Ubuntu 上)。本來想說用 <code>cp</code> 就好，但是 <code>cp</code>
+沒辦法去 exclude 一些檔案列表，偏偏網站上面有些是暫存檔和使用者上傳的東西，另外還有一些雜七雜八不該包的 code。</p>
+<p>後來查到可以用 <code>rsync</code> 來作 因為有支援 exclude 的參數，以下是範例，a
+參數包含了一堆其他參數的功能，v 參數就是將詳細資訊印出來：</p>
+<div class="highlight"><pre>rsync -av --exclude <span class="s1">&#39;dir&#39;</span> <span class="nb">source </span>destination
+</pre></div>
+
+
+<p>想要 exclude 多一點的話可以這樣下：</p>
+<div class="highlight"><pre>rsync -av --exclude <span class="s1">&#39;dir1&#39;</span> --exclude <span class="s1">&#39;dir2&#39;</span> <span class="nb">source </span>destination
+</pre></div>
+
+
+<p>要注意的一點是：<br />
+如果想要避掉 某幾個目錄下的子目錄
+像是每個目錄下的 <code>.svn</code> 資料夾，可以直接用 <code>--exclude '.svn/'</code>，
+他會<strong>自動避掉所有符合名稱的子目錄</strong>，而如果是每個子目錄底下的檔案的話，如 <code>templates_c/底下的檔案</code>，可以用 <code>--exclude 'templates_c/*'</code>。</p>
+<p>參考網址:  </p>
+<p><a href="http://unix.stackexchange.com/questions/5774/rsync-excluding-a-particular-subdirectory-and-its-children-where-the-subdirecto#_">http://unix.stackexchange.com/questions/5774/</a><br />
+<a href="http://www.thegeekstuff.com/2011/01/rsync-exclude-files-and-folders/">http://www.thegeekstuff.com/2011/01/rsync-exclude-files-and-folders/</a><br />
+<a href="http://blog.xuite.net/jyoutw/xtech/20025390">http://blog.xuite.net/jyoutw/xtech/20025390</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - FreeBSD</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/50/freebsd-set-default-shell-to-bash/">FreeBSD set default shell to bash</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2011-11-06T08:58:00">
+                日 06 11月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/freebsd.html">FreeBSD</a>. </p>
+<p>tags: <a href="/tag/bash.html">bash</a><a href="/tag/freebsd.html">freebsd</a></p>
+</footer><!-- /.post-info --><p>最近興致來，就想說來把 FreeBSD 上的 csh 改成 bash，畢竟我還是比較習慣用 bash～。</p>
+<p>首先先修改預設 shell：</p>
+<div class="highlight"><pre>chsh -s /usr/local/bin/bash
+</pre></div>
+
+
+<p>輸入密碼後就修改成功了～。<br />
+</p>
+<p>再下來你可能會有一個已經有設定過的 <code>.bashrc</code> 檔案，當你放到家目錄底下的時候可能會發現說："怎麼都沒有反應？"，那是因為FreeBSD這邊吃的是 <code>.bash\_profile</code>這個設定檔=.=||，為了能夠兼容，我是自己又另外開了 <code>.bash_profile</code> 檔案，然後在裡面輸入：</p>
+<div class="highlight"><pre><span class="nb">source</span> ~/.bashrc
+</pre></div>
+
+
+<p>這樣以後就只要更新 <code>.bashrc</code> 這個設定檔就好了～。<br />
+</p>
+<p>然後後來又遇到中文無法輸入的問題，這個只要在 <code>.bashrc</code> 檔案中加入語系設定就可以了，另外再加上 <code>ls</code> 的 <code>alias</code>，不然 <code>ls</code> 輸出的目錄都不會標顏色：</p>
+<div class="highlight"><pre><span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span>zh_TW.UTF-8
+<span class="nb">export </span><span class="nv">LC_CTYPE</span><span class="o">=</span>zh_TW.UTF-8
+<span class="nb">alias </span><span class="nv">ls</span><span class="o">=</span><span class="s1">&#39;ls -G&#39;</span>
+</pre></div>
+
+
+<p>如果在 <code>.bashrc</code> 裡需要針對OS作判斷的話可以使用 <code>uname</code>：</p>
+<div class="highlight"><pre><span class="nv">OS</span><span class="o">=</span><span class="k">$(</span><span class="s1">&#39;uname&#39;</span><span class="k">)</span>
+</pre></div>
+
+
+<p>參考網址：</p>
+<p>chsh</p>
+<p><a href="http://unix.ctocio.com.cn/138/9289638.shtml">http://unix.ctocio.com.cn/138/9289638.shtml</a>
+<a href="http://hsiao-ting.blogspot.com/2007/09/freebsdbash_19.html">http://hsiao-ting.blogspot.com/2007/09/freebsdbash_19.html</a></p>
+<p>.bash_profile</p>
+<p><a href="http://franks543.blogspot.com/2007/03/bashrc-bashprofile-freebsd.html">http://franks543.blogspot.com/2007/03/bashrc-bashprofile-freebsd.html</a></p>
+<p>中文輸入</p>
+<p><a href="http://netlab.cse.yzu.edu.tw/~statue/freebsd/zh-tut/shell.html">http://netlab.cse.yzu.edu.tw/~statue/freebsd/zh-tut/shell.html</a>
+<a href="http://blog.csdn.net/magicbreaker/article/details/2296907">http://blog.csdn.net/magicbreaker/article/details/2296907</a></p>
+<p>color</p>
+<p><a href="http://www.cyberciti.biz/tips/freebsd-how-to-enable-colorized-ls-output.html/">http://www.cyberciti.biz/tips/freebsd-how-to-enable-colorized-ls-output.html/</a>
+<a href="http://blog.tenyi.com/2007/10/shellcolor-prompt.html/">http://blog.tenyi.com/2007/10/shellcolor-prompt.html/</a></p>
+<p>OS</p>
+<p><a href="http://stackoverflow.com/questions/394230/detect-os-from-a-bash-script/">http://stackoverflow.com/questions/394230/detect-os-from-a-bash-script/</a>
+<a href="http://www.cyberciti.biz/tips/freebsd-how-to-enable-colorized-ls-output.html/">http://www.cyberciti.biz/tips/freebsd-how-to-enable-colorized-ls-output.html/</a>
+<a href="http://blog.csdn.net/magicbreaker/article/details/2296907/">http://blog.csdn.net/magicbreaker/article/details/2296907/</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/39/freebsd-cant-find-gateway/" rel="bookmark"
+                           title="Permalink to FreeBSD can't find gateway">FreeBSD can't find gateway</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-08-12T19:05:00">
+                五 12 8月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/freebsd.html">FreeBSD</a>. </p>
+<p>tags: <a href="/tag/freebsd.html">freebsd</a><a href="/tag/gateway.html">gateway</a></p>
+</footer><!-- /.post-info -->                <p>最近 Server 卡卡的，想說把network重新啟動看看，結果果然變順很多，想說 OK 就回家了。</p>
+<p>然後悲劇就來了......家裡完全連不上Server，好險還可以拿跟 Server 同個 Subnet 底下的機器登入，想說會不會是我之前裝幾個 Service 或防火牆的關係，但是都關掉後也都沒用 orz，後來用 <code>netstat
+-rn</code> 才看到 <code>defaultgateway</code> 不見了！！</p>
+<p>但是我明明在 <code>rc.conf</code> 裡面就有指定了 <code>defaultgateway</code>，看來好像是 <code>rc.conf</code> 只會在 OS 重啟才有用，network重啟也不會讀這個檔 = =。</p>
+<p>後來查到可以用 <code>/etc/rc.d/routing restart</code> 來解決，不過感覺還是麻煩了點，感覺應該有更好的方法才對= =a。</p>
+                <a class="readmore" href="/39/freebsd-cant-find-gateway/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/37/freebsd-use-mpd-to-build-vpn/" rel="bookmark"
+                           title="Permalink to FreeBSD use mpd to build VPN">FreeBSD use mpd to build VPN</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-22T09:43:00">
+                五 22 7月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/freebsd.html">FreeBSD</a>. </p>
+
+</footer><!-- /.post-info -->                <p>不習慣用FreeBSD，所以花了一點時間研究要怎麼裝orz</p>
+<p>感覺比Linux的還麻煩QQ</p>
+<h3>首先先裝 mpd</h3>
+<p>到 <code>/usr/ports/net/mpd/</code> 底下輸入</p>
+<div class="highlight"><pre>make install clean
+</pre></div>
+
+
+<p>這樣就安裝好了~。</p>
+<h3>接下來是要作設定，先修改 <code>/usr/local/etc/mpd/mpd.conf</code></h3>
+<div class="highlight"><pre><span class="k">default</span><span class="o">:</span>
+<span class="n">load</span> <span class="n">pptp1</span>
+<span class="n">pptp1</span><span class="o">:</span>
+<span class="k">new</span> <span class="o">-</span><span class="n">i</span> <span class="n">ng0</span> <span class="n">pptp1</span> <span class="n">pptp1</span>
+<span class="kd">set</span> <span class="n">ipcp</span> <span class="n">ranges</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">88.1</span><span class="sr">/32 192.168.88.56/</span><span class="mi">32</span>
+<span class="n">load</span> <span class="n">pptp_def</span>
+<span class="n">pptp_def</span><span class="o">:</span>
+<span class="kd">set</span> <span class="n">iface ...</span></pre></div>
+                <a class="readmore" href="/37/freebsd-use-mpd-to-build-vpn/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

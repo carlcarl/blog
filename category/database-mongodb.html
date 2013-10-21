@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - database, mongodb</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/721/mongodb-uptime-query/">MongoDB uptime query</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-11-15T07:33:00">
+                四 15 11月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a><a href="/tag/uptime.html">uptime</a></p>
+</footer><!-- /.post-info --><p>在 <a href="http://stackoverflow.com/questions/13379170/how-long-was-a-mongo-instance-running">stackoverflow</a>
+看到這個問題，就順便查個資料回了一下，另外有個人是回答可以用 <code>ps -ef</code>
+來看，不過我想說 MongoDB 本身應該也會有這樣的功能，所以還是查了一下。</p>
+<!--more-->
+
+<p>後來果然在 <a href="http://docs.mongodb.org/manual/reference/server-status/">MongoDB 官方文件</a>
+找到我要的資料，不過拿到的數據會是以秒為單位，所以必須自己作轉換。</p>
+<p>進入 mongo shell 之後輸入：</p>
+<div class="highlight"><pre><span class="c1">// seconds</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span>
+</pre></div>
+
+
+<p>其他的就照單位轉換一下就可以：</p>
+<div class="highlight"><pre><span class="c1">// minutes</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span> <span class="o">/</span> <span class="mi">60</span>
+<span class="c1">// hours</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span> <span class="o">/</span> <span class="mi">3600</span>
+<span class="c1">// days</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span> <span class="o">/</span> <span class="mi">86400</span>
+</pre></div>
+
+
+<p>如果要固定格式的話，目前似乎沒有直接的 function 可以 call，所以還是必須自己作轉換，像是 <a href="http://stackoverflow.com/questions/175554/how-to-convert-milliseconds-into-human-readable-form">這篇</a> 。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/671/mongodb-split-chunk/" rel="bookmark"
+                           title="Permalink to MongoDB split chunk">MongoDB split chunk</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-10-09T03:21:00">
+                二 09 10月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a></p>
+</footer><!-- /.post-info -->                <p>練習了一下自己手動切 chunk，因為有時候 MongoDB
+切出來的不一定是理想的範圍 orz。</p>
+<p>大致就兩個步驟，第一個是切 chunk，第二個是移動 chunk 到某個 shard
+上，如果 balancer 沒關掉的話，第二個步驟會由 balancer 幫你決定你的 chunk
+要移到哪個 shard 上。<br />
+<!--more-->  </p>
+<h3>切 chunk 指令</h3>
+<div class="highlight"><pre><span class="c1">// 第一個參數是指定在哪個 DB 中的 collection，</span>
+<span class="c1">// 因為文件裡只說是 collection，所以可能會忘了加上 DB 的名稱</span>
+<span class="c1">// 第二個參數是你指定的 sharding key，cutPoint 則是要從哪個數值下去切</span>
+<span class="nx">sh</span><span class="p">.</span><span class="nx">splitAt</span><span class="p">(</span><span class="s2">&quot;yourDB.yourCollection&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="nx">cutPoint</span><span class="p">})</span>
+</pre></div>
+
+
+<p>or</p>
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">runCommand ...</span></pre></div>
+                <a class="readmore" href="/671/mongodb-split-chunk/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/663/mongodb-check-status-command/" rel="bookmark"
+                           title="Permalink to MongoDB check status command">MongoDB check status command</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-10-09T02:15:00">
+                二 09 10月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a></p>
+</footer><!-- /.post-info -->                <p>紀錄一下 MongoDB 看狀態時常會用到的指令。<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="c"># 看目前 state 的指令</span>
+mongostat
+</pre></div>
+
+
+<p>以下都是進 mongo shell 後的指令。</p>
+<div class="highlight"><pre><span class="c1">// 狀態總覽</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">()</span>
+
+<span class="c1">// 看 memory</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">mem</span>
+
+<span class="c1">// 看 page fault</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">extra_info</span>
+
+<span class="c1">// 看 sharding 的狀態，兩個指令同樣功能</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">printShardingStatus</span><span class="p">()</span>
+<span class="nx">sh</span><span class="p">.</span><span class="nx">status</span><span class="p">()</span>
+
+<span class="c1">// 查看 db 本身的資訊</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">stats</span><span class="p">()</span>
+
+<span class="c1">// 查看 collection 的 index</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">getIndexes</span><span class="p">()</span>
+
+<span class="c1">// 查看目前執行的 operation</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">currentOP</span><span class="p">()</span>
+</pre></div>
+
+
+<p>參考網址 ...</p>
+                <a class="readmore" href="/663/mongodb-check-status-command/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/645/mongodb-aggregation-group-count-sort/" rel="bookmark"
+                           title="Permalink to mongodb aggregation group count sort">mongodb aggregation group count sort</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-09-14T05:05:00">
+                五 14 9月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a></p>
+</footer><!-- /.post-info -->                <p>感覺不是很難的 query，想說用 mongodb aggregation 來解決，不過查資料查了好久才知道怎麼用。<br />
+<!--more--><br />
+以 sql 來說的話，我是要對某個欄位作 group by，分類完之後再對分類完的欄位作 count，算完之後再根據 count 的數字作 sort。下面這段是 MongoDB 中的用法：</p>
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">mytable</span><span class="p">.</span><span class="nx">aggregate</span><span class="p">({</span> <span class="nx">$group</span><span class="o">:</span><span class="p">{</span> <span class="nx">_id</span><span class="o">:</span> <span class="s2">&quot;$b_cd&quot;</span><span class="p">,</span> <span class="nx">num</span><span class="o">:</span> <span class="p">{</span><span class="nx">$sum</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span> <span class="p">}},</span> <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">num</span><span class="o">:</span><span class="mi">1</span><span class="p">}}</span> <span class="p">);</span>
+</pre></div>
+
+
+<p><code>$b_cd</code> 是我要分類的欄位，<code>num</code> 是各分類欄位的數目，這邊利用 <code>$sum</code>
+作累加，接著再用 <code>$sort</code> 對 num 作排序。</p>
+<p>中間我卡很久的原因是因為 syntax
+搞錯（<strong>大括弧的位置要注意 ...</strong></p>
+                <a class="readmore" href="/645/mongodb-aggregation-group-count-sort/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/546/fix-mongodb-default-allocate-space-too-larger/" rel="bookmark"
+                           title="Permalink to fix mongodb default allocate space too larger">fix mongodb default allocate space too larger</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-07-27T20:19:00">
+                五 27 7月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a></p>
+</footer><!-- /.post-info -->                <p>最近在做 VM template 的時候才發現到這個問題，安裝好 mongodb 之後，在
+<code>/var/lib/mongodb/journal/</code> 下面可以發現 mongodb 佔用了 3 GB 的 journal
+檔案。</p>
+<p>當然，如果硬碟夠大或是沒啥必要的話，這其實可以不用去理它，但是我由於需要加快利用
+VM template 安裝系統的速度，而 template 的大小會影響中間網路傳送
+template 的時間，因此還是希望能避免不必要的空間浪費。</p>
+<p>而其實 mongodb 本身有提供一個參數 <code>smallfiles</code>
+，這個參數可以讓這些預先生成的 journal 檔案一個從 1G 降到約 13X MB
+左右，所以總共 3 個 journal file ...</p>
+                <a class="readmore" href="/546/fix-mongodb-default-allocate-space-too-larger/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/43/mongodb-rockmongo/" rel="bookmark"
+                           title="Permalink to MongoDB Web management tool： rockmongo">MongoDB Web management tool： rockmongo</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-09-05T18:12:00">
+                一 05 9月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a><a href="/tag/rockmongo.html">rockmongo</a></p>
+</footer><!-- /.post-info -->                <p><a href="http://i.imgur.com/BtTNDdsl.png"><img alt="1315246483-954501738" src="http://i.imgur.com/BtTNDdsl.png" /></a></p>
+<p>最近找到的一個管理 MongoDB 的網頁介面工具，是用 php5
+寫的，介面不是說很好看啦，不過還算好用囉，而且很重要的一點是他有中文繁體，真的是倍感親切XD。</p>
+<!--more-->
+
+<p>首先先到<a href="http://code.google.com/p/rock-php/downloads/list">這邊下載</a>。</p>
+<p>下載完之後解壓縮並且移到網頁目錄下，然後試著連上去看看。如果出現要下載
+php 的 mongodb module 的話，就照以下步驟去安裝：</p>
+<div class="highlight"><pre>sudo apt-get install php-pecl
+sudo pecl install mongo
+</pre></div>
+
+
+<p>接著在 php.ini 裡面加上一行：</p>
+<div class="highlight"><pre><span class="n">extension</span><span class="o">=</span><span class="n">mongo</span><span class="p">.</span><span class="n">so</span>
+</pre></div>
+
+
+<p>接著重啟 Web Server。<span style="color: #ff0000;">如果有用 php-fpm
+的話記得這個也要重啟才有用</span>，一開始忘記，結果這邊卡好久=.=。再連一次網頁看看應該就可以連上了。</p>
+<p><a href="http://i.imgur.com/epxeSLs.png"><img alt="1315247147-2959807055" src="http://i.imgur.com/epxeSLs.png" /></a></p>
+<p>預設帳密是「admin」(帳密一樣)，接著按登錄就可以進去管理頁面了。但是預設帳密一樣感覺很容易會被侵入 ...</p></!--more-->
+                <a class="readmore" href="/43/mongodb-rockmongo/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

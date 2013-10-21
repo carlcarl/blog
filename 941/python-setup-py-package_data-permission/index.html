@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Python setup.py package_data permission</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/941/python-setup-py-package_data-permission/" rel="bookmark"
+           title="Permalink to Python setup.py package_data permission">Python setup.py package_data permission</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-10T02:12:00">
+                一 10 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+
+</footer><!-- /.post-info -->      <p>最近嘗試把一些額外的 static 檔案加入到 python 的 package
+裡來讓程式操作，後來有查到可以在 setup.py 裡設定
+<code>package_data</code>，照著做之後好像滿順利的，但是在用 root 權限 install
+完，用一般使用者執行就遇到 permission 的錯誤了。</p>
+<!--more-->
+
+<p>看了一下安裝目錄下的 static 檔案，結果權限是 <code>400</code>，owner 是
+<code>root</code>，難怪一般使用者無法讀取，想說會不會是因為我的原本檔案權限的關係，檢查了一下，果然是
+<code>400</code>，但是我改了權限再重新安裝居然還是一樣，這時我還想說會不會是原本就有這樣的限制，還查了一堆資料
+orz。</p>
+<p>最後想到，會不會是因為我那些 build 所產生的目錄的關係，於是我把
+<code>xxx.pkg-info</code>，<code>build</code> 和 <code>dist</code>
+這三個資料夾都移除掉後再重新安裝，果然就 OK 了 =.=。</p>
+<p>所以結論是：</p>
+<ol>
+<li>setup.py 的 <code>package_data</code>
+    裡的檔案在安裝的時候會繼承你原來的檔案讀寫權限，只是用 root
+    安裝的話，owner 和 group 會變。</li>
+<li>鬼打牆的時候，記得把那些 build 資料夾刪一刪。</li>
+</ol>
+<p>前面在查資料的時候，看到在 <a href="http://stackoverflow.com/questions/14861634/how-do-i-distribute-data-files-with-a-python-package-such-that-theyre-readable">stackoverflow</a>
+也有個人跟我有一樣的問題，後來就順便回了一下，不過不確定這樣是否能解決他的問題就是，而且也滿久以前發的了:P。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

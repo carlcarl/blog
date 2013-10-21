@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Linux check disk IO</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/23/linux-check-dist-io/" rel="bookmark"
+           title="Permalink to Linux check disk IO">Linux check disk IO</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-06-13T10:44:00">
+                一 13 6月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+
+</footer><!-- /.post-info -->      <p>讀取速度 輸入下面這行指令</p>
+<div class="highlight"><pre>hdparm -t /dev/sda
+</pre></div>
+
+
+<p><code>/dev/sda</code> 可以換成想測的硬碟裝置</p>
+<p>輸入之後會產生類似以下的輸出</p>
+<div class="highlight"><pre>Timing buffered disk reads:  1168 MB in  3.00 seconds = 389.29 MB/sec
+</pre></div>
+
+
+<p>組 RAID5 速度快很多= =+</p>
+<p>寫入速度 輸入下面這行指令</p>
+<div class="highlight"><pre><span class="nb">time </span>sh -c <span class="s2">&quot;dd if=/dev/zero of=tmp.dd bs=1000k count=100; sync&quot;</span>
+</pre></div>
+
+
+<p>會產生類似以下的輸入</p>
+<div class="highlight"><pre>100+0 records in
+100+0 records out
+102400000 bytes (102 MB) copied, 0.0820241 s, 1.2 GB/s
+real    0m1.669s
+user    0m0.000s
+sys 0m0.088s
+</pre></div>
+
+
+<p>接著將 102MB 除以 real 的時間(這裡是 1.669)就可以算出寫入的時間了，測完記得要把 <code>outfile</code> 這個檔案刪掉，因為他是直接生出一個檔案到目錄底下。</p>
+<p>參考網址</p>
+<p><a href="http://cha.homeip.net/blog/2010/05/2263.html">http://cha.homeip.net/blog/2010/05/2263.html</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

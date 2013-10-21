@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - ssh</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1053/ssh-with-firewall/">ssh with firewall</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-06-19T00:19:00">
+                三 19 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/ssh.html">ssh</a></p>
+</footer><!-- /.post-info --><p>記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh
+的主機，這裡以 <code>example.com</code> 為例。 (其實參考資料的連結內容更詳細
+XD，有需要的人建議點進去看看唄～～。)</p>
+<!--more-->
+
+<ol>
+<li>從內部往外。</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span class="c"># 在 local 開一個 9999 的 port 轉到 `example.com` 的 22 port，</span>
+<span class="c"># 接下來只要把 proxy 的設定指到 localhost 的 9999 就可以了。</span>
+ssh -NfD 9999 user@example.com
+</pre></div>
+
+
+<ol>
+<li>從外部連內。</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span class="c"># 這邊必須先在內部的 server 輸入下面這一行，連到 example.com，</span>
+<span class="c"># 然後在 example.com 上開 9999 port 來建立一個通道，</span>
+ssh -NfR 9999:localhost:22 user@example.com
+ 
+<span class="c"># 在 example.com 上連這個 port 即可。</span>
+ssh -p 9999 -l user localhost
+ 
+<span class="c"># 如果需要 ssh 以外的連線，仿照第一個方法，加個 9998 的 port，</span>
+<span class="c"># proxy 設定改成 example.com 9998 port 即可。</span>
+ssh -p 9999 -l user -D 9998 localhost
+</pre></div>
+
+
+<p>怕斷線的話可以用 <code>autossh</code>，記得要另外安裝，通常預設不會有。前面 <code>ssh</code>
+的指令改成 <code>autossh -M 12345</code>。<code>12345</code> 是自己隨便給的。</p>
+<p>參考資料：<br />
+<a href="http://josephj.com/entry.php?id=312">反向建立 SSH Tunnel、免 VPN 連回公司</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/794/kde-dolphin-network-folder-ssh-fail/" rel="bookmark"
+                           title="Permalink to KDE dolphin network folder ssh fail">KDE dolphin network folder ssh fail</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-02-28T02:02:00">
+                四 28 2月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/kde-linux.html">KDE, linux</a>. </p>
+<p>tags: <a href="/tag/dolphin.html">dolphin</a><a href="/tag/ssh.html">ssh</a></p>
+</footer><!-- /.post-info -->                <p>鬼打牆的小問題，感覺比較像 bug ，想說還是筆記下來好了。</p>
+<p>解決方法：<br />
+把 <code>~/.ssh/known_hosts</code> 中，找到要連線的 host 那行，然後把那行刪掉，
+dolphin 這邊再重連就能夠連上了。</p>
+<p>參考連結：  </p>
+<p><a href="http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder">http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder</a></p>
+                <a class="readmore" href="/794/kde-dolphin-network-folder-ssh-fail/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/47/ssh-slow/" rel="bookmark"
+                           title="Permalink to ssh slow">ssh slow</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-10-27T20:41:00">
+                四 27 10月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/ssh.html">ssh</a></p>
+</footer><!-- /.post-info -->                <p>貌似是學校最近 DNS 常出問題還是怎樣，ssh 的速度非常緩慢，後來決定把 config 檔案改一改，改完之後速度果然快很多= =+。</p>
+<p>修改 <code>/etc/ssh/sshd_config</code>，以下是修改內容：</p>
+<div class="highlight"><pre>UseDNS no
+GSSAPIAuthentication no
+</pre></div>
+
+
+<p>修改完後執行：</p>
+<div class="highlight"><pre>sudo /etc/init.d/ssh restart
+</pre></div>
+
+
+<p>收工~，不過如果 DNS 沒問題的話，可能修改這個設定速度不會差太多。</p>
+<p>參考網址：</p>
+<p><a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://jeffxie.blog.51cto.com/1365360/293869</a><br />
+<a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://www.dk101.com/Discuz/viewthread.php?tid=157716</a>  </p>
+                <a class="readmore" href="/47/ssh-slow/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

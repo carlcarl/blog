@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - javascript</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/537/javascript-library-simple-structure/">Javascript Library simple structure</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-07-23T02:03:00">
+                一 23 7月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js.html">js</a>. </p>
+<p>tags: <a href="/tag/javascript.html">javascript</a></p>
+</footer><!-- /.post-info --><p>之前在找 Javascript 這方面的 library
+該怎麼寫，看了一些資料，覺得以下這種方式不錯<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="c1">// library example</span>
+<span class="kd">var</span> <span class="nx">animal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;tom&#39;</span><span class="p">;</span> <span class="c1">// private variable</span>
+
+    <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;getName&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="nx">name</span><span class="p">;}</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">API</span><span class="p">;</span>
+<span class="p">}(</span><span class="nx">windows</span><span class="p">);</span>
+
+<span class="nx">animal</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span> <span class="c1">// call API</span>
+</pre></div>
+
+
+<p>這樣寫法的優點：</p>
+<ul>
+<li>透過將這個 library 當作一個物件並呼叫其中的
+    function，使用上較不會跟其他 library function 混淆，也較好
+    maintain。</li>
+<li>使用這個 library 的時候，也能夠保護到內部的 private variable
+    不被直接做 access。</li>
+<li>可更直覺的知道哪些是提供出來的
+    API，因為這邊透過變數命名和統一管理將這些 API 都放在 API varaible
+    裡，最後再 return 這個 API
+    variable。這樣子在外部使用的時候就限制只能操作這個 API variable
+    裡頭所定義的 function 或 variable。</li>
+</ul>
+<p>至於其他更詳細的可以看一下下面的參考網址，這邊的架構主要是從裏面學習來的。</p>
+<p>參考網址：<br />
+<a href="http://www.atlanticbt.com/blog/create-your-own-javascript-library/">http://www.atlanticbt.com/blog/create-your-own-javascript-library/</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/525/html-script-speed-up-with-defer/" rel="bookmark"
+                           title="Permalink to HTML script speed up with defer">HTML script speed up with defer</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-07-06T03:49:00">
+                五 06 7月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js.html">js</a>. </p>
+<p>tags: <a href="/tag/javascript.html">javascript</a></p>
+</footer><!-- /.post-info -->                <p>在 <a href="http://blog.xuite.net/vexed/tech/61308318">script tag 屬性 async defer 差別</a> 這邊看到了 script tag 有 async
+和 defer 的用法，所以就來試試看。大致測試了一下，速度的確有快了一些(大概加快50 ~ 100ms
+左右吧XD)。以下大概講一下我的測試範例內容：</p>
+<!--more-->
+
+<div class="highlight"><pre><span class="c">&lt;!-- </span>
+<span class="c">這是原本的程式</span>
+<span class="c">a-b.js 需要 a.js, 而 a-c.js 需要 a.js, 這是這 3 個 js 檔的相依關係</span>
+<span class="c">最後會從 a-c.js 裡呼叫 library 來執行</span>
+<span class="c">由於 async 屬性並不適合用來處理有相依性的 js 檔案 ...</span></pre></div></!--more-->
+                <a class="readmore" href="/525/html-script-speed-up-with-defer/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/438/javascript-check-if-array-and-empty/" rel="bookmark"
+                           title="Permalink to Javascript check if array and empty">Javascript check if array and empty</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-09T04:24:00">
+                三 09 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js.html">js</a>. </p>
+<p>tags: <a href="/tag/array.html">array</a><a href="/tag/empty.html">empty</a><a href="/tag/javascript.html">javascript</a></p>
+</footer><!-- /.post-info -->                <p>列出一些我覺得比較 OK 的方法，至於其他還有一些方法可以參考最下方的網址。  
+判斷是否為 array 的方式：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">xxx</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="c1">// 第1種：先用 if 判斷瀏覽器是否支援此method 然後再執行</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+
+<span class="c1">// 第2種</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">xxx</span><span class="p">)</span> <span class="o">===</span> <span class="s1">&#39;[object Array]&#39;</span>
+
+<span class="c1">// 第3種</span>
+<span class="mi">3</span><span class="p">.</span> <span class="nx">xxx</span> <span class="k">instanceof</span> <span class="nb">Array</span>
+</pre></div>
+
+
+<p>判斷 array 是否為 empty的方式：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">xxx</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Array is empty&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>另外如果還要判斷在 array ...</p>
+                <a class="readmore" href="/438/javascript-check-if-array-and-empty/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

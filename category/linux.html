@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - linux</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1224/ipk-unarchive/">ipk unarchive</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-07-17T16:27:00">
+                三 17 7月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/ipk.html">ipk</a><a href="/tag/tar.html">tar</a></p>
+</footer><!-- /.post-info --><p>記錄一下:P</p>
+<p>查了一下資料，有些說直接用 <code>tar</code>
+就可以了，不過怎麼試就是不行zzzzzz。後來看到 <a href="http://stackoverflow.com/questions/17369127/extracting-and-creating-ipk-files">stackoverflow</a>
+上有人提供的方法，試了一下就成功了 XD。</p>
+<p>先用 <code>ar x xxx.ipk</code> 就可以解壓縮出幾個檔案，其中 <code>data.tar.gz</code>
+放的就是程式執行檔之類的，<code>control.tar.gz</code> 放的是 ipk 的一些
+information。</p>
+<p>接下來用 <code>tar -xf data.tar.gz</code> or <code>tar -xf control.tar.gz</code>
+就可以看到裡面的資料了。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1080/linux-conntrack-delete-destination-nat/" rel="bookmark"
+                           title="Permalink to Linux conntrack delete destination NAT">Linux conntrack delete destination NAT</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-27T16:41:00">
+                四 27 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/conntrack.html">conntrack</a></p>
+</footer><!-- /.post-info -->                <p>最近遇到在測 throughput 中，有一定機率無法關掉 DMZ
+的問題，而且這邊只要關掉 throughput 後，DMZ 就會順利關掉，看起來像是
+throughput 的連線讓被刪掉的 conntrack 連線又復活(?)了這樣 =.=。</p>
+<!--more-->
+
+<p>看了一下 firewall 的 rule，裡面確實是有刪除 conntrack connection 的
+rule，指令如下：</p>
+<div class="highlight"><pre>conntrack -D conntrack -g -r xxx.xxx.xxx.xxx
+</pre></div>
+
+
+<p>看了一下 <code>conntrack －L conntrack</code> 的記錄，grep 了在接收 throughput 的
+port，發現還是有連線存在，來源是從 NAT
+內部到外面 ...</p></!--more-->
+                <a class="readmore" href="/1080/linux-conntrack-delete-destination-nat/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1053/ssh-with-firewall/" rel="bookmark"
+                           title="Permalink to ssh with firewall">ssh with firewall</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-19T00:19:00">
+                三 19 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/ssh.html">ssh</a></p>
+</footer><!-- /.post-info -->                <p>記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh
+的主機，這裡以 <code>example.com</code> 為例。 (其實參考資料的連結內容更詳細
+XD，有需要的人建議點進去看看唄～～。)</p>
+<!--more-->
+
+<ol>
+<li>從內部往外。</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span class="c"># 在 local 開一個 9999 的 port 轉到 `example.com` 的 22 port，</span>
+<span class="c"># 接下來只要把 proxy 的設定指到 localhost 的 9999 就可以了。</span>
+ssh -NfD 9999 user@example.com
+</pre></div>
+
+
+<ol>
+<li>從外部連內。</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span class="c"># 這邊必須先在內部的 server 輸入下面這一行，連到 example.com，</span>
+<span class="c"># 然後在 example.com ...</span></pre></div></!--></!--></!--more-->
+                <a class="readmore" href="/1053/ssh-with-firewall/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1043/nginx-pagespeed-gzip-combine-js/" rel="bookmark"
+                           title="Permalink to nginx pagespeed gzip combine js">nginx pagespeed gzip combine js</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-16T23:10:00">
+                日 16 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/nginx.html">nginx</a><a href="/tag/pagespeed.html">pagespeed</a></p>
+</footer><!-- /.post-info -->                <p>在用 <a href="http://gtmetrix.com">GTmetrix</a> 看網站的效能的時候，發現只有 pagespeed combine 出來的
+js，沒有被 gzip 處理過。</p>
+<!--more-->
+
+<p>google 了一下，在 <a href="https://github.com/pagespeed/ngx_pagespeed/issues/368">Github 上也找到同樣的問題</a>，裡面說要加上
+<code>application/javascript</code>，回頭看了一下我的 nginx 設定檔，果然沒加到= =。</p>
+<p>我原本設定是
+<code>gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript</code>，想說該設的都設了，想不到還是有漏網之魚，加上之後重啟，果然就 OK 哩。</p>
+<p>附帶一提，我把 ...</p></!--more-->
+                <a class="readmore" href="/1043/nginx-pagespeed-gzip-combine-js/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/879/ubuntu-nginx-pagespeed-module/" rel="bookmark"
+                           title="Permalink to Ubuntu nginx pagespeed module">Ubuntu nginx pagespeed module</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-03T21:25:00">
+                一 03 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/nginx.html">nginx</a><a href="/tag/pagespeed.html">pagespeed</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+</footer><!-- /.post-info -->                <p>Ubuntu 版本：12.04 Nginx 版本：1.4.1 pagespeed 版本：1.5.27.3
+記錄一下安裝的步驟： <!--more--></p>
+<div class="highlight"><pre><span class="c"># 到 home 目錄下做，看個人習慣就是</span>
+<span class="nb">cd</span> ~
+<span class="c"># add-apt-repository 這個指令需要裝 python-software-properties</span>
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:nginx/stable
+sudo apt-get update
+<span class="c"># 下載 nginx source code</span>
+sudo apt-get <span class="nb">source </span>nginx
+<span class="c"># 裝 build nginx 需要的套件</span>
+sudo apt-get ...</pre></div>
+                <a class="readmore" href="/879/ubuntu-nginx-pagespeed-module/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/873/ubuntu-service-cant-restart-or-stop/" rel="bookmark"
+                           title="Permalink to Ubuntu service can't restart or stop">Ubuntu service can't restart or stop</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-03T11:48:00">
+                一 03 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/nginx.html">nginx</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+</footer><!-- /.post-info -->                <p>在自己編 nginx 的時候遇到的小問題，因為自己裝的 conf 設定和原本 Ubuntu
+repo 裡的的不一樣，然後 init script 我是用 repo 裡提供的。</p>
+<p>看了一下 repo 提供的 init script，似乎是因為找不到 start service 所建立的
+pid 檔案，google 了一下，在 stackoverflow
+找到 <a href="http://stackoverflow.com/questions/10939072/add-nginx-as-a-ubuntu-service-stop-and-reload-doesnt-work">這篇問題</a> 剛好和我遇到的情況一樣，check 了一下 nginx conf 裡的 pid
+檔案位置和 init script 裡的 pid
+檔案位置，發現設定並不一樣，改成一樣後，問題就解決了～～。</p>
+                <a class="readmore" href="/873/ubuntu-service-cant-restart-or-stop/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/512/chakra-firefox-kde-opensuse-repo/" rel="bookmark"
+                           title="Permalink to Chakra firefox-kde-opensuse repo">Chakra firefox-kde-opensuse repo</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-06-09T01:29:00">
+                六 09 6月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/chakra.html">chakra</a><a href="/tag/firefox.html">firefox</a><a href="/tag/firefox-kde-opensuse.html">firefox-kde-opensuse</a></p>
+</footer><!-- /.post-info -->                <p>2012/10/14 更新<br />
+firefox-kde-opensuse 已經進 chakra 的 bundle 了，就叫 firefox ，以後從
+bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
+畢竟不是官方的，所以更新維護上可能也會有點問題。</p>
+<hr />
+<p>因為 firefox-kde-opensuse 要自己編太麻煩了，所以加個 repo
+這樣以後安裝比較省時，是說要不是 <a href="http://www.plurk.com/maxwux">Whiksy</a>
+有提供我還真的不知道原來有......。<br />
+<!--more--><br />
+以下複製到 <code>/etc/pacman.conf</code> 中：</p>
+<div class="highlight"><pre><span class="k">[chakra-gtk-repo]</span>
+<span class="na">Server</span> <span class="o">=</span> <span class="s">http://chakra-gtk-repo.tk/repo/x86_64/</span>
+<span class="k">[packccr]</span>
+<span class="na">Server</span> <span class="o">=</span> <span class="s">http://repo.stephenmac.com/</span>
+</pre></div>
+
+
+<p>這樣就 OK ...</p>
+                <a class="readmore" href="/512/chakra-firefox-kde-opensuse-repo/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/499/chakra-gogoc-compile/" rel="bookmark"
+                           title="Permalink to Chakra gogoc compile">Chakra gogoc compile</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-06-07T02:31:00">
+                四 07 6月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/chakra.html">chakra</a><a href="/tag/gogoc.html">gogoc</a></p>
+</footer><!-- /.post-info -->                <p>之前在 <a href="http://blog.carlcarl.tw/397/ubuntu-tunnel-broker" title="Ubuntu Tunnel Broker IPv6 連 中研院">Ubuntu 系列上可以很方便的安裝 gogoc</a>，但是後來換到 Chakra
+之後，ccr 裡並沒有提供安裝包，沒辦法，只好自己編譯。</p>
+<p><!--more-->  </p>
+<p>1.首先先下載安裝包(不能下載的話，就必須到<a href="http://www.gogo6.com/">官網</a>註冊帳號並下載囉)、解壓縮，並進入到資料夾中：</p>
+<div class="highlight"><pre>wget http://content.gogo6.com/gogoc-1_2-RELEASE.tar.gz
+tar -xf gogoc-1_2-RELEASE.tar.gz
+<span class="nb">cd </span>gogoc-1_2-RELEASE/gogoc-tsp
+</pre></div>
+
+
+<p>2.接下來是編譯，這邊沒意外的話會有錯（至少我是這樣XD），所以要先做點修改，將
+    <code>#include &lt;stddef.h&gt;</code> 加到
+    <code>../gogoc-messaging/gogocmessaging/message.h</code>
+    的檔案最上方即可 ...</p>
+                <a class="readmore" href="/499/chakra-gogoc-compile/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/482/kde-oxygen-transparent-error-with-playing-video/" rel="bookmark"
+                           title="Permalink to KDE oxygen-transparent error with playing video">KDE oxygen-transparent error with playing video</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-28T10:57:00">
+                一 28 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/kde.html">KDE</a><a href="/tag/oxygen.html">oxygen</a><a href="/tag/vlc.html">vlc</a></p>
+</footer><!-- /.post-info -->                <p>最近改用 Chakra + KDE 的環境，另外再裝了 oxygen-transparent
+這個佈景主題，但是卻發現一個問題，那就是 Qt based
+的影片播放器會因為這個主題而出問題，影片播放會變透明，什麼都看不到囧，只有聲音。</p>
+<p>目前還找不太到很好的解決方案，只想到一個比較簡單的替代方案，就是使用
+VLC。但是預設的情況下播放還是會透明，必須到 Interface -&gt; Preference
+底下，使用 custom skin，VLC 就會使用他自己的佈景主題，既然是用它自己的佈景主題，影片播放自然就不會因為系統套用 oxygen transparent 的主題而受到影響了。</p>
+<p>不過目前用一用，偶爾還是會怪怪的，但是就撐著加減用吧，因為我不太想換系統的佈景主題XD。</p>
+                <a class="readmore" href="/482/kde-oxygen-transparent-error-with-playing-video/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/414/oh-my-zsh-mytheme/" rel="bookmark"
+                           title="Permalink to oh my zsh: my theme">oh my zsh: my theme</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-06T00:34:00">
+                日 06 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/oh-my-zsh.html">oh-my-zsh</a><a href="/tag/zsh.html">zsh</a></p>
+</footer><!-- /.post-info -->                <p><img alt="zsh" src="http://i.imgur.com/abOdnAul.png" title="Selection_61b4e7" /></p>
+<p>在之前<a href="http://blog.carlcarl.tw/410/ubuntu%e5%ae%89%e8%a3%9d-oh-my-zsh" title="ubuntu 安裝 oh my zsh">安裝完 zsh 和 oh my zsh</a>之後，就先來設定我的 theme 啦。</p>
+<p>但是因為看了老半天沒有一個 theme
+符合我的需求，所以我就自己另外弄了一個，大致是從 muse 這個 theme
+去改的，另外在搭配部份其他 theme 中的一些小元件。這個 theme 包含了基本的
+host name、時間、和 進 git repo 會有的提示，git repo
+的狀態包含多種圖示，所以很容易可以看出 repo 中有什麼改變。</p>
+<p>我的 theme 可以在這邊下載：<a href="%20http://dl.dropbox.com/u/4413406/carlcarl.zsh-theme">載點</a>。（或是可以直接 clone 我的
+<a href="https://github.com/carlcarl/oh-my-zsh">repo</a>）</p>
+<p>把這個檔案下載下來存成 <code>carlcarl ...</code></p>
+                <a class="readmore" href="/414/oh-my-zsh-mytheme/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 5
+        <a href="/category/linux2.html">&raquo;</a>
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

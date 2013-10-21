@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>cherokee + django + uwsgi installation</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/29/cherokee-django-uwsgi-installation/" rel="bookmark"
+           title="Permalink to cherokee + django + uwsgi installation">cherokee + django + uwsgi installation</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-06-28T20:43:00">
+                二 28 6月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+
+</footer><!-- /.post-info -->      <p>首先要先裝好必要的套件，第一行先加入 cherokee 的來源，接著更新來源後才能夠安裝最新的 cherokee。rrdtool 以下三個都是在裝 uwsgi 所必要的套件，uwsgi 似乎找不到套件可以直接裝 這裡是利用pip 安裝網站上的來源: </p>
+<div class="highlight"><pre>sudo apt-add-repository ppa:cherokee-webserver/ppa
+sudo apt-get update
+sudo apt-get install cherokee
+sudo apt-get install rrdtool
+sudo apt-get install libcherokee-mod-rrd
+sudo apt-get install libxml2
+sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
+</pre></div>
+
+
+<p>接著在 django 的 project 下加上兩個檔案:</p>
+<p>django_wsgi.py</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">django.core.handlers.wsgi</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;DJANGO_SETTINGS_MODULE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;settings&#39;</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">django</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">wsgi</span><span class="o">.</span><span class="n">WSGIHandler</span><span class="p">()</span>
+</pre></div>
+
+
+<p>uwsgi.xml (pythonpath位置設定就加上project的位置和project上一層的位址
+這裡的django project的名稱假定為example)</p>
+<div class="highlight"><pre><span class="nt">&lt;uwsgi&gt;</span>
+    <span class="nt">&lt;pythonpath&gt;</span>/var/www/example/<span class="nt">&lt;/pythonpath&gt;</span>
+    <span class="nt">&lt;pythonpath&gt;</span>/var/www/<span class="nt">&lt;/pythonpath&gt;</span>
+    <span class="nt">&lt;app</span> <span class="na">mountpoint=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;script&gt;</span>django_wsgi<span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/app&gt;</span>
+<span class="nt">&lt;/uwsgi&gt;</span>
+</pre></div>
+
+
+<p>設定大致到這邊。</p>
+<p>接下來是執行 cherokee-admin 開啟 web 的管理介面:</p>
+<div class="highlight"><pre>sudo cherokee-admin -b
+</pre></div>
+
+
+<p>瀏覽器支援好像不太好 :P</p>
+<p>這邊先點擊上面的 <code>vServers</code>，接著點選 <code>Behavior</code></p>
+<p><img alt="cherokee" src="http://i.imgur.com/8hHPP31l.png" title="cherokee" /></p>
+<p>點選下方的 Rule Management</p>
+<p><img alt="cherokee2.png" src="http://i.imgur.com/g1m4jHOl.png" title="cherokee2.png" /></p>
+<p>點選左上角 Behavior 右邊的 + 按鈕</p>
+<p><img alt="cherokee3.png" src="http://i.imgur.com/Thb9nbAl.png" title="cherokee3.png" /> </p>
+<p>接著在左邊點選 Platforms，右邊選擇 uWSGI 接著點選 Add</p>
+<p><img alt="cherokee4.png" src="http://i.imgur.com/VSEMD4ol.png" title="cherokee4.png" /></p>
+<p>接下來點個 Next 就會來到這個畫面，這邊照理來說只會出現一個欄位，如果另外在上面還有要求選擇 uwsgi 的 binary file 的話，表示之前 uwsgi 沒安裝好。這個 Configulation File 就輸入 uwsgi.xml 在檔案系統上的路徑就 ok 了。以這裡的範例來講就會是: <code>/var/www/uwsgi.xml</code></p>
+<p><img alt="cherokee5.png" src="http://i.imgur.com/TsO5hWBl.png" title="cherokee5.png" /></p>
+<p>接下來指定網頁路徑就大致成功了~</p>
+<p><img alt="cherokee6.png" src="http://i.imgur.com/iQx7U3Bl.png" title="cherokee6.png" /></p>
+<p>參考網頁</p>
+<p><a href="http://whhnote.blogspot.com/2011/01/django-deploy-django-on-cherokee-web.html">http://whhnote.blogspot.com/2011/01/django-deploy-django-on-cherokee-web.html</a><br />
+<a href="http://www.cherokee-project.com/doc/cookbook_uwsgi.html">http://www.cherokee-project.com/doc/cookbook_uwsgi.html</a><br />
+<a href="http://felecan.com/2011/getting-django-work-uwsgi-cherokee/">http://felecan.com/2011/getting-django-work-uwsgi-cherokee/</a><br />
+<a href="http://projects.unbit.it/uwsgi/wiki/Install">http://projects.unbit.it/uwsgi/wiki/Install</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

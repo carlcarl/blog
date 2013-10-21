@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>MongoDB split chunk</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/671/mongodb-split-chunk/" rel="bookmark"
+           title="Permalink to MongoDB split chunk">MongoDB split chunk</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-10-09T03:21:00">
+                二 09 10月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a></p>
+</footer><!-- /.post-info -->      <p>練習了一下自己手動切 chunk，因為有時候 MongoDB
+切出來的不一定是理想的範圍 orz。</p>
+<p>大致就兩個步驟，第一個是切 chunk，第二個是移動 chunk 到某個 shard
+上，如果 balancer 沒關掉的話，第二個步驟會由 balancer 幫你決定你的 chunk
+要移到哪個 shard 上。<br />
+<!--more-->  </p>
+<h3>切 chunk 指令</h3>
+<div class="highlight"><pre><span class="c1">// 第一個參數是指定在哪個 DB 中的 collection，</span>
+<span class="c1">// 因為文件裡只說是 collection，所以可能會忘了加上 DB 的名稱</span>
+<span class="c1">// 第二個參數是你指定的 sharding key，cutPoint 則是要從哪個數值下去切</span>
+<span class="nx">sh</span><span class="p">.</span><span class="nx">splitAt</span><span class="p">(</span><span class="s2">&quot;yourDB.yourCollection&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="nx">cutPoint</span><span class="p">})</span>
+</pre></div>
+
+
+<p>or</p>
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">runCommand</span><span class="p">({</span><span class="nx">split</span><span class="o">:</span><span class="s2">&quot;yourDB.yourcollection&quot;</span><span class="p">,</span> <span class="nx">middle</span><span class="o">:</span><span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="nx">cutPoint</span><span class="p">}})</span>
+</pre></div>
+
+
+<h3>移動 chunk 指令</h3>
+<div class="highlight"><pre><span class="c1">// 第一個參數是指定在哪個 DB 中的 collection</span>
+<span class="c1">// 第二個參數是你指定的 sharding key，cutPoint 則是要從哪個數值下去切</span>
+<span class="c1">// 第三個參數是要移到哪個 shard</span>
+<span class="nx">sh</span><span class="p">.</span><span class="nx">moveChunk</span><span class="p">(</span><span class="s2">&quot;yourDB.yourCollection&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="nx">cutPoint</span><span class="p">},</span> <span class="s2">&quot;shardName&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>or</p>
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">runCommand</span><span class="p">({</span><span class="nx">moveChunk</span><span class="o">:</span><span class="s2">&quot;yourDB.yourCollection&quot;</span><span class="p">,</span><span class="nx">find</span><span class="o">:</span>  <span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="nx">cutPoint</span><span class="p">},</span><span class="nx">to</span><span class="o">:</span><span class="s2">&quot;shardName&quot;</span><span class="p">})</span>
+</pre></div>
+
+
+<p>你會發現這邊有兩個用法，一個是 <code>sh</code> 開頭 (表示是 sharding
+相關的指令)，一個是 <code>db</code> 開頭，如果是在 mongo shell 裡操作的話，<code>sh</code>
+會較好用，因為 <code>db</code> 這邊的操作必須在 <code>admin</code> 這個 database
+中才能執行，所以會多了 admin 和原來的 database 間的轉換，較為麻煩。</p>
+<p>參考網址：<br />
+<a href="http://docs.mongodb.org/manual/reference/method/sh.splitAt/">http://docs.mongodb.org/manual/reference/method/sh.splitAt/</a><br />
+<a href="http://docs.mongodb.org/manual/reference/method/sh.moveChunk/">http://docs.mongodb.org/manual/reference/method/sh.moveChunk/</a><br />
+<a href="http://hedatou.com/archives/introduction_to_mongodb.html">http://hedatou.com/archives/introduction_to_mongodb.html</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

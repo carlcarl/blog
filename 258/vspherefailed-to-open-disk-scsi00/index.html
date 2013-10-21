@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>[vsphere]Failed to open disk scsi0:0</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/258/vspherefailed-to-open-disk-scsi00/" rel="bookmark"
+           title="Permalink to [vsphere]Failed to open disk scsi0:0">[vsphere]Failed to open disk scsi0:0</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-19T00:55:00">
+                日 19 2月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/cloud.html">cloud</a>. </p>
+<p>tags: <a href="/tag/esx.html">esx</a><a href="/tag/esxi.html">esxi</a><a href="/tag/vsphere.html">vsphere</a></p>
+</footer><!-- /.post-info -->      <p>今天想試試看利用網路上的 Virtual Appliance 開 VM，下載完後利用 client
+介面就可以上傳到 datastore，可是在新增 VM，並選擇完 vmdk
+檔後，開啟VM時就出現了錯誤訊息囧。</p>
+<p>錯誤訊息內容：「Failed to open disk scsi0:0: Unsupported and/or invalid
+disk type 7. 」</p>
+<p>Google
+了一下，似乎是下載下來後還要做轉換（後來看官方的安裝手冊也是的確講要這樣做orz）。<br />
+首先要先連到有和上傳的datastore連線的 esxi
+server，接著進到「/vmfs/volumes/你的datastore/」，利用以下指令做轉換：</p>
+<p>~~~~ {.brush:bash}
+vmkfstools -i 你原來的vmdk檔 轉完的vmdk檔名
+~~~~</p>
+<p>兩個檔案名稱不要重複，轉完之後，重新設定 VM 就可以正常開啟囉。</p>
+<p>參考網址：  </p>
+<p><a href="http://blog.learnadmin.com/2010/09/solution-vmware-vm-import-failed-to.html">http://blog.learnadmin.com/2010/09/solution-vmware-vm-import-failed-to.html</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

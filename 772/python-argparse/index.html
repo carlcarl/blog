@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>python argparse</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/772/python-argparse/" rel="bookmark"
+           title="Permalink to python argparse">python argparse</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-01-29T16:50:00">
+                二 29 1月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/argparse.html">argparse</a></p>
+</footer><!-- /.post-info -->      <p>紀錄一些 python argparse module 的使用方法和問題：<br />
+<!--more--></p>
+<h3>選項的參數為 optional</h3>
+<p>譬如說 <code>-f</code> 這選項允許一個檔案的路徑名稱： <code>-f test.txt</code>，如果沒給檔案名稱就預設使用 example.txt：</p>
+<div class="highlight"><pre><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;example.txt&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>設定各個選項分開，不允許放在一起使用</h3>
+<p>如果我希望 <code>-f</code> 和 <code>-b</code> 只有其中一個能被執行而已的話，這時候要用 <code>add_mutually_exclusive_group</code> 產生一個 group ，之後被加入這個 group 的參數就會套用這個分開使用的規則：</p>
+<div class="highlight"><pre><span class="n">group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
+<span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">)</span>
+<span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-b&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>同上，如果我還想要 <code>-f</code> 的選項再另外綁定一個參數 <code>-u</code> 的話(就是 <code>-f</code> 一定要加上 <code>-u</code> 的意思)</h3>
+<p>這個部份我查了很久，不過似乎找不太到解決的方法，所以我後來改套用 <a href="http://docs.python.org/2/library/argparse.html#sub-commands">subcommand</a> 的作法來實現，然後將原本的第一個選項改成用單字的方式來呈現，例如 <code>test -f</code> 改成 <code>test file</code> ，簡單說就是像 svn 和 git 的作法。</p>
+<h3>怎麼判斷現在是呼叫哪個 subcommand?</h3>
+<p>在 <code>add_subparsers</code> 的參數裡，指定 <code>dest</code> 的值, dest 的值給什麼都可以，不過這樣的話，程式下面的 <code>args.command</code> 中的 <code>command</code> 也要改成對應的值：</p>
+<div class="highlight"><pre><span class="n">subparsers</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_subparsers</span><span class="p">(</span><span class="n">dest</span><span class="o">=</span><span class="s">&#39;command&#39;</span><span class="p">)</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">command</span> <span class="o">==</span> <span class="s">&#39;list&#39;</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;list&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>參考網址：<br />
+<a href="http://docs.python.org/2/library/argparse.html">http://docs.python.org/2/library/argparse.html</a><br />
+<a href="http://www.doughellmann.com/PyMOTW/argparse/">http://www.doughellmann.com/PyMOTW/argparse/</a><br />
+<a href="http://stackoverflow.com/questions/4480075/argparse-optional-positional-arguments">http://stackoverflow.com/questions/4480075/argparse-optional-positional-arguments</a><br />
+<a href="http://stackoverflow.com/questions/8250010/argparse-identify-which-subparser-was-used">http://stackoverflow.com/questions/8250010/argparse-identify-which-subparser-was-used</a><br />
+<a href="http://stackoverflow.com/questions/7869345/how-to-make-python-argparse-mutually-exclusive-group-arguments-without-prefix">http://stackoverflow.com/questions/7869345/</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

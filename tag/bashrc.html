@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - bashrc</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/21/git-export-files-to-some-existed-directory/">git export files to some existed directory</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2011-05-24T16:14:00">
+                二 24 5月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/ban-ben-guan-li.html">版本管理</a>. </p>
+<p>tags: <a href="/tag/bashrc.html">bashrc</a><a href="/tag/git.html">git</a><a href="/tag/vimrc.html">vimrc</a></p>
+</footer><!-- /.post-info --><p>最近想把 vimrc 和 bashrc 等設定檔作同步，想說大家都在用 git，所以就不用 svn 改用 git 看看了!</p>
+<p>但是在同步的時候卻遇到了問題，本來想說直接輸入看看</p>
+<div class="highlight"><pre>git clone &lt;git repo url&gt;
+</pre></div>
+
+
+<p>結果出現錯誤: <code>fatal: destination path
+'home目錄' git clone already exists and is not an empty directory</code></p>
+<p>因為我的 home 目錄已經存在 而且也沒辦法 merge = =，沒辦法，只好來找一下資料。</p>
+<p>說真的還找得滿久的，以下是我覺得算是比較能接受的一種解決方法(有其他方法歡迎提供QQ)</p>
+<div class="highlight"><pre>git init
+git remote add origin gitpath
+git fetch
+git branch master origin/master
+git checkout master
+</pre></div>
+
+
+<p>在家目錄下作以上動作，接著就可以看到 git 上的 .bashrc 終於出現在我的家目錄底下了orz</p>
+<p>參考網頁</p>
+<p><a href="http://code.google.com/p/tortoisegit/issues/detail?id=204">http://code.google.com/p/tortoisegit/issues/detail?id=204</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

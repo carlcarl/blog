@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>mongodb aggregation group count sort</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/645/mongodb-aggregation-group-count-sort/" rel="bookmark"
+           title="Permalink to mongodb aggregation group count sort">mongodb aggregation group count sort</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-09-14T05:05:00">
+                五 14 9月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a></p>
+</footer><!-- /.post-info -->      <p>感覺不是很難的 query，想說用 mongodb aggregation 來解決，不過查資料查了好久才知道怎麼用。<br />
+<!--more--><br />
+以 sql 來說的話，我是要對某個欄位作 group by，分類完之後再對分類完的欄位作 count，算完之後再根據 count 的數字作 sort。下面這段是 MongoDB 中的用法：</p>
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">mytable</span><span class="p">.</span><span class="nx">aggregate</span><span class="p">({</span> <span class="nx">$group</span><span class="o">:</span><span class="p">{</span> <span class="nx">_id</span><span class="o">:</span> <span class="s2">&quot;$b_cd&quot;</span><span class="p">,</span> <span class="nx">num</span><span class="o">:</span> <span class="p">{</span><span class="nx">$sum</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span> <span class="p">}},</span> <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">num</span><span class="o">:</span><span class="mi">1</span><span class="p">}}</span> <span class="p">);</span>
+</pre></div>
+
+
+<p><code>$b_cd</code> 是我要分類的欄位，<code>num</code> 是各分類欄位的數目，這邊利用 <code>$sum</code>
+作累加，接著再用 <code>$sort</code> 對 num 作排序。</p>
+<p>中間我卡很久的原因是因為 syntax
+搞錯（<strong>大括弧的位置要注意！！！！！</strong>），不應該把 <code>$group</code> 和 <code>$sort</code>
+放在同一個 object ，而是要分開來分別當作 <code>aggregate</code> 的參數才對，有幾個
+operator ($project, $group, $sort...,etc.) ，<code>aggregate</code>
+就會有幾個參數，另外要記得就是這些參數要<strong>分別用大括弧各包成
+object</strong> 才行。</p>
+<p>另外再補充一下另一個寫法，跟上面的是一樣的意思，我比較喜歡上面的寫法就是了：</p>
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">runCommand</span><span class="p">(</span> <span class="p">{</span> <span class="nx">aggregate</span><span class="o">:</span> <span class="s2">&quot;mytable&quot;</span><span class="p">,</span> <span class="nx">pipeline</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span><span class="nx">$group</span><span class="o">:</span> <span class="p">{</span><span class="nx">_id</span><span class="o">:</span><span class="s2">&quot;$b_cd&quot;</span><span class="p">,</span> <span class="nx">num</span><span class="o">:</span><span class="p">{</span><span class="nx">$sum</span><span class="o">:</span><span class="mi">1</span><span class="p">}}},</span> <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">num</span><span class="o">:</span><span class="mi">1</span><span class="p">}}</span> <span class="p">]</span> <span class="p">});</span>
+</pre></div>
+
+
+<p>參考網址：<br />
+<a href="http://docs.mongodb.org/manual/applications/aggregation/">http://docs.mongodb.org/manual/applications/aggregation/</a><br />
+<a href="http://docs.mongodb.org/manual/reference/aggregation/">http://docs.mongodb.org/manual/reference/aggregation/</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

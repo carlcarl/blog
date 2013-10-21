@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - cloud</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/555/cloudstack-port-forwarding-and-load-balancing-note/">CloudStack port forwarding and load balancing note</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-08-09T04:15:00">
+                四 09 8月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/cloud.html">cloud</a>. </p>
+<p>tags: <a href="/tag/cloudstack.html">cloudstack</a></p>
+</footer><!-- /.post-info --><p>我用的是 Advanced network 的架構，而當我在弄 CloudStack 的 VM port
+forwarding 時，發現 port 怎麼樣都 forward 不到 VM
+上，找了很多資料，後來才發現原來是前端的 firewall 也要開對應的 port
+才行。<br />
+<!--more--><br />
+<img alt="firewall
+rule" src="http://i.imgur.com/Q59NTKhl.png" title="firewall rule" /> </p>
+<p>像是這邊我開了 5566 ~ 5567 port 的 TCP 連線，然後 Source
+CIDR 設 0.0.0.0/0 表示接受來自所有的 IP。</p>
+<p><img alt="port
+forwarding rule" src="http://i.imgur.com/aOeDQq2l.png" title="port forwarding rule" /> </p>
+<p>然後我在這邊就可以拿上面有開放出來的 5566
+port，然後拿來 forward 到某台 VM 的 80 port 了</p>
+<p>Load balance 也是差不多一樣，總之前面的 firewall 要先開 port
+，不然預設都會在前面被擋掉，以至於到不了後面的 port forwarding 或 load
+balancing 來處理。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/473/cloudstack/" rel="bookmark"
+                           title="Permalink to CloudStack comment">CloudStack comment</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-23T19:56:00">
+                三 23 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/cloud.html">cloud</a>. </p>
+<p>tags: <a href="/tag/cloudstack.html">cloudstack</a><a href="/tag/openstack.html">openstack</a><a href="/tag/xenserver.html">xenserver</a></p>
+</footer><!-- /.post-info -->                <p><img alt="CloudStack" src="http://i.imgur.com/QqDmZipl.png" title="Selection_49cef6" />
+<!--more--><br />
+用 CloudStack 也算用了一段時間了，來講一下心得好了 XD。 當初會看到是在
+Youtube 上面看到教學影片，覺得安裝還滿方便的，而且是 Citrix
+推出的，所以搭配 XenServer 的效果看起來還不錯，所以就來裝裝看了。</p>
+<p>安裝算是還滿簡單的，跟 OpenStack 比起來......( 感覺 OpenStack
+還是比較注重在 KVM
+上)，網路架構配置也不用太花腦筋，我自己是只配置一張網卡在 CloudStack
+的架構上，並未將外網和內網分開，照理來說分開來會比較好啦，但是覺得這樣做，以後就能直接拿一般的
+PC(單網卡) 來擴充當 compute node。management ip address 和 guest ip
+address 就直接分在同個網段下的不同區域，例如 192.168.1 ...</p>
+                <a class="readmore" href="/473/cloudstack/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/258/vsphere-failed-to-open-disk-scsi00/" rel="bookmark"
+                           title="Permalink to [vsphere]Failed to open disk scsi0:0">[vsphere]Failed to open disk scsi0:0</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-19T00:55:00">
+                日 19 2月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/cloud.html">cloud</a>. </p>
+<p>tags: <a href="/tag/esx.html">esx</a><a href="/tag/esxi.html">esxi</a><a href="/tag/vsphere.html">vsphere</a></p>
+</footer><!-- /.post-info -->                <p>今天想試試看利用網路上的 Virtual Appliance 開 VM，下載完後利用 client
+介面就可以上傳到 datastore，可是在新增 VM，並選擇完 vmdk
+檔後，開啟VM時就出現了錯誤訊息囧。</p>
+<p>錯誤訊息內容: <code>Failed to open disk scsi0:0: Unsupported and/or invalid
+disk type 7.</code></p>
+<p>Google 了一下，似乎是下載下來後還要做轉換（後來看官方的安裝手冊也是的確講要這樣做 orz）。<br />
+首先要先連到有和上傳的 datastore 連線的 esxi server，接著進到 <code>/vmfs/volumes/你的datastore/</code>，利用以下指令做轉換：</p>
+<div class="highlight"><pre>vmkfstools -i 你原來的vmdk檔 轉完的vmdk檔名
+</pre></div>
+
+
+<p>兩個檔案名稱不要重複，轉完之後 ...</p>
+                <a class="readmore" href="/258/vsphere-failed-to-open-disk-scsi00/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/22/ubuntu-eucalyptus-installation/" rel="bookmark"
+                           title="Permalink to Ubuntu Eucalyptus installation">Ubuntu Eucalyptus installation</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-05-26T09:05:00">
+                四 26 5月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/cloud.html">cloud</a>. </p>
+
+</footer><!-- /.post-info -->                <p>我是在已有的 Ubuntu 上安裝 Eucalyptus，如果是直接用 Ubuntu Enterprise Cloud 應該會比較簡單 orz。</p>
+<!--more-->
+
+<p>大概講一下幾個我遇到的問題 orz。</p>
+<h3>eucalyptus-cloud restart : Unknown instance</h3>
+<p>改直接執行 <code>eucalyptus-cloud</code>看看:</p>
+<div class="highlight"><pre>[error:0185] User &#39;eucalyptus&#39; validated
+[error:0077] Path /usr/lib/jvm/java-6-openjdk is not a directory
+[error:0323] Cannot locate Java Home
+</pre></div>
+
+
+<p>如果出現以上的錯誤就是要裝 <code>openjdk-6-jre-headless</code>。</p>
+<h3>記得先執行 service</h3>
+<p>下面這行還滿方便的，不過記得要先到 <code>/etc/init.d ...</code></p></!--more-->
+                <a class="readmore" href="/22/ubuntu-eucalyptus-installation/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

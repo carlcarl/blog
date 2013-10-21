@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - php</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/961/php-unable-to-allocate-memory-for-pool/">PHP: Unable to allocate memory for pool</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-06-10T22:29:00">
+                一 10 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/php.html">php</a>. </p>
+<p>tags: <a href="/tag/apc.html">apc</a><a href="/tag/nginx.html">nginx</a><a href="/tag/php.html">php</a></p>
+</footer><!-- /.post-info --><p>其實本來一開始的問題是 nginx 突然出現 <code>404 bad gateway</code>，後來去看 log
+才發現這個錯誤，所以看來如果出現 bad gateway
+的問題的話，可能就是跟後端的連線出了問題這樣。</p>
+<p>查了一下資料，發現到<a href="http://www.cyberciti.biz/faq/linux-unix-php-warning-unable-to-allocate-memory-for-pool/">這篇</a>說可能是 php apc
+的關係，剛好我也有裝，於是跟著把 <code>apc.shm_size</code> 調大之後並重開就 OK 了。</p>
+<p>不過老實說不能確定是因為重開，還是因為 cache
+有調大的關係。可能之後還要再觀察看看，目前過了幾天，看起來是都沒問題這樣～～。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/680/php-mongodb-query-timing/" rel="bookmark"
+                           title="Permalink to PHP MongoDB query timing">PHP MongoDB query timing</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-10-12T03:19:00">
+                五 12 10月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb-php.html">database, mongodb, php</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a><a href="/tag/php.html">php</a></p>
+</footer><!-- /.post-info -->                <p>最近在用 PHP 在對 MongoDB 作壓力測試的時候，發現怎麼我 1 shard 和 3
+shards 的 performance 會一樣，卡了很久後來才發現原來是我搞錯 MongoDB
+query 的時機，所以在測試的時候，query 其實都沒有發出，難怪數據會一樣。<br />
+<!--more--><br />
+在 PHP 的 <a href="http://php.net/manual/en/class.mongocursor.php">manual</a> 裡有說明，以下拿它的範例程式來說明 query 的時機：</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$cursor</span> <span class="o">=</span> <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="c1">// query 還沒發出</span>
+
+<span class="nv">$cursor</span> <span class="o">=</span> <span class="nv">$cursor</span><span class="o">-&gt;</span><span class="na">sort</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">));</span>
+<span class="c1">// query 還是沒發出</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$cursor</span><span class="o">-&gt;</span><span class="na">getNext</span><span class="p">());</span> <span class="c1">// 這時才發出 ...</span></pre></div>
+                <a class="readmore" href="/680/php-mongodb-query-timing/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/589/mongodb-php-connection/" rel="bookmark"
+                           title="Permalink to mongodb php connection">mongodb php connection</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-08-13T22:16:00">
+                一 13 8月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb-php.html">database, mongodb, php</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a><a href="/tag/php.html">php</a></p>
+</footer><!-- /.post-info -->                <p>大概寫一下 mongodb + auth 的連線步驟，之前我是這樣做連線認証：<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://localhost:27017&quot;</span><span class="p">);</span>    
+<span class="nv">$db</span> <span class="o">=</span> <span class="nv">$m</span><span class="o">-&gt;</span><span class="na">mytable</span><span class="p">;</span>
+<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">authenticate</span><span class="p">(</span><span class="nv">$DB_USERNAME</span><span class="p">,</span> <span class="nv">$DB_USERPASSWORD</span><span class="p">);</span>
+</pre></div>
+
+
+<p>不過後來更新 php mongodb 的 library 後，發現 <code>authenticate</code> 這個 method
+已經 deprecated 了，所以改用原本 mongodb 的建構式做連線認証：</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://</span><span class="si">${</span><span class="nv">DB_USERNAME}:${DB_USERPASSWORD</span><span class="si">}</span><span class="s2">@localhost/mydb&quot;</span><span class="p">);</span>
+<span class="nv">$db</span> <span class="o">=</span> <span class="nv">$m</span><span class="o">-&gt;</span><span class="na">mydb</span><span class="p">;</span>
+</pre></div>
+
+
+<p>這邊要注意的一點就是，雖然在 Mongo ...</p>
+                <a class="readmore" href="/589/mongodb-php-connection/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/159/apache-prevent-executing-php-in-specific-directory/" rel="bookmark"
+                           title="Permalink to apache prevent executing php in specific directory">apache prevent executing php in specific directory</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-12-04T23:12:00">
+                日 04 12月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/apache.html">apache</a><a href="/tag/php.html">php</a></p>
+</footer><!-- /.post-info -->                <p>最近剛修復的問題，其實也滿常見的，不過有時候總是會忽略這種簡單的問題orz。</p>
+<p>如果要預防使用者將 php 檔案上傳後去執行的話，只要在 apache 的 config
+檔中加入以下設定：</p>
+<div class="highlight"><pre>AllowOverride None
+php_flag engine off
+Allow from all
+</pre></div>
+
+
+<p><code>Directory</code> 後面的 <code>/var/www/upload</code>
+記得使用自己要的路徑，設定完並重開 apache 後，如果是在這個目錄底下的
+php，就會改成下載 php 而不是執行
+php。另外還有一種方法也是可以作，不過是用副檔名的方法作過濾，顯然還是上面的方法會比較好囉。</p>
+<p>參考網址：<br />
+<a href="http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html">http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html</a></p>
+                <a class="readmore" href="/159/apache-prevent-executing-php-in-specific-directory/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

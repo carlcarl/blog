@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - RoR</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/287/install-openid-server-masquerade/">Install openid server: masquerade</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-03-21T04:08:00">
+                三 21 3月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/wei-fen-lei.html">未分類</a>. </p>
+<p>tags: <a href="/tag/masquerade.html">masquerade</a><a href="/tag/openid.html">openid</a><a href="/tag/ror.html">RoR</a></p>
+</footer><!-- /.post-info --><p><img alt="masquerade" src="http://i.imgur.com/cdwZUHDl.png" title="masquerade" /> </p>
+<p>最近需要安裝 openid server，所以找了很多的 library
+來試，我是從這個<a href="http://wiki.openid.net/w/page/12995226/Run-your-own-identity-server">openid server
+清單</a>下去找，主要功能需求是希望能夠支援多人+資料庫+可以直接連線做認證的部份，但是試了好幾個
+php, python 的沒一個可以說是符合我需求的，perl
+那個文件更是完全看不懂orz。</p>
+<p>後來考慮試試看<a href="https://github.com/dbloete/masquerade">masquerade</a> 這個基於 RoR 的
+library，建完之後發現幾乎符合我的需求，而且安裝基本上不會說太難，所以就選這套啦。作者在
+github project 首頁的 README 是比較新的版本(相較於它的 project wiki
+)，但是還是有部份是有問題的，所以我另外 fork 出來，再修改一下
+README，這是<a href="https://github.com/carlcarl/masquerade">我的連結</a>。</p>
+<p>首先要先建立好 RoR 的環境，這邊提供一個可以作為參考的<a href="http://www.cnblogs.com/feichan/archive/2011/11/16/2251659.html">連結</a>，另外
+mysql 和 postfix 也可以先安裝好。</p>
+<p>接著輸入指令將程式下載下來，這是我的 fork，README 部份有更新，另外修正了
+yml 的格式錯誤</p>
+<div class="highlight"><pre>git clone https://carlcarl@github.com/carlcarl/masquerade.git
+</pre></div>
+
+
+<p>進入 masquerade 目錄會有提示建議你用 nvm
+安裝一個ruby版本，照著它給的指令安裝就OK了。</p>
+<div class="highlight"><pre><span class="nb">cd </span>masqurade
+</pre></div>
+
+
+<p>接著可以按照我連結裡的 README 來作，中途有遇到的問題我加進 README 裡的
+Notice 部份，我這邊另外列出比較要注意的幾點</p>
+<ol>
+<li>設定部份他有分 development, test 和 production
+    環境，所以要注意你在啥環境底下執行和要修改哪個環境的設定</li>
+<li>database.yml 的部份，想方便的話就只要修改帳號為 root 和修改密碼為
+    root 的密碼，資料庫它會幫你建立</li>
+<li>app_config.yml
+    大部分設定可以先放著不動，等到大致功能測試完畢再來修改也可以。</li>
+<li>port預設是在 3000，所以在認證的時候在網址裡也要將 port 加進去。</li>
+<li>認證的部份比較詭異的是<strong>它不是直接提供輸入帳密認證的欄位</strong>，而是叫你去網頁裡的連結登入(如下圖)，登入完之後它會再認證，這部份的原理我猜是它在之前把相關的
+    request 寫到 session 裡了，所以登入後會去讀之前存的的 request
+    session，在允許認證完後，它就會自動導回 client 端去。</li>
+</ol>
+<p><img alt="masqurade2" src="http://i.imgur.com/AG7YaZAl.png" /></p>
+<p>參考網址：<br />
+<a href="http://railsforum.com/viewtopic.php?id=26700">http://railsforum.com/viewtopic.php?id=26700</a><br />
+<a href="http://stackoverflow.com/questions/4980877/rails-error-couldnt-parse-yaml">http://stackoverflow.com/questions/4980877/rails-error-couldnt-parse-yaml</a><br />
+<a href="http://www.reyesyang.info/articles/10-rails3-could-not-parse-yaml">http://www.reyesyang.info/articles/10-rails3-could-not-parse-yaml</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Dotcloud deploy python+django</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/27/dotcloud-deploy-python-django/" rel="bookmark"
+           title="Permalink to Dotcloud deploy python+django">Dotcloud deploy python+django</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-06-21T09:00:00">
+                二 21 6月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+
+</footer><!-- /.post-info -->      <p><a href="https://www.dotcloud.com/">dotcloud</a> 是個可以讓你佈署網站的平台，而且提供了 python, php, ruby 甚至是最近剛發展起來的 node.js 都有，資料庫方面也支援了幾種 像是最常見的 mysql, sqlite, mongodb 等，另外我看了一下 居然還有 hadoop!  感覺還滿有趣的。</p>
+<p>除了提供多種開發套件以外，dotcloud 有個不錯的地方是支援ssh連線登入，超方便!</p>
+<p>之前在 PTT 就有看過有人在講這個服務了，雖然現在還在beta的階段 不過就我現在用起來 感覺其實還滿不錯的，希望以後還是有提供免費的服務XD。如果要註冊的話，這部份還滿特別的，先在首頁輸入 email，接著等大概一天吧(還滿久的 = =||)，就會收到email認證，接著就能順利註冊了。</p>
+<p>這次我要在 dotcloud 上裝的是 python + django。首先先準備裝套件吧 話說 python-setuptools 這個套件，官網好像沒有講得很清楚，查了一下才發現要裝，不然會沒 easy_install 這指令:</p>
+<div class="highlight"><pre>sudo apt-get install python python-setuptools
+sudo easy_install dotcloud
+</pre></div>
+
+
+<p>接著是開 project 啦，test 是我測試的名稱，可以依據需要修改:</p>
+<div class="highlight"><pre>dotcloud create <span class="nb">test</span>
+</pre></div>
+
+
+<p>輸入完後 應該會要求你輸入 API key，這個就去網頁的設定部份就找得到了，複製貼上即可。</p>
+<p>開完 project，接著要指定使用的語言和 url 位置。如果這邊輸入 test.www 的話，到時候 url 就會是<code>www.test.dotcloud.com</code> 這樣:</p>
+<div class="highlight"><pre>dotcloud deploy -t python test.www
+</pre></div>
+
+
+<p>接著開一個資料夾，並且在裡面開個 django project 在加上一些設定檔:</p>
+<div class="highlight"><pre>mkdir <span class="nb">test</span>-on-dotcloud
+<span class="nb">cd test</span>-on-dotcloud
+<span class="nb">echo </span>django &gt; requirements.txt
+django-admin.py startproject <span class="nb">test</span>
+</pre></div>
+
+
+<p>在 test-on-dotcloud 底下開一個 wsgi.py 檔，輸入以下內容(test.setting 的 test 記得根據前面的設定作修改):</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;DJANGO_SETTINGS_MODULE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;test.settings&#39;</span>
+<span class="kn">import</span> <span class="nn">django.core.handlers.wsgi</span>
+<span class="n">djangoapplication</span> <span class="o">=</span> <span class="n">django</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">wsgi</span><span class="o">.</span><span class="n">WSGIHandler</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s">&#39;SCRIPT_NAME&#39;</span> <span class="ow">in</span> <span class="n">environ</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">environ</span><span class="p">[</span><span class="s">&#39;SCRIPT_NAME&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">djangoapplication</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+</pre></div>
+
+
+<p><span style="color: #ff0000;">記得不要把 wsgi.py 和 requirements.txt 放進去 test 裡面，這樣一定會失敗</span></p>
+<p>接著在 test-on-dotcloud 底下執行:</p>
+<div class="highlight"><pre>dotcloud push test.www .
+</pre></div>
+
+
+<p><span style="color: #ff0000;">記得不要漏掉 test.www 後面的點</span></p>
+<p>接著連上 www.test.dotcloud.com 應該就可以看到成功的訊息了。(這個網域名照理來說應該在前面會發生有重複名稱的錯誤(我猜啦)所以實際上應該不會輸入到這個網址才對XD)</p>
+<p>參考網頁</p>
+<p><a href="http://simple-is-better.com/news/378">http://simple-is-better.com/news/378</a></p>
+<p><a href="http://docs.dotcloud.com/tutorials/django/">http://docs.dotcloud.com/tutorials/django/</a></p>
+<p><a href="http://docs.dotcloud.com/cli/#install-dotcloud/">http://docs.dotcloud.com/cli/#install-dotcloud/</a></p>
+<p><a href="http://dmyz.org/archives/110">http://dmyz.org/archives/110</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

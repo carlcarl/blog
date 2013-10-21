@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Zend Framework add Acl setting</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/18/zend-framework-add-acl-setting/" rel="bookmark"
+           title="Permalink to Zend Framework add Acl setting">Zend Framework add Acl setting</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-04-24T15:22:00">
+                日 24 4月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/zend-framework.html">Zend Framework</a>. </p>
+
+</footer><!-- /.post-info -->      <p>首先先在 <code>bootstrap.php</code> 檔案裡加上下面這個 function<!--more--></p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">protected</span> <span class="k">function</span> <span class="nf">_initControllers</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bootstrap</span><span class="p">(</span><span class="s1">&#39;FrontController&#39;</span><span class="p">);</span>
+    <span class="c1">//require_once &#39;../library/Controller/Helper/Acl.php&#39;;</span>
+    <span class="c1">//require_once &#39;../library/Controller/Plugin/Auth.php&#39;;</span>
+    <span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Controller_Helper_Acl</span><span class="p">();</span>
+    <span class="nv">$auth</span> <span class="o">=</span> <span class="nx">Zend_Auth</span><span class="o">::</span><span class="na">getInstance</span><span class="p">();</span>
+    <span class="nv">$front</span> <span class="o">=</span> <span class="nx">Zend_Controller_Front</span><span class="o">::</span><span class="na">getInstance</span><span class="p">();</span>
+    <span class="nv">$front</span><span class="o">-&gt;</span><span class="na">registerPlugin</span><span class="p">(</span><span class="k">new</span> <span class="nx">Controller_Plugin_Auth</span><span class="p">(</span><span class="nv">$auth</span><span class="p">,</span> <span class="nv">$acl</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><code>$acl</code> 和 <code>$auth</code> 這兩個都需要實作，我分別把 <code>auth</code> 和 <code>acl</code> 這兩個 class 放在 library 底下的 <code>Controller/Plugin</code> 和 <code>Controller/Helper/</code>。</p>
+<hr />
+<p>Acl 裡面實作角色 目錄 權限設定</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Controller_Helper_Acl</span> <span class="k">extends</span> <span class="nx">Zend_Acl</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Zend_Acl_Resource</span><span class="p">(</span><span class="s1">&#39;importstu&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Zend_Acl_Resource</span><span class="p">(</span><span class="s1">&#39;coursesetup&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Zend_Acl_Resource</span><span class="p">(</span><span class="s1">&#39;homeworksetup&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Zend_Acl_Resource</span><span class="p">(</span><span class="s1">&#39;teacher&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Zend_Acl_Resource</span><span class="p">(</span><span class="s1">&#39;homework&#39;</span><span class="p">));</span>
+        <span class="c1">//$this-&gt;add(new Zend_Acl_Resource(&#39;Article_Page&#39;));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Zend_Acl_Resource</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Zend_Acl_Resource</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Zend_Acl_Resource</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="k">new</span> <span class="nx">Zend_Acl_Role</span><span class="p">(</span><span class="s1">&#39;guest&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="k">new</span> <span class="nx">Zend_Acl_Role</span><span class="p">(</span><span class="s1">&#39;student&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="k">new</span> <span class="nx">Zend_Acl_Role</span><span class="p">(</span><span class="s1">&#39;ta&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="k">new</span> <span class="nx">Zend_Acl_Role</span><span class="p">(</span><span class="s1">&#39;teacher&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s1">&#39;teacher&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s1">&#39;ta&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s1">&#39;student&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s1">&#39;student&#39;</span><span class="p">,</span> <span class="s1">&#39;importstu&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s1">&#39;student&#39;</span><span class="p">,</span> <span class="s1">&#39;coursesetup&#39;</span><span class="p">,</span> <span class="s1">&#39;teacher&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s1">&#39;student&#39;</span><span class="p">,</span> <span class="s1">&#39;teacher&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s1">&#39;student&#39;</span><span class="p">,</span> <span class="s1">&#39;homeworksetup&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s1">&#39;guest&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s1">&#39;guest&#39;</span><span class="p">,</span> <span class="s1">&#39;login&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Resource 的名稱我一律用小寫，到時候抓到 controller name 就轉小寫進來判斷，<code>allow</code> 和 <code>deny</code> 就是讓角色可以進入或禁止進入那些目錄，參數為(角色, controller, action)，<code>null</code> 默認為全部, 嫌麻煩的話不寫也是可以。</p>
+<hr />
+<p>Auth 是一個 plugin，會抓現在的資料進去 Acl 並作判斷</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Controller_Plugin_Auth</span> <span class="k">extends</span> <span class="nx">Zend_Controller_Plugin_Abstract</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$_auth</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$_acl</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$auth</span><span class="p">,</span> <span class="nv">$acl</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_auth</span> <span class="o">=</span> <span class="nv">$auth</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_acl</span> <span class="o">=</span> <span class="nv">$acl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// 重載 preDispatch() 方法</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">preDispatch</span><span class="p">(</span><span class="nv">$request</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">preDispatch</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+        <span class="nv">$role</span> <span class="o">=</span> <span class="s1">&#39;guest&#39;</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">Zend_Auth</span><span class="o">::</span><span class="na">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">hasIdentity</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="nv">$userInfo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getStudentInfo</span><span class="p">();</span>
+            <span class="k">if</span><span class="p">(</span><span class="nv">$userInfo</span><span class="o">-&gt;</span><span class="na">role</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="nv">$role</span> <span class="o">=</span> <span class="s1">&#39;teacher&#39;</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nv">$userInfo</span><span class="o">-&gt;</span><span class="na">role</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="nv">$role</span> <span class="o">=</span> <span class="s1">&#39;ta&#39;</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nv">$userInfo</span><span class="o">-&gt;</span><span class="na">role</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="nv">$role</span> <span class="o">=</span> <span class="s1">&#39;student&#39;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="nv">$role</span> <span class="o">=</span> <span class="s1">&#39;guest&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nv">$controller</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">controller</span><span class="p">;</span>
+        <span class="nv">$action</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">action</span><span class="p">;</span>
+        <span class="nv">$module</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">module</span><span class="p">;</span>
+        <span class="nv">$resource</span> <span class="o">=</span> <span class="nx">strtolower</span><span class="p">(</span><span class="nv">$controller</span><span class="p">);</span> <span class="c1">//前面提到會轉小寫做判斷</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_acl</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="nv">$resource</span><span class="p">))</span> <span class="c1">//沒加入判斷的controller 預設通過</span>
+        <span class="p">{</span>
+            <span class="nv">$resource</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="nv">$role</span><span class="p">,</span> <span class="nv">$resource</span><span class="p">,</span> <span class="nv">$action</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">Zend_Auth</span><span class="o">::</span><span class="na">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">hasIdentity</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="c1">//// 使用者沒登入 就轉登入畫面</span>
+                <span class="c1">////</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="c1">// 用戶沒有目錄的權限 就提示錯誤</span>
+                <span class="c1">////</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="c1">// 設置轉向</span>
+        <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setModuleName</span><span class="p">(</span><span class="nv">$module</span><span class="p">);</span>
+        <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setControllerName</span><span class="p">(</span><span class="nv">$controller</span><span class="p">);</span>
+        <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span><span class="nv">$action</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>設置大概差不多就是這樣。</p>
+<p>參考網址:<br />
+<a href="http://blogold.chinaunix.net/u2/86974/showart_2219380.html">http://blogold.chinaunix.net/u2/86974/showart_2219380.html</a><br />
+<a href="http://stackoverflow.com/questions/5209671/zend-framework-nedd-typical-example-of-acl">http://stackoverflow.com/questions/5209671/zend-framework-nedd-typical-example-of-acl</a><br />
+<a href="http://codeutopia.net/blog/2009/02/06/zend_acl-part-1-misconceptions-and-simple-acls/">http://codeutopia.net/blog/2009/02/06/zend_acl-part-1-misconceptions-and-simple-acls/</a>  </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - box</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/390/ubuntu-mount-box-service/">Ubuntu mount Box service</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-04-20T00:20:00">
+                五 20 4月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/box.html">box</a><a href="/tag/boxfs.html">boxfs</a></p>
+</footer><!-- /.post-info --><p>之前在 PTT 看到有人分享可以用 boxfs 這個套件來掛載 <a href="http://www.box.com/">Box</a> 到本地端的資料夾上，感覺好像還不錯，而且因為之前買 Sony Ericsson 的手機，所以有 Box 額外送的 50G 空間，所以就想說拿來加減用啦。</p>
+<p>首先要先安裝相依的套件：</p>
+<div class="highlight"><pre>sudo apt-get install libxml2-dev libfuse-dev libcurl4-gnutls-dev libzip-dev
+</pre></div>
+
+
+<p>接著到 <a href="http://code.google.com/p/boxfs/downloads/list">這邊</a> 下載最新版本的 boxfs。下載完成後，解壓縮：</p>
+<div class="highlight"><pre>
+</pre></div>
+
+
+<p>tar xzf boxfs-relno.tgz</p>
+<p>接著進入 <code>box-版本</code> 資料夾，像我的就是 <code>boxfs-0.7</code>:</p>
+<div class="highlight"><pre><span class="nb">cd </span>boxfs-0.7
+</pre></div>
+
+
+<p>這邊還需要再另外安裝 libapp，這邊需要用到 git ，沒有的話就要安裝：</p>
+<div class="highlight"><pre>sudo apt-get install git-core
+git clone http://github.com/drotiro/libapp.git
+</pre></div>
+
+
+<p>進入 libapp 資料夾並編譯安裝：</p>
+<div class="highlight"><pre><span class="nb">cd </span>libapp
+make
+sudo make install
+sudo ldconfig
+make apptest
+</pre></div>
+
+
+<p>安裝好 libapp 之後，到外層的資料夾並編譯安裝 boxfs：</p>
+<div class="highlight"><pre><span class="nb">cd</span> ..
+make
+sudo make install
+</pre></div>
+
+
+<p>到此 boxfs 套件算是安裝完畢，不過還需要登入並掛載到你的檔案系統上，這邊以掛載到你的家目錄底下
+box 資料夾為例：</p>
+<div class="highlight"><pre>mkdir ~/box
+boxfs -u usermail -p password ~/box
+</pre></div>
+
+
+<p>執行完後，check 一下你的 <code>~/box</code> 底下是否有東西，有的話就代表掛載成功囉~。 </p>
+<p>目前我遇到的小問題是：<br />
+如果我在手機端刪除掉檔案，在電腦上會發現檔案還存在，必須卸載後再掛載才會更新，卸載的話可以直接使用 <code>umount</code> 這個指令：</p>
+<div class="highlight"><pre>umount ~/box
+</pre></div>
+
+
+<p>參考網址：<br />
+<a href="http://code.google.com/p/boxfs/wiki/Compiling">http://code.google.com/p/boxfs/wiki/Compiling</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - carlcarl</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/495/mysql-table_cache-fail/" rel="bookmark"
+                           title="Permalink to MySQL table_cache fail">MySQL table_cache fail</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-31T15:26:00">
+                四 31 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mysql.html">database, mysql</a>. </p>
+<p>tags: <a href="/tag/mysql.html">mysql</a><a href="/tag/table_cache.html">table_cache</a></p>
+</footer><!-- /.post-info -->                <p>一直記得之前好像遇過同樣的問題，後來才想到應該是 ulimit 的限制。ulimit
+會限制一個 user 可開啟的檔案，MySQL 也不例外，預設會被限制在最多開 1024
+個檔案，以下是跟 MySQL 有關的算式：</p>
+<div class="highlight"><pre>max_open_files = max_connections + (table_cache * 2)
+</pre></div>
+
+
+<p><code>max_open_files</code> 基本上是固定 1024，所以後面的部份一旦自己設太大，MySQL
+會自己再調整參數，所以可能會遇到你將 <code>max_connections</code> 設到
+1024、<code>table_cache</code> 設到512，可是在 MySQL command line
+中去查，<code>table_cache</code> 卻還是預設 64 的情形，<code>max_connections</code>
+的值也會同樣被降低。</p>
+<p>要預防這種情形就必須修改 <code>ulimit</code> 限制，在 <code>/etc/security/limits ...</code></p>
+                <a class="readmore" href="/495/mysql-table_cache-fail/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/486/mysql-insert-if-duplicate-then-update/" rel="bookmark"
+                           title="Permalink to MySQL insert if duplicate then update">MySQL insert if duplicate then update</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-29T22:42:00">
+                二 29 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database.html">database</a>. </p>
+<p>tags: <a href="/tag/mysql.html">mysql</a></p>
+</footer><!-- /.post-info -->                <p>在做壓力測試的時候發現出來的數值不太對，後來看了一下，發現是因為程式裏面是拿
+SELECT 出來的資料加 1 並給 UPDATE 來使用，但是這樣並不是一個 atomic 的
+operation，如果在 SELECT 完之後有其他人也進行 SELECT
+就變成會拿一樣的資料且都加 1，兩個做完 UPDATE 的結果就會只是加 1
+過的數據，但是預期的結果應該要是加 2 的。<br />
+<!--more--><br />
+查了一下資料，發現有個簡單的語法可以使用：</p>
+<div class="highlight"><pre><span class="cm">/* If id is the UNIQUE KEY */</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="n">num</span><span class="o">=</span><span class="n">num</span><span class="o">+</span><span class="mi">1 ...</span></pre></div>
+                <a class="readmore" href="/486/mysql-insert-if-duplicate-then-update/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/482/kde-oxygen-transparent-error-with-playing-video/" rel="bookmark"
+                           title="Permalink to KDE oxygen-transparent error with playing video">KDE oxygen-transparent error with playing video</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-28T10:57:00">
+                一 28 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/kde.html">KDE</a><a href="/tag/oxygen.html">oxygen</a><a href="/tag/vlc.html">vlc</a></p>
+</footer><!-- /.post-info -->                <p>最近改用 Chakra + KDE 的環境，另外再裝了 oxygen-transparent
+這個佈景主題，但是卻發現一個問題，那就是 Qt based
+的影片播放器會因為這個主題而出問題，影片播放會變透明，什麼都看不到囧，只有聲音。</p>
+<p>目前還找不太到很好的解決方案，只想到一個比較簡單的替代方案，就是使用
+VLC。但是預設的情況下播放還是會透明，必須到 Interface -&gt; Preference
+底下，使用 custom skin，VLC 就會使用他自己的佈景主題，既然是用它自己的佈景主題，影片播放自然就不會因為系統套用 oxygen transparent 的主題而受到影響了。</p>
+<p>不過目前用一用，偶爾還是會怪怪的，但是就撐著加減用吧，因為我不太想換系統的佈景主題XD。</p>
+                <a class="readmore" href="/482/kde-oxygen-transparent-error-with-playing-video/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/473/cloudstack/" rel="bookmark"
+                           title="Permalink to CloudStack comment">CloudStack comment</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-23T19:56:00">
+                三 23 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/cloud.html">cloud</a>. </p>
+<p>tags: <a href="/tag/cloudstack.html">cloudstack</a><a href="/tag/openstack.html">openstack</a><a href="/tag/xenserver.html">xenserver</a></p>
+</footer><!-- /.post-info -->                <p><img alt="CloudStack" src="http://i.imgur.com/QqDmZipl.png" title="Selection_49cef6" />
+<!--more--><br />
+用 CloudStack 也算用了一段時間了，來講一下心得好了 XD。 當初會看到是在
+Youtube 上面看到教學影片，覺得安裝還滿方便的，而且是 Citrix
+推出的，所以搭配 XenServer 的效果看起來還不錯，所以就來裝裝看了。</p>
+<p>安裝算是還滿簡單的，跟 OpenStack 比起來......( 感覺 OpenStack
+還是比較注重在 KVM
+上)，網路架構配置也不用太花腦筋，我自己是只配置一張網卡在 CloudStack
+的架構上，並未將外網和內網分開，照理來說分開來會比較好啦，但是覺得這樣做，以後就能直接拿一般的
+PC(單網卡) 來擴充當 compute node。management ip address 和 guest ip
+address 就直接分在同個網段下的不同區域，例如 192.168.1 ...</p>
+                <a class="readmore" href="/473/cloudstack/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/444/django-name-array/" rel="bookmark"
+                           title="Permalink to Django name array">Django name array</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-09T17:38:00">
+                三 09 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/django.html">django</a><a href="/tag/python.html">python</a></p>
+</footer><!-- /.post-info -->                <p>在寫 php 的時候，如果想傳多個 checkbox 的值的話，常會在 html
+裏面設定這些 checkbox 的 name 為
+<code>list[]</code>，也就是會加個 <code>[]</code> 在名稱後面，在 php 處理的時候就可以利用
+<code>$_POST['list']</code> 取出這個 array。</p>
+<p>而如果是 django name array
+要處理的話，方式有點不太一樣，它並不會自動去判斷 <code>[]</code>，所以在 django
+這邊還是必須讀 <code>list[]</code> 這樣的名稱，這也表示在 html
+裡，<code>[]</code> 是可以不加的，但是我還是建議加上就是了，至少這樣我覺得會比較好懂。<br />
+<!--more--><br />
+來看一下簡單的範例：</p>
+<p>html</p>
+<div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;list[]&quot;</span> <span class="na">value=</span><span class="s">&quot;value ...</span></pre></div>
+                <a class="readmore" href="/444/django-name-array/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/438/javascript-check-if-array-and-empty/" rel="bookmark"
+                           title="Permalink to Javascript check if array and empty">Javascript check if array and empty</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-09T04:24:00">
+                三 09 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js.html">js</a>. </p>
+<p>tags: <a href="/tag/array.html">array</a><a href="/tag/empty.html">empty</a><a href="/tag/javascript.html">javascript</a></p>
+</footer><!-- /.post-info -->                <p>列出一些我覺得比較 OK 的方法，至於其他還有一些方法可以參考最下方的網址。  
+判斷是否為 array 的方式：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">xxx</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="c1">// 第1種：先用 if 判斷瀏覽器是否支援此method 然後再執行</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+
+<span class="c1">// 第2種</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">xxx</span><span class="p">)</span> <span class="o">===</span> <span class="s1">&#39;[object Array]&#39;</span>
+
+<span class="c1">// 第3種</span>
+<span class="mi">3</span><span class="p">.</span> <span class="nx">xxx</span> <span class="k">instanceof</span> <span class="nb">Array</span>
+</pre></div>
+
+
+<p>判斷 array 是否為 empty的方式：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">xxx</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Array is empty&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>另外如果還要判斷在 array ...</p>
+                <a class="readmore" href="/438/javascript-check-if-array-and-empty/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/414/oh-my-zsh-mytheme/" rel="bookmark"
+                           title="Permalink to oh my zsh: my theme">oh my zsh: my theme</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-06T00:34:00">
+                日 06 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/oh-my-zsh.html">oh-my-zsh</a><a href="/tag/zsh.html">zsh</a></p>
+</footer><!-- /.post-info -->                <p><img alt="zsh" src="http://i.imgur.com/abOdnAul.png" title="Selection_61b4e7" /></p>
+<p>在之前<a href="http://blog.carlcarl.tw/410/ubuntu%e5%ae%89%e8%a3%9d-oh-my-zsh" title="ubuntu 安裝 oh my zsh">安裝完 zsh 和 oh my zsh</a>之後，就先來設定我的 theme 啦。</p>
+<p>但是因為看了老半天沒有一個 theme
+符合我的需求，所以我就自己另外弄了一個，大致是從 muse 這個 theme
+去改的，另外在搭配部份其他 theme 中的一些小元件。這個 theme 包含了基本的
+host name、時間、和 進 git repo 會有的提示，git repo
+的狀態包含多種圖示，所以很容易可以看出 repo 中有什麼改變。</p>
+<p>我的 theme 可以在這邊下載：<a href="%20http://dl.dropbox.com/u/4413406/carlcarl.zsh-theme">載點</a>。（或是可以直接 clone 我的
+<a href="https://github.com/carlcarl/oh-my-zsh">repo</a>）</p>
+<p>把這個檔案下載下來存成 <code>carlcarl ...</code></p>
+                <a class="readmore" href="/414/oh-my-zsh-mytheme/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/410/ubuntu-install-oh-my-zsh/" rel="bookmark"
+                           title="Permalink to ubuntu install oh my zsh">ubuntu install oh my zsh</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-05T23:41:00">
+                六 05 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/oh-my-zsh.html">oh-my-zsh</a><a href="/tag/zsh.html">zsh</a></p>
+</footer><!-- /.post-info -->                <p>在網路上看到 <a href="https://github.com/robbyrussell/oh-my-zsh">oh my zsh</a> 這套件，這個套件對 zsh
+做了一些客製化，包含很多外掛以及提示字元主題，感覺還滿炫的，所以就想說從
+bash 換成 zsh 看看囉。</p>
+<h3>首先要先安裝 zsh，因為 zsh 預設在 ubuntu 上是沒有安裝的</h3>
+<div class="highlight"><pre>sudo apt-get install zsh
+</pre></div>
+
+
+<h3>下載 oh-my-zsh 套件到家目錄底下的 <code>.oh-my-zsh</code> 資料夾</h3>
+<div class="highlight"><pre>git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+</pre></div>
+
+
+<h3>複製設定檔樣板出來使用</h3>
+<div class="highlight"><pre>cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+</pre></div>
+
+
+<h3>改成預設使用 zsh，執行以下指令並輸入你的密碼 ...</h3>
+                <a class="readmore" href="/410/ubuntu-install-oh-my-zsh/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/397/ubuntu-tunnel-broker/" rel="bookmark"
+                           title="Permalink to Ubuntu Tunnel Broker IPv6 連 中研院">Ubuntu Tunnel Broker IPv6 連 中研院</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-04T16:36:00">
+                五 04 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/ipv6.html">ipv6</a><a href="/tag/tunnel-broker.html">tunnel broker</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+</footer><!-- /.post-info -->                <p>最近看到有人用 <a href="http://planykao.blogspot.com/2012/04/archlinux-ipv6-tunnel-broker.html">Archlinux 設定 Tunnel Broker
+的方法</a>，所以研究了一下該怎麼用，發現還滿簡單的0.0。</p>
+<h3>申請帳號</h3>
+<p>到 <a href="http://tb2.ipv6.ascc.net/">http://tb2.ipv6.ascc.net/</a> 註冊一個帳號。</p>
+<h3>安裝 gogoc</h3>
+<div class="highlight"><pre>sudo apt-get install gogoc
+</pre></div>
+
+
+<h3>設定 gogoc (<code>/etc/gogoc/gogoc.conf</code>)</h3>
+<p><code>if_prefix</code> 要看你的網卡裝置名稱叫啥，不過預設應該都是 eth0。</p>
+<div class="highlight"><pre>userid=你的帳號
+passwd=你的密碼
+server=tb2.ipv6.ascc.net
+auth_method=digest-md5
+host_type=host
+prefixlen=64
+if_prefix=eth0 ...</pre></div>
+                <a class="readmore" href="/397/ubuntu-tunnel-broker/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/390/ubuntu-mount-box-service/" rel="bookmark"
+                           title="Permalink to Ubuntu mount Box service">Ubuntu mount Box service</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-04-20T00:20:00">
+                五 20 4月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/box.html">box</a><a href="/tag/boxfs.html">boxfs</a></p>
+</footer><!-- /.post-info -->                <p>之前在 PTT 看到有人分享可以用 boxfs 這個套件來掛載 <a href="http://www.box.com/">Box</a> 到本地端的資料夾上，感覺好像還不錯，而且因為之前買 Sony Ericsson 的手機，所以有 Box 額外送的 50G 空間，所以就想說拿來加減用啦。</p>
+<p>首先要先安裝相依的套件：</p>
+<div class="highlight"><pre>sudo apt-get install libxml2-dev libfuse-dev libcurl4-gnutls-dev libzip-dev
+</pre></div>
+
+
+<p>接著到 <a href="http://code.google.com/p/boxfs/downloads/list">這邊</a> 下載最新版本的 boxfs。下載完成後，解壓縮：</p>
+<div class="highlight"><pre>
+</pre></div>
+
+
+<p>tar xzf boxfs-relno.tgz</p>
+<p>接著進入 <code>box-版本</code> 資料夾，像我的就是 <code>boxfs-0.7</code>:</p>
+<div class="highlight"><pre><span class="nb">cd </span>boxfs-0.7
+</pre></div>
+
+
+<p>這邊還需要再另外安裝 libapp，這邊需要用到 git ，沒有的話就要安裝 ...</p>
+                <a class="readmore" href="/390/ubuntu-mount-box-service/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/author/carlcarl7.html">&laquo;</a>
+    Page 8 / 16
+        <a href="/author/carlcarl9.html">&raquo;</a>
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

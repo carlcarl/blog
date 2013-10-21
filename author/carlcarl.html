@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - carlcarl</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1375/tig-broken-in-tmux/">tig broken in tmux</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-10-05T02:15:00">
+                六 05 10月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux-ban-ben-guan-li.html">linux, 版本管理</a>. </p>
+<p>tags: <a href="/tag/screen.html">screen</a><a href="/tag/tig.html">tig</a><a href="/tag/tmux.html">tmux</a></p>
+</footer><!-- /.post-info --><p>這個問題已經困擾我滿久了，在 <a href="http://tmux.sourceforge.net">tmux</a> 裡用 <a href="https://github.com/jonas/tig">tig</a>
+畫面會一直破碎，不過一直找不到原因，最近想到，於是又找看看有沒有解法，後來試了<a href="https://wiki.archlinux.org/index.php/tmux">一篇</a>裡面的做法就
+OK 了 QQ。</p>
+<!--more-->
+
+<p>靈感是在查資料的時候看到有人是因為在 <code>tmux.conf</code> 裡設定了
+<code>default-terminal=xterm</code> 想到的，中間有試了一下 screen，發現 tig 在
+screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</code>，而我在 tmux
+下得到的輸出卻是 <code>xterm-256color</code>，想說朝這個方向去找資料。這邊先找了
+<code>tmux.conf</code> 中，但是我並沒有設定這個東西，看了
+<code>.zshrc</code>，原來我是在這邊設定了
+<code>export TERM=xterm-256color</code>，於是我參看上面連結裡的內容在設定 <code>TERM</code>
+下面再加上了一行就 OK 了：</p>
+<div class="highlight"><pre><span class="p">[</span> <span class="o">-</span><span class="n">n</span> <span class="s">&quot;$TMUX&quot;</span> <span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">export</span> <span class="n">TERM</span><span class="o">=</span><span class="n">screen</span><span class="o">-</span><span class="mi">256</span><span class="n">color</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1365/sphinx-and-github-pages/" rel="bookmark"
+                           title="Permalink to sphinx and github pages">sphinx and github pages</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-10-04T21:26:00">
+                五 04 10月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python-ban-ben-guan-li.html">python, 版本管理</a>. </p>
+<p>tags: <a href="/tag/github.html">github</a><a href="/tag/sphinx.html">sphinx</a></p>
+</footer><!-- /.post-info -->                <p>就之前產生的 sphinx document，接下來是如何 deploy 到 github page 上。</p>
+<p>這個文章是根據 <a href="http://raxcloud.blogspot.tw/2013/02/documenting-python-code-using-sphinx.html">Documenting python code using sphinx and github</a> 和
+<a href="http://datadesk.latimes.com/posts/2012/01/sphinx-on-github/">Sphinx documentation on GitHub</a>
+整理而成的，兩個地方的資料都不錯，不過都沒有很完美，所以就寫了這篇。</p>
+<!--more-->
+
+<h2>建立 github page repo</h2>
+<p>這邊看到大部分的做法都是直接在 project 根目錄下直接開另外一個
+branch，不過我後來在上面連結看到一個不錯的做法，就是直接把 branch 建立在
+subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資料夾：</p>
+<div class="highlight"><pre>mkdir gh-pages
+</pre></div>
+
+
+<p>接著利用 <code>git-new-workdir</code> 這個指令建立一個 ...</p></!--more-->
+                <a class="readmore" href="/1365/sphinx-and-github-pages/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1331/python-sphinx-simple-example/" rel="bookmark"
+                           title="Permalink to Python Sphinx simple example">Python Sphinx simple example</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-10-02T02:32:00">
+                三 02 10月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/python.html">python</a><a href="/tag/sphinx.html">sphinx</a></p>
+</footer><!-- /.post-info -->                <p>查了很多資料，遇到一堆鬼打牆問題，終於弄成我要的樣子了，不過其實也沒有加多少東西，只是基本的設定一直搞不定
+orz。</p>
+<!--more-->
+
+<hr />
+<p>下面是一開始的 project 結構，接著會利用 <code>sphinx</code> 在根目錄下建立 <code>doc</code>
+這個目錄：</p>
+<h2>Project 目錄架構</h2>
+<div class="highlight"><pre>.
+├── CHANGES.txt
+├── MANIFEST.in
+├── README.rst
+├── test
+│   ├── __init__.py
+│   └── test.py
+├── requirements.txt
+└── setup.py
+</pre></div>
+
+
+<hr />
+<h2>安裝並產生設定</h2>
+<p>首先先安裝 <code>sphinx</code>(ex: <code>pip install sphinx</code>)，接著在 project
+根目錄下輸入 <code>sphinx-quickstart</code>，設定步驟如下：</p>
+<div class="highlight"><pre>Welcome to the Sphinx 1.1.3 ...</pre></div></!--more-->
+                <a class="readmore" href="/1331/python-sphinx-simple-example/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1315/python-multiprocessing-share-counter/" rel="bookmark"
+                           title="Permalink to Python multiprocessing share counter">Python multiprocessing share counter</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-09-19T00:09:00">
+                四 19 9月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/multiprocessing.html">multiprocessing</a></p>
+</footer><!-- /.post-info -->                <p>找了一下，以下是基本的寫法：</p>
+<!--more-->
+
+<div class="highlight"><pre><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">counter_lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+    <span class="k">global</span> <span class="n">counter</span>
+    <span class="k">with</span> <span class="n">counter_lock</span><span class="p">:</span>
+        <span class="n">counter</span><span class="o">.</span><span class="n">value</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">global</span> <span class="n">counter</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="n">data_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
+    <span class="k">global</span> <span class="n">counter</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">))</span>
+    <span class="n">pool</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span>
+        <span class="n">initializer</span><span class="o">=</span><span class="n">init</span><span class="p">,</span>
+        <span class="n">initargs</span><span class="o">=</span><span class="p">(</span><span class="n">counter</span><span class="p">,)</span>
+    <span class="p">)</span>
+    <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">countdown</span><span class="p">,</span> <span class="n">data_list ...</span></pre></div></!--more-->
+                <a class="readmore" href="/1315/python-multiprocessing-share-counter/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1302/brunch-watch-stylesheet-dependency/" rel="bookmark"
+                           title="Permalink to brunch watch stylesheet dependency">brunch watch stylesheet dependency</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-09-09T02:10:00">
+                一 09 9月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/css-js.html">css, js</a>. </p>
+<p>tags: <a href="/tag/grunch.html">grunch</a></p>
+</footer><!-- /.post-info -->                <p>之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生
+build 好的 css，這個問題一直困擾我很久，每次都要重新跑一次
+<code>brunch watch --server</code> 實在是很不爽，今天晚上剛好有一點時間就來修了。</p>
+<!--more-->
+
+<p>網站是用 <code>less</code>，然後有一個主要的 less 檔來 <code>@import</code> 其他在 <code>less</code>
+資料夾底下的 .less 檔，目錄架構大概像底下這樣：</p>
+<div class="highlight"><pre>├── less
+│   ├── archives.less
+│   ├── index.less
+└── less_proxy.less
+</pre></div>
+
+
+<p>然後 <code>config.ls</code> (這邊是用 livescript) 裡對應的設定部分：</p>
+<div class="highlight"><pre><span class="nv">stylesheets:</span>
+  <span class="nv">joinTo:</span>
+    <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less ...</span></pre></div></!--more-->
+                <a class="readmore" href="/1302/brunch-watch-stylesheet-dependency/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1292/g0v-tw-sns-buttons/" rel="bookmark"
+                           title="Permalink to g0v.tw sns buttons">g0v.tw sns buttons</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-08-28T01:40:00">
+                三 28 8月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/css.html">css</a>. </p>
+<p>tags: <a href="/tag/g0v.html">g0v</a></p>
+</footer><!-- /.post-info -->                <p>修了一下 render 的問題，以結果來看其實並沒有完全做好，還是會有 render
+過程中偏移的問題
+orz，不過也比原來的情況好多了(汗)，之後功力如果好一點再來深入研究吧 =
+=+。</p>
+<p><a href="https://github.com/g0v/g0v.tw/commit/93777efbd4941f3ba74bb0380ffb65c4d4330f13">commit diff</a><br />
+主要修正幾個地方：</p>
+<h3>fb button size</h3>
+<p>fb button 基本上最大就 60px 的樣子，原本設了
+500px，導致一開始預留的空間過大，整個會往左邊撐開，render
+完後又變一個小按鈕，所以整個看起來很囧，解決方法就是不去限制大小，反正按鈕最大也就那樣而已。</p>
+<h3>sns buttons 放大</h3>
+<p>原本的方法是直接把 button 用 css 加上 <code>transform</code> + <code>scale</code>
+放大，不過如果有多個 button 的話，這樣兩者之間的 margin
+會很難去設定，因為 margin ...</p>
+                <a class="readmore" href="/1292/g0v-tw-sns-buttons/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1277/chrome-tab-key-accessibility-bug/" rel="bookmark"
+                           title="Permalink to Chrome tab key accessibility bug">Chrome tab key accessibility bug</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-08-22T00:58:00">
+                四 22 8月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/css.html">css</a>. </p>
+<p>tags: <a href="/tag/chrome.html">chrome</a></p>
+</footer><!-- /.post-info -->                <p>簡單說就是在 link 內容如果是 float 的情況下，這個 link 沒辦法在按 tab
+鍵的時候得到 focus。Google 了一下，好像是 <a href="https://bugs.webkit.org/show_bug.cgi?id=51333">Webkit 的
+bug</a>，不過好像沒有打算要修的樣子(汗)。<br />
+<!--more--><br />
+Link 如果在下面的情況是 OK 的：</p>
+<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>test<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+
+
+<p>但是如果加了 <code>float</code> 後就會出問題：</p>
+<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;float:left;&quot;</span><span class="nt">&gt;</span>test<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+
+
+<p>我的解決方法很簡單，就是乾脆把 <code>float</code> 移到外面的 element
+上(炸)。目前看來是沒問題，Firefox ...</p>
+                <a class="readmore" href="/1277/chrome-tab-key-accessibility-bug/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1267/c-define-debug-function/" rel="bookmark"
+                           title="Permalink to C define debug function">C define debug function</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-08-13T15:50:00">
+                二 13 8月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c-linux.html">C &amp; C++, linux</a>. </p>
+<p>tags: <a href="/tag/debug.html">debug</a><a href="/tag/makefile.html">makefile</a></p>
+</footer><!-- /.post-info -->                <p>參考<a href="http://www.makelinux.net/ldd3/chp-4-sect-2">這篇</a>，然後做了點修改。</p>
+<!--more-->
+
+<div class="highlight"><pre>#undef CM_DBG
+#ifdef LTE_CM_DEBUG
+#   define CM_DBG(fmt, args...) do{   
+    printf(&quot;  (%d/%s): &quot;fmt, __LINE__, __FILE__, ## args);   
+}while(0)
+#else
+#   define CM_DBG(fmt, args...)
+#endif
+
+#undef CM_DBGG
+#define CM_DBGG(fmt, args...) do{   
+    printf(&quot;  (%d/%s): &quot;fmt, __LINE__, __FILE__, ## args);   
+}while(0)
+</pre></div>
+
+
+<p>大致除了命名外還做了點修改：</p>
+<ol>
+<li>把 <code>printk</code> 的部分拿掉，因為我不需要。</li>
+<li><code>CM_DBGG</code> 改成跟原本功能一樣 ...</li></ol></!--more-->
+                <a class="readmore" href="/1267/c-define-debug-function/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1262/javascript-parseint-and-number/" rel="bookmark"
+                           title="Permalink to Javascript parseInt and Number">Javascript parseInt and Number</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-08-07T15:31:00">
+                三 07 8月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js.html">js</a>. </p>
+<p>tags: <a href="/tag/number.html">Number</a><a href="/tag/parseint.html">parseInt</a></p>
+</footer><!-- /.post-info -->                <p>這個是查資料時看到的 benchmark <a href="http://jsperf.com/performance-of-parseint">performance of parseInt()</a></p>
+<p>簡單歸納幾點：</p>
+<ol>
+<li><code>parseInt</code> 基本上幾乎是比 <code>Number</code>
+    還要快的，兩者雖然用法有點不同，不過純粹做轉換的話，<code>parseInt</code>
+    會比較快。</li>
+<li><code>parseInt('4')</code> 跟 <code>parseInt('4', 10)</code>
+    在不同瀏覽器的效能也不一樣。不過直覺來看，感覺應該是 <code>parseInt('4')</code>
+    會比較快說，因為不需要驗證參數。就個人來說，還是直接 <code>parseInt('4')</code>
+    就好。</li>
+<li>new 會帶來多的 overhead，所以 new Number 又比 Number 慢。</li>
+</ol>
+                <a class="readmore" href="/1262/javascript-parseint-and-number/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1249/python-functools-wraps-note/" rel="bookmark"
+                           title="Permalink to Python functools.wraps note">Python functools.wraps note</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-08-06T15:38:00">
+                二 06 8月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/wraps.html">wraps</a></p>
+</footer><!-- /.post-info -->                <p>研究一下 <code>functools.wraps</code>。</p>
+<!--more-->
+
+<h3>用法</h3>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">deco</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="c"># @wraps(f)</span>
+    <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="c"># print `test`</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@deco</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="c"># print `hello`</span>
+</pre></div>
+
+
+<p>在 <code>hello</code> 裡 print 出
+'test'，這個沒什麼問題，但是在宣告完後，如果想確認 <code>test</code> 的 <code>__name__</code>
+attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</code></p></!--more-->
+                <a class="readmore" href="/1249/python-functools-wraps-note/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 16
+        <a href="/author/carlcarl2.html">&raquo;</a>
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1080/linux-conntrack-delete-destination-nat/" rel="bookmark"
+                           title="Permalink to Linux conntrack delete destination NAT">Linux conntrack delete destination NAT</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-27T16:41:00">
+                四 27 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/conntrack.html">conntrack</a></p>
+</footer><!-- /.post-info -->                <p>最近遇到在測 throughput 中，有一定機率無法關掉 DMZ
+的問題，而且這邊只要關掉 throughput 後，DMZ 就會順利關掉，看起來像是
+throughput 的連線讓被刪掉的 conntrack 連線又復活(?)了這樣 =.=。</p>
+<!--more-->
+
+<p>看了一下 firewall 的 rule，裡面確實是有刪除 conntrack connection 的
+rule，指令如下：</p>
+<div class="highlight"><pre>conntrack -D conntrack -g -r xxx.xxx.xxx.xxx
+</pre></div>
+
+
+<p>看了一下 <code>conntrack －L conntrack</code> 的記錄，grep 了在接收 throughput 的
+port，發現還是有連線存在，來源是從 NAT
+內部到外面 ...</p></!--more-->
+                <a class="readmore" href="/1080/linux-conntrack-delete-destination-nat/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1070/stunnel-mac-client/" rel="bookmark"
+                           title="Permalink to stunnel Mac client">stunnel Mac client</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-22T15:18:00">
+                六 22 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/mac.html">Mac</a>. </p>
+<p>tags: <a href="/tag/stunnel.html">stunnel</a></p>
+</footer><!-- /.post-info -->                <p>stunnel server 的設定就照<a href="https://wido.me/sunteya/setup-a-socks-proxy-server-pass-by-secure-firewall/">這篇</a>的教學，不過 Mac client
+的設定似乎不能直接套用 Ubuntu client
+的，試了一下網路上的一些設定，總算有可以 work
+的了，以下是我的設定，比較要注意的就是 <code>cert</code> 的位置要設對，另外就是
+<code>connect</code> 的 <code>host</code> 要改成你 stunnel server 的位置：</p>
+<!--more-->
+
+<div class="highlight"><pre><span class="n">setuid</span> <span class="o">=</span> <span class="n">nobody</span>
+<span class="n">setgid</span> <span class="o">=</span> <span class="n">nogroup</span>
+<span class="n">pid</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">stunnel</span><span class="p">.</span><span class="n">pid</span>
+
+<span class="n">cert</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">stunnel</span><span class="o">/</span><span class="n">client</span><span class="p">.</span><span class="n">pem</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">yes</span>
+
+<span class="n">debug</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="n">sslVersion</span> <span class="o">=</span> <span class="n">SSLv3</span>
+<span class="n">verify ...</span></pre></div></!--more-->
+                <a class="readmore" href="/1070/stunnel-mac-client/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1053/ssh-with-firewall/" rel="bookmark"
+                           title="Permalink to ssh with firewall">ssh with firewall</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-19T00:19:00">
+                三 19 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/ssh.html">ssh</a></p>
+</footer><!-- /.post-info -->                <p>記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh
+的主機，這裡以 <code>example.com</code> 為例。 (其實參考資料的連結內容更詳細
+XD，有需要的人建議點進去看看唄～～。)</p>
+<!--more-->
+
+<ol>
+<li>從內部往外。</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span class="c"># 在 local 開一個 9999 的 port 轉到 `example.com` 的 22 port，</span>
+<span class="c"># 接下來只要把 proxy 的設定指到 localhost 的 9999 就可以了。</span>
+ssh -NfD 9999 user@example.com
+</pre></div>
+
+
+<ol>
+<li>從外部連內。</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span class="c"># 這邊必須先在內部的 server 輸入下面這一行，連到 example.com，</span>
+<span class="c"># 然後在 example.com ...</span></pre></div></!--></!--></!--more-->
+                <a class="readmore" href="/1053/ssh-with-firewall/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1049/chrome-cpu-profiler-program/" rel="bookmark"
+                           title="Permalink to chrome cpu profiler program">chrome cpu profiler program</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-17T15:26:00">
+                一 17 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js.html">js</a>. </p>
+<p>tags: <a href="/tag/chrome.html">chrome</a></p>
+</footer><!-- /.post-info -->                <p>查了一下 chrome 裡 cpu profiler 裡的 program 代表啥意思，像有人說是整個
+js code 的 root，不過看了一下其他的意見，感覺比較像是 native code
+所花的時間，包括 DOM 操作，gc 等一堆雜事等。舉個例子來說，假如你是要看你
+function 處理一堆 array 結構的校能的話，就可以不需要理這欄。</p>
+<p>參考資料：<br />
+<a href="http://stackoverflow.com/questions/9494228/slow-javascript-execution-in-chrome-profiler-yields-program">Slow javascript execution in chrome, profiler yields (program)</a><br />
+<a href="https://groups.google.com/forum/?fromgroups#!topic/chromium-discuss/02CEYDcuO18">What does (program) signify in the Chrome profiler?</a><br />
+<a href="http://stackoverflow.com/questions/3847954/chrome-debugger-what-is-program-in-the-profiler">Chrome debugger - what ...</a></p>
+                <a class="readmore" href="/1049/chrome-cpu-profiler-program/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1043/nginx-pagespeed-gzip-combine-js/" rel="bookmark"
+                           title="Permalink to nginx pagespeed gzip combine js">nginx pagespeed gzip combine js</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-16T23:10:00">
+                日 16 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/nginx.html">nginx</a><a href="/tag/pagespeed.html">pagespeed</a></p>
+</footer><!-- /.post-info -->                <p>在用 <a href="http://gtmetrix.com">GTmetrix</a> 看網站的效能的時候，發現只有 pagespeed combine 出來的
+js，沒有被 gzip 處理過。</p>
+<!--more-->
+
+<p>google 了一下，在 <a href="https://github.com/pagespeed/ngx_pagespeed/issues/368">Github 上也找到同樣的問題</a>，裡面說要加上
+<code>application/javascript</code>，回頭看了一下我的 nginx 設定檔，果然沒加到= =。</p>
+<p>我原本設定是
+<code>gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript</code>，想說該設的都設了，想不到還是有漏網之魚，加上之後重啟，果然就 OK 哩。</p>
+<p>附帶一提，我把 ...</p></!--more-->
+                <a class="readmore" href="/1043/nginx-pagespeed-gzip-combine-js/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/1023/html5-canvas-double-buffering/" rel="bookmark"
+                           title="Permalink to html5 canvas double buffering">html5 canvas double buffering</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-16T19:25:00">
+                日 16 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js.html">js</a>. </p>
+<p>tags: <a href="/tag/canvas.html">canvas</a><a href="/tag/html5.html">html5</a></p>
+</footer><!-- /.post-info -->                <p>因為之前寫 java 的經驗，讓我以為在 html5 的 canvas 上也要自己實作 double
+buffering，但是在我後來實作後發現，好像哪裡怪怪的，因為其實原本就沒有在閃的感覺了，所以加了
+double buffering 好像也沒啥差，重點是 performance 下降很多......。</p>
+<!--more-->
+
+<p>後來花了一些時間找資料，我得到的結論－是大部分的情況，不需要自己做
+double buffering，因為瀏覽器會很聰明的幫你做。但是它怎麼判斷什麼時候該把
+buffer 的部分 render 上去呢？以下是我的鍵盤猜測：</p>
+<p>因為現在大多數的螢幕更新頻率都是 60Hz，也就是說大概每 16 ms
+就會刷新一次螢幕，而瀏覽器本身在刷新的頻率可能也會接近這個時間，但是有沒有比較高就不知道了，因為你所看到的可能會被你螢幕的更新頻率所限制，就算瀏覽器刷新頻率是
+1000Hz，反正一般的銀幕也看不出來:P。</p>
+<p>以一個簡單的例子來實驗，假如我在一開始把一個方形塗上顏色然後 clear
+掉 ...</p></!--more-->
+                <a class="readmore" href="/1023/html5-canvas-double-buffering/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/967/java-paintcomponent-paint-duplicate/" rel="bookmark"
+                           title="Permalink to Java paintComponent paint duplicate">Java paintComponent paint duplicate</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-11T03:43:00">
+                二 11 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>. </p>
+<p>tags: <a href="/tag/java.html">java</a></p>
+</footer><!-- /.post-info -->                <p>之前寫 Java 的時候遇到的小問題，在實作 <code>JPanel</code> 的 <code>paintComponent</code>
+時，發現怎麼畫完後會出現多餘的重複物件。</p>
+<p>後來找了一下資料，在 stackoverflow
+發現<a href="http://stackoverflow.com/questions/13773315/java-paintcomponent-paints-a-copy-of-the-top-gui-panel-for-no-apparent-reason">有人有一樣的問題</a>。解決方法也很簡單，只要在 <code>paintComponent</code>
+一開始加上
+<code>super.paintComponent(g);</code>，可惜的是不懂為啥不呼叫的話會出現這樣的結果就是。</p>
+                <a class="readmore" href="/967/java-paintcomponent-paint-duplicate/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/961/php-unable-to-allocate-memory-for-pool/" rel="bookmark"
+                           title="Permalink to PHP: Unable to allocate memory for pool">PHP: Unable to allocate memory for pool</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-10T22:29:00">
+                一 10 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/php.html">php</a>. </p>
+<p>tags: <a href="/tag/apc.html">apc</a><a href="/tag/nginx.html">nginx</a><a href="/tag/php.html">php</a></p>
+</footer><!-- /.post-info -->                <p>其實本來一開始的問題是 nginx 突然出現 <code>404 bad gateway</code>，後來去看 log
+才發現這個錯誤，所以看來如果出現 bad gateway
+的問題的話，可能就是跟後端的連線出了問題這樣。</p>
+<p>查了一下資料，發現到<a href="http://www.cyberciti.biz/faq/linux-unix-php-warning-unable-to-allocate-memory-for-pool/">這篇</a>說可能是 php apc
+的關係，剛好我也有裝，於是跟著把 <code>apc.shm_size</code> 調大之後並重開就 OK 了。</p>
+<p>不過老實說不能確定是因為重開，還是因為 cache
+有調大的關係。可能之後還要再觀察看看，目前過了幾天，看起來是都沒問題這樣～～。</p>
+                <a class="readmore" href="/961/php-unable-to-allocate-memory-for-pool/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/941/python-setup-py-package_data-permission/" rel="bookmark"
+                           title="Permalink to Python setup.py package_data permission">Python setup.py package_data permission</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-10T02:12:00">
+                一 10 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+
+</footer><!-- /.post-info -->                <p>最近嘗試把一些額外的 static 檔案加入到 python 的 package
+裡來讓程式操作，後來有查到可以在 setup.py 裡設定
+<code>package_data</code>，照著做之後好像滿順利的，但是在用 root 權限 install
+完，用一般使用者執行就遇到 permission 的錯誤了。</p>
+<!--more-->
+
+<p>看了一下安裝目錄下的 static 檔案，結果權限是 <code>400</code>，owner 是
+<code>root</code>，難怪一般使用者無法讀取，想說會不會是因為我的原本檔案權限的關係，檢查了一下，果然是
+<code>400</code>，但是我改了權限再重新安裝居然還是一樣，這時我還想說會不會是原本就有這樣的限制，還查了一堆資料
+orz。</p>
+<p>最後想到，會不會是因為我那些 build 所產生的目錄的關係，於是我把
+<code>xxx.pkg-info</code>，<code>build</code> 和 <code>dist</code>
+這三個資料夾都移除掉後再重新安裝，果然就 ...</p></!--more-->
+                <a class="readmore" href="/941/python-setup-py-package_data-permission/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/897/jslint-note/" rel="bookmark"
+                           title="Permalink to JSLint note">JSLint note</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-08T01:36:00">
+                六 08 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js.html">js</a>. </p>
+<p>tags: <a href="/tag/jslint.html">jslint</a></p>
+</footer><!-- /.post-info -->                <p>記錄一些錯誤的處理方式。 <!--more--></p>
+<h3>1. Document was used before it was defined</h3>
+<p>因為 JSLint 只是用來分析一般的 javascript code，像 <code>document</code>
+這種在瀏覽器上才有用的 global variable，就要在檔案開始加個宣告：</p>
+<div class="highlight"><pre><span class="cm">/* jslint browser:true */</span>
+</pre></div>
+
+
+<h3>2. This is an ES5 feature</h3>
+<p>比較新的
+feature。在一些舊瀏覽器可能會有問題，如果不想管那些舊瀏覽器的話，簡單加上以下這樣就可解決：</p>
+<div class="highlight"><pre><span class="cm">/* jslint es5: true */</span>
+</pre></div>
+
+
+<h3>3. Move the invocation into the parens that contain the function</h3>
+<p>改成用括弧將 function ...</p>
+                <a class="readmore" href="/897/jslint-note/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/index2.html">&laquo;</a>
+    Page 3 / 16
+        <a href="/index4.html">&raquo;</a>
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

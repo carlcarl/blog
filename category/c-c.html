@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - C &amp; C++</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/835/popen-check-empty/">popen check empty</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-04-26T20:31:00">
+                五 26 4月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c.html">C &amp; C++</a>. </p>
+<p>tags: <a href="/tag/popen.html">popen</a></p>
+</footer><!-- /.post-info --><p>最近常在用 <code>popen</code> 呼叫系統指令，並讀取執行的結果作判斷，而有時候會有想確認內容是否會為空的需求，因為 popen return 的是一個 file descriptor，本來想說能不能用 <code>ftell</code>
+找出大小來做判斷，不過<a href="http://stackoverflow.com/questions/7705338/ftell-function-giving-1-in-c-for-stdout">後來證明不行</a>，pipe 跟一般的檔案還是有差別。</p>
+<p>找了一堆資料，後來只想到用 <code>fgetc</code> 來讀，再用讀不讀得到值作為判斷 orz，不知道有沒有其他更好的解法就是。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/38/c-plus-plus-redirect-cout-to-file/" rel="bookmark"
+                           title="Permalink to C++ redirect cout to file">C++ redirect cout to file</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-22T18:31:00">
+                五 22 7月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c.html">C &amp; C++</a>. </p>
+
+</footer><!-- /.post-info -->                <p>可能有些人會覺得說用 <code>fstream</code> 另外寫就好了</p>
+<p>不過程式如果有設定可以輸出至螢幕或是檔案的話</p>
+<p>分開兩個寫就會讓人覺得很麻煩</p>
+<p>可能有關輸出的部份都需要用 <code>if</code> 判斷，然後分兩塊輸出</p>
+<p>如果在一開始就設定 <code>cout</code> 是輸出到螢幕或是檔案的話</p>
+<p>之後就不用再用 <code>if</code> 來一個一個判斷了，這個是我覺得的優點</p>
+<p>程式碼片段範例</p>
+<div class="highlight"><pre><span class="kt">bool</span> <span class="n">readFromFile</span><span class="p">;</span>
+<span class="c1">//根據一些判斷去設定readFromFile的值</span>
+<span class="n">readFromFile</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="n">readFromFile</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">ofstream</span> <span class="n">outputFile</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">fileName</span> <span class="o">=</span> <span class="s">&quot;file.txt&quot;</span><span class="p">;</span>
+    <span class="n">outputFile</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">fstream</span><span class="o">::</span><span class="n">out</span><span class="p">);</span>
+    <span class="n">cout</span><span class="p">.</span><span class="n">rdbuf</span><span class="p">(</span><span class="n">outputFile</span><span class="p">.</span><span class="n">rdbuf</span><span class="p">());</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="c1">//表示輸出到stdout</span>
+<span class="p">{</span>
+    <span class="c1">//不做任何事情 因為cout本來就是輸出到stdout</span>
+<span class="p">}</span>
+<span class="c1">//之後就直接用cout就可以了~</span>
+</pre></div>
+
+
+<p>參考網頁</p>
+<p><a href="http://www.java2s.com/Tutorial/Cpp/0240__File-Stream/Redirectouputintothefile.htm">http://www.java2s.com/Tutorial ...</a></p>
+                <a class="readmore" href="/38/c-plus-plus-redirect-cout-to-file/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/33/c-edit-code-but-make-only-show-up-to-date/" rel="bookmark"
+                           title="Permalink to c edit code but Make only show up to date">c edit code but Make only show up to date</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-13T07:12:00">
+                三 13 7月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c.html">C &amp; C++</a>. </p>
+
+</footer><!-- /.post-info -->                <p>感覺好像是很初學的問題，不過我還是不知道原來這個會有關係 orz</p>
+<p><span style="color: #ff0000;">在 Makefile 裡記得要加dependency file</span></p>
+<p>例如檔案是 test.cpp, test.h, test2.cpp, test2.h 要編譯成一個執行檔</p>
+<div class="highlight"><pre><span class="nf">test</span><span class="o">:</span>
+    g++ -o <span class="nb">test </span>test.o test2.o
+<span class="nf">test.o</span><span class="o">:</span>
+    g++ -c test.cpp
+<span class="nf">test2.o</span><span class="o">:</span>
+    g++ -c test2.cpp
+</pre></div>
+
+
+<p>要改成</p>
+<div class="highlight"><pre><span class="nf">test</span><span class="o">:</span> <span class="m">test.o test2.o</span>
+    g++ -o <span class="nb">test </span>test.o test2.o ...</pre></div>
+                <a class="readmore" href="/33/c-edit-code-but-make-only-show-up-to-date/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/15/c-useful-debug-function/" rel="bookmark"
+                           title="Permalink to C useful DEBUG function">C useful DEBUG function</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-03-31T18:29:00">
+                四 31 3月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c.html">C &amp; C++</a>. </p>
+
+</footer><!-- /.post-info -->                <p>學了那麼久才知道有這種好功能可以用 = ="
+<!--more--></p>
+<div class="highlight"><pre><span class="cp">#define DBG(msg, arg...) printf(&quot;%s:%s(%d): &quot; msg,  __FILE__, __FUNCTION__, __LINE__, ##arg)</span>
+</pre></div>
+
+
+<p><code>FILE</code> 表示這行所在的程式檔案</p>
+<p><code>FUNCTION</code> 表示這個函式所在的函式(唸起來好繞口= =)
+不過如果是用 gcc 來編譯的話 建議是用 <code>func</code>, 我之前用 gcc
+編譯前者好像不會過......</p>
+<p><code>LINE</code> 代表這函式是在哪一行</p>
+<p>其實也只是把 <code>printf</code> 有印出一些資訊的版本 define 為一個函式這樣![][]</p>
+<p>(不過要我寫我還真不會= =||)</p>
+<p>而在實際上運用可以這樣:</p>
+<div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">DBG</span><span class="p">(</span><span class="s">&quot;%dn&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">);</span>
+</pre></div>
+
+
+<p>這樣如果 i 不等於 2 的話 就會在前面先印出那些資訊 然後才會印出 index ...</p>
+                <a class="readmore" href="/15/c-useful-debug-function/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/14/c-use-qsort-sort-string-array/" rel="bookmark"
+                           title="Permalink to C use qsort sort string array">C use qsort sort string array</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-03-27T19:58:00">
+                日 27 3月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c.html">C &amp; C++</a>. </p>
+
+</footer><!-- /.post-info -->                <p>指標真的好難 寫了那麼久還是不太懂</p>
+<p>想用qsort sort 字串 array 結果compare函式怎麼用都會錯囧</p>
+<p>後來上網查了一下資料 才知道用錯了orz</p>
+<p>以下是compare函式範例</p>
+<div class="highlight"><pre><span class="kt">int</span> <span class="nf">compare</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">char</span><span class="o">**</span><span class="p">)</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">char</span><span class="o">**</span><span class="p">)</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>像以下這種就可以用上面的compare函式來處理  </p>
+<div class="highlight"><pre><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;123&quot;</span>  
+<span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;111222&quot;</span>
+</pre></div>
+
+
+<p>參考網址</p>
+<p><a href="http://www.c.happycodings.com/Sorting_Searching/code15.html">http://www.c.happycodings.com/Sorting_Searching/code15.html</a></p>
+                <a class="readmore" href="/14/c-use-qsort-sort-string-array/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/13/c-how-to-know-the-file-size/" rel="bookmark"
+                           title="Permalink to C how to know the file size">C how to know the file size</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-03-27T09:27:00">
+                日 27 3月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c.html">C &amp; C++</a>. </p>
+
+</footer><!-- /.post-info -->                <p>兩種方法~</p>
+<p>1.利用 <code>fseek</code>(或 <code>lseek</code>)</p>
+<div class="highlight"><pre><span class="kt">FILE</span><span class="o">*</span> <span class="n">f</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s">&quot;r+&quot;</span><span class="p">);</span>
+<span class="n">fseek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">);</span>
+<span class="n">size</span> <span class="o">=</span> <span class="n">ftell</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+<span class="n">fseek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">);</span>
+</pre></div>
+
+
+<p>2.用 <code>stat</code> 函式</p>
+<div class="highlight"><pre><span class="k">struct</span> <span class="n">stat</span> <span class="n">st</span><span class="p">;</span>
+<span class="n">stat</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">st</span><span class="p">);</span>
+<span class="n">size</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">st_size</span><span class="p">;</span>
+</pre></div>
+
+
+<p>參考網址:</p>
+<p><a href="http://stackoverflow.com/questions/238603/how-can-i-get-a-files-size-in-c">http://stackoverflow.com/questions/238603/how-can-i-get-a-files-size-in-c</a></p>
+                <a class="readmore" href="/13/c-how-to-know-the-file-size/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/12/c-open-function/" rel="bookmark"
+                           title="Permalink to C open function">C open function</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-03-21T17:31:00">
+                一 21 3月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c.html">C &amp; C++</a>. </p>
+
+</footer><!-- /.post-info -->                <p>最近好久沒有用 C 寫程式了，一直狂卡QQ</p>
+<p>晚上在用 <code>open</code> 函式開檔案,
+結果後來看發現權限都沒有設，後來查了一下才發現原來後面要加權限的設定，這裡來講就是 <code>0666</code> 這串數字：</p>
+<div class="highlight"><pre><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="o">|</span><span class="n">O_CREAT</span><span class="p">,</span> <span class="mo">0666</span><span class="p">)</span>
+</pre></div>
+
+
+<p>這數字可以設定使用者、群組、其他人的寫讀執行權限。如果只是開個一般的檔可以無腦一點，<code>0666</code> 就行了~，至於第二個參數
+ <code>O_RDWR</code> 代表在程式中可讀寫，也可以用 <code>O_WRONLY</code> 或 <code>O_RDONLY</code> 代表只寫或只讀，<code>O_CREATE</code> 則代表建立這個檔案。</p>
+<p>參考網址：</p>
+<p><a href="http://stackoverflow.com/questions/2245193/c-linux-file-permission-problem-with-open">http://stackoverflow.com/questions/2245193/c-linux-file-permission-problem-with-open</a></p>
+                <a class="readmore" href="/12/c-open-function/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/11/c-getopt-usage/" rel="bookmark"
+                           title="Permalink to C getopt usage">C getopt usage</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-03-20T18:36:00">
+                日 20 3月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c.html">C &amp; C++</a>. </p>
+<p>tags: <a href="/tag/getopt.html">getopt</a></p>
+</footer><!-- /.post-info -->                <p><code>getopt</code> 是用來判斷程式參數的函式。像是 <code>./a.out -s</code> 之類的, <code>getopt</code>
+能對後面的 <code>-s</code> 這類參數做判斷處理。<br />
+一開始要使用的話記得先：</p>
+<div class="highlight"><pre><span class="cp">#include &lt;unistd.h&gt;</span>
+</pre></div>
+
+
+<p><code>getopt</code> 有三個參數
+<code>(int argc, char* argv[], const char* optsting)</code>，第一個和第二個就直接把
+<code>main</code> 裡頭的參數丟進去就好了，第三個參數就是用來處理前面講到的 <code>-s</code>
+的這類參數。<br />
+舉個例子來講，像是 <code>optstring = "abf"</code>
+的話，就能夠抓到這三個參數值，如：<br />
+<code>./a.out -a</code> 或 <code>./a.out -b</code> 或 <code>./a.out -abf</code> 都 OK ...</p>
+                <a class="readmore" href="/11/c-getopt-usage/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

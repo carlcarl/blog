@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - dropbox</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/124/ubuntu-dropbox-permission-denied/">Dropbox can't sync  permission denied</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2011-11-23T00:28:00">
+                三 23 11月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/dropbox.html">dropbox</a></p>
+</footer><!-- /.post-info --><p>最近在備份 wordpress 的資料到 dropbox
+上的時候，突然出現了錯誤：<code>cant sync "file name" permission denied</code>，看了一下資料夾，只有資料夾有建立起來，但是檔案都沒 sync 成功。但是之前用了也一兩年了都沒有發生這樣的問題，為什麼
+dropbox 把資料 sync 到我電腦上的時候會突然出問題呢？<br />
+<!--more--><br />
+花了一段時間查了一些資料，後來才發現是因為我用 ubuntu，然後又用另外一個 <code>ntfs</code> 裝置來存 dropbox
+的東西，才會有這樣的問題。解決方法就是在 <code>mount</code> 設定檔要多設定一個「uid」的參數。</p>
+<p>首先要修改 <code>/etc/fstab</code>，範例如下：</p>
+<div class="highlight"><pre>/dev/sda2   /media/Data     ntfs-3g  rw,defaults,umask=0000,uid=1000  0  0
+</pre></div>
+
+
+<p>裝置和目錄的地方記得改成自己想要的，後面大致可以直接套用，不過要注意的一點是這邊的
+uid 設為 1000，但是其實是要看你帳號的 uid 是多少才決定要輸入多少，你可以用 <code>id</code> 這個指令來查看你的 uid：</p>
+<div class="highlight"><pre>id 你的帳號
+</pre></div>
+
+
+<p>參考網址：  </p>
+<p><a href="http://forums.dropbox.com/topic.php?id=18517&amp;replies=21#post-191690">http://forums.dropbox.com/topic.php?id=18517&amp;replies=21#post-191690</a><br />
+<a href="http://www.ascc.sinica.edu.tw/nl/92/1911/03.txt">http://www.ascc.sinica.edu.tw/nl/92/1911/03.txt</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

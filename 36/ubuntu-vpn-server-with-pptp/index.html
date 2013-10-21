@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Ubuntu VPN Server with pptp</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/36/ubuntu-vpn-server-with-pptp/" rel="bookmark"
+           title="Permalink to Ubuntu VPN Server with pptp">Ubuntu VPN Server with pptp</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-16T12:11:00">
+                六 16 7月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+
+</footer><!-- /.post-info -->      <p>最近想架 VPN Server，查了一下資料，最常見的好像是 <code>OpenVPN</code> 和 <code>pptp</code> 兩種方法。pptp 的方式比較簡單，但是相對於 OpenVPN 較為不安全，是說我們系上的好像也是用 pptp，所以我想問題應該不大吧</p>
+<p>網路環境：</p>
+<ul>
+<li>使用Public IP</li>
+<li>單網卡</li>
+</ul>
+<h3>首先要先安裝 <code>pptpd</code></h3>
+<div class="highlight"><pre>sudo apt-get install pptpd
+</pre></div>
+
+
+<h3>接著修改 <code>/etc/pptpd.conf</code></h3>
+<p>這邊 <code>localip</code> 是 Server 連線之後要用的 IP，基本上跟 Server 本身的 Public IP沒有關係，可以給個 private ip 就 ok 了，<code>remoteip</code> 是給 VPN client的 private
+ip，大致給個範圍，可以不用像我一樣給了 128 個 Private IP，應該是要看同時會有多少人使用來給範圍，至於為什麼我要從 128 開始，是因為我想保留前面的部份當作另外的用途:</p>
+<div class="highlight"><pre>localip 192.168.0.1
+remoteip 192.168.0.128-255
+</pre></div>
+
+
+<h3>再下來是修改 <code>/etc/ppp/pptpd-options</code></h3>
+<p>這邊要注意一下裡面的 name 設定，通常會設成是 <code>pptpd</code>，之後要跟 <code>/etc/ppp/chap-secrets</code> 裡的設定作對應，另外還有要設定 <code>ms-dns</code>，就看那台 Server 原本指定的 DNS IP，拿過來用就 ok 了。要看 DNS IP 設定可以到 <code>/etc/resolve.conf</code> 裡面去看。</p>
+<h3>設定完後接下來就是帳號密碼的部份啦</h3>
+<p>修改 <code>/etc/ppp/chap/secrets</code>，以下是大概的格式，這邊要注意 <code>pptpd</code> 是對應之前同樣的文字部份，<code>*</code> 表示不從這邊設定 IP，而是讀剛才的 <code>remoteip</code> 設定:</p>
+<div class="highlight"><pre>你要的帳號 pptpd 你要的密碼 *
+</pre></div>
+
+
+<h3>重啟pptpd</h3>
+<div class="highlight"><pre>sudo /etc/init.d/pptpd restart
+</pre></div>
+
+
+<p>接下來試試看 VPN 連線看看，我的情形是還不行啦XD。查了一下資料，應該是有指定到 private
+ip，但是封包在 Server 這邊傳不出去，因為沒設定，所以接下來還要再設定一下 NAT 的部份啦。</p>
+<h3>設定 iptables</h3>
+<div class="highlight"><pre>sudo iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o eth0 -j MASQUERADE
+</pre></div>
+
+
+<p>但是這樣的設定在每次重開機之後就會消失，所以設定完後可以用 <code>iptables-save</code> 將設定檔存起來，如：</p>
+<div class="highlight"><pre>sudo iptables-save &gt; /etc/iptables-rules
+</pre></div>
+
+
+<p>如果出現權限問題就 <code>sudo su</code> 轉成 root 再做。但是存起來之後，他並不會幫你在每次重開機都讀那個檔，所以還要再設定，修改 <code>/etc/network/interfaces</code>，最後面加上：</p>
+<div class="highlight"><pre>pre-up iptables-restore &lt; /etc/iptables-rules
+</pre></div>
+
+
+<h3>最後是修改 <code>/etc/sysctl.conf</code></h3>
+<p>找到以下這行，將前面的 <code>#</code> 給刪掉， <code>#</code> 是代表註解，這樣才有forward 封包的功能</p>
+<div class="highlight"><pre><span class="c"># net.ipv4.ip_forward=1</span>
+</pre></div>
+
+
+<h3>改完之後，更新 sysctl 的設定</h3>
+<div class="highlight"><pre>sudo sysctl -p
+</pre></div>
+
+
+<p>OK! 到這裡之後應該是就可以連 VPN 了，如果還不行的話，可以重啟動看看，再不行的話，可以參考看看我下面的參考網頁，也許會有對你有用的資訊。</p>
+<p>參考網頁:<br />
+<a href="http://www.eubuntu.net/viewthread.php?tid=135&amp;sid=ihmKhL">http://www.eubuntu.net/viewthread.php?tid=135&amp;sid=ihmKhL</a><br />
+<a href="http://blog.slps.tp.edu.tw/00086/?p=145">http://blog.slps.tp.edu.tw/00086/?p=145</a><br />
+<a href="http://gsyan888.blogspot.com/2009/11/ubuntu-vpn-server.html">http://gsyan888.blogspot.com/2009/11/ubuntu-vpn-server.html</a><br />
+<a href="https://wangyan.org/blog/debian-pptp-vpn.html">https://wangyan.org/blog/debian-pptp-vpn.html</a><br />
+<a href="http://jordy.easymorse.com/?p=272">http://jordy.easymorse.com/?p=272</a>  </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

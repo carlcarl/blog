@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>HTML script speed up with defer</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/525/html-script-speed-up-with-defer/" rel="bookmark"
+           title="Permalink to HTML script speed up with defer">HTML script speed up with defer</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-07-06T03:49:00">
+                五 06 7月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js.html">js</a>. </p>
+<p>tags: <a href="/tag/javascript.html">javascript</a></p>
+</footer><!-- /.post-info -->      <p>在 <a href="http://blog.xuite.net/vexed/tech/61308318">script tag 屬性 async defer 差別</a> 這邊看到了 script tag 有 async
+和 defer 的用法，所以就來試試看。大致測試了一下，速度的確有快了一些(大概加快50 ~ 100ms
+左右吧XD)。以下大概講一下我的測試範例內容：</p>
+<!--more-->
+
+<div class="highlight"><pre><span class="c">&lt;!-- </span>
+<span class="c">這是原本的程式</span>
+<span class="c">a-b.js 需要 a.js, 而 a-c.js 需要 a.js, 這是這 3 個 js 檔的相依關係</span>
+<span class="c">最後會從 a-c.js 裡呼叫 library 來執行</span>
+<span class="c">由於 async 屬性並不適合用來處理有相依性的 js 檔案，load 順序可能會出問題</span>
+<span class="c">defer 則能保證執行的順序關係，所以我等下會是使用 defer 屬性</span>
+<span class="c">如果你的 js 檔案並沒有相依關係的話，是可以考慮用 async 屬性</span>
+<span class="c">--&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;js/a.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;js/a-b.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;js/a-c.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">lib</span><span class="p">();</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+
+<p>加上 defer 屬性後：</p>
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;js/a.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;js/a-b.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;js/a-c.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span><span class="nx">c</span><span class="p">.</span><span class="nx">lib</span><span class="p">();};</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

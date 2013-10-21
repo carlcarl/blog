@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>C use qsort sort string array</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/14/c-use-qsort-sort-string-array/" rel="bookmark"
+           title="Permalink to C use qsort sort string array">C use qsort sort string array</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-03-27T19:58:00">
+                日 27 3月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c.html">C &amp; C++</a>. </p>
+
+</footer><!-- /.post-info -->      <p>指標真的好難 寫了那麼久還是不太懂</p>
+<p>想用qsort sort 字串 array 結果compare函式怎麼用都會錯囧</p>
+<p>後來上網查了一下資料 才知道用錯了orz</p>
+<p>以下是compare函式範例</p>
+<div class="highlight"><pre><span class="kt">int</span> <span class="nf">compare</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">char</span><span class="o">**</span><span class="p">)</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">char</span><span class="o">**</span><span class="p">)</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>像以下這種就可以用上面的compare函式來處理  </p>
+<div class="highlight"><pre><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;123&quot;</span>  
+<span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;111222&quot;</span>
+</pre></div>
+
+
+<p>參考網址</p>
+<p><a href="http://www.c.happycodings.com/Sorting_Searching/code15.html">http://www.c.happycodings.com/Sorting_Searching/code15.html</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

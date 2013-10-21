@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - linux</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/410/ubuntu-install-oh-my-zsh/" rel="bookmark"
+                           title="Permalink to ubuntu install oh my zsh">ubuntu install oh my zsh</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-05T23:41:00">
+                六 05 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/oh-my-zsh.html">oh-my-zsh</a><a href="/tag/zsh.html">zsh</a></p>
+</footer><!-- /.post-info -->                <p>在網路上看到 <a href="https://github.com/robbyrussell/oh-my-zsh">oh my zsh</a> 這套件，這個套件對 zsh
+做了一些客製化，包含很多外掛以及提示字元主題，感覺還滿炫的，所以就想說從
+bash 換成 zsh 看看囉。</p>
+<h3>首先要先安裝 zsh，因為 zsh 預設在 ubuntu 上是沒有安裝的</h3>
+<div class="highlight"><pre>sudo apt-get install zsh
+</pre></div>
+
+
+<h3>下載 oh-my-zsh 套件到家目錄底下的 <code>.oh-my-zsh</code> 資料夾</h3>
+<div class="highlight"><pre>git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+</pre></div>
+
+
+<h3>複製設定檔樣板出來使用</h3>
+<div class="highlight"><pre>cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+</pre></div>
+
+
+<h3>改成預設使用 zsh，執行以下指令並輸入你的密碼 ...</h3>
+                <a class="readmore" href="/410/ubuntu-install-oh-my-zsh/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/397/ubuntu-tunnel-broker/" rel="bookmark"
+                           title="Permalink to Ubuntu Tunnel Broker IPv6 連 中研院">Ubuntu Tunnel Broker IPv6 連 中研院</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-04T16:36:00">
+                五 04 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/ipv6.html">ipv6</a><a href="/tag/tunnel-broker.html">tunnel broker</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+</footer><!-- /.post-info -->                <p>最近看到有人用 <a href="http://planykao.blogspot.com/2012/04/archlinux-ipv6-tunnel-broker.html">Archlinux 設定 Tunnel Broker
+的方法</a>，所以研究了一下該怎麼用，發現還滿簡單的0.0。</p>
+<h3>申請帳號</h3>
+<p>到 <a href="http://tb2.ipv6.ascc.net/">http://tb2.ipv6.ascc.net/</a> 註冊一個帳號。</p>
+<h3>安裝 gogoc</h3>
+<div class="highlight"><pre>sudo apt-get install gogoc
+</pre></div>
+
+
+<h3>設定 gogoc (<code>/etc/gogoc/gogoc.conf</code>)</h3>
+<p><code>if_prefix</code> 要看你的網卡裝置名稱叫啥，不過預設應該都是 eth0。</p>
+<div class="highlight"><pre>userid=你的帳號
+passwd=你的密碼
+server=tb2.ipv6.ascc.net
+auth_method=digest-md5
+host_type=host
+prefixlen=64
+if_prefix=eth0 ...</pre></div>
+                <a class="readmore" href="/397/ubuntu-tunnel-broker/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/390/ubuntu-mount-box-service/" rel="bookmark"
+                           title="Permalink to Ubuntu mount Box service">Ubuntu mount Box service</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-04-20T00:20:00">
+                五 20 4月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/box.html">box</a><a href="/tag/boxfs.html">boxfs</a></p>
+</footer><!-- /.post-info -->                <p>之前在 PTT 看到有人分享可以用 boxfs 這個套件來掛載 <a href="http://www.box.com/">Box</a> 到本地端的資料夾上，感覺好像還不錯，而且因為之前買 Sony Ericsson 的手機，所以有 Box 額外送的 50G 空間，所以就想說拿來加減用啦。</p>
+<p>首先要先安裝相依的套件：</p>
+<div class="highlight"><pre>sudo apt-get install libxml2-dev libfuse-dev libcurl4-gnutls-dev libzip-dev
+</pre></div>
+
+
+<p>接著到 <a href="http://code.google.com/p/boxfs/downloads/list">這邊</a> 下載最新版本的 boxfs。下載完成後，解壓縮：</p>
+<div class="highlight"><pre>
+</pre></div>
+
+
+<p>tar xzf boxfs-relno.tgz</p>
+<p>接著進入 <code>box-版本</code> 資料夾，像我的就是 <code>boxfs-0.7</code>:</p>
+<div class="highlight"><pre><span class="nb">cd </span>boxfs-0.7
+</pre></div>
+
+
+<p>這邊還需要再另外安裝 libapp，這邊需要用到 git ，沒有的話就要安裝 ...</p>
+                <a class="readmore" href="/390/ubuntu-mount-box-service/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/332/gnome-shell-built-in-desktop-recording/" rel="bookmark"
+                           title="Permalink to Gnome shell built-in desktop recording">Gnome shell built-in desktop recording</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-03-29T02:35:00">
+                四 29 3月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/gnome.html">gnome</a><a href="/tag/screencast.html">screencast</a></p>
+</footer><!-- /.post-info -->                <p>最近才發現 Gnome shell
+有內建的錄影功能，虧我之前還找工具找超久囧，這個功能算是滿簡單的，大概講一下它的限制：只能錄影沒有聲音，沒有設定介面，只有快捷鍵，快捷鍵的設定和影片存放的位置都沒辦法修改，都是固定的這樣。不知道以後會不會有介面出來就是了。</p>
+<p>快捷鍵為 <code>ctrl+shift+alt+r</code>，你沒看錯，就是這四個鍵一起按，按下後，右下角會出現一個小紅色的圓點，表示為錄影中，再按一次快捷鍵就是停止（它沒有暫停的功能），影片預設會存到 <code>/home/你的帳號/</code> 底下，格式為
+webm ，用 smplayer 之類的應該都能開來看，我自己測試錄影的結果是還不錯。</p>
+<p>參考網址：  </p>
+<p><a href="http://www.ubuntubuzz.com/2011/11/ubuntu-desktop-screen-recording-tool.html">http://www.ubuntubuzz.com/2011/11/ubuntu-desktop-screen-recording-tool.html</a></p>
+                <a class="readmore" href="/332/gnome-shell-built-in-desktop-recording/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/326/ubuntu-desktop-record-recorditnow-ffmpeg/" rel="bookmark"
+                           title="Permalink to Ubuntu desktop record: recorditnow+ffmpeg">Ubuntu desktop record: recorditnow+ffmpeg</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-03-29T02:13:00">
+                四 29 3月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/ffmpeg.html">ffmpeg</a><a href="/tag/recorditnow.html">recorditnow</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+</footer><!-- /.post-info -->                <p><img alt="recorditnow" src="http://i.imgur.com/EQUigGel.png" title="RecordItNow_507" /></p>
+<p>最近找了很多類似的軟體，不過有些都弄不起來，不然就是怪怪的囧，後來試了這套組合發現還不錯：recorditnow + ffmpeg，ffmpeg 是核心，recorditnow 是 frontend。</p>
+<p>下面是使用教學的影片，可以參考看看：<br />
+<a href="http://www.youtube.com/watch?v=dEnZe-qfLWA">http://www.youtube.com/watch?v=dEnZe-qfLWA</a></p>
+<p>不過我直接下 recorditnow 執行 ffmpeg 選項會有沒辦法停止的問題。<br />
+<a href="https://bugs.launchpad.net/ubuntu/+source/recorditnow/+bug/858973">https://bugs.launchpad.net/ubuntu/+source/recorditnow/+bug/858973</a><br />
+上面這個連結有提供修正的 PPA<br />
+以 ubuntu 來講，執行：</p>
+<div class="highlight"><pre>sudo add-apt-repository ppa:ap10336/ppa
+sudo apt-get update
+sudo apt-get ...</pre></div>
+                <a class="readmore" href="/326/ubuntu-desktop-record-recorditnow-ffmpeg/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/273/centos6-2-timezone-tzselect/" rel="bookmark"
+                           title="Permalink to centos6.2 timezone「tzselect」">centos6.2 timezone「tzselect」</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-24T00:32:00">
+                五 24 2月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/centos.html">centos</a><a href="/tag/ntp.html">ntp</a><a href="/tag/timezone.html">timezone</a><a href="/tag/tzselect.html">tzselect</a></p>
+</footer><!-- /.post-info -->                <p>最近在裝 centos
+來用的時候，在設定的時候也用了 <code>ntpd</code> 來同步時間，不過發現一直沒辦法把時間弄正常，即使我把
+ntp server
+換成台灣的也一樣，後來想到了之前有用過的辦法，用 <code>/usr/share/zone/info/Asia/Taipei</code> 覆蓋掉 <code>/etc/localtime</code>，結果還是不行（之前這樣用有成功過的說 QQ）。</p>
+<p>後來查到一個好像更好的辦法，就是用 <code>tzselect</code> 這個指令，執行後會出現互動式介面，照著選時區，設定完就正常啦～～。</p>
+<p>參考網址：<br />
+<a href="http://bbs.bitscn.com/146159">http://bbs.bitscn.com/146159</a></p>
+                <a class="readmore" href="/273/centos6-2-timezone-tzselect/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/245/different-color-in-screen-and-normal-mode/" rel="bookmark"
+                           title="Permalink to Different color in screen and normal mode">Different color in screen and normal mode</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-10T00:43:00">
+                五 10 2月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/screen.html">screen</a><a href="/tag/screenrc.html">screenrc</a><a href="/tag/vim.html">vim</a></p>
+</footer><!-- /.post-info -->                <p>查了一下資料，發現應該是跟顏色的支援有關，要在 <code>.screerc</code> 裡加上一行：</p>
+<div class="highlight"><pre>termcapinfo xterm &#39;Co#256:AB=E[48;5;%dm:AF=E[38;5;%dm&#39;
+</pre></div>
+
+
+<p>參考網址：<br />
+<a href="http://fcamel-fc.blogspot.com/2009/04/python-vim.html">http://fcamel-fc.blogspot.com/2009/04/python-vim.html</a></p>
+                <a class="readmore" href="/245/different-color-in-screen-and-normal-mode/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/239/linux-mint-cinnanmon-change-position-of-window-buttons/" rel="bookmark"
+                           title="Permalink to Linux Mint cinnamon change position of window buttons">Linux Mint cinnamon change position of window buttons</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-04T18:56:00">
+                六 04 2月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/cinnanmon.html">cinnanmon</a><a href="/tag/gconf-editor.html">gconf-editor</a></p>
+</footer><!-- /.post-info -->                <p>==================================================<br />
+2012/03/28更新</p>
+<h1>cinnamon 已經有提供修改按鈕位置的設定了，所以就不用照以下的方法來改哩。</h1>
+<p>最近裝了 cinnamon 來玩玩，是有一些有趣的東西沒錯，像是視窗動畫，不過整體來說，我覺得並沒有好到值得我換成這套，所以用了沒多久我就換回來 Gnome 啦～～。</p>
+<p>不過這邊還是來講一下 cinnamon 怎麼改變視窗按鈕位置的方法吧。</p>
+<p>首先先裝編輯設定的套件</p>
+<div class="highlight"><pre>apt-get install gconf-editor
+</pre></div>
+
+
+<p>執行後會出現一個視窗，接著如以下圖片，可以看到右邊有 <code>button layout</code> 這個欄位，有關閉，最小化，最大化的值，<code>:</code> 代表相對位置，如下圖的話指的是放在左邊，如果要放在右邊的話就把 <code>:</code> 移到前面就
+OK 了。</p>
+<p><img alt="gconf-editor" src="http://198.199.117.21/wp-content/uploads/2012/02/502.png" /></p>
+                <a class="readmore" href="/239/linux-mint-cinnanmon-change-position-of-window-buttons/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/233/naming-apache-log-with-date/" rel="bookmark"
+                           title="Permalink to naming apache log with date">naming apache log with date</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-12-19T17:01:00">
+                一 19 12月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/apache.html">apache</a><a href="/tag/daily.html">daily</a><a href="/tag/logrotate.html">logrotate</a></p>
+</footer><!-- /.post-info -->                <p>目前是用 <code>logrotate</code> 來作，只要在 <code>/etc/logrotate.d/apache2</code> 裡加入下面這個參數即可：</p>
+<ul>
+<li>dateext</li>
+</ul>
+<p>另外可以根據需求看要不要把 <code>weekly</code> 改為 <code>daily</code> 這樣。</p>
+<p>處理過後的檔名就會像這樣 <code>access.log-20111218.gz</code>，這樣在之後處理和分析
+log 會比較方便，另外記得數量也要根據需求改，因為改完後變成能保存的 log
+日期也會跟著減少，要增多的話也是直接修改上面 <code>/etc/logrotate.d/apache2</code> 這個檔案，將 <code>rotate</code> 後面的數字加大，後面的數字表示要存的 log 數量，超過的話就會將最舊的刪除這樣。</p>
+<p>後記：<br />
+如果要跟 awstats 搭配的話可以在裡面加入：</p>
+<div class="highlight"><pre>prerotate
+    /usr/lib/cgi-bin/awstats.pl -config ...</pre></div>
+                <a class="readmore" href="/233/naming-apache-log-with-date/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/218/several-ways-to-check-process-port/" rel="bookmark"
+                           title="Permalink to Several ways to check process port">Several ways to check process port</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-12-15T02:51:00">
+                四 15 12月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/fuser.html">fuser</a><a href="/tag/lsof.html">lsof</a><a href="/tag/netstat.html">netstat</a><a href="/tag/port.html">port</a><a href="/tag/rpcinfo.html">rpcinfo</a></p>
+</footer><!-- /.post-info -->                <p>目前知道的就以下四種，記得用 root
+權限來看，或者是指令前面加 <code>sudo</code>，不然有些 process 會看不到。</p>
+<ul>
+<li>netstat -antp</li>
+<li>rpcinfo -p</li>
+<li>lsof -i :port</li>
+<li>fuser port/tcp</li>
+</ul>
+<p>以上指令的 <code>port</code> 為你要的 port
+數字。基本上用 <code>netstat</code> 會列出一堆清單，通常就可以在其中找到，不行的話就使用 <code>lsof</code>，還是沒有的話，接下來就用 <code>fuser</code>，如果真的還是沒有，最後就用 <code>rpcinfo</code> 查看，再沒有我就沒辦法了 XD。</p>
+<p>如果是要看 80 port 被什麼所佔用，可以如下使用：</p>
+<div class="highlight"><pre>lsof -i :80
+fuser 80:tcp ...</pre></div>
+                <a class="readmore" href="/218/several-ways-to-check-process-port/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/category/linux.html">&laquo;</a>
+    Page 2 / 5
+        <a href="/category/linux3.html">&raquo;</a>
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

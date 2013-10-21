@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - MutationObserver</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1113/javascript-mutationobserver/">Javascript MutationObserver</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-07-03T18:46:00">
+                三 03 7月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js.html">js</a>. </p>
+<p>tags: <a href="/tag/mutationobserver.html">MutationObserver</a></p>
+</footer><!-- /.post-info --><p>最近看到 Aol Reader release，試用了一下，感覺還滿不錯的，但是右邊的廣告實在很礙眼，就算用
+adblock 擋掉，右邊還是會留空，想說都沒寫過 browser 的 extension
+，所以就拿這個來練功啦～，不然其實寫 userscript 也可以就是。要弄的
+extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通，寫起來 CP
+值比較高 XD。</p>
+<!--more-->
+
+<p>本來想說直接綁定 <code>window.onload</code> 在裡面做就好了，不過後來發現 Aol Reader
+在 <code>onload</code> 之後還會有個它自己 loading
+的頁面，處理起來就變麻煩很多，因為除了要觀察 dom 來判斷何時才算真的
+ready 以外，另外就是 Opera extension guide 裡說限制不能用 setTimeout
+之類的函式，本來我還想用暴力法，每秒檢查要處理的 element
+讀好了沒，確定都好了才做，看來是行不通...。</p>
+<p>後來大 CA 在噗浪上面說可以用 <code>MutationObserver</code>
+做，找了一些資料看，好像真的是我要的東西 XD。MutationObserver
+簡單說，它可以用來 monitor 某個 element 的變化並呼叫對應的
+callback。後來我又發現 Aol Reader 在真正 ready 的情況下，會在 <code>body</code>
+上加上 <code>ready</code> 這個 class，說起來還滿貼心的
+XD。所以該有的條件都有了，接下來就是實作啦。下面是部分的實作內容：</p>
+<div class="highlight"><pre><span class="nx">MutationObserver</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">MutationObserver</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">WebKitMutationObserver</span><span class="p">;</span>
+<span class="nx">observer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MutationObserver</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">mutationRecord</span><span class="p">,</span> <span class="nx">observer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">mutationRecord</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">mutation</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s1">&#39;ready&#39;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// do something here</span>
+            <span class="c1">// ...</span>
+
+            <span class="c1">// Done, remove this event.</span>
+            <span class="nx">observer</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+<span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="p">{</span><span class="nx">attributes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">attributeFilter</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]});</span>
+</pre></div>
+
+
+<p>這邊設定只關注 attribute 的變化，然後在 <code>classList</code> 裡如果有 <code>ready</code>
+這個 class 的時候就做處理，className
+因為要自己再另外切字串，會比較麻煩一點，所以這邊才改用
+classList。在做完之後就用 <code>disconnect()</code> 把這個綁定的 event
+給清除掉。比較要注意的是 <code>attributeFilter</code>，如果沒設定的話，會連其他
+attribute 有變化的時候也呼叫 callback，這邊設定只對 <code>class</code>
+有變化的情況下才呼叫 callback，效能上多少會有一點差。<a href="https://github.com/carlcarl/Aol-Reader-No-ads">這邊是 source code
+的網址</a>。</p>
+<p>這邊只有大概講一下，其他 MutationObserver
+的使用細節可以看下面的參考網址。</p>
+<p>參考網址：<br />
+<a href="https://developer.mozilla.org/zh-CN/docs/DOM/MutationObserver">MutationObserver</a><br />
+<a href="http://chrisyip.im/post/mutation-events-and-mutationobserver/">Mutation 事件和 MutationObserver</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

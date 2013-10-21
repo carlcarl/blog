@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - epydoc</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/335/python-documentation-epydoc/">python documentation: epydoc</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-04-01T16:05:00">
+                日 01 4月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/epydoc.html">epydoc</a><a href="/tag/python.html">python</a></p>
+</footer><!-- /.post-info --><p><a href="http://epydoc.sourceforge.net/index.html">epydoc</a> 是利用 parse python 的程式來製作文件，文件的類型像是一般的 html 和 pdf 都能產生。我個人是比較偏好 html 的格式囉，它的 html 樣板跟 Javadoc 的配置差不多，比較習慣。</p>
+<p>它 parse 程式的方法主要是利用 method 一開始的 <code>"""</code> 註解，不習慣寫的人可以參考它的 <a href="http://epydoc.sourceforge.net/fields.html#fields">欄位官方範例</a>。</p>
+<p>首先要先安裝 <code>epydoc</code>，在官方網站上沒講到 ubuntu
+的安裝包，用 <code>apt-get</code> 也找不到，後來試看看 <code>pip install epydoc</code> 就 OK
+了。這邊有點要注意的是，如果你的 project
+是在 <code>virtualenv</code> 環境下的話，建議將 <code>epydoc</code> 也裝在 <code>virtualenv</code> 裡，不然它 parse 文件時在找相依 library 會有錯誤。</p>
+<p>安裝好後就可以執行指令來 parse 了，將 <code>python_project資料夾</code> 改成你要
+parse 的 project 資料夾名稱，另外再指定「你要的文件資料夾名稱」即可：</p>
+<div class="highlight"><pre>epydoc --html python_project資料夾 -o 你要的文件資料夾名稱
+</pre></div>
+
+
+<p>其他更進階的指令參數可以參考<a href="http://epydoc.sourceforge.net/using.html">這邊</a>。</p>
+<p>如果出現 <code>ImportError: Settings cannot be imported, because environment
+variable DJANGO_SETTINGS_MODULE is undefined.</code> 錯誤的話，最簡單的方式可以在 project
+裡的 <code>**init**.py</code> 裡加上：</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;DJANGO_SETTINGS_MODULE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;myapp.settings&#39;</span> 
+<span class="c"># myapp 改成你的 app 名稱</span>
+</pre></div>
+
+
+<p>嘗試用看看 <code>epydoc</code> 來 parse python 的程式，出來的 html
+文件還算不錯囉，不過不知道還有沒有什麼其他比較好的文件產生工具就是了。</p>
+<p>參考網址：  </p>
+<p><a href="http://eliasbland.wordpress.com/2010/01/25/importerror-settings-cannot-be-imported-because-environment-variable-django_settings_module-is-undefined/">http://eliasbland.wordpress.com/2010/01/25/importerror-settings-cannot-be-imported-because-environment-variable-django_settings_module-is-undefined/</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

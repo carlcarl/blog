@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>ubuntu install awstats to analyze web traffic</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/30/ubuntu-install-awstats-to-analyze-web-traffic/" rel="bookmark"
+           title="Permalink to ubuntu install awstats to analyze web traffic">ubuntu install awstats to analyze web traffic</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-04T13:04:00">
+                一 04 7月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/awstats.html">awstats</a></p>
+</footer><!-- /.post-info -->      <p><a href="http://i.imgur.com/gjdRNUQl.png"><img alt="1309785078-4e7966370fbebe6c564d5c251d18d3da_n" src="http://i.imgur.com/gjdRNUQl.png" /></a></p>
+<p>awstats 這個工具可以透過分析 Server 的access log 檔來統計網站流量，資料的部份可以透過時間長短、來訪者的資料(國籍之類的)、瀏覽器種類來作分類，這些統計資訊則透過Web介面顯示出來。而上面這個圖是裝完 awstats 後的 Web 介面(還不錯精美= =+)</p>
+<!--more-->
+
+<p>接下來就是安裝的部份啦，首先先安裝套件:</p>
+<div class="highlight"><pre>sudo apt-get install awstats
+</pre></div>
+
+
+<p>接著到 <code>/etc/awstats/</code> 底下可以看到預設的 <code>awstats.conf</code> 檔，把這個檔複製並更名 假如網站名稱為 <code>www.domain.com</code> 的話</p>
+<div class="highlight"><pre>cp awstats.conf awstats.www.domain.com.conf
+</pre></div>
+
+
+<p>到時候指定好 config 的參數 他就會去讀這個檔案的設定，然後要稍微修改一下 <code>awstats.www.domain.com.conf</code> 中的內容</p>
+<ul>
+<li>找到 <code>LogFile=</code> 的部份，修改並加上加上你要讀的 access
+    log 檔，例如：<code>LogFile="/var/log/apache2/access.log"</code></li>
+<li>找到 <code>LogFormat=</code> 的部份，將預設的 4 修改為 1，如：<code>LogFormat=1</code>
+    (如果後面執行的時候顯示格式有錯，可以改回 4，但是可能有些東西會沒辦法分析)</li>
+<li>找到 <code>SiteDomain=</code> 的部份，設定你網站的網址，如：<code>SiteDomain="www.domain.com"</code></li>
+<li>找到 <code>#LoadPlugin="decodeutfkeys"</code> 的部份，將前面的 <code>#</code> 刪掉，這個能讓 utf 編碼的關鍵字能夠正常顯示(這邊是參考網路上的教學，至於不加會不會有問題，倒是沒有實際測試過)</li>
+</ul>
+<p>接著到 <code>/usr/share/awstats/lang</code> 底下修改語系檔，將 <code>awstats-tw.txt</code> 將內容的 <code>big</code> 改成 <code>utf-8</code> 並用 <code>utf-8</code> 的編碼存成 <code>awstats-utf8.txt</code> 檔案</p>
+<div class="highlight"><pre>sudo cat awstats-tw.txt | sed -e <span class="s1">&#39;s/big5/utf-8/&#39;</span> | iconv -f big5 -t utf8 &gt; awstats-tw-utf8.txt
+</pre></div>
+
+
+<p>如果發現有權限的錯誤，可以直接轉成 root 再試，通常這樣就可以解決了。設定好之後就可以開始作第一次分析了:</p>
+<div class="highlight"><pre>/usr/lib/cgi-bin/awstats.pl -config<span class="o">=</span>www.domain.com
+</pre></div>
+
+
+<p>之後如果要再做分析，只要在後面加上 <code>-update</code> 就可以了:</p>
+<div class="highlight"><pre>/usr/lib/cgi-bin/awstats.pl -config<span class="o">=</span>www.domain.com -update
+</pre></div>
+
+
+<p>分析之後還沒結束，雖然資料分析完了，不過還是需要 Web 介面，所以還必須設定一下目錄，修改 <code>/etc/apache2/site-available/default</code> (或是你的其他網站設定檔)，加上以下內容:</p>
+<div class="highlight"><pre>Alias /awstatsclasses/ &quot;/usr/share/awstats/lib/&quot;
+Alias /awstats-icon/ &quot;/usr/share/awstats/icon/&quot;
+Alias /awstatscss &quot;/usr/share/doc/awstats/examples/css&quot;
+ScriptAlias /awstats/ /usr/lib/cgi-bin/
+Options ExecCGI -MultiViews +SymLinksIfOwnerMatch
+Options None
+AllowOverride None
+Order allow,deny
+Allow from All
+</pre></div>
+
+
+<p>接著看網頁應該就可以看到結果了: 
+http://www.domain.com/awstats/awstats.pl?config=www.domain.com</p>
+<p>另外要注意的是 awstat 並不會自動更新，所以必須設定 crobtab 之類的程式，一天更新一次資料之類的才行，以每天半夜三點執行為例，修改 <code>/etc/crobtab</code> 加上以下指令:</p>
+<div class="highlight"><pre>00 3 * * * root /usr/lib/cgi-bin/awstats.pl -config=www.domain.com -update &gt; /dev/null
+</pre></div>
+
+
+<p>另外這個部份也可以跟 <a href="/233/naming-apache-log-with-date" title="將apache log改為日期名稱">apache logrotate</a> 的設定做搭配</p>
+<p>參考網頁<br />
+<a href="http://blog.db.idv.tw/2009/09/awstatsweb-log.html">http://blog.db.idv.tw/2009/09/awstatsweb-log.html</a><br />
+<a href="http://2007xyz.blogspot.com/2007/10/ubuntu-704-awstats.html">http://2007xyz.blogspot.com/2007/10/ubuntu-704-awstats.html</a><br />
+<a href="http://blog.longwin.com.tw/2009/08/ubuntu-904-server-instatll-awstats-2009/">http://blog.longwin.com.tw/2009/08/ubuntu-904-server-instatll-awstats-2009/</a><br />
+<a href="http://vega02.pixnet.net/blog/post/32284929">http://vega02.pixnet.net/blog/post/32284929</a><br />
+<a href="http://oss.tw/elgg/pg/forum/topic/17314/-ubuntu-1010-awstats/">http://oss.tw/elgg/pg/forum/topic/17314/-ubuntu-1010-awstats/</a><br />
+<a href="http://maestric.com/doc/ubuntu/awstats">http://maestric.com/doc/ubuntu/awstats</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

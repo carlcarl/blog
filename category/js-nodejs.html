@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - js, node.js</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/45/nodejs-express-fail/">nodejs express fail</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2011-09-07T12:09:00">
+                三 07 9月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js-nodejs.html">js, node.js</a>. </p>
+<p>tags: <a href="/tag/express.html">express</a><a href="/tag/nodejs.html">node.js</a></p>
+</footer><!-- /.post-info --><p><a href="http://i.imgur.com/itGPLvWl.png"><img alt="1315397444-1533326740" src="http://i.imgur.com/itGPLvWl.png" /></a></p>
+<p>之前好不容易決定要用 express 這個 framework，可是安裝完執行 project 後卻出現錯誤，拜了 google 大神之後才發現，好像是他不會去找裝在系統中的 express library。事實上，如果有用 npm 裝其他的 module，應該也有可能會出現一樣的錯誤：找不到 module 啊～～。</p>
+<p>後來在<a href="http://stackoverflow.com/questions/5919629/express-module-not-found-when-installed-with-npm#_=_">stackoverflow也看到有人有同樣的問題</a>，雖然原 PO 已經選了其中一個回答當作答案，不過顯然那個答案的作法：每次安裝就要複製 library 實在是不怎麼簡潔。後來在文章下面的回答中有看到一個更好的作法：</p>
+<div class="highlight"><pre>npm link express
+</pre></div>
+
+
+<p>問題就輕鬆的解決掉了。</p>
+<p>如果之後裝了其他 module，在使用的時候也出現找不到 module 的錯誤，用 <code>npm link module名稱</code> 就能解決了。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/41/linux-mint-install-termkit/" rel="bookmark"
+                           title="Permalink to Linux Mint install Termkit">Linux Mint install Termkit</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-09-04T08:15:00">
+                日 04 9月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js-nodejs.html">js, node.js</a>. </p>
+<p>tags: <a href="/tag/nodejs.html">node.js</a><a href="/tag/npm.html">npm</a><a href="/tag/termkit.html">termkit</a></p>
+</footer><!-- /.post-info -->                <p><a href="http://i.imgur.com/6ZoWGJLl.png"><img alt="1315124444-2969515523" src="http://i.imgur.com/6ZoWGJLl.png" /></a></p>
+<p>其實之前就有看到這個東西了，當時覺得還滿炫的，不過當時好像只有支援 Mac 的樣子，後來就沒去理了。最近又看到這樣東西，發現在 Linux 上面已經有成功執行的例子了，所以想說也來裝裝看這樣，我目前是在 Linut Mint 上面裝，Ubuntu 應該理所當然也可以。</p>
+<p>這個工具簡單講算是在機器上跑一個Server，然後再利用瀏覽器連上去，所以必須在 webkit 瀏覽器上面執行的樣子，像是 chrome(或 chromium)或是safari瀏覽器才能跑。</p>
+<p>首先一開始先把需要的套件裝一裝吧</p>
+<div class="highlight"><pre>sudo apt-get install build-essential git libssl-dev
+</pre></div>
+
+
+<p>接下來有三個東西要裝：node.js、npm、termkit。</p>
+<p>開始裝 node.js，一開始偷懶想直接裝套件的版本，不過在後面卻一直打牆，後來才發現套件版的版本舊的可怕，<a href="https://github.com/isaacs/npm/issues/1185">npm的安裝需要node.js較新的版本</a>，所以不建議裝套件版的！但是也有發現<a href="http://askubuntu.com/questions/54617/error-while-installing-termkit">新版unstable的版本也是有點問題 ...</a></p>
+                <a class="readmore" href="/41/linux-mint-install-termkit/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

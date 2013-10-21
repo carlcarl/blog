@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - C &amp; C++, linux</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1267/c-define-debug-function/">C define debug function</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-08-13T15:50:00">
+                二 13 8月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c-linux.html">C &amp; C++, linux</a>. </p>
+<p>tags: <a href="/tag/debug.html">debug</a><a href="/tag/makefile.html">makefile</a></p>
+</footer><!-- /.post-info --><p>參考<a href="http://www.makelinux.net/ldd3/chp-4-sect-2">這篇</a>，然後做了點修改。</p>
+<!--more-->
+
+<div class="highlight"><pre>#undef CM_DBG
+#ifdef LTE_CM_DEBUG
+#   define CM_DBG(fmt, args...) do{   
+    printf(&quot;  (%d/%s): &quot;fmt, __LINE__, __FILE__, ## args);   
+}while(0)
+#else
+#   define CM_DBG(fmt, args...)
+#endif
+
+#undef CM_DBGG
+#define CM_DBGG(fmt, args...) do{   
+    printf(&quot;  (%d/%s): &quot;fmt, __LINE__, __FILE__, ## args);   
+}while(0)
+</pre></div>
+
+
+<p>大致除了命名外還做了點修改：</p>
+<ol>
+<li>把 <code>printk</code> 的部分拿掉，因為我不需要。</li>
+<li><code>CM_DBGG</code> 改成跟原本功能一樣。這樣有個好處就是我可以先 disable
+    所有的 debug function，然後將要看的 <code>CM_DBG</code> 後面加個
+    <code>G</code>，就可以只顯示需要注意的部分。</li>
+</ol>
+<p>至於 Makefile 的部分有個折衷的方法：</p>
+<div class="highlight"><pre><span class="c"># DEBUG</span>
+<span class="nv">DEBUG</span> <span class="o">=</span> y
+<span class="cp">ifeq ($(DEBUG),y)</span>
+<span class="nv">CFLAGS</span> <span class="o">+=</span> -DLTE_CM_DEBUG
+<span class="cp">endif</span>
+
+<span class="nf">debug</span><span class="o">:</span> <span class="m">CFLAGS += -DLTE_CM_DEBUG</span>
+<span class="nf">debug</span><span class="o">:</span> <span class="m">all</span>
+</pre></div>
+
+
+<p>這樣可以透過修改 <code>DEBUG</code> 的值，來決定是否要開啟 debug
+function，例如在開發時就可以先開啟，等到要 production 的時候再設定
+<code>DEBUG = n</code>，另外也可以用 <code>make debug</code> 來直接開啓
+debug，執行上會更簡單。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/838/linux-kernel-space-get-time-interval/" rel="bookmark"
+                           title="Permalink to Linux kernel space get time interval">Linux kernel space get time interval</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-04-27T00:23:00">
+                六 27 4月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c-linux.html">C &amp; C++, linux</a>. </p>
+
+</footer><!-- /.post-info -->                <p>之前聽到可以用 <code>jiffies</code>
+來抓時間，可是我自己測的結果是前後抓的時間會都一樣囧。查了一下
+stackoverflow，也有<a href="http://stackoverflow.com/questions/4655711/measuring-execution-time-of-a-function-inside-linux-kernel">一個遇到一樣的問題</a>，我猜可能 <code>jiffies</code> 也是用
+period update 的方式做更新，由於中間測量的 function
+太快，導致來不及更新就拿到了一樣的值這樣。而在下面的回答中看到可以用
+<code>do_gettimeofday()</code> 來抓時間區間，簡單範例如下：<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="cp">#include &lt;linux/time.h&gt;</span>
+<span class="c1">// ...</span>
+<span class="k">struct</span> <span class="n">timeval</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">;</span>
+<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
+
+<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">begin</span><span class="p">);</span>
+<span class="c1">// Do something here</span>
+<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">end</span><span class="p">);</span>
+
+<span class="c1">// Get milliseconds </span>
+<span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">-</span> <span class="n">begin</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="n">val</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end ...</span></pre></div>
+                <a class="readmore" href="/838/linux-kernel-space-get-time-interval/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

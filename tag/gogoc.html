@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - gogoc</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/499/chakra-gogoc-compile/">Chakra gogoc compile</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-06-07T02:31:00">
+                四 07 6月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/chakra.html">chakra</a><a href="/tag/gogoc.html">gogoc</a></p>
+</footer><!-- /.post-info --><p>之前在 <a href="http://blog.carlcarl.tw/397/ubuntu-tunnel-broker" title="Ubuntu Tunnel Broker IPv6 連 中研院">Ubuntu 系列上可以很方便的安裝 gogoc</a>，但是後來換到 Chakra
+之後，ccr 裡並沒有提供安裝包，沒辦法，只好自己編譯。</p>
+<p><!--more-->  </p>
+<p>1.首先先下載安裝包(不能下載的話，就必須到<a href="http://www.gogo6.com/">官網</a>註冊帳號並下載囉)、解壓縮，並進入到資料夾中：</p>
+<div class="highlight"><pre>wget http://content.gogo6.com/gogoc-1_2-RELEASE.tar.gz
+tar -xf gogoc-1_2-RELEASE.tar.gz
+<span class="nb">cd </span>gogoc-1_2-RELEASE/gogoc-tsp
+</pre></div>
+
+
+<p>2.接下來是編譯，這邊沒意外的話會有錯（至少我是這樣XD），所以要先做點修改，將
+    <code>#include &lt;stddef.h&gt;</code> 加到
+    <code>../gogoc-messaging/gogocmessaging/message.h</code>
+    的檔案最上方即可，這邊提供一下錯誤訊息的片斷：</p>
+<!-- -->
+
+<div class="highlight"><pre>src/clientmsgsender.cc:145:17: error: expected primary-expression before 『,』 token
+</pre></div>
+
+
+<p>3.正式編譯（這邊如果還是有錯的話，就是相依套件的問題，可以參考它的
+    <code>INSTALL</code> 檔案中的套件相依性解說）：</p>
+<div class="highlight"><pre><span class="n">make</span> <span class="n">all</span>
+</pre></div>
+
+
+<p>4.以 root 權限安裝：</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">make</span> <span class="n">installdir</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">gogoc</span> <span class="n">install</span>
+</pre></div>
+
+
+<p>5.修 設定檔，設定檔以上面的安裝路徑來說，會是
+    <code>/usr/local/gogoc/bin/gogoc.conf</code>
+    這個檔案，檔案該如何修改可以參考[我之前這篇][Ubuntu
+    系列上可以很方便的安裝 gogoc]。</p>
+<p>6.為了執行方便，在<code>/usr/local/bin</code>中建立一個連結：</p>
+<div class="highlight"><pre>sudo ln -s /usr/local/gogoc/bin/gogoc /usr/local/bin/gogoc
+</pre></div>
+
+
+<p>7.手動執行，這邊要用 root 權限執行並指定設定檔位置才行，不然會有
+    <code>gogoc Failed to open specified file.</code> 的錯誤：</p>
+<div class="highlight"><pre>sudo gogoc -f /usr/local/gogoc/bin/gogoc.conf
+</pre></div>
+
+
+<p>8.如果執行的時候出現以下錯誤不代表失敗，可以利用
+<a href="http://test-ipv6.com/">http://test-ipv6.com/</a> 這個網站實際測試，如果滿分就 OK 囉。</p>
+<div class="highlight"><pre><span class="n">TSP</span> <span class="n">version</span> <span class="n">not</span> <span class="n">supported</span> <span class="n">by</span> <span class="n">server</span><span class="o">:</span> <span class="mf">2.0.2</span><span class="p">.</span>
+<span class="n">Failed</span> <span class="n">to</span> <span class="n">retrieve</span> <span class="n">TSP</span> <span class="n">capabilities</span><span class="p">.</span>
+<span class="n">Disconnected</span><span class="p">.</span> <span class="n">Retrying</span><span class="p">.</span>
+</pre></div>
+
+
+<p>9.考慮加入開機時執行，這邊就看你要怎麼放了，我是在<code>~/.kde4/Autostart</code>
+    中寫一個簡單的 shell，然後這個檔案裡加入上面的這行指令這樣。<br />
+</p>
+<p>參考網址：  </p>
+<p><a href="http://www.gogo6.com/group/gogoclientdevelopment/forum/topics/clientmsgsender-cc-in-member-function-avoid-gogocmessaging">http://www.gogo6.com/group/gogoclientdevelopment/forum/topics/clientmsgsender-cc-in-member-function-avoid-gogocmessaging</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

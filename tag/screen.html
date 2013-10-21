@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - screen</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1375/tig-broken-in-tmux/">tig broken in tmux</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-10-05T02:15:00">
+                六 05 10月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux-ban-ben-guan-li.html">linux, 版本管理</a>. </p>
+<p>tags: <a href="/tag/screen.html">screen</a><a href="/tag/tig.html">tig</a><a href="/tag/tmux.html">tmux</a></p>
+</footer><!-- /.post-info --><p>這個問題已經困擾我滿久了，在 <a href="http://tmux.sourceforge.net">tmux</a> 裡用 <a href="https://github.com/jonas/tig">tig</a>
+畫面會一直破碎，不過一直找不到原因，最近想到，於是又找看看有沒有解法，後來試了<a href="https://wiki.archlinux.org/index.php/tmux">一篇</a>裡面的做法就
+OK 了 QQ。</p>
+<!--more-->
+
+<p>靈感是在查資料的時候看到有人是因為在 <code>tmux.conf</code> 裡設定了
+<code>default-terminal=xterm</code> 想到的，中間有試了一下 screen，發現 tig 在
+screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</code>，而我在 tmux
+下得到的輸出卻是 <code>xterm-256color</code>，想說朝這個方向去找資料。這邊先找了
+<code>tmux.conf</code> 中，但是我並沒有設定這個東西，看了
+<code>.zshrc</code>，原來我是在這邊設定了
+<code>export TERM=xterm-256color</code>，於是我參看上面連結裡的內容在設定 <code>TERM</code>
+下面再加上了一行就 OK 了：</p>
+<div class="highlight"><pre><span class="p">[</span> <span class="o">-</span><span class="n">n</span> <span class="s">&quot;$TMUX&quot;</span> <span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">export</span> <span class="n">TERM</span><span class="o">=</span><span class="n">screen</span><span class="o">-</span><span class="mi">256</span><span class="n">color</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/245/different-color-in-screen-and-normal-mode/" rel="bookmark"
+                           title="Permalink to Different color in screen and normal mode">Different color in screen and normal mode</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-10T00:43:00">
+                五 10 2月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/screen.html">screen</a><a href="/tag/screenrc.html">screenrc</a><a href="/tag/vim.html">vim</a></p>
+</footer><!-- /.post-info -->                <p>查了一下資料，發現應該是跟顏色的支援有關，要在 <code>.screerc</code> 裡加上一行：</p>
+<div class="highlight"><pre>termcapinfo xterm &#39;Co#256:AB=E[48;5;%dm:AF=E[38;5;%dm&#39;
+</pre></div>
+
+
+<p>參考網址：<br />
+<a href="http://fcamel-fc.blogspot.com/2009/04/python-vim.html">http://fcamel-fc.blogspot.com/2009/04/python-vim.html</a></p>
+                <a class="readmore" href="/245/different-color-in-screen-and-normal-mode/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

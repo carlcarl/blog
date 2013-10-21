@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - decorate</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/865/python-decorate-method-inside-class/">Python decorate method inside class</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-06-02T04:45:00">
+                日 02 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/class.html">class</a><a href="/tag/decorate.html">decorate</a><a href="/tag/python.html">python</a></p>
+</footer><!-- /.post-info --><p>簡易版的可以直接參考
+<a href="http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class">http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class</a>。<br />
+<!--more--><br />
+以我的例子來說，我需要對某些 method 加上 retry
+的機制，除了需要有參數外，還希望能夠把 decorate method 放在 class
+裡頭，這樣我才能呼叫 class 裡頭另外的 method。以下是簡單的例子：</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Test</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="nf">retry</span><span class="p">(</span><span class="n">tries</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">deco_retry</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+            <span class="c"># f is the method decorated</span>
+            <span class="k">def</span> <span class="nf">f_retry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">do_something</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">f_retry</span>
+        <span class="k">return</span> <span class="n">deco_retry</span>
+
+    <span class="nd">@retry</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># do something</span>
+</pre></div>
+
+
+<p>卡住的原因是因為不知道 <code>retry</code> 裡的 <code>self</code>
+要從哪邊傳進來。而從上面的程式來看，整個參數傳遞的順序應該是：<br />
+1. Arguments(from decorate method)<br />
+2. decorated method<br />
+3. Arguments(from decorated method)</p>
+<p>第三個部分也就是 <code>f_retry</code>，<code>self</code> 會在這邊傳進來，因為它也是 <code>request</code>
+的參數，所以後來想想其實也滿合理的就是。</p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

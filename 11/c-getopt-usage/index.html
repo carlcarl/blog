@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>C getopt usage</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/11/c-getopt-usage/" rel="bookmark"
+           title="Permalink to C getopt usage">C getopt usage</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-03-20T18:36:00">
+                日 20 3月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c.html">C &amp; C++</a>. </p>
+<p>tags: <a href="/tag/getopt.html">getopt</a></p>
+</footer><!-- /.post-info -->      <p><code>getopt</code> 是用來判斷程式參數的函式。像是 <code>./a.out -s</code> 之類的, <code>getopt</code>
+能對後面的 <code>-s</code> 這類參數做判斷處理。<br />
+一開始要使用的話記得先：</p>
+<div class="highlight"><pre><span class="cp">#include &lt;unistd.h&gt;</span>
+</pre></div>
+
+
+<p><code>getopt</code> 有三個參數
+<code>(int argc, char* argv[], const char* optsting)</code>，第一個和第二個就直接把
+<code>main</code> 裡頭的參數丟進去就好了，第三個參數就是用來處理前面講到的 <code>-s</code>
+的這類參數。<br />
+舉個例子來講，像是 <code>optstring = "abf"</code>
+的話，就能夠抓到這三個參數值，如：<br />
+<code>./a.out -a</code> 或 <code>./a.out -b</code> 或 <code>./a.out -abf</code> 都 OK。<br />
+而如果你的 <code>f</code> 需要一個字串值，像是後面需要檔案名稱的話，就可以這樣設
+<code>abf:</code>，<code>f:</code> 表示 f 之後需要有個額外的參數, 在處理的時候可以透過
+<code>optarg</code> 來使用這額外的參數。<br />
+<br />
+<code>getopt</code> 通常會用 <code>switch</code> 做處理，以上面的例子當作架構</p>
+<div class="highlight"><pre><span class="k">while</span><span class="p">((</span><span class="n">c</span><span class="o">=</span><span class="n">getopt</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">&quot;abf:&quot;</span><span class="p">))</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="k">case</span> <span class="sc">&#39;a&#39;</span>:
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="sc">&#39;b&#39;</span>:
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="sc">&#39;f&#39;</span>:
+        <span class="n">puts</span><span class="p">(</span><span class="n">optarg</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="err">&#39;</span>:<span class="err">&#39;</span><span class="o">:</span>
+        <span class="n">puts</span><span class="p">(</span><span class="s">&quot;oops&quot;</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="sc">&#39;?&#39;</span>
+        <span class="n">puts</span><span class="p">(</span><span class="s">&quot;wrong command&quot;</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>這裡可以透過檢查是否有 <code>:</code>
+這個字元來判斷是否有漏掉額外的參數，以這裡來講，就是 <code>f</code> 後面接的檔名。<br />
+程式如果照下面這樣下的話，就會印出 "oops" 因為後面少了檔名：</p>
+<div class="highlight"><pre>./a.out -f
+</pre></div>
+
+
+<p><code>?</code> 則代表這參數錯誤，不存在。<br />
+</p>
+<p>那如果有時候只想接檔名呢 如</p>
+<div class="highlight"><pre>./a.out text.txt
+</pre></div>
+
+
+<p>這樣的話 可以在上面的 <code>while</code> 迴圈之後用 <code>argv[optind]</code> 來抓 text.txt。<br />
+<br />
+如果是複數的檔名，如：</p>
+<div class="highlight"><pre>./a.out text.txt text2.txt
+</pre></div>
+
+
+<p>也可以用 for 迴圈 optind++ 到 argc：</p>
+<div class="highlight"><pre><span class="k">for</span><span class="p">(;</span><span class="n">optind</span><span class="o">&lt;</span><span class="n">argc</span><span class="p">;</span><span class="n">optind</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">puts</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="n">optind</span><span class="p">]);</span> <span class="c1">//像是這樣</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>參考網址：</p>
+<p><a href="http://pubs.opengroup.org/onlinepubs/009695399/functions/getopt.html">http://pubs.opengroup.org/onlinepubs/009695399/functions/getopt.html</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

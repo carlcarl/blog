@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>python logging</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/759/python-logging/" rel="bookmark"
+           title="Permalink to python logging">python logging</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-01-28T15:08:00">
+                一 28 1月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/logging.html">logging</a></p>
+</footer><!-- /.post-info -->      <p>紀錄一下 python logging 的一些簡單設定。<br />
+<!--more--></p>
+<h3>可以在一開始設定 log 訊息顯示的等級：</h3>
+<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>設定顯示的訊息格式, ex: <code>ERROR: error message</code></h3>
+<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(levelname)s</span><span class="s">: </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>log message 加上變數</h3>
+<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;The value is </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+
+<p>有人可能會想用另外一個較基本的方法：</p>
+<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;The value is </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+
+<p>但是這種方法，就會變成不管 log 不 log，都會執行組合字串的動作，所以並不建議，這邊可以參考 <a href="http://stackoverflow.com/questions/5082452/python-string-formatting-vs-format">stackoverflow</a> 上的討論。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

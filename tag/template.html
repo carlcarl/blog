@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - template</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/519/vm-template-cant-specify-hostname/">VM template can't specify hostname</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-06-18T18:07:00">
+                一 18 6月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/cloud-linux.html">cloud, linux</a>. </p>
+<p>tags: <a href="/tag/hostname.html">hostname</a><a href="/tag/template.html">template</a></p>
+</footer><!-- /.post-info --><p>這個應該很多 hypervisor 都適用，在做完 vm 的 template 之後，因為
+hostname 在這裡已經固定，所以利用這個 template 再開啟一個新的 instance
+的時候，hostname 會還是原本舊的，如果是用 DHCP
+的方式的話，照理來說是可以拿到當初指定的 hostname 的。<br />
+<!--more--><br />
+這邊我找了很多資料，本來從 hypervisor
+這邊去找資料，不過都沒什麼結果，後來才發現原來從 Guest OS 這邊去修改就
+OK 了，方法很簡單，在你的 VM 裡執行：</p>
+<div class="highlight"><pre>sudo mv /etc/hostname /etc/hostname.old
+</pre></div>
+
+
+<p>然後重開 VM，這樣就會根據 DHCP 所指定的 hostname
+來設定了。所以同樣的，為了方便，可以在做 template
+之前，先執行以上的步驟，這樣之後所開的 instance 就會是指定的 hostname
+了。</p>
+<p>參考網址：  </p>
+<p><a href="http://cloudstack.org/forum/6-general-discussion/8591-ubuntu-10043-server-64-bit-template-creation-issues-take-snapshot-failed--hostname-not-updating.html">http://cloudstack.org/forum/6-general-discussion/8591-ubuntu-10043-server-64-bit-template-creation-issues-take-snapshot-failed--hostname-not-updating.html</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

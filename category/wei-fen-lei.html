@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - 未分類</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1095/firefox-developer-tool-screenshot/">firefox developer tool screenshot</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-06-27T19:00:00">
+                四 27 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/wei-fen-lei.html">未分類</a>. </p>
+<p>tags: <a href="/tag/firefox.html">firefox</a></p>
+</footer><!-- /.post-info --><p>雖然也可以用另外的軟體截圖，不過有時候截的大小不是很準確
+orz。這邊我是要對某個 element 做截圖，而且大小要很精確，後來剛好看到
+firefox 的 developer tool 也有這樣的功能，所以就試了一下。</p>
+<!--more-->
+
+<p>一開始按 <code>shift+F2</code> 就會出現一個輸入視窗。嗯，沒錯，它的 screenshot 是
+CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 叫做 target
+的區塊，可以這樣下：</p>
+<div class="highlight"><pre>screenshot test.png --selector #target
+</pre></div>
+
+
+<p>這樣就會把 <code>#target</code> 這個部分存成一個圖片檔，名稱為 <code>test.png</code>。其他還有
+<code>--delay</code>, <code>--clipboard</code>...等選項，只要輸入 <code>-</code>
+就會出現選項的提示，詳細的可以直接從裡面看。</p>
+<p>參考資料：<br />
+<a href="http://www.ghacks.net/2012/11/02/take-screenshots-straight-from-firefoxs-developer-toolbar/">Take screenshots straight from Firefox’s Developer
+Toolbar(裡面前面是舊版的 API，要注意)</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/287/install-openid-server-masquerade/" rel="bookmark"
+                           title="Permalink to Install openid server: masquerade">Install openid server: masquerade</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-03-21T04:08:00">
+                三 21 3月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/wei-fen-lei.html">未分類</a>. </p>
+<p>tags: <a href="/tag/masquerade.html">masquerade</a><a href="/tag/openid.html">openid</a><a href="/tag/ror.html">RoR</a></p>
+</footer><!-- /.post-info -->                <p><img alt="masquerade" src="http://i.imgur.com/cdwZUHDl.png" title="masquerade" /> </p>
+<p>最近需要安裝 openid server，所以找了很多的 library
+來試，我是從這個<a href="http://wiki.openid.net/w/page/12995226/Run-your-own-identity-server">openid server
+清單</a>下去找，主要功能需求是希望能夠支援多人+資料庫+可以直接連線做認證的部份，但是試了好幾個
+php, python 的沒一個可以說是符合我需求的，perl
+那個文件更是完全看不懂orz。</p>
+<p>後來考慮試試看<a href="https://github.com/dbloete/masquerade">masquerade</a> 這個基於 RoR 的
+library，建完之後發現幾乎符合我的需求，而且安裝基本上不會說太難，所以就選這套啦。作者在
+github project 首頁的 README 是比較新的版本(相較於它的 project wiki
+)，但是還是有部份是有問題的，所以我另外 fork 出來，再修改一下
+README，這是<a href="https://github.com/carlcarl/masquerade">我的連結</a>。</p>
+<p>首先要先建立好 RoR 的環境，這邊提供一個可以作為參考的 ...</p>
+                <a class="readmore" href="/287/install-openid-server-masquerade/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

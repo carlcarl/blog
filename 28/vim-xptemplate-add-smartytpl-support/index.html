@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>vim xptemplate add smarty(tpl) support</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/28/vim-xptemplate-add-smartytpl-support/" rel="bookmark"
+           title="Permalink to vim xptemplate add smarty(tpl) support">vim xptemplate add smarty(tpl) support</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-06-22T14:10:00">
+                三 22 6月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/vim.html">vim</a>. </p>
+
+</footer><!-- /.post-info -->      <p>弄了很久 查了一下資料才發現原來那麼簡單=.=。</p>
+<p>在 <code>personal_ftplugin/</code> 底下要先建一個 <code>smarty</code> 資料夾，接著在裡面新增一個 <code>smarty.xpt.vim</code> 檔案。</p>
+<p>以下是檔案的內容:</p>
+<div class="highlight"><pre>XPTemplate priority=personal
+XPTinclude
+html/html
+</pre></div>
+
+
+<p>這樣就 ok 了，其實就是把 html 的設定拿來用而已。接著開一個 tpl 副檔名的試試看，應該是 ok。我想應該底層有去做 smarty 和 tpl 副檔名的對應，要不然這邊的內容完全都沒看到 tpl 的對應。</p>
+<p>參考網頁</p>
+<p><a href="http://groups.google.com/group/xptemplate/browse_thread/thread/9af94f0e27007817#">http://groups.google.com/group/xptemplate/browse_thread/thread/9af94f0e27007817#</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

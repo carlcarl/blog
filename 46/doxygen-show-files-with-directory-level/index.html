@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>doxygen show files with directory level</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/46/doxygen-show-files-with-directory-level/" rel="bookmark"
+           title="Permalink to doxygen show files with directory level">doxygen show files with directory level</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-09-30T18:15:00">
+                五 30 9月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/doxygen.html">doxygen</a></p>
+</footer><!-- /.post-info -->      <p>因為 project 的檔案太多，用 doxygen parse過後檔案還是多的要死，想說有沒有分資料夾階層顯示的方式。找了很久，後來找到一個折衷的方法，那就是在 config 檔中作以下設定。</p>
+<div class="highlight"><pre>SHOW_DIRECTORIES = YES
+</pre></div>
+
+
+<p>以下是顯示出來的樣子......。好吧，個人是覺得有點陽春，可以的話如果有收合的功能就更好了，只能希望之後的版本會有囉。</p>
+<p><img alt="doxygen_dir.png" src="http://i.imgur.com/WlsqsDB.png" title="doxygen_dir.png" />  </p>
+<p>參考網址：</p>
+<p><a href="http://stackoverflow.com/questions/6874800/directories-within-file-list-in-doxygen">http://stackoverflow.com/questions/6874800/directories-within-file-list-in-doxygen</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

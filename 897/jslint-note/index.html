@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>JSLint note</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/897/jslint-note/" rel="bookmark"
+           title="Permalink to JSLint note">JSLint note</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-08T01:36:00">
+                六 08 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js.html">js</a>. </p>
+<p>tags: <a href="/tag/jslint.html">jslint</a></p>
+</footer><!-- /.post-info -->      <p>記錄一些錯誤的處理方式。 <!--more--></p>
+<h3>1. Document was used before it was defined</h3>
+<p>因為 JSLint 只是用來分析一般的 javascript code，像 <code>document</code>
+這種在瀏覽器上才有用的 global variable，就要在檔案開始加個宣告：</p>
+<div class="highlight"><pre><span class="cm">/* jslint browser:true */</span>
+</pre></div>
+
+
+<h3>2. This is an ES5 feature</h3>
+<p>比較新的
+feature。在一些舊瀏覽器可能會有問題，如果不想管那些舊瀏覽器的話，簡單加上以下這樣就可解決：</p>
+<div class="highlight"><pre><span class="cm">/* jslint es5: true */</span>
+</pre></div>
+
+
+<h3>3. Move the invocation into the parens that contain the function</h3>
+<p>改成用括弧將 function 和 參數 整個包起來就 OK 了，不過這部分不知道為啥
+JSLint 要這樣做就是了 orz。</p>
+<div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{})()</span>
+<span class="c1">// 改成</span>
+<span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{}())</span>
+</pre></div>
+
+
+<h3>4. Missing 'use strict' statement</h3>
+<p>在檔案 或 function 開頭加上下面這行即可。這個代表的是套用較嚴格的方式來
+parse javascript，所以如果程式太亂寫的話，就會直接丟 exception
+或是給你直接掛掉之類的，要注意。</p>
+<div class="highlight"><pre><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+</pre></div>
+
+
+<h3>5. The body of a for in should be wrapped in an if statement</h3>
+<p>會出現這個通常是因為你用以下的方式跑迴圈：</p>
+<div class="highlight"><pre><span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="nx">xxx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do something</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>你需要改成如下：</p>
+<div class="highlight"><pre><span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="nx">xxx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// do something</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 或者是</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">xxx</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do something</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>第一種之所以會需要加上 <code>if</code> 的檢查是因為 <code>for in</code> 的方式會連 <code>prototype</code>
+裡的 attirbute 也會被走到，加上 <code>hasOwnProperty</code>
+可以避免這個問題。但是如果是直接 assign 的 attribute
+的話，還是會被走到，要防止這種問題，用第二種方法會是比較一勞永逸的方式。</p>
+<h3>6. Unexpected 'continue'</h3>
+<p>連 <code>continue</code> 也不給用，也太龜毛，現在就先無視吧
+XD。如果硬要解的話，因為 <code>continue</code> 通常會在某個 <code>if</code> 底下，例如這樣：</p>
+<div class="highlight"><pre><span class="k">while</span> <span class="p">(</span><span class="nx">xxx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">yyy</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// do something</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>這時就可以改成：</p>
+<div class="highlight"><pre><span class="k">while</span> <span class="p">(</span><span class="nx">xxx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">yyy</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>其他還有一些比較複雜的組合，如果解不了的話，就選擇無視吧～～。</p>
+<h3>7. JSLint: Using a function before it's defined error function</h3>
+<p>可以調位置的話就調調看，如果有交互參考的話，就看實際執行是否會有問題，沒有的話也可以考慮不用理這樣。</p>
+<h3>8. unexpected ++</h3>
+<p>就乖乖改用 <code>+= 1</code> 吧(炸)，用 <code>++</code> 明明應該很 OK 的啊，我也不曉得 JSLint
+在想啥。</p>
+<p>參考資料：  </p>
+<p><a href="http://stackoverflow.com/questions/10766201/how-to-rectify-document-was-used-before-it-was-defined-using-jslint">http://stackoverflow.com/questions/10766201/how-to-rectify-document-was-used-before-it-was-defined-using-jslint</a><br />
+<a href="http://jslinterrors.com/this-is-an-es5-feature/">http://jslinterrors.com/this-is-an-es5-feature/</a>  </p>
+<p><a href="http://stackoverflow.com/questions/4979252/jslint-error-move-the-invocation-into-the-parens-that-contain-the-function">http://stackoverflow.com/questions/4979252/jslint-error-move-the-invocation-into-the-parens-that-contain-the-function</a><br />
+<a href="http://stackoverflow.com/questions/1450721/solution-for-jslint-errors">http://stackoverflow.com/questions/1450721/solution-for-jslint-errors</a>
+<a href="http://stackoverflow.com/questions/1335851/what-does-use-strict-do-in-javascript-and-what-is-the-reasoning-behind-it">http://stackoverflow.com/questions/1335851/what-does-use-strict-do-in-javascript-and-what-is-the-reasoning-behind-it</a>  </p>
+<p><a href="http://stackoverflow.com/questions/1963102/what-does-the-jslint-error-body-of-a-for-in-should-be-wrapped-in-an-if-statemen">http://stackoverflow.com/questions/1963102/what-does-the-jslint-error-body-of-a-for-in-should-be-wrapped-in-an-if-statemen</a><br />
+<a href="http://stackoverflow.com/questions/6071762/unexpected-continue">http://stackoverflow.com/questions/6071762/unexpected-continue</a>
+<a href="http://stackoverflow.com/questions/806163/jslint-using-a-function-before-its-defined-error">http://stackoverflow.com/questions/806163/jslint-using-a-function-before-its-defined-error</a>  </p>
+<p><a href="http://stackoverflow.com/questions/3000276/the-unexpected-error-in-jslint">http://stackoverflow.com/questions/3000276/the-unexpected-error-in-jslint</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

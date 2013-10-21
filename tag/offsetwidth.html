@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - offsetWidth</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1107/javascript-style-width-offsetwidth/">javascript style.width offsetWidth</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-06-28T20:29:00">
+                五 28 6月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/css-js.html">css, js</a>. </p>
+<p>tags: <a href="/tag/offsetwidth.html">offsetWidth</a></p>
+</footer><!-- /.post-info --><p>查了一些資料，看起來 <code>style.width</code> 是如果 css 沒指定 element 的 width
+的話，就會拿到空值，即使它本身的確佔有一個大小。這時候如果想拿到實際大小的話可以用
+<code>offsetWidth</code>，另外要注意的是 <code>offsetWidth</code> 是
+<code>readonly</code>，所以如果要設寬度，還是得從 <code>style.width</code> 著手。還有 <a href="http://jsperf.com/style-width-vs-offsetwidth1/5">這篇</a>
+是 <code>style.width</code> 和 <code>offsetWidth</code> 的效能比較，看來 <code>offsetWidth</code>
+效能好很多，看來以後抓寬度就直接抓這個值就好了@@。</p>
+<p>參考資料：<br />
+<a href="http://zhuweiwu.com/?p=86">原生js获取宽高与jquery获取宽高的方法的关系</a><br />
+<a href="http://bbs.csdn.net/topics/80381570">offsetWidth和width有什么不同啊?</a><br />
+<a href="http://stackoverflow.com/questions/4787527/how-to-find-the-width-of-a-div">How to find the width of a div</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

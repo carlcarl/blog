@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - grunch</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1302/brunch-watch-stylesheet-dependency/">brunch watch stylesheet dependency</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-09-09T02:10:00">
+                一 09 9月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/css-js.html">css, js</a>. </p>
+<p>tags: <a href="/tag/grunch.html">grunch</a></p>
+</footer><!-- /.post-info --><p>之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生
+build 好的 css，這個問題一直困擾我很久，每次都要重新跑一次
+<code>brunch watch --server</code> 實在是很不爽，今天晚上剛好有一點時間就來修了。</p>
+<!--more-->
+
+<p>網站是用 <code>less</code>，然後有一個主要的 less 檔來 <code>@import</code> 其他在 <code>less</code>
+資料夾底下的 .less 檔，目錄架構大概像底下這樣：</p>
+<div class="highlight"><pre>├── less
+│   ├── archives.less
+│   ├── index.less
+└── less_proxy.less
+</pre></div>
+
+
+<p>然後 <code>config.ls</code> (這邊是用 livescript) 裡對應的設定部分：</p>
+<div class="highlight"><pre><span class="nv">stylesheets:</span>
+  <span class="nv">joinTo:</span>
+    <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less/</span>
+</pre></div>
+
+
+<p>(這邊在 watch 的時候只監看 <code>less_proxy.less</code> 有沒有變動再做 join，所以改
+<code>less</code> 底下的檔案並不會有反應)</p>
+<p>下面就直接給解法了，首先把 <code>less</code> 資料夾改名為 <code>_less</code>，接著在
+<code>config.ls</code>，加上：</p>
+<div class="highlight"><pre><span class="nv">conventions:</span>
+    <span class="nv">ignored: </span><span class="sr">/^app\/styles\/_less/</span>
+</pre></div>
+
+
+<p>這個設定會將 <code>_less</code> 底下的檔案都加入 watch，但是不會再額外
+compile。這邊要注意的是資料夾必須是 <code>_</code> 開頭的，不然還是不行。</p>
+<p>參考資料：<br />
+<a href="https://github.com/brunch/brunch/issues/681">Stylesheet dependency compilation/watching</a><br />
+<a href="https://github.com/brunch/brunch/blob/stable/docs/config.md">brunch config doc</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

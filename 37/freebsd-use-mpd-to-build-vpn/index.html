@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>FreeBSD use mpd to build VPN</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/37/freebsd-use-mpd-to-build-vpn/" rel="bookmark"
+           title="Permalink to FreeBSD use mpd to build VPN">FreeBSD use mpd to build VPN</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-22T09:43:00">
+                五 22 7月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/freebsd.html">FreeBSD</a>. </p>
+
+</footer><!-- /.post-info -->      <p>不習慣用FreeBSD，所以花了一點時間研究要怎麼裝orz</p>
+<p>感覺比Linux的還麻煩QQ</p>
+<h3>首先先裝 mpd</h3>
+<p>到 <code>/usr/ports/net/mpd/</code> 底下輸入</p>
+<div class="highlight"><pre>make install clean
+</pre></div>
+
+
+<p>這樣就安裝好了~。</p>
+<h3>接下來是要作設定，先修改 <code>/usr/local/etc/mpd/mpd.conf</code></h3>
+<div class="highlight"><pre><span class="k">default</span><span class="o">:</span>
+<span class="n">load</span> <span class="n">pptp1</span>
+<span class="n">pptp1</span><span class="o">:</span>
+<span class="k">new</span> <span class="o">-</span><span class="n">i</span> <span class="n">ng0</span> <span class="n">pptp1</span> <span class="n">pptp1</span>
+<span class="kd">set</span> <span class="n">ipcp</span> <span class="n">ranges</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">88.1</span><span class="sr">/32 192.168.88.56/</span><span class="mi">32</span>
+<span class="n">load</span> <span class="n">pptp_def</span>
+<span class="n">pptp_def</span><span class="o">:</span>
+<span class="kd">set</span> <span class="n">iface</span> <span class="n">disable</span> <span class="n">on</span><span class="o">-</span><span class="n">demand</span>
+<span class="kd">set</span> <span class="n">iface</span> <span class="n">enable</span> <span class="n">proxy</span><span class="o">-</span><span class="n">arp</span>
+<span class="kd">set</span> <span class="n">iface</span> <span class="n">idle</span> <span class="mi">0</span>
+<span class="kd">set</span> <span class="n">iface</span> <span class="n">enable</span> <span class="n">tcpmssfix</span>
+<span class="kd">set</span> <span class="n">bundle</span> <span class="n">enable</span> <span class="n">multilink</span>
+<span class="kd">set</span> <span class="n">link</span> <span class="n">yes</span> <span class="n">acfcomp</span> <span class="n">protocomp</span>
+<span class="kd">set</span> <span class="n">link</span> <span class="n">no</span> <span class="n">pap</span> <span class="n">chap</span>
+<span class="kd">set</span> <span class="n">link</span> <span class="n">enable</span> <span class="n">chap</span><span class="o">-</span><span class="n">msv2</span>
+<span class="kd">set</span> <span class="n">link</span> <span class="n">keep</span><span class="o">-</span><span class="n">alive</span> <span class="mi">10</span> <span class="mi">60</span>
+<span class="kd">set</span> <span class="n">link</span> <span class="n">mtu</span> <span class="mi">1460</span>
+<span class="kd">set</span> <span class="n">ipcp</span> <span class="n">yes</span> <span class="n">vjcomp</span>
+<span class="kd">set</span> <span class="n">ipcp</span> <span class="n">dns</span>   <span class="o">&lt;</span><span class="n">yourDNS</span> <span class="n">Server</span> <span class="n">IP</span><span class="o">&gt;</span>    
+<span class="kd">set</span> <span class="n">ipcp</span> <span class="n">nbns</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">88.1</span>
+<span class="kd">set</span> <span class="n">bundle</span> <span class="n">enable</span> <span class="n">compression</span>
+<span class="kd">set</span> <span class="n">ccp</span> <span class="n">yes</span> <span class="n">mppc</span>
+<span class="kd">set</span> <span class="n">ccp</span> <span class="n">yes</span> <span class="n">mpp</span><span class="o">-</span><span class="n">e40</span>
+<span class="kd">set</span> <span class="n">ccp</span> <span class="n">yes</span> <span class="n">mpp</span><span class="o">-</span><span class="n">e128</span>
+<span class="kd">set</span> <span class="n">ccp</span> <span class="n">yes</span> <span class="n">mpp</span><span class="o">-</span><span class="n">stateless</span>
+</pre></div>
+
+
+<p><code>pptp1:</code> 這種是用來作標籤整理用的，所以取什麼應該都 OK，只是 <code>load</code> 的時候記得改成對應的就好了。另外要注意的是 <code>set ipcp dns</code> 的參數記得改成你要的 dns server，通常跟你的機器上原本所設的 DNS 一樣就可以了。</p>
+<h3>再來是修改 <code>/usr/local/etc/mpd/mpd.links</code></h3>
+<div class="highlight"><pre><span class="n">pptp1</span><span class="o">:</span>
+<span class="kd">set</span> <span class="n">link</span> <span class="n">type</span> <span class="n">pptp</span>
+<span class="kd">set</span> <span class="n">pptp</span> <span class="n">self</span> <span class="o">&lt;</span><span class="n">your</span> <span class="kd">public</span> <span class="n">IP</span><span class="o">&gt;</span>
+<span class="kd">set</span> <span class="n">pptp</span> <span class="n">enable</span> <span class="n">incoming</span>
+<span class="kd">set</span> <span class="n">pptp</span> <span class="n">disable</span> <span class="n">originate</span>
+</pre></div>
+
+
+<p><code>set pptp self</code> 這邊是輸入你 VPN Server 的 IP。</p>
+<h3>編輯密碼檔 <code>/usr/local/mpd/mpd.secret</code></h3>
+<p>輸入你要登入的帳號和密碼就可以了，例如:</p>
+<div class="highlight"><pre>carlcarl carlcarlpassword
+carlcarl2  carlcarl2password
+</pre></div>
+
+
+<h3>修改 <code>/etc/rc.conf</code>，加上:</h3>
+<div class="highlight"><pre><span class="n">mpd_enable</span><span class="o">=</span><span class="s">&quot;YES&quot;</span>
+</pre></div>
+
+
+<h3>接下來啟動服務</h3>
+<div class="highlight"><pre>/usr/local/etc/rc.d/mpd start
+</pre></div>
+
+
+<p>到這裡為止你用 VPN 連線應該是能夠連到你的 VPN Server 了，但是還是沒辦法連外，例如想要用瀏覽器看 google 網頁應該是不行的，所以還要再另外設定 NAT(natd) 和 firewall(ipfw)。</p>
+<h3>首先先修改 <code>/etc/rc.conf</code>，加上:</h3>
+<div class="highlight"><pre><span class="n">ifconfig_bge0_alias0</span><span class="o">=</span><span class="s">&quot;inet 192.168.88.1  netmask 255.255.255.0&quot;</span>
+<span class="n">gateway_enable</span><span class="o">=</span><span class="s">&quot;YES&quot;</span>
+<span class="n">firewall_enable</span><span class="o">=</span><span class="s">&quot;YES&quot;</span>
+<span class="n">firewall_script</span><span class="o">=</span><span class="s">&quot;/root/ipfw.rules&quot;</span>
+<span class="n">natd_enable</span><span class="o">=</span><span class="s">&quot;YES&quot;</span>
+<span class="n">natd_interface</span><span class="o">=</span><span class="s">&quot;bge0&quot;</span>
+</pre></div>
+
+
+<p><code>ifconfig_bge0_alias0</code> 的 <code>bge0</code> 記得改成你 Public IP 網卡的名稱，<code>natd_interface</code> 參數指定裝置的 <code>bge0</code> 也是一樣。剛才 <code>rc.conf</code> 裡有個 <code>firewall_script</code> 是指定你預設要讀的 firewall rule。</p>
+<h3>所以在 <code>/root/</code> 底下新增一個 <code>ipfw.rules</code> 檔案，加上執行的權限(<code>chmod +x ipfw.rules</code>)，並加入以下內容:</h3>
+<div class="highlight"><pre>$IPFW add 100 divert natd all from 192.168.88.56 to any via msk0
+$IPFW add 101 divert natd all from any to 你的PublicIP via msk0
+#$IPFW add 100 divert natd all from any to any via msk0
+$IPFW add 105 allow ip from any to any
+</pre></div>
+
+
+<p>一到三都是指定 NAT 的 rule。如果不介意速度的話，可以只用第三條和第四條規則，我之前只用第三和第四條，可是連一般網路傳輸的速度也被拉下來，所以後來在前面自己加了兩條比較準確的規則，然後把第三條規則給註解掉這樣，第三條規則的意思是所有進入出去的封包都要經過 NAT 程序查看。而我的第一條規則負責看 NAT 出去的，所以只看來源是 <code>192.168.88.56</code> 的，第二條規則負責處理 NAT 進來的，這邊是看目標是 VPN Server 的 IP，當然通常不是每個到 VPN Server 的封包都一定是要 NAT 進來的，會有一些其餘的封包也會被 NAT 抓進去作檢查，這邊不知道能不能改善第二條規則就是了，不過也算是比第三條規則好一些了。另外記得後面的 <code>msk0</code> 要改成你的要的網卡裝置名稱，改完之後重開應該就可以了～。</p>
+<p>參考網頁</p>
+<p><a href="http://blog.weithenn.org/2009/05/freebsdmpd-pptp-vpn.html">http://blog.weithenn.org/2009/05/freebsdmpd-pptp-vpn.html</a></p>
+<p><a href="http://www.section6.net/wiki/index.php/Setting_up_a_PPTP_VPN_server_in_FreeBSD">http://www.section6.net/wiki/index.php/Setting_up_a_PPTP_VPN_server_in_FreeBSD</a></p>
+<p><a href="http://www.huomo.cn/os/article-148b0.html">http://www.huomo.cn/os/article-148b0.html</a></p>
+<p><a href="http://zqliangzm.blog.163.com/blog/static/25903097200810510231119/">http://zqliangzm.blog.163.com/blog/static/25903097200810510231119/</a></p>
+<p><a href="http://www.jb51.net/os/Unix/8786.html">http://www.jb51.net/os/Unix/8786.html</a></p>
+<p><a href="http://www.twbsd.org/cht/articles/vpn.htm">http://www.twbsd.org/cht/articles/vpn.htm</a></p>
+<p><a href="http://www.4oa.com/Article/html/5/27/398/2005/10865.html">http://www.4oa.com/Article/html/5/27/398/2005/10865.html</a></p>
+<p><a href="http://bbs.51cto.com/thread-31035-1.html">http://bbs.51cto.com/thread-31035-1.html</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

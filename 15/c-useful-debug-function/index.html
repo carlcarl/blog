@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>C useful DEBUG function</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/15/c-useful-debug-function/" rel="bookmark"
+           title="Permalink to C useful DEBUG function">C useful DEBUG function</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-03-31T18:29:00">
+                四 31 3月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/c-c.html">C &amp; C++</a>. </p>
+
+</footer><!-- /.post-info -->      <p>學了那麼久才知道有這種好功能可以用 = ="
+<!--more--></p>
+<div class="highlight"><pre><span class="cp">#define DBG(msg, arg...) printf(&quot;%s:%s(%d): &quot; msg,  __FILE__, __FUNCTION__, __LINE__, ##arg)</span>
+</pre></div>
+
+
+<p><code>FILE</code> 表示這行所在的程式檔案</p>
+<p><code>FUNCTION</code> 表示這個函式所在的函式(唸起來好繞口= =)
+不過如果是用 gcc 來編譯的話 建議是用 <code>func</code>, 我之前用 gcc
+編譯前者好像不會過......</p>
+<p><code>LINE</code> 代表這函式是在哪一行</p>
+<p>其實也只是把 <code>printf</code> 有印出一些資訊的版本 define 為一個函式這樣![][]</p>
+<p>(不過要我寫我還真不會= =||)</p>
+<p>而在實際上運用可以這樣:</p>
+<div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">DBG</span><span class="p">(</span><span class="s">&quot;%dn&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">);</span>
+</pre></div>
+
+
+<p>這樣如果 i 不等於 2 的話 就會在前面先印出那些資訊 然後才會印出 index 的值</p>
+<p>雖然在一般的小程式內可能用處不大 因為很快就能夠找到錯誤</p>
+<p>不過如果是好幾十個檔案的程式發生錯誤且在程式內有用這功能來作處理的話
+就能很快找到錯誤囉~~</p>
+<p>參考網址</p>
+<p><a href="http://cgi.blog.roodo.com/trackback/11456265">http://cgi.blog.roodo.com/trackback/11456265</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

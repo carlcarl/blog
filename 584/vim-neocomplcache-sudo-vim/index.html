@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>vim neocomplcache sudo vim error</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/584/vim-neocomplcache-sudo-vim/" rel="bookmark"
+           title="Permalink to vim neocomplcache sudo vim error">vim neocomplcache sudo vim error</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-08-13T17:51:00">
+                一 13 8月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/vim.html">vim</a>. </p>
+<p>tags: <a href="/tag/neocomplcache.html">neocomplcache</a><a href="/tag/vim.html">vim</a></p>
+</footer><!-- /.post-info -->      <p>指令輸入 <code>sudo vim 檔案</code> 的時候會出現錯誤
+<code>neocomplcache Please use sudo.vim plugin instead of sudo command...</code>
+，不過目前遇到只有在 Ubuntu 環境底下有發生，FreeBSD 和 Chakra
+倒是沒出問題。</p>
+<p>因為我懶得去裝 sudo.vim
+這個套件，而且操作會變麻煩，所以照它另外一個錯誤訊息建議去修改
+<code>/etc/sudoers</code> 檔案，只要加上 <code>Defaults always_set_home</code> 這行就 OK 了。</p>
+<p>參考網址：<br />
+<a href="http://https://github.com/Shougo/neocomplcache/issues/179">https://github.com/Shougo/neocomplcache/issues/179</a><br />
+<a href="http://https://bbs.archlinux.org/viewtopic.php?id=72573">https://bbs.archlinux.org/viewtopic.php?id=72573</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

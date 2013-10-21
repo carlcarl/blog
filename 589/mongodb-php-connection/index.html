@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>mongodb php connection</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/589/mongodb-php-connection/" rel="bookmark"
+           title="Permalink to mongodb php connection">mongodb php connection</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-08-13T22:16:00">
+                一 13 8月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb-php.html">database, mongodb, php</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a><a href="/tag/php.html">php</a></p>
+</footer><!-- /.post-info -->      <p>大概寫一下 mongodb + auth 的連線步驟，之前我是這樣做連線認証：<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://localhost:27017&quot;</span><span class="p">);</span>    
+<span class="nv">$db</span> <span class="o">=</span> <span class="nv">$m</span><span class="o">-&gt;</span><span class="na">mytable</span><span class="p">;</span>
+<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">authenticate</span><span class="p">(</span><span class="nv">$DB_USERNAME</span><span class="p">,</span> <span class="nv">$DB_USERPASSWORD</span><span class="p">);</span>
+</pre></div>
+
+
+<p>不過後來更新 php mongodb 的 library 後，發現 <code>authenticate</code> 這個 method
+已經 deprecated 了，所以改用原本 mongodb 的建構式做連線認証：</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://</span><span class="si">${</span><span class="nv">DB_USERNAME}:${DB_USERPASSWORD</span><span class="si">}</span><span class="s2">@localhost/mydb&quot;</span><span class="p">);</span>
+<span class="nv">$db</span> <span class="o">=</span> <span class="nv">$m</span><span class="o">-&gt;</span><span class="na">mydb</span><span class="p">;</span>
+</pre></div>
+
+
+<p>這邊要注意的一點就是，雖然在 Mongo 的建構式中已經對 mydb
+做認証並通過了，但是此時回傳的 <code>$m</code> 只是 Mongo 的 object
+而已，所以一旦要在某個 db 做搜尋的時候，還是必須再指定 db 才行。</p>
+<p>另外還有個小 bug 就是，密碼一旦包括 <code>@</code> 字元的話會有錯誤，即使 escape 成
+<code>%40</code> 也是一樣，不知道這部份的問題該怎麼修正就是。</p>
+<p>參考網址：<br />
+<a href="http://http://stackoverflow.com/questions/3748252">http://stackoverflow.com/questions/3748252</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

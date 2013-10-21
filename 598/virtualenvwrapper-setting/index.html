@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>virtualenvwrapper setting</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/598/virtualenvwrapper-setting/" rel="bookmark"
+           title="Permalink to virtualenvwrapper setting">virtualenvwrapper setting</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-08-28T00:01:00">
+                二 28 8月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/python.html">python</a><a href="/tag/virtualenvwrapper.html">virtualenvwrapper</a></p>
+</footer><!-- /.post-info -->      <p>最近為了方便，加了幾個 virtualenvwrapper 的設定。<br />
+<!--more--></p>
+<h3>使用 <code>mkvirtualenv</code> 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。</h3>
+<p>在 <code>~/.virtualenv/postmkvirtualenv</code>裡加入：</p>
+<div class="highlight"><pre><span class="nv">proj_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$VIRTUAL_ENV</span>|awk -F<span class="s1">&#39;/&#39;</span> <span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
+
+<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span>mkdir ~/Projects/<span class="nv">$proj_name</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;${PWD##*/}&quot;</span> !<span class="o">=</span> <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span><span class="nb">cd</span> ~/Projects/<span class="nv">$proj_name</span>
+<span class="k">fi</span>
+</pre></div>
+
+
+<p>其中，把 <code>Projects</code> 換成你的 project 位置。</p>
+<hr />
+<h3>輸入 <code>workon 你的project</code> 時，自動切換至 project 位置下。</h3>
+<div class="highlight"><pre>在 `~/.virtualenv/postactivate`裡加入：
+
+:::bash
+proj_name=$(echo <span class="nv">$VIRTUAL_ENV</span>|awk -F&#39;/&#39; &#39;{print <span class="nv">$NF</span>}&#39;)
+
+if [ &quot;<span class="cp">${</span><span class="n">PWD</span><span class="c">##*/</span><span class="cp">}</span>&quot; != &quot;~/Projects/<span class="nv">$proj_name</span>&quot; ]; then
+    cd ~/Projects/<span class="nv">$proj_name</span>
+fi
+</pre></div>
+
+
+<h3>使用 rmvirtualenv 時自動刪除資料夾</h3>
+<p>目前似乎沒辦法（炸），因為在 deactivate 狀態下 <code>$VIRTUAL_ENV</code> 是不會有值的，而在 activate 下又不能刪除環境，所以目前看來是無解，只能自己手動刪除了。</p>
+<p>參考網址：<br />
+<a href="http://http://virtualenvwrapper.readthedocs.org/en/latest/tips.html">http://virtualenvwrapper.readthedocs.org/en/latest/tips.html</a><br />
+<a href="http://http://stackoverflow.com/questions/11005457/how-do-i-remove-delete-a-virtualenv">http://stackoverflow.com/questions/11005457/how-do-i-remove-delete-a-virtualenv</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

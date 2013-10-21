@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>vim install pylint plugin</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/51/vim-install-pylint-plugin/" rel="bookmark"
+           title="Permalink to vim install pylint plugin">vim install pylint plugin</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-11-11T13:21:00">
+                五 11 11月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/vim.html">vim</a>. </p>
+<p>tags: <a href="/tag/pylint.html">pylint</a><a href="/tag/vim.html">vim</a></p>
+</footer><!-- /.post-info -->      <p>最近在練習 python，所以開始找相關的 vim plugin 來裝裝看，<a href="http://www.vim.org/scripts/script.php?script_id=850">pydiction</a>
+這個可以補完一些基本的語法，還滿不錯的，可惜會跟我的<a href="http://www.vim.org/scripts/script.php?script_id=2611">xptemplate</a>
+plugin 衝到QQ，沒辦法就只好捨棄掉了，因為 xptemplate
+對我還說還是比較實用～。</p>
+<p>後來在找可以檢查 python 語法的 plugin，在 stackoverflow
+這個網站上有看到相關的討論，感覺<a href="http://www.logilab.org/857">pylint</a>
+這個功能最強大，就想說用這個看看好了。不過通常功能越強大，要安裝或調整就會越麻煩，要不然就是會跟系統有相依性，像
+pylint 就必須要先裝套件在系統上才行，在 ubuntu 上可以直接用套件安裝
+pylint：</p>
+<div class="highlight"><pre>sudo apt-get install pylint
+</pre></div>
+
+
+<p>安裝完之後就可以當作一般指令來檢查 python 程式，例如：</p>
+<div class="highlight"><pre>pylint test.py
+</pre></div>
+
+
+<p>接下來如果要整合到 vim 裡面，那就必須再安裝這個 <a href="http://www.vim.org/scripts/script.php?script_id=891">vim plugin</a>，沒有 <code>compiler</code> 這個資料夾的話可以自己手動建立就好了，檔案放完之後在 <code>.vimrc</code> 檔中加入：</p>
+<div class="highlight"><pre>autocmd FileType python compiler pylint
+</pre></div>
+
+
+<p><span style="color: #ff0000;">上面這行在網頁上沒有講到，所以要注意一下。</span></p>
+<p>安裝完後，在開啟 python 檔案的 vim 介面中，輸入(先輸入冒號，冒號跟 P
+連在一起會變表情符號囧)：</p>
+<div class="highlight"><pre>Pylint
+</pre></div>
+
+
+<p>就會告知警告和錯誤囉～。</p>
+<p>另外在儲存檔案的時候，也會跑訊息出來，有時候是覺得滿惱人的，這時候可以去修改那個
+vim plugin 的檔案，將以下這個設定從 1 改為 0 就可以了：</p>
+<div class="highlight"><pre><span class="c">#let g:pylint_onwrite = 1</span>
+<span class="nb">let </span>g:pylint_onwrite <span class="o">=</span> 0
+</pre></div>
+
+
+<p>參考網址：</p>
+<p><a href="http://blog.csdn.net/airekans/article/details/6869518">http://blog.csdn.net/airekans/article/details/6869518</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

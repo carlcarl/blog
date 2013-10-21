@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - rockmongo</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/43/mongodb-rockmongo/">MongoDB Web management tool： rockmongo</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2011-09-05T18:12:00">
+                一 05 9月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a><a href="/tag/rockmongo.html">rockmongo</a></p>
+</footer><!-- /.post-info --><p><a href="http://i.imgur.com/BtTNDdsl.png"><img alt="1315246483-954501738" src="http://i.imgur.com/BtTNDdsl.png" /></a></p>
+<p>最近找到的一個管理 MongoDB 的網頁介面工具，是用 php5
+寫的，介面不是說很好看啦，不過還算好用囉，而且很重要的一點是他有中文繁體，真的是倍感親切XD。</p>
+<!--more-->
+
+<p>首先先到<a href="http://code.google.com/p/rock-php/downloads/list">這邊下載</a>。</p>
+<p>下載完之後解壓縮並且移到網頁目錄下，然後試著連上去看看。如果出現要下載
+php 的 mongodb module 的話，就照以下步驟去安裝：</p>
+<div class="highlight"><pre>sudo apt-get install php-pecl
+sudo pecl install mongo
+</pre></div>
+
+
+<p>接著在 php.ini 裡面加上一行：</p>
+<div class="highlight"><pre><span class="n">extension</span><span class="o">=</span><span class="n">mongo</span><span class="p">.</span><span class="n">so</span>
+</pre></div>
+
+
+<p>接著重啟 Web Server。<span style="color: #ff0000;">如果有用 php-fpm
+的話記得這個也要重啟才有用</span>，一開始忘記，結果這邊卡好久=.=。再連一次網頁看看應該就可以連上了。</p>
+<p><a href="http://i.imgur.com/epxeSLs.png"><img alt="1315247147-2959807055" src="http://i.imgur.com/epxeSLs.png" /></a></p>
+<p>預設帳密是「admin」(帳密一樣)，接著按登錄就可以進去管理頁面了。但是預設帳密一樣感覺很容易會被侵入，所以先進入管理介面增加一個管理者，可能有些人覺得很奇怪，不是有
+admin 了嗎？但是其實這個 admin 是 rockmongo 本身設的登入帳號，而 MongoDB
+本身裝完時並沒有所謂管理者帳號這種東西，所以別搞錯了~~。</p>
+<p><a href="http://i.imgur.com/kSM5gdil.png"><img alt="1315247440-2431480143" src="http://i.imgur.com/kSM5gdil.png" /></a></p>
+<p>進去之後點選左邊的「admin」，接著在右邊頁面的「更多」裡，有個用戶的選項，先點進去吧。</p>
+<p><a href="http://i.imgur.com/sGefpoV.png"><img alt="1315247601-1427593127" src="http://i.imgur.com/sGefpoV.png" /></a></p>
+<p>接著點選「Add User」。(這邊我已經先新增了一個使用者，原本是沒有的)。接著的頁面輸入名稱和密碼即可。</p>
+<p>接著更改一下 rockmongo 的認證方式，讓他不要用他自己的驗證，而改認證
+MongoDB 這邊的使用者。這邊要去修改 rockmongo 的 config
+檔，以我的例子是放在 <code>/var/www/rockmongo/config.php</code> 這裡，將下面的 <code>false</code> 改為 <code>true</code> 即可。</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$MONGO</span><span class="p">[</span><span class="s2">&quot;servers&quot;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s2">&quot;mongo_auth&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</pre></div>
+
+
+<p>到這邊就大功告成了！以後登入時，原本預設的「admin」便無法登入，而是要用你之前新增的使用者帳密才能登入囉。</p>
+<p>參考網址:  </p>
+<p><a href="http://www.php.net/manual/en/mongo.installation.php#mongo.installation.nix">http://www.php.net/manual/en/mongo.installation.php#mongo.installation.nix</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

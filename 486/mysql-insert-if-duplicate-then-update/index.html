@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>MySQL insert if duplicate then update</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/486/mysql-insert-if-duplicate-then-update/" rel="bookmark"
+           title="Permalink to MySQL insert if duplicate then update">MySQL insert if duplicate then update</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-29T22:42:00">
+                二 29 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database.html">database</a>. </p>
+<p>tags: <a href="/tag/mysql.html">mysql</a></p>
+</footer><!-- /.post-info -->      <p>在做壓力測試的時候發現出來的數值不太對，後來看了一下，發現是因為程式裏面是拿
+SELECT 出來的資料加 1 並給 UPDATE 來使用，但是這樣並不是一個 atomic 的
+operation，如果在 SELECT 完之後有其他人也進行 SELECT
+就變成會拿一樣的資料且都加 1，兩個做完 UPDATE 的結果就會只是加 1
+過的數據，但是預期的結果應該要是加 2 的。<br />
+<!--more--><br />
+查了一下資料，發現有個簡單的語法可以使用：</p>
+<div class="highlight"><pre><span class="cm">/* If id is the UNIQUE KEY */</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="n">num</span><span class="o">=</span><span class="n">num</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+
+
+<p>它的意思就是說一開始使用 INSERT，一旦有 UNIQUE KEY 的衝突，像這裡 id
+如果是跟已存在的任何一個 id 值重複的話，就會轉用使用
+UPDATE，並執行你所指定的動作，以我這邊的例子就是數字(num)+1。但是這樣用有個前提就是這裡的
+id 必須設定為 UNIQUE KEY 或 PRIMARY KEY。</p>
+<p>參考網址：  </p>
+<p><a href="http://stackoverflow.com/questions/6030071/mysql-table-insert-if-not-exist-otherwise-update">http://stackoverflow.com/questions/6030071/mysql-table-insert-if-not-exist-otherwise-update</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

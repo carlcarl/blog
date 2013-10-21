@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>(98)Address already in use: make_sock: could not bind to address 80</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/" rel="bookmark"
+           title="Permalink to (98)Address already in use: make_sock: could not bind to address 80">(98)Address already in use: make_sock: could not bind to address 80</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-12-05T19:37:00">
+                一 05 12月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/fuser.html">fuser</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+</footer><!-- /.post-info -->      <p>最近在重開 server 的時候突然發現 apache
+怎麼沒有開，重開之後就出現如標題的錯誤，查了一下，應該是有個莫名的
+process 把 port 給 bind 住了，用了一堆指令，一直 kill
+process，結果怎麼好像都沒用囧，後來才試到一個可以解決的指令：</p>
+<div class="highlight"><pre>sudo fuser 80/tcp
+</pre></div>
+
+
+<p>執行之後就會顯示是哪個 process id 佔住的。<br />
+很奇怪的是我使用「netstat」去看居然是找不到的=
+=，另外要注意的是記得使用「sudo」或者是用 root
+來查看，不然有可能會看不到。砍掉之後，再開啟 apache
+就可以成功開啟了，算是一個滿怪的問題，當初忙著砍掉，忘記先查看 process
+的名稱是什麼，只能先紀錄起來，下次如果還是發生一樣的情況的話，再來看看哩。</p>
+<p>參考網址：  </p>
+<p><a href="http://www.chriskirkland.net/news/76_Apache---Address-already-in-use:-make_sock:-could-not-bind-to-address.html">http://www.chriskirkland.net/news/76_Apache---Address-already-in-use:-make_sock:-could-not-bind-to-address.html</a><br />
+<a href="http://www.wallpaperama.com/forums/98address-already-in-use-make-sock-could-not-bind-to-address-80-t1091.html">http://www.wallpaperama.com/forums/98address-already-in-use-make-sock-could-not-bind-to-address-80-t1091.html</a><br />
+<a href="http://www.linuxquestions.org/questions/linux-software-2/98-address-already-in-use-make_sock-could-not-bind-to-address-0-0-0-0-443-a-110753/">http://www.linuxquestions.org/questions/linux-software-2/98-address-already-in-use-make_sock-could-not-bind-to-address-0-0-0-0-443-a-110753/</a><br />
+<a href="http://www.directadmin.com/forum/showthread.php?t=33412&amp;page=1">http://www.directadmin.com/forum/showthread.php?t=33412&amp;page=1</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - wraps</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1249/python-functools-wraps-note/">Python functools.wraps note</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-08-06T15:38:00">
+                二 06 8月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/wraps.html">wraps</a></p>
+</footer><!-- /.post-info --><p>研究一下 <code>functools.wraps</code>。</p>
+<!--more-->
+
+<h3>用法</h3>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">deco</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="c"># @wraps(f)</span>
+    <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="c"># print `test`</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@deco</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="c"># print `hello`</span>
+</pre></div>
+
+
+<p>在 <code>hello</code> 裡 print 出
+'test'，這個沒什麼問題，但是在宣告完後，如果想確認 <code>test</code> 的 <code>__name__</code>
+attribute，會發現 print 出的是 'hello'，這是因為 <code>test</code> 在被 decorate
+後，其實已經變成 <code>hello</code>，真正的 <code>test</code> 則被包在 <code>hello</code> 裡執行。如果把
+<code>@wraps</code> 前的註解拿掉，就會發現最後 print 出來的會變回原來的
+'test'，因為 <code>wraps</code> 這個 decorator 會將一些原本 function 的 attribute
+複製到外面的 function 上，可以看一下內部實作。</p>
+<h3>實作</h3>
+<div class="highlight"><pre><span class="n">WRAPPER_ASSIGNMENTS</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;__module__&#39;</span><span class="p">,</span> <span class="s">&#39;__name__&#39;</span><span class="p">,</span> <span class="s">&#39;__doc__&#39;</span><span class="p">)</span>
+<span class="n">WRAPPER_UPDATES</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;__dict__&#39;</span><span class="p">,)</span>
+
+<span class="k">def</span> <span class="nf">update_wrapper</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span>
+                   <span class="n">wrapped</span><span class="p">,</span>
+                   <span class="n">assigned</span> <span class="o">=</span> <span class="n">WRAPPER_ASSIGNMENTS</span><span class="p">,</span>
+                   <span class="n">updated</span> <span class="o">=</span> <span class="n">WRAPPER_UPDATES</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">assigned</span><span class="p">:</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">attr</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">updated</span><span class="p">:</span>
+        <span class="nb">getattr</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="p">{}))</span>
+    <span class="c"># Return the wrapper so this can be used as a decorator via partial()</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="k">def</span> <span class="nf">wraps</span><span class="p">(</span><span class="n">wrapped</span><span class="p">,</span>
+          <span class="n">assigned</span> <span class="o">=</span> <span class="n">WRAPPER_ASSIGNMENTS</span><span class="p">,</span>
+          <span class="n">updated</span> <span class="o">=</span> <span class="n">WRAPPER_UPDATES</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">partial</span><span class="p">(</span><span class="n">update_wrapper</span><span class="p">,</span> <span class="n">wrapped</span><span class="o">=</span><span class="n">wrapped</span><span class="p">,</span>
+                   <span class="n">assigned</span><span class="o">=</span><span class="n">assigned</span><span class="p">,</span> <span class="n">updated</span><span class="o">=</span><span class="n">updated</span><span class="p">)</span>
+</pre></div>
+
+
+<p>首先先看 <code>wraps</code> 這個 function，參數中 <code>wrapped</code> 是參數傳進來的
+function，<code>assigned</code> 是要複製的 attribute，<code>updated</code> 是要更新的
+attribute， 這邊可以看到是直接呼叫 <code>partial</code>，至於這個 function
+的用法可以參考：</p>
+<ul>
+<li><a href="http://www.au92.com/archives/how-to-use-functools-partial-in-python.html">python的functools.partial用法解释</a></li>
+<li><a href="http://blog.blackwhite.tw/2013/02/python-functoolspartial.html">python 的 functools.partial 函數</a></li>
+</ul>
+<p>簡單說就是像把 <code>wrapped</code>, <code>assigned</code>, <code>updated</code> 丟進 <code>update_wrapper</code>
+的參數裡，並 return 一個新 function，接著只要把還沒填的參數丟進這個新的
+function 就可以了。因為是 decorator 的用法，所以 <code>parital</code> 產生的
+function 在 return 時會被執行，接著跑到 <code>update_wrapper</code>。</p>
+<p><code>update_wrapper</code> 這邊多了個 <code>wrapper</code> 參數，也就是被 <code>@wraps</code> 裝飾 的
+function，以最上面的例子來看，就是 <code>hello</code> function
+。這邊可以順便注意一下傳進 decorator function
+參數的順序，首先會先傳進來的是 decorator function 的參數(剛才的
+<code>wrapped</code>)，再來是被 decorate 的 function 本身(<code>wrapper</code>)，再來則是被
+decorate 的 function 的參數這樣(這邊沒有使用)。</p>
+<p>接著 <code>update_wrapper</code> 會將 <code>wrapped</code> 裡的 <code>__module__</code>, <code>__name__</code>,
+<code>__doc__</code> 複製到 <code>wrapper</code> 上，並將 <code>__dict__</code>
+也更新過去，大致就完成了~~。</p>
+<p>這邊好奇為啥 <code>__dict__</code> 也要複製過去，應該說 function 為啥要有
+<code>__dict__</code>，搜尋了一下，看到 <a href="http://stackoverflow.com/questions/7439023/why-do-python-functions-have-a-dict">stackoverflow
+上也有人問</a>，在答案的連結裡可以看到一些用法：</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">a</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">publish</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">a</span><span class="o">.</span><span class="n">unittest</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;...&#39;&#39;&#39;</span>
+
+<span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">publish</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">a</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">&#39;unittest&#39;</span><span class="p">):</span>
+    <span class="n">testframework</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">unittest</span><span class="p">)</span>
+</pre></div>
+
+
+<p>參考網址：<br />
+<a href="http://stackoverflow.com/questions/308999/what-does-functools-wraps-do">What does functools.wraps do?</a><br />
+<a href="http://artemrudenko.wordpress.com/2013/04/15/python-why-you-need-to-use-wraps-with-decorators/">Python: Why to use @wraps with decorators?</a><br />
+<a href="http://stackoverflow.com/questions/15357776/what-is-the-difference-between-functools-wraps-and-update-wrapper">what is the difference between functools.wraps and update_wrapper</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

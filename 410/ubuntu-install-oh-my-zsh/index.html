@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>ubuntu install oh my zsh</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/410/ubuntu-install-oh-my-zsh/" rel="bookmark"
+           title="Permalink to ubuntu install oh my zsh">ubuntu install oh my zsh</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-05T23:41:00">
+                六 05 5月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/tag/oh-my-zsh.html">oh-my-zsh</a><a href="/tag/zsh.html">zsh</a></p>
+</footer><!-- /.post-info -->      <p>在網路上看到 <a href="https://github.com/robbyrussell/oh-my-zsh">oh my zsh</a> 這套件，這個套件對 zsh
+做了一些客製化，包含很多外掛以及提示字元主題，感覺還滿炫的，所以就想說從
+bash 換成 zsh 看看囉。</p>
+<h3>首先要先安裝 zsh，因為 zsh 預設在 ubuntu 上是沒有安裝的</h3>
+<div class="highlight"><pre>sudo apt-get install zsh
+</pre></div>
+
+
+<h3>下載 oh-my-zsh 套件到家目錄底下的 <code>.oh-my-zsh</code> 資料夾</h3>
+<div class="highlight"><pre>git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+</pre></div>
+
+
+<h3>複製設定檔樣板出來使用</h3>
+<div class="highlight"><pre>cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+</pre></div>
+
+
+<h3>改成預設使用 zsh，執行以下指令並輸入你的密碼</h3>
+<div class="highlight"><pre>chsh -s /bin/zsh
+</pre></div>
+
+
+<h3>開啟 terminal 測試看看</h3>
+<p>下一篇再來講「提示字元主題」調整的部份。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

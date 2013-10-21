@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog - g0v</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/1292/g0v-tw-sns-buttons/">g0v.tw sns buttons</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-08-28T01:40:00">
+                三 28 8月 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/css.html">css</a>. </p>
+<p>tags: <a href="/tag/g0v.html">g0v</a></p>
+</footer><!-- /.post-info --><p>修了一下 render 的問題，以結果來看其實並沒有完全做好，還是會有 render
+過程中偏移的問題
+orz，不過也比原來的情況好多了(汗)，之後功力如果好一點再來深入研究吧 =
+=+。</p>
+<p><a href="https://github.com/g0v/g0v.tw/commit/93777efbd4941f3ba74bb0380ffb65c4d4330f13">commit diff</a><br />
+主要修正幾個地方：</p>
+<h3>fb button size</h3>
+<p>fb button 基本上最大就 60px 的樣子，原本設了
+500px，導致一開始預留的空間過大，整個會往左邊撐開，render
+完後又變一個小按鈕，所以整個看起來很囧，解決方法就是不去限制大小，反正按鈕最大也就那樣而已。</p>
+<h3>sns buttons 放大</h3>
+<p>原本的方法是直接把 button 用 css 加上 <code>transform</code> + <code>scale</code>
+放大，不過如果有多個 button 的話，這樣兩者之間的 margin
+會很難去設定，因為 margin
+是放大之前的距離，放大之後從螢幕上來看，距離會因為 button
+的放大而縮小，後來想到乾脆把包 sns buttons 的 block
+整個放大好了，雖然這樣幾個按鈕的大小會不一樣，不過還算是可以接受，間隔距離也比較可以掌握。</p>
+<h3>sns buttons 底線對齊</h3>
+<p>有想過用 translate 手動對齊底線，不過想想這樣太智障了。後來則是用
+<code>table-cell</code> + <code>inline-block</code> + <code>vertical-align: bottom</code>
+來做對齊。這邊後來也把 <code>width</code> 和 <code>height</code> 拿掉，<code>width</code>
+設定會因為放大的關係，導致 button
+會出現在左邊，所以乾脆就不設定，讓內容的部分自己把 block
+撐開就好，<code>height</code> 則是會放大到超過
+banner，而這邊其實也不需要特別去設定高度，所以就跟著拿掉了。</p>
+<p>參考資料：<br />
+<a href="http://wordpress.org/plugins/only-tweet-like-share-and-google-1/">Tweet, Like, Google +1 and Share</a><br />
+<a href="http://stackoverflow.com/questions/6116423/how-to-vertically-align-floating-divs-to-the-bottom">How to vertically align floating divs to the bottom?</a></p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

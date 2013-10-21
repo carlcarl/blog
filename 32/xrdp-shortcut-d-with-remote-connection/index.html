@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>XRDP shortcut d with remote connection</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/32/xrdp-shortcut-d-with-remote-connection/" rel="bookmark"
+           title="Permalink to XRDP shortcut d with remote connection">XRDP shortcut d with remote connection</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-07T18:35:00">
+                四 07 7月 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/linux.html">linux</a>. </p>
+
+</footer><!-- /.post-info -->      <p>之前裝了 XRDP，還滿不錯用的。不僅可以用 Linux 的 Terminal server client，也可以用 Windows 內建的遠端連線直接連進去。</p>
+<p>但是卻發現了一個很討厭的問題，那就是按 <code>d</code> 的時候會發現，怎麼視窗被縮小跑到桌面去orz，後來查了一些資料好不容易才找到，我以為這個問題很多人都會遇到的說......。
+ </p>
+<p>首先，問題是出在裝 XRDP 的主機上沒錯，且就是因為快捷鍵的問題，所以只要修改這個設定就 OK 了，這邊假設裝 XRDP 的主機是有 GUI 介面的(沒有的話用 ssh 就好啦XD)</p>
+<p>先輸入:</p>
+<div class="highlight"><pre>gconf-editor
+</pre></div>
+
+
+<p>應該會出現一個視窗。</p>
+<p>接著根據 <code>apps</code> : <code>metacity</code> : <code>global_keybindings</code> 的順序下去找，應該可以找到一個叫做 <code>show_desktop</code> 的設定。然後對應的值應該會是 <code>&lt;Super&gt;d</code>，這邊就直接把這個值刪掉就好了。改完後重開， 之後再用遠端連線進來應該會發現 <code>d</code> 的按鍵可以正常輸入了。</p>
+<p>參考網頁<br />
+<a href="http://forums.linuxmint.com/viewtopic.php?f=47&amp;t=61971">http://forums.linuxmint.com/viewtopic.php?f=47&amp;t=61971</a><br />
+<a href="http://www.liberiangeek.net/2010/07/connect-ubuntu-10-04-lucid-lynx-remote-desktop-windows-machines/">http://www.liberiangeek.net/2010/07/connect-ubuntu-10-04-lucid-lynx-remote-desktop-windows-machines/</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

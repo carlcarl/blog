@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>carlcarl's blog</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">carlcarl's blog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/721/mongodb-uptime-query/" rel="bookmark"
+                           title="Permalink to MongoDB uptime query">MongoDB uptime query</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-11-15T07:33:00">
+                四 15 11月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a><a href="/tag/uptime.html">uptime</a></p>
+</footer><!-- /.post-info -->                <p>在 <a href="http://stackoverflow.com/questions/13379170/how-long-was-a-mongo-instance-running">stackoverflow</a>
+看到這個問題，就順便查個資料回了一下，另外有個人是回答可以用 <code>ps -ef</code>
+來看，不過我想說 MongoDB 本身應該也會有這樣的功能，所以還是查了一下。</p>
+<!--more-->
+
+<p>後來果然在 <a href="http://docs.mongodb.org/manual/reference/server-status/">MongoDB 官方文件</a>
+找到我要的資料，不過拿到的數據會是以秒為單位，所以必須自己作轉換。</p>
+<p>進入 mongo shell 之後輸入：</p>
+<div class="highlight"><pre><span class="c1">// seconds</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span>
+</pre></div>
+
+
+<p>其他的就照單位轉換一下就可以：</p>
+<div class="highlight"><pre><span class="c1">// minutes</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span> <span class="o">/</span> <span class="mi">60</span>
+<span class="c1">// hours</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span> <span class="o">/</span> <span class="mi">3600</span>
+<span class="c1">// days</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span> <span class="o">/</span> <span class="mi">86400</span>
+</pre></div>
+
+
+<p>如果要固定格式的話，目前似乎沒有直接的 function 可以 call，所以還是必須自己作轉換，像是 <a href="http://stackoverflow.com/questions/175554/how-to-convert-milliseconds-into-human-readable-form">這篇</a> 。</p>
+                <a class="readmore" href="/721/mongodb-uptime-query/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/709/mac-virtualenvwrapper-no-module-named-setuptools-error/" rel="bookmark"
+                           title="Permalink to Mac virtualenvwrapper "No module named setuptools" error">Mac virtualenvwrapper "No module named setuptools" error</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-10-22T01:05:00">
+                一 22 10月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/mac-python.html">Mac, python</a>. </p>
+<p>tags: <a href="/tag/virtualenvwrapper.html">virtualenvwrapper</a></p>
+</footer><!-- /.post-info -->                <p>在 Mac 上安裝 virtualenvwrapper 的時候遇到的錯誤，解決方法：<br />
+<!--more-->  </p>
+<h3>首先先重新安裝 setuptools <a href="http://peak.telecommunity.com/dist/ez_setup.py">載點</a> ，下載完執行：</h3>
+<div class="highlight"><pre>sudo python ez_setup.py
+</pre></div>
+
+
+<h3>移除 setuptools</h3>
+<div class="highlight"><pre>sudo pip uninstall setuptools
+</pre></div>
+
+
+<h3><a href="http://pypi.python.org/pypi/distribute">下載 distribute 套件</a> ，解壓縮後進去資料夾執行：</h3>
+<div class="highlight"><pre>sudo python distribute_setup.py
+</pre></div>
+
+
+<p>到這邊就 OK 了。</p>
+<p>參考網址：  </p>
+<p><a href="http://code.doughellmann.com/virtualenvwrapper/issue/158/installing-virtualenvwrapper-on-on-osx-108">http://code.doughellmann.com/virtualenvwrapper/issue/158/installing-virtualenvwrapper-on-on-osx-108</a></p>
+                <a class="readmore" href="/709/mac-virtualenvwrapper-no-module-named-setuptools-error/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/690/ubuntu-install-salt-tool/" rel="bookmark"
+                           title="Permalink to Ubuntu install salt tool">Ubuntu install salt tool</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-10-15T20:44:00">
+                一 15 10月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/cloud-linux.html">cloud, linux</a>. </p>
+
+</footer><!-- /.post-info -->                <p>現在有操作多台機器執行同樣指令的需求，想說裝 <a href="http://docs.saltstack.org/en/latest/contents.html">salt</a>
+來管理看看，詳細介紹可以點連結進去看看。簡單來講，這套工具可以讓你方便一次去對多個機器進行操作，另外還可以透過用 Python 並 import salt module 來處理整個流程和回傳的資料。<br />
+<!--more--><br />
+salt 分成了兩個部份，<code>salt-master</code> 和 <code>salt-minion</code> ，<code>salt-master</code>
+就是 server 端，也就是你用來管理其他機器的機器上要裝的 (有點饒舌=
+=")，minion 則是 client 端，就是被管理的機器所要裝的套件。server
+端會開個 service 讓 client 連，所以 client 端必須能夠知道 server 端的 IP
+或者是 host name ，client 端連上來後，server 端可以決定是否接受這個
+client ...</!--more--></p>
+                <a class="readmore" href="/690/ubuntu-install-salt-tool/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/680/php-mongodb-query-timing/" rel="bookmark"
+                           title="Permalink to PHP MongoDB query timing">PHP MongoDB query timing</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-10-12T03:19:00">
+                五 12 10月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb-php.html">database, mongodb, php</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a><a href="/tag/php.html">php</a></p>
+</footer><!-- /.post-info -->                <p>最近在用 PHP 在對 MongoDB 作壓力測試的時候，發現怎麼我 1 shard 和 3
+shards 的 performance 會一樣，卡了很久後來才發現原來是我搞錯 MongoDB
+query 的時機，所以在測試的時候，query 其實都沒有發出，難怪數據會一樣。<br />
+<!--more--><br />
+在 PHP 的 <a href="http://php.net/manual/en/class.mongocursor.php">manual</a> 裡有說明，以下拿它的範例程式來說明 query 的時機：</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$cursor</span> <span class="o">=</span> <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="c1">// query 還沒發出</span>
+
+<span class="nv">$cursor</span> <span class="o">=</span> <span class="nv">$cursor</span><span class="o">-&gt;</span><span class="na">sort</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">));</span>
+<span class="c1">// query 還是沒發出</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$cursor</span><span class="o">-&gt;</span><span class="na">getNext</span><span class="p">());</span> <span class="c1">// 這時才發出 ...</span></pre></div>
+                <a class="readmore" href="/680/php-mongodb-query-timing/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/671/mongodb-split-chunk/" rel="bookmark"
+                           title="Permalink to MongoDB split chunk">MongoDB split chunk</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-10-09T03:21:00">
+                二 09 10月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a></p>
+</footer><!-- /.post-info -->                <p>練習了一下自己手動切 chunk，因為有時候 MongoDB
+切出來的不一定是理想的範圍 orz。</p>
+<p>大致就兩個步驟，第一個是切 chunk，第二個是移動 chunk 到某個 shard
+上，如果 balancer 沒關掉的話，第二個步驟會由 balancer 幫你決定你的 chunk
+要移到哪個 shard 上。<br />
+<!--more-->  </p>
+<h3>切 chunk 指令</h3>
+<div class="highlight"><pre><span class="c1">// 第一個參數是指定在哪個 DB 中的 collection，</span>
+<span class="c1">// 因為文件裡只說是 collection，所以可能會忘了加上 DB 的名稱</span>
+<span class="c1">// 第二個參數是你指定的 sharding key，cutPoint 則是要從哪個數值下去切</span>
+<span class="nx">sh</span><span class="p">.</span><span class="nx">splitAt</span><span class="p">(</span><span class="s2">&quot;yourDB.yourCollection&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="nx">cutPoint</span><span class="p">})</span>
+</pre></div>
+
+
+<p>or</p>
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">runCommand ...</span></pre></div>
+                <a class="readmore" href="/671/mongodb-split-chunk/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/663/mongodb-check-status-command/" rel="bookmark"
+                           title="Permalink to MongoDB check status command">MongoDB check status command</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-10-09T02:15:00">
+                二 09 10月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a></p>
+</footer><!-- /.post-info -->                <p>紀錄一下 MongoDB 看狀態時常會用到的指令。<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="c"># 看目前 state 的指令</span>
+mongostat
+</pre></div>
+
+
+<p>以下都是進 mongo shell 後的指令。</p>
+<div class="highlight"><pre><span class="c1">// 狀態總覽</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">()</span>
+
+<span class="c1">// 看 memory</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">mem</span>
+
+<span class="c1">// 看 page fault</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">extra_info</span>
+
+<span class="c1">// 看 sharding 的狀態，兩個指令同樣功能</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">printShardingStatus</span><span class="p">()</span>
+<span class="nx">sh</span><span class="p">.</span><span class="nx">status</span><span class="p">()</span>
+
+<span class="c1">// 查看 db 本身的資訊</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">stats</span><span class="p">()</span>
+
+<span class="c1">// 查看 collection 的 index</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">getIndexes</span><span class="p">()</span>
+
+<span class="c1">// 查看目前執行的 operation</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">currentOP</span><span class="p">()</span>
+</pre></div>
+
+
+<p>參考網址 ...</p>
+                <a class="readmore" href="/663/mongodb-check-status-command/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/645/mongodb-aggregation-group-count-sort/" rel="bookmark"
+                           title="Permalink to mongodb aggregation group count sort">mongodb aggregation group count sort</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-09-14T05:05:00">
+                五 14 9月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb.html">database, mongodb</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a></p>
+</footer><!-- /.post-info -->                <p>感覺不是很難的 query，想說用 mongodb aggregation 來解決，不過查資料查了好久才知道怎麼用。<br />
+<!--more--><br />
+以 sql 來說的話，我是要對某個欄位作 group by，分類完之後再對分類完的欄位作 count，算完之後再根據 count 的數字作 sort。下面這段是 MongoDB 中的用法：</p>
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">mytable</span><span class="p">.</span><span class="nx">aggregate</span><span class="p">({</span> <span class="nx">$group</span><span class="o">:</span><span class="p">{</span> <span class="nx">_id</span><span class="o">:</span> <span class="s2">&quot;$b_cd&quot;</span><span class="p">,</span> <span class="nx">num</span><span class="o">:</span> <span class="p">{</span><span class="nx">$sum</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span> <span class="p">}},</span> <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">num</span><span class="o">:</span><span class="mi">1</span><span class="p">}}</span> <span class="p">);</span>
+</pre></div>
+
+
+<p><code>$b_cd</code> 是我要分類的欄位，<code>num</code> 是各分類欄位的數目，這邊利用 <code>$sum</code>
+作累加，接著再用 <code>$sort</code> 對 num 作排序。</p>
+<p>中間我卡很久的原因是因為 syntax
+搞錯（<strong>大括弧的位置要注意 ...</strong></p>
+                <a class="readmore" href="/645/mongodb-aggregation-group-count-sort/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/606/test-kineticjs-apply-canvas/" rel="bookmark"
+                           title="Permalink to Test KineticJS apply canvas">Test KineticJS apply canvas</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-09-04T01:54:00">
+                二 04 9月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/js.html">js</a>. </p>
+<p>tags: <a href="/tag/canvas.html">canvas</a><a href="/tag/kineticjs.html">kineticjs</a></p>
+</footer><!-- /.post-info -->                <p>寫起來跟以前寫 Java 作類似東西的感覺很像，東西基本上都已經用物件包好，然後還有提供 layer
+讓你可以很方便的在不同 layer 放你要的物件。<br />
+<!--more--><br />
+我嘗試把我原本<a href="https://github.com/carlcarl/CaGo/blob/master/js/cago.js">播放棋譜</a>的 canvas 改成套用 KineticJS，不過後來發現，因為我的 canvas
+操作沒很複雜，所以真的是太大材小用了...。</p>
+<p>以可讀性來講，因為我大部分畫 canvas 都是放在一個 function 裡，大致用幾個註解分幾個段落，其實就知道各部份的流程，換成物件的方式後，整個 function 感覺並沒有更好讀，而且程式沒有比較短=.=。</p>
+<p>然後我用一個固定的測試流程來作測試(這個流程不包括前面的 js file loading，是讀完後才開始作操作測試)，測試的結果原本是 200ms，換成 KineticJS 之後是 800ms，整個很不划算 ~.~。</p>
+<p>雖然 KineticJS 有提供 layer ...</p>
+                <a class="readmore" href="/606/test-kineticjs-apply-canvas/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/598/virtualenvwrapper-setting/" rel="bookmark"
+                           title="Permalink to virtualenvwrapper setting">virtualenvwrapper setting</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-08-28T00:01:00">
+                二 28 8月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>. </p>
+<p>tags: <a href="/tag/python.html">python</a><a href="/tag/virtualenvwrapper.html">virtualenvwrapper</a></p>
+</footer><!-- /.post-info -->                <p>最近為了方便，加了幾個 virtualenvwrapper 的設定。<br />
+<!--more--></p>
+<h3>使用 <code>mkvirtualenv</code> 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。</h3>
+<p>在 <code>~/.virtualenv/postmkvirtualenv</code>裡加入：</p>
+<div class="highlight"><pre><span class="nv">proj_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$VIRTUAL_ENV</span>|awk -F<span class="s1">&#39;/&#39;</span> <span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
+
+<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span>mkdir ~/Projects/<span class="nv">$proj_name</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;${PWD##*/}&quot;</span> !<span class="o">=</span> <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span><span class="nb">cd</span> ~/Projects/<span class="nv">$proj_name</span>
+<span class="k">fi</span>
+</pre></div>
+
+
+<p>其中，把 <code>Projects</code> 換成你的 project 位置。</p>
+<hr />
+<h3>輸入 <code>workon 你的project</code> 時，自動切換至 ...</h3>
+                <a class="readmore" href="/598/virtualenvwrapper-setting/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/589/mongodb-php-connection/" rel="bookmark"
+                           title="Permalink to mongodb php connection">mongodb php connection</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-08-13T22:16:00">
+                一 13 8月 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+        </address>
+<p>In <a href="/category/database-mongodb-php.html">database, mongodb, php</a>. </p>
+<p>tags: <a href="/tag/mongodb.html">mongodb</a><a href="/tag/php.html">php</a></p>
+</footer><!-- /.post-info -->                <p>大概寫一下 mongodb + auth 的連線步驟，之前我是這樣做連線認証：<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://localhost:27017&quot;</span><span class="p">);</span>    
+<span class="nv">$db</span> <span class="o">=</span> <span class="nv">$m</span><span class="o">-&gt;</span><span class="na">mytable</span><span class="p">;</span>
+<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">authenticate</span><span class="p">(</span><span class="nv">$DB_USERNAME</span><span class="p">,</span> <span class="nv">$DB_USERPASSWORD</span><span class="p">);</span>
+</pre></div>
+
+
+<p>不過後來更新 php mongodb 的 library 後，發現 <code>authenticate</code> 這個 method
+已經 deprecated 了，所以改用原本 mongodb 的建構式做連線認証：</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://</span><span class="si">${</span><span class="nv">DB_USERNAME}:${DB_USERPASSWORD</span><span class="si">}</span><span class="s2">@localhost/mydb&quot;</span><span class="p">);</span>
+<span class="nv">$db</span> <span class="o">=</span> <span class="nv">$m</span><span class="o">-&gt;</span><span class="na">mydb</span><span class="p">;</span>
+</pre></div>
+
+
+<p>這邊要注意的一點就是，雖然在 Mongo ...</p>
+                <a class="readmore" href="/589/mongodb-php-connection/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/index5.html">&laquo;</a>
+    Page 6 / 16
+        <a href="/index7.html">&raquo;</a>
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
