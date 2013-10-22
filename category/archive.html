@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>carlcarl's blog - weather</title>
+        <title>carlcarl's blog - archive</title>
         <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
@@ -19,40 +19,53 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/1212/python-yahoo-weather/">Python Yahoo weather</a></h1>
+                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/114/about/">About</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2013-07-16T18:30:00">
-                二 16 7月 2013
+        <abbr class="published" title="2011-11-20T19:43:00">
+                日 20 11月 2011
         </abbr>
 
         <address class="vcard author">
                 By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/weather.html">weather</a><a href="http://blog.carlcarl.me/tag/yahoo.html">yahoo</a><a href="http://blog.carlcarl.me/tag/yql.html">yql</a></p>
-</footer><!-- /.post-info --><p>實際做起來不難，是說弄完才發現有 <a href="https://pypi.python.org/pypi/yweather/0.1">yweather</a> 這個可以用囧。</p>
-<!--more-->
+<p>In <a href="http://blog.carlcarl.me/category/archive.html">archive</a>. </p>
 
-<p>首先到 <a href="http://developer.yahoo.com/yql/console/">YQL</a> 這邊下 query，這邊可以參考<a href="http://my.opera.com/weiyu/blog/2012/04/08/yql-yahoo">這篇</a>最下面的兩種 query
-方法。格式可以選 JSON 然後把 callback 名稱拿掉，下完 query
-就可以產生一段網址，以新竹的例子來說就是:</p>
-<div class="highlight"><pre>http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D%22TWXX0009%22%20and%20u%3D%22c%22&amp;format=json&amp;diagnostics=true&amp;callback=
-</pre></div>
-
-
-<p>接著用 python 處理一下就可以了：</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;blahblah..&#39;</span>
-<span class="n">raw_data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
-</pre></div>
-
-
-<p><code>requests</code> 很方便，不過不是內建的，要先安裝：<code>pip install requests</code>，最後得到的
-<code>json_data</code> 就是天氣資料。</p><p>There are <a href="http://blog.carlcarl.me/1212/python-yahoo-weather/#disqus_thread">comments</a>.</p>                </article>
+</footer><!-- /.post-info --><h3>My Information:</h3>
+<ul>
+<li>Name: 黃健瑋 (Chien-Wei Huang)</li>
+<li>Plurk: <a href="http://www.plurk.com/carlcarl">http://www.plurk.com/carlcarl</a></li>
+<li>stackoverflow <img alt="profile for Chien-Wei Huang at Stack Overflow, Q&amp;A for professional and enthusiast programmers" src="http://stackoverflow.com/users/flair/667106.png?theme=default" title="profile for Chien-Wei Huang at Stack Overflow, Q&amp;A for professional and enthusiast programmers" /></li>
+</ul>
+<h3>Specialty:</h3>
+<ul>
+<li>
+<h4>Programming:</h4>
+<ul>
+<li>Good: C, PHP, Python, JavaScript</li>
+<li>Normal: C++, Java</li>
+</ul>
+</li>
+<li>
+<h4>Web Development:</h4>
+<ul>
+<li>Frontend: HTML, css, JavaScript (jQuery)</li>
+<li>Backend: PHP, Python (With Django framwwork)</li>
+<li>Database: MySQL (Management and Tuning), MongoDB</li>
+</ul>
+</li>
+<li>
+<h4>System Administration</h4>
+<ul>
+<li>Linux (Ubuntu, CentOS)</li>
+</ul>
+</li>
+<li>
+<h4>Other:</h4>
+<ul>
+<li>Version Control Tools(Git, SVN)</li>
+</ul>
+</li>
+</ul><p>There are <a href="http://blog.carlcarl.me/114/about/#disqus_thread">comments</a>.</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>

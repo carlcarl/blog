@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>carlcarl's blog - ubuntu</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,24 +12,24 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/879/ubuntu-nginx-pagespeed-module/">Ubuntu nginx pagespeed module</a></h1>
+                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/879/ubuntu-nginx-pagespeed-module/">Ubuntu nginx pagespeed module</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2013-06-03T21:25:00">
                 一 03 6月 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/nginx.html">nginx</a><a href="/tag/pagespeed.html">pagespeed</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/nginx.html">nginx</a><a href="http://blog.carlcarl.me/tag/pagespeed.html">pagespeed</a><a href="http://blog.carlcarl.me/tag/ubuntu.html">ubuntu</a></p>
 </footer><!-- /.post-info --><p>Ubuntu 版本：12.04 Nginx 版本：1.4.1 pagespeed 版本：1.5.27.3
 記錄一下安裝的步驟： <!--more--></p>
 <div class="highlight"><pre><span class="c"># 到 home 目錄下做，看個人習慣就是</span>
@@ -125,7 +125,7 @@ sudo chown www-data:www-data /var/ngx_pagespeed_cache
 <a href="http://serverfault.com/questions/502764/how-to-build-nginx-1-4-0-and-ngx-pagespeed-in-ubuntu-debian">http://serverfault.com/questions/502764/how-to-build-nginx-1-4-0-and-ngx-pagespeed-in-ubuntu-debian</a>
 <a href="http://serverfault.com/questions/180808/how-to-get-latest-nginx-using-apt-ubuntu">http://serverfault.com/questions/180808/how-to-get-latest-nginx-using-apt-ubuntu</a>
 <a href="https://www.digitalocean.com/community/articles/how-to-install-the-latest-version-of-nginx-on-ubuntu-12-10">https://www.digitalocean.com/community/articles/how-to-install-the-latest-version-of-nginx-on-ubuntu-12-10</a>
-<a href="http://blog.linuxeye.com/318.html">http://blog.linuxeye.com/318.html</a></p>                </article>
+<a href="http://blog.linuxeye.com/318.html">http://blog.linuxeye.com/318.html</a></p><p>There are <a href="http://blog.carlcarl.me/879/ubuntu-nginx-pagespeed-module/#disqus_thread">comments</a>.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -134,7 +134,7 @@ sudo chown www-data:www-data /var/ngx_pagespeed_cache
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/873/ubuntu-service-cant-restart-or-stop/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/873/ubuntu-service-cant-restart-or-stop/" rel="bookmark"
                            title="Permalink to Ubuntu service can't restart or stop">Ubuntu service can't restart or stop</a></h1>
                 </header>
 
@@ -145,10 +145,10 @@ sudo chown www-data:www-data /var/ngx_pagespeed_cache
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/nginx.html">nginx</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/nginx.html">nginx</a><a href="http://blog.carlcarl.me/tag/ubuntu.html">ubuntu</a></p>
 </footer><!-- /.post-info -->                <p>在自己編 nginx 的時候遇到的小問題，因為自己裝的 conf 設定和原本 Ubuntu
 repo 裡的的不一樣，然後 init script 我是用 repo 裡提供的。</p>
 <p>看了一下 repo 提供的 init script，似乎是因為找不到 start service 所建立的
@@ -156,13 +156,13 @@ pid 檔案，google 了一下，在 stackoverflow
 找到 <a href="http://stackoverflow.com/questions/10939072/add-nginx-as-a-ubuntu-service-stop-and-reload-doesnt-work">這篇問題</a> 剛好和我遇到的情況一樣，check 了一下 nginx conf 裡的 pid
 檔案位置和 init script 裡的 pid
 檔案位置，發現設定並不一樣，改成一樣後，問題就解決了～～。</p>
-                <a class="readmore" href="/873/ubuntu-service-cant-restart-or-stop/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/873/ubuntu-service-cant-restart-or-stop/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/873/ubuntu-service-cant-restart-or-stop/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/397/ubuntu-tunnel-broker/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/397/ubuntu-tunnel-broker/" rel="bookmark"
                            title="Permalink to Ubuntu Tunnel Broker IPv6 連 中研院">Ubuntu Tunnel Broker IPv6 連 中研院</a></h1>
                 </header>
 
@@ -173,10 +173,10 @@ pid 檔案，google 了一下，在 stackoverflow
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/ipv6.html">ipv6</a><a href="/tag/tunnel-broker.html">tunnel broker</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/ipv6.html">ipv6</a><a href="http://blog.carlcarl.me/tag/tunnel-broker.html">tunnel broker</a><a href="http://blog.carlcarl.me/tag/ubuntu.html">ubuntu</a></p>
 </footer><!-- /.post-info -->                <p>最近看到有人用 <a href="http://planykao.blogspot.com/2012/04/archlinux-ipv6-tunnel-broker.html">Archlinux 設定 Tunnel Broker
 的方法</a>，所以研究了一下該怎麼用，發現還滿簡單的0.0。</p>
 <h3>申請帳號</h3>
@@ -195,13 +195,13 @@ auth_method=digest-md5
 host_type=host
 prefixlen=64
 if_prefix=eth0 ...</pre></div>
-                <a class="readmore" href="/397/ubuntu-tunnel-broker/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/397/ubuntu-tunnel-broker/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/397/ubuntu-tunnel-broker/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/326/ubuntu-desktop-record-recorditnow-ffmpeg/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/326/ubuntu-desktop-record-recorditnow-ffmpeg/" rel="bookmark"
                            title="Permalink to Ubuntu desktop record: recorditnow+ffmpeg">Ubuntu desktop record: recorditnow+ffmpeg</a></h1>
                 </header>
 
@@ -212,10 +212,10 @@ if_prefix=eth0 ...</pre></div>
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/ffmpeg.html">ffmpeg</a><a href="/tag/recorditnow.html">recorditnow</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/ffmpeg.html">ffmpeg</a><a href="http://blog.carlcarl.me/tag/recorditnow.html">recorditnow</a><a href="http://blog.carlcarl.me/tag/ubuntu.html">ubuntu</a></p>
 </footer><!-- /.post-info -->                <p><img alt="recorditnow" src="http://i.imgur.com/EQUigGel.png" title="RecordItNow_507" /></p>
 <p>最近找了很多類似的軟體，不過有些都弄不起來，不然就是怪怪的囧，後來試了這套組合發現還不錯：recorditnow + ffmpeg，ffmpeg 是核心，recorditnow 是 frontend。</p>
 <p>下面是使用教學的影片，可以參考看看：<br />
@@ -227,13 +227,13 @@ if_prefix=eth0 ...</pre></div>
 <div class="highlight"><pre>sudo add-apt-repository ppa:ap10336/ppa
 sudo apt-get update
 sudo apt-get ...</pre></div>
-                <a class="readmore" href="/326/ubuntu-desktop-record-recorditnow-ffmpeg/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/326/ubuntu-desktop-record-recorditnow-ffmpeg/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/326/ubuntu-desktop-record-recorditnow-ffmpeg/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/" rel="bookmark"
                            title="Permalink to (98)Address already in use: make_sock: could not bind to address 80">(98)Address already in use: make_sock: could not bind to address 80</a></h1>
                 </header>
 
@@ -244,10 +244,10 @@ sudo apt-get ...</pre></div>
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/fuser.html">fuser</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/fuser.html">fuser</a><a href="http://blog.carlcarl.me/tag/ubuntu.html">ubuntu</a></p>
 </footer><!-- /.post-info -->                <p>最近在重開 server 的時候突然發現 apache
 怎麼沒有開，重開之後就出現如標題的錯誤，查了一下，應該是有個莫名的
 process 把 port 給 bind 住了，用了一堆指令，一直 kill
@@ -263,13 +263,13 @@ process，結果怎麼好像都沒用囧，後來才試到一個可以解決的�
 就可以成功開啟了，算是一個滿怪的問題，當初忙著砍掉，忘記先查看 process
 的名稱是什麼，只能先紀錄起來，下次如果還是發生一樣的情況的話，再來看看哩。</p>
 <p>參考網址 ...</p>
-                <a class="readmore" href="/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/49/ubuntu-nautilus-thumbnail/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/49/ubuntu-nautilus-thumbnail/" rel="bookmark"
                            title="Permalink to Ubuntu nautilus video thumbnail">Ubuntu nautilus video thumbnail</a></h1>
                 </header>
 
@@ -280,10 +280,10 @@ process，結果怎麼好像都沒用囧，後來才試到一個可以解決的�
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/nautilus.html">nautilus</a><a href="/tag/thumbnail.html">thumbnail</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/nautilus.html">nautilus</a><a href="http://blog.carlcarl.me/tag/thumbnail.html">thumbnail</a><a href="http://blog.carlcarl.me/tag/ubuntu.html">ubuntu</a></p>
 </footer><!-- /.post-info -->                <p>最近發現有些影片的預覽圖一直沒辦法看到，想說會不會是播放器的問題，可是搞了老半天卻還是不行。在查了一些資料之後才發現，這個原因好像是因為在之前偵測某幾個影片預覽圖的時候可能失敗還是怎樣，然後這幾個影片就從此不會再作擷取預覽圖的動作，以下是解決方法：</p>
 <div class="highlight"><pre>rm -r ~/.thumbnails/fail/
 </pre></div>
@@ -292,8 +292,8 @@ process，結果怎麼好像都沒用囧，後來才試到一個可以解決的�
 <p>刪完之後再重新整理就 OK 哩～。</p>
 <p>參考網址：</p>
 <p><a href="http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?viewmode=compact&amp;topic_id=9430&amp;forum=4">http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?viewmode=compact&amp;topic_id=9430&amp;forum=4</a></p>
-                <a class="readmore" href="/49/ubuntu-nautilus-thumbnail/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/49/ubuntu-nautilus-thumbnail/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/49/ubuntu-nautilus-thumbnail/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
@@ -328,5 +328,14 @@ process，結果怎麼好像都沒用囧，後來才試到一個可以解決的�
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

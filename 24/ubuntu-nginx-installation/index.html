@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>Ubuntu Nginx installation</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/24/ubuntu-nginx-installation/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/24/ubuntu-nginx-installation/" rel="bookmark"
            title="Permalink to Ubuntu Nginx installation">Ubuntu Nginx installation</a></h1>
     </header>
 
@@ -31,9 +31,9 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
 
 </footer><!-- /.post-info -->      <p>[更新] 這邊有修改過的<a href="/25/ubuntu-nginx-installation-easier/">簡單版</a></p>
 <p>弄了好久，參考了幾篇教學，應該算是能跑了吧囧a。話說有幾篇教學講得都不太一樣 害我也不知道該看哪篇才好，後來是找了<a href="http://library.linode.com/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid">這一篇</a>來作看看。</p>
@@ -178,6 +178,19 @@ update-rc.d php-fastcgi defaults
 <a href="http://arnisoft.com/253/nginx-phpmyadmin-configuration/">http://arnisoft.com/253/nginx-phpmyadmin-configuration/</a><br />
 <a href="http://i.laoer.com/nginx-alias-php.html">http://i.laoer.com/nginx-alias-php.html</a>  </p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "24/ubuntu-nginx-installation/";
+        var disqus_url = "http://blog.carlcarl.me/24/ubuntu-nginx-installation/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -209,5 +222,14 @@ update-rc.d php-fastcgi defaults
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

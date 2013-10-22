@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>html5 canvas double buffering</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/1023/html5-canvas-double-buffering/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/1023/html5-canvas-double-buffering/" rel="bookmark"
            title="Permalink to html5 canvas double buffering">html5 canvas double buffering</a></h1>
     </header>
 
@@ -31,10 +31,10 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/js.html">js</a>. </p>
-<p>tags: <a href="/tag/canvas.html">canvas</a><a href="/tag/html5.html">html5</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/canvas.html">canvas</a><a href="http://blog.carlcarl.me/tag/html5.html">html5</a></p>
 </footer><!-- /.post-info -->      <p>因為之前寫 java 的經驗，讓我以為在 html5 的 canvas 上也要自己實作 double
 buffering，但是在我後來實作後發現，好像哪裡怪怪的，因為其實原本就沒有在閃的感覺了，所以加了
 double buffering 好像也沒啥差，重點是 performance 下降很多......。</p>
@@ -72,6 +72,19 @@ drawImage 把 buffering canvas 畫到 display 用的 canvas
 <a href="http://stackoverflow.com/questions/11777483/do-we-need-to-implement-double-buffering-ourselves-with-canvas">Do we need to implement double buffering ourselves with \&lt;canvas>?</a><br />
 <a href="http://www.mail-archive.com/whatwg@lists.whatwg.org/msg19969.html">Re: [whatwg] Canvas size and double buffering.</a>  </p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "1023/html5-canvas-double-buffering/";
+        var disqus_url = "http://blog.carlcarl.me/1023/html5-canvas-double-buffering/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -103,5 +116,14 @@ drawImage 把 buffering canvas 畫到 display 用的 canvas
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

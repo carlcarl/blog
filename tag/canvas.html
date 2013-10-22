@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>carlcarl's blog - canvas</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,24 +12,24 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/1023/html5-canvas-double-buffering/">html5 canvas double buffering</a></h1>
+                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/1023/html5-canvas-double-buffering/">html5 canvas double buffering</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2013-06-16T19:25:00">
                 日 16 6月 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/js.html">js</a>. </p>
-<p>tags: <a href="/tag/canvas.html">canvas</a><a href="/tag/html5.html">html5</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/canvas.html">canvas</a><a href="http://blog.carlcarl.me/tag/html5.html">html5</a></p>
 </footer><!-- /.post-info --><p>因為之前寫 java 的經驗，讓我以為在 html5 的 canvas 上也要自己實作 double
 buffering，但是在我後來實作後發現，好像哪裡怪怪的，因為其實原本就沒有在閃的感覺了，所以加了
 double buffering 好像也沒啥差，重點是 performance 下降很多......。</p>
@@ -65,7 +65,7 @@ drawImage 把 buffering canvas 畫到 display 用的 canvas
 就好了，或是這邊還有 <a href="http://stackoverflow.com/questions/2795269/does-html5-canvas-support-double-buffering">一個簡單的方法</a> 可以參考看看。</p>
 <p>參考資料:<br />
 <a href="http://stackoverflow.com/questions/11777483/do-we-need-to-implement-double-buffering-ourselves-with-canvas">Do we need to implement double buffering ourselves with \&lt;canvas>?</a><br />
-<a href="http://www.mail-archive.com/whatwg@lists.whatwg.org/msg19969.html">Re: [whatwg] Canvas size and double buffering.</a>  </p>                </article>
+<a href="http://www.mail-archive.com/whatwg@lists.whatwg.org/msg19969.html">Re: [whatwg] Canvas size and double buffering.</a>  </p><p>There are <a href="http://blog.carlcarl.me/1023/html5-canvas-double-buffering/#disqus_thread">comments</a>.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -74,7 +74,7 @@ drawImage 把 buffering canvas 畫到 display 用的 canvas
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/606/test-kineticjs-apply-canvas/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/606/test-kineticjs-apply-canvas/" rel="bookmark"
                            title="Permalink to Test KineticJS apply canvas">Test KineticJS apply canvas</a></h1>
                 </header>
 
@@ -85,10 +85,10 @@ drawImage 把 buffering canvas 畫到 display 用的 canvas
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/js.html">js</a>. </p>
-<p>tags: <a href="/tag/canvas.html">canvas</a><a href="/tag/kineticjs.html">kineticjs</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/canvas.html">canvas</a><a href="http://blog.carlcarl.me/tag/kineticjs.html">kineticjs</a></p>
 </footer><!-- /.post-info -->                <p>寫起來跟以前寫 Java 作類似東西的感覺很像，東西基本上都已經用物件包好，然後還有提供 layer
 讓你可以很方便的在不同 layer 放你要的物件。<br />
 <!--more--><br />
@@ -97,8 +97,8 @@ drawImage 把 buffering canvas 畫到 display 用的 canvas
 <p>以可讀性來講，因為我大部分畫 canvas 都是放在一個 function 裡，大致用幾個註解分幾個段落，其實就知道各部份的流程，換成物件的方式後，整個 function 感覺並沒有更好讀，而且程式沒有比較短=.=。</p>
 <p>然後我用一個固定的測試流程來作測試(這個流程不包括前面的 js file loading，是讀完後才開始作操作測試)，測試的結果原本是 200ms，換成 KineticJS 之後是 800ms，整個很不划算 ~.~。</p>
 <p>雖然 KineticJS 有提供 layer ...</p>
-                <a class="readmore" href="/606/test-kineticjs-apply-canvas/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/606/test-kineticjs-apply-canvas/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/606/test-kineticjs-apply-canvas/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
@@ -133,5 +133,14 @@ drawImage 把 buffering canvas 畫到 display 用的 canvas
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>ajax with mobile keyboard go button</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/813/ajax-with-mobile-keyboard-go-button/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/813/ajax-with-mobile-keyboard-go-button/" rel="bookmark"
            title="Permalink to ajax with mobile keyboard go button">ajax with mobile keyboard go button</a></h1>
     </header>
 
@@ -31,10 +31,10 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/js.html">js</a>. </p>
-<p>tags: <a href="/tag/ajax.html">ajax</a><a href="/tag/mobile.html">mobile</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/ajax.html">ajax</a><a href="http://blog.carlcarl.me/tag/mobile.html">mobile</a></p>
 </footer><!-- /.post-info -->      <p>最近弄 ajax 在手機上測的時候發現按 keyboard 上的 go 按鈕不會自動
 submit，所以看了一下是怎麼回事。找了一些資料加上自己測試了一下，發現原來
 go 按鈕跟 enter 是一樣的 event。</p>
@@ -48,6 +48,19 @@ button tag 相對比較好做。再來就是註冊 form tag 的 event，用 jQue
 <p>參考網址：<br />
 <a href="http://stackoverflow.com/questions/1960240/jquery-ajax-submit-form">http://stackoverflow.com/questions/1960240/jquery-ajax-submit-form</a></p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "813/ajax-with-mobile-keyboard-go-button/";
+        var disqus_url = "http://blog.carlcarl.me/813/ajax-with-mobile-keyboard-go-button/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -79,5 +92,14 @@ button tag 相對比較好做。再來就是註冊 form tag 的 event，用 jQue
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

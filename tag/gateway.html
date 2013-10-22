@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>carlcarl's blog - gateway</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,29 +12,29 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/39/freebsd-cant-find-gateway/">FreeBSD can't find gateway</a></h1>
+                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/39/freebsd-cant-find-gateway/">FreeBSD can't find gateway</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2011-08-12T19:05:00">
                 五 12 8月 2011
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/freebsd.html">FreeBSD</a>. </p>
-<p>tags: <a href="/tag/freebsd.html">freebsd</a><a href="/tag/gateway.html">gateway</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/freebsd.html">FreeBSD</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/freebsd.html">freebsd</a><a href="http://blog.carlcarl.me/tag/gateway.html">gateway</a></p>
 </footer><!-- /.post-info --><p>最近 Server 卡卡的，想說把network重新啟動看看，結果果然變順很多，想說 OK 就回家了。</p>
 <p>然後悲劇就來了......家裡完全連不上Server，好險還可以拿跟 Server 同個 Subnet 底下的機器登入，想說會不會是我之前裝幾個 Service 或防火牆的關係，但是都關掉後也都沒用 orz，後來用 <code>netstat
 -rn</code> 才看到 <code>defaultgateway</code> 不見了！！</p>
 <p>但是我明明在 <code>rc.conf</code> 裡面就有指定了 <code>defaultgateway</code>，看來好像是 <code>rc.conf</code> 只會在 OS 重啟才有用，network重啟也不會讀這個檔 = =。</p>
-<p>後來查到可以用 <code>/etc/rc.d/routing restart</code> 來解決，不過感覺還是麻煩了點，感覺應該有更好的方法才對= =a。</p>                </article>
+<p>後來查到可以用 <code>/etc/rc.d/routing restart</code> 來解決，不過感覺還是麻煩了點，感覺應該有更好的方法才對= =a。</p><p>There are <a href="http://blog.carlcarl.me/39/freebsd-cant-find-gateway/#disqus_thread">comments</a>.</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>
@@ -69,5 +69,14 @@
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

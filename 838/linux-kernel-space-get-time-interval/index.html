@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>Linux kernel space get time interval</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/838/linux-kernel-space-get-time-interval/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/838/linux-kernel-space-get-time-interval/" rel="bookmark"
            title="Permalink to Linux kernel space get time interval">Linux kernel space get time interval</a></h1>
     </header>
 
@@ -31,9 +31,9 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/c-c-linux.html">C &amp; C++, linux</a>. </p>
+<p>In <a href="http://blog.carlcarl.me/category/c-c-linux.html">C &amp; C++, linux</a>. </p>
 
 </footer><!-- /.post-info -->      <p>之前聽到可以用 <code>jiffies</code>
 來抓時間，可是我自己測的結果是前後抓的時間會都一樣囧。查了一下
@@ -65,6 +65,19 @@ function，故在這裡不考慮。ftrace 感覺好像很威，不過需要調�
 <a href="http://www.makelinux.net/ldd3/chp-7-sect-1">http://www.makelinux.net/ldd3/chp-7-sect-1</a><br />
 <a href="http://stackoverflow.com/questions/10885685/jiffies-how-to-calculate-seconds-elapsed">http://stackoverflow.com/questions/10885685/jiffies-how-to-calculate-seconds-elapsed</a></p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "838/linux-kernel-space-get-time-interval/";
+        var disqus_url = "http://blog.carlcarl.me/838/linux-kernel-space-get-time-interval/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -96,5 +109,14 @@ function，故在這裡不考慮。ftrace 感覺好像很威，不過需要調�
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

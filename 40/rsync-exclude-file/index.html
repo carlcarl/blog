@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>rsync exclude file</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/40/rsync-exclude-file/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/40/rsync-exclude-file/" rel="bookmark"
            title="Permalink to rsync exclude file">rsync exclude file</a></h1>
     </header>
 
@@ -31,10 +31,10 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/rsync.html">rsync</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/rsync.html">rsync</a></p>
 </footer><!-- /.post-info -->      <p>最近想打包線上在跑的網站(在 Ubuntu 上)。本來想說用 <code>cp</code> 就好，但是 <code>cp</code>
 沒辦法去 exclude 一些檔案列表，偏偏網站上面有些是暫存檔和使用者上傳的東西，另外還有一些雜七雜八不該包的 code。</p>
 <p>後來查到可以用 <code>rsync</code> 來作 因為有支援 exclude 的參數，以下是範例，a
@@ -57,6 +57,19 @@
 <a href="http://www.thegeekstuff.com/2011/01/rsync-exclude-files-and-folders/">http://www.thegeekstuff.com/2011/01/rsync-exclude-files-and-folders/</a><br />
 <a href="http://blog.xuite.net/jyoutw/xtech/20025390">http://blog.xuite.net/jyoutw/xtech/20025390</a></p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "40/rsync-exclude-file/";
+        var disqus_url = "http://blog.carlcarl.me/40/rsync-exclude-file/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -88,5 +101,14 @@
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

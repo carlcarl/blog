@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>ssh with firewall</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/1053/ssh-with-firewall/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/1053/ssh-with-firewall/" rel="bookmark"
            title="Permalink to ssh with firewall">ssh with firewall</a></h1>
     </header>
 
@@ -31,10 +31,10 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/ssh.html">ssh</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/ssh.html">ssh</a></p>
 </footer><!-- /.post-info -->      <p>記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh
 的主機，這裡以 <code>example.com</code> 為例。 (其實參考資料的連結內容更詳細
 XD，有需要的人建議點進去看看唄～～。)</p>
@@ -74,6 +74,19 @@ ssh -p 9999 -l user -D 9998 localhost
 <p>參考資料：<br />
 <a href="http://josephj.com/entry.php?id=312">反向建立 SSH Tunnel、免 VPN 連回公司</a></p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "1053/ssh-with-firewall/";
+        var disqus_url = "http://blog.carlcarl.me/1053/ssh-with-firewall/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -105,5 +118,14 @@ ssh -p 9999 -l user -D 9998 localhost
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

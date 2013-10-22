@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>carlcarl's blog - mysql</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,24 +12,24 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/495/mysql-table_cache-fail/">MySQL table_cache fail</a></h1>
+                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/495/mysql-table_cache-fail/">MySQL table_cache fail</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2012-05-31T15:26:00">
                 四 31 5月 2012
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/database-mysql.html">database, mysql</a>. </p>
-<p>tags: <a href="/tag/mysql.html">mysql</a><a href="/tag/table_cache.html">table_cache</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/database-mysql.html">database, mysql</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/mysql.html">mysql</a><a href="http://blog.carlcarl.me/tag/table_cache.html">table_cache</a></p>
 </footer><!-- /.post-info --><p>一直記得之前好像遇過同樣的問題，後來才想到應該是 ulimit 的限制。ulimit
 會限制一個 user 可開啟的檔案，MySQL 也不例外，預設會被限制在最多開 1024
 個檔案，以下是跟 MySQL 有關的算式：</p>
@@ -50,7 +50,7 @@
 
 <p>接著重開 MySQL 即可。</p>
 <p>參考網址：<br />
-<a href="http://www.neweguo.com/club/display.asp?id=44">http://www.neweguo.com/club/display.asp?id=44</a></p>                </article>
+<a href="http://www.neweguo.com/club/display.asp?id=44">http://www.neweguo.com/club/display.asp?id=44</a></p><p>There are <a href="http://blog.carlcarl.me/495/mysql-table_cache-fail/#disqus_thread">comments</a>.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -59,7 +59,7 @@
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/486/mysql-insert-if-duplicate-then-update/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/486/mysql-insert-if-duplicate-then-update/" rel="bookmark"
                            title="Permalink to MySQL insert if duplicate then update">MySQL insert if duplicate then update</a></h1>
                 </header>
 
@@ -70,10 +70,10 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/database.html">database</a>. </p>
-<p>tags: <a href="/tag/mysql.html">mysql</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/database.html">database</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/mysql.html">mysql</a></p>
 </footer><!-- /.post-info -->                <p>在做壓力測試的時候發現出來的數值不太對，後來看了一下，發現是因為程式裏面是拿
 SELECT 出來的資料加 1 並給 UPDATE 來使用，但是這樣並不是一個 atomic 的
 operation，如果在 SELECT 完之後有其他人也進行 SELECT
@@ -83,13 +83,13 @@ operation，如果在 SELECT 完之後有其他人也進行 SELECT
 查了一下資料，發現有個簡單的語法可以使用：</p>
 <div class="highlight"><pre><span class="cm">/* If id is the UNIQUE KEY */</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="n">num</span><span class="o">=</span><span class="n">num</span><span class="o">+</span><span class="mi">1 ...</span></pre></div>
-                <a class="readmore" href="/486/mysql-insert-if-duplicate-then-update/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/486/mysql-insert-if-duplicate-then-update/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/486/mysql-insert-if-duplicate-then-update/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/226/mysql-db-engine-with-log-archive/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/226/mysql-db-engine-with-log-archive/" rel="bookmark"
                            title="Permalink to MySQL DB engine with log: Archive">MySQL DB engine with log: Archive</a></h1>
                 </header>
 
@@ -100,10 +100,10 @@ operation，如果在 SELECT 完之後有其他人也進行 SELECT
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/mysql.html">mysql</a>. </p>
-<p>tags: <a href="/tag/archive.html">archive</a><a href="/tag/innodb.html">innodb</a><a href="/tag/mariadb.html">mariadb</a><a href="/tag/myisam.html">myisam</a><a href="/tag/mysql.html">mysql</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/mysql.html">mysql</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/archive.html">archive</a><a href="http://blog.carlcarl.me/tag/innodb.html">innodb</a><a href="http://blog.carlcarl.me/tag/mariadb.html">mariadb</a><a href="http://blog.carlcarl.me/tag/myisam.html">myisam</a><a href="http://blog.carlcarl.me/tag/mysql.html">mysql</a></p>
 </footer><!-- /.post-info -->                <p>前一陣子在看什麼 engine 比較適合拿來單純存
 log，後來看到 <code>Archive</code> 這個似乎不錯，主要有以下優點：</p>
 <ul>
@@ -122,13 +122,13 @@ index 和 update。）</p>
 <li>其實真的就只會用到 insert，會用到 delete 和 update 那這個應該不太叫
     log。</li>
 <li>作 select 的機率也是微乎其微 ...</li></ul>
-                <a class="readmore" href="/226/mysql-db-engine-with-log-archive/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/226/mysql-db-engine-with-log-archive/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/226/mysql-db-engine-with-log-archive/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/170/mysql-change-engine-of-all-tables/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/170/mysql-change-engine-of-all-tables/" rel="bookmark"
                            title="Permalink to MySQL change engine of all tables">MySQL change engine of all tables</a></h1>
                 </header>
 
@@ -139,10 +139,10 @@ index 和 update。）</p>
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/mysql.html">mysql</a>. </p>
-<p>tags: <a href="/tag/aria.html">aria</a><a href="/tag/mariadb.html">mariadb</a><a href="/tag/mysql.html">mysql</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/mysql.html">mysql</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/aria.html">aria</a><a href="http://blog.carlcarl.me/tag/mariadb.html">mariadb</a><a href="http://blog.carlcarl.me/tag/mysql.html">mysql</a></p>
 </footer><!-- /.post-info -->                <p>最近裝好<a href="http://mariadb.org/">mariaDB</a>，想順便把之前用的 <code>Myisam</code> 改成新的 <code>Aria</code> engine，可是
 table 一堆，在 phpmyadmin 介面上也找不到比較方便的功能可以直接轉換所有的
 table engine。</p>
@@ -155,8 +155,8 @@ engine，不過為了這個寫 php 總是覺得很奇怪。後來查到另外一
 
 
 <p>要注意 <code>table_name</code> 不用改，這個是 <code>informatio_schema ...</code></p>
-                <a class="readmore" href="/170/mysql-change-engine-of-all-tables/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/170/mysql-change-engine-of-all-tables/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/170/mysql-change-engine-of-all-tables/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
@@ -191,5 +191,14 @@ engine，不過為了這個寫 php 總是覺得很奇怪。後來查到另外一
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

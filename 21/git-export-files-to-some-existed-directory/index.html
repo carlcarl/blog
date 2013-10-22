@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>git export files to some existed directory</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/21/git-export-files-to-some-existed-directory/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/21/git-export-files-to-some-existed-directory/" rel="bookmark"
            title="Permalink to git export files to some existed directory">git export files to some existed directory</a></h1>
     </header>
 
@@ -31,10 +31,10 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/ban-ben-guan-li.html">版本管理</a>. </p>
-<p>tags: <a href="/tag/bashrc.html">bashrc</a><a href="/tag/git.html">git</a><a href="/tag/vimrc.html">vimrc</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/ban-ben-guan-li.html">版本管理</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/bashrc.html">bashrc</a><a href="http://blog.carlcarl.me/tag/git.html">git</a><a href="http://blog.carlcarl.me/tag/vimrc.html">vimrc</a></p>
 </footer><!-- /.post-info -->      <p>最近想把 vimrc 和 bashrc 等設定檔作同步，想說大家都在用 git，所以就不用 svn 改用 git 看看了!</p>
 <p>但是在同步的時候卻遇到了問題，本來想說直接輸入看看</p>
 <div class="highlight"><pre>git clone &lt;git repo url&gt;
@@ -57,6 +57,19 @@ git checkout master
 <p>參考網頁</p>
 <p><a href="http://code.google.com/p/tortoisegit/issues/detail?id=204">http://code.google.com/p/tortoisegit/issues/detail?id=204</a></p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "21/git-export-files-to-some-existed-directory/";
+        var disqus_url = "http://blog.carlcarl.me/21/git-export-files-to-some-existed-directory/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -88,5 +101,14 @@ git checkout master
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

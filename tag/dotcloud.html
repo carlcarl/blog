@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>carlcarl's blog - Dotcloud</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,24 +12,24 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/135/dotcloud-django-admin-login-error/">DotCloud Django admin login error</a></h1>
+                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/135/dotcloud-django-admin-login-error/">DotCloud Django admin login error</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2011-11-27T16:53:00">
                 日 27 11月 2011
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/python.html">python</a>. </p>
-<p>tags: <a href="/tag/django.html">django</a><a href="/tag/dotcloud.html">Dotcloud</a><a href="/tag/python.html">python</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/django.html">django</a><a href="http://blog.carlcarl.me/tag/dotcloud.html">Dotcloud</a><a href="http://blog.carlcarl.me/tag/python.html">python</a></p>
 </footer><!-- /.post-info --><p>在建置好 admin 相關的設定和 static file 路徑後，終於進到輸入 admin
 帳密的畫面了，但是按鈕連結卻是錯誤的，看了一下 source code
 的部份，「app_path」這個變數似乎有問題。</p>
@@ -44,7 +44,7 @@
 <p>將 <code>{{ app_path }}</code> 改為 <code>/admin/</code>，但是這樣作其實只是治標，因為每次
 push 都會重新覆蓋掉，只能等之後看會不會修正了。或者是可以考慮寫個 python
 script，然後加入到 <code>postinstall</code> 這個檔案，每次 push
-完就去修改這個檔案之類的，不過我個人是懶得這樣用就是了orz。</p>                </article>
+完就去修改這個檔案之類的，不過我個人是懶得這樣用就是了orz。</p><p>There are <a href="http://blog.carlcarl.me/135/dotcloud-django-admin-login-error/#disqus_thread">comments</a>.</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>
@@ -79,5 +79,14 @@ script，然後加入到 <code>postinstall</code> 這個檔案，每次 push
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

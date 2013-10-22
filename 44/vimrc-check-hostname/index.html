@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>vimrc check hostname</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/44/vimrc-check-hostname/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/44/vimrc-check-hostname/" rel="bookmark"
            title="Permalink to vimrc check hostname">vimrc check hostname</a></h1>
     </header>
 
@@ -31,10 +31,10 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/vim.html">vim</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/vim.html">vim</a></p>
 </footer><!-- /.post-info -->      <p>因為在不同電腦用了一個共用的 vimrc 檔，但是又想在兩邊作一些不同的設定，所以找了一下資料看要怎麼作。雖然有判斷作業系統的方式，不過好像不太適合我的用法，然後我通常不同的電腦都會設個有意義的 hostname，所以最後想說就用 hostname 去作判斷啦，以下是一個範例：</p>
 <div class="highlight"><pre>let hostname = substitute(system(&#39;hostname&#39;), &#39;n&#39;, &#39;&#39;, &#39;&#39;)
 if hostname == &quot;lab&quot;
@@ -59,6 +59,19 @@ endif
 <p>參考網址：  </p>
 <p><a href="http://superuser.com/questions/194715/how-to-make-vim-settings-computer-dependent-in-vimrc">http://superuser.com/questions/194715/how-to-make-vim-settings-computer-dependent-in-vimrc</a></p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "44/vimrc-check-hostname/";
+        var disqus_url = "http://blog.carlcarl.me/44/vimrc-check-hostname/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -90,5 +103,14 @@ endif
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

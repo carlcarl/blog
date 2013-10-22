@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>Quorum read</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/254/quorum-read/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/254/quorum-read/" rel="bookmark"
            title="Permalink to Quorum read">Quorum read</a></h1>
     </header>
 
@@ -31,10 +31,10 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/database.html">database</a>. </p>
-<p>tags: <a href="/tag/cassandra.html">Cassandra</a><a href="/tag/hbase.html">hbase</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/database.html">database</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/cassandra.html">Cassandra</a><a href="http://blog.carlcarl.me/tag/hbase.html">hbase</a></p>
 </footer><!-- /.post-info -->      <p>最近在看 paper，剛好看到這個名詞，似乎是 Cassandra 有用到的一個技巧。</p>
 <p>在 cluster
 的環境中，有時候並不能保證說讀取到的值一定會是最新的，可能會因為架構或設計上的不同，可能在做
@@ -45,6 +45,19 @@ node 的值，效能上不用說一定會很慢，所以這個問題我不知道
 <p>其實還滿詭異的，如果真的要要求資料一致性的話，我覺得還不如就選資料一致性較強的
 HBase（不過我不太喜歡要分一堆角色的分散式系統，感覺在架構配置上會比較麻煩）。</p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "254/quorum-read/";
+        var disqus_url = "http://blog.carlcarl.me/254/quorum-read/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -76,5 +89,14 @@ HBase（不過我不太喜歡要分一堆角色的分散式系統，感覺在架
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

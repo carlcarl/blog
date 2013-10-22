@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>carlcarl's blog - apache</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,24 +12,24 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/233/naming-apache-log-with-date/">naming apache log with date</a></h1>
+                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/233/naming-apache-log-with-date/">naming apache log with date</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2011-12-19T17:01:00">
                 一 19 12月 2011
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/apache.html">apache</a><a href="/tag/daily.html">daily</a><a href="/tag/logrotate.html">logrotate</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/apache.html">apache</a><a href="http://blog.carlcarl.me/tag/daily.html">daily</a><a href="http://blog.carlcarl.me/tag/logrotate.html">logrotate</a></p>
 </footer><!-- /.post-info --><p>目前是用 <code>logrotate</code> 來作，只要在 <code>/etc/logrotate.d/apache2</code> 裡加入下面這個參數即可：</p>
 <ul>
 <li>dateext</li>
@@ -49,7 +49,7 @@ endscript
 <p>這樣才能在壓縮 log 檔之前確保 awstats 不會漏掉log檔的資料</p>
 <p>參考網址：  </p>
 <p><a href="http://groups.google.com/group/linux.debian.user/browse_thread/thread/d1a86eebd2d2e862?pli=1">http://groups.google.com/group/linux.debian.user/browse_thread/thread/d1a86eebd2d2e862?pli=1</a>  </p>
-<p><a href="http://www.doubleservice.com/2011/02/configuration-of-logrotate-with-awstats/">http://www.doubleservice.com/2011/02/configuration-of-logrotate-with-awstats/</a></p>                </article>
+<p><a href="http://www.doubleservice.com/2011/02/configuration-of-logrotate-with-awstats/">http://www.doubleservice.com/2011/02/configuration-of-logrotate-with-awstats/</a></p><p>There are <a href="http://blog.carlcarl.me/233/naming-apache-log-with-date/#disqus_thread">comments</a>.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -58,7 +58,7 @@ endscript
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/159/apache-prevent-executing-php-in-specific-directory/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/159/apache-prevent-executing-php-in-specific-directory/" rel="bookmark"
                            title="Permalink to apache prevent executing php in specific directory">apache prevent executing php in specific directory</a></h1>
                 </header>
 
@@ -69,10 +69,10 @@ endscript
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/apache.html">apache</a><a href="/tag/php.html">php</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/apache.html">apache</a><a href="http://blog.carlcarl.me/tag/php.html">php</a></p>
 </footer><!-- /.post-info -->                <p>最近剛修復的問題，其實也滿常見的，不過有時候總是會忽略這種簡單的問題orz。</p>
 <p>如果要預防使用者將 php 檔案上傳後去執行的話，只要在 apache 的 config
 檔中加入以下設定：</p>
@@ -88,8 +88,8 @@ php，就會改成下載 php 而不是執行
 php。另外還有一種方法也是可以作，不過是用副檔名的方法作過濾，顯然還是上面的方法會比較好囉。</p>
 <p>參考網址：<br />
 <a href="http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html">http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html</a></p>
-                <a class="readmore" href="/159/apache-prevent-executing-php-in-specific-directory/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/159/apache-prevent-executing-php-in-specific-directory/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/159/apache-prevent-executing-php-in-specific-directory/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
@@ -124,5 +124,14 @@ php。另外還有一種方法也是可以作，不過是用副檔名的方法�
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

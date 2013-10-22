@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>carlcarl's blog - nginx</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,24 +12,24 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/1043/nginx-pagespeed-gzip-combine-js/">nginx pagespeed gzip combine js</a></h1>
+                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/1043/nginx-pagespeed-gzip-combine-js/">nginx pagespeed gzip combine js</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2013-06-16T23:10:00">
                 日 16 6月 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/nginx.html">nginx</a><a href="/tag/pagespeed.html">pagespeed</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/nginx.html">nginx</a><a href="http://blog.carlcarl.me/tag/pagespeed.html">pagespeed</a></p>
 </footer><!-- /.post-info --><p>在用 <a href="http://gtmetrix.com">GTmetrix</a> 看網站的效能的時候，發現只有 pagespeed combine 出來的
 js，沒有被 gzip 處理過。</p>
 <!--more-->
@@ -39,7 +39,7 @@ js，沒有被 gzip 處理過。</p>
 <p>我原本設定是
 <code>gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript</code>，想說該設的都設了，想不到還是有漏網之魚，加上之後重啟，果然就 OK 哩。</p>
 <p>附帶一提，我把 wp-minify 這個外掛也拿掉了，因為 pagespeed
-基本上算是可以取代掉它了（而且 wp-minfiy 還有一些怪怪的 bug...）。</p>                </article>
+基本上算是可以取代掉它了（而且 wp-minfiy 還有一些怪怪的 bug...）。</p><p>There are <a href="http://blog.carlcarl.me/1043/nginx-pagespeed-gzip-combine-js/#disqus_thread">comments</a>.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -48,7 +48,7 @@ js，沒有被 gzip 處理過。</p>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/961/php-unable-to-allocate-memory-for-pool/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/961/php-unable-to-allocate-memory-for-pool/" rel="bookmark"
                            title="Permalink to PHP: Unable to allocate memory for pool">PHP: Unable to allocate memory for pool</a></h1>
                 </header>
 
@@ -59,10 +59,10 @@ js，沒有被 gzip 處理過。</p>
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/php.html">php</a>. </p>
-<p>tags: <a href="/tag/apc.html">apc</a><a href="/tag/nginx.html">nginx</a><a href="/tag/php.html">php</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/php.html">php</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/apc.html">apc</a><a href="http://blog.carlcarl.me/tag/nginx.html">nginx</a><a href="http://blog.carlcarl.me/tag/php.html">php</a></p>
 </footer><!-- /.post-info -->                <p>其實本來一開始的問題是 nginx 突然出現 <code>404 bad gateway</code>，後來去看 log
 才發現這個錯誤，所以看來如果出現 bad gateway
 的問題的話，可能就是跟後端的連線出了問題這樣。</p>
@@ -70,13 +70,13 @@ js，沒有被 gzip 處理過。</p>
 的關係，剛好我也有裝，於是跟著把 <code>apc.shm_size</code> 調大之後並重開就 OK 了。</p>
 <p>不過老實說不能確定是因為重開，還是因為 cache
 有調大的關係。可能之後還要再觀察看看，目前過了幾天，看起來是都沒問題這樣～～。</p>
-                <a class="readmore" href="/961/php-unable-to-allocate-memory-for-pool/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/961/php-unable-to-allocate-memory-for-pool/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/961/php-unable-to-allocate-memory-for-pool/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/879/ubuntu-nginx-pagespeed-module/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/879/ubuntu-nginx-pagespeed-module/" rel="bookmark"
                            title="Permalink to Ubuntu nginx pagespeed module">Ubuntu nginx pagespeed module</a></h1>
                 </header>
 
@@ -87,10 +87,10 @@ js，沒有被 gzip 處理過。</p>
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/nginx.html">nginx</a><a href="/tag/pagespeed.html">pagespeed</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/nginx.html">nginx</a><a href="http://blog.carlcarl.me/tag/pagespeed.html">pagespeed</a><a href="http://blog.carlcarl.me/tag/ubuntu.html">ubuntu</a></p>
 </footer><!-- /.post-info -->                <p>Ubuntu 版本：12.04 Nginx 版本：1.4.1 pagespeed 版本：1.5.27.3
 記錄一下安裝的步驟： <!--more--></p>
 <div class="highlight"><pre><span class="c"># 到 home 目錄下做，看個人習慣就是</span>
@@ -103,13 +103,13 @@ sudo apt-get update
 sudo apt-get <span class="nb">source </span>nginx
 <span class="c"># 裝 build nginx 需要的套件</span>
 sudo apt-get ...</pre></div>
-                <a class="readmore" href="/879/ubuntu-nginx-pagespeed-module/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/879/ubuntu-nginx-pagespeed-module/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/879/ubuntu-nginx-pagespeed-module/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/873/ubuntu-service-cant-restart-or-stop/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/873/ubuntu-service-cant-restart-or-stop/" rel="bookmark"
                            title="Permalink to Ubuntu service can't restart or stop">Ubuntu service can't restart or stop</a></h1>
                 </header>
 
@@ -120,10 +120,10 @@ sudo apt-get ...</pre></div>
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/nginx.html">nginx</a><a href="/tag/ubuntu.html">ubuntu</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/nginx.html">nginx</a><a href="http://blog.carlcarl.me/tag/ubuntu.html">ubuntu</a></p>
 </footer><!-- /.post-info -->                <p>在自己編 nginx 的時候遇到的小問題，因為自己裝的 conf 設定和原本 Ubuntu
 repo 裡的的不一樣，然後 init script 我是用 repo 裡提供的。</p>
 <p>看了一下 repo 提供的 init script，似乎是因為找不到 start service 所建立的
@@ -131,8 +131,8 @@ pid 檔案，google 了一下，在 stackoverflow
 找到 <a href="http://stackoverflow.com/questions/10939072/add-nginx-as-a-ubuntu-service-stop-and-reload-doesnt-work">這篇問題</a> 剛好和我遇到的情況一樣，check 了一下 nginx conf 裡的 pid
 檔案位置和 init script 裡的 pid
 檔案位置，發現設定並不一樣，改成一樣後，問題就解決了～～。</p>
-                <a class="readmore" href="/873/ubuntu-service-cant-restart-or-stop/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/873/ubuntu-service-cant-restart-or-stop/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/873/ubuntu-service-cant-restart-or-stop/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
@@ -167,5 +167,14 @@ pid 檔案，google 了一下，在 stackoverflow
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

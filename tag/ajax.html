@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>carlcarl's blog - ajax</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,24 +12,24 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/813/ajax-with-mobile-keyboard-go-button/">ajax with mobile keyboard go button</a></h1>
+                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/813/ajax-with-mobile-keyboard-go-button/">ajax with mobile keyboard go button</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2013-04-07T22:58:00">
                 日 07 4月 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/js.html">js</a>. </p>
-<p>tags: <a href="/tag/ajax.html">ajax</a><a href="/tag/mobile.html">mobile</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/ajax.html">ajax</a><a href="http://blog.carlcarl.me/tag/mobile.html">mobile</a></p>
 </footer><!-- /.post-info --><p>最近弄 ajax 在手機上測的時候發現按 keyboard 上的 go 按鈕不會自動
 submit，所以看了一下是怎麼回事。找了一些資料加上自己測試了一下，發現原來
 go 按鈕跟 enter 是一樣的 event。</p>
@@ -41,7 +41,7 @@ button tag 相對比較好做。再來就是註冊 form tag 的 event，用 jQue
 來說就是 <code>$('#myform').submit(myfunction);</code>，接著在 <code>myfunction</code>
 中記得最後要 <code>return false;</code>，以避免真的 submit 頁面上去。</p>
 <p>參考網址：<br />
-<a href="http://stackoverflow.com/questions/1960240/jquery-ajax-submit-form">http://stackoverflow.com/questions/1960240/jquery-ajax-submit-form</a></p>                </article>
+<a href="http://stackoverflow.com/questions/1960240/jquery-ajax-submit-form">http://stackoverflow.com/questions/1960240/jquery-ajax-submit-form</a></p><p>There are <a href="http://blog.carlcarl.me/813/ajax-with-mobile-keyboard-go-button/#disqus_thread">comments</a>.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -50,7 +50,7 @@ button tag 相對比較好做。再來就是註冊 form tag 的 event，用 jQue
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/355/ajaxfileupload-syntaxerror-missing-in-xml-expression/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/355/ajaxfileupload-syntaxerror-missing-in-xml-expression/" rel="bookmark"
                            title="Permalink to ajaxfileupload SyntaxError: missing } in XML expression">ajaxfileupload SyntaxError: missing } in XML expression</a></h1>
                 </header>
 
@@ -61,10 +61,10 @@ button tag 相對比較好做。再來就是註冊 form tag 的 event，用 jQue
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/js.html">js</a>. </p>
-<p>tags: <a href="/tag/ajax.html">ajax</a><a href="/tag/ajaxfileupload.html">ajaxfileupload</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/ajax.html">ajax</a><a href="http://blog.carlcarl.me/tag/ajaxfileupload.html">ajaxfileupload</a></p>
 </footer><!-- /.post-info -->                <p>本來用 <a href="http://www.phpletter.com/Our-Projects/AjaxFileUpload/">ajaxfileupload</a>
 用得好好的，結果不知道為什麼就突然出現這個錯誤，查了一下資料再加上自己比對的結果才發現，原來是因為我在
 server 端的 response 加上 content type="application/json"
@@ -76,13 +76,13 @@ server 端的 response 加上 content type="application/json"
 這邊我是選擇了第2種方法來做，因為我覺得 minetype
 這東西是需要加的，現在不加怕以後會有相容性問題。</p>
 <p>這邊其實很簡單，只要在 ajaxfileupload.js 中修改 uploadHttpData ...</p>
-                <a class="readmore" href="/355/ajaxfileupload-syntaxerror-missing-in-xml-expression/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/355/ajaxfileupload-syntaxerror-missing-in-xml-expression/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/355/ajaxfileupload-syntaxerror-missing-in-xml-expression/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/342/django-ajax-file-upload/" rel="bookmark"
+                    <h1><a href="http://blog.carlcarl.me/342/django-ajax-file-upload/" rel="bookmark"
                            title="Permalink to Django ajax file upload">Django ajax file upload</a></h1>
                 </header>
 
@@ -93,10 +93,10 @@ server 端的 response 加上 content type="application/json"
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/js-python.html">js, python</a>. </p>
-<p>tags: <a href="/tag/ajax.html">ajax</a><a href="/tag/ajaxfileupload.html">ajaxfileupload</a><a href="/tag/csrf.html">csrf</a><a href="/tag/django.html">django</a><a href="/tag/python.html">python</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/js-python.html">js, python</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/ajax.html">ajax</a><a href="http://blog.carlcarl.me/tag/ajaxfileupload.html">ajaxfileupload</a><a href="http://blog.carlcarl.me/tag/csrf.html">csrf</a><a href="http://blog.carlcarl.me/tag/django.html">django</a><a href="http://blog.carlcarl.me/tag/python.html">python</a></p>
 </footer><!-- /.post-info -->                <p>原本以為很簡單可以完成的東西，結果花了我不少時間解決囧。</p>
 <p>Ajax 檔案上傳我用的是 <a href="http://www.phpletter.com/Our-Projects/AjaxFileUpload/">ajaxfileupload</a> 這個 jQuery 套件，問題在於
 Django 會檢查 csrf 的問題，如果我不在 settings.py 裡的
@@ -106,8 +106,8 @@ error，如果我加上了，則是會跟我說 csrf token 找不到。</p>
 <p>後來找到的解決辦法就是在 views.py 裡拿到 csrf token 並傳到 template
 中，然後再改寫 ajaxfileupload.js 中的內容，讓它支援傳送參數，接著將 csrf
 token 當作參數傳送回去就 OK ...</p>
-                <a class="readmore" href="/342/django-ajax-file-upload/">read more</a>
-                </div><!-- /.entry-content -->
+                <a class="readmore" href="http://blog.carlcarl.me/342/django-ajax-file-upload/">read more</a>
+<p>There are <a href="http://blog.carlcarl.me/342/django-ajax-file-upload/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
@@ -142,5 +142,14 @@ token 當作參數傳送回去就 OK ...</p>
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

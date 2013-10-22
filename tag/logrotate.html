@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>carlcarl's blog - logrotate</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,24 +12,24 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/233/naming-apache-log-with-date/">naming apache log with date</a></h1>
+                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/233/naming-apache-log-with-date/">naming apache log with date</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2011-12-19T17:01:00">
                 一 19 12月 2011
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/apache.html">apache</a><a href="/tag/daily.html">daily</a><a href="/tag/logrotate.html">logrotate</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/apache.html">apache</a><a href="http://blog.carlcarl.me/tag/daily.html">daily</a><a href="http://blog.carlcarl.me/tag/logrotate.html">logrotate</a></p>
 </footer><!-- /.post-info --><p>目前是用 <code>logrotate</code> 來作，只要在 <code>/etc/logrotate.d/apache2</code> 裡加入下面這個參數即可：</p>
 <ul>
 <li>dateext</li>
@@ -49,7 +49,7 @@ endscript
 <p>這樣才能在壓縮 log 檔之前確保 awstats 不會漏掉log檔的資料</p>
 <p>參考網址：  </p>
 <p><a href="http://groups.google.com/group/linux.debian.user/browse_thread/thread/d1a86eebd2d2e862?pli=1">http://groups.google.com/group/linux.debian.user/browse_thread/thread/d1a86eebd2d2e862?pli=1</a>  </p>
-<p><a href="http://www.doubleservice.com/2011/02/configuration-of-logrotate-with-awstats/">http://www.doubleservice.com/2011/02/configuration-of-logrotate-with-awstats/</a></p>                </article>
+<p><a href="http://www.doubleservice.com/2011/02/configuration-of-logrotate-with-awstats/">http://www.doubleservice.com/2011/02/configuration-of-logrotate-with-awstats/</a></p><p>There are <a href="http://blog.carlcarl.me/233/naming-apache-log-with-date/#disqus_thread">comments</a>.</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>
@@ -84,5 +84,14 @@ endscript
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

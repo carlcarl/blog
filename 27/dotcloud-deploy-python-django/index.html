@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>Dotcloud deploy python+django</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/27/dotcloud-deploy-python-django/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/27/dotcloud-deploy-python-django/" rel="bookmark"
            title="Permalink to Dotcloud deploy python+django">Dotcloud deploy python+django</a></h1>
     </header>
 
@@ -31,9 +31,9 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/python.html">python</a>. </p>
+<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
 
 </footer><!-- /.post-info -->      <p><a href="https://www.dotcloud.com/">dotcloud</a> 是個可以讓你佈署網站的平台，而且提供了 python, php, ruby 甚至是最近剛發展起來的 node.js 都有，資料庫方面也支援了幾種 像是最常見的 mysql, sqlite, mongodb 等，另外我看了一下 居然還有 hadoop!  感覺還滿有趣的。</p>
 <p>除了提供多種開發套件以外，dotcloud 有個不錯的地方是支援ssh連線登入，超方便!</p>
@@ -90,6 +90,19 @@ django-admin.py startproject <span class="nb">test</span>
 <p><a href="http://docs.dotcloud.com/cli/#install-dotcloud/">http://docs.dotcloud.com/cli/#install-dotcloud/</a></p>
 <p><a href="http://dmyz.org/archives/110">http://dmyz.org/archives/110</a></p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "27/dotcloud-deploy-python-django/";
+        var disqus_url = "http://blog.carlcarl.me/27/dotcloud-deploy-python-django/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -121,5 +134,14 @@ django-admin.py startproject <span class="nb">test</span>
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>carlcarl's blog - express</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,24 +12,24 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/45/nodejs-express-fail/">nodejs express fail</a></h1>
+                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/45/nodejs-express-fail/">nodejs express fail</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2011-09-07T12:09:00">
                 三 07 9月 2011
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/js-nodejs.html">js, node.js</a>. </p>
-<p>tags: <a href="/tag/express.html">express</a><a href="/tag/nodejs.html">node.js</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/js-nodejs.html">js, node.js</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/express.html">express</a><a href="http://blog.carlcarl.me/tag/nodejs.html">node.js</a></p>
 </footer><!-- /.post-info --><p><a href="http://i.imgur.com/itGPLvWl.png"><img alt="1315397444-1533326740" src="http://i.imgur.com/itGPLvWl.png" /></a></p>
 <p>之前好不容易決定要用 express 這個 framework，可是安裝完執行 project 後卻出現錯誤，拜了 google 大神之後才發現，好像是他不會去找裝在系統中的 express library。事實上，如果有用 npm 裝其他的 module，應該也有可能會出現一樣的錯誤：找不到 module 啊～～。</p>
 <p>後來在<a href="http://stackoverflow.com/questions/5919629/express-module-not-found-when-installed-with-npm#_=_">stackoverflow也看到有人有同樣的問題</a>，雖然原 PO 已經選了其中一個回答當作答案，不過顯然那個答案的作法：每次安裝就要複製 library 實在是不怎麼簡潔。後來在文章下面的回答中有看到一個更好的作法：</p>
@@ -38,7 +38,7 @@
 
 
 <p>問題就輕鬆的解決掉了。</p>
-<p>如果之後裝了其他 module，在使用的時候也出現找不到 module 的錯誤，用 <code>npm link module名稱</code> 就能解決了。</p>                </article>
+<p>如果之後裝了其他 module，在使用的時候也出現找不到 module 的錯誤，用 <code>npm link module名稱</code> 就能解決了。</p><p>There are <a href="http://blog.carlcarl.me/45/nodejs-express-fail/#disqus_thread">comments</a>.</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>
@@ -73,5 +73,14 @@
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>awstats analyze large logs at once (include gz files)</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/31/awstats-analyze-large-logs-at-once-include-gz-files/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/31/awstats-analyze-large-logs-at-once-include-gz-files/" rel="bookmark"
            title="Permalink to awstats analyze large logs at once (include gz files)">awstats analyze large logs at once (include gz files)</a></h1>
     </header>
 
@@ -31,10 +31,10 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
-<p>tags: <a href="/tag/awstats.html">awstats</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/awstats.html">awstats</a></p>
 </footer><!-- /.post-info -->      <p><a href="http://carl830.pixnet.net/blog/post/66466219">awstats的簡易安裝教學</a></p>
 <p>因為在維護的網站log檔有一年份，而且都已經壓縮成gz檔，要用awstats分析的話實在很費工夫，後來發現awstats有好用的工具可以用：<span style="color: #3366ff;">logresolvemerge.pl</span>。</p>
 <p>簡單講就是用這個工具將log檔(包含gz壓縮檔)都merge起來為一個大檔案後，再用awstats作分析。</p>
@@ -71,6 +71,19 @@
 <a href="http://www.webmasterworld.com/forum40/1536.htm">http://www.webmasterworld.com/forum40/1536.htm</a><br />
 <a href="http://www.internetofficer.com/forum/awstats-iis-installation-and-configuration/how-to-analyze-multiple-logfiles/">http://www.internetofficer.com/forum/awstats-iis-installation-and-configuration/how-to-analyze-multiple-logfiles/</a></p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "31/awstats-analyze-large-logs-at-once-include-gz-files/";
+        var disqus_url = "http://blog.carlcarl.me/31/awstats-analyze-large-logs-at-once-include-gz-files/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -102,5 +115,14 @@
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

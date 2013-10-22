@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>carlcarl's blog - apc</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,31 +12,31 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/961/php-unable-to-allocate-memory-for-pool/">PHP: Unable to allocate memory for pool</a></h1>
+                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/961/php-unable-to-allocate-memory-for-pool/">PHP: Unable to allocate memory for pool</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2013-06-10T22:29:00">
                 一 10 6月 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/php.html">php</a>. </p>
-<p>tags: <a href="/tag/apc.html">apc</a><a href="/tag/nginx.html">nginx</a><a href="/tag/php.html">php</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/php.html">php</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/apc.html">apc</a><a href="http://blog.carlcarl.me/tag/nginx.html">nginx</a><a href="http://blog.carlcarl.me/tag/php.html">php</a></p>
 </footer><!-- /.post-info --><p>其實本來一開始的問題是 nginx 突然出現 <code>404 bad gateway</code>，後來去看 log
 才發現這個錯誤，所以看來如果出現 bad gateway
 的問題的話，可能就是跟後端的連線出了問題這樣。</p>
 <p>查了一下資料，發現到<a href="http://www.cyberciti.biz/faq/linux-unix-php-warning-unable-to-allocate-memory-for-pool/">這篇</a>說可能是 php apc
 的關係，剛好我也有裝，於是跟著把 <code>apc.shm_size</code> 調大之後並重開就 OK 了。</p>
 <p>不過老實說不能確定是因為重開，還是因為 cache
-有調大的關係。可能之後還要再觀察看看，目前過了幾天，看起來是都沒問題這樣～～。</p>                </article>
+有調大的關係。可能之後還要再觀察看看，目前過了幾天，看起來是都沒問題這樣～～。</p><p>There are <a href="http://blog.carlcarl.me/961/php-unable-to-allocate-memory-for-pool/#disqus_thread">comments</a>.</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>
@@ -71,5 +71,14 @@
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

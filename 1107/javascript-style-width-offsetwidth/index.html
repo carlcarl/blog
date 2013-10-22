@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>javascript style.width offsetWidth</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/1107/javascript-style-width-offsetwidth/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/1107/javascript-style-width-offsetwidth/" rel="bookmark"
            title="Permalink to javascript style.width offsetWidth">javascript style.width offsetWidth</a></h1>
     </header>
 
@@ -31,10 +31,10 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/css-js.html">css, js</a>. </p>
-<p>tags: <a href="/tag/offsetwidth.html">offsetWidth</a></p>
+<p>In <a href="http://blog.carlcarl.me/category/css-js.html">css, js</a>. </p>
+<p>tags: <a href="http://blog.carlcarl.me/tag/offsetwidth.html">offsetWidth</a></p>
 </footer><!-- /.post-info -->      <p>查了一些資料，看起來 <code>style.width</code> 是如果 css 沒指定 element 的 width
 的話，就會拿到空值，即使它本身的確佔有一個大小。這時候如果想拿到實際大小的話可以用
 <code>offsetWidth</code>，另外要注意的是 <code>offsetWidth</code> 是
@@ -46,6 +46,19 @@
 <a href="http://bbs.csdn.net/topics/80381570">offsetWidth和width有什么不同啊?</a><br />
 <a href="http://stackoverflow.com/questions/4787527/how-to-find-the-width-of-a-div">How to find the width of a div</a></p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "1107/javascript-style-width-offsetwidth/";
+        var disqus_url = "http://blog.carlcarl.me/1107/javascript-style-width-offsetwidth/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -77,5 +90,14 @@
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

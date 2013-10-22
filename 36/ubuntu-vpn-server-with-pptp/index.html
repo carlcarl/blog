@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>Ubuntu VPN Server with pptp</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">carlcarl's blog </a></h1>
+                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
                 <nav><ul>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -20,7 +20,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/36/ubuntu-vpn-server-with-pptp/" rel="bookmark"
+        <a href="http://blog.carlcarl.me/36/ubuntu-vpn-server-with-pptp/" rel="bookmark"
            title="Permalink to Ubuntu VPN Server with pptp">Ubuntu VPN Server with pptp</a></h1>
     </header>
 
@@ -31,9 +31,9 @@
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/carlcarl.html">carlcarl</a>
+                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
         </address>
-<p>In <a href="/category/linux.html">linux</a>. </p>
+<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
 
 </footer><!-- /.post-info -->      <p>最近想架 VPN Server，查了一下資料，最常見的好像是 <code>OpenVPN</code> 和 <code>pptp</code> 兩種方法。pptp 的方式比較簡單，但是相對於 OpenVPN 較為不安全，是說我們系上的好像也是用 pptp，所以我想問題應該不大吧</p>
 <p>網路環境：</p>
@@ -103,6 +103,19 @@ ip，但是封包在 Server 這邊傳不出去，因為沒設定，所以接下�
 <a href="https://wangyan.org/blog/debian-pptp-vpn.html">https://wangyan.org/blog/debian-pptp-vpn.html</a><br />
 <a href="http://jordy.easymorse.com/?p=272">http://jordy.easymorse.com/?p=272</a>  </p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "36/ubuntu-vpn-server-with-pptp/";
+        var disqus_url = "http://blog.carlcarl.me/36/ubuntu-vpn-server-with-pptp/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://carlcarl.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
@@ -134,5 +147,14 @@ ip，但是封包在 Server 這邊傳不出去，因為沒設定，所以接下�
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'carlcarl';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>
