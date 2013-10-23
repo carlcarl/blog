@@ -49,6 +49,27 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-11-03T18:31:00" pubdate>
+                            四 03 11月 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/49/ubuntu-nautilus-thumbnail/" rel="bookmark"><h1>Ubuntu nautilus video thumbnail</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近發現有些影片的預覽圖一直沒辦法看到，想說會不會是播放器的問題，可是搞了老半天卻還是不行。在查了一些資料之後才發現，這個原因好像是因為在之前偵測某幾個影片預覽圖的時候可能失敗還是怎樣，然後這幾個影片就從此不會再作擷取預覽圖的動作，以下是解決方法：</p>
+<div class="highlight"><pre>rm -r ~/.thumbnails/fail/
+</pre></div>
+
+
+<p>刪完之後再重新整理就 OK 哩～。</p>
+<p>參考網址：</p>
+<p><a href="http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?viewmode=compact&amp;topic_id=9430&amp;forum=4">http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?viewmode=compact&amp;topic_id=9430&amp;forum=4</a></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-10-28T13:16:00" pubdate>
                             五 28 10月 2011
                         </time>
@@ -290,24 +311,6 @@ sudo apt-get install mongodb-10gen
 <p>要注意的一點是：<br />
 如果想要避掉 某幾個目錄下的子目錄
 像是每個目錄下的 <code>.svn</code> 資料夾，可以直接用 ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-08-12T19:05:00" pubdate>
-                            五 12 8月 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/39/freebsd-cant-find-gateway/" rel="bookmark"><h1>FreeBSD can't find gateway</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近 Server 卡卡的，想說把network重新啟動看看，結果果然變順很多，想說 OK 就回家了。</p>
-<p>然後悲劇就來了......家裡完全連不上Server，好險還可以拿跟 Server 同個 Subnet 底下的機器登入，想說會不會是我之前裝幾個 Service 或防火牆的關係，但是都關掉後也都沒用 orz，後來用 <code>netstat
--rn</code> 才看到 <code>defaultgateway</code> 不見了！！</p>
-<p>但是我明明在 <code>rc.conf</code> 裡面就有指定了 <code>defaultgateway</code>，看來好像是 <code>rc.conf</code> 只會在 OS 重啟才有用，network重啟也不會讀這個檔 = =。</p>
-<p>後來查到可以用 <code>/etc/rc.d/routing restart</code> 來解決，不過感覺還是麻煩了點，感覺應該有更好的方法才對= =a。</p>
                     </section>
                 </article>
             </li>

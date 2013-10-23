@@ -49,6 +49,40 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-06T15:38:00" pubdate>
+                            二 06 8月 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1249/python-functools-wraps-note/" rel="bookmark"><h1>Python functools.wraps note</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>研究一下 <code>functools.wraps</code>。</p>
+<!--more-->
+
+<h3>用法</h3>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">deco</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="c"># @wraps(f)</span>
+    <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="c"># print `test`</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@deco</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="c"># print `hello`</span>
+</pre></div>
+
+
+<p>在 <code>hello</code> 裡 print 出
+'test'，這個沒什麼問題，但是在宣告完後，如果想確認 <code>test</code> 的 <code>__name__</code>
+attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</code></p></!--more-->
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-08-04T02:35:00" pubdate>
                             日 04 8月 2013
                         </time>
@@ -253,33 +287,6 @@ ready 以外，另外就是 ...</p></!--more-->
 <a href="http://zhuweiwu.com/?p=86">原生js获取宽高与jquery获取宽高的方法的关系</a><br />
 <a href="http://bbs.csdn.net/topics/80381570">offsetWidth和width有什么不同啊?</a><br />
 <a href="http://stackoverflow.com/questions/4787527/how-to-find-the-width-of-a-div">How to find the width of a div</a></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-27T19:00:00" pubdate>
-                            四 27 6月 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1095/firefox-developer-tool-screenshot/" rel="bookmark"><h1>firefox developer tool screenshot</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>雖然也可以用另外的軟體截圖，不過有時候截的大小不是很準確
-orz。這邊我是要對某個 element 做截圖，而且大小要很精確，後來剛好看到
-firefox 的 developer tool 也有這樣的功能，所以就試了一下。</p>
-<!--more-->
-
-<p>一開始按 <code>shift+F2</code> 就會出現一個輸入視窗。嗯，沒錯，它的 screenshot 是
-CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 叫做 target
-的區塊，可以這樣下：</p>
-<div class="highlight"><pre>screenshot test.png --selector #target
-</pre></div>
-
-
-<p>這樣就會把 <code>#target</code> 這個部分存成一個圖片檔，名稱為 <code>test.png</code>。其他還有
-<code>--delay</code>, <code>--clipboard</code>...等選項 ...</p></!--more-->
                     </section>
                 </article>
             </li>

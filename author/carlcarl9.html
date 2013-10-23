@@ -49,6 +49,37 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-04-20T00:20:00" pubdate>
+                            五 20 4月 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/390/ubuntu-mount-box-service/" rel="bookmark"><h1>Ubuntu mount Box service</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前在 PTT 看到有人分享可以用 boxfs 這個套件來掛載 <a href="http://www.box.com/">Box</a> 到本地端的資料夾上，感覺好像還不錯，而且因為之前買 Sony Ericsson 的手機，所以有 Box 額外送的 50G 空間，所以就想說拿來加減用啦。</p>
+<p>首先要先安裝相依的套件：</p>
+<div class="highlight"><pre>sudo apt-get install libxml2-dev libfuse-dev libcurl4-gnutls-dev libzip-dev
+</pre></div>
+
+
+<p>接著到 <a href="http://code.google.com/p/boxfs/downloads/list">這邊</a> 下載最新版本的 boxfs。下載完成後，解壓縮：</p>
+<div class="highlight"><pre>
+</pre></div>
+
+
+<p>tar xzf boxfs-relno.tgz</p>
+<p>接著進入 <code>box-版本</code> 資料夾，像我的就是 <code>boxfs-0.7</code>:</p>
+<div class="highlight"><pre><span class="nb">cd </span>boxfs-0.7
+</pre></div>
+
+
+<p>這邊還需要再另外安裝 libapp，這邊需要用到 git ，沒有的話就要安裝 ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-04-17T21:23:00" pubdate>
                             二 17 4月 2012
                         </time>
@@ -247,26 +278,6 @@ ntp server
 <p>後來查到一個好像更好的辦法，就是用 <code>tzselect</code> 這個指令，執行後會出現互動式介面，照著選時區，設定完就正常啦～～。</p>
 <p>參考網址：<br />
 <a href="http://bbs.bitscn.com/146159">http://bbs.bitscn.com/146159</a></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-22T15:53:00" pubdate>
-                            三 22 2月 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/269/git-gnutls-error/" rel="bookmark"><h1>git gnuTLS error</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前有台機器莫名沒辦法做「git clone https連結」，都會出現 <code>error: GnuTLS
-recv error (-9): A TLS packet with unexpected length was
-received</code>，查了老半天，還跟其他台的 git 比較設定，還是找不到答案，後來看到有人自己抓下來編譯好像就OK，所以我也想說自己抓 source code 下來試試看好了 XD。</p>
-<p>去<a href="http://git-scm.com/download">官網</a>抓了 source code
-下來，編譯並裝到 <code>/usr/local</code> 底下，測試了一下，果然就可以了！反正更新啥的我也沒差，所以目前就先這樣囉～。</p>
-<p>參考網址：  </p>
-<p><a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=559371">http://bugs.debian.org/cgi-bin/bugreport ...</a></p>
                     </section>
                 </article>
             </li>

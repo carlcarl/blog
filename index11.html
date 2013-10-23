@@ -49,6 +49,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-12-10T00:22:00" pubdate>
+                            六 10 12月 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/170/mysql-change-engine-of-all-tables/" rel="bookmark"><h1>MySQL change engine of all tables</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近裝好<a href="http://mariadb.org/">mariaDB</a>，想順便把之前用的 <code>Myisam</code> 改成新的 <code>Aria</code> engine，可是
+table 一堆，在 phpmyadmin 介面上也找不到比較方便的功能可以直接轉換所有的
+table engine。</p>
+<p>後來查了一下，有幾種作法，一種是寫 php，然後 for 迴圈用 sql 修改
+engine，不過為了這個寫 php 總是覺得很奇怪。後來查到另外一個作法：</p>
+<div class="highlight"><pre><span class="k">select</span> <span class="n">concat</span><span class="p">(</span><span class="s1">&#39;alter table &#39;</span><span class="p">,</span><span class="k">table_name</span><span class="p">,</span> <span class="s1">&#39; engine = Aria;&#39;</span><span class="p">)</span>
+<span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">tables</span>
+<span class="k">where</span> <span class="n">table_schema</span> <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;db1&#39;</span><span class="p">,</span><span class="s1">&#39;db2&#39;</span><span class="p">,....,</span><span class="s1">&#39;dbN&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>要注意 <code>table_name</code> 不用改，這個是 <code>informatio_schema ...</code></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-12-05T19:37:00" pubdate>
                             一 05 12月 2011
                         </time>
@@ -300,27 +325,6 @@ pylint：</p>
 </p>
 <p>然後後來又遇到中文無法輸入的問題，這個只要在 <code>.bashrc</code> 檔案中加入語系設定就可以了，另外再加上 <code>ls</code> 的 <code>alias</code>，不然 <code>ls</code> 輸出的目錄都不會標顏色：</p>
 <div class="highlight"><pre><span class="nb">export </span><span class="nv">LANG ...</span></pre></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-11-03T18:31:00" pubdate>
-                            四 03 11月 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/49/ubuntu-nautilus-thumbnail/" rel="bookmark"><h1>Ubuntu nautilus video thumbnail</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近發現有些影片的預覽圖一直沒辦法看到，想說會不會是播放器的問題，可是搞了老半天卻還是不行。在查了一些資料之後才發現，這個原因好像是因為在之前偵測某幾個影片預覽圖的時候可能失敗還是怎樣，然後這幾個影片就從此不會再作擷取預覽圖的動作，以下是解決方法：</p>
-<div class="highlight"><pre>rm -r ~/.thumbnails/fail/
-</pre></div>
-
-
-<p>刪完之後再重新整理就 OK 哩～。</p>
-<p>參考網址：</p>
-<p><a href="http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?viewmode=compact&amp;topic_id=9430&amp;forum=4">http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?viewmode=compact&amp;topic_id=9430&amp;forum=4</a></p>
                     </section>
                 </article>
             </li>

@@ -49,6 +49,37 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-08-13T22:16:00" pubdate>
+                            一 13 8月 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/589/mongodb-php-connection/" rel="bookmark"><h1>mongodb php connection</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>大概寫一下 mongodb + auth 的連線步驟，之前我是這樣做連線認証：<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://localhost:27017&quot;</span><span class="p">);</span>    
+<span class="nv">$db</span> <span class="o">=</span> <span class="nv">$m</span><span class="o">-&gt;</span><span class="na">mytable</span><span class="p">;</span>
+<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">authenticate</span><span class="p">(</span><span class="nv">$DB_USERNAME</span><span class="p">,</span> <span class="nv">$DB_USERPASSWORD</span><span class="p">);</span>
+</pre></div>
+
+
+<p>不過後來更新 php mongodb 的 library 後，發現 <code>authenticate</code> 這個 method
+已經 deprecated 了，所以改用原本 mongodb 的建構式做連線認証：</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://</span><span class="si">${</span><span class="nv">DB_USERNAME}:${DB_USERPASSWORD</span><span class="si">}</span><span class="s2">@localhost/mydb&quot;</span><span class="p">);</span>
+<span class="nv">$db</span> <span class="o">=</span> <span class="nv">$m</span><span class="o">-&gt;</span><span class="na">mydb</span><span class="p">;</span>
+</pre></div>
+
+
+<p>這邊要注意的一點就是，雖然在 Mongo ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-08-13T17:51:00" pubdate>
                             一 13 8月 2012
                         </time>
@@ -268,33 +299,6 @@ bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
 
 
 <p>這樣就 OK ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-06-07T02:31:00" pubdate>
-                            四 07 6月 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/499/chakra-gogoc-compile/" rel="bookmark"><h1>Chakra gogoc compile</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前在 <a href="http://blog.carlcarl.tw/397/ubuntu-tunnel-broker" title="Ubuntu Tunnel Broker IPv6 連 中研院">Ubuntu 系列上可以很方便的安裝 gogoc</a>，但是後來換到 Chakra
-之後，ccr 裡並沒有提供安裝包，沒辦法，只好自己編譯。</p>
-<p><!--more-->  </p>
-<p>1.首先先下載安裝包(不能下載的話，就必須到<a href="http://www.gogo6.com/">官網</a>註冊帳號並下載囉)、解壓縮，並進入到資料夾中：</p>
-<div class="highlight"><pre>wget http://content.gogo6.com/gogoc-1_2-RELEASE.tar.gz
-tar -xf gogoc-1_2-RELEASE.tar.gz
-<span class="nb">cd </span>gogoc-1_2-RELEASE/gogoc-tsp
-</pre></div>
-
-
-<p>2.接下來是編譯，這邊沒意外的話會有錯（至少我是這樣XD），所以要先做點修改，將
-    <code>#include &lt;stddef.h&gt;</code> 加到
-    <code>../gogoc-messaging/gogocmessaging/message.h</code>
-    的檔案最上方即可 ...</p>
                     </section>
                 </article>
             </li>

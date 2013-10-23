@@ -49,6 +49,36 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-08T01:36:00" pubdate>
+                            六 08 6月 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/897/jslint-note/" rel="bookmark"><h1>JSLint note</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>記錄一些錯誤的處理方式。 <!--more--></p>
+<h3>1. Document was used before it was defined</h3>
+<p>因為 JSLint 只是用來分析一般的 javascript code，像 <code>document</code>
+這種在瀏覽器上才有用的 global variable，就要在檔案開始加個宣告：</p>
+<div class="highlight"><pre><span class="cm">/* jslint browser:true */</span>
+</pre></div>
+
+
+<h3>2. This is an ES5 feature</h3>
+<p>比較新的
+feature。在一些舊瀏覽器可能會有問題，如果不想管那些舊瀏覽器的話，簡單加上以下這樣就可解決：</p>
+<div class="highlight"><pre><span class="cm">/* jslint es5: true */</span>
+</pre></div>
+
+
+<h3>3. Move the invocation into the parens that contain the function</h3>
+<p>改成用括弧將 function ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-07T19:56:00" pubdate>
                             五 07 6月 2013
                         </time>
@@ -270,26 +300,6 @@ doc，設置還算簡單，不過好像漏了個小地方。<br />
 
 
 <p>這樣就完成了 ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-04-07T22:58:00" pubdate>
-                            日 07 4月 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/813/ajax-with-mobile-keyboard-go-button/" rel="bookmark"><h1>ajax with mobile keyboard go button</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近弄 ajax 在手機上測的時候發現按 keyboard 上的 go 按鈕不會自動
-submit，所以看了一下是怎麼回事。找了一些資料加上自己測試了一下，發現原來
-go 按鈕跟 enter 是一樣的 event。</p>
-<p>我最後決定的做法是將原本 ajax 要 submit 的 部分先用 form tag
-包起來，ajax 的按鈕則改成 <code>&lt;button type="submit"&gt;&lt;/button&gt;</code>，<code>type</code> 用
-<code>submit</code> 可以使得在按 enter 或是 手機上按 go 的時候能 trigger submit 的
-event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有用一些 icon 在按鈕中 ...</p>
                     </section>
                 </article>
             </li>

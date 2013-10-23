@@ -49,6 +49,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-08-12T19:05:00" pubdate>
+                            五 12 8月 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/39/freebsd-cant-find-gateway/" rel="bookmark"><h1>FreeBSD can't find gateway</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近 Server 卡卡的，想說把network重新啟動看看，結果果然變順很多，想說 OK 就回家了。</p>
+<p>然後悲劇就來了......家裡完全連不上Server，好險還可以拿跟 Server 同個 Subnet 底下的機器登入，想說會不會是我之前裝幾個 Service 或防火牆的關係，但是都關掉後也都沒用 orz，後來用 <code>netstat
+-rn</code> 才看到 <code>defaultgateway</code> 不見了！！</p>
+<p>但是我明明在 <code>rc.conf</code> 裡面就有指定了 <code>defaultgateway</code>，看來好像是 <code>rc.conf</code> 只會在 OS 重啟才有用，network重啟也不會讀這個檔 = =。</p>
+<p>後來查到可以用 <code>/etc/rc.d/routing restart</code> 來解決，不過感覺還是麻煩了點，感覺應該有更好的方法才對= =a。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-07-22T18:31:00" pubdate>
                             五 22 7月 2011
                         </time>
@@ -290,31 +308,6 @@
 
 
 <p>到時候指定好 config 的參數 他就會去讀這個檔案的設定，然後要稍微修改一下 <code>awstats ...</code></p></!--more-->
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-06-28T20:43:00" pubdate>
-                            二 28 6月 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/29/cherokee-django-uwsgi-installation/" rel="bookmark"><h1>cherokee + django + uwsgi installation</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>首先要先裝好必要的套件，第一行先加入 cherokee 的來源，接著更新來源後才能夠安裝最新的 cherokee。rrdtool 以下三個都是在裝 uwsgi 所必要的套件，uwsgi 似乎找不到套件可以直接裝 這裡是利用pip 安裝網站上的來源: </p>
-<div class="highlight"><pre>sudo apt-add-repository ppa:cherokee-webserver/ppa
-sudo apt-get update
-sudo apt-get install cherokee
-sudo apt-get install rrdtool
-sudo apt-get install libcherokee-mod-rrd
-sudo apt-get install libxml2
-sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
-</pre></div>
-
-
-<p>接著在 ...</p>
                     </section>
                 </article>
             </li>

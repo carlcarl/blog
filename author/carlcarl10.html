@@ -49,6 +49,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-02-22T15:53:00" pubdate>
+                            三 22 2月 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/269/git-gnutls-error/" rel="bookmark"><h1>git gnuTLS error</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前有台機器莫名沒辦法做「git clone https連結」，都會出現 <code>error: GnuTLS
+recv error (-9): A TLS packet with unexpected length was
+received</code>，查了老半天，還跟其他台的 git 比較設定，還是找不到答案，後來看到有人自己抓下來編譯好像就OK，所以我也想說自己抓 source code 下來試試看好了 XD。</p>
+<p>去<a href="http://git-scm.com/download">官網</a>抓了 source code
+下來，編譯並裝到 <code>/usr/local</code> 底下，測試了一下，果然就可以了！反正更新啥的我也沒差，所以目前就先這樣囉～。</p>
+<p>參考網址：  </p>
+<p><a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=559371">http://bugs.debian.org/cgi-bin/bugreport ...</a></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-02-19T16:06:00" pubdate>
                             日 19 2月 2012
                         </time>
@@ -263,31 +283,6 @@ index 和 update。）</p>
 <p>如果是要看 80 port 被什麼所佔用，可以如下使用：</p>
 <div class="highlight"><pre>lsof -i :80
 fuser 80:tcp ...</pre></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-12-10T00:22:00" pubdate>
-                            六 10 12月 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/170/mysql-change-engine-of-all-tables/" rel="bookmark"><h1>MySQL change engine of all tables</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近裝好<a href="http://mariadb.org/">mariaDB</a>，想順便把之前用的 <code>Myisam</code> 改成新的 <code>Aria</code> engine，可是
-table 一堆，在 phpmyadmin 介面上也找不到比較方便的功能可以直接轉換所有的
-table engine。</p>
-<p>後來查了一下，有幾種作法，一種是寫 php，然後 for 迴圈用 sql 修改
-engine，不過為了這個寫 php 總是覺得很奇怪。後來查到另外一個作法：</p>
-<div class="highlight"><pre><span class="k">select</span> <span class="n">concat</span><span class="p">(</span><span class="s1">&#39;alter table &#39;</span><span class="p">,</span><span class="k">table_name</span><span class="p">,</span> <span class="s1">&#39; engine = Aria;&#39;</span><span class="p">)</span>
-<span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">tables</span>
-<span class="k">where</span> <span class="n">table_schema</span> <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;db1&#39;</span><span class="p">,</span><span class="s1">&#39;db2&#39;</span><span class="p">,....,</span><span class="s1">&#39;dbN&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>要注意 <code>table_name</code> 不用改，這個是 <code>informatio_schema ...</code></p>
                     </section>
                 </article>
             </li>
