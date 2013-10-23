@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - ssh</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/1053/ssh-with-firewall/">ssh with firewall</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2013-06-19T00:19:00">
-                三 19 6月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/ssh.html">ssh</a></p>
-</footer><!-- /.post-info --><p>記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-19T00:19:00" pubdate>
+                            三 19 6月 2013
+                        </time>
+                        <a href="/1053/ssh-with-firewall/" rel="bookmark"><h1>ssh with firewall</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh
 的主機，這裡以 <code>example.com</code> 為例。 (其實參考資料的連結內容更詳細
 XD，有需要的人建議點進去看看唄～～。)</p>
 <!--more-->
@@ -52,73 +76,40 @@ ssh -NfD 9999 user@example.com
 <!-- -->
 
 <div class="highlight"><pre><span class="c"># 這邊必須先在內部的 server 輸入下面這一行，連到 example.com，</span>
-<span class="c"># 然後在 example.com 上開 9999 port 來建立一個通道，</span>
-ssh -NfR 9999:localhost:22 user@example.com
- 
-<span class="c"># 在 example.com 上連這個 port 即可。</span>
-ssh -p 9999 -l user localhost
- 
-<span class="c"># 如果需要 ssh 以外的連線，仿照第一個方法，加個 9998 的 port，</span>
-<span class="c"># proxy 設定改成 example.com 9998 port 即可。</span>
-ssh -p 9999 -l user -D 9998 localhost
-</pre></div>
-
-
-<p>怕斷線的話可以用 <code>autossh</code>，記得要另外安裝，通常預設不會有。前面 <code>ssh</code>
-的指令改成 <code>autossh -M 12345</code>。<code>12345</code> 是自己隨便給的。</p>
-<p>參考資料：<br />
-<a href="http://josephj.com/entry.php?id=312">反向建立 SSH Tunnel、免 VPN 連回公司</a></p><p>There are <a href="http://blog.carlcarl.me/1053/ssh-with-firewall/#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/794/kde-dolphin-network-folder-ssh-fail/" rel="bookmark"
-                           title="Permalink to KDE dolphin network folder ssh fail">KDE dolphin network folder ssh fail</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-02-28T02:02:00">
-                四 28 2月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/kde-linux.html">KDE, linux</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/dolphin.html">dolphin</a><a href="http://blog.carlcarl.me/tag/ssh.html">ssh</a></p>
-</footer><!-- /.post-info -->                <p>鬼打牆的小問題，感覺比較像 bug ，想說還是筆記下來好了。</p>
+<span class="c"># 然後在 example.com ...</span></pre></div></!--></!--></!--more-->
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-02-28T02:02:00" pubdate>
+                            四 28 2月 2013
+                        </time>
+                        <a href="/794/kde-dolphin-network-folder-ssh-fail/" rel="bookmark"><h1>KDE dolphin network folder ssh fail</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>鬼打牆的小問題，感覺比較像 bug ，想說還是筆記下來好了。</p>
 <p>解決方法：<br />
 把 <code>~/.ssh/known_hosts</code> 中，找到要連線的 host 那行，然後把那行刪掉，
 dolphin 這邊再重連就能夠連上了。</p>
 <p>參考連結：  </p>
 <p><a href="http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder">http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder</a></p>
-                <a class="readmore" href="http://blog.carlcarl.me/794/kde-dolphin-network-folder-ssh-fail/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/794/kde-dolphin-network-folder-ssh-fail/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/47/ssh-slow/" rel="bookmark"
-                           title="Permalink to ssh slow">ssh slow</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-10-27T20:41:00">
-                四 27 10月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/ssh.html">ssh</a></p>
-</footer><!-- /.post-info -->                <p>貌似是學校最近 DNS 常出問題還是怎樣，ssh 的速度非常緩慢，後來決定把 config 檔案改一改，改完之後速度果然快很多= =+。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-10-27T20:41:00" pubdate>
+                            四 27 10月 2011
+                        </time>
+                        <a href="/47/ssh-slow/" rel="bookmark"><h1>ssh slow</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>貌似是學校最近 DNS 常出問題還是怎樣，ssh 的速度非常緩慢，後來決定把 config 檔案改一改，改完之後速度果然快很多= =+。</p>
 <p>修改 <code>/etc/ssh/sshd_config</code>，以下是修改內容：</p>
 <div class="highlight"><pre>UseDNS no
 GSSAPIAuthentication no
@@ -134,50 +125,18 @@ GSSAPIAuthentication no
 <p>參考網址：</p>
 <p><a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://jeffxie.blog.51cto.com/1365360/293869</a><br />
 <a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://www.dk101.com/Discuz/viewthread.php?tid=157716</a>  </p>
-                <a class="readmore" href="http://blog.carlcarl.me/47/ssh-slow/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/47/ssh-slow/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 1
+        </div>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    </div>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

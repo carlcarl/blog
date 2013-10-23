@@ -1,62 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - C &amp; C++</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/835/popen-check-empty/">popen check empty</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2013-04-26T20:31:00">
-                五 26 4月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/popen.html">popen</a></p>
-</footer><!-- /.post-info --><p>最近常在用 <code>popen</code> 呼叫系統指令，並讀取執行的結果作判斷，而有時候會有想確認內容是否會為空的需求，因為 popen return 的是一個 file descriptor，本來想說能不能用 <code>ftell</code>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-04-26T20:31:00" pubdate>
+                            五 26 4月 2013
+                        </time>
+                        <a href="/835/popen-check-empty/" rel="bookmark"><h1>popen check empty</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近常在用 <code>popen</code> 呼叫系統指令，並讀取執行的結果作判斷，而有時候會有想確認內容是否會為空的需求，因為 popen return 的是一個 file descriptor，本來想說能不能用 <code>ftell</code>
 找出大小來做判斷，不過<a href="http://stackoverflow.com/questions/7705338/ftell-function-giving-1-in-c-for-stdout">後來證明不行</a>，pipe 跟一般的檔案還是有差別。</p>
-<p>找了一堆資料，後來只想到用 <code>fgetc</code> 來讀，再用讀不讀得到值作為判斷 orz，不知道有沒有其他更好的解法就是。</p><p>There are <a href="http://blog.carlcarl.me/835/popen-check-empty/#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/38/c-plus-plus-redirect-cout-to-file/" rel="bookmark"
-                           title="Permalink to C++ redirect cout to file">C++ redirect cout to file</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-07-22T18:31:00">
-                五 22 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a>. </p>
-
-</footer><!-- /.post-info -->                <p>可能有些人會覺得說用 <code>fstream</code> 另外寫就好了</p>
+<p>找了一堆資料，後來只想到用 <code>fgetc</code> 來讀，再用讀不讀得到值作為判斷 orz，不知道有沒有其他更好的解法就是。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-22T18:31:00" pubdate>
+                            五 22 7月 2011
+                        </time>
+                        <a href="/38/c-plus-plus-redirect-cout-to-file/" rel="bookmark"><h1>C++ redirect cout to file</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>可能有些人會覺得說用 <code>fstream</code> 另外寫就好了</p>
 <p>不過程式如果有設定可以輸出至螢幕或是檔案的話</p>
 <p>分開兩個寫就會讓人覺得很麻煩</p>
 <p>可能有關輸出的部份都需要用 <code>if</code> 判斷，然後分兩塊輸出</p>
@@ -83,28 +97,20 @@
 
 <p>參考網頁</p>
 <p><a href="http://www.java2s.com/Tutorial/Cpp/0240__File-Stream/Redirectouputintothefile.htm">http://www.java2s.com/Tutorial ...</a></p>
-                <a class="readmore" href="http://blog.carlcarl.me/38/c-plus-plus-redirect-cout-to-file/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/38/c-plus-plus-redirect-cout-to-file/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/33/c-edit-code-but-make-only-show-up-to-date/" rel="bookmark"
-                           title="Permalink to c edit code but Make only show up to date">c edit code but Make only show up to date</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-07-13T07:12:00">
-                三 13 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a>. </p>
-
-</footer><!-- /.post-info -->                <p>感覺好像是很初學的問題，不過我還是不知道原來這個會有關係 orz</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-13T07:12:00" pubdate>
+                            三 13 7月 2011
+                        </time>
+                        <a href="/33/c-edit-code-but-make-only-show-up-to-date/" rel="bookmark"><h1>c edit code but Make only show up to date</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>感覺好像是很初學的問題，不過我還是不知道原來這個會有關係 orz</p>
 <p><span style="color: #ff0000;">在 Makefile 裡記得要加dependency file</span></p>
 <p>例如檔案是 test.cpp, test.h, test2.cpp, test2.h 要編譯成一個執行檔</p>
 <div class="highlight"><pre><span class="nf">test</span><span class="o">:</span>
@@ -119,28 +125,20 @@
 <p>要改成</p>
 <div class="highlight"><pre><span class="nf">test</span><span class="o">:</span> <span class="m">test.o test2.o</span>
     g++ -o <span class="nb">test </span>test.o test2.o ...</pre></div>
-                <a class="readmore" href="http://blog.carlcarl.me/33/c-edit-code-but-make-only-show-up-to-date/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/33/c-edit-code-but-make-only-show-up-to-date/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/15/c-useful-debug-function/" rel="bookmark"
-                           title="Permalink to C useful DEBUG function">C useful DEBUG function</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-03-31T18:29:00">
-                四 31 3月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a>. </p>
-
-</footer><!-- /.post-info -->                <p>學了那麼久才知道有這種好功能可以用 = ="
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-03-31T18:29:00" pubdate>
+                            四 31 3月 2011
+                        </time>
+                        <a href="/15/c-useful-debug-function/" rel="bookmark"><h1>C useful DEBUG function</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>學了那麼久才知道有這種好功能可以用 = ="
 <!--more--></p>
 <div class="highlight"><pre><span class="cp">#define DBG(msg, arg...) printf(&quot;%s:%s(%d): &quot; msg,  __FILE__, __FUNCTION__, __LINE__, ##arg)</span>
 </pre></div>
@@ -160,28 +158,20 @@
 
 
 <p>這樣如果 i 不等於 2 的話 就會在前面先印出那些資訊 然後才會印出 index ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/15/c-useful-debug-function/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/15/c-useful-debug-function/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/14/c-use-qsort-sort-string-array/" rel="bookmark"
-                           title="Permalink to C use qsort sort string array">C use qsort sort string array</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-03-27T19:58:00">
-                日 27 3月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a>. </p>
-
-</footer><!-- /.post-info -->                <p>指標真的好難 寫了那麼久還是不太懂</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-03-27T19:58:00" pubdate>
+                            日 27 3月 2011
+                        </time>
+                        <a href="/14/c-use-qsort-sort-string-array/" rel="bookmark"><h1>C use qsort sort string array</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>指標真的好難 寫了那麼久還是不太懂</p>
 <p>想用qsort sort 字串 array 結果compare函式怎麼用都會錯囧</p>
 <p>後來上網查了一下資料 才知道用錯了orz</p>
 <p>以下是compare函式範例</p>
@@ -200,28 +190,20 @@
 
 <p>參考網址</p>
 <p><a href="http://www.c.happycodings.com/Sorting_Searching/code15.html">http://www.c.happycodings.com/Sorting_Searching/code15.html</a></p>
-                <a class="readmore" href="http://blog.carlcarl.me/14/c-use-qsort-sort-string-array/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/14/c-use-qsort-sort-string-array/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/13/c-how-to-know-the-file-size/" rel="bookmark"
-                           title="Permalink to C how to know the file size">C how to know the file size</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-03-27T09:27:00">
-                日 27 3月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a>. </p>
-
-</footer><!-- /.post-info -->                <p>兩種方法~</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-03-27T09:27:00" pubdate>
+                            日 27 3月 2011
+                        </time>
+                        <a href="/13/c-how-to-know-the-file-size/" rel="bookmark"><h1>C how to know the file size</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>兩種方法~</p>
 <p>1.利用 <code>fseek</code>(或 <code>lseek</code>)</p>
 <div class="highlight"><pre><span class="kt">FILE</span><span class="o">*</span> <span class="n">f</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s">&quot;r+&quot;</span><span class="p">);</span>
 <span class="n">fseek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">);</span>
@@ -239,28 +221,20 @@
 
 <p>參考網址:</p>
 <p><a href="http://stackoverflow.com/questions/238603/how-can-i-get-a-files-size-in-c">http://stackoverflow.com/questions/238603/how-can-i-get-a-files-size-in-c</a></p>
-                <a class="readmore" href="http://blog.carlcarl.me/13/c-how-to-know-the-file-size/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/13/c-how-to-know-the-file-size/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/12/c-open-function/" rel="bookmark"
-                           title="Permalink to C open function">C open function</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-03-21T17:31:00">
-                一 21 3月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a>. </p>
-
-</footer><!-- /.post-info -->                <p>最近好久沒有用 C 寫程式了，一直狂卡QQ</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-03-21T17:31:00" pubdate>
+                            一 21 3月 2011
+                        </time>
+                        <a href="/12/c-open-function/" rel="bookmark"><h1>C open function</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近好久沒有用 C 寫程式了，一直狂卡QQ</p>
 <p>晚上在用 <code>open</code> 函式開檔案,
 結果後來看發現權限都沒有設，後來查了一下才發現原來後面要加權限的設定，這裡來講就是 <code>0666</code> 這串數字：</p>
 <div class="highlight"><pre><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="o">|</span><span class="n">O_CREAT</span><span class="p">,</span> <span class="mo">0666</span><span class="p">)</span>
@@ -271,28 +245,20 @@
  <code>O_RDWR</code> 代表在程式中可讀寫，也可以用 <code>O_WRONLY</code> 或 <code>O_RDONLY</code> 代表只寫或只讀，<code>O_CREATE</code> 則代表建立這個檔案。</p>
 <p>參考網址：</p>
 <p><a href="http://stackoverflow.com/questions/2245193/c-linux-file-permission-problem-with-open">http://stackoverflow.com/questions/2245193/c-linux-file-permission-problem-with-open</a></p>
-                <a class="readmore" href="http://blog.carlcarl.me/12/c-open-function/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/12/c-open-function/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/11/c-getopt-usage/" rel="bookmark"
-                           title="Permalink to C getopt usage">C getopt usage</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-03-20T18:36:00">
-                日 20 3月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/getopt.html">getopt</a></p>
-</footer><!-- /.post-info -->                <p><code>getopt</code> 是用來判斷程式參數的函式。像是 <code>./a.out -s</code> 之類的, <code>getopt</code>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-03-20T18:36:00" pubdate>
+                            日 20 3月 2011
+                        </time>
+                        <a href="/11/c-getopt-usage/" rel="bookmark"><h1>C getopt usage</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><code>getopt</code> 是用來判斷程式參數的函式。像是 <code>./a.out -s</code> 之類的, <code>getopt</code>
 能對後面的 <code>-s</code> 這類參數做判斷處理。<br />
 一開始要使用的話記得先：</p>
 <div class="highlight"><pre><span class="cp">#include &lt;unistd.h&gt;</span>
@@ -306,50 +272,18 @@
 舉個例子來講，像是 <code>optstring = "abf"</code>
 的話，就能夠抓到這三個參數值，如：<br />
 <code>./a.out -a</code> 或 <code>./a.out -b</code> 或 <code>./a.out -abf</code> 都 OK ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/11/c-getopt-usage/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/11/c-getopt-usage/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 1
+        </div>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    </div>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

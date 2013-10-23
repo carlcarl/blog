@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - boxfs</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/390/ubuntu-mount-box-service/">Ubuntu mount Box service</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2012-04-20T00:20:00">
-                五 20 4月 2012
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/box.html">box</a><a href="http://blog.carlcarl.me/tag/boxfs.html">boxfs</a></p>
-</footer><!-- /.post-info --><p>之前在 PTT 看到有人分享可以用 boxfs 這個套件來掛載 <a href="http://www.box.com/">Box</a> 到本地端的資料夾上，感覺好像還不錯，而且因為之前買 Sony Ericsson 的手機，所以有 Box 額外送的 50G 空間，所以就想說拿來加減用啦。</p>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-04-20T00:20:00" pubdate>
+                            五 20 4月 2012
+                        </time>
+                        <a href="/390/ubuntu-mount-box-service/" rel="bookmark"><h1>Ubuntu mount Box service</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前在 PTT 看到有人分享可以用 boxfs 這個套件來掛載 <a href="http://www.box.com/">Box</a> 到本地端的資料夾上，感覺好像還不錯，而且因為之前買 Sony Ericsson 的手機，所以有 Box 額外送的 50G 空間，所以就想說拿來加減用啦。</p>
 <p>首先要先安裝相依的套件：</p>
 <div class="highlight"><pre>sudo apt-get install libxml2-dev libfuse-dev libcurl4-gnutls-dev libzip-dev
 </pre></div>
@@ -47,86 +71,19 @@
 </pre></div>
 
 
-<p>這邊還需要再另外安裝 libapp，這邊需要用到 git ，沒有的話就要安裝：</p>
-<div class="highlight"><pre>sudo apt-get install git-core
-git clone http://github.com/drotiro/libapp.git
-</pre></div>
+<p>這邊還需要再另外安裝 libapp，這邊需要用到 git ，沒有的話就要安裝 ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 1
+        </div>
 
+    </div>
+        </div>
 
-<p>進入 libapp 資料夾並編譯安裝：</p>
-<div class="highlight"><pre><span class="nb">cd </span>libapp
-make
-sudo make install
-sudo ldconfig
-make apptest
-</pre></div>
-
-
-<p>安裝好 libapp 之後，到外層的資料夾並編譯安裝 boxfs：</p>
-<div class="highlight"><pre><span class="nb">cd</span> ..
-make
-sudo make install
-</pre></div>
-
-
-<p>到此 boxfs 套件算是安裝完畢，不過還需要登入並掛載到你的檔案系統上，這邊以掛載到你的家目錄底下
-box 資料夾為例：</p>
-<div class="highlight"><pre>mkdir ~/box
-boxfs -u usermail -p password ~/box
-</pre></div>
-
-
-<p>執行完後，check 一下你的 <code>~/box</code> 底下是否有東西，有的話就代表掛載成功囉~。 </p>
-<p>目前我遇到的小問題是：<br />
-如果我在手機端刪除掉檔案，在電腦上會發現檔案還存在，必須卸載後再掛載才會更新，卸載的話可以直接使用 <code>umount</code> 這個指令：</p>
-<div class="highlight"><pre>umount ~/box
-</pre></div>
-
-
-<p>參考網址：<br />
-<a href="http://code.google.com/p/boxfs/wiki/Compiling">http://code.google.com/p/boxfs/wiki/Compiling</a></p><p>There are <a href="http://blog.carlcarl.me/390/ubuntu-mount-box-service/#disqus_thread">comments</a>.</p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - getopt</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/11/c-getopt-usage/">C getopt usage</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2011-03-20T18:36:00">
-                日 20 3月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/getopt.html">getopt</a></p>
-</footer><!-- /.post-info --><p><code>getopt</code> 是用來判斷程式參數的函式。像是 <code>./a.out -s</code> 之類的, <code>getopt</code>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-03-20T18:36:00" pubdate>
+                            日 20 3月 2011
+                        </time>
+                        <a href="/11/c-getopt-usage/" rel="bookmark"><h1>C getopt usage</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><code>getopt</code> 是用來判斷程式參數的函式。像是 <code>./a.out -s</code> 之類的, <code>getopt</code>
 能對後面的 <code>-s</code> 這類參數做判斷處理。<br />
 一開始要使用的話記得先：</p>
 <div class="highlight"><pre><span class="cp">#include &lt;unistd.h&gt;</span>
@@ -43,107 +67,19 @@
 的這類參數。<br />
 舉個例子來講，像是 <code>optstring = "abf"</code>
 的話，就能夠抓到這三個參數值，如：<br />
-<code>./a.out -a</code> 或 <code>./a.out -b</code> 或 <code>./a.out -abf</code> 都 OK。<br />
-而如果你的 <code>f</code> 需要一個字串值，像是後面需要檔案名稱的話，就可以這樣設
-<code>abf:</code>，<code>f:</code> 表示 f 之後需要有個額外的參數, 在處理的時候可以透過
-<code>optarg</code> 來使用這額外的參數。<br />
-<br />
-<code>getopt</code> 通常會用 <code>switch</code> 做處理，以上面的例子當作架構</p>
-<div class="highlight"><pre><span class="k">while</span><span class="p">((</span><span class="n">c</span><span class="o">=</span><span class="n">getopt</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">&quot;abf:&quot;</span><span class="p">))</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">switch</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-    <span class="p">{</span>
-    <span class="k">case</span> <span class="sc">&#39;a&#39;</span>:
-        <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="sc">&#39;b&#39;</span>:
-        <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="sc">&#39;f&#39;</span>:
-        <span class="n">puts</span><span class="p">(</span><span class="n">optarg</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="err">&#39;</span>:<span class="err">&#39;</span><span class="o">:</span>
-        <span class="n">puts</span><span class="p">(</span><span class="s">&quot;oops&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="sc">&#39;?&#39;</span>
-        <span class="n">puts</span><span class="p">(</span><span class="s">&quot;wrong command&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<code>./a.out -a</code> 或 <code>./a.out -b</code> 或 <code>./a.out -abf</code> 都 OK ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 1
+        </div>
 
+    </div>
+        </div>
 
-<p>這裡可以透過檢查是否有 <code>:</code>
-這個字元來判斷是否有漏掉額外的參數，以這裡來講，就是 <code>f</code> 後面接的檔名。<br />
-程式如果照下面這樣下的話，就會印出 "oops" 因為後面少了檔名：</p>
-<div class="highlight"><pre>./a.out -f
-</pre></div>
-
-
-<p><code>?</code> 則代表這參數錯誤，不存在。<br />
-</p>
-<p>那如果有時候只想接檔名呢 如</p>
-<div class="highlight"><pre>./a.out text.txt
-</pre></div>
-
-
-<p>這樣的話 可以在上面的 <code>while</code> 迴圈之後用 <code>argv[optind]</code> 來抓 text.txt。<br />
-<br />
-如果是複數的檔名，如：</p>
-<div class="highlight"><pre>./a.out text.txt text2.txt
-</pre></div>
-
-
-<p>也可以用 for 迴圈 optind++ 到 argc：</p>
-<div class="highlight"><pre><span class="k">for</span><span class="p">(;</span><span class="n">optind</span><span class="o">&lt;</span><span class="n">argc</span><span class="p">;</span><span class="n">optind</span><span class="o">++</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">puts</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="n">optind</span><span class="p">]);</span> <span class="c1">//像是這樣</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>參考網址：</p>
-<p><a href="http://pubs.opengroup.org/onlinepubs/009695399/functions/getopt.html">http://pubs.opengroup.org/onlinepubs/009695399/functions/getopt.html</a></p><p>There are <a href="http://blog.carlcarl.me/11/c-getopt-usage/#disqus_thread">comments</a>.</p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - awstats</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/31/awstats-analyze-large-logs-at-once-include-gz-files/">awstats analyze large logs at once (include gz files)</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2011-07-04T14:22:00">
-                一 04 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/awstats.html">awstats</a></p>
-</footer><!-- /.post-info --><p><a href="http://carl830.pixnet.net/blog/post/66466219">awstats的簡易安裝教學</a></p>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-04T14:22:00" pubdate>
+                            一 04 7月 2011
+                        </time>
+                        <a href="/31/awstats-analyze-large-logs-at-once-include-gz-files/" rel="bookmark"><h1>awstats analyze large logs at once (include gz files)</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="http://carl830.pixnet.net/blog/post/66466219">awstats的簡易安裝教學</a></p>
 <p>因為在維護的網站log檔有一年份，而且都已經壓縮成gz檔，要用awstats分析的話實在很費工夫，後來發現awstats有好用的工具可以用：<span style="color: #3366ff;">logresolvemerge.pl</span>。</p>
 <p>簡單講就是用這個工具將log檔(包含gz壓縮檔)都merge起來為一個大檔案後，再用awstats作分析。</p>
 <p>這邊首先要注意的就是
@@ -45,50 +69,21 @@
 
 
 <h3>將多個gz檔merge成一個log檔(其實跟上面的差不多~)</h3>
-<div class="highlight"><pre>logresolvemerge.pl /var/log/apache2/.gz &gt; temp.log
-</pre></div>
-
-
-<h3>merge完後接著用awstats分析 並加上Log File的指定</h3>
-<div class="highlight"><pre>awstats.pl -config=www.domain.com -LogFile=temp.log
-</pre></div>
-
-
-<p>這裡還要注意一個重點！
-那就是<span style="color: #ff0000;">merge完後的log檔不能太大，不然很容易失敗！</span></p>
-<p>我建議Log檔就盡量4G以下吧~，之前一次跑1XG的log檔失敗，還不信邪跑了好幾次，後來就放棄，切成幾份來個別做了。</p>
-<p>話說分析1XG的log檔真的超久......，Server級的也跑了10個小時有了吧orz</p>
-<p>參考網頁</p>
-<p><a href="http://www.anoneh.com/136.php">http://www.anoneh.com/136.php</a><br />
-[http://1024k.de/awstats/1and1/tutorial-04.html ][]<br />
-<a href="http://awstats.sourceforge.net/docs/awstats_tools.html">http://awstats.sourceforge.net/docs/awstats_tools.html</a><br />
-<a href="http://www.smartlabsoftware.com/howto/awstats-log.htm">http://www.smartlabsoftware.com/howto/awstats-log.htm</a><br />
-<a href="http://www.webmasterworld.com/forum40/1536.htm">http://www.webmasterworld.com/forum40/1536.htm</a><br />
-<a href="http://www.internetofficer.com/forum/awstats-iis-installation-and-configuration/how-to-analyze-multiple-logfiles/">http://www.internetofficer.com/forum/awstats-iis-installation-and-configuration/how-to-analyze-multiple-logfiles/</a></p><p>There are <a href="http://blog.carlcarl.me/31/awstats-analyze-large-logs-at-once-include-gz-files/#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/30/ubuntu-install-awstats-to-analyze-web-traffic/" rel="bookmark"
-                           title="Permalink to ubuntu install awstats to analyze web traffic">ubuntu install awstats to analyze web traffic</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-07-04T13:04:00">
-                一 04 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/awstats.html">awstats</a></p>
-</footer><!-- /.post-info -->                <p><a href="http://i.imgur.com/gjdRNUQl.png"><img alt="1309785078-4e7966370fbebe6c564d5c251d18d3da_n" src="http://i.imgur.com/gjdRNUQl.png" /></a></p>
+<div class="highlight"><pre>logresolvemerge.pl /var/log/apache2/.gz &gt; temp ...</pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-04T13:04:00" pubdate>
+                            一 04 7月 2011
+                        </time>
+                        <a href="/30/ubuntu-install-awstats-to-analyze-web-traffic/" rel="bookmark"><h1>ubuntu install awstats to analyze web traffic</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="http://i.imgur.com/gjdRNUQl.png"><img alt="1309785078-4e7966370fbebe6c564d5c251d18d3da_n" src="http://i.imgur.com/gjdRNUQl.png" /></a></p>
 <p>awstats 這個工具可以透過分析 Server 的access log 檔來統計網站流量，資料的部份可以透過時間長短、來訪者的資料(國籍之類的)、瀏覽器種類來作分類，這些統計資訊則透過Web介面顯示出來。而上面這個圖是裝完 awstats 後的 Web 介面(還不錯精美= =+)</p>
 <!--more-->
 
@@ -103,50 +98,18 @@
 
 
 <p>到時候指定好 config 的參數 他就會去讀這個檔案的設定，然後要稍微修改一下 <code>awstats ...</code></p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/30/ubuntu-install-awstats-to-analyze-web-traffic/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/30/ubuntu-install-awstats-to-analyze-web-traffic/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 1
+        </div>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    </div>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

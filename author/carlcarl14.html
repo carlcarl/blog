@@ -1,42 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - carlcarl</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-                <section id="content" class="body">
-                    <ol id="posts-list" class="hfeed" start="9">
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/28/vim-xptemplate-add-smartytpl-support/" rel="bookmark"
-                           title="Permalink to vim xptemplate add smarty(tpl) support">vim xptemplate add smarty(tpl) support</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-06-22T14:10:00">
-                三 22 6月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/vim.html">vim</a>. </p>
-
-</footer><!-- /.post-info -->                <p>弄了很久 查了一下資料才發現原來那麼簡單=.=。</p>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-22T14:10:00" pubdate>
+                            三 22 6月 2011
+                        </time>
+                        <a href="/28/vim-xptemplate-add-smartytpl-support/" rel="bookmark"><h1>vim xptemplate add smarty(tpl) support</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>弄了很久 查了一下資料才發現原來那麼簡單=.=。</p>
 <p>在 <code>personal_ftplugin/</code> 底下要先建一個 <code>smarty</code> 資料夾，接著在裡面新增一個 <code>smarty.xpt.vim</code> 檔案。</p>
 <p>以下是檔案的內容:</p>
 <div class="highlight"><pre>XPTemplate priority=personal
@@ -48,78 +66,54 @@ html/html
 <p>這樣就 ok 了，其實就是把 html 的設定拿來用而已。接著開一個 tpl 副檔名的試試看，應該是 ok。我想應該底層有去做 smarty 和 tpl 副檔名的對應，要不然這邊的內容完全都沒看到 tpl 的對應。</p>
 <p>參考網頁</p>
 <p><a href="http://groups.google.com/group/xptemplate/browse_thread/thread/9af94f0e27007817#">http://groups.google.com/group/xptemplate/browse_thread/thread/9af94f0e27007817#</a></p>
-                <a class="readmore" href="http://blog.carlcarl.me/28/vim-xptemplate-add-smartytpl-support/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/28/vim-xptemplate-add-smartytpl-support/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/27/dotcloud-deploy-python-django/" rel="bookmark"
-                           title="Permalink to Dotcloud deploy python+django">Dotcloud deploy python+django</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-06-21T09:00:00">
-                二 21 6月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-
-</footer><!-- /.post-info -->                <p><a href="https://www.dotcloud.com/">dotcloud</a> 是個可以讓你佈署網站的平台，而且提供了 python, php, ruby 甚至是最近剛發展起來的 node.js 都有，資料庫方面也支援了幾種 像是最常見的 mysql, sqlite, mongodb 等，另外我看了一下 居然還有 hadoop!  感覺還滿有趣的。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-21T09:00:00" pubdate>
+                            二 21 6月 2011
+                        </time>
+                        <a href="/27/dotcloud-deploy-python-django/" rel="bookmark"><h1>Dotcloud deploy python+django</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="https://www.dotcloud.com/">dotcloud</a> 是個可以讓你佈署網站的平台，而且提供了 python, php, ruby 甚至是最近剛發展起來的 node.js 都有，資料庫方面也支援了幾種 像是最常見的 mysql, sqlite, mongodb 等，另外我看了一下 居然還有 hadoop!  感覺還滿有趣的。</p>
 <p>除了提供多種開發套件以外，dotcloud 有個不錯的地方是支援ssh連線登入，超方便!</p>
 <p>之前在 PTT 就有看過有人在講這個服務了，雖然現在還在beta的階段 不過就我現在用起來 感覺其實還滿不錯的，希望以後還是有提供免費的服務XD。如果要註冊的話，這部份還滿特別的，先在首頁輸入 email，接著等大概一天吧(還滿久的 = =||)，就會收到email認證，接著就能順利註冊了。</p>
 <p>這次我要在 dotcloud 上裝的是 python + django。首先先準備裝套件吧 話說 python-setuptools 這個套件，官網好像沒有講得很清楚，查了一下才發現要裝 ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/27/dotcloud-deploy-python-django/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/27/dotcloud-deploy-python-django/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/26/windows-xdebug-wincachegrind-zend-server/" rel="bookmark"
-                           title="Permalink to windows xdebug, wincachegrind, Zend server">windows xdebug, wincachegrind, Zend server</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-06-21T00:48:00">
-                二 21 6月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/zend-framework.html">Zend Framework</a>. </p>
-
-</footer><!-- /.post-info -->                <p>最近在想辦法加速 zend framework 的執行速度，弄了超久。下次有這種 case，我死都不用 zend 了= =。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-21T00:48:00" pubdate>
+                            二 21 6月 2011
+                        </time>
+                        <a href="/26/windows-xdebug-wincachegrind-zend-server/" rel="bookmark"><h1>windows xdebug, wincachegrind, Zend server</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近在想辦法加速 zend framework 的執行速度，弄了超久。下次有這種 case，我死都不用 zend 了= =。</p>
 <p>這次要用的是利用 xdebug 和 wincachegrind 來分析一下 php 執行的速度和呼叫情況之類的。首先要裝的是<a href="http://xdebug.org/">xdebug</a>這個工具，進去官網後的下載頁面後可以看到幾種執行檔，我這邊用的是 php5.2 版 有兩種可以選 <a href="http://xdebug.org/files/php_xdebug-2.1.1-5.2-vc6-nts.dll">PHP 5.2 VC6 (32 bit)</a>, <a href="http://xdebug.org/files/php_xdebug-2.1.1-5.2-vc6.dll">PHP 5.2 VC6
 TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分不太清楚前後兩種的差別 不過如果是用一般的 apache server 的話可以用後面那種試試看。</p>
 <p>下載後放至 <code>php ...</code></p>
-                <a class="readmore" href="http://blog.carlcarl.me/26/windows-xdebug-wincachegrind-zend-server/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/26/windows-xdebug-wincachegrind-zend-server/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/25/ubuntu-nginx-installation-easier/" rel="bookmark"
-                           title="Permalink to Ubuntu nginx installation(easier)">Ubuntu nginx installation(easier)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-06-21T00:31:00">
-                二 21 6月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-
-</footer><!-- /.post-info -->                <p>從 <a href="/24/ubuntu-nginx-installation">之前這篇</a> 做了點修改</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-21T00:31:00" pubdate>
+                            二 21 6月 2011
+                        </time>
+                        <a href="/25/ubuntu-nginx-installation-easier/" rel="bookmark"><h1>Ubuntu nginx installation(easier)</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>從 <a href="/24/ubuntu-nginx-installation">之前這篇</a> 做了點修改</p>
 <div class="highlight"><pre>apt-get install nginx php5-cli php5-cgi spawn-fcgi psmisc
 </pre></div>
 
@@ -139,28 +133,20 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
     }
     location ~ .php$ {
         set $php_root ...</pre></div>
-                <a class="readmore" href="http://blog.carlcarl.me/25/ubuntu-nginx-installation-easier/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/25/ubuntu-nginx-installation-easier/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/24/ubuntu-nginx-installation/" rel="bookmark"
-                           title="Permalink to Ubuntu Nginx installation">Ubuntu Nginx installation</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-06-13T15:51:00">
-                一 13 6月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-
-</footer><!-- /.post-info -->                <p>[更新] 這邊有修改過的<a href="/25/ubuntu-nginx-installation-easier/">簡單版</a></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-13T15:51:00" pubdate>
+                            一 13 6月 2011
+                        </time>
+                        <a href="/24/ubuntu-nginx-installation/" rel="bookmark"><h1>Ubuntu Nginx installation</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>[更新] 這邊有修改過的<a href="/25/ubuntu-nginx-installation-easier/">簡單版</a></p>
 <p>弄了好久，參考了幾篇教學，應該算是能跑了吧囧a。話說有幾篇教學講得都不太一樣 害我也不知道該看哪篇才好，後來是找了<a href="http://library.linode.com/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid">這一篇</a>來作看看。</p>
 <p>首先先抓套件來安裝吧:</p>
 <div class="highlight"><pre>apt-get install nginx php5-cli php5-cgi spawn-fcgi psmisc
@@ -177,28 +163,20 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
         index   index.php;
     }
     location /phpmyadmin ...</pre></div>
-                <a class="readmore" href="http://blog.carlcarl.me/24/ubuntu-nginx-installation/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/24/ubuntu-nginx-installation/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/23/linux-check-dist-io/" rel="bookmark"
-                           title="Permalink to Linux check disk IO">Linux check disk IO</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-06-13T10:44:00">
-                一 13 6月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-
-</footer><!-- /.post-info -->                <p>讀取速度 輸入下面這行指令</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-13T10:44:00" pubdate>
+                            一 13 6月 2011
+                        </time>
+                        <a href="/23/linux-check-dist-io/" rel="bookmark"><h1>Linux check disk IO</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>讀取速度 輸入下面這行指令</p>
 <div class="highlight"><pre>hdparm -t /dev/sda
 </pre></div>
 
@@ -218,28 +196,20 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
 <p>會產生類似以下的輸入</p>
 <div class="highlight"><pre>100+0 records in
 100 ...</pre></div>
-                <a class="readmore" href="http://blog.carlcarl.me/23/linux-check-dist-io/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/23/linux-check-dist-io/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/22/ubuntu-eucalyptus-installation/" rel="bookmark"
-                           title="Permalink to Ubuntu Eucalyptus installation">Ubuntu Eucalyptus installation</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-05-26T09:05:00">
-                四 26 5月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/cloud.html">cloud</a>. </p>
-
-</footer><!-- /.post-info -->                <p>我是在已有的 Ubuntu 上安裝 Eucalyptus，如果是直接用 Ubuntu Enterprise Cloud 應該會比較簡單 orz。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-05-26T09:05:00" pubdate>
+                            四 26 5月 2011
+                        </time>
+                        <a href="/22/ubuntu-eucalyptus-installation/" rel="bookmark"><h1>Ubuntu Eucalyptus installation</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>我是在已有的 Ubuntu 上安裝 Eucalyptus，如果是直接用 Ubuntu Enterprise Cloud 應該會比較簡單 orz。</p>
 <!--more-->
 
 <p>大概講一下幾個我遇到的問題 orz。</p>
@@ -254,28 +224,20 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
 <p>如果出現以上的錯誤就是要裝 <code>openjdk-6-jre-headless</code>。</p>
 <h3>記得先執行 service</h3>
 <p>下面這行還滿方便的，不過記得要先到 <code>/etc/init.d ...</code></p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/22/ubuntu-eucalyptus-installation/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/22/ubuntu-eucalyptus-installation/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/21/git-export-files-to-some-existed-directory/" rel="bookmark"
-                           title="Permalink to git export files to some existed directory">git export files to some existed directory</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-05-24T16:14:00">
-                二 24 5月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/ban-ben-guan-li.html">版本管理</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/bashrc.html">bashrc</a><a href="http://blog.carlcarl.me/tag/git.html">git</a><a href="http://blog.carlcarl.me/tag/vimrc.html">vimrc</a></p>
-</footer><!-- /.post-info -->                <p>最近想把 vimrc 和 bashrc 等設定檔作同步，想說大家都在用 git，所以就不用 svn 改用 git 看看了!</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-05-24T16:14:00" pubdate>
+                            二 24 5月 2011
+                        </time>
+                        <a href="/21/git-export-files-to-some-existed-directory/" rel="bookmark"><h1>git export files to some existed directory</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近想把 vimrc 和 bashrc 等設定檔作同步，想說大家都在用 git，所以就不用 svn 改用 git 看看了!</p>
 <p>但是在同步的時候卻遇到了問題，本來想說直接輸入看看</p>
 <div class="highlight"><pre>git clone &lt;git repo url&gt;
 </pre></div>
@@ -287,28 +249,20 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
 <p>說真的還找得滿久的，以下是我覺得算是比較能接受的一種解決方法(有其他方法歡迎提供QQ)</p>
 <div class="highlight"><pre>git init
 git remote add origin ...</pre></div>
-                <a class="readmore" href="http://blog.carlcarl.me/21/git-export-files-to-some-existed-directory/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/21/git-export-files-to-some-existed-directory/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/20/linux-several-ways-to-open-or-close-service/" rel="bookmark"
-                           title="Permalink to linux several ways to open or close service">linux several ways to open or close service</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-05-12T07:29:00">
-                四 12 5月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-
-</footer><!-- /.post-info -->                <p>(如果想立即開啟或關掉就要用 service 或是直接到 /etc/init.d/ 底下去操作)</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-05-12T07:29:00" pubdate>
+                            四 12 5月 2011
+                        </time>
+                        <a href="/20/linux-several-ways-to-open-or-close-service/" rel="bookmark"><h1>linux several ways to open or close service</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>(如果想立即開啟或關掉就要用 service 或是直接到 /etc/init.d/ 底下去操作)</p>
 <p>以下是用來設定在系統開啟時預設要執行的 service</p>
 <p>在 RedHat 系列底下可以用 <code>chkconfig</code>，啟用 httpd (如果已經加到 chkconfig 裡了 就可以不用輸入第一行)</p>
 <div class="highlight"><pre>chkconfig httpd --add
@@ -324,28 +278,20 @@ chkconfig httpd --del
 
 <p>在 Debian 或 Ubuntu 底下的話 可以用 <code>update-rc.d</code> 開啟 apache2:</p>
 <div class="highlight"><pre>update-rc ...</pre></div>
-                <a class="readmore" href="http://blog.carlcarl.me/20/linux-several-ways-to-open-or-close-service/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/20/linux-several-ways-to-open-or-close-service/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/19/vim-auto-complete-with-clang_complete/" rel="bookmark"
-                           title="Permalink to vim auto complete with clang_complete">vim auto complete with clang_complete</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-05-04T13:55:00">
-                三 04 5月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-
-</footer><!-- /.post-info -->                <p>剛才裝完了，其實安裝還滿簡單的。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-05-04T13:55:00" pubdate>
+                            三 04 5月 2011
+                        </time>
+                        <a href="/19/vim-auto-complete-with-clang_complete/" rel="bookmark"><h1>vim auto complete with clang_complete</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>剛才裝完了，其實安裝還滿簡單的。</p>
 <p>首先先到<a href="https://github.com/Rip-Rip/clang_complete/tree/master/plugin">下載頁面</a>，下面會有個 <code>clang_complete.vim</code> 檔案</p>
 <p>下載這個檔案後 將其放置在 <code>~/.vim/plugin/</code> 底下
 (如果找不到 <code>plugin</code> 資料夾的話可以自己建)</p>
@@ -354,52 +300,24 @@ chkconfig httpd --del
 <p>裝完之後咧? 就可以用啦XDD，超快。</p>
 <p>以下這張是功能截圖。以這張圖來說，輸入 <code>-&gt;</code> 或是 <code>.</code> 之類的，他就會出現提示，這時候就可以用鍵盤上下鍵來選擇要選哪一個來用。</p>
 <p><img alt="clang_complete" src="http://i.imgur.com/PyNjikJ.png" title="clang_complete" />  </p>
-                <a class="readmore" href="http://blog.carlcarl.me/19/vim-auto-complete-with-clang_complete/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/19/vim-auto-complete-with-clang_complete/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-        <a href="http://blog.carlcarl.me/author/carlcarl13.html">&laquo;</a>
-    Page 14 / 16
-        <a href="http://blog.carlcarl.me/author/carlcarl15.html">&raquo;</a>
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+                    <a href="/author/carlcarl13.html">
+                        <i class="icon-circle-arrow-left"></i>
+                    </a>
+            Page 14 / 16
+                <a href="/author/carlcarl15.html">
+                    <i class="icon-circle-arrow-right"></i>
+                </a>
+        </div>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    </div>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

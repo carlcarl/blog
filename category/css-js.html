@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - css, js</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/1302/brunch-watch-stylesheet-dependency/">brunch watch stylesheet dependency</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2013-09-09T02:10:00">
-                一 09 9月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/css-js.html">css, js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/grunch.html">grunch</a></p>
-</footer><!-- /.post-info --><p>之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-09-09T02:10:00" pubdate>
+                            一 09 9月 2013
+                        </time>
+                        <a href="/1302/brunch-watch-stylesheet-dependency/" rel="bookmark"><h1>brunch watch stylesheet dependency</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生
 build 好的 css，這個問題一直困擾我很久，每次都要重新跑一次
 <code>brunch watch --server</code> 實在是很不爽，今天晚上剛好有一點時間就來修了。</p>
 <!--more-->
@@ -47,48 +71,21 @@ build 好的 css，這個問題一直困擾我很久，每次都要重新跑一�
 <p>然後 <code>config.ls</code> (這邊是用 livescript) 裡對應的設定部分：</p>
 <div class="highlight"><pre><span class="nv">stylesheets:</span>
   <span class="nv">joinTo:</span>
-    <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less/</span>
-</pre></div>
-
-
-<p>(這邊在 watch 的時候只監看 <code>less_proxy.less</code> 有沒有變動再做 join，所以改
-<code>less</code> 底下的檔案並不會有反應)</p>
-<p>下面就直接給解法了，首先把 <code>less</code> 資料夾改名為 <code>_less</code>，接著在
-<code>config.ls</code>，加上：</p>
-<div class="highlight"><pre><span class="nv">conventions:</span>
-    <span class="nv">ignored: </span><span class="sr">/^app\/styles\/_less/</span>
-</pre></div>
-
-
-<p>這個設定會將 <code>_less</code> 底下的檔案都加入 watch，但是不會再額外
-compile。這邊要注意的是資料夾必須是 <code>_</code> 開頭的，不然還是不行。</p>
-<p>參考資料：<br />
-<a href="https://github.com/brunch/brunch/issues/681">Stylesheet dependency compilation/watching</a><br />
-<a href="https://github.com/brunch/brunch/blob/stable/docs/config.md">brunch config doc</a></p><p>There are <a href="http://blog.carlcarl.me/1302/brunch-watch-stylesheet-dependency/#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1107/javascript-style-width-offsetwidth/" rel="bookmark"
-                           title="Permalink to javascript style.width offsetWidth">javascript style.width offsetWidth</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-06-28T20:29:00">
-                五 28 6月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/css-js.html">css, js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/offsetwidth.html">offsetWidth</a></p>
-</footer><!-- /.post-info -->                <p>查了一些資料，看起來 <code>style.width</code> 是如果 css 沒指定 element 的 width
+    <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less ...</span></pre></div></!--more-->
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-28T20:29:00" pubdate>
+                            五 28 6月 2013
+                        </time>
+                        <a href="/1107/javascript-style-width-offsetwidth/" rel="bookmark"><h1>javascript style.width offsetWidth</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查了一些資料，看起來 <code>style.width</code> 是如果 css 沒指定 element 的 width
 的話，就會拿到空值，即使它本身的確佔有一個大小。這時候如果想拿到實際大小的話可以用
 <code>offsetWidth</code>，另外要注意的是 <code>offsetWidth</code> 是
 <code>readonly</code>，所以如果要設寬度，還是得從 <code>style.width</code> 著手。還有 <a href="http://jsperf.com/style-width-vs-offsetwidth1/5">這篇</a>
@@ -98,50 +95,18 @@ compile。這邊要注意的是資料夾必須是 <code>_</code> 開頭的，不
 <a href="http://zhuweiwu.com/?p=86">原生js获取宽高与jquery获取宽高的方法的关系</a><br />
 <a href="http://bbs.csdn.net/topics/80381570">offsetWidth和width有什么不同啊?</a><br />
 <a href="http://stackoverflow.com/questions/4787527/how-to-find-the-width-of-a-div">How to find the width of a div</a></p>
-                <a class="readmore" href="http://blog.carlcarl.me/1107/javascript-style-width-offsetwidth/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1107/javascript-style-width-offsetwidth/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 1
+        </div>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    </div>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

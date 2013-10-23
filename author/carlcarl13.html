@@ -1,42 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - carlcarl</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-                <section id="content" class="body">
-                    <ol id="posts-list" class="hfeed" start="9">
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/38/c-plus-plus-redirect-cout-to-file/" rel="bookmark"
-                           title="Permalink to C++ redirect cout to file">C++ redirect cout to file</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-07-22T18:31:00">
-                五 22 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a>. </p>
-
-</footer><!-- /.post-info -->                <p>可能有些人會覺得說用 <code>fstream</code> 另外寫就好了</p>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-22T18:31:00" pubdate>
+                            五 22 7月 2011
+                        </time>
+                        <a href="/38/c-plus-plus-redirect-cout-to-file/" rel="bookmark"><h1>C++ redirect cout to file</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>可能有些人會覺得說用 <code>fstream</code> 另外寫就好了</p>
 <p>不過程式如果有設定可以輸出至螢幕或是檔案的話</p>
 <p>分開兩個寫就會讓人覺得很麻煩</p>
 <p>可能有關輸出的部份都需要用 <code>if</code> 判斷，然後分兩塊輸出</p>
@@ -63,28 +81,20 @@
 
 <p>參考網頁</p>
 <p><a href="http://www.java2s.com/Tutorial/Cpp/0240__File-Stream/Redirectouputintothefile.htm">http://www.java2s.com/Tutorial ...</a></p>
-                <a class="readmore" href="http://blog.carlcarl.me/38/c-plus-plus-redirect-cout-to-file/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/38/c-plus-plus-redirect-cout-to-file/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/37/freebsd-use-mpd-to-build-vpn/" rel="bookmark"
-                           title="Permalink to FreeBSD use mpd to build VPN">FreeBSD use mpd to build VPN</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-07-22T09:43:00">
-                五 22 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/freebsd.html">FreeBSD</a>. </p>
-
-</footer><!-- /.post-info -->                <p>不習慣用FreeBSD，所以花了一點時間研究要怎麼裝orz</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-22T09:43:00" pubdate>
+                            五 22 7月 2011
+                        </time>
+                        <a href="/37/freebsd-use-mpd-to-build-vpn/" rel="bookmark"><h1>FreeBSD use mpd to build VPN</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>不習慣用FreeBSD，所以花了一點時間研究要怎麼裝orz</p>
 <p>感覺比Linux的還麻煩QQ</p>
 <h3>首先先裝 mpd</h3>
 <p>到 <code>/usr/ports/net/mpd/</code> 底下輸入</p>
@@ -102,28 +112,20 @@
 <span class="n">load</span> <span class="n">pptp_def</span>
 <span class="n">pptp_def</span><span class="o">:</span>
 <span class="kd">set</span> <span class="n">iface ...</span></pre></div>
-                <a class="readmore" href="http://blog.carlcarl.me/37/freebsd-use-mpd-to-build-vpn/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/37/freebsd-use-mpd-to-build-vpn/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/36/ubuntu-vpn-server-with-pptp/" rel="bookmark"
-                           title="Permalink to Ubuntu VPN Server with pptp">Ubuntu VPN Server with pptp</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-07-16T12:11:00">
-                六 16 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-
-</footer><!-- /.post-info -->                <p>最近想架 VPN Server，查了一下資料，最常見的好像是 <code>OpenVPN</code> 和 <code>pptp</code> 兩種方法。pptp 的方式比較簡單，但是相對於 OpenVPN 較為不安全，是說我們系上的好像也是用 pptp，所以我想問題應該不大吧</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-16T12:11:00" pubdate>
+                            六 16 7月 2011
+                        </time>
+                        <a href="/36/ubuntu-vpn-server-with-pptp/" rel="bookmark"><h1>Ubuntu VPN Server with pptp</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近想架 VPN Server，查了一下資料，最常見的好像是 <code>OpenVPN</code> 和 <code>pptp</code> 兩種方法。pptp 的方式比較簡單，但是相對於 OpenVPN 較為不安全，是說我們系上的好像也是用 pptp，所以我想問題應該不大吧</p>
 <p>網路環境：</p>
 <ul>
 <li>使用Public IP</li>
@@ -136,28 +138,20 @@
 
 <h3>接著修改 <code>/etc/pptpd.conf</code></h3>
 <p>這邊 <code>localip</code> 是 Server 連線之後要用的 IP，基本上跟 Server 本身的 Public IP沒有關係，可以給個 private ip 就 ok 了，<code>remoteip</code> 是給 ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/36/ubuntu-vpn-server-with-pptp/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/36/ubuntu-vpn-server-with-pptp/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/35/svn-delete-only-in-repo/" rel="bookmark"
-                           title="Permalink to svn delete only in repo">svn delete only in repo</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-07-13T16:24:00">
-                三 13 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/ban-ben-guan-li.html">版本管理</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/svn.html">svn</a></p>
-</footer><!-- /.post-info -->                <p>版本管理一些檔案像是測資之類的可能會不小心用 svn add 起來，但是有些測資檔案很大，實在不想上傳，所以就想要將檔案從 svn 版本中移除。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-13T16:24:00" pubdate>
+                            三 13 7月 2011
+                        </time>
+                        <a href="/35/svn-delete-only-in-repo/" rel="bookmark"><h1>svn delete only in repo</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>版本管理一些檔案像是測資之類的可能會不小心用 svn add 起來，但是有些測資檔案很大，實在不想上傳，所以就想要將檔案從 svn 版本中移除。</p>
 <p>之前都很笨的先備份檔案，做刪除，然後再複製回來，後來查資料才發現有參數可以用:</p>
 <div class="highlight"><pre>svn delete --keep-local file
 </pre></div>
@@ -166,56 +160,40 @@
 <p>這樣就能保留這個檔案了～。</p>
 <p>參考網頁:<br />
 <a href="http://www.lampblog.net/2011/01/svn-delete%EF%BC%8D%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/">http://www.lampblog.net/2011/01/svn-delete</a></p>
-                <a class="readmore" href="http://blog.carlcarl.me/35/svn-delete-only-in-repo/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/35/svn-delete-only-in-repo/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/34/vim-omnicppcompletestl-support/" rel="bookmark"
-                           title="Permalink to vim OmniCppComplete+STL support">vim OmniCppComplete+STL support</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-07-13T13:41:00">
-                三 13 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/vim.html">vim</a>. </p>
-
-</footer><!-- /.post-info -->                <p>搞了很久 一直自己鬼打牆 好不容易終於裝好了orz</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-13T13:41:00" pubdate>
+                            三 13 7月 2011
+                        </time>
+                        <a href="/34/vim-omnicppcompletestl-support/" rel="bookmark"><h1>vim OmniCppComplete+STL support</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>搞了很久 一直自己鬼打牆 好不容易終於裝好了orz</p>
 <p>首先先去 <a href="http://www.vim.org/scripts/script.php?script_id=1520">http://www.vim.org/scripts/script.php?script_id=1520</a>
 下載 OmniCppComplete的 plugin，將其解壓縮在 <code>.vim</code> 底下。</p>
 <p>再來去下載支援 STL 的 plugin
 <a href="http://www.vim.org/scripts/script.php?script_id=2358">http://www.vim.org/scripts/script.php?script_id=2358</a><br />
 解壓縮至 <code>.vim</code> 底下，再來在 <code>.vim</code> 底下執行</p>
 <div class="highlight"><pre>ctags -R --c++-kinds<span class="o">=</span>+p --fields<span class="o">=</span>+iaS --extra<span class="o">=</span>+q --language-force<span class="o">=</span>C++ cpp_src ...</pre></div>
-                <a class="readmore" href="http://blog.carlcarl.me/34/vim-omnicppcompletestl-support/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/34/vim-omnicppcompletestl-support/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/33/c-edit-code-but-make-only-show-up-to-date/" rel="bookmark"
-                           title="Permalink to c edit code but Make only show up to date">c edit code but Make only show up to date</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-07-13T07:12:00">
-                三 13 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a>. </p>
-
-</footer><!-- /.post-info -->                <p>感覺好像是很初學的問題，不過我還是不知道原來這個會有關係 orz</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-13T07:12:00" pubdate>
+                            三 13 7月 2011
+                        </time>
+                        <a href="/33/c-edit-code-but-make-only-show-up-to-date/" rel="bookmark"><h1>c edit code but Make only show up to date</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>感覺好像是很初學的問題，不過我還是不知道原來這個會有關係 orz</p>
 <p><span style="color: #ff0000;">在 Makefile 裡記得要加dependency file</span></p>
 <p>例如檔案是 test.cpp, test.h, test2.cpp, test2.h 要編譯成一個執行檔</p>
 <div class="highlight"><pre><span class="nf">test</span><span class="o">:</span>
@@ -230,28 +208,20 @@
 <p>要改成</p>
 <div class="highlight"><pre><span class="nf">test</span><span class="o">:</span> <span class="m">test.o test2.o</span>
     g++ -o <span class="nb">test </span>test.o test2.o ...</pre></div>
-                <a class="readmore" href="http://blog.carlcarl.me/33/c-edit-code-but-make-only-show-up-to-date/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/33/c-edit-code-but-make-only-show-up-to-date/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/32/xrdp-shortcut-d-with-remote-connection/" rel="bookmark"
-                           title="Permalink to XRDP shortcut d with remote connection">XRDP shortcut d with remote connection</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-07-07T18:35:00">
-                四 07 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-
-</footer><!-- /.post-info -->                <p>之前裝了 XRDP，還滿不錯用的。不僅可以用 Linux 的 Terminal server client，也可以用 Windows 內建的遠端連線直接連進去。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-07T18:35:00" pubdate>
+                            四 07 7月 2011
+                        </time>
+                        <a href="/32/xrdp-shortcut-d-with-remote-connection/" rel="bookmark"><h1>XRDP shortcut d with remote connection</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前裝了 XRDP，還滿不錯用的。不僅可以用 Linux 的 Terminal server client，也可以用 Windows 內建的遠端連線直接連進去。</p>
 <p>但是卻發現了一個很討厭的問題，那就是按 <code>d</code> 的時候會發現，怎麼視窗被縮小跑到桌面去orz，後來查了一些資料好不容易才找到，我以為這個問題很多人都會遇到的說......。
  </p>
 <p>首先，問題是出在裝 XRDP 的主機上沒錯，且就是因為快捷鍵的問題，所以只要修改這個設定就 OK 了，這邊假設裝 XRDP 的主機是有 GUI 介面的(沒有的話用 ssh 就好啦XD)</p>
@@ -262,28 +232,20 @@
 
 <p>應該會出現一個視窗。</p>
 <p>接著根據 <code>apps</code> : <code>metacity</code> : <code>global_keybindings</code> 的順序下去找，應該可以找到一個叫做 <code>show_desktop</code> 的設定。然後對應的值應該會是 <code>&lt;Super&gt;d</code>，這邊就直接把這個值刪掉就好了 ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/32/xrdp-shortcut-d-with-remote-connection/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/32/xrdp-shortcut-d-with-remote-connection/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/31/awstats-analyze-large-logs-at-once-include-gz-files/" rel="bookmark"
-                           title="Permalink to awstats analyze large logs at once (include gz files)">awstats analyze large logs at once (include gz files)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-07-04T14:22:00">
-                一 04 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/awstats.html">awstats</a></p>
-</footer><!-- /.post-info -->                <p><a href="http://carl830.pixnet.net/blog/post/66466219">awstats的簡易安裝教學</a></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-04T14:22:00" pubdate>
+                            一 04 7月 2011
+                        </time>
+                        <a href="/31/awstats-analyze-large-logs-at-once-include-gz-files/" rel="bookmark"><h1>awstats analyze large logs at once (include gz files)</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="http://carl830.pixnet.net/blog/post/66466219">awstats的簡易安裝教學</a></p>
 <p>因為在維護的網站log檔有一年份，而且都已經壓縮成gz檔，要用awstats分析的話實在很費工夫，後來發現awstats有好用的工具可以用：<span style="color: #3366ff;">logresolvemerge.pl</span>。</p>
 <p>簡單講就是用這個工具將log檔(包含gz壓縮檔)都merge起來為一個大檔案後，再用awstats作分析。</p>
 <p>這邊首先要注意的就是
@@ -299,28 +261,20 @@
 
 <h3>將多個gz檔merge成一個log檔(其實跟上面的差不多~)</h3>
 <div class="highlight"><pre>logresolvemerge.pl /var/log/apache2/.gz &gt; temp ...</pre></div>
-                <a class="readmore" href="http://blog.carlcarl.me/31/awstats-analyze-large-logs-at-once-include-gz-files/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/31/awstats-analyze-large-logs-at-once-include-gz-files/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/30/ubuntu-install-awstats-to-analyze-web-traffic/" rel="bookmark"
-                           title="Permalink to ubuntu install awstats to analyze web traffic">ubuntu install awstats to analyze web traffic</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-07-04T13:04:00">
-                一 04 7月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/awstats.html">awstats</a></p>
-</footer><!-- /.post-info -->                <p><a href="http://i.imgur.com/gjdRNUQl.png"><img alt="1309785078-4e7966370fbebe6c564d5c251d18d3da_n" src="http://i.imgur.com/gjdRNUQl.png" /></a></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-04T13:04:00" pubdate>
+                            一 04 7月 2011
+                        </time>
+                        <a href="/30/ubuntu-install-awstats-to-analyze-web-traffic/" rel="bookmark"><h1>ubuntu install awstats to analyze web traffic</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="http://i.imgur.com/gjdRNUQl.png"><img alt="1309785078-4e7966370fbebe6c564d5c251d18d3da_n" src="http://i.imgur.com/gjdRNUQl.png" /></a></p>
 <p>awstats 這個工具可以透過分析 Server 的access log 檔來統計網站流量，資料的部份可以透過時間長短、來訪者的資料(國籍之類的)、瀏覽器種類來作分類，這些統計資訊則透過Web介面顯示出來。而上面這個圖是裝完 awstats 後的 Web 介面(還不錯精美= =+)</p>
 <!--more-->
 
@@ -335,28 +289,20 @@
 
 
 <p>到時候指定好 config 的參數 他就會去讀這個檔案的設定，然後要稍微修改一下 <code>awstats ...</code></p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/30/ubuntu-install-awstats-to-analyze-web-traffic/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/30/ubuntu-install-awstats-to-analyze-web-traffic/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/29/cherokee-django-uwsgi-installation/" rel="bookmark"
-                           title="Permalink to cherokee + django + uwsgi installation">cherokee + django + uwsgi installation</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-06-28T20:43:00">
-                二 28 6月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-
-</footer><!-- /.post-info -->                <p>首先要先裝好必要的套件，第一行先加入 cherokee 的來源，接著更新來源後才能夠安裝最新的 cherokee。rrdtool 以下三個都是在裝 uwsgi 所必要的套件，uwsgi 似乎找不到套件可以直接裝 這裡是利用pip 安裝網站上的來源: </p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-28T20:43:00" pubdate>
+                            二 28 6月 2011
+                        </time>
+                        <a href="/29/cherokee-django-uwsgi-installation/" rel="bookmark"><h1>cherokee + django + uwsgi installation</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>首先要先裝好必要的套件，第一行先加入 cherokee 的來源，接著更新來源後才能夠安裝最新的 cherokee。rrdtool 以下三個都是在裝 uwsgi 所必要的套件，uwsgi 似乎找不到套件可以直接裝 這裡是利用pip 安裝網站上的來源: </p>
 <div class="highlight"><pre>sudo apt-add-repository ppa:cherokee-webserver/ppa
 sudo apt-get update
 sudo apt-get install cherokee
@@ -368,52 +314,24 @@ sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
 
 
 <p>接著在 ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/29/cherokee-django-uwsgi-installation/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/29/cherokee-django-uwsgi-installation/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-        <a href="http://blog.carlcarl.me/author/carlcarl12.html">&laquo;</a>
-    Page 13 / 16
-        <a href="http://blog.carlcarl.me/author/carlcarl14.html">&raquo;</a>
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+                    <a href="/author/carlcarl12.html">
+                        <i class="icon-circle-arrow-left"></i>
+                    </a>
+            Page 13 / 16
+                <a href="/author/carlcarl14.html">
+                    <i class="icon-circle-arrow-right"></i>
+                </a>
+        </div>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    </div>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - python, 版本管理</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/">sphinx and github pages</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2013-10-04T21:26:00">
-                五 04 10月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python-ban-ben-guan-li.html">python, 版本管理</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/github.html">github</a><a href="http://blog.carlcarl.me/tag/sphinx.html">sphinx</a></p>
-</footer><!-- /.post-info --><p>就之前產生的 sphinx document，接下來是如何 deploy 到 github page 上。</p>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-10-04T21:26:00" pubdate>
+                            五 04 10月 2013
+                        </time>
+                        <a href="/1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>就之前產生的 sphinx document，接下來是如何 deploy 到 github page 上。</p>
 <p>這個文章是根據 <a href="http://raxcloud.blogspot.tw/2013/02/documenting-python-code-using-sphinx.html">Documenting python code using sphinx and github</a> 和
 <a href="http://datadesk.latimes.com/posts/2012/01/sphinx-on-github/">Sphinx documentation on GitHub</a>
 整理而成的，兩個地方的資料都不錯，不過都沒有很完美，所以就寫了這篇。</p>
@@ -44,134 +68,19 @@ subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資
 </pre></div>
 
 
-<p>接著利用 <code>git-new-workdir</code> 這個指令建立一個 subdirectory，這個指令一般在
-<code>/usr/local/share/git-core/contrib/workdir/git-new-workdir</code>，在 Mac
-下需要另外用 <code>brew</code> 裝 <code>git</code>，位置會放在
-<code>/usr/local/Cellar/git/1.8.4/share/git-core/contrib/workdir/git-new-workdir</code>，<code>1.8.4</code>
-要換成你現在的 git 版本，至於 Xcode 本身雖然也有裝
-git，但是我就找不到它的 <code>git-new-workdir</code> 在哪了，然後可以自己建個 link
-來用：</p>
-<div class="highlight"><pre>sudo ln -s /usr/local/Cellar/git/1.8.4/share/git-core/contrib/workdir/git-new-workdir /usr/local/bin/git-new-workdir
-</pre></div>
+<p>接著利用 <code>git-new-workdir</code> 這個指令建立一個 ...</p></!--more-->
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 1
+        </div>
 
+    </div>
+        </div>
 
-<p>然後繼續下面的步驟：</p>
-<div class="highlight"><pre>git-new-workdir . gh-pages/html
-</pre></div>
-
-
-<p>接著進入資料夾並 checkout 一個新的 branch：</p>
-<div class="highlight"><pre><span class="nb">cd </span>gh-pages/html
-git checkout --orphan gh-pages
-</pre></div>
-
-
-<p>將裡面的東西都清光光：</p>
-<div class="highlight"><pre>git rm -rf .
-</pre></div>
-
-
-<h2>產生 sphinx document</h2>
-<p>回到 project 根目錄下的 doc 下：</p>
-<div class="highlight"><pre><span class="nb">cd</span> ../../doc/
-</pre></div>
-
-
-<p>修改 Makefile：</p>
-<div class="highlight"><pre><span class="nv">BUILDDIR</span>      <span class="o">=</span> _build
-</pre></div>
-
-
-<p>改成</p>
-<div class="highlight"><pre><span class="nv">BUILDDIR</span>      <span class="o">=</span> ../gh-pages/html
-</pre></div>
-
-
-<p>這樣所有的輸出都會在 <code>gh-pages/html/</code> 底下。但是這樣 sphinx 的 html
-變成會在 <code>gh-pages/html/</code> 底下再建一個 <code>html</code> 資料夾，所以 Makefile
-還有一個地方要改：</p>
-<div class="highlight"><pre><span class="nf">html</span><span class="o">:</span>
-<span class="k">$(</span>SPHINXBUILD<span class="k">)</span> -b html <span class="k">$(</span>ALLSPHINXOPTS<span class="k">)</span> <span class="k">$(</span>BUILDDIR<span class="k">)</span>/html
-@echo
-@echo <span class="s2">&quot;Build finished. The HTML pages are in $(BUILDDIR)/html.&quot;</span>
-</pre></div>
-
-
-<p>改成</p>
-<div class="highlight"><pre><span class="nf">html</span><span class="o">:</span>
-<span class="k">$(</span>SPHINXBUILD<span class="k">)</span> -b html <span class="k">$(</span>ALLSPHINXOPTS<span class="k">)</span> <span class="k">$(</span>BUILDDIR<span class="k">)</span>
-@echo
-@echo <span class="s2">&quot;Build finished. The HTML pages are in $(BUILDDIR).&quot;</span>
-</pre></div>
-
-
-<p>這樣它就會把 html 的部分直接輸出到 <code>gh-pages/html/</code> 底下，接著輸入
-<code>Make html</code> 產生網頁。</p>
-<h2>github page push</h2>
-<p>先移到 gh-pages/html 下：</p>
-<div class="highlight"><pre><span class="nb">cd</span> ../gh-pages/html
-</pre></div>
-
-
-<p>這邊還有一個地方要注意，那就是 github 預設的 site 架構 (Jekyll)，會忽略
-<code>_</code> 開頭的資料夾，所以要用個檔案來告訴 github 不要用這種架構：</p>
-<div class="highlight"><pre>touch .nojekyll
-</pre></div>
-
-
-<p>接著加入所有檔案到 git 中， commit 並 push 上去就完成了：</p>
-<div class="highlight"><pre>git add .
-git commit -m <span class="s2">&quot;First commit&quot;</span>
-git push -u origin gh-pages
-</pre></div>
-
-
-<h2>參考資料</h2>
-<p><a href="https://github.com/blog/572-bypassing-jekyll-on-github-pages">Bypassing Jekyll on GitHub Pages</a><br />
-<a href="http://nuclearsquid.com/writings/git-new-workdir/">git-new-workdir</a><br />
-<a href="http://subtech.g.hatena.ne.jp/secondlife/20121207/1354854068">git-new-workdir が便利</a></p><p>There are <a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/#disqus_thread">comments</a>.</p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

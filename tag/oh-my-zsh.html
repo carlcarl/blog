@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - oh-my-zsh</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/414/oh-my-zsh-mytheme/">oh my zsh: my theme</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2012-05-06T00:34:00">
-                日 06 5月 2012
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/oh-my-zsh.html">oh-my-zsh</a><a href="http://blog.carlcarl.me/tag/zsh.html">zsh</a></p>
-</footer><!-- /.post-info --><p><img alt="zsh" src="http://i.imgur.com/abOdnAul.png" title="Selection_61b4e7" /></p>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-06T00:34:00" pubdate>
+                            日 06 5月 2012
+                        </time>
+                        <a href="/414/oh-my-zsh-mytheme/" rel="bookmark"><h1>oh my zsh: my theme</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="zsh" src="http://i.imgur.com/abOdnAul.png" title="Selection_61b4e7" /></p>
 <p>在之前<a href="http://blog.carlcarl.tw/410/ubuntu%e5%ae%89%e8%a3%9d-oh-my-zsh" title="ubuntu 安裝 oh my zsh">安裝完 zsh 和 oh my zsh</a>之後，就先來設定我的 theme 啦。</p>
 <p>但是因為看了老半天沒有一個 theme
 符合我的需求，所以我就自己另外弄了一個，大致是從 muse 這個 theme
@@ -39,68 +63,21 @@ host name、時間、和 進 git repo 會有的提示，git repo
 的狀態包含多種圖示，所以很容易可以看出 repo 中有什麼改變。</p>
 <p>我的 theme 可以在這邊下載：<a href="%20http://dl.dropbox.com/u/4413406/carlcarl.zsh-theme">載點</a>。（或是可以直接 clone 我的
 <a href="https://github.com/carlcarl/oh-my-zsh">repo</a>）</p>
-<p>把這個檔案下載下來存成 <code>carlcarl.zsh-theme</code> 之後，放到
-<code>~/.oh-my-zsh/themes/</code> 底下，修改 <code>~/.zshrc</code> 中的 <code>ZSH_THEME</code>：</p>
-<div class="highlight"><pre><span class="nv">ZSH_THEME</span><span class="o">=</span><span class="s2">&quot;carlcarl&quot;</span>
-</pre></div>
-
-
-<hr />
-<p>改完之後，重開
-terminal，不過你可能會發現顏色不太一樣，這部份還需要透過設定 terminal
-才行，terminal 配色可以參考<a href="http://stevelosh.com/blog/2009/03/candy-colored-terminal/">這個網站</a>。以下這邊是他建議的色碼：</p>
-<div class="highlight"><pre>Black: 0, 0, 0
-Red: 229, 34, 34
-Green: 166, 227, 45
-Yellow: 252, 149, 30
-Blue: 196, 141, 255
-Magenta: 250, 37, 115 # 這個我是用 199, 32, 80 這組，我自己感覺是有比較好看XD
-Cyan: 103, 217, 240
-White: 242, 242, 242
-</pre></div>
-
-
-<hr />
-<p>以一般 terminal 來當作範例，可以從 Edit-&gt;Profile Preferences-&gt;Colors
-這邊來選擇顏色</p>
-<p><img alt="terminal color" src="http://i.imgur.com/tkCwL9x.png" title="Selection_4fadd9" /></p>
-<hr />
-<p>點一個顏色進去，就可以進行修改</p>
-<p><img alt="terminal color" src="http://i.imgur.com/9wkt1p3.png" title="Selection_fd4dd8" /></p>
-<p>接著就把上面那個色碼表分別填入到對應顏色的 Red, Green, Blue
-欄位裡，這邊可能會有點難懂，簡單講，你可以根據你現在 terminal
-提示字元的樣子和顏色去對應設定中的顏色來做修改。</p>
-<p>Theme 的設定大概就到這邊告一段落，本來還想加個有趣的表情符號到提示字元裡，不過想說這樣太花了，所以就算了XD。oh-my-zsh
-另外還有 plugin 的部份我還沒試過，有空再來試試看唄。</p>
-<p>附帶一提，terminal 我本來是使用 <a href="http://projects.comum.org/guake">guake</a>，但是現在因為用 F12
-開啟之後，會有亂碼出現，所以我後來改用 <a href="http://yakuake.kde.org/">yakuake</a> 了。</p>
-<p>參考網址：<br />
-<a href="http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/">http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/</a><br />
-<a href="http://forrst.com/posts/Oh_my_zsh_iTerm2_Nice_Colors_git_hg_suppo-1Ct">http://forrst.com/posts/Oh_my_zsh_iTerm2_Nice_Colors_git_hg_suppo-1Ct</a></p><p>There are <a href="http://blog.carlcarl.me/414/oh-my-zsh-mytheme/#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/410/ubuntu-install-oh-my-zsh/" rel="bookmark"
-                           title="Permalink to ubuntu install oh my zsh">ubuntu install oh my zsh</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-05-05T23:41:00">
-                六 05 5月 2012
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/oh-my-zsh.html">oh-my-zsh</a><a href="http://blog.carlcarl.me/tag/zsh.html">zsh</a></p>
-</footer><!-- /.post-info -->                <p>在網路上看到 <a href="https://github.com/robbyrussell/oh-my-zsh">oh my zsh</a> 這套件，這個套件對 zsh
+<p>把這個檔案下載下來存成 <code>carlcarl ...</code></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-05T23:41:00" pubdate>
+                            六 05 5月 2012
+                        </time>
+                        <a href="/410/ubuntu-install-oh-my-zsh/" rel="bookmark"><h1>ubuntu install oh my zsh</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在網路上看到 <a href="https://github.com/robbyrussell/oh-my-zsh">oh my zsh</a> 這套件，這個套件對 zsh
 做了一些客製化，包含很多外掛以及提示字元主題，感覺還滿炫的，所以就想說從
 bash 換成 zsh 看看囉。</p>
 <h3>首先要先安裝 zsh，因為 zsh 預設在 ubuntu 上是沒有安裝的</h3>
@@ -119,50 +96,18 @@ bash 換成 zsh 看看囉。</p>
 
 
 <h3>改成預設使用 zsh，執行以下指令並輸入你的密碼 ...</h3>
-                <a class="readmore" href="http://blog.carlcarl.me/410/ubuntu-install-oh-my-zsh/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/410/ubuntu-install-oh-my-zsh/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 1
+        </div>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    </div>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

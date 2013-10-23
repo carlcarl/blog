@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/1375/tig-broken-in-tmux/">tig broken in tmux</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2013-10-05T02:15:00">
-                六 05 10月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux-ban-ben-guan-li.html">linux, 版本管理</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/screen.html">screen</a><a href="http://blog.carlcarl.me/tag/tig.html">tig</a><a href="http://blog.carlcarl.me/tag/tmux.html">tmux</a></p>
-</footer><!-- /.post-info --><p>這個問題已經困擾我滿久了，在 <a href="http://tmux.sourceforge.net">tmux</a> 裡用 <a href="https://github.com/jonas/tig">tig</a>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-10-05T02:15:00" pubdate>
+                            六 05 10月 2013
+                        </time>
+                        <a href="/1375/tig-broken-in-tmux/" rel="bookmark"><h1>tig broken in tmux</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>這個問題已經困擾我滿久了，在 <a href="http://tmux.sourceforge.net">tmux</a> 裡用 <a href="https://github.com/jonas/tig">tig</a>
 畫面會一直破碎，不過一直找不到原因，最近想到，於是又找看看有沒有解法，後來試了<a href="https://wiki.archlinux.org/index.php/tmux">一篇</a>裡面的做法就
 OK 了 QQ。</p>
 <!--more-->
@@ -41,34 +65,21 @@ screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</
 下得到的輸出卻是 <code>xterm-256color</code>，想說朝這個方向去找資料。這邊先找了
 <code>tmux.conf</code> 中，但是我並沒有設定這個東西，看了
 <code>.zshrc</code>，原來我是在這邊設定了
-<code>export TERM=xterm-256color</code>，於是我參看上面連結裡的內容在設定 <code>TERM</code>
-下面再加上了一行就 OK 了：</p>
-<div class="highlight"><pre><span class="p">[</span> <span class="o">-</span><span class="n">n</span> <span class="s">&quot;$TMUX&quot;</span> <span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">export</span> <span class="n">TERM</span><span class="o">=</span><span class="n">screen</span><span class="o">-</span><span class="mi">256</span><span class="n">color</span>
-</pre></div><p>There are <a href="http://blog.carlcarl.me/1375/tig-broken-in-tmux/#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/" rel="bookmark"
-                           title="Permalink to sphinx and github pages">sphinx and github pages</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-10-04T21:26:00">
-                五 04 10月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python-ban-ben-guan-li.html">python, 版本管理</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/github.html">github</a><a href="http://blog.carlcarl.me/tag/sphinx.html">sphinx</a></p>
-</footer><!-- /.post-info -->                <p>就之前產生的 sphinx document，接下來是如何 deploy 到 github page 上。</p>
+<code>export TERM ...</code></p></!--more-->
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-10-04T21:26:00" pubdate>
+                            五 04 10月 2013
+                        </time>
+                        <a href="/1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>就之前產生的 sphinx document，接下來是如何 deploy 到 github page 上。</p>
 <p>這個文章是根據 <a href="http://raxcloud.blogspot.tw/2013/02/documenting-python-code-using-sphinx.html">Documenting python code using sphinx and github</a> 和
 <a href="http://datadesk.latimes.com/posts/2012/01/sphinx-on-github/">Sphinx documentation on GitHub</a>
 整理而成的，兩個地方的資料都不錯，不過都沒有很完美，所以就寫了這篇。</p>
@@ -83,28 +94,20 @@ subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資
 
 
 <p>接著利用 <code>git-new-workdir</code> 這個指令建立一個 ...</p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1331/python-sphinx-simple-example/" rel="bookmark"
-                           title="Permalink to Python Sphinx simple example">Python Sphinx simple example</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-10-02T02:32:00">
-                三 02 10月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/python.html">python</a><a href="http://blog.carlcarl.me/tag/sphinx.html">sphinx</a></p>
-</footer><!-- /.post-info -->                <p>查了很多資料，遇到一堆鬼打牆問題，終於弄成我要的樣子了，不過其實也沒有加多少東西，只是基本的設定一直搞不定
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-10-02T02:32:00" pubdate>
+                            三 02 10月 2013
+                        </time>
+                        <a href="/1331/python-sphinx-simple-example/" rel="bookmark"><h1>Python Sphinx simple example</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查了很多資料，遇到一堆鬼打牆問題，終於弄成我要的樣子了，不過其實也沒有加多少東西，只是基本的設定一直搞不定
 orz。</p>
 <!--more-->
 
@@ -129,28 +132,20 @@ orz。</p>
 <p>首先先安裝 <code>sphinx</code>(ex: <code>pip install sphinx</code>)，接著在 project
 根目錄下輸入 <code>sphinx-quickstart</code>，設定步驟如下：</p>
 <div class="highlight"><pre>Welcome to the Sphinx 1.1.3 ...</pre></div></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1331/python-sphinx-simple-example/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1331/python-sphinx-simple-example/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/" rel="bookmark"
-                           title="Permalink to Python multiprocessing share counter">Python multiprocessing share counter</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-09-19T00:09:00">
-                四 19 9月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/multiprocessing.html">multiprocessing</a></p>
-</footer><!-- /.post-info -->                <p>找了一下，以下是基本的寫法：</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-09-19T00:09:00" pubdate>
+                            四 19 9月 2013
+                        </time>
+                        <a href="/1315/python-multiprocessing-share-counter/" rel="bookmark"><h1>Python multiprocessing share counter</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>找了一下，以下是基本的寫法：</p>
 <!--more-->
 
 <div class="highlight"><pre><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
@@ -174,28 +169,20 @@ orz。</p>
         <span class="n">initargs</span><span class="o">=</span><span class="p">(</span><span class="n">counter</span><span class="p">,)</span>
     <span class="p">)</span>
     <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">countdown</span><span class="p">,</span> <span class="n">data_list ...</span></pre></div></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1302/brunch-watch-stylesheet-dependency/" rel="bookmark"
-                           title="Permalink to brunch watch stylesheet dependency">brunch watch stylesheet dependency</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-09-09T02:10:00">
-                一 09 9月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/css-js.html">css, js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/grunch.html">grunch</a></p>
-</footer><!-- /.post-info -->                <p>之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-09-09T02:10:00" pubdate>
+                            一 09 9月 2013
+                        </time>
+                        <a href="/1302/brunch-watch-stylesheet-dependency/" rel="bookmark"><h1>brunch watch stylesheet dependency</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生
 build 好的 css，這個問題一直困擾我很久，每次都要重新跑一次
 <code>brunch watch --server</code> 實在是很不爽，今天晚上剛好有一點時間就來修了。</p>
 <!--more-->
@@ -213,28 +200,20 @@ build 好的 css，這個問題一直困擾我很久，每次都要重新跑一�
 <div class="highlight"><pre><span class="nv">stylesheets:</span>
   <span class="nv">joinTo:</span>
     <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less ...</span></pre></div></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1302/brunch-watch-stylesheet-dependency/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1302/brunch-watch-stylesheet-dependency/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1292/g0v-tw-sns-buttons/" rel="bookmark"
-                           title="Permalink to g0v.tw sns buttons">g0v.tw sns buttons</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-08-28T01:40:00">
-                三 28 8月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/css.html">css</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/g0v.html">g0v</a></p>
-</footer><!-- /.post-info -->                <p>修了一下 render 的問題，以結果來看其實並沒有完全做好，還是會有 render
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-28T01:40:00" pubdate>
+                            三 28 8月 2013
+                        </time>
+                        <a href="/1292/g0v-tw-sns-buttons/" rel="bookmark"><h1>g0v.tw sns buttons</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>修了一下 render 的問題，以結果來看其實並沒有完全做好，還是會有 render
 過程中偏移的問題
 orz，不過也比原來的情況好多了(汗)，之後功力如果好一點再來深入研究吧 =
 =+。</p>
@@ -248,28 +227,20 @@ orz，不過也比原來的情況好多了(汗)，之後功力如果好一點再
 <p>原本的方法是直接把 button 用 css 加上 <code>transform</code> + <code>scale</code>
 放大，不過如果有多個 button 的話，這樣兩者之間的 margin
 會很難去設定，因為 margin ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/1292/g0v-tw-sns-buttons/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1292/g0v-tw-sns-buttons/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1277/chrome-tab-key-accessibility-bug/" rel="bookmark"
-                           title="Permalink to Chrome tab key accessibility bug">Chrome tab key accessibility bug</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-08-22T00:58:00">
-                四 22 8月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/css.html">css</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/chrome.html">chrome</a></p>
-</footer><!-- /.post-info -->                <p>簡單說就是在 link 內容如果是 float 的情況下，這個 link 沒辦法在按 tab
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-22T00:58:00" pubdate>
+                            四 22 8月 2013
+                        </time>
+                        <a href="/1277/chrome-tab-key-accessibility-bug/" rel="bookmark"><h1>Chrome tab key accessibility bug</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>簡單說就是在 link 內容如果是 float 的情況下，這個 link 沒辦法在按 tab
 鍵的時候得到 focus。Google 了一下，好像是 <a href="https://bugs.webkit.org/show_bug.cgi?id=51333">Webkit 的
 bug</a>，不過好像沒有打算要修的樣子(汗)。<br />
 <!--more--><br />
@@ -289,28 +260,20 @@ Link 如果在下面的情況是 OK 的：</p>
 
 <p>我的解決方法很簡單，就是乾脆把 <code>float</code> 移到外面的 element
 上(炸)。目前看來是沒問題，Firefox ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/1277/chrome-tab-key-accessibility-bug/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1277/chrome-tab-key-accessibility-bug/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1267/c-define-debug-function/" rel="bookmark"
-                           title="Permalink to C define debug function">C define debug function</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-08-13T15:50:00">
-                二 13 8月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/c-c-linux.html">C &amp; C++, linux</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/debug.html">debug</a><a href="http://blog.carlcarl.me/tag/makefile.html">makefile</a></p>
-</footer><!-- /.post-info -->                <p>參考<a href="http://www.makelinux.net/ldd3/chp-4-sect-2">這篇</a>，然後做了點修改。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-13T15:50:00" pubdate>
+                            二 13 8月 2013
+                        </time>
+                        <a href="/1267/c-define-debug-function/" rel="bookmark"><h1>C define debug function</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>參考<a href="http://www.makelinux.net/ldd3/chp-4-sect-2">這篇</a>，然後做了點修改。</p>
 <!--more-->
 
 <div class="highlight"><pre>#undef CM_DBG
@@ -333,28 +296,20 @@ Link 如果在下面的情況是 OK 的：</p>
 <ol>
 <li>把 <code>printk</code> 的部分拿掉，因為我不需要。</li>
 <li><code>CM_DBGG</code> 改成跟原本功能一樣 ...</li></ol></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1267/c-define-debug-function/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1267/c-define-debug-function/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1262/javascript-parseint-and-number/" rel="bookmark"
-                           title="Permalink to Javascript parseInt and Number">Javascript parseInt and Number</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-08-07T15:31:00">
-                三 07 8月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/number.html">Number</a><a href="http://blog.carlcarl.me/tag/parseint.html">parseInt</a></p>
-</footer><!-- /.post-info -->                <p>這個是查資料時看到的 benchmark <a href="http://jsperf.com/performance-of-parseint">performance of parseInt()</a></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-07T15:31:00" pubdate>
+                            三 07 8月 2013
+                        </time>
+                        <a href="/1262/javascript-parseint-and-number/" rel="bookmark"><h1>Javascript parseInt and Number</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>這個是查資料時看到的 benchmark <a href="http://jsperf.com/performance-of-parseint">performance of parseInt()</a></p>
 <p>簡單歸納幾點：</p>
 <ol>
 <li><code>parseInt</code> 基本上幾乎是比 <code>Number</code>
@@ -366,28 +321,20 @@ Link 如果在下面的情況是 OK 的：</p>
     就好。</li>
 <li>new 會帶來多的 overhead，所以 new Number 又比 Number 慢。</li>
 </ol>
-                <a class="readmore" href="http://blog.carlcarl.me/1262/javascript-parseint-and-number/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1262/javascript-parseint-and-number/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1249/python-functools-wraps-note/" rel="bookmark"
-                           title="Permalink to Python functools.wraps note">Python functools.wraps note</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-08-06T15:38:00">
-                二 06 8月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/wraps.html">wraps</a></p>
-</footer><!-- /.post-info -->                <p>研究一下 <code>functools.wraps</code>。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-06T15:38:00" pubdate>
+                            二 06 8月 2013
+                        </time>
+                        <a href="/1249/python-functools-wraps-note/" rel="bookmark"><h1>Python functools.wraps note</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>研究一下 <code>functools.wraps</code>。</p>
 <!--more-->
 
 <h3>用法</h3>
@@ -408,51 +355,21 @@ Link 如果在下面的情況是 OK 的：</p>
 <p>在 <code>hello</code> 裡 print 出
 'test'，這個沒什麼問題，但是在宣告完後，如果想確認 <code>test</code> 的 <code>__name__</code>
 attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</code></p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1249/python-functools-wraps-note/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1249/python-functools-wraps-note/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 16
-        <a href="http://blog.carlcarl.me/index2.html">&raquo;</a>
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 16
+                <a href="/index2.html">
+                    <i class="icon-circle-arrow-right"></i>
+                </a>
+        </div>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    </div>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

@@ -1,42 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-                <section id="content" class="body">
-                    <ol id="posts-list" class="hfeed" start="9">
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1240/python-fibonacci-number/" rel="bookmark"
-                           title="Permalink to Python fibonacci number">Python fibonacci number</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-08-04T02:35:00">
-                日 04 8月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/fibonacci.html">fibonacci</a></p>
-</footer><!-- /.post-info -->                <p>在 Python Taiwan 社團看到的寫法：</p>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-04T02:35:00" pubdate>
+                            日 04 8月 2013
+                        </time>
+                        <a href="/1240/python-fibonacci-number/" rel="bookmark"><h1>Python fibonacci number</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 Python Taiwan 社團看到的寫法：</p>
 <!--more-->
 
 <div class="highlight"><pre><span class="k">print</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="p">(([</span><span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)])</span> <span class="ow">and</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">or</span> <span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
@@ -46,28 +64,20 @@
 <p><code>n</code> 和 <code>p</code> 分別對應 <code>10</code> 和 <code>[1,1]</code> 這兩個參數，<code>10</code> 表示要 fibonacci
 的第十個項數，<code>[1,1]</code> 是第一項和第二項的值。然後是一個 loop 將 <code>p</code>
 陣列中最後兩個值加起來再 append ...</p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1240/python-fibonacci-number/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1240/python-fibonacci-number/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1230/python-logging-stream/" rel="bookmark"
-                           title="Permalink to Python logging stream">Python logging stream</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-07-25T17:11:00">
-                四 25 7月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/logging.html">logging</a><a href="http://blog.carlcarl.me/tag/uniout.html">uniout</a></p>
-</footer><!-- /.post-info -->                <p>在用 <a href="https://github.com/moskytw/uniout">uniout</a> 的時候發現 logging
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-25T17:11:00" pubdate>
+                            四 25 7月 2013
+                        </time>
+                        <a href="/1230/python-logging-stream/" rel="bookmark"><h1>Python logging stream</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在用 <a href="https://github.com/moskytw/uniout">uniout</a> 的時候發現 logging
 的時候沒辦法自動轉輸出為中文(因為資料有些是中文，然後有時候又需要做些log
 囧)，看了一下 <code>uniout</code> 的 code，看來做法是另外用了一個物件，然後把
 <code>sys.stdout</code> 的屬性複製上去，再加上編碼的功能，最後再將 <code>sys.stdout</code>
@@ -83,28 +93,20 @@ assign 成這個物件。</p>
 <p>想說 <code>logging</code> module 應該也是丟
 <code>stdout</code>，不過怎麼設就是不行，所以還是看一下 source code。</p>
 <h3>logging ...</h3></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1230/python-logging-stream/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1230/python-logging-stream/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1224/ipk-unarchive/" rel="bookmark"
-                           title="Permalink to ipk unarchive">ipk unarchive</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-07-17T16:27:00">
-                三 17 7月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/linux.html">linux</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/ipk.html">ipk</a><a href="http://blog.carlcarl.me/tag/tar.html">tar</a></p>
-</footer><!-- /.post-info -->                <p>記錄一下:P</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-17T16:27:00" pubdate>
+                            三 17 7月 2013
+                        </time>
+                        <a href="/1224/ipk-unarchive/" rel="bookmark"><h1>ipk unarchive</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>記錄一下:P</p>
 <p>查了一下資料，有些說直接用 <code>tar</code>
 就可以了，不過怎麼試就是不行zzzzzz。後來看到 <a href="http://stackoverflow.com/questions/17369127/extracting-and-creating-ipk-files">stackoverflow</a>
 上有人提供的方法，試了一下就成功了 XD。</p>
@@ -113,84 +115,60 @@ assign 成這個物件。</p>
 information。</p>
 <p>接下來用 <code>tar -xf data.tar.gz</code> or <code>tar -xf control.tar.gz</code>
 就可以看到裡面的資料了。</p>
-                <a class="readmore" href="http://blog.carlcarl.me/1224/ipk-unarchive/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1224/ipk-unarchive/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1212/python-yahoo-weather/" rel="bookmark"
-                           title="Permalink to Python Yahoo weather">Python Yahoo weather</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-07-16T18:30:00">
-                二 16 7月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/weather.html">weather</a><a href="http://blog.carlcarl.me/tag/yahoo.html">yahoo</a><a href="http://blog.carlcarl.me/tag/yql.html">yql</a></p>
-</footer><!-- /.post-info -->                <p>實際做起來不難，是說弄完才發現有 <a href="https://pypi.python.org/pypi/yweather/0.1">yweather</a> 這個可以用囧。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-16T18:30:00" pubdate>
+                            二 16 7月 2013
+                        </time>
+                        <a href="/1212/python-yahoo-weather/" rel="bookmark"><h1>Python Yahoo weather</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>實際做起來不難，是說弄完才發現有 <a href="https://pypi.python.org/pypi/yweather/0.1">yweather</a> 這個可以用囧。</p>
 <!--more-->
 
 <p>首先到 <a href="http://developer.yahoo.com/yql/console/">YQL</a> 這邊下 query，這邊可以參考<a href="http://my.opera.com/weiyu/blog/2012/04/08/yql-yahoo">這篇</a>最下面的兩種 query
 方法。格式可以選 JSON 然後把 callback 名稱拿掉，下完 query
 就可以產生一段網址，以新竹的例子來說就是:</p>
 <div class="highlight"><pre>http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D%22TWXX0009%22%20and%20u%3D%22c%22&amp;format=json&amp;diagnostics=true&amp;callback ...</pre></div></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1212/python-yahoo-weather/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1212/python-yahoo-weather/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1194/tree-command-exclude-multiple-direcories/" rel="bookmark"
-                           title="Permalink to tree command exclude multiple direcories">tree command exclude multiple direcories</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-07-14T17:57:00">
-                日 14 7月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/mac.html">Mac</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/tree.html">tree</a></p>
-</footer><!-- /.post-info -->                <h3>安裝</h3>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-14T17:57:00" pubdate>
+                            日 14 7月 2013
+                        </time>
+                        <a href="/1194/tree-command-exclude-multiple-direcories/" rel="bookmark"><h1>tree command exclude multiple direcories</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <h3>安裝</h3>
 <p>一般 Linux 好像都會有裝，不過 OSX 上預設沒有，下個 <code>brew install tree</code>
 裝就 OK 了。</p>
 <h3>使用</h3>
 <p>man 了一下，用 <code>-I pattern</code> 就可以略過資料夾，那如果有多個呢？本來猜是
 <code>-I pattern1 pattern2</code>，結果不是囧，<code>-I pattern1 -I pattern2</code>
 也不是囧。後來才看到<a href="http://unix.stackexchange.com/questions/61074/tree-command-for-multiple-includes-and-excludes">用法</a>應該是 <code>-I pattern1|pattern2</code> 才對 orz。</p>
-                <a class="readmore" href="http://blog.carlcarl.me/1194/tree-command-exclude-multiple-direcories/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1194/tree-command-exclude-multiple-direcories/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1131/python-pyramid-with-grunt-js/" rel="bookmark"
-                           title="Permalink to Python Pyramid with Grunt.js">Python Pyramid with Grunt.js</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-07-14T05:11:00">
-                日 14 7月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/grunt.html">grunt</a><a href="http://blog.carlcarl.me/tag/gruntjs.html">grunt.js</a><a href="http://blog.carlcarl.me/tag/pyramid.html">pyramid</a></p>
-</footer><!-- /.post-info -->                <p>這幾天試玩了一下
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-14T05:11:00" pubdate>
+                            日 14 7月 2013
+                        </time>
+                        <a href="/1131/python-pyramid-with-grunt-js/" rel="bookmark"><h1>Python Pyramid with Grunt.js</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>這幾天試玩了一下
 <a href="http://gruntjs.com">Grunt.js</a>，感覺還不錯方便，所以來筆記一些自己的設定。一開始還在想
 <a href="http://www.pylonsproject.org">Pyramid</a> 和 Grunt 要怎麼結合，雖然有 Google
 了一下，不過好像都沒有一個比較準確的答案，所以這邊我就照自己想的來做
@@ -204,28 +182,20 @@ XD。</p>
 <p>livereload 這邊是透過 Grunt bind 一個 port
 並監視檔案的變化，接著網頁的部分加入這個 port 底下所提供的
 javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/1131/python-pyramid-with-grunt-js/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1131/python-pyramid-with-grunt-js/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1120/osx-mavericks-betaheader-file-position/" rel="bookmark"
-                           title="Permalink to OSX Mavericks Beta header file position">OSX Mavericks Beta header file position</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-07-12T02:15:00">
-                五 12 7月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/mac.html">Mac</a>. </p>
-
-</footer><!-- /.post-info -->                <p>Beta 版的 header file 位置有些不同，看到幾個地方都傳出災情：</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-12T02:15:00" pubdate>
+                            五 12 7月 2013
+                        </time>
+                        <a href="/1120/osx-mavericks-betaheader-file-position/" rel="bookmark"><h1>OSX Mavericks Beta header file position</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>Beta 版的 header file 位置有些不同，看到幾個地方都傳出災情：</p>
 <ul>
 <li><a href="https://github.com/mxcl/homebrew/pull/20938">gpg-agent: Set correct stdint.h header path for Mac OSX Mavericks</a></li>
 <li><a href="https://github.com/jfahrenkrug/WWDC-Downloader/issues/5">The gem doesn't yet build in Mavericks</a></li>
@@ -235,28 +205,20 @@ javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
 
 <p>原本的 <code>/usr/include</code> 已經不見了，找了一下，位置是在：</p>
 <div class="highlight"><pre><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode5</span><span class="o">-</span><span class="n">DP</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="p">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="mf">.9 ...</span></pre></div></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1120/osx-mavericks-betaheader-file-position/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1120/osx-mavericks-betaheader-file-position/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1113/javascript-mutationobserver/" rel="bookmark"
-                           title="Permalink to Javascript MutationObserver">Javascript MutationObserver</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-07-03T18:46:00">
-                三 03 7月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/mutationobserver.html">MutationObserver</a></p>
-</footer><!-- /.post-info -->                <p>最近看到 Aol Reader release，試用了一下，感覺還滿不錯的，但是右邊的廣告實在很礙眼，就算用
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-03T18:46:00" pubdate>
+                            三 03 7月 2013
+                        </time>
+                        <a href="/1113/javascript-mutationobserver/" rel="bookmark"><h1>Javascript MutationObserver</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近看到 Aol Reader release，試用了一下，感覺還滿不錯的，但是右邊的廣告實在很礙眼，就算用
 adblock 擋掉，右邊還是會留空，想說都沒寫過 browser 的 extension
 ，所以就拿這個來練功啦～，不然其實寫 userscript 也可以就是。要弄的
 extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通，寫起來 CP
@@ -267,28 +229,20 @@ extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通�
 在 <code>onload</code> 之後還會有個它自己 loading
 的頁面，處理起來就變麻煩很多，因為除了要觀察 dom 來判斷何時才算真的
 ready 以外，另外就是 ...</p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1113/javascript-mutationobserver/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1113/javascript-mutationobserver/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1107/javascript-style-width-offsetwidth/" rel="bookmark"
-                           title="Permalink to javascript style.width offsetWidth">javascript style.width offsetWidth</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-06-28T20:29:00">
-                五 28 6月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/css-js.html">css, js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/offsetwidth.html">offsetWidth</a></p>
-</footer><!-- /.post-info -->                <p>查了一些資料，看起來 <code>style.width</code> 是如果 css 沒指定 element 的 width
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-28T20:29:00" pubdate>
+                            五 28 6月 2013
+                        </time>
+                        <a href="/1107/javascript-style-width-offsetwidth/" rel="bookmark"><h1>javascript style.width offsetWidth</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查了一些資料，看起來 <code>style.width</code> 是如果 css 沒指定 element 的 width
 的話，就會拿到空值，即使它本身的確佔有一個大小。這時候如果想拿到實際大小的話可以用
 <code>offsetWidth</code>，另外要注意的是 <code>offsetWidth</code> 是
 <code>readonly</code>，所以如果要設寬度，還是得從 <code>style.width</code> 著手。還有 <a href="http://jsperf.com/style-width-vs-offsetwidth1/5">這篇</a>
@@ -298,28 +252,20 @@ ready 以外，另外就是 ...</p></!--more-->
 <a href="http://zhuweiwu.com/?p=86">原生js获取宽高与jquery获取宽高的方法的关系</a><br />
 <a href="http://bbs.csdn.net/topics/80381570">offsetWidth和width有什么不同啊?</a><br />
 <a href="http://stackoverflow.com/questions/4787527/how-to-find-the-width-of-a-div">How to find the width of a div</a></p>
-                <a class="readmore" href="http://blog.carlcarl.me/1107/javascript-style-width-offsetwidth/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1107/javascript-style-width-offsetwidth/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1095/firefox-developer-tool-screenshot/" rel="bookmark"
-                           title="Permalink to firefox developer tool screenshot">firefox developer tool screenshot</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-06-27T19:00:00">
-                四 27 6月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/wei-fen-lei.html">未分類</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/firefox.html">firefox</a></p>
-</footer><!-- /.post-info -->                <p>雖然也可以用另外的軟體截圖，不過有時候截的大小不是很準確
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-27T19:00:00" pubdate>
+                            四 27 6月 2013
+                        </time>
+                        <a href="/1095/firefox-developer-tool-screenshot/" rel="bookmark"><h1>firefox developer tool screenshot</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>雖然也可以用另外的軟體截圖，不過有時候截的大小不是很準確
 orz。這邊我是要對某個 element 做截圖，而且大小要很精確，後來剛好看到
 firefox 的 developer tool 也有這樣的功能，所以就試了一下。</p>
 <!--more-->
@@ -333,52 +279,24 @@ CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 
 
 <p>這樣就會把 <code>#target</code> 這個部分存成一個圖片檔，名稱為 <code>test.png</code>。其他還有
 <code>--delay</code>, <code>--clipboard</code>...等選項 ...</p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1095/firefox-developer-tool-screenshot/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1095/firefox-developer-tool-screenshot/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-        <a href="http://blog.carlcarl.me/index.html">&laquo;</a>
-    Page 2 / 16
-        <a href="http://blog.carlcarl.me/index3.html">&raquo;</a>
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+                    <a href="/index.html">
+                        <i class="icon-circle-arrow-left"></i>
+                    </a>
+            Page 2 / 16
+                <a href="/index3.html">
+                    <i class="icon-circle-arrow-right"></i>
+                </a>
+        </div>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    </div>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

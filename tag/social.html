@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - social</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/76/wordpress-social-share-plugin/">wordpress social share plugin</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2011-11-20T17:34:00">
-                日 20 11月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/blog.html">blog</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/plurk.html">plurk</a><a href="http://blog.carlcarl.me/tag/share.html">share</a><a href="http://blog.carlcarl.me/tag/social.html">social</a><a href="http://blog.carlcarl.me/tag/wordpress.html">wordpress</a></p>
-</footer><!-- /.post-info --><p><img alt="Tweet, Like, Share and Google +1 Option Page" src="http://i.imgur.com/AuifGS2l.png" title="Tweet, Like, Share and Google +1 Option Page" /></p>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-11-20T17:34:00" pubdate>
+                            日 20 11月 2011
+                        </time>
+                        <a href="/76/wordpress-social-share-plugin/" rel="bookmark"><h1>wordpress social share plugin</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="Tweet, Like, Share and Google +1 Option Page" src="http://i.imgur.com/AuifGS2l.png" title="Tweet, Like, Share and Google +1 Option Page" /></p>
 <p>轉來 wordpress 之後，為了找社群分享外掛找了好久，最後找到這個<a href="http://wordpress.org/extend/plugins/only-tweet-like-share-and-google-1/">Tweet, Like,
 Share and Google +1 Option Page</a> ，他的好處在於：</p>
 <ol>
@@ -49,65 +73,19 @@ Share and Google +1 Option Page</a> ，他的好處在於：</p>
 </ol>
 <p>首先先將以下內容複製到「custom button」的欄位裡，我是只有複製到「large
 icon」的欄位裡，看個人需要也可以複製到「small
-icon」的欄位裡。另外內容中「圖片網址」的部份需要改為實際的網址，嫌麻煩也可以直接
-google
-網路上的圖示，不然如果有自己的空間的話，就下載下來傳到自己的空間，這樣管理也比較方便。</p>
-<div class="highlight"><pre><span class="nt">&lt;div&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">target=</span><span class="s">&quot;_blank&quot;</span> <span class="na">href=</span><span class="s">&quot;http://plurk.com/?qualifier=shares&amp;status= %%URL%% (%%TITLE%%)&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;img</span> <span class="na">title=</span><span class="s">&quot;分享到噗浪！&quot;</span> <span class="na">src=</span><span class="s">&quot;http://blog.carlcarl.tw/static/blog/images/plurk.png&quot;</span> <span class="na">border=</span><span class="s">&quot;0&quot;</span>  <span class="na">width=</span><span class="s">&quot;64&quot;</span> <span class="na">height=</span><span class="s">&quot;64&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</pre></div>
+icon」的欄位裡 ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 1
+        </div>
 
+    </div>
+        </div>
 
-<p>另外要特別注意一點就是，只是用以上步驟，按鈕是不會出來的= =，還要在外掛
-display 的設定將「custom button」的選項勾起來才行：<br />
-<img alt="custom buttons checkbox" src="http://i.imgur.com/AD3tc7Jl.png" title="custom buttons checkbox" /></p>
-<p>大致是以上步驟，弄完之後就可在文章的標題下方看到圖示囉。</p>
-<p>參考網址：<br />
-<a href="http://www.moke.tw/wordpress/note/307">http://www.moke.tw/wordpress/note/307</a></p><p>There are <a href="http://blog.carlcarl.me/76/wordpress-social-share-plugin/#disqus_thread">comments</a>.</p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

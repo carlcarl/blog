@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - jslint</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/897/jslint-note/">JSLint note</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2013-06-08T01:36:00">
-                六 08 6月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/jslint.html">jslint</a></p>
-</footer><!-- /.post-info --><p>記錄一些錯誤的處理方式。 <!--more--></p>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-08T01:36:00" pubdate>
+                            六 08 6月 2013
+                        </time>
+                        <a href="/897/jslint-note/" rel="bookmark"><h1>JSLint note</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>記錄一些錯誤的處理方式。 <!--more--></p>
 <h3>1. Document was used before it was defined</h3>
 <p>因為 JSLint 只是用來分析一般的 javascript code，像 <code>document</code>
 這種在瀏覽器上才有用的 global variable，就要在檔案開始加個宣告：</p>
@@ -46,128 +70,19 @@ feature。在一些舊瀏覽器可能會有問題，如果不想管那些舊瀏�
 
 
 <h3>3. Move the invocation into the parens that contain the function</h3>
-<p>改成用括弧將 function 和 參數 整個包起來就 OK 了，不過這部分不知道為啥
-JSLint 要這樣做就是了 orz。</p>
-<div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{})()</span>
-<span class="c1">// 改成</span>
-<span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{}())</span>
-</pre></div>
+<p>改成用括弧將 function ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 1
+        </div>
 
+    </div>
+        </div>
 
-<h3>4. Missing 'use strict' statement</h3>
-<p>在檔案 或 function 開頭加上下面這行即可。這個代表的是套用較嚴格的方式來
-parse javascript，所以如果程式太亂寫的話，就會直接丟 exception
-或是給你直接掛掉之類的，要注意。</p>
-<div class="highlight"><pre><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
-</pre></div>
-
-
-<h3>5. The body of a for in should be wrapped in an if statement</h3>
-<p>會出現這個通常是因為你用以下的方式跑迴圈：</p>
-<div class="highlight"><pre><span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="nx">xxx</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// do something</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>你需要改成如下：</p>
-<div class="highlight"><pre><span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="nx">xxx</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span> <span class="p">{</span>
-        <span class="c1">// do something</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 或者是</span>
-
-<span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">xxx</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// do something</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>第一種之所以會需要加上 <code>if</code> 的檢查是因為 <code>for in</code> 的方式會連 <code>prototype</code>
-裡的 attirbute 也會被走到，加上 <code>hasOwnProperty</code>
-可以避免這個問題。但是如果是直接 assign 的 attribute
-的話，還是會被走到，要防止這種問題，用第二種方法會是比較一勞永逸的方式。</p>
-<h3>6. Unexpected 'continue'</h3>
-<p>連 <code>continue</code> 也不給用，也太龜毛，現在就先無視吧
-XD。如果硬要解的話，因為 <code>continue</code> 通常會在某個 <code>if</code> 底下，例如這樣：</p>
-<div class="highlight"><pre><span class="k">while</span> <span class="p">(</span><span class="nx">xxx</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">yyy</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">continue</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="c1">// do something</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>這時就可以改成：</p>
-<div class="highlight"><pre><span class="k">while</span> <span class="p">(</span><span class="nx">xxx</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">yyy</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// do something</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>其他還有一些比較複雜的組合，如果解不了的話，就選擇無視吧～～。</p>
-<h3>7. JSLint: Using a function before it's defined error function</h3>
-<p>可以調位置的話就調調看，如果有交互參考的話，就看實際執行是否會有問題，沒有的話也可以考慮不用理這樣。</p>
-<h3>8. unexpected ++</h3>
-<p>就乖乖改用 <code>+= 1</code> 吧(炸)，用 <code>++</code> 明明應該很 OK 的啊，我也不曉得 JSLint
-在想啥。</p>
-<p>參考資料：  </p>
-<p><a href="http://stackoverflow.com/questions/10766201/how-to-rectify-document-was-used-before-it-was-defined-using-jslint">http://stackoverflow.com/questions/10766201/how-to-rectify-document-was-used-before-it-was-defined-using-jslint</a><br />
-<a href="http://jslinterrors.com/this-is-an-es5-feature/">http://jslinterrors.com/this-is-an-es5-feature/</a>  </p>
-<p><a href="http://stackoverflow.com/questions/4979252/jslint-error-move-the-invocation-into-the-parens-that-contain-the-function">http://stackoverflow.com/questions/4979252/jslint-error-move-the-invocation-into-the-parens-that-contain-the-function</a><br />
-<a href="http://stackoverflow.com/questions/1450721/solution-for-jslint-errors">http://stackoverflow.com/questions/1450721/solution-for-jslint-errors</a>
-<a href="http://stackoverflow.com/questions/1335851/what-does-use-strict-do-in-javascript-and-what-is-the-reasoning-behind-it">http://stackoverflow.com/questions/1335851/what-does-use-strict-do-in-javascript-and-what-is-the-reasoning-behind-it</a>  </p>
-<p><a href="http://stackoverflow.com/questions/1963102/what-does-the-jslint-error-body-of-a-for-in-should-be-wrapped-in-an-if-statemen">http://stackoverflow.com/questions/1963102/what-does-the-jslint-error-body-of-a-for-in-should-be-wrapped-in-an-if-statemen</a><br />
-<a href="http://stackoverflow.com/questions/6071762/unexpected-continue">http://stackoverflow.com/questions/6071762/unexpected-continue</a>
-<a href="http://stackoverflow.com/questions/806163/jslint-using-a-function-before-its-defined-error">http://stackoverflow.com/questions/806163/jslint-using-a-function-before-its-defined-error</a>  </p>
-<p><a href="http://stackoverflow.com/questions/3000276/the-unexpected-error-in-jslint">http://stackoverflow.com/questions/3000276/the-unexpected-error-in-jslint</a></p><p>There are <a href="http://blog.carlcarl.me/897/jslint-note/#disqus_thread">comments</a>.</p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

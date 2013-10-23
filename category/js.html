@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - js</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/1262/javascript-parseint-and-number/">Javascript parseInt and Number</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2013-08-07T15:31:00">
-                三 07 8月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/number.html">Number</a><a href="http://blog.carlcarl.me/tag/parseint.html">parseInt</a></p>
-</footer><!-- /.post-info --><p>這個是查資料時看到的 benchmark <a href="http://jsperf.com/performance-of-parseint">performance of parseInt()</a></p>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-07T15:31:00" pubdate>
+                            三 07 8月 2013
+                        </time>
+                        <a href="/1262/javascript-parseint-and-number/" rel="bookmark"><h1>Javascript parseInt and Number</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>這個是查資料時看到的 benchmark <a href="http://jsperf.com/performance-of-parseint">performance of parseInt()</a></p>
 <p>簡單歸納幾點：</p>
 <ol>
 <li><code>parseInt</code> 基本上幾乎是比 <code>Number</code>
@@ -41,31 +65,21 @@
     會比較快說，因為不需要驗證參數。就個人來說，還是直接 <code>parseInt('4')</code>
     就好。</li>
 <li>new 會帶來多的 overhead，所以 new Number 又比 Number 慢。</li>
-</ol><p>There are <a href="http://blog.carlcarl.me/1262/javascript-parseint-and-number/#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1113/javascript-mutationobserver/" rel="bookmark"
-                           title="Permalink to Javascript MutationObserver">Javascript MutationObserver</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-07-03T18:46:00">
-                三 03 7月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/mutationobserver.html">MutationObserver</a></p>
-</footer><!-- /.post-info -->                <p>最近看到 Aol Reader release，試用了一下，感覺還滿不錯的，但是右邊的廣告實在很礙眼，就算用
+</ol>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-03T18:46:00" pubdate>
+                            三 03 7月 2013
+                        </time>
+                        <a href="/1113/javascript-mutationobserver/" rel="bookmark"><h1>Javascript MutationObserver</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近看到 Aol Reader release，試用了一下，感覺還滿不錯的，但是右邊的廣告實在很礙眼，就算用
 adblock 擋掉，右邊還是會留空，想說都沒寫過 browser 的 extension
 ，所以就拿這個來練功啦～，不然其實寫 userscript 也可以就是。要弄的
 extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通，寫起來 CP
@@ -76,28 +90,20 @@ extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通�
 在 <code>onload</code> 之後還會有個它自己 loading
 的頁面，處理起來就變麻煩很多，因為除了要觀察 dom 來判斷何時才算真的
 ready 以外，另外就是 ...</p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1113/javascript-mutationobserver/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1113/javascript-mutationobserver/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1049/chrome-cpu-profiler-program/" rel="bookmark"
-                           title="Permalink to chrome cpu profiler program">chrome cpu profiler program</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-06-17T15:26:00">
-                一 17 6月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/chrome.html">chrome</a></p>
-</footer><!-- /.post-info -->                <p>查了一下 chrome 裡 cpu profiler 裡的 program 代表啥意思，像有人說是整個
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-17T15:26:00" pubdate>
+                            一 17 6月 2013
+                        </time>
+                        <a href="/1049/chrome-cpu-profiler-program/" rel="bookmark"><h1>chrome cpu profiler program</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查了一下 chrome 裡 cpu profiler 裡的 program 代表啥意思，像有人說是整個
 js code 的 root，不過看了一下其他的意見，感覺比較像是 native code
 所花的時間，包括 DOM 操作，gc 等一堆雜事等。舉個例子來說，假如你是要看你
 function 處理一堆 array 結構的校能的話，就可以不需要理這欄。</p>
@@ -105,28 +111,20 @@ function 處理一堆 array 結構的校能的話，就可以不需要理這欄�
 <a href="http://stackoverflow.com/questions/9494228/slow-javascript-execution-in-chrome-profiler-yields-program">Slow javascript execution in chrome, profiler yields (program)</a><br />
 <a href="https://groups.google.com/forum/?fromgroups#!topic/chromium-discuss/02CEYDcuO18">What does (program) signify in the Chrome profiler?</a><br />
 <a href="http://stackoverflow.com/questions/3847954/chrome-debugger-what-is-program-in-the-profiler">Chrome debugger - what ...</a></p>
-                <a class="readmore" href="http://blog.carlcarl.me/1049/chrome-cpu-profiler-program/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1049/chrome-cpu-profiler-program/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1023/html5-canvas-double-buffering/" rel="bookmark"
-                           title="Permalink to html5 canvas double buffering">html5 canvas double buffering</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-06-16T19:25:00">
-                日 16 6月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/canvas.html">canvas</a><a href="http://blog.carlcarl.me/tag/html5.html">html5</a></p>
-</footer><!-- /.post-info -->                <p>因為之前寫 java 的經驗，讓我以為在 html5 的 canvas 上也要自己實作 double
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-16T19:25:00" pubdate>
+                            日 16 6月 2013
+                        </time>
+                        <a href="/1023/html5-canvas-double-buffering/" rel="bookmark"><h1>html5 canvas double buffering</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>因為之前寫 java 的經驗，讓我以為在 html5 的 canvas 上也要自己實作 double
 buffering，但是在我後來實作後發現，好像哪裡怪怪的，因為其實原本就沒有在閃的感覺了，所以加了
 double buffering 好像也沒啥差，重點是 performance 下降很多......。</p>
 <!--more-->
@@ -139,28 +137,20 @@ buffer 的部分 render 上去呢？以下是我的鍵盤猜測：</p>
 1000Hz，反正一般的銀幕也看不出來:P。</p>
 <p>以一個簡單的例子來實驗，假如我在一開始把一個方形塗上顏色然後 clear
 掉 ...</p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1023/html5-canvas-double-buffering/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1023/html5-canvas-double-buffering/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/897/jslint-note/" rel="bookmark"
-                           title="Permalink to JSLint note">JSLint note</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-06-08T01:36:00">
-                六 08 6月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/jslint.html">jslint</a></p>
-</footer><!-- /.post-info -->                <p>記錄一些錯誤的處理方式。 <!--more--></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-08T01:36:00" pubdate>
+                            六 08 6月 2013
+                        </time>
+                        <a href="/897/jslint-note/" rel="bookmark"><h1>JSLint note</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>記錄一些錯誤的處理方式。 <!--more--></p>
 <h3>1. Document was used before it was defined</h3>
 <p>因為 JSLint 只是用來分析一般的 javascript code，像 <code>document</code>
 這種在瀏覽器上才有用的 global variable，就要在檔案開始加個宣告：</p>
@@ -177,56 +167,40 @@ feature。在一些舊瀏覽器可能會有問題，如果不想管那些舊瀏�
 
 <h3>3. Move the invocation into the parens that contain the function</h3>
 <p>改成用括弧將 function ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/897/jslint-note/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/897/jslint-note/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/813/ajax-with-mobile-keyboard-go-button/" rel="bookmark"
-                           title="Permalink to ajax with mobile keyboard go button">ajax with mobile keyboard go button</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-04-07T22:58:00">
-                日 07 4月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/ajax.html">ajax</a><a href="http://blog.carlcarl.me/tag/mobile.html">mobile</a></p>
-</footer><!-- /.post-info -->                <p>最近弄 ajax 在手機上測的時候發現按 keyboard 上的 go 按鈕不會自動
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-04-07T22:58:00" pubdate>
+                            日 07 4月 2013
+                        </time>
+                        <a href="/813/ajax-with-mobile-keyboard-go-button/" rel="bookmark"><h1>ajax with mobile keyboard go button</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近弄 ajax 在手機上測的時候發現按 keyboard 上的 go 按鈕不會自動
 submit，所以看了一下是怎麼回事。找了一些資料加上自己測試了一下，發現原來
 go 按鈕跟 enter 是一樣的 event。</p>
 <p>我最後決定的做法是將原本 ajax 要 submit 的 部分先用 form tag
 包起來，ajax 的按鈕則改成 <code>&lt;button type="submit"&gt;&lt;/button&gt;</code>，<code>type</code> 用
 <code>submit</code> 可以使得在按 enter 或是 手機上按 go 的時候能 trigger submit 的
 event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有用一些 icon 在按鈕中 ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/813/ajax-with-mobile-keyboard-go-button/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/813/ajax-with-mobile-keyboard-go-button/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/606/test-kineticjs-apply-canvas/" rel="bookmark"
-                           title="Permalink to Test KineticJS apply canvas">Test KineticJS apply canvas</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-09-04T01:54:00">
-                二 04 9月 2012
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/canvas.html">canvas</a><a href="http://blog.carlcarl.me/tag/kineticjs.html">kineticjs</a></p>
-</footer><!-- /.post-info -->                <p>寫起來跟以前寫 Java 作類似東西的感覺很像，東西基本上都已經用物件包好，然後還有提供 layer
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-09-04T01:54:00" pubdate>
+                            二 04 9月 2012
+                        </time>
+                        <a href="/606/test-kineticjs-apply-canvas/" rel="bookmark"><h1>Test KineticJS apply canvas</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>寫起來跟以前寫 Java 作類似東西的感覺很像，東西基本上都已經用物件包好，然後還有提供 layer
 讓你可以很方便的在不同 layer 放你要的物件。<br />
 <!--more--><br />
 我嘗試把我原本<a href="https://github.com/carlcarl/CaGo/blob/master/js/cago.js">播放棋譜</a>的 canvas 改成套用 KineticJS，不過後來發現，因為我的 canvas
@@ -234,28 +208,20 @@ event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有�
 <p>以可讀性來講，因為我大部分畫 canvas 都是放在一個 function 裡，大致用幾個註解分幾個段落，其實就知道各部份的流程，換成物件的方式後，整個 function 感覺並沒有更好讀，而且程式沒有比較短=.=。</p>
 <p>然後我用一個固定的測試流程來作測試(這個流程不包括前面的 js file loading，是讀完後才開始作操作測試)，測試的結果原本是 200ms，換成 KineticJS 之後是 800ms，整個很不划算 ~.~。</p>
 <p>雖然 KineticJS 有提供 layer ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/606/test-kineticjs-apply-canvas/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/606/test-kineticjs-apply-canvas/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/537/javascript-library-simple-structure/" rel="bookmark"
-                           title="Permalink to Javascript Library simple structure">Javascript Library simple structure</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-07-23T02:03:00">
-                一 23 7月 2012
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/javascript.html">javascript</a></p>
-</footer><!-- /.post-info -->                <p>之前在找 Javascript 這方面的 library
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-07-23T02:03:00" pubdate>
+                            一 23 7月 2012
+                        </time>
+                        <a href="/537/javascript-library-simple-structure/" rel="bookmark"><h1>Javascript Library simple structure</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前在找 Javascript 這方面的 library
 該怎麼寫，看了一些資料，覺得以下這種方式不錯<br />
 <!--more--></p>
 <div class="highlight"><pre><span class="c1">// library example</span>
@@ -279,28 +245,20 @@ event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有�
     maintain。</li>
 <li>使用這個 library 的時候，也能夠保護到內部的 private variable
     不被直接做 access ...</li></ul>
-                <a class="readmore" href="http://blog.carlcarl.me/537/javascript-library-simple-structure/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/537/javascript-library-simple-structure/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/525/html-script-speed-up-with-defer/" rel="bookmark"
-                           title="Permalink to HTML script speed up with defer">HTML script speed up with defer</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-07-06T03:49:00">
-                五 06 7月 2012
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/javascript.html">javascript</a></p>
-</footer><!-- /.post-info -->                <p>在 <a href="http://blog.xuite.net/vexed/tech/61308318">script tag 屬性 async defer 差別</a> 這邊看到了 script tag 有 async
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-07-06T03:49:00" pubdate>
+                            五 06 7月 2012
+                        </time>
+                        <a href="/525/html-script-speed-up-with-defer/" rel="bookmark"><h1>HTML script speed up with defer</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 <a href="http://blog.xuite.net/vexed/tech/61308318">script tag 屬性 async defer 差別</a> 這邊看到了 script tag 有 async
 和 defer 的用法，所以就來試試看。大致測試了一下，速度的確有快了一些(大概加快50 ~ 100ms
 左右吧XD)。以下大概講一下我的測試範例內容：</p>
 <!--more-->
@@ -310,28 +268,20 @@ event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有�
 <span class="c">a-b.js 需要 a.js, 而 a-c.js 需要 a.js, 這是這 3 個 js 檔的相依關係</span>
 <span class="c">最後會從 a-c.js 裡呼叫 library 來執行</span>
 <span class="c">由於 async 屬性並不適合用來處理有相依性的 js 檔案 ...</span></pre></div></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/525/html-script-speed-up-with-defer/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/525/html-script-speed-up-with-defer/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/438/javascript-check-if-array-and-empty/" rel="bookmark"
-                           title="Permalink to Javascript check if array and empty">Javascript check if array and empty</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-05-09T04:24:00">
-                三 09 5月 2012
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/array.html">array</a><a href="http://blog.carlcarl.me/tag/empty.html">empty</a><a href="http://blog.carlcarl.me/tag/javascript.html">javascript</a></p>
-</footer><!-- /.post-info -->                <p>列出一些我覺得比較 OK 的方法，至於其他還有一些方法可以參考最下方的網址。  
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-09T04:24:00" pubdate>
+                            三 09 5月 2012
+                        </time>
+                        <a href="/438/javascript-check-if-array-and-empty/" rel="bookmark"><h1>Javascript check if array and empty</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>列出一些我覺得比較 OK 的方法，至於其他還有一些方法可以參考最下方的網址。  
 判斷是否為 array 的方式：</p>
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">xxx</span> <span class="o">=</span> <span class="p">[];</span>
 
@@ -357,51 +307,21 @@ event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有�
 
 
 <p>另外如果還要判斷在 array ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/438/javascript-check-if-array-and-empty/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/438/javascript-check-if-array-and-empty/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 2
-        <a href="http://blog.carlcarl.me/category/js2.html">&raquo;</a>
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 2
+                <a href="/category/js2.html">
+                    <i class="icon-circle-arrow-right"></i>
+                </a>
+        </div>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    </div>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

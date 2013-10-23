@@ -1,42 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - js</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-                <section id="content" class="body">
-                    <ol id="posts-list" class="hfeed" start="9">
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/355/ajaxfileupload-syntaxerror-missing-in-xml-expression/" rel="bookmark"
-                           title="Permalink to ajaxfileupload SyntaxError: missing } in XML expression">ajaxfileupload SyntaxError: missing } in XML expression</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-04-06T04:39:00">
-                五 06 4月 2012
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/ajax.html">ajax</a><a href="http://blog.carlcarl.me/tag/ajaxfileupload.html">ajaxfileupload</a></p>
-</footer><!-- /.post-info -->                <p>本來用 <a href="http://www.phpletter.com/Our-Projects/AjaxFileUpload/">ajaxfileupload</a>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-04-06T04:39:00" pubdate>
+                            五 06 4月 2012
+                        </time>
+                        <a href="/355/ajaxfileupload-syntaxerror-missing-in-xml-expression/" rel="bookmark"><h1>ajaxfileupload SyntaxError: missing } in XML expression</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>本來用 <a href="http://www.phpletter.com/Our-Projects/AjaxFileUpload/">ajaxfileupload</a>
 用得好好的，結果不知道為什麼就突然出現這個錯誤，查了一下資料再加上自己比對的結果才發現，原來是因為我在
 server 端的 response 加上 content type="application/json"
 的關係，而這個結果導致在 client 這邊的 response 被 <code>&lt;pre&gt;&lt;/pre&gt;</code>
@@ -47,28 +65,20 @@ server 端的 response 加上 content type="application/json"
 這邊我是選擇了第2種方法來做，因為我覺得 minetype
 這東西是需要加的，現在不加怕以後會有相容性問題。</p>
 <p>這邊其實很簡單，只要在 ajaxfileupload.js 中修改 uploadHttpData ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/355/ajaxfileupload-syntaxerror-missing-in-xml-expression/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/355/ajaxfileupload-syntaxerror-missing-in-xml-expression/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/7/html-iframe-use-javascript-to-add-css-files/" rel="bookmark"
-                           title="Permalink to html iframe use javascript to add css files">html iframe use javascript to add css files</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-03-19T19:07:00">
-                六 19 3月 2011
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/js.html">js</a>. </p>
-
-</footer><!-- /.post-info -->                <div class="highlight"><pre><span class="nx">frame</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-03-19T19:07:00" pubdate>
+                            六 19 3月 2011
+                        </time>
+                        <a href="/7/html-iframe-use-javascript-to-add-css-files/" rel="bookmark"><h1>html iframe use javascript to add css files</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <div class="highlight"><pre><span class="nx">frame</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">frm</span> <span class="o">=</span> <span class="nx">frames</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">].</span><span class="nb">document</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">otherhead</span> <span class="o">=</span> <span class="nx">frm</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
     <span class="kd">var</span> <span class="nx">link</span> <span class="o">=</span> <span class="nx">frm</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;link&quot;</span><span class="p">);</span>
@@ -78,51 +88,21 @@ server 端的 response 加上 content type="application/json"
     <span class="nx">otherhead</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">link</span><span class="p">);</span>
 <span class="p">});</span>
 </pre></div>
-                <a class="readmore" href="http://blog.carlcarl.me/7/html-iframe-use-javascript-to-add-css-files/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/7/html-iframe-use-javascript-to-add-css-files/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-        <a href="http://blog.carlcarl.me/category/js.html">&laquo;</a>
-    Page 2 / 2
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+                    <a href="/category/js.html">
+                        <i class="icon-circle-arrow-left"></i>
+                    </a>
+            Page 2 / 2
+        </div>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    </div>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

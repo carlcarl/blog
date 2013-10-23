@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - masquerade</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/287/install-openid-server-masquerade/">Install openid server: masquerade</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2012-03-21T04:08:00">
-                三 21 3月 2012
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/wei-fen-lei.html">未分類</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/masquerade.html">masquerade</a><a href="http://blog.carlcarl.me/tag/openid.html">openid</a><a href="http://blog.carlcarl.me/tag/ror.html">RoR</a></p>
-</footer><!-- /.post-info --><p><img alt="masquerade" src="http://i.imgur.com/cdwZUHDl.png" title="masquerade" /> </p>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-03-21T04:08:00" pubdate>
+                            三 21 3月 2012
+                        </time>
+                        <a href="/287/install-openid-server-masquerade/" rel="bookmark"><h1>Install openid server: masquerade</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="masquerade" src="http://i.imgur.com/cdwZUHDl.png" title="masquerade" /> </p>
 <p>最近需要安裝 openid server，所以找了很多的 library
 來試，我是從這個<a href="http://wiki.openid.net/w/page/12995226/Run-your-own-identity-server">openid server
 清單</a>下去找，主要功能需求是希望能夠支援多人+資料庫+可以直接連線做認證的部份，但是試了好幾個
@@ -41,81 +65,19 @@ library，建完之後發現幾乎符合我的需求，而且安裝基本上不�
 github project 首頁的 README 是比較新的版本(相較於它的 project wiki
 )，但是還是有部份是有問題的，所以我另外 fork 出來，再修改一下
 README，這是<a href="https://github.com/carlcarl/masquerade">我的連結</a>。</p>
-<p>首先要先建立好 RoR 的環境，這邊提供一個可以作為參考的<a href="http://www.cnblogs.com/feichan/archive/2011/11/16/2251659.html">連結</a>，另外
-mysql 和 postfix 也可以先安裝好。</p>
-<p>接著輸入指令將程式下載下來，這是我的 fork，README 部份有更新，另外修正了
-yml 的格式錯誤</p>
-<div class="highlight"><pre>git clone https://carlcarl@github.com/carlcarl/masquerade.git
-</pre></div>
+<p>首先要先建立好 RoR 的環境，這邊提供一個可以作為參考的 ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 1
+        </div>
 
+    </div>
+        </div>
 
-<p>進入 masquerade 目錄會有提示建議你用 nvm
-安裝一個ruby版本，照著它給的指令安裝就OK了。</p>
-<div class="highlight"><pre><span class="nb">cd </span>masqurade
-</pre></div>
-
-
-<p>接著可以按照我連結裡的 README 來作，中途有遇到的問題我加進 README 裡的
-Notice 部份，我這邊另外列出比較要注意的幾點</p>
-<ol>
-<li>設定部份他有分 development, test 和 production
-    環境，所以要注意你在啥環境底下執行和要修改哪個環境的設定</li>
-<li>database.yml 的部份，想方便的話就只要修改帳號為 root 和修改密碼為
-    root 的密碼，資料庫它會幫你建立</li>
-<li>app_config.yml
-    大部分設定可以先放著不動，等到大致功能測試完畢再來修改也可以。</li>
-<li>port預設是在 3000，所以在認證的時候在網址裡也要將 port 加進去。</li>
-<li>認證的部份比較詭異的是<strong>它不是直接提供輸入帳密認證的欄位</strong>，而是叫你去網頁裡的連結登入(如下圖)，登入完之後它會再認證，這部份的原理我猜是它在之前把相關的
-    request 寫到 session 裡了，所以登入後會去讀之前存的的 request
-    session，在允許認證完後，它就會自動導回 client 端去。</li>
-</ol>
-<p><img alt="masqurade2" src="http://i.imgur.com/AG7YaZAl.png" /></p>
-<p>參考網址：<br />
-<a href="http://railsforum.com/viewtopic.php?id=26700">http://railsforum.com/viewtopic.php?id=26700</a><br />
-<a href="http://stackoverflow.com/questions/4980877/rails-error-couldnt-parse-yaml">http://stackoverflow.com/questions/4980877/rails-error-couldnt-parse-yaml</a><br />
-<a href="http://www.reyesyang.info/articles/10-rails3-could-not-parse-yaml">http://www.reyesyang.info/articles/10-rails3-could-not-parse-yaml</a></p><p>There are <a href="http://blog.carlcarl.me/287/install-openid-server-masquerade/#disqus_thread">comments</a>.</p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>

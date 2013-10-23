@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>carlcarl's blog - python</title>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/theme/css/blog.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-</head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.carlcarl.me/">carlcarl's blog </a></h1>
-                <nav><ul>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.carlcarl.me/1331/python-sphinx-simple-example/">Python Sphinx simple example</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2013-10-02T02:32:00">
-                三 02 10月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/python.html">python</a><a href="http://blog.carlcarl.me/tag/sphinx.html">sphinx</a></p>
-</footer><!-- /.post-info --><p>查了很多資料，遇到一堆鬼打牆問題，終於弄成我要的樣子了，不過其實也沒有加多少東西，只是基本的設定一直搞不定
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org/">Python</a>. Theme by<a href="https://github.com/hdra/pelican-cait">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-10-02T02:32:00" pubdate>
+                            三 02 10月 2013
+                        </time>
+                        <a href="/1331/python-sphinx-simple-example/" rel="bookmark"><h1>Python Sphinx simple example</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查了很多資料，遇到一堆鬼打牆問題，終於弄成我要的樣子了，不過其實也沒有加多少東西，只是基本的設定一直搞不定
 orz。</p>
 <!--more-->
 
@@ -54,187 +78,21 @@ orz。</p>
 <h2>安裝並產生設定</h2>
 <p>首先先安裝 <code>sphinx</code>(ex: <code>pip install sphinx</code>)，接著在 project
 根目錄下輸入 <code>sphinx-quickstart</code>，設定步驟如下：</p>
-<div class="highlight"><pre>Welcome to the Sphinx 1.1.3 quickstart utility.
-
-Please enter values for the following settings (just press Enter to
-accept a default value, if one is given in brackets).
-
-Enter the root path for documentation.
-&gt; Root path for the documentation [.]: doc
-
-You have two options for placing the build directory for Sphinx output.
-Either, you use a directory &quot;_build&quot; within the root path, or you separate
-&quot;source&quot; and &quot;build&quot; directories within the root path.
-&gt; Separate source and build directories (y/N) [n]:
-
-Inside the root directory, two more directories will be created; &quot;_templates&quot;
-for custom HTML templates and &quot;_static&quot; for custom stylesheets and other static
-files. You can enter another prefix (such as &quot;.&quot;) to replace the underscore.
-&gt; Name prefix for templates and static dir [_]:
-
-The project name will occur in several places in the built documentation.
-&gt; Project name: test
-&gt; Author name(s): carlcarl
-
-Sphinx has the notion of a &quot;version&quot; and a &quot;release&quot; for the
-software. Each version can have multiple releases. For example, for
-Python the version is something like 2.5 or 3.0, while the release is
-something like 2.5.1 or 3.0a1.  If you don&#39;t need this dual structure,
-just set both to the same value.
-&gt; Project version: 0.0.1
-&gt; Project release [0.0.1]:
-
-The file name suffix for source files. Commonly, this is either &quot;.txt&quot;
-or &quot;.rst&quot;.  Only files with this suffix are considered documents.
-&gt; Source file suffix [.rst]:
-
-One document is special in that it is considered the top node of the
-&quot;contents tree&quot;, that is, it is the root of the hierarchical structure
-of the documents. Normally, this is &quot;index&quot;, but if your &quot;index&quot;
-document is a custom template, you can also set this to another filename.
-&gt; Name of your master document (without suffix) [index]:
-
-Sphinx can also add configuration for epub output:
-&gt; Do you want to use the epub builder (y/N) [n]:
-
-Please indicate if you want to use one of the following Sphinx extensions:
-&gt; autodoc: automatically insert docstrings from modules (y/N) [n]: y
-&gt; doctest: automatically test code snippets in doctest blocks (y/N) [n]:
-&gt; intersphinx: link between Sphinx documentation of different projects (y/N) [n]:
-&gt; todo: write &quot;todo&quot; entries that can be shown or hidden on build (y/N) [n]:
-&gt; coverage: checks for documentation coverage (y/N) [n]:
-&gt; pngmath: include math, rendered as PNG images (y/N) [n]:
-&gt; mathjax: include math, rendered in the browser by MathJax (y/N) [n]:
-&gt; ifconfig: conditional inclusion of content based on config values (y/N) [n]:
-&gt; viewcode: include links to the source code of documented Python objects (y/N) [n]:
-
-A Makefile and a Windows command file can be generated for you so that you
-only have to run e.g. `make html&#39; instead of invoking sphinx-build
-directly.
-&gt; Create Makefile? (Y/n) [y]:
-&gt; Create Windows command file? (Y/n) [y]: n
-
-Creating file doc/conf.py.
-Creating file doc/index.rst.
-Creating file doc/Makefile.
-
-Finished: An initial directory structure has been created.
-
-You should now populate your master file doc/index.rst and create other documentation
-source files. Use the Makefile to build the docs, like so:
-   make builder
-where &quot;builder&quot; is one of the supported builders, e.g. html, latex or linkcheck.
-</pre></div>
-
-
-<p>比較要注意的是一開始的路徑輸入 <code>doc</code> 表示要在當前目錄的 <code>doc</code>
-底下建立文件。 <code>autodoc</code> 這個記得選 <code>y</code>。因為不是用 Windows，所以
-<code>Windows command file</code> 這個選項我就選 <code>n</code> 了。輸入完後會建立 <code>doc</code>
-這個目錄。</p>
-<hr />
-<h2>產生 API 設定文件</h2>
-<p>在 project 根目錄下輸入：<code>sphinx-apidoc -o doc/api test</code>，會將 API
-設定文件放到 <code>doc/api</code> 底下。</p>
-<hr />
-<h2>修改設定檔</h2>
-<p>接著進入 <code>doc</code> 這個目錄 (<code>cd doc</code>)，修改 <code>index.rst</code> 以及 <code>conf.py</code>。</p>
-<h3>conf.py</h3>
-<p>首先是 <code>conf.py</code>。在 <code>import sys, os</code> 下面加上
-<code>sys.path.insert(0, os.path.abspath('..'))</code> 即可，這邊是將 project 的
-path 加入 <code>sys.path</code> 當中，不然 sphinx 會找不到。</p>
-<h3>index.rst</h3>
-<p>這邊是我整個設定檔：</p>
-<div class="highlight"><pre><span class="cp">.. test documentation master file, created by</span>
-<span class="cp">   sphinx-quickstart on Wed Oct  2 00:41:51 2013.</span>
-<span class="cp">   You can adapt this file completely to your liking, but it should at least</span>
-<span class="cp">   contain the root `toctree` directive.</span>
-
-<span class="gh">Welcome to test&#39;s documentation!</span>
-<span class="gh">======================================</span>
-
-<span class="na">:doc:</span><span class="nv">`API Documentation &lt;api/test&gt;`</span>
-
-<span class="p">..</span> <span class="ow">include</span><span class="p">::</span> ../README.rst
-
-
-<span class="gh">Indices and tables</span>
-<span class="gh">==================</span>
-
-<span class="m">*</span> <span class="na">:ref:</span><span class="nv">`genindex`</span>
-<span class="m">*</span> <span class="na">:ref:</span><span class="nv">`modindex`</span>
-<span class="m">*</span> <span class="na">:ref:</span><span class="nv">`search`</span>
-
-<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
-   <span class="nc">:hidden:</span>
-
-   api/modules
-</pre></div>
-
-
-<p><code>API Documentation</code> 這段是程式的 API 連結。如果在 project 根目錄有
-<code>README.rst</code> 的話，可以如上面這樣 include 進來。最下面的 <code>toctree</code> 到
-<code>api/modules</code> 這段是因為 <code>sphinx-apidoc</code> 會產生一個 <code>modules.rst</code>
-檔案，如果沒加到 <code>toctree</code> 會有警告，這邊就把它加進來，然後設隱藏，至於
-<code>toctree</code> 是啥，可以參考 <a href="http://sphinx-doc.org/concepts.html">這個連結</a>，算是一個目錄架構這樣。</p>
-<hr />
-<h2>產生 html</h2>
-<p>在 <code>doc</code> 底下輸入 <code>make html</code>，產生的 html 會放在 <code>_build/html</code>
-下，到這裡就算大功告成了。</p>
-<hr />
-<h2>其他遇到的問題</h2>
-<h3>為啥不在 rst 檔案中加入 automodule 的設定，而是用 <code>sphinx-apidoc</code> 產生 API 文件？</h3>
-<p>因為 automodule 做不到 recursive 尋找 submodule。相關討論連結如下：</p>
-<p><a href="http://stackoverflow.com/questions/4616693/automatically-generating-documentation-for-all-python-package-contents">Automatically Generating Documentation for All Python Package Contents</a><br />
-<a href="http://stackoverflow.com/questions/2701998/sphinx-autodoc-is-not-automatic-enough">Sphinx autodoc is not automatic enough</a><br />
-<a href="http://stackoverflow.com/questions/11508290/sphinx-using-automodule-to-find-submodules">Sphinx, using automodule to find submodules</a></p>
-<h3>sphinx-build option -b not recognized</h3>
-<p>這個錯誤的直接原因是因為 module 裡面有用 <code>argparse</code> 這類的 module，然後
-<code>sphinx-build</code> 執行時有 <code>-b</code> 這個參數，傳進去之後就炸了。但是一般來說
-module 裡用 <code>argparse</code>，本身不是個問題，問題是 sphinx
-為啥執行了這段程式，有幾個可能的原因：</p>
-<ol>
-<li>module 裡沒用 <code>if __name__ == '__main__':</code> 這段，而是直接執行。</li>
-<li>sphix-apidoc 讀取的目錄裡包含 <code>setup.py</code>，即使 module
-    裡有用上面的判斷包起來，還是會全執行。</li>
-</ol>
-<p>所以我一開始才會用 <code>sphinx-apidoc -o doc/api test</code> 而不是
-<code>sphinx-apidoc -o doc/api .</code>，就是要避開
-<code>setup.py</code>。下面是找到的相關連結：</p>
-<p><a href="http://stackoverflow.com/questions/6912025/is-optionparser-in-conflict-with-sphinx">Is OptionParser in conflict with sphinx?</a><br />
-<a href="http://stackoverflow.com/questions/14769962/how-should-i-solve-the-conflict-of-optionparser-and-sphinx-build-in-a-large-proj">How should I solve the conflict of OptionParser and sphinx-build in a large project?</a><br />
-<a href="http://www.mail-archive./om/sphinx-dev@googlegroups.com/msg05521.html">Re: sphinx-dev option -b not recognized?</a></p>
-<h3>WARNING: document isn't included in any toctree</h3>
-<p>參閱 <a href="http://stackoverflow.com/questions/1690757/location-of-sphinx-sources-for-my-notes">Location of Sphinx sources for my notes</a></p>
-<hr />
-<h2>參考資料</h2>
-<p><a href="http://raxcloud.blogspot.tw/2013/02/documenting-python-code-using-sphinx.html">Documenting python code using sphinx and github</a><br />
-<a href="http://stackoverflow.com/questions/10324393/sphinx-build-fail-autodoc-cant-import-find-module">sphinx-build fail - autodoc can't import/find module</a><br />
-<a href="http://scienceoss.com/minimal-sphinx-setup-for-autodocumenting-python-modules/">http://scienceoss.com/minimal-sphinx-setup-for-autodocumenting-python-modules/</a><br />
-<a href="http://api.mongodb.org/python/current/">Example: PyMongo documentation</a></p><p>There are <a href="http://blog.carlcarl.me/1331/python-sphinx-simple-example/#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/" rel="bookmark"
-                           title="Permalink to Python multiprocessing share counter">Python multiprocessing share counter</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-09-19T00:09:00">
-                四 19 9月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/multiprocessing.html">multiprocessing</a></p>
-</footer><!-- /.post-info -->                <p>找了一下，以下是基本的寫法：</p>
+<div class="highlight"><pre>Welcome to the Sphinx 1.1.3 ...</pre></div></!--more-->
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-09-19T00:09:00" pubdate>
+                            四 19 9月 2013
+                        </time>
+                        <a href="/1315/python-multiprocessing-share-counter/" rel="bookmark"><h1>Python multiprocessing share counter</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>找了一下，以下是基本的寫法：</p>
 <!--more-->
 
 <div class="highlight"><pre><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
@@ -258,28 +116,20 @@ module 裡用 <code>argparse</code>，本身不是個問題，問題是 sphinx
         <span class="n">initargs</span><span class="o">=</span><span class="p">(</span><span class="n">counter</span><span class="p">,)</span>
     <span class="p">)</span>
     <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">countdown</span><span class="p">,</span> <span class="n">data_list ...</span></pre></div></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1249/python-functools-wraps-note/" rel="bookmark"
-                           title="Permalink to Python functools.wraps note">Python functools.wraps note</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-08-06T15:38:00">
-                二 06 8月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/wraps.html">wraps</a></p>
-</footer><!-- /.post-info -->                <p>研究一下 <code>functools.wraps</code>。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-06T15:38:00" pubdate>
+                            二 06 8月 2013
+                        </time>
+                        <a href="/1249/python-functools-wraps-note/" rel="bookmark"><h1>Python functools.wraps note</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>研究一下 <code>functools.wraps</code>。</p>
 <!--more-->
 
 <h3>用法</h3>
@@ -300,28 +150,20 @@ module 裡用 <code>argparse</code>，本身不是個問題，問題是 sphinx
 <p>在 <code>hello</code> 裡 print 出
 'test'，這個沒什麼問題，但是在宣告完後，如果想確認 <code>test</code> 的 <code>__name__</code>
 attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</code></p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1249/python-functools-wraps-note/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1249/python-functools-wraps-note/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1240/python-fibonacci-number/" rel="bookmark"
-                           title="Permalink to Python fibonacci number">Python fibonacci number</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-08-04T02:35:00">
-                日 04 8月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/fibonacci.html">fibonacci</a></p>
-</footer><!-- /.post-info -->                <p>在 Python Taiwan 社團看到的寫法：</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-04T02:35:00" pubdate>
+                            日 04 8月 2013
+                        </time>
+                        <a href="/1240/python-fibonacci-number/" rel="bookmark"><h1>Python fibonacci number</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 Python Taiwan 社團看到的寫法：</p>
 <!--more-->
 
 <div class="highlight"><pre><span class="k">print</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="p">(([</span><span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)])</span> <span class="ow">and</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">or</span> <span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
@@ -331,28 +173,20 @@ attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</cod
 <p><code>n</code> 和 <code>p</code> 分別對應 <code>10</code> 和 <code>[1,1]</code> 這兩個參數，<code>10</code> 表示要 fibonacci
 的第十個項數，<code>[1,1]</code> 是第一項和第二項的值。然後是一個 loop 將 <code>p</code>
 陣列中最後兩個值加起來再 append ...</p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1240/python-fibonacci-number/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1240/python-fibonacci-number/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1230/python-logging-stream/" rel="bookmark"
-                           title="Permalink to Python logging stream">Python logging stream</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-07-25T17:11:00">
-                四 25 7月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/logging.html">logging</a><a href="http://blog.carlcarl.me/tag/uniout.html">uniout</a></p>
-</footer><!-- /.post-info -->                <p>在用 <a href="https://github.com/moskytw/uniout">uniout</a> 的時候發現 logging
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-25T17:11:00" pubdate>
+                            四 25 7月 2013
+                        </time>
+                        <a href="/1230/python-logging-stream/" rel="bookmark"><h1>Python logging stream</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在用 <a href="https://github.com/moskytw/uniout">uniout</a> 的時候發現 logging
 的時候沒辦法自動轉輸出為中文(因為資料有些是中文，然後有時候又需要做些log
 囧)，看了一下 <code>uniout</code> 的 code，看來做法是另外用了一個物件，然後把
 <code>sys.stdout</code> 的屬性複製上去，再加上編碼的功能，最後再將 <code>sys.stdout</code>
@@ -368,56 +202,40 @@ assign 成這個物件。</p>
 <p>想說 <code>logging</code> module 應該也是丟
 <code>stdout</code>，不過怎麼設就是不行，所以還是看一下 source code。</p>
 <h3>logging ...</h3></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1230/python-logging-stream/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1230/python-logging-stream/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1212/python-yahoo-weather/" rel="bookmark"
-                           title="Permalink to Python Yahoo weather">Python Yahoo weather</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-07-16T18:30:00">
-                二 16 7月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/weather.html">weather</a><a href="http://blog.carlcarl.me/tag/yahoo.html">yahoo</a><a href="http://blog.carlcarl.me/tag/yql.html">yql</a></p>
-</footer><!-- /.post-info -->                <p>實際做起來不難，是說弄完才發現有 <a href="https://pypi.python.org/pypi/yweather/0.1">yweather</a> 這個可以用囧。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-16T18:30:00" pubdate>
+                            二 16 7月 2013
+                        </time>
+                        <a href="/1212/python-yahoo-weather/" rel="bookmark"><h1>Python Yahoo weather</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>實際做起來不難，是說弄完才發現有 <a href="https://pypi.python.org/pypi/yweather/0.1">yweather</a> 這個可以用囧。</p>
 <!--more-->
 
 <p>首先到 <a href="http://developer.yahoo.com/yql/console/">YQL</a> 這邊下 query，這邊可以參考<a href="http://my.opera.com/weiyu/blog/2012/04/08/yql-yahoo">這篇</a>最下面的兩種 query
 方法。格式可以選 JSON 然後把 callback 名稱拿掉，下完 query
 就可以產生一段網址，以新竹的例子來說就是:</p>
 <div class="highlight"><pre>http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D%22TWXX0009%22%20and%20u%3D%22c%22&amp;format=json&amp;diagnostics=true&amp;callback ...</pre></div></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/1212/python-yahoo-weather/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1212/python-yahoo-weather/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/1131/python-pyramid-with-grunt-js/" rel="bookmark"
-                           title="Permalink to Python Pyramid with Grunt.js">Python Pyramid with Grunt.js</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-07-14T05:11:00">
-                日 14 7月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/grunt.html">grunt</a><a href="http://blog.carlcarl.me/tag/gruntjs.html">grunt.js</a><a href="http://blog.carlcarl.me/tag/pyramid.html">pyramid</a></p>
-</footer><!-- /.post-info -->                <p>這幾天試玩了一下
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-14T05:11:00" pubdate>
+                            日 14 7月 2013
+                        </time>
+                        <a href="/1131/python-pyramid-with-grunt-js/" rel="bookmark"><h1>Python Pyramid with Grunt.js</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>這幾天試玩了一下
 <a href="http://gruntjs.com">Grunt.js</a>，感覺還不錯方便，所以來筆記一些自己的設定。一開始還在想
 <a href="http://www.pylonsproject.org">Pyramid</a> 和 Grunt 要怎麼結合，雖然有 Google
 了一下，不過好像都沒有一個比較準確的答案，所以這邊我就照自己想的來做
@@ -431,28 +249,20 @@ XD。</p>
 <p>livereload 這邊是透過 Grunt bind 一個 port
 並監視檔案的變化，接著網頁的部分加入這個 port 底下所提供的
 javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/1131/python-pyramid-with-grunt-js/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/1131/python-pyramid-with-grunt-js/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/941/python-setup-py-package_data-permission/" rel="bookmark"
-                           title="Permalink to Python setup.py package_data permission">Python setup.py package_data permission</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-06-10T02:12:00">
-                一 10 6月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-
-</footer><!-- /.post-info -->                <p>最近嘗試把一些額外的 static 檔案加入到 python 的 package
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-10T02:12:00" pubdate>
+                            一 10 6月 2013
+                        </time>
+                        <a href="/941/python-setup-py-package_data-permission/" rel="bookmark"><h1>Python setup.py package_data permission</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近嘗試把一些額外的 static 檔案加入到 python 的 package
 裡來讓程式操作，後來有查到可以在 setup.py 裡設定
 <code>package_data</code>，照著做之後好像滿順利的，但是在用 root 權限 install
 完，用一般使用者執行就遇到 permission 的錯誤了。</p>
@@ -465,28 +275,20 @@ orz。</p>
 <p>最後想到，會不會是因為我那些 build 所產生的目錄的關係，於是我把
 <code>xxx.pkg-info</code>，<code>build</code> 和 <code>dist</code>
 這三個資料夾都移除掉後再重新安裝，果然就 ...</p></!--more-->
-                <a class="readmore" href="http://blog.carlcarl.me/941/python-setup-py-package_data-permission/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/941/python-setup-py-package_data-permission/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/865/python-decorate-method-inside-class/" rel="bookmark"
-                           title="Permalink to Python decorate method inside class">Python decorate method inside class</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-06-02T04:45:00">
-                日 02 6月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/class.html">class</a><a href="http://blog.carlcarl.me/tag/decorate.html">decorate</a><a href="http://blog.carlcarl.me/tag/python.html">python</a></p>
-</footer><!-- /.post-info -->                <p>簡易版的可以直接參考
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-02T04:45:00" pubdate>
+                            日 02 6月 2013
+                        </time>
+                        <a href="/865/python-decorate-method-inside-class/" rel="bookmark"><h1>Python decorate method inside class</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>簡易版的可以直接參考
 <a href="http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class">http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class</a>。<br />
 <!--more--><br />
 以我的例子來說，我需要對某些 method 加上 retry
@@ -499,28 +301,20 @@ orz。</p>
             <span class="c"># f is the method decorated</span>
             <span class="k">def</span> <span class="nf">f_retry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
                 <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs ...</span></pre></div>
-                <a class="readmore" href="http://blog.carlcarl.me/865/python-decorate-method-inside-class/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/865/python-decorate-method-inside-class/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.carlcarl.me/852/python-cant-use-a-string-pattern-on-a-bytes-like-object/" rel="bookmark"
-                           title="Permalink to Python: can't use a string pattern on a bytes-like object">Python: can't use a string pattern on a bytes-like object</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-05-23T16:25:00">
-                四 23 5月 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://blog.carlcarl.me/author/carlcarl.html">carlcarl</a>
-        </address>
-<p>In <a href="http://blog.carlcarl.me/category/python.html">python</a>. </p>
-<p>tags: <a href="http://blog.carlcarl.me/tag/encode.html">encode</a><a href="http://blog.carlcarl.me/tag/httplib.html">httplib</a><a href="http://blog.carlcarl.me/tag/json.html">json</a><a href="http://blog.carlcarl.me/tag/python.html">python</a><a href="http://blog.carlcarl.me/tag/python2.html">python2</a><a href="http://blog.carlcarl.me/tag/python3.html">python3</a></p>
-</footer><!-- /.post-info -->                <p>最近嘗試將 Python2 的程式轉成
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-05-23T16:25:00" pubdate>
+                            四 23 5月 2013
+                        </time>
+                        <a href="/852/python-cant-use-a-string-pattern-on-a-bytes-like-object/" rel="bookmark"><h1>Python: can't use a string pattern on a bytes-like object</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近嘗試將 Python2 的程式轉成
 Python3，看起來好像很順利，不過在執行的時候就出現了 Excepion
 囧，內容就是
 <code>can't use a string pattern on a bytes-like object</code>，看了一下，是 <code>json</code>
@@ -533,51 +327,21 @@ Python3，看起來好像很順利，不過在執行的時候就出現了 Excepi
 
 <p>後來查了一下資料才發現，這邊的 <code>read</code>，似乎讀出的資料是 <code>byte</code> 的
 type，還需要做 encode ...</p>
-                <a class="readmore" href="http://blog.carlcarl.me/852/python-cant-use-a-string-pattern-on-a-bytes-like-object/">read more</a>
-<p>There are <a href="http://blog.carlcarl.me/852/python-cant-use-a-string-pattern-on-a-bytes-like-object/#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 3
-        <a href="http://blog.carlcarl.me/category/python2.html">&raquo;</a>
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+        </ol>
+        <div class="paginator">
+            Page 1 / 3
+                <a href="/category/python2.html">
+                    <i class="icon-circle-arrow-right"></i>
+                </a>
+        </div>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    </div>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'carlcarl';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+        <script src="/theme/js/main.js"></script>
+    </body>
 </html>
