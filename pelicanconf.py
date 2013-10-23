@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'carlcarl'
 SITENAME = u'carlcarl\'s blog'
-SITEURL = ''
+SITEURL = 'http://blog.carlcarl.me'
 DISQUS_SITENAME = u'carlcarl'
 GITHUB_URL = u'https://github.com/carlcarl'
 
@@ -13,7 +13,7 @@ TIMEZONE = 'Asia/Taipei'
 DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
@@ -24,8 +24,11 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('twitter', 'http://twitter.com/carl830'),
+          ('github', 'https://github.com/carlcarl'),
+          ('facebook', 'http://www.facebook.com/carlcarlking'),
+          )
+TWITTER_USERNAME = 'carl830'
 
 DEFAULT_PAGINATION = 10
 
@@ -33,11 +36,15 @@ ARTICLE_URL = '{post_id}/{slug}/'
 ARTICLE_SAVE_AS = '{post_id}/{slug}/index.html'
 
 DISPLAY_CATEGORIES_ON_MENU = False
+DISPLAY_PAGES_ON_MENU = True
 TAG_CLOUD_STEPS = 1
 TAG_CLOUD_MAX_ITEMS = 10
 
 import os
 THEME = os.path.expanduser(u'~/Code/pelican-themes/pelican-cait')
+
+GOOGLE_ANALYTICS = 'UA-24249240-5'
+
 # MD_EXTENSIONS = ['codehilite','extra']
 # MD_EXTENSIONS = ['extra']
 # Uncomment following line if you want document-relative URLs when developing
