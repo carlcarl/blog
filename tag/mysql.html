@@ -9,16 +9,17 @@
         <title>carlcarl's blog - mysql</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-            <link rel="stylesheet" href="/theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="/theme/css/blog.css">
-    <link rel="stylesheet" href="/theme/css/github.css">
-        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -28,7 +29,7 @@
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
     <hgroup id="site-header">
-        <a id="site-title" href=""><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <a id="site-title" href="http://blog.carlcarl.me"><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
         <p id="site-desc"></p>
     </hgroup>
     <nav>
@@ -51,7 +52,7 @@
                         <time class="post-time" datetime="2012-05-31T15:26:00" pubdate>
                             四 31 5月 2012
                         </time>
-                        <a href="/495/mysql-table_cache-fail/" rel="bookmark"><h1>MySQL table_cache fail</h1></a>
+                        <a href="http://blog.carlcarl.me/495/mysql-table_cache-fail/" rel="bookmark"><h1>MySQL table_cache fail</h1></a>
                     </header>
                     <section class="post-content">
                         <p>一直記得之前好像遇過同樣的問題，後來才想到應該是 ulimit 的限制。ulimit
@@ -77,7 +78,7 @@
                         <time class="post-time" datetime="2012-05-29T22:42:00" pubdate>
                             二 29 5月 2012
                         </time>
-                        <a href="/486/mysql-insert-if-duplicate-then-update/" rel="bookmark"><h1>MySQL insert if duplicate then update</h1></a>
+                        <a href="http://blog.carlcarl.me/486/mysql-insert-if-duplicate-then-update/" rel="bookmark"><h1>MySQL insert if duplicate then update</h1></a>
                     </header>
                     <section class="post-content">
                         <p>在做壓力測試的時候發現出來的數值不太對，後來看了一下，發現是因為程式裏面是拿
@@ -99,7 +100,7 @@ operation，如果在 SELECT 完之後有其他人也進行 SELECT
                         <time class="post-time" datetime="2011-12-17T18:00:00" pubdate>
                             六 17 12月 2011
                         </time>
-                        <a href="/226/mysql-db-engine-with-log-archive/" rel="bookmark"><h1>MySQL DB engine with log: Archive</h1></a>
+                        <a href="http://blog.carlcarl.me/226/mysql-db-engine-with-log-archive/" rel="bookmark"><h1>MySQL DB engine with log: Archive</h1></a>
                     </header>
                     <section class="post-content">
                         <p>前一陣子在看什麼 engine 比較適合拿來單純存
@@ -130,7 +131,7 @@ index 和 update。）</p>
                         <time class="post-time" datetime="2011-12-10T00:22:00" pubdate>
                             六 10 12月 2011
                         </time>
-                        <a href="/170/mysql-change-engine-of-all-tables/" rel="bookmark"><h1>MySQL change engine of all tables</h1></a>
+                        <a href="http://blog.carlcarl.me/170/mysql-change-engine-of-all-tables/" rel="bookmark"><h1>MySQL change engine of all tables</h1></a>
                     </header>
                     <section class="post-content">
                         <p>最近裝好<a href="http://mariadb.org/">mariaDB</a>，想順便把之前用的 <code>Myisam</code> 改成新的 <code>Aria</code> engine，可是
@@ -157,6 +158,12 @@ engine，不過為了這個寫 php 總是覺得很奇怪。後來查到另外一
     </div>
         </div>
 
-        <script src="/theme/js/main.js"></script>
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>
