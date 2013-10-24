@@ -49,6 +49,35 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-05-12T07:29:00" pubdate>
+                            四 12 5月 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/20/linux-several-ways-to-open-or-close-service/" rel="bookmark"><h1>linux several ways to open or close service</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>(如果想立即開啟或關掉就要用 service 或是直接到 /etc/init.d/ 底下去操作)</p>
+<p>以下是用來設定在系統開啟時預設要執行的 service</p>
+<p>在 RedHat 系列底下可以用 <code>chkconfig</code>，啟用 httpd (如果已經加到 chkconfig 裡了 就可以不用輸入第一行)</p>
+<div class="highlight"><pre>chkconfig httpd --add
+chkconfig http on
+</pre></div>
+
+
+<p>停用 httpd (第二行是把 httpd 從 chkconfig 的管理中移除，我的建議是輸入第一行就好了)</p>
+<div class="highlight"><pre>chkconfig httpd off
+chkconfig httpd --del
+</pre></div>
+
+
+<p>在 Debian 或 Ubuntu 底下的話 可以用 <code>update-rc.d</code> 開啟 apache2:</p>
+<div class="highlight"><pre>update-rc ...</pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-05-04T13:55:00" pubdate>
                             三 04 5月 2011
                         </time>
@@ -284,24 +313,6 @@ sudo dpkg-reconfigure postfix
 舉個例子來講，像是 <code>optstring = "abf"</code>
 的話，就能夠抓到這三個參數值，如：<br />
 <code>./a.out -a</code> 或 <code>./a.out -b</code> 或 <code>./a.out -abf</code> 都 OK ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-19T19:44:00" pubdate>
-                            六 19 3月 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/10/vim-indent-and-tab-width/" rel="bookmark"><h1>vim indent and tab width</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>設定 Tab 長度為 4，以及自動縮排長度為 4：<br />
-在 <code>.vimrc</code> 中加入下面兩行  </p>
-<div class="highlight"><pre>set tabstop=4  
-set shiftwidth=4
-</pre></div>
                     </section>
                 </article>
             </li>

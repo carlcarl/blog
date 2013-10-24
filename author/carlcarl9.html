@@ -49,6 +49,37 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-04T16:36:00" pubdate>
+                            五 04 5月 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/397/ubuntu-tunnel-broker/" rel="bookmark"><h1>Ubuntu Tunnel Broker IPv6 連 中研院</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近看到有人用 <a href="http://planykao.blogspot.com/2012/04/archlinux-ipv6-tunnel-broker.html">Archlinux 設定 Tunnel Broker
+的方法</a>，所以研究了一下該怎麼用，發現還滿簡單的0.0。</p>
+<h3>申請帳號</h3>
+<p>到 <a href="http://tb2.ipv6.ascc.net/">http://tb2.ipv6.ascc.net/</a> 註冊一個帳號。</p>
+<h3>安裝 gogoc</h3>
+<div class="highlight"><pre>sudo apt-get install gogoc
+</pre></div>
+
+
+<h3>設定 gogoc (<code>/etc/gogoc/gogoc.conf</code>)</h3>
+<p><code>if_prefix</code> 要看你的網卡裝置名稱叫啥，不過預設應該都是 eth0。</p>
+<div class="highlight"><pre>userid=你的帳號
+passwd=你的密碼
+server=tb2.ipv6.ascc.net
+auth_method=digest-md5
+host_type=host
+prefixlen=64
+if_prefix=eth0 ...</pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-04-20T00:20:00" pubdate>
                             五 20 4月 2012
                         </time>
@@ -258,26 +289,6 @@ github project 首頁的 README 是比較新的版本(相較於它的 project wi
 )，但是還是有部份是有問題的，所以我另外 fork 出來，再修改一下
 README，這是<a href="https://github.com/carlcarl/masquerade">我的連結</a>。</p>
 <p>首先要先建立好 RoR 的環境，這邊提供一個可以作為參考的 ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-24T00:32:00" pubdate>
-                            五 24 2月 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/273/centos6-2-timezone-tzselect/" rel="bookmark"><h1>centos6.2 timezone「tzselect」</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在裝 centos
-來用的時候，在設定的時候也用了 <code>ntpd</code> 來同步時間，不過發現一直沒辦法把時間弄正常，即使我把
-ntp server
-換成台灣的也一樣，後來想到了之前有用過的辦法，用 <code>/usr/share/zone/info/Asia/Taipei</code> 覆蓋掉 <code>/etc/localtime</code>，結果還是不行（之前這樣用有成功過的說 QQ）。</p>
-<p>後來查到一個好像更好的辦法，就是用 <code>tzselect</code> 這個指令，執行後會出現互動式介面，照著選時區，設定完就正常啦～～。</p>
-<p>參考網址：<br />
-<a href="http://bbs.bitscn.com/146159">http://bbs.bitscn.com/146159</a></p>
                     </section>
                 </article>
             </li>

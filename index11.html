@@ -49,6 +49,32 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-12-15T02:51:00" pubdate>
+                            四 15 12月 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/218/several-ways-to-check-process-port/" rel="bookmark"><h1>Several ways to check process port</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>目前知道的就以下四種，記得用 root
+權限來看，或者是指令前面加 <code>sudo</code>，不然有些 process 會看不到。</p>
+<ul>
+<li>netstat -antp</li>
+<li>rpcinfo -p</li>
+<li>lsof -i :port</li>
+<li>fuser port/tcp</li>
+</ul>
+<p>以上指令的 <code>port</code> 為你要的 port
+數字。基本上用 <code>netstat</code> 會列出一堆清單，通常就可以在其中找到，不行的話就使用 <code>lsof</code>，還是沒有的話，接下來就用 <code>fuser</code>，如果真的還是沒有，最後就用 <code>rpcinfo</code> 查看，再沒有我就沒辦法了 XD。</p>
+<p>如果是要看 80 port 被什麼所佔用，可以如下使用：</p>
+<div class="highlight"><pre>lsof -i :80
+fuser 80:tcp ...</pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-12-10T00:22:00" pubdate>
                             六 10 12月 2011
                         </time>
@@ -295,36 +321,6 @@ pylint：</p>
 
 
 <p>接下來如果要整合到 ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-11-06T08:58:00" pubdate>
-                            日 06 11月 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/50/freebsd-set-default-shell-to-bash/" rel="bookmark"><h1>FreeBSD set default shell to bash</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近興致來，就想說來把 FreeBSD 上的 csh 改成 bash，畢竟我還是比較習慣用 bash～。</p>
-<p>首先先修改預設 shell：</p>
-<div class="highlight"><pre>chsh -s /usr/local/bin/bash
-</pre></div>
-
-
-<p>輸入密碼後就修改成功了～。<br />
-</p>
-<p>再下來你可能會有一個已經有設定過的 <code>.bashrc</code> 檔案，當你放到家目錄底下的時候可能會發現說："怎麼都沒有反應？"，那是因為FreeBSD這邊吃的是 <code>.bash\_profile</code>這個設定檔=.=||，為了能夠兼容，我是自己又另外開了 <code>.bash_profile</code> 檔案，然後在裡面輸入：</p>
-<div class="highlight"><pre><span class="nb">source</span> ~/.bashrc
-</pre></div>
-
-
-<p>這樣以後就只要更新 <code>.bashrc</code> 這個設定檔就好了～。<br />
-</p>
-<p>然後後來又遇到中文無法輸入的問題，這個只要在 <code>.bashrc</code> 檔案中加入語系設定就可以了，另外再加上 <code>ls</code> 的 <code>alias</code>，不然 <code>ls</code> 輸出的目錄都不會標顏色：</p>
-<div class="highlight"><pre><span class="nb">export </span><span class="nv">LANG ...</span></pre></div>
                     </section>
                 </article>
             </li>

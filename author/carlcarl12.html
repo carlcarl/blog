@@ -49,6 +49,36 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-11-06T08:58:00" pubdate>
+                            日 06 11月 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/50/freebsd-set-default-shell-to-bash/" rel="bookmark"><h1>FreeBSD set default shell to bash</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近興致來，就想說來把 FreeBSD 上的 csh 改成 bash，畢竟我還是比較習慣用 bash～。</p>
+<p>首先先修改預設 shell：</p>
+<div class="highlight"><pre>chsh -s /usr/local/bin/bash
+</pre></div>
+
+
+<p>輸入密碼後就修改成功了～。<br />
+</p>
+<p>再下來你可能會有一個已經有設定過的 <code>.bashrc</code> 檔案，當你放到家目錄底下的時候可能會發現說："怎麼都沒有反應？"，那是因為FreeBSD這邊吃的是 <code>.bash\_profile</code>這個設定檔=.=||，為了能夠兼容，我是自己又另外開了 <code>.bash_profile</code> 檔案，然後在裡面輸入：</p>
+<div class="highlight"><pre><span class="nb">source</span> ~/.bashrc
+</pre></div>
+
+
+<p>這樣以後就只要更新 <code>.bashrc</code> 這個設定檔就好了～。<br />
+</p>
+<p>然後後來又遇到中文無法輸入的問題，這個只要在 <code>.bashrc</code> 檔案中加入語系設定就可以了，另外再加上 <code>ls</code> 的 <code>alias</code>，不然 <code>ls</code> 輸出的目錄都不會標顏色：</p>
+<div class="highlight"><pre><span class="nb">export </span><span class="nv">LANG ...</span></pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-11-03T18:31:00" pubdate>
                             四 03 11月 2011
                         </time>
@@ -282,35 +312,6 @@ sudo apt-get install mongodb-10gen
 
 <p>接下來有三個東西要裝：node.js、npm、termkit。</p>
 <p>開始裝 node.js，一開始偷懶想直接裝套件的版本，不過在後面卻一直打牆，後來才發現套件版的版本舊的可怕，<a href="https://github.com/isaacs/npm/issues/1185">npm的安裝需要node.js較新的版本</a>，所以不建議裝套件版的！但是也有發現<a href="http://askubuntu.com/questions/54617/error-while-installing-termkit">新版unstable的版本也是有點問題 ...</a></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-08-27T11:18:00" pubdate>
-                            六 27 8月 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/40/rsync-exclude-file/" rel="bookmark"><h1>rsync exclude file</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近想打包線上在跑的網站(在 Ubuntu 上)。本來想說用 <code>cp</code> 就好，但是 <code>cp</code>
-沒辦法去 exclude 一些檔案列表，偏偏網站上面有些是暫存檔和使用者上傳的東西，另外還有一些雜七雜八不該包的 code。</p>
-<p>後來查到可以用 <code>rsync</code> 來作 因為有支援 exclude 的參數，以下是範例，a
-參數包含了一堆其他參數的功能，v 參數就是將詳細資訊印出來：</p>
-<div class="highlight"><pre>rsync -av --exclude <span class="s1">&#39;dir&#39;</span> <span class="nb">source </span>destination
-</pre></div>
-
-
-<p>想要 exclude 多一點的話可以這樣下：</p>
-<div class="highlight"><pre>rsync -av --exclude <span class="s1">&#39;dir1&#39;</span> --exclude <span class="s1">&#39;dir2&#39;</span> <span class="nb">source </span>destination
-</pre></div>
-
-
-<p>要注意的一點是：<br />
-如果想要避掉 某幾個目錄下的子目錄
-像是每個目錄下的 <code>.svn</code> 資料夾，可以直接用 ...</p>
                     </section>
                 </article>
             </li>

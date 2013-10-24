@@ -49,6 +49,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-28T20:29:00" pubdate>
+                            五 28 6月 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1107/javascript-style-width-offsetwidth/" rel="bookmark"><h1>javascript style.width offsetWidth</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查了一些資料，看起來 <code>style.width</code> 是如果 css 沒指定 element 的 width
+的話，就會拿到空值，即使它本身的確佔有一個大小。這時候如果想拿到實際大小的話可以用
+<code>offsetWidth</code>，另外要注意的是 <code>offsetWidth</code> 是
+<code>readonly</code>，所以如果要設寬度，還是得從 <code>style.width</code> 著手。還有 <a href="http://jsperf.com/style-width-vs-offsetwidth1/5">這篇</a>
+是 <code>style.width</code> 和 <code>offsetWidth</code> 的效能比較，看來 <code>offsetWidth</code>
+效能好很多，看來以後抓寬度就直接抓這個值就好了@@。</p>
+<p>參考資料：<br />
+<a href="http://zhuweiwu.com/?p=86">原生js获取宽高与jquery获取宽高的方法的关系</a><br />
+<a href="http://bbs.csdn.net/topics/80381570">offsetWidth和width有什么不同啊?</a><br />
+<a href="http://stackoverflow.com/questions/4787527/how-to-find-the-width-of-a-div">How to find the width of a div</a></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-27T19:00:00" pubdate>
                             四 27 6月 2013
                         </time>
@@ -271,32 +294,6 @@ buffer 的部分 render 上去呢？以下是我的鍵盤猜測：</p>
 的關係，剛好我也有裝，於是跟著把 <code>apc.shm_size</code> 調大之後並重開就 OK 了。</p>
 <p>不過老實說不能確定是因為重開，還是因為 cache
 有調大的關係。可能之後還要再觀察看看，目前過了幾天，看起來是都沒問題這樣～～。</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-10T02:12:00" pubdate>
-                            一 10 6月 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/941/python-setup-py-package_data-permission/" rel="bookmark"><h1>Python setup.py package_data permission</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近嘗試把一些額外的 static 檔案加入到 python 的 package
-裡來讓程式操作，後來有查到可以在 setup.py 裡設定
-<code>package_data</code>，照著做之後好像滿順利的，但是在用 root 權限 install
-完，用一般使用者執行就遇到 permission 的錯誤了。</p>
-<!--more-->
-
-<p>看了一下安裝目錄下的 static 檔案，結果權限是 <code>400</code>，owner 是
-<code>root</code>，難怪一般使用者無法讀取，想說會不會是因為我的原本檔案權限的關係，檢查了一下，果然是
-<code>400</code>，但是我改了權限再重新安裝居然還是一樣，這時我還想說會不會是原本就有這樣的限制，還查了一堆資料
-orz。</p>
-<p>最後想到，會不會是因為我那些 build 所產生的目錄的關係，於是我把
-<code>xxx.pkg-info</code>，<code>build</code> 和 <code>dist</code>
-這三個資料夾都移除掉後再重新安裝，果然就 ...</p></!--more-->
                     </section>
                 </article>
             </li>
