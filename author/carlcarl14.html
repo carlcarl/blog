@@ -49,8 +49,37 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-04T14:22:00" pubdate>
+                            Mon 04 July 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/31/awstats-analyze-large-logs-at-once-include-gz-files/" rel="bookmark"><h1>awstats analyze large logs at once (include gz files)</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="http://carl830.pixnet.net/blog/post/66466219">awstats的簡易安裝教學</a></p>
+<p>因為在維護的網站log檔有一年份，而且都已經壓縮成gz檔，要用awstats分析的話實在很費工夫，後來發現awstats有好用的工具可以用：<span style="color: #3366ff;">logresolvemerge.pl</span>。</p>
+<p>簡單講就是用這個工具將log檔(包含gz壓縮檔)都merge起來為一個大檔案後，再用awstats作分析。</p>
+<p>這邊首先要注意的就是
+<span style="color: #ff0000;">awstats不會讀較舊的log檔</span>，所以像我之閒已經讀了最新的log檔後想讀舊的，就只能直接砍掉紀錄檔重新開始，到
+/var/lib/awstats/底下將底下的檔案刪光，如此就能回到最初的狀態</p>
+<p>logresolvemerge.pl預設是在<span style="color: #3366ff;">/usr/share/doc/awstats/examples/</span>裡<br />
+可以移到其他地方，不然每次打路徑應該會打到手很酸XD</p>
+<p>這裡給個幾個簡單的範例</p>
+<h3>將多個log檔merge成一個log檔</h3>
+<div class="highlight"><pre>logresolvemerge.pl /var/log/apache2/.log &gt; temp.log
+</pre></div>
+
+
+<h3>將多個gz檔merge成一個log檔(其實跟上面的差不多~)</h3>
+<div class="highlight"><pre>logresolvemerge.pl /var/log/apache2/.gz &gt; temp ...</pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-07-04T13:04:00" pubdate>
-                            一 04 7月 2011
+                            Mon 04 July 2011
                         </time>
                         <a href="http://blog.carlcarl.me/30/ubuntu-install-awstats-to-analyze-web-traffic/" rel="bookmark"><h1>ubuntu install awstats to analyze web traffic</h1></a>
                     </header>
@@ -78,7 +107,7 @@
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-06-28T20:43:00" pubdate>
-                            二 28 6月 2011
+                            Tue 28 June 2011
                         </time>
                         <a href="http://blog.carlcarl.me/29/cherokee-django-uwsgi-installation/" rel="bookmark"><h1>cherokee + django + uwsgi installation</h1></a>
                     </header>
@@ -103,7 +132,7 @@ sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-06-22T14:10:00" pubdate>
-                            三 22 6月 2011
+                            Wed 22 June 2011
                         </time>
                         <a href="http://blog.carlcarl.me/28/vim-xptemplate-add-smartytpl-support/" rel="bookmark"><h1>vim xptemplate add smarty(tpl) support</h1></a>
                     </header>
@@ -128,7 +157,7 @@ html/html
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-06-21T09:00:00" pubdate>
-                            二 21 6月 2011
+                            Tue 21 June 2011
                         </time>
                         <a href="http://blog.carlcarl.me/27/dotcloud-deploy-python-django/" rel="bookmark"><h1>Dotcloud deploy python+django</h1></a>
                     </header>
@@ -145,7 +174,7 @@ html/html
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-06-21T00:48:00" pubdate>
-                            二 21 6月 2011
+                            Tue 21 June 2011
                         </time>
                         <a href="http://blog.carlcarl.me/26/windows-xdebug-wincachegrind-zend-server/" rel="bookmark"><h1>windows xdebug, wincachegrind, Zend server</h1></a>
                     </header>
@@ -162,7 +191,7 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-06-21T00:31:00" pubdate>
-                            二 21 6月 2011
+                            Tue 21 June 2011
                         </time>
                         <a href="http://blog.carlcarl.me/25/ubuntu-nginx-installation-easier/" rel="bookmark"><h1>Ubuntu nginx installation(easier)</h1></a>
                     </header>
@@ -195,7 +224,7 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-06-13T15:51:00" pubdate>
-                            一 13 6月 2011
+                            Mon 13 June 2011
                         </time>
                         <a href="http://blog.carlcarl.me/24/ubuntu-nginx-installation/" rel="bookmark"><h1>Ubuntu Nginx installation</h1></a>
                     </header>
@@ -225,7 +254,7 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-06-13T10:44:00" pubdate>
-                            一 13 6月 2011
+                            Mon 13 June 2011
                         </time>
                         <a href="http://blog.carlcarl.me/23/linux-check-dist-io/" rel="bookmark"><h1>Linux check disk IO</h1></a>
                     </header>
@@ -258,7 +287,7 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-05-26T09:05:00" pubdate>
-                            四 26 5月 2011
+                            Thu 26 May 2011
                         </time>
                         <a href="http://blog.carlcarl.me/22/ubuntu-eucalyptus-installation/" rel="bookmark"><h1>Ubuntu Eucalyptus installation</h1></a>
                     </header>
@@ -278,31 +307,6 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
 <p>如果出現以上的錯誤就是要裝 <code>openjdk-6-jre-headless</code>。</p>
 <h3>記得先執行 service</h3>
 <p>下面這行還滿方便的，不過記得要先到 <code>/etc/init.d ...</code></p></!--more-->
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-05-24T16:14:00" pubdate>
-                            二 24 5月 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/21/git-export-files-to-some-existed-directory/" rel="bookmark"><h1>git export files to some existed directory</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近想把 vimrc 和 bashrc 等設定檔作同步，想說大家都在用 git，所以就不用 svn 改用 git 看看了!</p>
-<p>但是在同步的時候卻遇到了問題，本來想說直接輸入看看</p>
-<div class="highlight"><pre>git clone &lt;git repo url&gt;
-</pre></div>
-
-
-<p>結果出現錯誤: <code>fatal: destination path
-'home目錄' git clone already exists and is not an empty directory</code></p>
-<p>因為我的 home 目錄已經存在 而且也沒辦法 merge = =，沒辦法，只好來找一下資料。</p>
-<p>說真的還找得滿久的，以下是我覺得算是比較能接受的一種解決方法(有其他方法歡迎提供QQ)</p>
-<div class="highlight"><pre>git init
-git remote add origin ...</pre></div>
                     </section>
                 </article>
             </li>

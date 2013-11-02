@@ -49,8 +49,34 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-11-02T11:00:00" pubdate>
+                            Sat 02 November 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1378/ubuntu_resolveconf_setting/" rel="bookmark"><h1>Ubuntu resolveconf setting</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>好久沒設定 ubuntu server 了，最近在用的時候發現重開的時候，DNS 設定 (<code>resol.conf</code>) 會 reset，可是我也沒裝 NetworkManager 之類的東西啊 =.=，查了一下，是 <code>resolveconf</code> 這個套件的影響，可是我不太想直接把它移除，因為怕有啥 side effect，所以就還是照它的使用方法做，順便記錄一下該怎麼設定：</p>
+<h2>先刪除原本預設的 DNS 設定</h2>
+<div class="highlight"><pre>sudo resolvconf -d eth0.inet
+</pre></div>
+
+
+<h2>新增設定檔</h2>
+<div class="highlight"><pre>sudo mkdir -p /etc/resolvconf/resolv.conf.d
+sudo vim /etc/resolvconf/resolv.conf.d/base
+</pre></div>
+
+
+<h2>base ...</h2>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-10-24T18:57:00" pubdate>
-                            四 24 10月 2013
+                            Thu 24 October 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1377/mac_osx_user_ogiginal_thumbnail_location/" rel="bookmark"><h1>Mac OSX user original thumbnail location</h1></a>
                     </header>
@@ -66,7 +92,7 @@
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-10-24T02:18:00" pubdate>
-                            四 24 10月 2013
+                            Thu 24 October 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1376/from-wordpress-to-pelican/" rel="bookmark"><h1>From wordpress to pelican</h1></a>
                     </header>
@@ -83,7 +109,7 @@
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-10-05T02:15:00" pubdate>
-                            六 05 10月 2013
+                            Sat 05 October 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1375/tig-broken-in-tmux/" rel="bookmark"><h1>tig broken in tmux</h1></a>
                     </header>
@@ -108,7 +134,7 @@ screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-10-04T21:26:00" pubdate>
-                            五 04 10月 2013
+                            Fri 04 October 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
                     </header>
@@ -136,7 +162,7 @@ subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-10-02T02:32:00" pubdate>
-                            三 02 10月 2013
+                            Wed 02 October 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1331/python-sphinx-simple-example/" rel="bookmark"><h1>Python Sphinx simple example</h1></a>
                     </header>
@@ -174,7 +200,7 @@ orz。</p>
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-09-19T00:09:00" pubdate>
-                            四 19 9月 2013
+                            Thu 19 September 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/" rel="bookmark"><h1>Python multiprocessing share counter</h1></a>
                     </header>
@@ -211,7 +237,7 @@ orz。</p>
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-09-09T02:10:00" pubdate>
-                            一 09 9月 2013
+                            Mon 09 September 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1302/brunch-watch-stylesheet-dependency/" rel="bookmark"><h1>brunch watch stylesheet dependency</h1></a>
                     </header>
@@ -242,7 +268,7 @@ build 好的 css，這個問題一直困擾我很久，每次都要重新跑一�
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-08-28T01:40:00" pubdate>
-                            三 28 8月 2013
+                            Wed 28 August 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1292/g0v-tw-sns-buttons/" rel="bookmark"><h1>g0v.tw sns buttons</h1></a>
                     </header>
@@ -269,7 +295,7 @@ orz，不過也比原來的情況好多了(汗)，之後功力如果好一點再
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-08-22T00:58:00" pubdate>
-                            四 22 8月 2013
+                            Thu 22 August 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1277/chrome-tab-key-accessibility-bug/" rel="bookmark"><h1>Chrome tab key accessibility bug</h1></a>
                     </header>
@@ -294,42 +320,6 @@ Link 如果在下面的情況是 OK 的：</p>
 
 <p>我的解決方法很簡單，就是乾脆把 <code>float</code> 移到外面的 element
 上(炸)。目前看來是沒問題，Firefox ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-08-13T15:50:00" pubdate>
-                            二 13 8月 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1267/c-define-debug-function/" rel="bookmark"><h1>C define debug function</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>參考<a href="http://www.makelinux.net/ldd3/chp-4-sect-2">這篇</a>，然後做了點修改。</p>
-<!--more-->
-
-<div class="highlight"><pre>#undef CM_DBG
-#ifdef LTE_CM_DEBUG
-#   define CM_DBG(fmt, args...) do{   
-    printf(&quot;  (%d/%s): &quot;fmt, __LINE__, __FILE__, ## args);   
-}while(0)
-#else
-#   define CM_DBG(fmt, args...)
-#endif
-
-#undef CM_DBGG
-#define CM_DBGG(fmt, args...) do{   
-    printf(&quot;  (%d/%s): &quot;fmt, __LINE__, __FILE__, ## args);   
-}while(0)
-</pre></div>
-
-
-<p>大致除了命名外還做了點修改：</p>
-<ol>
-<li>把 <code>printk</code> 的部分拿掉，因為我不需要。</li>
-<li><code>CM_DBGG</code> 改成跟原本功能一樣 ...</li></ol></!--more-->
                     </section>
                 </article>
             </li>

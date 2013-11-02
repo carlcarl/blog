@@ -49,8 +49,39 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-12-17T18:00:00" pubdate>
+                            Sat 17 December 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/226/mysql-db-engine-with-log-archive/" rel="bookmark"><h1>MySQL DB engine with log: Archive</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>前一陣子在看什麼 engine 比較適合拿來單純存
+log，後來看到 <code>Archive</code> 這個似乎不錯，主要有以下優點：</p>
+<ul>
+<li>insert 速度更快。</li>
+<li>佔的資料量較 Myisam 少。</li>
+</ul>
+<p>但是有優勢，就會有相對的劣勢，Archive 有以下缺點：</p>
+<ul>
+<li>不支援 delete 和 update，只能 insert 和 select。</li>
+<li>不支援 index。</li>
+</ul>
+<p>（如果你是想要存每次最後登入時間的話，那 Archive 的確是不適合，因為不支援
+index 和 update。）</p>
+<p>但是以現實角度來看單純的 log 表，像是存每次登入的紀錄：</p>
+<ul>
+<li>其實真的就只會用到 insert，會用到 delete 和 update 那這個應該不太叫
+    log。</li>
+<li>作 select 的機率也是微乎其微 ...</li></ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-12-15T02:51:00" pubdate>
-                            四 15 12月 2011
+                            Thu 15 December 2011
                         </time>
                         <a href="http://blog.carlcarl.me/218/several-ways-to-check-process-port/" rel="bookmark"><h1>Several ways to check process port</h1></a>
                     </header>
@@ -76,7 +107,7 @@ fuser 80:tcp ...</pre></div>
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-12-10T00:22:00" pubdate>
-                            六 10 12月 2011
+                            Sat 10 December 2011
                         </time>
                         <a href="http://blog.carlcarl.me/170/mysql-change-engine-of-all-tables/" rel="bookmark"><h1>MySQL change engine of all tables</h1></a>
                     </header>
@@ -101,7 +132,7 @@ engine，不過為了這個寫 php 總是覺得很奇怪。後來查到另外一
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-12-05T19:37:00" pubdate>
-                            一 05 12月 2011
+                            Mon 05 December 2011
                         </time>
                         <a href="http://blog.carlcarl.me/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/" rel="bookmark"><h1>(98)Address already in use: make_sock: could not bind to address 80</h1></a>
                     </header>
@@ -129,7 +160,7 @@ process，結果怎麼好像都沒用囧，後來才試到一個可以解決的�
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-12-04T23:12:00" pubdate>
-                            日 04 12月 2011
+                            Sun 04 December 2011
                         </time>
                         <a href="http://blog.carlcarl.me/159/apache-prevent-executing-php-in-specific-directory/" rel="bookmark"><h1>apache prevent executing php in specific directory</h1></a>
                     </header>
@@ -157,7 +188,7 @@ php。另外還有一種方法也是可以作，不過是用副檔名的方法�
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-11-27T17:10:00" pubdate>
-                            日 27 11月 2011
+                            Sun 27 November 2011
                         </time>
                         <a href="http://blog.carlcarl.me/153/wordpress-preview-cant-find-the-page/" rel="bookmark"><h1>wordpress preview can't find the page</h1></a>
                     </header>
@@ -172,7 +203,7 @@ php。另外還有一種方法也是可以作，不過是用副檔名的方法�
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-11-27T16:53:00" pubdate>
-                            日 27 11月 2011
+                            Sun 27 November 2011
                         </time>
                         <a href="http://blog.carlcarl.me/135/dotcloud-django-admin-login-error/" rel="bookmark"><h1>DotCloud Django admin login error</h1></a>
                     </header>
@@ -197,7 +228,7 @@ php。另外還有一種方法也是可以作，不過是用副檔名的方法�
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-11-23T00:28:00" pubdate>
-                            三 23 11月 2011
+                            Wed 23 November 2011
                         </time>
                         <a href="http://blog.carlcarl.me/124/ubuntu-dropbox-permission-denied/" rel="bookmark"><h1>Dropbox can't sync  permission denied</h1></a>
                     </header>
@@ -218,7 +249,7 @@ dropbox 把資料 sync 到我電腦上的時候會突然出問題呢？<br />
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-11-20T19:43:00" pubdate>
-                            日 20 11月 2011
+                            Sun 20 November 2011
                         </time>
                         <a href="http://blog.carlcarl.me/114/about/" rel="bookmark"><h1>About</h1></a>
                     </header>
@@ -264,7 +295,7 @@ dropbox 把資料 sync 到我電腦上的時候會突然出問題呢？<br />
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-11-20T17:34:00" pubdate>
-                            日 20 11月 2011
+                            Sun 20 November 2011
                         </time>
                         <a href="http://blog.carlcarl.me/76/wordpress-social-share-plugin/" rel="bookmark"><h1>wordpress social share plugin</h1></a>
                     </header>
@@ -289,38 +320,6 @@ Share and Google +1 Option Page</a> ，他的好處在於：</p>
 <p>首先先將以下內容複製到「custom button」的欄位裡，我是只有複製到「large
 icon」的欄位裡，看個人需要也可以複製到「small
 icon」的欄位裡 ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-11-11T13:21:00" pubdate>
-                            五 11 11月 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/51/vim-install-pylint-plugin/" rel="bookmark"><h1>vim install pylint plugin</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在練習 python，所以開始找相關的 vim plugin 來裝裝看，<a href="http://www.vim.org/scripts/script.php?script_id=850">pydiction</a>
-這個可以補完一些基本的語法，還滿不錯的，可惜會跟我的<a href="http://www.vim.org/scripts/script.php?script_id=2611">xptemplate</a>
-plugin 衝到QQ，沒辦法就只好捨棄掉了，因為 xptemplate
-對我還說還是比較實用～。</p>
-<p>後來在找可以檢查 python 語法的 plugin，在 stackoverflow
-這個網站上有看到相關的討論，感覺<a href="http://www.logilab.org/857">pylint</a>
-這個功能最強大，就想說用這個看看好了。不過通常功能越強大，要安裝或調整就會越麻煩，要不然就是會跟系統有相依性，像
-pylint 就必須要先裝套件在系統上才行，在 ubuntu 上可以直接用套件安裝
-pylint：</p>
-<div class="highlight"><pre>sudo apt-get install pylint
-</pre></div>
-
-
-<p>安裝完之後就可以當作一般指令來檢查 python 程式，例如：</p>
-<div class="highlight"><pre>pylint test.py
-</pre></div>
-
-
-<p>接下來如果要整合到 ...</p>
                     </section>
                 </article>
             </li>

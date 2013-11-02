@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2013-10-24T18:57:00+08:00</updated><entry><title>Mac OSX user original thumbnail location</title><link href="http://blog.carlcarl.me/1377/mac_osx_user_ogiginal_thumbnail_location/" rel="alternate"></link><updated>2013-10-24T18:57:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-10-24:1377/mac_osx_user_ogiginal_thumbnail_location/</id><summary type="html">&lt;p&gt;當初用攝影機照了一張當作頭像，不過後來一直找不到原圖的位置，google 了一下，發現很多人講的都不一樣，我是用 OSX 10.9 Mavericks，位置是在 &lt;code&gt;~/Library/Containers/com.apple.ImageKit.RecentPictureService/Data/Library/Images/Recent\ Pictures&lt;/code&gt;。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2013-11-02T11:00:00+08:00</updated><entry><title>Ubuntu resolveconf setting</title><link href="http://blog.carlcarl.me/1378/ubuntu_resolveconf_setting/" rel="alternate"></link><updated>2013-11-02T11:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-11-02:1378/ubuntu_resolveconf_setting/</id><summary type="html">&lt;p&gt;好久沒設定 ubuntu server 了，最近在用的時候發現重開的時候，DNS 設定 (&lt;code&gt;resol.conf&lt;/code&gt;) 會 reset，可是我也沒裝 NetworkManager 之類的東西啊 =.=，查了一下，是 &lt;code&gt;resolveconf&lt;/code&gt; 這個套件的影響，可是我不太想直接把它移除，因為怕有啥 side effect，所以就還是照它的使用方法做，順便記錄一下該怎麼設定：&lt;/p&gt;
+&lt;h2&gt;先刪除原本預設的 DNS 設定&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo resolvconf -d eth0.inet
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;新增設定檔&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo mkdir -p /etc/resolvconf/resolv.conf.d
+sudo vim /etc/resolvconf/resolv.conf.d/base
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;base 的內容(xxx.xxx.xxx.xxx 是你要的 DNS IP)&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;nameserver xxx.xxx.xxx.xxx
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;更新設定&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo resolvconf -u
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;應該這樣就可以了，其實上面這些在 &lt;a href="https://code.google.com/p/collective-intelligence-framework/wiki/ResolvconfSetup_v1"&gt;這邊&lt;/a&gt; 就有了，不過在自己的 blog 搜尋總是比較方便 XD。&lt;/p&gt;</summary><category term="ubuntu"></category></entry><entry><title>Mac OSX user original thumbnail location</title><link href="http://blog.carlcarl.me/1377/mac_osx_user_ogiginal_thumbnail_location/" rel="alternate"></link><updated>2013-10-24T18:57:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-10-24:1377/mac_osx_user_ogiginal_thumbnail_location/</id><summary type="html">&lt;p&gt;當初用攝影機照了一張當作頭像，不過後來一直找不到原圖的位置，google 了一下，發現很多人講的都不一樣，我是用 OSX 10.9 Mavericks，位置是在 &lt;code&gt;~/Library/Containers/com.apple.ImageKit.RecentPictureService/Data/Library/Images/Recent\ Pictures&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;參考資料&lt;br /&gt;
 &lt;a href="http://apple.stackexchange.com/questions/44956/where-does-the-mac-store-account-pictures"&gt;Where does the Mac store account pictures?&lt;/a&gt;  &lt;/p&gt;</summary><category term="mac"></category></entry><entry><title>From wordpress to pelican</title><link href="http://blog.carlcarl.me/1376/from-wordpress-to-pelican/" rel="alternate"></link><updated>2013-10-24T02:18:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-10-24:1376/from-wordpress-to-pelican/</id><summary type="html">&lt;p&gt;終於從 &lt;a href="http://tw.wordpress.org"&gt;wordpress&lt;/a&gt; 轉到 &lt;a href="https://github.com/carlcarl/pelican/tree/support-post-id"&gt;pelican&lt;/a&gt; 了，中間經歷了不少的問題，之所以從 wordpress 離開到 pelican，主要是覺得 wordpress 本身其實綁了很多我不需要的功能，現在我只是想純粹做一些筆記而已，於是朝 static site generator 這方面去看，之前是有看過 &lt;a href="http://octopress.org"&gt;octopress&lt;/a&gt;，但是對 ruby 實在沒啥興趣，找了一下 python 寫的，發現其實也有蠻多種的，後來看 pelican 有蠻多人都有試過，而且開發也還蠻熱烈的，於是就選擇了這個 blog 系統。&lt;/p&gt;
 &lt;!--more--&gt;

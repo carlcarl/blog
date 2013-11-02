@@ -49,8 +49,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-04-14T23:45:00" pubdate>
+                            Sun 14 April 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/827/appfog-deploy-pyramid/" rel="bookmark"><h1>appfog deploy pyramid</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>這篇是參考
+<a href="http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/">http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/</a>
+這篇所講的，其實他講的就差不多了，但是漏掉了一些細節，所以幫忙補完一下。<br />
+<!--more--><br />
+<a href="https://www.appfog.com/">appfog</a> 的 deploy 相對 <a href="https://www.openshift.com/">openshift</a> 來說，算是簡單很多 (不過
+openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
+<a href="http://www.pylonsproject.org/">pyramid</a> 來講，主要就是在 project 根目錄新增一個 <code>wsgi.py</code>
+的檔案，內容引用文章連結內的程式：</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">paste.deploy</span> <span class="kn">import</span> <span class="n">loadapp</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&#39;python setup.py develop ...</span></pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-04-09T13:35:00" pubdate>
-                            二 09 4月 2013
+                            Tue 09 April 2013
                         </time>
                         <a href="http://blog.carlcarl.me/819/python-pyramid-jsonp/" rel="bookmark"><h1>Python Pyramid jsonp</h1></a>
                     </header>
@@ -81,7 +106,7 @@ doc，設置還算簡單，不過好像漏了個小地方。<br />
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-04-07T22:58:00" pubdate>
-                            日 07 4月 2013
+                            Sun 07 April 2013
                         </time>
                         <a href="http://blog.carlcarl.me/813/ajax-with-mobile-keyboard-go-button/" rel="bookmark"><h1>ajax with mobile keyboard go button</h1></a>
                     </header>
@@ -101,7 +126,7 @@ event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有�
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-03-17T23:33:00" pubdate>
-                            日 17 3月 2013
+                            Sun 17 March 2013
                         </time>
                         <a href="http://blog.carlcarl.me/808/git-cross-firewall/" rel="bookmark"><h1>git cross firewall</h1></a>
                     </header>
@@ -127,7 +152,7 @@ git repo，裏面包含 submodule，且是
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-03-13T15:36:00" pubdate>
-                            三 13 3月 2013
+                            Wed 13 March 2013
                         </time>
                         <a href="http://blog.carlcarl.me/799/osx-svn-checkout-fail/" rel="bookmark"><h1>OSX svn checkout fail</h1></a>
                     </header>
@@ -150,7 +175,7 @@ hdiutil create -size 100m -fs <span class="s2">&quot;Case-sensitive HFS+&quot;</
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-02-28T02:02:00" pubdate>
-                            四 28 2月 2013
+                            Thu 28 February 2013
                         </time>
                         <a href="http://blog.carlcarl.me/794/kde-dolphin-network-folder-ssh-fail/" rel="bookmark"><h1>KDE dolphin network folder ssh fail</h1></a>
                     </header>
@@ -169,7 +194,7 @@ dolphin 這邊再重連就能夠連上了。</p>
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-02-22T03:07:00" pubdate>
-                            五 22 2月 2013
+                            Fri 22 February 2013
                         </time>
                         <a href="http://blog.carlcarl.me/788/bootstrap-input-align/" rel="bookmark"><h1>bootstrap input align</h1></a>
                     </header>
@@ -195,7 +220,7 @@ dolphin 這邊再重連就能夠連上了。</p>
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-02-22T02:58:00" pubdate>
-                            五 22 2月 2013
+                            Fri 22 February 2013
                         </time>
                         <a href="http://blog.carlcarl.me/785/vim-syntastic-disable-html-check/" rel="bookmark"><h1>vim syntastic disable html check</h1></a>
                     </header>
@@ -219,7 +244,7 @@ html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverfl
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-01-29T16:50:00" pubdate>
-                            二 29 1月 2013
+                            Tue 29 January 2013
                         </time>
                         <a href="http://blog.carlcarl.me/772/python-argparse/" rel="bookmark"><h1>python argparse</h1></a>
                     </header>
@@ -245,7 +270,7 @@ html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverfl
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-01-28T15:08:00" pubdate>
-                            一 28 1月 2013
+                            Mon 28 January 2013
                         </time>
                         <a href="http://blog.carlcarl.me/759/python-logging/" rel="bookmark"><h1>python logging</h1></a>
                     </header>
@@ -273,29 +298,6 @@ html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverfl
 
 
 <p>但是這種方法，就會變成不管 log 不 log，都會執行組合字串的動作，所以並不建議，這邊可以參考 ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-01-20T23:25:00" pubdate>
-                            日 20 1月 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/742/webconf-2013/" rel="bookmark"><h1>WebConf 2013</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><img alt="http://i.imgur.com/jDquPl.jpg" src="http://i.imgur.com/jDquPl.jpg" title="Hosted by imgur.com" /></p>
-<p>最近這一年開始參加這類的 conf，而這次的 WebConf
-也不例外啦，本來在去年年底就有在關注這個 conf
-了，無奈開始賣票的時候我正在軍中新訓，當新訓結束的時候才發現票已經售完了囧。所幸後來同學那邊有多買一張賣我，我後來才有這個機會能夠參加這次的
-WebConf。(這次的 WebConf 官方網站作得還滿不錯的，再加上這背景樣式，個人還滿喜歡的:P)<br />
-<!--more-->  </p>
-<p>這次的議程分為兩天三軌，不過大部分的場次都有決定好了，不外乎就是~~正妹先決模式~~選擇涉獵較多方面的領域，以擴充所學，增廣見聞。不過也可惜因此錯過了幾場想聽的主題，像是
-TonyQ 的「網站效能調整」，感覺上就滿實用的，後來也有去找 slide
-來看；「敏捷 Web 開發之 Python 工具菜單」這場也沒有聽到，後來看了一下相片，似乎聽的人不多，可能是因為~~打對台的講者太強大了~~大家聽一整天程式相關的議題都累了，所以都想聽聽其他領域的分享吧。</p>
-<p>「在家也能架出好網站」是我覺得很實用的主題，我後來也有把這份 ...</p>
                     </section>
                 </article>
             </li>

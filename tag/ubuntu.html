@@ -49,8 +49,34 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-11-02T11:00:00" pubdate>
+                            Sat 02 November 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1378/ubuntu_resolveconf_setting/" rel="bookmark"><h1>Ubuntu resolveconf setting</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>好久沒設定 ubuntu server 了，最近在用的時候發現重開的時候，DNS 設定 (<code>resol.conf</code>) 會 reset，可是我也沒裝 NetworkManager 之類的東西啊 =.=，查了一下，是 <code>resolveconf</code> 這個套件的影響，可是我不太想直接把它移除，因為怕有啥 side effect，所以就還是照它的使用方法做，順便記錄一下該怎麼設定：</p>
+<h2>先刪除原本預設的 DNS 設定</h2>
+<div class="highlight"><pre>sudo resolvconf -d eth0.inet
+</pre></div>
+
+
+<h2>新增設定檔</h2>
+<div class="highlight"><pre>sudo mkdir -p /etc/resolvconf/resolv.conf.d
+sudo vim /etc/resolvconf/resolv.conf.d/base
+</pre></div>
+
+
+<h2>base ...</h2>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-03T21:25:00" pubdate>
-                            一 03 6月 2013
+                            Mon 03 June 2013
                         </time>
                         <a href="http://blog.carlcarl.me/879/ubuntu-nginx-pagespeed-module/" rel="bookmark"><h1>Ubuntu nginx pagespeed module</h1></a>
                     </header>
@@ -75,7 +101,7 @@ sudo apt-get ...</pre></div>
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2013-06-03T11:48:00" pubdate>
-                            一 03 6月 2013
+                            Mon 03 June 2013
                         </time>
                         <a href="http://blog.carlcarl.me/873/ubuntu-service-cant-restart-or-stop/" rel="bookmark"><h1>Ubuntu service can't restart or stop</h1></a>
                     </header>
@@ -95,7 +121,7 @@ pid 檔案，google 了一下，在 stackoverflow
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2012-05-04T16:36:00" pubdate>
-                            五 04 5月 2012
+                            Fri 04 May 2012
                         </time>
                         <a href="http://blog.carlcarl.me/397/ubuntu-tunnel-broker/" rel="bookmark"><h1>Ubuntu Tunnel Broker IPv6 連 中研院</h1></a>
                     </header>
@@ -126,7 +152,7 @@ if_prefix=eth0 ...</pre></div>
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2012-03-29T02:13:00" pubdate>
-                            四 29 3月 2012
+                            Thu 29 March 2012
                         </time>
                         <a href="http://blog.carlcarl.me/326/ubuntu-desktop-record-recorditnow-ffmpeg/" rel="bookmark"><h1>Ubuntu desktop record: recorditnow+ffmpeg</h1></a>
                     </header>
@@ -150,7 +176,7 @@ sudo apt-get ...</pre></div>
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-12-05T19:37:00" pubdate>
-                            一 05 12月 2011
+                            Mon 05 December 2011
                         </time>
                         <a href="http://blog.carlcarl.me/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/" rel="bookmark"><h1>(98)Address already in use: make_sock: could not bind to address 80</h1></a>
                     </header>
@@ -178,7 +204,7 @@ process，結果怎麼好像都沒用囧，後來才試到一個可以解決的�
                 <article class="post-entry">
                     <header class="entry-header">
                         <time class="post-time" datetime="2011-11-03T18:31:00" pubdate>
-                            四 03 11月 2011
+                            Thu 03 November 2011
                         </time>
                         <a href="http://blog.carlcarl.me/49/ubuntu-nautilus-thumbnail/" rel="bookmark"><h1>Ubuntu nautilus video thumbnail</h1></a>
                     </header>
