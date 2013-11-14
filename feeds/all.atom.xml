@@ -26,14 +26,23 @@ celeryd-multi start 1 -P eventlet -c 3 -A tasks
 &lt;p&gt;&lt;a href="https://github.com/celery/celery/blob/3.1/extra/generic-init.d/celeryd"&gt;/etc/init.d/celeryd&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://docs.celeryproject.org/en/master/tutorials/daemonizing.html"&gt;/etc/default/celeryd&lt;/a&gt;  &lt;/p&gt;
 &lt;h2&gt;Service&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;celeryconfig.py&lt;/code&gt; 是預設會讀的設定檔&lt;/p&gt;
 &lt;h3&gt;celeryconfig.py&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;timedelta&lt;/span&gt;
 
 &lt;span class="n"&gt;CELERYBEAT_SCHEDULE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;#39;add-every-30-seconds&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  &lt;span class="c"&gt;# 可以自己決定怎麼取名字&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;#39;task&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;tasks.add&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="c"&gt;# 塞 tasks[.py] 內的 add 到 job queue 裡&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;#39;schedule&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;seconds&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;  &lt;span class="c"&gt;# 每隔 30 秒&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;#39;args&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# 加法的兩個數字&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;add-every-30-seconds&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  &lt;span class="c"&gt;# 可以自己決定取什麼名字&lt;/span&gt;
+
+        &lt;span class="c"&gt;# 塞 tasks 內的 add 到 job queue 裡，&lt;/span&gt;
+        &lt;span class="c"&gt;# tasks.py 不需要跟 celeryconfig.py 在同個目錄下，&lt;/span&gt;
+        &lt;span class="c"&gt;# 這裡看來只是把這個 task 名稱丟進 queue 裡而已&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;task&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;tasks.add&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+         &lt;span class="c"&gt;# 每隔 30 秒&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;schedule&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;seconds&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+
+        &lt;span class="c"&gt;# 加法的兩個數字&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;args&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="p"&gt;},&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
@@ -48,7 +57,15 @@ celeryd-multi start 1 -P eventlet -c 3 -A tasks
 
 &lt;h3&gt;Daemon script&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://github.com/celery/celery/blob/3.1/extra/generic-init.d/celerybeat"&gt;/etc/init.d/celerybeat&lt;/a&gt;&lt;br /&gt;
-&lt;a href="http://docs.celeryproject.org/en/master/tutorials/daemonizing.html"&gt;/etc/default/celerybeat&lt;/a&gt;&lt;/p&gt;</summary><category term="celery"></category></entry><entry><title>Ubuntu resolveconf setting</title><link href="http://blog.carlcarl.me/1378/ubuntu_resolveconf_setting/" rel="alternate"></link><updated>2013-11-02T11:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-11-02:1378/ubuntu_resolveconf_setting/</id><summary type="html">&lt;p&gt;好久沒設定 ubuntu server 了，最近在用的時候發現重開的時候，DNS 設定 (&lt;code&gt;resol.conf&lt;/code&gt;) 會 reset，可是我也沒裝 NetworkManager 之類的東西啊 =.=，查了一下，是 &lt;code&gt;resolveconf&lt;/code&gt; 這個套件的影響，可是我不太想直接把它移除，因為怕有啥 side effect，所以就還是照它的使用方法做，順便記錄一下該怎麼設定：&lt;/p&gt;
+&lt;a href="http://docs.celeryproject.org/en/master/tutorials/daemonizing.html"&gt;/etc/default/celerybeat&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;參考資料&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html"&gt;Periodic Tasks&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://docs.celeryproject.org/en/master/getting-started/first-steps-with-celery.html"&gt;http://docs.celeryproject.org/en/master/getting-started/first-steps-with-celery.html&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://www.andretw.com/2013/07/using-celery-right-now-and-more-best-practices-1.html"&gt;用 Celery 結合 Redis 或 RabbitMQ = 馬上開始使用 Task Queue&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://www.metaltoad.com/blog/celery-periodic-tasks-installation-infinity"&gt;http://www.metaltoad.com/blog/celery-periodic-tasks-installation-infinity&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://docs.celeryproject.org/en/latest/userguide/calling.html#linking-callbacks-errbacks"&gt;Calling Tasks&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://docs.celeryproject.org/en/latest/reference/celery.bin.celeryd_multi.html"&gt;celery.bin.celeryd_multi&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://tech.idv2.com/2011/06/27/django-celery-rabbitmq-intro/"&gt;使用django+celery+RabbitMQ實現異步執行&lt;/a&gt;  &lt;/p&gt;</summary><category term="celery"></category></entry><entry><title>Ubuntu resolveconf setting</title><link href="http://blog.carlcarl.me/1378/ubuntu_resolveconf_setting/" rel="alternate"></link><updated>2013-11-02T11:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-11-02:1378/ubuntu_resolveconf_setting/</id><summary type="html">&lt;p&gt;好久沒設定 ubuntu server 了，最近在用的時候發現重開的時候，DNS 設定 (&lt;code&gt;resol.conf&lt;/code&gt;) 會 reset，可是我也沒裝 NetworkManager 之類的東西啊 =.=，查了一下，是 &lt;code&gt;resolveconf&lt;/code&gt; 這個套件的影響，可是我不太想直接把它移除，因為怕有啥 side effect，所以就還是照它的使用方法做，順便記錄一下該怎麼設定：&lt;/p&gt;
 &lt;h2&gt;先刪除原本預設的 DNS 設定&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sudo resolvconf -d eth0.inet
 &lt;/pre&gt;&lt;/div&gt;

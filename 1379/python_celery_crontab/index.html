@@ -84,14 +84,23 @@ celeryd-multi start 1 -P eventlet -c 3 -A tasks
 <p><a href="https://github.com/celery/celery/blob/3.1/extra/generic-init.d/celeryd">/etc/init.d/celeryd</a><br />
 <a href="http://docs.celeryproject.org/en/master/tutorials/daemonizing.html">/etc/default/celeryd</a>  </p>
 <h2>Service</h2>
+<p><code>celeryconfig.py</code> 是預設會讀的設定檔</p>
 <h3>celeryconfig.py</h3>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
 
 <span class="n">CELERYBEAT_SCHEDULE</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;add-every-30-seconds&#39;</span><span class="p">:</span> <span class="p">{</span>  <span class="c"># 可以自己決定怎麼取名字</span>
-        <span class="s">&#39;task&#39;</span><span class="p">:</span> <span class="s">&#39;tasks.add&#39;</span><span class="p">,</span>  <span class="c"># 塞 tasks[.py] 內的 add 到 job queue 裡</span>
-        <span class="s">&#39;schedule&#39;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>  <span class="c"># 每隔 30 秒</span>
-        <span class="s">&#39;args&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>  <span class="c"># 加法的兩個數字</span>
+    <span class="s">&#39;add-every-30-seconds&#39;</span><span class="p">:</span> <span class="p">{</span>  <span class="c"># 可以自己決定取什麼名字</span>
+
+        <span class="c"># 塞 tasks 內的 add 到 job queue 裡，</span>
+        <span class="c"># tasks.py 不需要跟 celeryconfig.py 在同個目錄下，</span>
+        <span class="c"># 這裡看來只是把這個 task 名稱丟進 queue 裡而已</span>
+        <span class="s">&#39;task&#39;</span><span class="p">:</span> <span class="s">&#39;tasks.add&#39;</span><span class="p">,</span>
+
+         <span class="c"># 每隔 30 秒</span>
+        <span class="s">&#39;schedule&#39;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
+
+        <span class="c"># 加法的兩個數字</span>
+        <span class="s">&#39;args&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
     <span class="p">},</span>
 <span class="p">}</span>
 
@@ -107,6 +116,14 @@ celeryd-multi start 1 -P eventlet -c 3 -A tasks
 <h3>Daemon script</h3>
 <p><a href="https://github.com/celery/celery/blob/3.1/extra/generic-init.d/celerybeat">/etc/init.d/celerybeat</a><br />
 <a href="http://docs.celeryproject.org/en/master/tutorials/daemonizing.html">/etc/default/celerybeat</a></p>
+<h2>參考資料</h2>
+<p><a href="http://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html">Periodic Tasks</a><br />
+<a href="http://docs.celeryproject.org/en/master/getting-started/first-steps-with-celery.html">http://docs.celeryproject.org/en/master/getting-started/first-steps-with-celery.html</a><br />
+<a href="http://www.andretw.com/2013/07/using-celery-right-now-and-more-best-practices-1.html">用 Celery 結合 Redis 或 RabbitMQ = 馬上開始使用 Task Queue</a><br />
+<a href="http://www.metaltoad.com/blog/celery-periodic-tasks-installation-infinity">http://www.metaltoad.com/blog/celery-periodic-tasks-installation-infinity</a><br />
+<a href="http://docs.celeryproject.org/en/latest/userguide/calling.html#linking-callbacks-errbacks">Calling Tasks</a><br />
+<a href="http://docs.celeryproject.org/en/latest/reference/celery.bin.celeryd_multi.html">celery.bin.celeryd_multi</a><br />
+<a href="http://tech.idv2.com/2011/06/27/django-celery-rabbitmq-intro/">使用django+celery+RabbitMQ實現異步執行</a>  </p>
                     </section>
                     <hr/>
                     <aside class="post-meta">
