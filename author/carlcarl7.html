@@ -49,6 +49,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-09-14T05:05:00" pubdate>
+                            Fri 14 September 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/645/mongodb-aggregation-group-count-sort/" rel="bookmark"><h1>mongodb aggregation group count sort</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>感覺不是很難的 query，想說用 mongodb aggregation 來解決，不過查資料查了好久才知道怎麼用。<br />
+<!--more--><br />
+以 sql 來說的話，我是要對某個欄位作 group by，分類完之後再對分類完的欄位作 count，算完之後再根據 count 的數字作 sort。下面這段是 MongoDB 中的用法：</p>
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">mytable</span><span class="p">.</span><span class="nx">aggregate</span><span class="p">({</span> <span class="nx">$group</span><span class="o">:</span><span class="p">{</span> <span class="nx">_id</span><span class="o">:</span> <span class="s2">&quot;$b_cd&quot;</span><span class="p">,</span> <span class="nx">num</span><span class="o">:</span> <span class="p">{</span><span class="nx">$sum</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span> <span class="p">}},</span> <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">num</span><span class="o">:</span><span class="mi">1</span><span class="p">}}</span> <span class="p">);</span>
+</pre></div>
+
+
+<p><code>$b_cd</code> 是我要分類的欄位，<code>num</code> 是各分類欄位的數目，這邊利用 <code>$sum</code>
+作累加，接著再用 <code>$sort</code> 對 num 作排序。</p>
+<p>中間我卡很久的原因是因為 syntax
+搞錯（<strong>大括弧的位置要注意 ...</strong></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-09-04T01:54:00" pubdate>
                             Tue 04 September 2012
                         </time>
@@ -273,32 +297,6 @@ template 的時間，因此還是希望能避免不必要的空間浪費。</p>
 <span class="c">a-b.js 需要 a.js, 而 a-c.js 需要 a.js, 這是這 3 個 js 檔的相依關係</span>
 <span class="c">最後會從 a-c.js 裡呼叫 library 來執行</span>
 <span class="c">由於 async 屬性並不適合用來處理有相依性的 js 檔案 ...</span></pre></div></!--more-->
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-06-18T18:07:00" pubdate>
-                            Mon 18 June 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/519/vm-template-cant-specify-hostname/" rel="bookmark"><h1>VM template can't specify hostname</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>這個應該很多 hypervisor 都適用，在做完 vm 的 template 之後，因為
-hostname 在這裡已經固定，所以利用這個 template 再開啟一個新的 instance
-的時候，hostname 會還是原本舊的，如果是用 DHCP
-的方式的話，照理來說是可以拿到當初指定的 hostname 的。<br />
-<!--more--><br />
-這邊我找了很多資料，本來從 hypervisor
-這邊去找資料，不過都沒什麼結果，後來才發現原來從 Guest OS 這邊去修改就
-OK 了，方法很簡單，在你的 VM 裡執行：</p>
-<div class="highlight"><pre>sudo mv /etc/hostname /etc/hostname.old
-</pre></div>
-
-
-<p>然後重開 VM，這樣就會根據 DHCP ...</p>
                     </section>
                 </article>
             </li>

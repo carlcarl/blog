@@ -49,6 +49,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-12-19T17:01:00" pubdate>
+                            Mon 19 December 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/233/naming-apache-log-with-date/" rel="bookmark"><h1>naming apache log with date</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>目前是用 <code>logrotate</code> 來作，只要在 <code>/etc/logrotate.d/apache2</code> 裡加入下面這個參數即可：</p>
+<ul>
+<li>dateext</li>
+</ul>
+<p>另外可以根據需求看要不要把 <code>weekly</code> 改為 <code>daily</code> 這樣。</p>
+<p>處理過後的檔名就會像這樣 <code>access.log-20111218.gz</code>，這樣在之後處理和分析
+log 會比較方便，另外記得數量也要根據需求改，因為改完後變成能保存的 log
+日期也會跟著減少，要增多的話也是直接修改上面 <code>/etc/logrotate.d/apache2</code> 這個檔案，將 <code>rotate</code> 後面的數字加大，後面的數字表示要存的 log 數量，超過的話就會將最舊的刪除這樣。</p>
+<p>後記：<br />
+如果要跟 awstats 搭配的話可以在裡面加入：</p>
+<div class="highlight"><pre>prerotate
+    /usr/lib/cgi-bin/awstats.pl -config ...</pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-12-17T18:00:00" pubdate>
                             Sat 17 December 2011
                         </time>
@@ -287,39 +312,6 @@ dropbox 把資料 sync 到我電腦上的時候會突然出問題呢？<br />
 <h4>Other:</h4>
 <ul>
 <li>Version Control ...</li></ul></li></ul>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-11-20T17:34:00" pubdate>
-                            Sun 20 November 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/76/wordpress-social-share-plugin/" rel="bookmark"><h1>wordpress social share plugin</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><img alt="Tweet, Like, Share and Google +1 Option Page" src="http://i.imgur.com/AuifGS2l.png" title="Tweet, Like, Share and Google +1 Option Page" /></p>
-<p>轉來 wordpress 之後，為了找社群分享外掛找了好久，最後找到這個<a href="http://wordpress.org/extend/plugins/only-tweet-like-share-and-google-1/">Tweet, Like,
-Share and Google +1 Option Page</a> ，他的好處在於：</p>
-<ol>
-<li>
-<p>按鈕大，明顯又好按，圖示也算不錯看</p>
-</li>
-<li>
-<p>可以自己加按鈕啊～～～，所以我後來自已加了個噗浪的按鈕。沒辦法，wordpress上幾乎沒有噗浪的分享外掛，所以就去這個網頁抓語法，然後搜尋自己想要的噗浪圖示之後，將圖示傳到自己的空間，並加到這個外掛裡。</p>
-</li>
-<li>
-<p>想要客製化
-    css，裡面也有欄位可以輸入，不過似乎要指定 <code>id</code> 或 <code>class</code> 才行，直接輸入
-    css 屬性，他不理我囧 。<br />
-    另外講一下該怎麼加入自己想要的按鈕：</p>
-</li>
-</ol>
-<p>首先先將以下內容複製到「custom button」的欄位裡，我是只有複製到「large
-icon」的欄位裡，看個人需要也可以複製到「small
-icon」的欄位裡 ...</p>
                     </section>
                 </article>
             </li>

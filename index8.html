@@ -49,6 +49,32 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-06-18T18:07:00" pubdate>
+                            Mon 18 June 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/519/vm-template-cant-specify-hostname/" rel="bookmark"><h1>VM template can't specify hostname</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>這個應該很多 hypervisor 都適用，在做完 vm 的 template 之後，因為
+hostname 在這裡已經固定，所以利用這個 template 再開啟一個新的 instance
+的時候，hostname 會還是原本舊的，如果是用 DHCP
+的方式的話，照理來說是可以拿到當初指定的 hostname 的。<br />
+<!--more--><br />
+這邊我找了很多資料，本來從 hypervisor
+這邊去找資料，不過都沒什麼結果，後來才發現原來從 Guest OS 這邊去修改就
+OK 了，方法很簡單，在你的 VM 裡執行：</p>
+<div class="highlight"><pre>sudo mv /etc/hostname /etc/hostname.old
+</pre></div>
+
+
+<p>然後重開 VM，這樣就會根據 DHCP ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-06-17T22:47:00" pubdate>
                             Sun 17 June 2012
                         </time>
@@ -278,29 +304,6 @@ address 就直接分在同個網段下的不同區域，例如 192.168.1 ...</p>
 
 
 <p>另外如果還要判斷在 array ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-06T00:34:00" pubdate>
-                            Sun 06 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/414/oh-my-zsh-mytheme/" rel="bookmark"><h1>oh my zsh: my theme</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><img alt="zsh" src="http://i.imgur.com/abOdnAul.png" title="Selection_61b4e7" /></p>
-<p>在之前<a href="http://blog.carlcarl.tw/410/ubuntu%e5%ae%89%e8%a3%9d-oh-my-zsh" title="ubuntu 安裝 oh my zsh">安裝完 zsh 和 oh my zsh</a>之後，就先來設定我的 theme 啦。</p>
-<p>但是因為看了老半天沒有一個 theme
-符合我的需求，所以我就自己另外弄了一個，大致是從 muse 這個 theme
-去改的，另外在搭配部份其他 theme 中的一些小元件。這個 theme 包含了基本的
-host name、時間、和 進 git repo 會有的提示，git repo
-的狀態包含多種圖示，所以很容易可以看出 repo 中有什麼改變。</p>
-<p>我的 theme 可以在這邊下載：<a href="%20http://dl.dropbox.com/u/4413406/carlcarl.zsh-theme">載點</a>。（或是可以直接 clone 我的
-<a href="https://github.com/carlcarl/oh-my-zsh">repo</a>）</p>
-<p>把這個檔案下載下來存成 <code>carlcarl ...</code></p>
                     </section>
                 </article>
             </li>

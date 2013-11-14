@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog - python</title>
+        <title>carlcarl's blog - celery</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
@@ -49,60 +49,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-19T19:36:00" pubdate>
-                            Sat 19 March 2011
+                        <time class="post-time" datetime="2013-11-15T00:19:00" pubdate>
+                            Fri 15 November 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/9/python-django-use-media-url-in-templates/" rel="bookmark"><h1>Python Django use MEDIA_URL in templates</h1></a>
+                        <a href="http://blog.carlcarl.me/1379/python_celery_crontab/" rel="bookmark"><h1>Python celery crontab</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>在 settings 裏面已經設好 <code>MEDIA_URL</code>了，可是一直不知道怎麼在 templates 中使用<br />
-像是:</p>
-<div class="highlight"><pre>href=&quot;{{ MEDIA_URL }}styles/base.css&quot;
-</pre></div>
+                        <p>記錄一下 celery crontab 的用法，分成兩個部分：service 和 worker。service 負責定期塞 job 到 message queue 裡面，worker 則將 queue 裡的 job 拿出來執行，message queue 的部分這裡使用 <code>rabbitmq</code>。這邊為了方便，用了一個簡單的加法為例。</p>
+<h2>Worker</h2>
+<h3>tasks.py</h3>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+<span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">task</span>
 
+<span class="n">celery</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s">&#39;tasks&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s">&#39;amqp&#39;</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="s">&#39;amqp://guest@localhost//&#39;</span><span class="p">)</span>
 
-<p>後來看到一篇有說在 <code>retrun render_to_response</code> 這邊需要修改，改成這樣, 把第三個參數加上 <code>context_instance</code> 這句:</p>
-<div class="highlight"><pre><span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;base/index.html&#39;</span><span class="p">,</span> <span class="p">{},</span> <span class="n">context_instance</span> <span class="o">=</span>
-    <span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
-</pre></div>
-
-
-<p>這樣就可以使用了~~。</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-19T19:27:00" pubdate>
-                            Sat 19 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/8/python-django-beautiful-soup-in-google-app-engine/" rel="bookmark"><h1>Python Django Beautiful Soup in Google app engine</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前用原生的 HTMLParser 用到很囧，感覺功能還是不夠強大</p>
-<p>後來看到了 <code>BeautifulSoup</code> 這個 plugin 就想說用用看，使用很方便，只要把裏面的 BeautifulSoup 複製一份到自己的目錄下，然後 import 進來就好了:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">BeautifulSoup</span>
-</pre></div>
-
-
-<p>在 Google app engine 裡，我是搭配urlfetch來使用，如以下的片段範例:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">google.appengine.api</span> <span class="kn">import</span> <span class="n">urlfetch</span>
-<span class="kn">from</span> <span class="nn">BeautifulSoup</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;the url address you want&#39;</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">urlfetch</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="c"># 抓網頁</span>
-<span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200 ...</span></pre></div>
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">add ...</span></pre></div>
                     </section>
                 </article>
             </li>
             <hr/>
         </ol>
         <div class="paginator">
-                    <a href="http://blog.carlcarl.me/category/python2.html">
-                        <i class="icon-circle-arrow-left"></i>
-                    </a>
-            Page 3 / 3
+            Page 1 / 1
         </div>
 
     </div>

@@ -49,6 +49,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-03-29T02:13:00" pubdate>
+                            Thu 29 March 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/326/ubuntu-desktop-record-recorditnow-ffmpeg/" rel="bookmark"><h1>Ubuntu desktop record: recorditnow+ffmpeg</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="recorditnow" src="http://i.imgur.com/EQUigGel.png" title="RecordItNow_507" /></p>
+<p>最近找了很多類似的軟體，不過有些都弄不起來，不然就是怪怪的囧，後來試了這套組合發現還不錯：recorditnow + ffmpeg，ffmpeg 是核心，recorditnow 是 frontend。</p>
+<p>下面是使用教學的影片，可以參考看看：<br />
+<a href="http://www.youtube.com/watch?v=dEnZe-qfLWA">http://www.youtube.com/watch?v=dEnZe-qfLWA</a></p>
+<p>不過我直接下 recorditnow 執行 ffmpeg 選項會有沒辦法停止的問題。<br />
+<a href="https://bugs.launchpad.net/ubuntu/+source/recorditnow/+bug/858973">https://bugs.launchpad.net/ubuntu/+source/recorditnow/+bug/858973</a><br />
+上面這個連結有提供修正的 PPA<br />
+以 ubuntu 來講，執行：</p>
+<div class="highlight"><pre>sudo add-apt-repository ppa:ap10336/ppa
+sudo apt-get update
+sudo apt-get ...</pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-03-21T04:08:00" pubdate>
                             Wed 21 March 2012
                         </time>
@@ -246,31 +270,6 @@ add，應該就會顯示正常了。</p>
 <p>執行後會出現一個視窗，接著如以下圖片，可以看到右邊有 <code>button layout</code> 這個欄位，有關閉，最小化，最大化的值，<code>:</code> 代表相對位置，如下圖的話指的是放在左邊，如果要放在右邊的話就把 <code>:</code> 移到前面就
 OK 了。</p>
 <p><img alt="gconf-editor" src="http://198.199.117.21/wp-content/uploads/2012/02/502.png" /></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-12-19T17:01:00" pubdate>
-                            Mon 19 December 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/233/naming-apache-log-with-date/" rel="bookmark"><h1>naming apache log with date</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>目前是用 <code>logrotate</code> 來作，只要在 <code>/etc/logrotate.d/apache2</code> 裡加入下面這個參數即可：</p>
-<ul>
-<li>dateext</li>
-</ul>
-<p>另外可以根據需求看要不要把 <code>weekly</code> 改為 <code>daily</code> 這樣。</p>
-<p>處理過後的檔名就會像這樣 <code>access.log-20111218.gz</code>，這樣在之後處理和分析
-log 會比較方便，另外記得數量也要根據需求改，因為改完後變成能保存的 log
-日期也會跟著減少，要增多的話也是直接修改上面 <code>/etc/logrotate.d/apache2</code> 這個檔案，將 <code>rotate</code> 後面的數字加大，後面的數字表示要存的 log 數量，超過的話就會將最舊的刪除這樣。</p>
-<p>後記：<br />
-如果要跟 awstats 搭配的話可以在裡面加入：</p>
-<div class="highlight"><pre>prerotate
-    /usr/lib/cgi-bin/awstats.pl -config ...</pre></div>
                     </section>
                 </article>
             </li>

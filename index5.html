@@ -49,6 +49,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-04-26T20:31:00" pubdate>
+                            Fri 26 April 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/835/popen-check-empty/" rel="bookmark"><h1>popen check empty</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近常在用 <code>popen</code> 呼叫系統指令，並讀取執行的結果作判斷，而有時候會有想確認內容是否會為空的需求，因為 popen return 的是一個 file descriptor，本來想說能不能用 <code>ftell</code>
+找出大小來做判斷，不過<a href="http://stackoverflow.com/questions/7705338/ftell-function-giving-1-in-c-for-stdout">後來證明不行</a>，pipe 跟一般的檔案還是有差別。</p>
+<p>找了一堆資料，後來只想到用 <code>fgetc</code> 來讀，再用讀不讀得到值作為判斷 orz，不知道有沒有其他更好的解法就是。</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-04-14T23:45:00" pubdate>
                             Sun 14 April 2013
                         </time>
@@ -262,42 +278,6 @@ html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverfl
 <div class="highlight"><pre><span class="n">group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
 <span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">)</span>
 <span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-b&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true ...</span></pre></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-01-28T15:08:00" pubdate>
-                            Mon 28 January 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/759/python-logging/" rel="bookmark"><h1>python logging</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>紀錄一下 python logging 的一些簡單設定。<br />
-<!--more--></p>
-<h3>可以在一開始設定 log 訊息顯示的等級：</h3>
-<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
-</pre></div>
-
-
-<h3>設定顯示的訊息格式, ex: <code>ERROR: error message</code></h3>
-<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(levelname)s</span><span class="s">: </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<h3>log message 加上變數</h3>
-<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;The value is </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-</pre></div>
-
-
-<p>有人可能會想用另外一個較基本的方法：</p>
-<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;The value is </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
-</pre></div>
-
-
-<p>但是這種方法，就會變成不管 log 不 log，都會執行組合字串的動作，所以並不建議，這邊可以參考 ...</p>
                     </section>
                 </article>
             </li>

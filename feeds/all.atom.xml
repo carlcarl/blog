@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2013-11-02T11:00:00+08:00</updated><entry><title>Ubuntu resolveconf setting</title><link href="http://blog.carlcarl.me/1378/ubuntu_resolveconf_setting/" rel="alternate"></link><updated>2013-11-02T11:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-11-02:1378/ubuntu_resolveconf_setting/</id><summary type="html">&lt;p&gt;好久沒設定 ubuntu server 了，最近在用的時候發現重開的時候，DNS 設定 (&lt;code&gt;resol.conf&lt;/code&gt;) 會 reset，可是我也沒裝 NetworkManager 之類的東西啊 =.=，查了一下，是 &lt;code&gt;resolveconf&lt;/code&gt; 這個套件的影響，可是我不太想直接把它移除，因為怕有啥 side effect，所以就還是照它的使用方法做，順便記錄一下該怎麼設定：&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2013-11-15T00:19:00+08:00</updated><entry><title>Python celery crontab</title><link href="http://blog.carlcarl.me/1379/python_celery_crontab/" rel="alternate"></link><updated>2013-11-15T00:19:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-11-15:1379/python_celery_crontab/</id><summary type="html">&lt;p&gt;記錄一下 celery crontab 的用法，分成兩個部分：service 和 worker。service 負責定期塞 job 到 message queue 裡面，worker 則將 queue 裡的 job 拿出來執行，message queue 的部分這裡使用 &lt;code&gt;rabbitmq&lt;/code&gt;。這邊為了方便，用了一個簡單的加法為例。&lt;/p&gt;
+&lt;h2&gt;Worker&lt;/h2&gt;
+&lt;h3&gt;tasks.py&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;
+
+&lt;span class="n"&gt;celery&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;tasks&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;backend&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;amqp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;amqp://guest@localhost//&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@task&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;執行&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 叫三個 worker，每個 worker 有三個 process，然後取 tasks[.py] 內的 task&lt;/span&gt;
+celeryd-multi start 3 -c 3 -A tasks
+&lt;span class="c"&gt;# 想叫一個 worker，有三個 process，然後是用 eventlet，並且取 tasks[.py] 內的 task&lt;/span&gt;
+celeryd-multi start 1 -P eventlet -c 3 -A tasks
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Daemon script&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/celery/celery/blob/3.1/extra/generic-init.d/celeryd"&gt;/etc/init.d/celeryd&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://docs.celeryproject.org/en/master/tutorials/daemonizing.html"&gt;/etc/default/celeryd&lt;/a&gt;  &lt;/p&gt;
+&lt;h2&gt;Service&lt;/h2&gt;
+&lt;h3&gt;celeryconfig.py&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;timedelta&lt;/span&gt;
+
+&lt;span class="n"&gt;CELERYBEAT_SCHEDULE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;add-every-30-seconds&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  &lt;span class="c"&gt;# 可以自己決定怎麼取名字&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;task&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;tasks.add&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="c"&gt;# 塞 tasks[.py] 內的 add 到 job queue 裡&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;schedule&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;seconds&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;  &lt;span class="c"&gt;# 每隔 30 秒&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;args&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# 加法的兩個數字&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;CELERY_TIMEZONE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;UTC&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;執行&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;celery beat
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Daemon script&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/celery/celery/blob/3.1/extra/generic-init.d/celerybeat"&gt;/etc/init.d/celerybeat&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://docs.celeryproject.org/en/master/tutorials/daemonizing.html"&gt;/etc/default/celerybeat&lt;/a&gt;&lt;/p&gt;</summary><category term="celery"></category></entry><entry><title>Ubuntu resolveconf setting</title><link href="http://blog.carlcarl.me/1378/ubuntu_resolveconf_setting/" rel="alternate"></link><updated>2013-11-02T11:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-11-02:1378/ubuntu_resolveconf_setting/</id><summary type="html">&lt;p&gt;好久沒設定 ubuntu server 了，最近在用的時候發現重開的時候，DNS 設定 (&lt;code&gt;resol.conf&lt;/code&gt;) 會 reset，可是我也沒裝 NetworkManager 之類的東西啊 =.=，查了一下，是 &lt;code&gt;resolveconf&lt;/code&gt; 這個套件的影響，可是我不太想直接把它移除，因為怕有啥 side effect，所以就還是照它的使用方法做，順便記錄一下該怎麼設定：&lt;/p&gt;
 &lt;h2&gt;先刪除原本預設的 DNS 設定&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sudo resolvconf -d eth0.inet
 &lt;/pre&gt;&lt;/div&gt;
