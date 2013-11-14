@@ -151,7 +151,7 @@ lock，這邊可以再看一下 `SynchronizedBase` 的定義：
 `acquire` 和 `release` method。
 
 所以不需要再自己 lock 囉？......No,
-還是需要(炸)。以上面的程式來排一個流程，假如 A process 和 B process
+還是需要(炸)。上面只有在單獨取值或寫值的時候才有 lock，但是如果是取值和寫值這兩個動作要放在一起做的話就需要自己再用一個 lock 包起來，以上面的程式來排一個流程，如 A process 和 B process
 分別對 `counter.value` 做遞增 (`counter.value += 1`)：
 
 	:::python
@@ -161,7 +161,12 @@ lock，這邊可以再看一下 `SynchronizedBase` 的定義：
     counter.value = 11 # A process
     counter.value = 11 # B process
 
-依然會得到錯誤的結果~~。
+依然會得到錯誤的結果~~。所以需要用如以下的做法才行:
+
+	:::python
+	counter_lock = Lock()
+	with counter_lock:
+    	counter.value += 1
 
 參考資料：  
 [Python multiprocessing easy way to implement a simple counter?][]  
