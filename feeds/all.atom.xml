@@ -544,7 +544,7 @@ lock，這邊可以再看一下 &lt;code&gt;SynchronizedBase&lt;/code&gt; 的定
 &lt;p&gt;這邊的 &lt;code&gt;self.acquire&lt;/code&gt; 和 &lt;code&gt;self.release&lt;/code&gt; 其實就會分別呼叫 &lt;code&gt;_lock&lt;/code&gt; 裡的
 &lt;code&gt;acquire&lt;/code&gt; 和 &lt;code&gt;release&lt;/code&gt; method。&lt;/p&gt;
 &lt;p&gt;所以不需要再自己 lock 囉？......No,
-還是需要(炸)。以上面的程式來排一個流程，假如 A process 和 B process
+還是需要(炸)。上面只有在單獨取值或寫值的時候才有 lock，但是如果是取值和寫值這兩個動作要放在一起做的話就需要自己再用一個 lock 包起來，以上面的程式來排一個流程，如 A process 和 B process
 分別對 &lt;code&gt;counter.value&lt;/code&gt; 做遞增 (&lt;code&gt;counter.value += 1&lt;/code&gt;)：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;counter&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
 &lt;span class="n"&gt;counter&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;  &lt;span class="c"&gt;# 暫存值 11, A process&lt;/span&gt;
@@ -554,7 +554,13 @@ lock，這邊可以再看一下 &lt;code&gt;SynchronizedBase&lt;/code&gt; 的定
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;依然會得到錯誤的結果~~。&lt;/p&gt;
+&lt;p&gt;依然會得到錯誤的結果~~。所以需要用如以下的做法才行:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;counter_lock&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Lock&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;counter_lock&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;counter&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;參考資料：&lt;br /&gt;
 &lt;a href="http://stackoverflow.com/questions/1233222/"&gt;Python multiprocessing easy way to implement a simple counter?&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://stackoverflow.com/questions/1233222/python-multiprocessing-easy-way-to-implement-a-simple-counter"&gt;Python multiprocessing and a shared counter&lt;/a&gt;&lt;br /&gt;
