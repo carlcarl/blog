@@ -58,6 +58,8 @@
 
                     <section class="post-content">
                         <p>記錄一下 celery crontab 的用法，分成兩個部分：service 和 worker。service 負責定期塞 job 到 message queue 裡面，worker 則將 queue 裡的 job 拿出來執行，message queue 的部分這裡使用 <code>rabbitmq</code>。這邊為了方便，用了一個簡單的加法為例。</p>
+<!--more-->
+
 <h2>Worker</h2>
 <h3>tasks.py</h3>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>

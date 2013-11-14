@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2013-11-15T00:19:00+08:00</updated><entry><title>Python celery crontab</title><link href="http://blog.carlcarl.me/1379/python_celery_crontab/" rel="alternate"></link><updated>2013-11-15T00:19:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-11-15:1379/python_celery_crontab/</id><summary type="html">&lt;p&gt;記錄一下 celery crontab 的用法，分成兩個部分：service 和 worker。service 負責定期塞 job 到 message queue 裡面，worker 則將 queue 裡的 job 拿出來執行，message queue 的部分這裡使用 &lt;code&gt;rabbitmq&lt;/code&gt;。這邊為了方便，用了一個簡單的加法為例。&lt;/p&gt;
+&lt;!--more--&gt;
+
 &lt;h2&gt;Worker&lt;/h2&gt;
 &lt;h3&gt;tasks.py&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;
