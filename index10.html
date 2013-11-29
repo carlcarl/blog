@@ -49,6 +49,25 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-03-29T02:35:00" pubdate>
+                            Thu 29 March 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/332/gnome-shell-built-in-desktop-recording/" rel="bookmark"><h1>Gnome shell built-in desktop recording</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近才發現 Gnome shell
+有內建的錄影功能，虧我之前還找工具找超久囧，這個功能算是滿簡單的，大概講一下它的限制：只能錄影沒有聲音，沒有設定介面，只有快捷鍵，快捷鍵的設定和影片存放的位置都沒辦法修改，都是固定的這樣。不知道以後會不會有介面出來就是了。</p>
+<p>快捷鍵為 <code>ctrl+shift+alt+r</code>，你沒看錯，就是這四個鍵一起按，按下後，右下角會出現一個小紅色的圓點，表示為錄影中，再按一次快捷鍵就是停止（它沒有暫停的功能），影片預設會存到 <code>/home/你的帳號/</code> 底下，格式為
+webm ，用 smplayer 之類的應該都能開來看，我自己測試錄影的結果是還不錯。</p>
+<p>參考網址：  </p>
+<p><a href="http://www.ubuntubuzz.com/2011/11/ubuntu-desktop-screen-recording-tool.html">http://www.ubuntubuzz.com/2011/11/ubuntu-desktop-screen-recording-tool.html</a></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-03-29T02:13:00" pubdate>
                             Thu 29 March 2012
                         </time>
@@ -244,32 +263,6 @@ add，應該就會顯示正常了。</p>
 
 <p>參考網址：<br />
 <a href="http://fcamel-fc.blogspot.com/2009/04/python-vim.html">http://fcamel-fc.blogspot.com/2009/04/python-vim.html</a></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-04T18:56:00" pubdate>
-                            Sat 04 February 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/239/linux-mint-cinnanmon-change-position-of-window-buttons/" rel="bookmark"><h1>Linux Mint cinnamon change position of window buttons</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>==================================================<br />
-2012/03/28更新</p>
-<h1>cinnamon 已經有提供修改按鈕位置的設定了，所以就不用照以下的方法來改哩。</h1>
-<p>最近裝了 cinnamon 來玩玩，是有一些有趣的東西沒錯，像是視窗動畫，不過整體來說，我覺得並沒有好到值得我換成這套，所以用了沒多久我就換回來 Gnome 啦～～。</p>
-<p>不過這邊還是來講一下 cinnamon 怎麼改變視窗按鈕位置的方法吧。</p>
-<p>首先先裝編輯設定的套件</p>
-<div class="highlight"><pre>apt-get install gconf-editor
-</pre></div>
-
-
-<p>執行後會出現一個視窗，接著如以下圖片，可以看到右邊有 <code>button layout</code> 這個欄位，有關閉，最小化，最大化的值，<code>:</code> 代表相對位置，如下圖的話指的是放在左邊，如果要放在右邊的話就把 <code>:</code> 移到前面就
-OK 了。</p>
-<p><img alt="gconf-editor" src="http://198.199.117.21/wp-content/uploads/2012/02/502.png" /></p>
                     </section>
                 </article>
             </li>

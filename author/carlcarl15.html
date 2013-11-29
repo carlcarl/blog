@@ -49,6 +49,39 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-13T10:44:00" pubdate>
+                            Mon 13 June 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/23/linux-check-dist-io/" rel="bookmark"><h1>Linux check disk IO</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>讀取速度 輸入下面這行指令</p>
+<div class="highlight"><pre>hdparm -t /dev/sda
+</pre></div>
+
+
+<p><code>/dev/sda</code> 可以換成想測的硬碟裝置</p>
+<p>輸入之後會產生類似以下的輸出</p>
+<div class="highlight"><pre>Timing buffered disk reads:  1168 MB in  3.00 seconds = 389.29 MB/sec
+</pre></div>
+
+
+<p>組 RAID5 速度快很多= =+</p>
+<p>寫入速度 輸入下面這行指令</p>
+<div class="highlight"><pre><span class="nb">time </span>sh -c <span class="s2">&quot;dd if=/dev/zero of=tmp.dd bs=1000k count=100; sync&quot;</span>
+</pre></div>
+
+
+<p>會產生類似以下的輸入</p>
+<div class="highlight"><pre>100+0 records in
+100 ...</pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-05-26T09:05:00" pubdate>
                             Thu 26 May 2011
                         </time>
@@ -284,37 +317,6 @@ sudo dpkg-reconfigure postfix
 
 <p>參考網址</p>
 <p><a href="http://www.c.happycodings.com/Sorting_Searching/code15.html">http://www.c.happycodings.com/Sorting_Searching/code15.html</a></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-27T09:27:00" pubdate>
-                            Sun 27 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/13/c-how-to-know-the-file-size/" rel="bookmark"><h1>C how to know the file size</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>兩種方法~</p>
-<p>1.利用 <code>fseek</code>(或 <code>lseek</code>)</p>
-<div class="highlight"><pre><span class="kt">FILE</span><span class="o">*</span> <span class="n">f</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s">&quot;r+&quot;</span><span class="p">);</span>
-<span class="n">fseek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">);</span>
-<span class="n">size</span> <span class="o">=</span> <span class="n">ftell</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-<span class="n">fseek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">);</span>
-</pre></div>
-
-
-<p>2.用 <code>stat</code> 函式</p>
-<div class="highlight"><pre><span class="k">struct</span> <span class="n">stat</span> <span class="n">st</span><span class="p">;</span>
-<span class="n">stat</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">st</span><span class="p">);</span>
-<span class="n">size</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">st_size</span><span class="p">;</span>
-</pre></div>
-
-
-<p>參考網址:</p>
-<p><a href="http://stackoverflow.com/questions/238603/how-can-i-get-a-files-size-in-c">http://stackoverflow.com/questions/238603/how-can-i-get-a-files-size-in-c</a></p>
                     </section>
                 </article>
             </li>

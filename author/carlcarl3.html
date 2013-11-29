@@ -49,6 +49,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-14T05:11:00" pubdate>
+                            Sun 14 July 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1131/python-pyramid-with-grunt-js/" rel="bookmark"><h1>Python Pyramid with Grunt.js</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>這幾天試玩了一下
+<a href="http://gruntjs.com">Grunt.js</a>，感覺還不錯方便，所以來筆記一些自己的設定。一開始還在想
+<a href="http://www.pylonsproject.org">Pyramid</a> 和 Grunt 要怎麼結合，雖然有 Google
+了一下，不過好像都沒有一個比較準確的答案，所以這邊我就照自己想的來做
+XD。</p>
+<p>我主要在 Grunt 中用的功能有：</p>
+<ol>
+<li>minify 和 combine css, js</li>
+<li>監控檔案的變化，有變動的話就做 1 的步驟</li>
+<li>做完 1 的步驟就自動 reload browser (livereload)</li>
+</ol>
+<p>livereload 這邊是透過 Grunt bind 一個 port
+並監視檔案的變化，接著網頁的部分加入這個 port 底下所提供的
+javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-07-12T02:15:00" pubdate>
                             Fri 12 July 2013
                         </time>
@@ -276,32 +303,6 @@ js，沒有被 gzip 處理過。</p>
 <p>我原本設定是
 <code>gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript</code>，想說該設的都設了，想不到還是有漏網之魚，加上之後重啟，果然就 OK 哩。</p>
 <p>附帶一提，我把 ...</p></!--more-->
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-16T19:25:00" pubdate>
-                            Sun 16 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1023/html5-canvas-double-buffering/" rel="bookmark"><h1>html5 canvas double buffering</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>因為之前寫 java 的經驗，讓我以為在 html5 的 canvas 上也要自己實作 double
-buffering，但是在我後來實作後發現，好像哪裡怪怪的，因為其實原本就沒有在閃的感覺了，所以加了
-double buffering 好像也沒啥差，重點是 performance 下降很多......。</p>
-<!--more-->
-
-<p>後來花了一些時間找資料，我得到的結論－是大部分的情況，不需要自己做
-double buffering，因為瀏覽器會很聰明的幫你做。但是它怎麼判斷什麼時候該把
-buffer 的部分 render 上去呢？以下是我的鍵盤猜測：</p>
-<p>因為現在大多數的螢幕更新頻率都是 60Hz，也就是說大概每 16 ms
-就會刷新一次螢幕，而瀏覽器本身在刷新的頻率可能也會接近這個時間，但是有沒有比較高就不知道了，因為你所看到的可能會被你螢幕的更新頻率所限制，就算瀏覽器刷新頻率是
-1000Hz，反正一般的銀幕也看不出來:P。</p>
-<p>以一個簡單的例子來實驗，假如我在一開始把一個方形塗上顏色然後 clear
-掉 ...</p></!--more-->
                     </section>
                 </article>
             </li>

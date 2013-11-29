@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2013-11-15T00:19:00+08:00</updated><entry><title>Python celery crontab</title><link href="http://blog.carlcarl.me/1379/python_celery_crontab/" rel="alternate"></link><updated>2013-11-15T00:19:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-11-15:1379/python_celery_crontab/</id><summary type="html">&lt;p&gt;記錄一下 celery crontab 的用法，分成兩個部分：service 和 worker。service 負責定期塞 job 到 message queue 裡面，worker 則將 queue 裡的 job 拿出來執行，message queue 的部分這裡使用 &lt;code&gt;rabbitmq&lt;/code&gt;。這邊為了方便，用了一個簡單的加法為例。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2013-11-29T23:00:00+08:00</updated><entry><title>Define Makefile variable in rule</title><link href="http://blog.carlcarl.me/1380/define_makefile_variable_in_rule/" rel="alternate"></link><updated>2013-11-29T23:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-11-29:1380/define_makefile_variable_in_rule/</id><summary type="html">&lt;p&gt;沒在寫啥 Makefile，要用的時候才發現不會在 rule 裡面 assign variable XD。具體用法如下:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; 
+    &lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;eval &lt;/span&gt;tmp :&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;shell &lt;span class="nb"&gt;echo &lt;/span&gt;1&lt;span class="k"&gt;))&lt;/span&gt;
+    @echo &lt;span class="k"&gt;$(&lt;/span&gt;tmp&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;參考資料:&lt;br /&gt;
+&lt;a href="http://stackoverflow.com/questions/1909188/define-make-variable-at-rule-execution-time"&gt;Define make variable at rule execution time&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://stackoverflow.com/questions/2019989/how-to-assign-the-output-of-a-command-to-a-makefile-variable"&gt;How to assign the output of a command to a Makefile variable&lt;/a&gt;  &lt;/p&gt;</summary><category term=""></category></entry><entry><title>Python celery crontab</title><link href="http://blog.carlcarl.me/1379/python_celery_crontab/" rel="alternate"></link><updated>2013-11-15T00:19:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-11-15:1379/python_celery_crontab/</id><summary type="html">&lt;p&gt;記錄一下 celery crontab 的用法，分成兩個部分：service 和 worker。service 負責定期塞 job 到 message queue 裡面，worker 則將 queue 裡的 job 拿出來執行，message queue 的部分這裡使用 &lt;code&gt;rabbitmq&lt;/code&gt;。這邊為了方便，用了一個簡單的加法為例。&lt;/p&gt;
 &lt;!--more--&gt;
 
 &lt;h2&gt;Worker&lt;/h2&gt;

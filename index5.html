@@ -49,6 +49,38 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-04-27T00:23:00" pubdate>
+                            Sat 27 April 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/838/linux-kernel-space-get-time-interval/" rel="bookmark"><h1>Linux kernel space get time interval</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前聽到可以用 <code>jiffies</code>
+來抓時間，可是我自己測的結果是前後抓的時間會都一樣囧。查了一下
+stackoverflow，也有<a href="http://stackoverflow.com/questions/4655711/measuring-execution-time-of-a-function-inside-linux-kernel">一個遇到一樣的問題</a>，我猜可能 <code>jiffies</code> 也是用
+period update 的方式做更新，由於中間測量的 function
+太快，導致來不及更新就拿到了一樣的值這樣。而在下面的回答中看到可以用
+<code>do_gettimeofday()</code> 來抓時間區間，簡單範例如下：<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="cp">#include &lt;linux/time.h&gt;</span>
+<span class="c1">// ...</span>
+<span class="k">struct</span> <span class="n">timeval</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">;</span>
+<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
+
+<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">begin</span><span class="p">);</span>
+<span class="c1">// Do something here</span>
+<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">end</span><span class="p">);</span>
+
+<span class="c1">// Get milliseconds </span>
+<span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">-</span> <span class="n">begin</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="n">val</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end ...</span></pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-04-26T20:31:00" pubdate>
                             Fri 26 April 2013
                         </time>
@@ -252,32 +284,6 @@ html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverfl
 
 
 <p>將以上內容複製到 <code>.vimrc</code> 內即可。</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-01-29T16:50:00" pubdate>
-                            Tue 29 January 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/772/python-argparse/" rel="bookmark"><h1>python argparse</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>紀錄一些 python argparse module 的使用方法和問題：<br />
-<!--more--></p>
-<h3>選項的參數為 optional</h3>
-<p>譬如說 <code>-f</code> 這選項允許一個檔案的路徑名稱： <code>-f test.txt</code>，如果沒給檔案名稱就預設使用 example.txt：</p>
-<div class="highlight"><pre><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;example.txt&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<h3>設定各個選項分開，不允許放在一起使用</h3>
-<p>如果我希望 <code>-f</code> 和 <code>-b</code> 只有其中一個能被執行而已的話，這時候要用 <code>add_mutually_exclusive_group</code> 產生一個 group ，之後被加入這個 group 的參數就會套用這個分開使用的規則：</p>
-<div class="highlight"><pre><span class="n">group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
-<span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">)</span>
-<span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-b&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true ...</span></pre></div>
                     </section>
                 </article>
             </li>

@@ -49,6 +49,41 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-09-05T18:12:00" pubdate>
+                            Mon 05 September 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/43/mongodb-rockmongo/" rel="bookmark"><h1>MongoDB Web management tool： rockmongo</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="http://i.imgur.com/BtTNDdsl.png"><img alt="1315246483-954501738" src="http://i.imgur.com/BtTNDdsl.png" /></a></p>
+<p>最近找到的一個管理 MongoDB 的網頁介面工具，是用 php5
+寫的，介面不是說很好看啦，不過還算好用囉，而且很重要的一點是他有中文繁體，真的是倍感親切XD。</p>
+<!--more-->
+
+<p>首先先到<a href="http://code.google.com/p/rock-php/downloads/list">這邊下載</a>。</p>
+<p>下載完之後解壓縮並且移到網頁目錄下，然後試著連上去看看。如果出現要下載
+php 的 mongodb module 的話，就照以下步驟去安裝：</p>
+<div class="highlight"><pre>sudo apt-get install php-pecl
+sudo pecl install mongo
+</pre></div>
+
+
+<p>接著在 php.ini 裡面加上一行：</p>
+<div class="highlight"><pre><span class="n">extension</span><span class="o">=</span><span class="n">mongo</span><span class="p">.</span><span class="n">so</span>
+</pre></div>
+
+
+<p>接著重啟 Web Server。<span style="color: #ff0000;">如果有用 php-fpm
+的話記得這個也要重啟才有用</span>，一開始忘記，結果這邊卡好久=.=。再連一次網頁看看應該就可以連上了。</p>
+<p><a href="http://i.imgur.com/epxeSLs.png"><img alt="1315247147-2959807055" src="http://i.imgur.com/epxeSLs.png" /></a></p>
+<p>預設帳密是「admin」(帳密一樣)，接著按登錄就可以進去管理頁面了。但是預設帳密一樣感覺很容易會被侵入 ...</p></!--more-->
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-09-04T14:28:00" pubdate>
                             Sun 04 September 2011
                         </time>
@@ -288,34 +323,6 @@ sudo apt-get install mongodb-10gen
 <a href="http://www.vim.org/scripts/script.php?script_id=2358">http://www.vim.org/scripts/script.php?script_id=2358</a><br />
 解壓縮至 <code>.vim</code> 底下，再來在 <code>.vim</code> 底下執行</p>
 <div class="highlight"><pre>ctags -R --c++-kinds<span class="o">=</span>+p --fields<span class="o">=</span>+iaS --extra<span class="o">=</span>+q --language-force<span class="o">=</span>C++ cpp_src ...</pre></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-07-13T07:12:00" pubdate>
-                            Wed 13 July 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/33/c-edit-code-but-make-only-show-up-to-date/" rel="bookmark"><h1>c edit code but Make only show up to date</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>感覺好像是很初學的問題，不過我還是不知道原來這個會有關係 orz</p>
-<p><span style="color: #ff0000;">在 Makefile 裡記得要加dependency file</span></p>
-<p>例如檔案是 test.cpp, test.h, test2.cpp, test2.h 要編譯成一個執行檔</p>
-<div class="highlight"><pre><span class="nf">test</span><span class="o">:</span>
-    g++ -o <span class="nb">test </span>test.o test2.o
-<span class="nf">test.o</span><span class="o">:</span>
-    g++ -c test.cpp
-<span class="nf">test2.o</span><span class="o">:</span>
-    g++ -c test2.cpp
-</pre></div>
-
-
-<p>要改成</p>
-<div class="highlight"><pre><span class="nf">test</span><span class="o">:</span> <span class="m">test.o test2.o</span>
-    g++ -o <span class="nb">test </span>test.o test2.o ...</pre></div>
                     </section>
                 </article>
             </li>

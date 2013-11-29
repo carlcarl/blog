@@ -49,6 +49,34 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-13T07:12:00" pubdate>
+                            Wed 13 July 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/33/c-edit-code-but-make-only-show-up-to-date/" rel="bookmark"><h1>c edit code but Make only show up to date</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>感覺好像是很初學的問題，不過我還是不知道原來這個會有關係 orz</p>
+<p><span style="color: #ff0000;">在 Makefile 裡記得要加dependency file</span></p>
+<p>例如檔案是 test.cpp, test.h, test2.cpp, test2.h 要編譯成一個執行檔</p>
+<div class="highlight"><pre><span class="nf">test</span><span class="o">:</span>
+    g++ -o <span class="nb">test </span>test.o test2.o
+<span class="nf">test.o</span><span class="o">:</span>
+    g++ -c test.cpp
+<span class="nf">test2.o</span><span class="o">:</span>
+    g++ -c test2.cpp
+</pre></div>
+
+
+<p>要改成</p>
+<div class="highlight"><pre><span class="nf">test</span><span class="o">:</span> <span class="m">test.o test2.o</span>
+    g++ -o <span class="nb">test </span>test.o test2.o ...</pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-07-07T18:35:00" pubdate>
                             Thu 07 July 2011
                         </time>
@@ -270,39 +298,6 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
         index   index.php;
     }
     location /phpmyadmin ...</pre></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-06-13T10:44:00" pubdate>
-                            Mon 13 June 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/23/linux-check-dist-io/" rel="bookmark"><h1>Linux check disk IO</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>讀取速度 輸入下面這行指令</p>
-<div class="highlight"><pre>hdparm -t /dev/sda
-</pre></div>
-
-
-<p><code>/dev/sda</code> 可以換成想測的硬碟裝置</p>
-<p>輸入之後會產生類似以下的輸出</p>
-<div class="highlight"><pre>Timing buffered disk reads:  1168 MB in  3.00 seconds = 389.29 MB/sec
-</pre></div>
-
-
-<p>組 RAID5 速度快很多= =+</p>
-<p>寫入速度 輸入下面這行指令</p>
-<div class="highlight"><pre><span class="nb">time </span>sh -c <span class="s2">&quot;dd if=/dev/zero of=tmp.dd bs=1000k count=100; sync&quot;</span>
-</pre></div>
-
-
-<p>會產生類似以下的輸入</p>
-<div class="highlight"><pre>100+0 records in
-100 ...</pre></div>
                     </section>
                 </article>
             </li>

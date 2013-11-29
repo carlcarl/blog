@@ -49,6 +49,32 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-02-04T18:56:00" pubdate>
+                            Sat 04 February 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/239/linux-mint-cinnanmon-change-position-of-window-buttons/" rel="bookmark"><h1>Linux Mint cinnamon change position of window buttons</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>==================================================<br />
+2012/03/28更新</p>
+<h1>cinnamon 已經有提供修改按鈕位置的設定了，所以就不用照以下的方法來改哩。</h1>
+<p>最近裝了 cinnamon 來玩玩，是有一些有趣的東西沒錯，像是視窗動畫，不過整體來說，我覺得並沒有好到值得我換成這套，所以用了沒多久我就換回來 Gnome 啦～～。</p>
+<p>不過這邊還是來講一下 cinnamon 怎麼改變視窗按鈕位置的方法吧。</p>
+<p>首先先裝編輯設定的套件</p>
+<div class="highlight"><pre>apt-get install gconf-editor
+</pre></div>
+
+
+<p>執行後會出現一個視窗，接著如以下圖片，可以看到右邊有 <code>button layout</code> 這個欄位，有關閉，最小化，最大化的值，<code>:</code> 代表相對位置，如下圖的話指的是放在左邊，如果要放在右邊的話就把 <code>:</code> 移到前面就
+OK 了。</p>
+<p><img alt="gconf-editor" src="http://198.199.117.21/wp-content/uploads/2012/02/502.png" /></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-12-19T17:01:00" pubdate>
                             Mon 19 December 2011
                         </time>
@@ -266,52 +292,6 @@ dropbox 把資料 sync 到我電腦上的時候會突然出問題呢？<br />
 的東西，才會有這樣的問題。解決方法就是在 <code>mount</code> 設定檔要多設定一個「uid」的參數。</p>
 <p>首先要修改 <code>/etc/fstab</code>，範例如下：</p>
 <div class="highlight"><pre>/dev/sda2   /media/Data     ntfs-3g  rw,defaults,umask=0000 ...</pre></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-11-20T19:43:00" pubdate>
-                            Sun 20 November 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/114/about/" rel="bookmark"><h1>About</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <h3>My Information:</h3>
-<ul>
-<li>Name: 黃健瑋 (Chien-Wei Huang)</li>
-<li>Plurk: <a href="http://www.plurk.com/carlcarl">http://www.plurk.com/carlcarl</a></li>
-<li>stackoverflow <img alt="profile for Chien-Wei Huang at Stack Overflow, Q&amp;A for professional and enthusiast programmers" src="http://stackoverflow.com/users/flair/667106.png?theme=default" title="profile for Chien-Wei Huang at Stack Overflow, Q&amp;A for professional and enthusiast programmers" /></li>
-</ul>
-<h3>Specialty:</h3>
-<ul>
-<li>
-<h4>Programming:</h4>
-<ul>
-<li>Good: C, PHP, Python, JavaScript</li>
-<li>Normal: C++, Java</li>
-</ul>
-</li>
-<li>
-<h4>Web Development:</h4>
-<ul>
-<li>Frontend: HTML, css, JavaScript (jQuery)</li>
-<li>Backend: PHP, Python (With Django framwwork)</li>
-<li>Database: MySQL (Management and Tuning), MongoDB</li>
-</ul>
-</li>
-<li>
-<h4>System Administration</h4>
-<ul>
-<li>Linux (Ubuntu, CentOS)</li>
-</ul>
-</li>
-<li>
-<h4>Other:</h4>
-<ul>
-<li>Version Control ...</li></ul></li></ul>
                     </section>
                 </article>
             </li>

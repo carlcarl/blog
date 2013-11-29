@@ -49,6 +49,45 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-09T04:24:00" pubdate>
+                            Wed 09 May 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/438/javascript-check-if-array-and-empty/" rel="bookmark"><h1>Javascript check if array and empty</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>列出一些我覺得比較 OK 的方法，至於其他還有一些方法可以參考最下方的網址。  
+判斷是否為 array 的方式：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">xxx</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="c1">// 第1種：先用 if 判斷瀏覽器是否支援此method 然後再執行</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+
+<span class="c1">// 第2種</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">xxx</span><span class="p">)</span> <span class="o">===</span> <span class="s1">&#39;[object Array]&#39;</span>
+
+<span class="c1">// 第3種</span>
+<span class="mi">3</span><span class="p">.</span> <span class="nx">xxx</span> <span class="k">instanceof</span> <span class="nb">Array</span>
+</pre></div>
+
+
+<p>判斷 array 是否為 empty的方式：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">xxx</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Array is empty&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>另外如果還要判斷在 array ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-05-06T00:34:00" pubdate>
                             Sun 06 May 2012
                         </time>
@@ -276,25 +315,6 @@ token 當作參數傳送回去就 OK ...</p>
 的安裝包，用 <code>apt-get</code> 也找不到，後來試看看 <code>pip install epydoc</code> 就 OK
 了。這邊有點要注意的是，如果你的 project
 是在 <code>virtualenv</code> 環境下的話，建議將 <code>epydoc ...</code></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-03-29T02:35:00" pubdate>
-                            Thu 29 March 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/332/gnome-shell-built-in-desktop-recording/" rel="bookmark"><h1>Gnome shell built-in desktop recording</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近才發現 Gnome shell
-有內建的錄影功能，虧我之前還找工具找超久囧，這個功能算是滿簡單的，大概講一下它的限制：只能錄影沒有聲音，沒有設定介面，只有快捷鍵，快捷鍵的設定和影片存放的位置都沒辦法修改，都是固定的這樣。不知道以後會不會有介面出來就是了。</p>
-<p>快捷鍵為 <code>ctrl+shift+alt+r</code>，你沒看錯，就是這四個鍵一起按，按下後，右下角會出現一個小紅色的圓點，表示為錄影中，再按一次快捷鍵就是停止（它沒有暫停的功能），影片預設會存到 <code>/home/你的帳號/</code> 底下，格式為
-webm ，用 smplayer 之類的應該都能開來看，我自己測試錄影的結果是還不錯。</p>
-<p>參考網址：  </p>
-<p><a href="http://www.ubuntubuzz.com/2011/11/ubuntu-desktop-screen-recording-tool.html">http://www.ubuntubuzz.com/2011/11/ubuntu-desktop-screen-recording-tool.html</a></p>
                     </section>
                 </article>
             </li>

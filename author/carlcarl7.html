@@ -49,6 +49,52 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-10-09T02:15:00" pubdate>
+                            Tue 09 October 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/663/mongodb-check-status-command/" rel="bookmark"><h1>MongoDB check status command</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>紀錄一下 MongoDB 看狀態時常會用到的指令。<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="c"># 看目前 state 的指令</span>
+mongostat
+</pre></div>
+
+
+<p>以下都是進 mongo shell 後的指令。</p>
+<div class="highlight"><pre><span class="c1">// 狀態總覽</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">()</span>
+
+<span class="c1">// 看 memory</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">mem</span>
+
+<span class="c1">// 看 page fault</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">extra_info</span>
+
+<span class="c1">// 看 sharding 的狀態，兩個指令同樣功能</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">printShardingStatus</span><span class="p">()</span>
+<span class="nx">sh</span><span class="p">.</span><span class="nx">status</span><span class="p">()</span>
+
+<span class="c1">// 查看 db 本身的資訊</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">stats</span><span class="p">()</span>
+
+<span class="c1">// 查看 collection 的 index</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">getIndexes</span><span class="p">()</span>
+
+<span class="c1">// 查看目前執行的 operation</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">currentOP</span><span class="p">()</span>
+</pre></div>
+
+
+<p>參考網址 ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-09-14T05:05:00" pubdate>
                             Fri 14 September 2012
                         </time>
@@ -274,29 +320,6 @@ template 的時間，因此還是希望能避免不必要的空間浪費。</p>
     maintain。</li>
 <li>使用這個 library 的時候，也能夠保護到內部的 private variable
     不被直接做 access ...</li></ul>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-07-06T03:49:00" pubdate>
-                            Fri 06 July 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/525/html-script-speed-up-with-defer/" rel="bookmark"><h1>HTML script speed up with defer</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在 <a href="http://blog.xuite.net/vexed/tech/61308318">script tag 屬性 async defer 差別</a> 這邊看到了 script tag 有 async
-和 defer 的用法，所以就來試試看。大致測試了一下，速度的確有快了一些(大概加快50 ~ 100ms
-左右吧XD)。以下大概講一下我的測試範例內容：</p>
-<!--more-->
-
-<div class="highlight"><pre><span class="c">&lt;!-- </span>
-<span class="c">這是原本的程式</span>
-<span class="c">a-b.js 需要 a.js, 而 a-c.js 需要 a.js, 這是這 3 個 js 檔的相依關係</span>
-<span class="c">最後會從 a-c.js 裡呼叫 library 來執行</span>
-<span class="c">由於 async 屬性並不適合用來處理有相依性的 js 檔案 ...</span></pre></div></!--more-->
                     </section>
                 </article>
             </li>
