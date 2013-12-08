@@ -49,6 +49,43 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-07-23T02:03:00" pubdate>
+                            Mon 23 July 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/537/javascript-library-simple-structure/" rel="bookmark"><h1>Javascript Library simple structure</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前在找 Javascript 這方面的 library
+該怎麼寫，看了一些資料，覺得以下這種方式不錯<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="c1">// library example</span>
+<span class="kd">var</span> <span class="nx">animal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;tom&#39;</span><span class="p">;</span> <span class="c1">// private variable</span>
+
+    <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;getName&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="nx">name</span><span class="p">;}</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">API</span><span class="p">;</span>
+<span class="p">}(</span><span class="nx">windows</span><span class="p">);</span>
+
+<span class="nx">animal</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span> <span class="c1">// call API</span>
+</pre></div>
+
+
+<p>這樣寫法的優點：</p>
+<ul>
+<li>透過將這個 library 當作一個物件並呼叫其中的
+    function，使用上較不會跟其他 library function 混淆，也較好
+    maintain。</li>
+<li>使用這個 library 的時候，也能夠保護到內部的 private variable
+    不被直接做 access ...</li></ul>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-07-06T03:49:00" pubdate>
                             Fri 06 July 2012
                         </time>
@@ -263,31 +300,6 @@ Youtube 上面看到教學影片，覺得安裝還滿方便的，而且是 Citri
 的架構上，並未將外網和內網分開，照理來說分開來會比較好啦，但是覺得這樣做，以後就能直接拿一般的
 PC(單網卡) 來擴充當 compute node。management ip address 和 guest ip
 address 就直接分在同個網段下的不同區域，例如 192.168.1 ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-09T17:38:00" pubdate>
-                            Wed 09 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/444/django-name-array/" rel="bookmark"><h1>Django name array</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在寫 php 的時候，如果想傳多個 checkbox 的值的話，常會在 html
-裏面設定這些 checkbox 的 name 為
-<code>list[]</code>，也就是會加個 <code>[]</code> 在名稱後面，在 php 處理的時候就可以利用
-<code>$_POST['list']</code> 取出這個 array。</p>
-<p>而如果是 django name array
-要處理的話，方式有點不太一樣，它並不會自動去判斷 <code>[]</code>，所以在 django
-這邊還是必須讀 <code>list[]</code> 這樣的名稱，這也表示在 html
-裡，<code>[]</code> 是可以不加的，但是我還是建議加上就是了，至少這樣我覺得會比較好懂。<br />
-<!--more--><br />
-來看一下簡單的範例：</p>
-<p>html</p>
-<div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;list[]&quot;</span> <span class="na">value=</span><span class="s">&quot;value ...</span></pre></div>
                     </section>
                 </article>
             </li>

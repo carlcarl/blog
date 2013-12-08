@@ -49,6 +49,35 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-10-09T03:21:00" pubdate>
+                            Tue 09 October 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/671/mongodb-split-chunk/" rel="bookmark"><h1>MongoDB split chunk</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>練習了一下自己手動切 chunk，因為有時候 MongoDB
+切出來的不一定是理想的範圍 orz。</p>
+<p>大致就兩個步驟，第一個是切 chunk，第二個是移動 chunk 到某個 shard
+上，如果 balancer 沒關掉的話，第二個步驟會由 balancer 幫你決定你的 chunk
+要移到哪個 shard 上。<br />
+<!--more-->  </p>
+<h3>切 chunk 指令</h3>
+<div class="highlight"><pre><span class="c1">// 第一個參數是指定在哪個 DB 中的 collection，</span>
+<span class="c1">// 因為文件裡只說是 collection，所以可能會忘了加上 DB 的名稱</span>
+<span class="c1">// 第二個參數是你指定的 sharding key，cutPoint 則是要從哪個數值下去切</span>
+<span class="nx">sh</span><span class="p">.</span><span class="nx">splitAt</span><span class="p">(</span><span class="s2">&quot;yourDB.yourCollection&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="nx">cutPoint</span><span class="p">})</span>
+</pre></div>
+
+
+<p>or</p>
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">runCommand ...</span></pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-10-09T02:15:00" pubdate>
                             Tue 09 October 2012
                         </time>
@@ -283,43 +312,6 @@ template 的時間，因此還是希望能避免不必要的空間浪費。</p>
 <p>而其實 mongodb 本身有提供一個參數 <code>smallfiles</code>
 ，這個參數可以讓這些預先生成的 journal 檔案一個從 1G 降到約 13X MB
 左右，所以總共 3 個 journal file ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-07-23T02:03:00" pubdate>
-                            Mon 23 July 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/537/javascript-library-simple-structure/" rel="bookmark"><h1>Javascript Library simple structure</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前在找 Javascript 這方面的 library
-該怎麼寫，看了一些資料，覺得以下這種方式不錯<br />
-<!--more--></p>
-<div class="highlight"><pre><span class="c1">// library example</span>
-<span class="kd">var</span> <span class="nx">animal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;tom&#39;</span><span class="p">;</span> <span class="c1">// private variable</span>
-
-    <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;getName&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="nx">name</span><span class="p">;}</span>
-    <span class="p">};</span>
-    <span class="k">return</span> <span class="nx">API</span><span class="p">;</span>
-<span class="p">}(</span><span class="nx">windows</span><span class="p">);</span>
-
-<span class="nx">animal</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span> <span class="c1">// call API</span>
-</pre></div>
-
-
-<p>這樣寫法的優點：</p>
-<ul>
-<li>透過將這個 library 當作一個物件並呼叫其中的
-    function，使用上較不會跟其他 library function 混淆，也較好
-    maintain。</li>
-<li>使用這個 library 的時候，也能夠保護到內部的 private variable
-    不被直接做 access ...</li></ul>
                     </section>
                 </article>
             </li>

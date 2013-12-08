@@ -49,6 +49,36 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-13T15:51:00" pubdate>
+                            Mon 13 June 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/24/ubuntu-nginx-installation/" rel="bookmark"><h1>Ubuntu Nginx installation</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>[更新] 這邊有修改過的<a href="/25/ubuntu-nginx-installation-easier/">簡單版</a></p>
+<p>弄了好久，參考了幾篇教學，應該算是能跑了吧囧a。話說有幾篇教學講得都不太一樣 害我也不知道該看哪篇才好，後來是找了<a href="http://library.linode.com/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid">這一篇</a>來作看看。</p>
+<p>首先先抓套件來安裝吧:</p>
+<div class="highlight"><pre>apt-get install nginx php5-cli php5-cgi spawn-fcgi psmisc
+</pre></div>
+
+
+<p>接著在 <code>/etc/nginx/sites-available/</code>，底下應該會有個 <code>default</code> 設定檔，直接來修改這個檔案:</p>
+<div class="highlight"><pre>server {
+    listen   80 default;
+    server_name  localhost;
+    access_log  /var/log/nginx/localhost.access.log;
+    location / {
+        root   /var/www/nginx-default;
+        index   index.php;
+    }
+    location /phpmyadmin ...</pre></div>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-06-13T10:44:00" pubdate>
                             Mon 13 June 2011
                         </time>
@@ -285,38 +315,6 @@ sudo dpkg-reconfigure postfix
 
 
 <p>這樣如果 i 不等於 2 的話 就會在前面先印出那些資訊 然後才會印出 index ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-27T19:58:00" pubdate>
-                            Sun 27 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/14/c-use-qsort-sort-string-array/" rel="bookmark"><h1>C use qsort sort string array</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>指標真的好難 寫了那麼久還是不太懂</p>
-<p>想用qsort sort 字串 array 結果compare函式怎麼用都會錯囧</p>
-<p>後來上網查了一下資料 才知道用錯了orz</p>
-<p>以下是compare函式範例</p>
-<div class="highlight"><pre><span class="kt">int</span> <span class="nf">compare</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">b</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">char</span><span class="o">**</span><span class="p">)</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">char</span><span class="o">**</span><span class="p">)</span><span class="n">b</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>像以下這種就可以用上面的compare函式來處理  </p>
-<div class="highlight"><pre><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;123&quot;</span>  
-<span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;111222&quot;</span>
-</pre></div>
-
-
-<p>參考網址</p>
-<p><a href="http://www.c.happycodings.com/Sorting_Searching/code15.html">http://www.c.happycodings.com/Sorting_Searching/code15.html</a></p>
                     </section>
                 </article>
             </li>

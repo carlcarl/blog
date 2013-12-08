@@ -49,6 +49,41 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-09-05T18:51:00" pubdate>
+                            Mon 05 September 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/44/vimrc-check-hostname/" rel="bookmark"><h1>vimrc check hostname</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>因為在不同電腦用了一個共用的 vimrc 檔，但是又想在兩邊作一些不同的設定，所以找了一下資料看要怎麼作。雖然有判斷作業系統的方式，不過好像不太適合我的用法，然後我通常不同的電腦都會設個有意義的 hostname，所以最後想說就用 hostname 去作判斷啦，以下是一個範例：</p>
+<div class="highlight"><pre>let hostname = substitute(system(&#39;hostname&#39;), &#39;n&#39;, &#39;&#39;, &#39;&#39;)
+if hostname == &quot;lab&quot;
+    &quot;do something
+elseif hostname == &quot;home&quot;
+    &quot;do something
+endif
+</pre></div>
+
+
+<p>另外附上判斷 OS 的方式：</p>
+<div class="highlight"><pre>if has(&#39;win32&#39;)
+    &quot;do something
+elseif has(&#39;mac&#39;)
+    &quot;do something
+elseif has(&#39;unix&#39;)
+    &quot;do something
+endif
+</pre></div>
+
+
+<p>參考網址 ...</p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-09-05T18:12:00" pubdate>
                             Mon 05 September 2011
                         </time>
@@ -303,26 +338,6 @@ sudo apt-get install mongodb-10gen
 <p>這樣就能保留這個檔案了～。</p>
 <p>參考網頁:<br />
 <a href="http://www.lampblog.net/2011/01/svn-delete%EF%BC%8D%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/">http://www.lampblog.net/2011/01/svn-delete</a></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-07-13T13:41:00" pubdate>
-                            Wed 13 July 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/34/vim-omnicppcompletestl-support/" rel="bookmark"><h1>vim OmniCppComplete+STL support</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>搞了很久 一直自己鬼打牆 好不容易終於裝好了orz</p>
-<p>首先先去 <a href="http://www.vim.org/scripts/script.php?script_id=1520">http://www.vim.org/scripts/script.php?script_id=1520</a>
-下載 OmniCppComplete的 plugin，將其解壓縮在 <code>.vim</code> 底下。</p>
-<p>再來去下載支援 STL 的 plugin
-<a href="http://www.vim.org/scripts/script.php?script_id=2358">http://www.vim.org/scripts/script.php?script_id=2358</a><br />
-解壓縮至 <code>.vim</code> 底下，再來在 <code>.vim</code> 底下執行</p>
-<div class="highlight"><pre>ctags -R --c++-kinds<span class="o">=</span>+p --fields<span class="o">=</span>+iaS --extra<span class="o">=</span>+q --language-force<span class="o">=</span>C++ cpp_src ...</pre></div>
                     </section>
                 </article>
             </li>

@@ -49,6 +49,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-16T23:10:00" pubdate>
+                            Sun 16 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1043/nginx-pagespeed-gzip-combine-js/" rel="bookmark"><h1>nginx pagespeed gzip combine js</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在用 <a href="http://gtmetrix.com">GTmetrix</a> 看網站的效能的時候，發現只有 pagespeed combine 出來的
+js，沒有被 gzip 處理過。</p>
+<!--more-->
+
+<p>google 了一下，在 <a href="https://github.com/pagespeed/ngx_pagespeed/issues/368">Github 上也找到同樣的問題</a>，裡面說要加上
+<code>application/javascript</code>，回頭看了一下我的 nginx 設定檔，果然沒加到= =。</p>
+<p>我原本設定是
+<code>gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript</code>，想說該設的都設了，想不到還是有漏網之魚，加上之後重啟，果然就 OK 哩。</p>
+<p>附帶一提，我把 ...</p></!--more-->
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-16T19:25:00" pubdate>
                             Sun 16 June 2013
                         </time>
@@ -261,32 +283,6 @@ pid 檔案，google 了一下，在 stackoverflow
             <span class="c"># f is the method decorated</span>
             <span class="k">def</span> <span class="nf">f_retry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
                 <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs ...</span></pre></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-05-23T16:25:00" pubdate>
-                            Thu 23 May 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/852/python-cant-use-a-string-pattern-on-a-bytes-like-object/" rel="bookmark"><h1>Python: can't use a string pattern on a bytes-like object</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近嘗試將 Python2 的程式轉成
-Python3，看起來好像很順利，不過在執行的時候就出現了 Excepion
-囧，內容就是
-<code>can't use a string pattern on a bytes-like object</code>，看了一下，是 <code>json</code>
-的 <code>loads</code> 在轉<code>httplib</code> <code>read</code> 的 output 出現問題，而原來在 Python2
-中並不會出現這個問題，原來程式如下：<br />
-<!--more--></p>
-<div class="highlight"><pre><span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</pre></div>
-
-
-<p>後來查了一下資料才發現，這邊的 <code>read</code>，似乎讀出的資料是 <code>byte</code> 的
-type，還需要做 encode ...</p>
                     </section>
                 </article>
             </li>
