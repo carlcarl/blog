@@ -49,6 +49,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-13T16:24:00" pubdate>
+                            Wed 13 July 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/35/svn-delete-only-in-repo/" rel="bookmark"><h1>svn delete only in repo</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>版本管理一些檔案像是測資之類的可能會不小心用 svn add 起來，但是有些測資檔案很大，實在不想上傳，所以就想要將檔案從 svn 版本中移除。</p>
+<p>之前都很笨的先備份檔案，做刪除，然後再複製回來，後來查資料才發現有參數可以用:</p>
+<div class="highlight"><pre>svn delete --keep-local file
+</pre></div>
+
+
+<p>這樣就能保留這個檔案了～。</p>
+<p>參考網頁:<br />
+<a href="http://www.lampblog.net/2011/01/svn-delete%EF%BC%8D%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/">http://www.lampblog.net/2011/01/svn-delete</a></p>
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-07-13T13:41:00" pubdate>
                             Wed 13 July 2011
                         </time>
@@ -259,45 +281,12 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
                 </article>
             </li>
             <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-06-21T00:31:00" pubdate>
-                            Tue 21 June 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/25/ubuntu-nginx-installation-easier/" rel="bookmark"><h1>Ubuntu nginx installation(easier)</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>從 <a href="/24/ubuntu-nginx-installation">之前這篇</a> 做了點修改</p>
-<div class="highlight"><pre>apt-get install nginx php5-cli php5-cgi spawn-fcgi psmisc
-</pre></div>
-
-
-<p>接著在 <code>/etc/nginx/sites-available/</code> 底下會有個 <code>default</code>，直接來修改這個檔案:</p>
-<div class="highlight"><pre>server {
-    listen   80 default;
-    server_name  localhost;
-    access_log  /var/log/nginx/localhost.access.log;
-    location / {
-        root   /var/www/nginx-default;
-        index   index.php;
-    }
-    location /phpmyadmin {
-    root /usr/share;
-    index index.php;
-    }
-    location ~ .php$ {
-        set $php_root ...</pre></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl13.html">
                         <i class="icon-circle-arrow-left"></i>
                     </a>
-            Page 14 / 16
+            Page 14 / 17
                 <a href="http://blog.carlcarl.me/author/carlcarl15.html">
                     <i class="icon-circle-arrow-right"></i>
                 </a>

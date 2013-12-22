@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2013-12-08T17:00:00+08:00</updated><entry><title>[review] kivy interactive applications in python</title><link href="http://blog.carlcarl.me/1381/review_kivy_interactive_applications_in_python/" rel="alternate"></link><updated>2013-12-08T17:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-12-08:1381/review_kivy_interactive_applications_in_python/</id><summary type="html">&lt;p&gt;&lt;img alt="kivy interactive applications in python" src="http://i.imgur.com/87z6yUy.png" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2013-12-22T21:30:00+08:00</updated><entry><title>Django template check if in debug mode</title><link href="http://blog.carlcarl.me/1382/django_template_check_if_in_debug_mode/" rel="alternate"></link><updated>2013-12-22T21:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-12-22:1382/django_template_check_if_in_debug_mode/</id><summary type="html">&lt;p&gt;找了一下在 template 中確認是否在 debug mode 底下的方法，找了很多，不過好像都有點繞圈子，後來發現其實 Django 內建還是有&lt;a href="http://www.djangobook.com/en/2.0/chapter09.html"&gt;簡單的方法&lt;/a&gt;。&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;在 &lt;code&gt;settings.py&lt;/code&gt; 裡，先確認 &lt;code&gt;debug&lt;/code&gt; 是 &lt;code&gt;True&lt;/code&gt;，然後再加上：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INTERNAL_IPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;127.0.0.1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;之後在 template 裡就可以這樣用:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;debug&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;This&lt;/span&gt; &lt;span class="nx"&gt;is&lt;/span&gt; &lt;span class="nb"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;This&lt;/span&gt; &lt;span class="nx"&gt;is&lt;/span&gt; &lt;span class="nx"&gt;production&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nx"&gt;endif&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果到 production 的話，就將 &lt;code&gt;debug&lt;/code&gt; 設為 &lt;code&gt;False&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;參考資料：&lt;br /&gt;
+&lt;a href="https://djangosnippets.org/snippets/93/"&gt;Template Query Debug&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://docs.djangoproject.com/en/dev/ref/templates/api/#subclassing-context-requestcontext"&gt;Subclassing Context: RequestContext&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://stackoverflow.com/questions/4247717/django-using-different-templates-for-production/"&gt;Django: Using Different Templates for Production&lt;/a&gt;  &lt;/p&gt;</summary><category term="django"></category></entry><entry><title>[review] kivy interactive applications in python</title><link href="http://blog.carlcarl.me/1381/review_kivy_interactive_applications_in_python/" rel="alternate"></link><updated>2013-12-08T17:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-12-08:1381/review_kivy_interactive_applications_in_python/</id><summary type="html">&lt;p&gt;&lt;img alt="kivy interactive applications in python" src="http://i.imgur.com/87z6yUy.png" /&gt;&lt;/p&gt;
 &lt;p&gt;其實很久沒看有關 GUI library 相關的書了，會看這本是因為之前其實就有聽說過 &lt;a href="http://kivy.org"&gt;kivy&lt;/a&gt; 這個 python library，但是一直沒機會摸摸看。前一陣子剛好 &lt;a href="http://www.packtpub.com"&gt;packt&lt;/a&gt; 在找人 review 一些電子書，所以就想說可以試試看。是說 packt 最近感覺還滿活躍的，常在一些網站徵求可以幫忙 review 的人，譬如說我現在就有在看另外一本 zsh 的書，幫忙訂正草稿和給一些意見，事後除了可以得到原來的電子書，也可以另外在網站上選一本自己想要的電子書，還蠻不錯的~~。&lt;/p&gt;
 &lt;p&gt;從 kivy 的官網可以看到它的一些特色，像 cross platform，license 也是很 free 的 MIT，其他還有像常被拿來講的 multi-touch 之類的 feature。在書中可以看到 kivy 還有一個比較特別的地方就是它有一個 kivy language，其實有種 css 的感覺，主要就是負責整個 GUI 的 view 該怎麼呈現，而且也有各種不同的 layout 可以套用，不過大致上我覺得是有利有弊吧，把 view 切出來，在程式的處理上可能是會比較乾淨，不過這樣也要再花時間另外學一種語言，如果可以的話，我是滿希望可以直接套用 css 語法，這樣學習曲線比較沒那麼陡 XD。&lt;/p&gt;
 &lt;p&gt;整本書分成幾個部分，一開始就直接講該如何建立一個 GUI app，然後講解 kivy language 的寫法和一些排版該怎麼實作，是說沒講說 kivy 該怎麼安裝，讓我一開始不知道哪種安裝方法比較好，譬如說我可以用 &lt;a href="https://pypi.python.org/pypi/pip"&gt;pip&lt;/a&gt;，可以從官網下載 kivy 的安裝程式，也可以用 &lt;a href="http://brew.sh"&gt;homebrew&lt;/a&gt; 安裝，後來有查一下資料和實際試過幾個方法發現 pip 安裝有點問題，homebrew 安裝會有點不穩，所以就用官方網站上的了。不過我覺得少點篇幅介紹怎麼安裝是件好事就是XD。&lt;/p&gt;

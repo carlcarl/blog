@@ -49,6 +49,32 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-10T02:12:00" pubdate>
+                            Mon 10 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/941/python-setup-py-package_data-permission/" rel="bookmark"><h1>Python setup.py package_data permission</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近嘗試把一些額外的 static 檔案加入到 python 的 package
+裡來讓程式操作，後來有查到可以在 setup.py 裡設定
+<code>package_data</code>，照著做之後好像滿順利的，但是在用 root 權限 install
+完，用一般使用者執行就遇到 permission 的錯誤了。</p>
+<!--more-->
+
+<p>看了一下安裝目錄下的 static 檔案，結果權限是 <code>400</code>，owner 是
+<code>root</code>，難怪一般使用者無法讀取，想說會不會是因為我的原本檔案權限的關係，檢查了一下，果然是
+<code>400</code>，但是我改了權限再重新安裝居然還是一樣，這時我還想說會不會是原本就有這樣的限制，還查了一堆資料
+orz。</p>
+<p>最後想到，會不會是因為我那些 build 所產生的目錄的關係，於是我把
+<code>xxx.pkg-info</code>，<code>build</code> 和 <code>dist</code>
+這三個資料夾都移除掉後再重新安裝，果然就 ...</p></!--more-->
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-02T04:45:00" pubdate>
                             Sun 02 June 2013
                         </time>
@@ -288,31 +314,6 @@ doc，設置還算簡單，不過好像漏了個小地方。<br />
 
 
 <p>將 <code>{{ app_path }}</code> 改為 <code>/admin ...</code></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-06-28T20:43:00" pubdate>
-                            Tue 28 June 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/29/cherokee-django-uwsgi-installation/" rel="bookmark"><h1>cherokee + django + uwsgi installation</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>首先要先裝好必要的套件，第一行先加入 cherokee 的來源，接著更新來源後才能夠安裝最新的 cherokee。rrdtool 以下三個都是在裝 uwsgi 所必要的套件，uwsgi 似乎找不到套件可以直接裝 這裡是利用pip 安裝網站上的來源: </p>
-<div class="highlight"><pre>sudo apt-add-repository ppa:cherokee-webserver/ppa
-sudo apt-get update
-sudo apt-get install cherokee
-sudo apt-get install rrdtool
-sudo apt-get install libcherokee-mod-rrd
-sudo apt-get install libxml2
-sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
-</pre></div>
-
-
-<p>接著在 ...</p>
                     </section>
                 </article>
             </li>

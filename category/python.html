@@ -49,6 +49,40 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-12-22T21:30:00" pubdate>
+                            Sun 22 December 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1382/django_template_check_if_in_debug_mode/" rel="bookmark"><h1>Django template check if in debug mode</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>找了一下在 template 中確認是否在 debug mode 底下的方法，找了很多，不過好像都有點繞圈子，後來發現其實 Django 內建還是有<a href="http://www.djangobook.com/en/2.0/chapter09.html">簡單的方法</a>。</p>
+<!--more-->
+
+<p>在 <code>settings.py</code> 裡，先確認 <code>debug</code> 是 <code>True</code>，然後再加上：</p>
+<div class="highlight"><pre><span class="n">INTERNAL_IPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+    <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>之後在 template 裡就可以這樣用:</p>
+<div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nb">debug</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nb">debug</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">else</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">production</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endif</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+
+
+<p>如果到 production 的話，就將 <code>debug</code> 設為 ...</p></!--more-->
+                    </section>
+                </article>
+            </li>
+            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-12-08T17:00:00" pubdate>
                             Sun 08 December 2013
                         </time>
@@ -291,32 +325,6 @@ XD。</p>
 <p>livereload 這邊是透過 Grunt bind 一個 port
 並監視檔案的變化，接著網頁的部分加入這個 port 底下所提供的
 javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-10T02:12:00" pubdate>
-                            Mon 10 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/941/python-setup-py-package_data-permission/" rel="bookmark"><h1>Python setup.py package_data permission</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近嘗試把一些額外的 static 檔案加入到 python 的 package
-裡來讓程式操作，後來有查到可以在 setup.py 裡設定
-<code>package_data</code>，照著做之後好像滿順利的，但是在用 root 權限 install
-完，用一般使用者執行就遇到 permission 的錯誤了。</p>
-<!--more-->
-
-<p>看了一下安裝目錄下的 static 檔案，結果權限是 <code>400</code>，owner 是
-<code>root</code>，難怪一般使用者無法讀取，想說會不會是因為我的原本檔案權限的關係，檢查了一下，果然是
-<code>400</code>，但是我改了權限再重新安裝居然還是一樣，這時我還想說會不會是原本就有這樣的限制，還查了一堆資料
-orz。</p>
-<p>最後想到，會不會是因為我那些 build 所產生的目錄的關係，於是我把
-<code>xxx.pkg-info</code>，<code>build</code> 和 <code>dist</code>
-這三個資料夾都移除掉後再重新安裝，果然就 ...</p></!--more-->
                     </section>
                 </article>
             </li>
