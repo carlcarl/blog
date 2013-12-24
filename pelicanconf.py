@@ -41,9 +41,12 @@ TAG_CLOUD_STEPS = 1
 TAG_CLOUD_MAX_ITEMS = 10
 
 import os
-THEME = os.path.expanduser(u'~/Code/pelican-themes/pelican-cait')
+# THEME = os.path.expanduser(u'~/Code/pelican-themes/pelican-cait')
+THEME = os.path.expanduser(u'~/Code/pelican-cait')
 
 GOOGLE_ANALYTICS = 'UA-24249240-5'
+
+USE_OPEN_GRAPH = True
 
 # MD_EXTENSIONS = ['codehilite','extra']
 # MD_EXTENSIONS = ['extra']
