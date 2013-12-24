@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Python logging stream" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1230/python-logging-stream/" />
                 <meta property="og:description" content="在用 uniout 的時候發現 logging 的時候沒辦法自動轉輸出為中文(因為資料有些是中文，然後有時候又需要做些log 囧)，看了一下 uniout 的 code，看來做法是另外用了一個物件，然後把 sys.stdout 的屬性複製上去，再加上編碼的功能，最後再將 sys.stdout assign 成這個物件。 我用的 logger 程式 logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.DEBUG) logger = logging.getLogger(__name__) 想說 logging module 應該也是丟 stdout，不過怎麼設就是不行，所以還是看一下 source code。 logging ..." />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="logging" />
                     <meta property="article:tag" content="uniout" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">

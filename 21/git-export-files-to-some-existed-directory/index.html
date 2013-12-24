@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="git export files to some existed directory" />
                 <meta property="og:url" content="http://blog.carlcarl.me/21/git-export-files-to-some-existed-directory/" />
                 <meta property="og:description" content="最近想把 vimrc 和 bashrc 等設定檔作同步，想說大家都在用 git，所以就不用 svn 改用 git 看看了! 但是在同步的時候卻遇到了問題，本來想說直接輸入看看 git clone <git repo url> 結果出現錯誤: fatal: destination path 'home目錄' git clone already exists and is not an empty directory 因為我的 home 目錄已經存在 而且也沒辦法 merge = =，沒辦法，只好來找一下資料。 說真的還找得滿久的，以下是我覺得算是比較能接受的一種解決方法(有其他方法歡迎提供QQ) git init git remote add origin ..." />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="bashrc" />
                     <meta property="article:tag" content="git" />
                     <meta property="article:tag" content="vimrc" />

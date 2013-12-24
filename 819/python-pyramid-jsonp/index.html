@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Python Pyramid jsonp" />
                 <meta property="og:url" content="http://blog.carlcarl.me/819/python-pyramid-jsonp/" />
                 <meta property="og:description" content="Python 的 Pyramid Framework 有支援 jsonp 的 renderer，看了一下 doc，設置還算簡單，不過好像漏了個小地方。 首先要先在 Configurator 的檔案加入下面內容 (官方 doc 裡面沒提到要從哪邊 import JSONP)： from pyramid.renderers import JSONP # 這裡使用 'callback' 當作預設的 callback function 名稱 config.add_renderer('jsonp', JSONP(param_name='callback')) 然後在 view 裡面將 renderer 改用 jsonp，這邊你還是可以加上 route_name 等參數： @view_config(renderer='jsonp') 這樣就完成了 ..." />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="jsonp" />
                     <meta property="article:tag" content="pyramid" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">

@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="nginx pagespeed gzip combine js" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1043/nginx-pagespeed-gzip-combine-js/" />
                 <meta property="og:description" content="在用 GTmetrix 看網站的效能的時候，發現只有 pagespeed combine 出來的 js，沒有被 gzip 處理過。 google 了一下，在 Github 上也找到同樣的問題，裡面說要加上 application/javascript，回頭看了一下我的 nginx 設定檔，果然沒加到= =。 我原本設定是 gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript，想說該設的都設了，想不到還是有漏網之魚，加上之後重啟，果然就 OK 哩。 附帶一提，我把 ..." />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="nginx" />
                     <meta property="article:tag" content="pagespeed" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">

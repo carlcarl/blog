@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="FreeBSD set default shell to bash" />
                 <meta property="og:url" content="http://blog.carlcarl.me/50/freebsd-set-default-shell-to-bash/" />
                 <meta property="og:description" content="最近興致來，就想說來把 FreeBSD 上的 csh 改成 bash，畢竟我還是比較習慣用 bash～。 首先先修改預設 shell： chsh -s /usr/local/bin/bash 輸入密碼後就修改成功了～。 再下來你可能會有一個已經有設定過的 .bashrc 檔案，當你放到家目錄底下的時候可能會發現說："怎麼都沒有反應？"，那是因為FreeBSD這邊吃的是 .bash\_profile這個設定檔=.=||，為了能夠兼容，我是自己又另外開了 .bash_profile 檔案，然後在裡面輸入： source ~/.bashrc 這樣以後就只要更新 .bashrc 這個設定檔就好了～。 然後後來又遇到中文無法輸入的問題，這個只要在 .bashrc 檔案中加入語系設定就可以了，另外再加上 ls 的 alias，不然 ls 輸出的目錄都不會標顏色： export LANG ..." />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="bash" />
                     <meta property="article:tag" content="freebsd" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">

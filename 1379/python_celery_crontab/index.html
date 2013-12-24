@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Python celery crontab" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1379/python_celery_crontab/" />
                 <meta property="og:description" content="記錄一下 celery crontab 的用法，分成兩個部分：service 和 worker。service 負責定期塞 job 到 message queue 裡面，worker 則將 queue 裡的 job 拿出來執行，message queue 的部分這裡使用 rabbitmq。這邊為了方便，用了一個簡單的加法為例。 Worker tasks.py from celery import Celery from celery import task celery = Celery('tasks', backend='amqp', broker='amqp://guest@localhost//') @task def add ..." />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="celery" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>

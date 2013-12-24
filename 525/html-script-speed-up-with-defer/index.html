@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="HTML script speed up with defer" />
                 <meta property="og:url" content="http://blog.carlcarl.me/525/html-script-speed-up-with-defer/" />
                 <meta property="og:description" content="在 script tag 屬性 async defer 差別 這邊看到了 script tag 有 async 和 defer 的用法，所以就來試試看。大致測試了一下，速度的確有快了一些(大概加快50 ~ 100ms 左右吧XD)。以下大概講一下我的測試範例內容： <!-- 這是原本的程式 a-b.js 需要 a.js, 而 a-c.js 需要 a.js, 這是這 3 個 js 檔的相依關係 最後會從 a-c.js 裡呼叫 library 來執行 由於 async 屬性並不適合用來處理有相依性的 js 檔案 ..." />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="javascript" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>

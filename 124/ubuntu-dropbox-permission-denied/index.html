@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Dropbox can't sync permission denied" />
                 <meta property="og:url" content="http://blog.carlcarl.me/124/ubuntu-dropbox-permission-denied/" />
                 <meta property="og:description" content="最近在備份 wordpress 的資料到 dropbox 上的時候，突然出現了錯誤：cant sync "file name" permission denied，看了一下資料夾，只有資料夾有建立起來，但是檔案都沒 sync 成功。但是之前用了也一兩年了都沒有發生這樣的問題，為什麼 dropbox 把資料 sync 到我電腦上的時候會突然出問題呢？ 花了一段時間查了一些資料，後來才發現是因為我用 ubuntu，然後又用另外一個 ntfs 裝置來存 dropbox 的東西，才會有這樣的問題。解決方法就是在 mount 設定檔要多設定一個「uid」的參數。 首先要修改 /etc/fstab，範例如下： /dev/sda2 /media/Data ntfs-3g rw,defaults,umask=0000 ..." />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="dropbox" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>

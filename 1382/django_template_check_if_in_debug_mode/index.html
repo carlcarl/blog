@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Django template check if in debug mode" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1382/django_template_check_if_in_debug_mode/" />
                 <meta property="og:description" content="找了一下在 template 中確認是否在 debug mode 底下的方法，找了很多，不過好像都有點繞圈子，後來發現其實 Django 內建還是有簡單的方法。 在 settings.py 裡，先確認 debug 是 True，然後再加上： INTERNAL_IPS = ( '127.0.0.1', 'localhost', ) 之後在 template 裡就可以這樣用: {% if debug %} <span>This is debug</span> {% else %} <span>This is production</span> {% endif %} 如果到 production 的話，就將 debug 設為 ..." />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="django" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>

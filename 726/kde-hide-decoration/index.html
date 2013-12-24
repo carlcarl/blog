@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="KDE hide decoration" />
                 <meta property="og:url" content="http://blog.carlcarl.me/726/kde-hide-decoration/" />
                 <meta property="og:description" content="之前為了隱藏 KDE 視窗的 decoration 找方法找好久，結果後來不經意就看到了這個資訊囧，不過可惜只能透過改設定檔的方式，GUI 上似乎沒有這個設定。 修改 .kde4/share/config/kwinrc，找到 [Windows]，在下一行加上： BorderlessMaximizedWindows=true 如果找不到 [Windows] ，就自己在檔案裡面補上去就可以了： [Windows] BorderlessMaximizedWindows=true 用好之後，可以再搭配 KWin Button applet improved，個人覺得還滿方便的～。 參考網址： http://majewsky.wordpress.com/2010/03/24/the-kwin-button-applet/" />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="KDE" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>

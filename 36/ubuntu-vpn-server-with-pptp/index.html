@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Ubuntu VPN Server with pptp" />
                 <meta property="og:url" content="http://blog.carlcarl.me/36/ubuntu-vpn-server-with-pptp/" />
                 <meta property="og:description" content="最近想架 VPN Server，查了一下資料，最常見的好像是 OpenVPN 和 pptp 兩種方法。pptp 的方式比較簡單，但是相對於 OpenVPN 較為不安全，是說我們系上的好像也是用 pptp，所以我想問題應該不大吧 網路環境： 使用Public IP 單網卡 首先要先安裝 pptpd sudo apt-get install pptpd 接著修改 /etc/pptpd.conf 這邊 localip 是 Server 連線之後要用的 IP，基本上跟 Server 本身的 Public IP沒有關係，可以給個 private ip 就 ok 了，remoteip 是給 ..." />
-                    <meta property="article:author:username" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

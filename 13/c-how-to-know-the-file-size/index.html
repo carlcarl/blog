@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="C how to know the file size" />
                 <meta property="og:url" content="http://blog.carlcarl.me/13/c-how-to-know-the-file-size/" />
                 <meta property="og:description" content="兩種方法~ 1.利用 fseek(或 lseek) FILE* f = fopen(fileName, "r+"); fseek(f, 0, SEEK_END); size = ftell(f); fseek(f, 0, SEEK_SET); 2.用 stat 函式 struct stat st; stat(fileName, &st); size = st.st_size; 參考網址: http://stackoverflow.com/questions/238603/how-can-i-get-a-files-size-in-c" />
-                    <meta property="article:author:username" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

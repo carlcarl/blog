@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Linux kernel space get time interval" />
                 <meta property="og:url" content="http://blog.carlcarl.me/838/linux-kernel-space-get-time-interval/" />
                 <meta property="og:description" content="之前聽到可以用 jiffies 來抓時間，可是我自己測的結果是前後抓的時間會都一樣囧。查了一下 stackoverflow，也有一個遇到一樣的問題，我猜可能 jiffies 也是用 period update 的方式做更新，由於中間測量的 function 太快，導致來不及更新就拿到了一樣的值這樣。而在下面的回答中看到可以用 do_gettimeofday() 來抓時間區間，簡單範例如下： #include <linux/time.h> // ... struct timeval begin, end; unsigned long val; do_gettimeofday(&begin); // Do something here do_gettimeofday(&end); // Get milliseconds val = (end.tv_sec - begin.tv_sec) * 1000; val += ((end ..." />
-                    <meta property="article:author:username" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

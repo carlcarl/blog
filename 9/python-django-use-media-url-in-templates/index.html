@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Python Django use MEDIA_URL in templates" />
                 <meta property="og:url" content="http://blog.carlcarl.me/9/python-django-use-media-url-in-templates/" />
                 <meta property="og:description" content="在 settings 裏面已經設好 MEDIA_URL了，可是一直不知道怎麼在 templates 中使用 像是: href="{{ MEDIA_URL }}styles/base.css" 後來看到一篇有說在 retrun render_to_response 這邊需要修改，改成這樣, 把第三個參數加上 context_instance 這句: return render_to_response('base/index.html', {}, context_instance = RequestContext(request)) 這樣就可以使用了~~。" />
-                    <meta property="article:author:username" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

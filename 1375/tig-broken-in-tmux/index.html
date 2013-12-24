@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="tig broken in tmux" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1375/tig-broken-in-tmux/" />
                 <meta property="og:description" content="這個問題已經困擾我滿久了，在 tmux 裡用 tig 畫面會一直破碎，不過一直找不到原因，最近想到，於是又找看看有沒有解法，後來試了一篇裡面的做法就 OK 了 QQ。 靈感是在查資料的時候看到有人是因為在 tmux.conf 裡設定了 default-terminal=xterm 想到的，中間有試了一下 screen，發現 tig 在 screen 中是 OK 的，echo $TERM 得到的輸出是 screen，而我在 tmux 下得到的輸出卻是 xterm-256color，想說朝這個方向去找資料。這邊先找了 tmux.conf 中，但是我並沒有設定這個東西，看了 .zshrc，原來我是在這邊設定了 export TERM ..." />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="screen" />
                     <meta property="article:tag" content="tig" />
                     <meta property="article:tag" content="tmux" />

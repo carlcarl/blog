@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Python functools.wraps note" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1249/python-functools-wraps-note/" />
                 <meta property="og:description" content="研究一下 functools.wraps。 用法 def deco(f): # @wraps(f) def hello(*args, **kwargs): print(f.__name__) # print `test` return wrapper @deco def test(): return 1 + 1 print(test.__name__) # print `hello` 在 hello 裡 print 出 'test'，這個沒什麼問題，但是在宣告完後，如果想確認 test 的 __name__ attribute，會發現 print 出的是 'hello'，這是因為 test ..." />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="wraps" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>

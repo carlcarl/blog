@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="brew install Macvim" />
                 <meta property="og:url" content="http://blog.carlcarl.me/893/brew-install-macvim/" />
                 <meta property="og:description" content="單純小筆記一下，因為每次重裝都會忘記 XDD，放在自己 blog，以後比較好查。 如果只單純下 brew install macvim 的話，原本的 vim 還是會留著，如果想用 Macvim 裡的 vim 的話，你可能會想說移掉原本的 vim，然後用 ln -s，來建個 link 就好，不過實際做是不行的，會出現一些 error，如：E254: Cannot allocate color，解決方法很簡單，就是下： brew install macvim --override-system-vim brew linkapps 這樣就會把原本的 vim 幹掉，直接套用 Macvim 裡的。 參考網址 ..." />
-                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="brew" />
                     <meta property="article:tag" content="macvim" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">

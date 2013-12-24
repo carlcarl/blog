@@ -10,11 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="XRDP shortcut d with remote connection" />
                 <meta property="og:url" content="http://blog.carlcarl.me/32/xrdp-shortcut-d-with-remote-connection/" />
                 <meta property="og:description" content="之前裝了 XRDP，還滿不錯用的。不僅可以用 Linux 的 Terminal server client，也可以用 Windows 內建的遠端連線直接連進去。 但是卻發現了一個很討厭的問題，那就是按 d 的時候會發現，怎麼視窗被縮小跑到桌面去orz，後來查了一些資料好不容易才找到，我以為這個問題很多人都會遇到的說......。 首先，問題是出在裝 XRDP 的主機上沒錯，且就是因為快捷鍵的問題，所以只要修改這個設定就 OK 了，這邊假設裝 XRDP 的主機是有 GUI 介面的(沒有的話用 ssh 就好啦XD) 先輸入: gconf-editor 應該會出現一個視窗。 接著根據 apps : metacity : global_keybindings 的順序下去找，應該可以找到一個叫做 show_desktop 的設定。然後對應的值應該會是 <Super>d，這邊就直接把這個值刪掉就好了 ..." />
-                    <meta property="article:author:username" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
