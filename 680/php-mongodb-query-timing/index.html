@@ -15,6 +15,8 @@
                 <meta property="og:url" content="http://blog.carlcarl.me/680/php-mongodb-query-timing/" />
                 <meta property="og:description" content="最近在用 PHP 在對 MongoDB 作壓力測試的時候，發現怎麼我 1 shard 和 3 shards 的 performance 會一樣，卡了很久後來才發現原來是我搞錯 MongoDB query 的時機，所以在測試的時候，query 其實都沒有發出，難怪數據會一樣。 在 PHP 的 manual 裡有說明，以下拿它的範例程式來說明 query 的時機： <?php $cursor = $collection->find()->limit(10); // query 還沒發出 $cursor = $cursor->sort(array("a" => 1)); // query 還是沒發出 var_dump($cursor->getNext()); // 這時才發出 ..." />
                     <meta property="article:author" content="carlcarl" />
+                    <meta property="article:tag" content="mongodb" />
+                    <meta property="article:tag" content="php" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

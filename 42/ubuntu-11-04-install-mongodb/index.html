@@ -15,6 +15,7 @@
                 <meta property="og:url" content="http://blog.carlcarl.me/42/ubuntu-11-04-install-mongodb/" />
                 <meta property="og:description" content="安裝的步驟比我想得還要多，本來想說應該用套件安裝就好，不過好像不行，所以 google 了一下，找到一個還算簡單的方法： sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10 接下來在 /etc/apt/sources.list 新增下面一行： deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen 接著更新並安裝： sudo apt-get update sudo apt-get install mongodb-10gen 裝完之後就會自動當作 daemon 來執行，要確認的話可以輸入： sudo netstat -antp | grep mongo 參考網址： http ..." />
                     <meta property="article:author" content="carlcarl" />
+                    <meta property="article:tag" content="mongodb" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

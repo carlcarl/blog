@@ -15,6 +15,11 @@
                 <meta property="og:url" content="http://blog.carlcarl.me/342/django-ajax-file-upload/" />
                 <meta property="og:description" content="原本以為很簡單可以完成的東西，結果花了我不少時間解決囧。 Ajax 檔案上傳我用的是 ajaxfileupload 這個 jQuery 套件，問題在於 Django 會檢查 csrf 的問題，如果我不在 settings.py 裡的 MIDDLEWARE_CLASSES 加上 django.middleware.csrf.CsrfViewMiddleware，上傳會出現 syntax error，如果我加上了，則是會跟我說 csrf token 找不到。 後來找到的解決辦法就是在 views.py 裡拿到 csrf token 並傳到 template 中，然後再改寫 ajaxfileupload.js 中的內容，讓它支援傳送參數，接著將 csrf token 當作參數傳送回去就 OK ..." />
                     <meta property="article:author" content="carlcarl" />
+                    <meta property="article:tag" content="ajax" />
+                    <meta property="article:tag" content="ajaxfileupload" />
+                    <meta property="article:tag" content="csrf" />
+                    <meta property="article:tag" content="django" />
+                    <meta property="article:tag" content="python" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

@@ -15,6 +15,12 @@
                 <meta property="og:url" content="http://blog.carlcarl.me/852/python-cant-use-a-string-pattern-on-a-bytes-like-object/" />
                 <meta property="og:description" content="最近嘗試將 Python2 的程式轉成 Python3，看起來好像很順利，不過在執行的時候就出現了 Excepion 囧，內容就是 can't use a string pattern on a bytes-like object，看了一下，是 json 的 loads 在轉httplib read 的 output 出現問題，而原來在 Python2 中並不會出現這個問題，原來程式如下： result = json.loads(self._connect.getresponse().read()) 後來查了一下資料才發現，這邊的 read，似乎讀出的資料是 byte 的 type，還需要做 encode ..." />
                     <meta property="article:author" content="carlcarl" />
+                    <meta property="article:tag" content="encode" />
+                    <meta property="article:tag" content="httplib" />
+                    <meta property="article:tag" content="json" />
+                    <meta property="article:tag" content="python" />
+                    <meta property="article:tag" content="python2" />
+                    <meta property="article:tag" content="python3" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

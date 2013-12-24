@@ -15,6 +15,7 @@
                 <meta property="og:url" content="http://blog.carlcarl.me/31/awstats-analyze-large-logs-at-once-include-gz-files/" />
                 <meta property="og:description" content="awstats的簡易安裝教學 因為在維護的網站log檔有一年份，而且都已經壓縮成gz檔，要用awstats分析的話實在很費工夫，後來發現awstats有好用的工具可以用：logresolvemerge.pl。 簡單講就是用這個工具將log檔(包含gz壓縮檔)都merge起來為一個大檔案後，再用awstats作分析。 這邊首先要注意的就是 awstats不會讀較舊的log檔，所以像我之閒已經讀了最新的log檔後想讀舊的，就只能直接砍掉紀錄檔重新開始，到 /var/lib/awstats/底下將底下的檔案刪光，如此就能回到最初的狀態 logresolvemerge.pl預設是在/usr/share/doc/awstats/examples/裡 可以移到其他地方，不然每次打路徑應該會打到手很酸XD 這裡給個幾個簡單的範例 將多個log檔merge成一個log檔 logresolvemerge.pl /var/log/apache2/.log > temp.log 將多個gz檔merge成一個log檔(其實跟上面的差不多~) logresolvemerge.pl /var/log/apache2/.gz > temp ..." />
                     <meta property="article:author" content="carlcarl" />
+                    <meta property="article:tag" content="awstats" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

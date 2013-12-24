@@ -15,6 +15,7 @@
                 <meta property="og:url" content="http://blog.carlcarl.me/645/mongodb-aggregation-group-count-sort/" />
                 <meta property="og:description" content="感覺不是很難的 query，想說用 mongodb aggregation 來解決，不過查資料查了好久才知道怎麼用。 以 sql 來說的話，我是要對某個欄位作 group by，分類完之後再對分類完的欄位作 count，算完之後再根據 count 的數字作 sort。下面這段是 MongoDB 中的用法： db.mytable.aggregate({ $group:{ _id: "$b_cd", num: {$sum:1} }}, {$sort:{num:1}} ); $b_cd 是我要分類的欄位，num 是各分類欄位的數目，這邊利用 $sum 作累加，接著再用 $sort 對 num 作排序。 中間我卡很久的原因是因為 syntax 搞錯（大括弧的位置要注意 ..." />
                     <meta property="article:author" content="carlcarl" />
+                    <meta property="article:tag" content="mongodb" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

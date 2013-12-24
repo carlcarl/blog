@@ -15,6 +15,8 @@
                 <meta property="og:url" content="http://blog.carlcarl.me/519/vm-template-cant-specify-hostname/" />
                 <meta property="og:description" content="這個應該很多 hypervisor 都適用，在做完 vm 的 template 之後，因為 hostname 在這裡已經固定，所以利用這個 template 再開啟一個新的 instance 的時候，hostname 會還是原本舊的，如果是用 DHCP 的方式的話，照理來說是可以拿到當初指定的 hostname 的。 這邊我找了很多資料，本來從 hypervisor 這邊去找資料，不過都沒什麼結果，後來才發現原來從 Guest OS 這邊去修改就 OK 了，方法很簡單，在你的 VM 裡執行： sudo mv /etc/hostname /etc/hostname.old 然後重開 VM，這樣就會根據 DHCP ..." />
                     <meta property="article:author" content="carlcarl" />
+                    <meta property="article:tag" content="hostname" />
+                    <meta property="article:tag" content="template" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

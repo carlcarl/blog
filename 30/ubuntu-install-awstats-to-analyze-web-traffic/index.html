@@ -15,6 +15,7 @@
                 <meta property="og:url" content="http://blog.carlcarl.me/30/ubuntu-install-awstats-to-analyze-web-traffic/" />
                 <meta property="og:description" content="awstats 這個工具可以透過分析 Server 的access log 檔來統計網站流量，資料的部份可以透過時間長短、來訪者的資料(國籍之類的)、瀏覽器種類來作分類，這些統計資訊則透過Web介面顯示出來。而上面這個圖是裝完 awstats 後的 Web 介面(還不錯精美= =+) 接下來就是安裝的部份啦，首先先安裝套件: sudo apt-get install awstats 接著到 /etc/awstats/ 底下可以看到預設的 awstats.conf 檔，把這個檔複製並更名 假如網站名稱為 www.domain.com 的話 cp awstats.conf awstats.www.domain.com.conf 到時候指定好 config 的參數 他就會去讀這個檔案的設定，然後要稍微修改一下 awstats ..." />
                     <meta property="article:author" content="carlcarl" />
+                    <meta property="article:tag" content="awstats" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

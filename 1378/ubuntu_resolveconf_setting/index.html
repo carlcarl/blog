@@ -15,6 +15,7 @@
                 <meta property="og:url" content="http://blog.carlcarl.me/1378/ubuntu_resolveconf_setting/" />
                 <meta property="og:description" content="好久沒設定 ubuntu server 了，最近在用的時候發現重開的時候，DNS 設定 (resol.conf) 會 reset，可是我也沒裝 NetworkManager 之類的東西啊 =.=，查了一下，是 resolveconf 這個套件的影響，可是我不太想直接把它移除，因為怕有啥 side effect，所以就還是照它的使用方法做，順便記錄一下該怎麼設定： 先刪除原本預設的 DNS 設定 sudo resolvconf -d eth0.inet 新增設定檔 sudo mkdir -p /etc/resolvconf/resolv.conf.d sudo vim /etc/resolvconf/resolv.conf.d/base base ..." />
                     <meta property="article:author" content="carlcarl" />
+                    <meta property="article:tag" content="ubuntu" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

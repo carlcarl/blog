@@ -15,6 +15,9 @@
                 <meta property="og:url" content="http://blog.carlcarl.me/233/naming-apache-log-with-date/" />
                 <meta property="og:description" content="目前是用 logrotate 來作，只要在 /etc/logrotate.d/apache2 裡加入下面這個參數即可： dateext 另外可以根據需求看要不要把 weekly 改為 daily 這樣。 處理過後的檔名就會像這樣 access.log-20111218.gz，這樣在之後處理和分析 log 會比較方便，另外記得數量也要根據需求改，因為改完後變成能保存的 log 日期也會跟著減少，要增多的話也是直接修改上面 /etc/logrotate.d/apache2 這個檔案，將 rotate 後面的數字加大，後面的數字表示要存的 log 數量，超過的話就會將最舊的刪除這樣。 後記： 如果要跟 awstats 搭配的話可以在裡面加入： prerotate /usr/lib/cgi-bin/awstats.pl -config ..." />
                     <meta property="article:author" content="carlcarl" />
+                    <meta property="article:tag" content="apache" />
+                    <meta property="article:tag" content="daily" />
+                    <meta property="article:tag" content="logrotate" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

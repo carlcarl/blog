@@ -15,6 +15,7 @@
                 <meta property="og:url" content="http://blog.carlcarl.me/44/vimrc-check-hostname/" />
                 <meta property="og:description" content="因為在不同電腦用了一個共用的 vimrc 檔，但是又想在兩邊作一些不同的設定，所以找了一下資料看要怎麼作。雖然有判斷作業系統的方式，不過好像不太適合我的用法，然後我通常不同的電腦都會設個有意義的 hostname，所以最後想說就用 hostname 去作判斷啦，以下是一個範例： let hostname = substitute(system('hostname'), 'n', '', '') if hostname == "lab" "do something elseif hostname == "home" "do something endif 另外附上判斷 OS 的方式： if has('win32') "do something elseif has('mac') "do something elseif has('unix') "do something endif 參考網址 ..." />
                     <meta property="article:author" content="carlcarl" />
+                    <meta property="article:tag" content="vim" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
