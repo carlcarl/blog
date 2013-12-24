@@ -14,7 +14,7 @@
                 <meta property="og:title" content="MySQL DB engine with log: Archive" />
                 <meta property="og:url" content="http://blog.carlcarl.me/226/mysql-db-engine-with-log-archive/" />
                 <meta property="og:description" content="前一陣子在看什麼 engine 比較適合拿來單純存 log，後來看到 Archive 這個似乎不錯，主要有以下優點： insert 速度更快。 佔的資料量較 Myisam 少。 但是有優勢，就會有相對的劣勢，Archive 有以下缺點： 不支援 delete 和 update，只能 insert 和 select。 不支援 index。 （如果你是想要存每次最後登入時間的話，那 Archive 的確是不適合，因為不支援 index 和 update。） 但是以現實角度來看單純的 log 表，像是存每次登入的紀錄： 其實真的就只會用到 insert，會用到 delete 和 update 那這個應該不太叫 log。 作 select 的機率也是微乎其微 ..." />
-                    <meta property="article:author" content="carlcarl" />
+                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="archive" />
                     <meta property="article:tag" content="innodb" />
                     <meta property="article:tag" content="mariadb" />

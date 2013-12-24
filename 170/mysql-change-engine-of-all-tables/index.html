@@ -14,7 +14,7 @@
                 <meta property="og:title" content="MySQL change engine of all tables" />
                 <meta property="og:url" content="http://blog.carlcarl.me/170/mysql-change-engine-of-all-tables/" />
                 <meta property="og:description" content="最近裝好mariaDB，想順便把之前用的 Myisam 改成新的 Aria engine，可是 table 一堆，在 phpmyadmin 介面上也找不到比較方便的功能可以直接轉換所有的 table engine。 後來查了一下，有幾種作法，一種是寫 php，然後 for 迴圈用 sql 修改 engine，不過為了這個寫 php 總是覺得很奇怪。後來查到另外一個作法： select concat('alter table ',table_name, ' engine = Aria;') from information_schema.tables where table_schema in ('db1','db2',....,'dbN') 要注意 table_name 不用改，這個是 informatio_schema ..." />
-                    <meta property="article:author" content="carlcarl" />
+                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="aria" />
                     <meta property="article:tag" content="mariadb" />
                     <meta property="article:tag" content="mysql" />

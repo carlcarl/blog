@@ -14,7 +14,7 @@
                 <meta property="og:title" content="PHP: Unable to allocate memory for pool" />
                 <meta property="og:url" content="http://blog.carlcarl.me/961/php-unable-to-allocate-memory-for-pool/" />
                 <meta property="og:description" content="其實本來一開始的問題是 nginx 突然出現 404 bad gateway，後來去看 log 才發現這個錯誤，所以看來如果出現 bad gateway 的問題的話，可能就是跟後端的連線出了問題這樣。 查了一下資料，發現到這篇說可能是 php apc 的關係，剛好我也有裝，於是跟著把 apc.shm_size 調大之後並重開就 OK 了。 不過老實說不能確定是因為重開，還是因為 cache 有調大的關係。可能之後還要再觀察看看，目前過了幾天，看起來是都沒問題這樣～～。" />
-                    <meta property="article:author" content="carlcarl" />
+                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="apc" />
                     <meta property="article:tag" content="nginx" />
                     <meta property="article:tag" content="php" />

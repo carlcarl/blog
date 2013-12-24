@@ -14,7 +14,7 @@
                 <meta property="og:title" content="MongoDB split chunk" />
                 <meta property="og:url" content="http://blog.carlcarl.me/671/mongodb-split-chunk/" />
                 <meta property="og:description" content="練習了一下自己手動切 chunk，因為有時候 MongoDB 切出來的不一定是理想的範圍 orz。 大致就兩個步驟，第一個是切 chunk，第二個是移動 chunk 到某個 shard 上，如果 balancer 沒關掉的話，第二個步驟會由 balancer 幫你決定你的 chunk 要移到哪個 shard 上。 切 chunk 指令 // 第一個參數是指定在哪個 DB 中的 collection， // 因為文件裡只說是 collection，所以可能會忘了加上 DB 的名稱 // 第二個參數是你指定的 sharding key，cutPoint 則是要從哪個數值下去切 sh.splitAt("yourDB.yourCollection", {key:cutPoint}) or db.runCommand ..." />
-                    <meta property="article:author" content="carlcarl" />
+                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="mongodb" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>

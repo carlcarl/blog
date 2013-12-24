@@ -14,7 +14,7 @@
                 <meta property="og:title" content="C define debug function" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1267/c-define-debug-function/" />
                 <meta property="og:description" content="參考這篇，然後做了點修改。 #undef CM_DBG #ifdef LTE_CM_DEBUG # define CM_DBG(fmt, args...) do{ printf(" (%d/%s): "fmt, __LINE__, __FILE__, ## args); }while(0) #else # define CM_DBG(fmt, args...) #endif #undef CM_DBGG #define CM_DBGG(fmt, args...) do{ printf(" (%d/%s): "fmt, __LINE__, __FILE__, ## args); }while(0) 大致除了命名外還做了點修改： 把 printk 的部分拿掉，因為我不需要。 CM_DBGG 改成跟原本功能一樣 ..." />
-                    <meta property="article:author" content="carlcarl" />
+                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="debug" />
                     <meta property="article:tag" content="makefile" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">

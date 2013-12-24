@@ -14,7 +14,7 @@
                 <meta property="og:title" content="python argparse" />
                 <meta property="og:url" content="http://blog.carlcarl.me/772/python-argparse/" />
                 <meta property="og:description" content="紀錄一些 python argparse module 的使用方法和問題： 選項的參數為 optional 譬如說 -f 這選項允許一個檔案的路徑名稱： -f test.txt，如果沒給檔案名稱就預設使用 example.txt： parser.add_argument('-f', nargs='?', default='example.txt') 設定各個選項分開，不允許放在一起使用 如果我希望 -f 和 -b 只有其中一個能被執行而已的話，這時候要用 add_mutually_exclusive_group 產生一個 group ，之後被加入這個 group 的參數就會套用這個分開使用的規則： group = parser.add_mutually_exclusive_group() group.add_argument('-f', action='store_true') group.add_argument('-b', action='store_true ..." />
-                    <meta property="article:author" content="carlcarl" />
+                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="argparse" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>

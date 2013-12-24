@@ -14,7 +14,7 @@
                 <meta property="og:title" content="html5 canvas double buffering" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1023/html5-canvas-double-buffering/" />
                 <meta property="og:description" content="因為之前寫 java 的經驗，讓我以為在 html5 的 canvas 上也要自己實作 double buffering，但是在我後來實作後發現，好像哪裡怪怪的，因為其實原本就沒有在閃的感覺了，所以加了 double buffering 好像也沒啥差，重點是 performance 下降很多......。 後來花了一些時間找資料，我得到的結論－是大部分的情況，不需要自己做 double buffering，因為瀏覽器會很聰明的幫你做。但是它怎麼判斷什麼時候該把 buffer 的部分 render 上去呢？以下是我的鍵盤猜測： 因為現在大多數的螢幕更新頻率都是 60Hz，也就是說大概每 16 ms 就會刷新一次螢幕，而瀏覽器本身在刷新的頻率可能也會接近這個時間，但是有沒有比較高就不知道了，因為你所看到的可能會被你螢幕的更新頻率所限制，就算瀏覽器刷新頻率是 1000Hz，反正一般的銀幕也看不出來:P。 以一個簡單的例子來實驗，假如我在一開始把一個方形塗上顏色然後 clear 掉 ..." />
-                    <meta property="article:author" content="carlcarl" />
+                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="canvas" />
                     <meta property="article:tag" content="html5" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">

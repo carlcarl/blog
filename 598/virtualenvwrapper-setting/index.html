@@ -14,7 +14,7 @@
                 <meta property="og:title" content="virtualenvwrapper setting" />
                 <meta property="og:url" content="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" />
                 <meta property="og:description" content="最近為了方便，加了幾個 virtualenvwrapper 的設定。 使用 mkvirtualenv 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。 在 ~/.virtualenv/postmkvirtualenv裡加入： proj_name=$(echo $VIRTUAL_ENV|awk -F'/' '{print $NF}') if [ ! -d "~/Projects/$proj_name" ]; then mkdir ~/Projects/$proj_name fi if [ "${PWD##*/}" != "~/Projects/$proj_name" ]; then cd ~/Projects/$proj_name fi 其中，把 Projects 換成你的 project 位置。 輸入 workon 你的project 時，自動切換至 ..." />
-                    <meta property="article:author" content="carlcarl" />
+                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="python" />
                     <meta property="article:tag" content="virtualenvwrapper" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">

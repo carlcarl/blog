@@ -14,7 +14,7 @@
                 <meta property="og:title" content="g0v.tw sns buttons" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1292/g0v-tw-sns-buttons/" />
                 <meta property="og:description" content="修了一下 render 的問題，以結果來看其實並沒有完全做好，還是會有 render 過程中偏移的問題 orz，不過也比原來的情況好多了(汗)，之後功力如果好一點再來深入研究吧 = =+。 commit diff 主要修正幾個地方： fb button size fb button 基本上最大就 60px 的樣子，原本設了 500px，導致一開始預留的空間過大，整個會往左邊撐開，render 完後又變一個小按鈕，所以整個看起來很囧，解決方法就是不去限制大小，反正按鈕最大也就那樣而已。 sns buttons 放大 原本的方法是直接把 button 用 css 加上 transform + scale 放大，不過如果有多個 button 的話，這樣兩者之間的 margin 會很難去設定，因為 margin ..." />
-                    <meta property="article:author" content="carlcarl" />
+                    <meta property="article:author:username" content="carlcarl" />
                     <meta property="article:tag" content="g0v" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
