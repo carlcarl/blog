@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="MongoDB check status command" />
+                <meta property="og:url" content="http://blog.carlcarl.me/663/mongodb-check-status-command/" />
+                <meta property="og:description" content="紀錄一下 MongoDB 看狀態時常會用到的指令。 # 看目前 state 的指令 mongostat 以下都是進 mongo shell 後的指令。 // 狀態總覽 db.serverStatus() // 看 memory db.serverStatus().mem // 看 page fault db.serverStatus().extra_info // 看 sharding 的狀態，兩個指令同樣功能 db.printShardingStatus() sh.status() // 查看 db 本身的資訊 db.stats() // 查看 collection 的 index db.xxx.getIndexes() // 查看目前執行的 operation db.currentOP() 參考網址 ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

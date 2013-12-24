@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="ajax with mobile keyboard go button" />
+                <meta property="og:url" content="http://blog.carlcarl.me/813/ajax-with-mobile-keyboard-go-button/" />
+                <meta property="og:description" content="最近弄 ajax 在手機上測的時候發現按 keyboard 上的 go 按鈕不會自動 submit，所以看了一下是怎麼回事。找了一些資料加上自己測試了一下，發現原來 go 按鈕跟 enter 是一樣的 event。 我最後決定的做法是將原本 ajax 要 submit 的 部分先用 form tag 包起來，ajax 的按鈕則改成 <button type="submit"></button>，type 用 submit 可以使得在按 enter 或是 手機上按 go 的時候能 trigger submit 的 event，這邊用 <input> 也是可以，不過因為我有用一些 icon 在按鈕中 ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Javascript parseInt and Number" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1262/javascript-parseint-and-number/" />
+                <meta property="og:description" content="這個是查資料時看到的 benchmark performance of parseInt() 簡單歸納幾點： parseInt 基本上幾乎是比 Number 還要快的，兩者雖然用法有點不同，不過純粹做轉換的話，parseInt 會比較快。 parseInt('4') 跟 parseInt('4', 10) 在不同瀏覽器的效能也不一樣。不過直覺來看，感覺應該是 parseInt('4') 會比較快說，因為不需要驗證參數。就個人來說，還是直接 parseInt('4') 就好。 new 會帶來多的 overhead，所以 new Number 又比 Number 慢。" />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

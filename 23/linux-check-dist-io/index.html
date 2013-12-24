@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Linux check disk IO" />
+                <meta property="og:url" content="http://blog.carlcarl.me/23/linux-check-dist-io/" />
+                <meta property="og:description" content="讀取速度 輸入下面這行指令 hdparm -t /dev/sda /dev/sda 可以換成想測的硬碟裝置 輸入之後會產生類似以下的輸出 Timing buffered disk reads: 1168 MB in 3.00 seconds = 389.29 MB/sec 組 RAID5 速度快很多= =+ 寫入速度 輸入下面這行指令 time sh -c "dd if=/dev/zero of=tmp.dd bs=1000k count=100; sync" 會產生類似以下的輸入 100+0 records in 100 ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

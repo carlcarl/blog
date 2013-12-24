@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="linux several ways to open or close service" />
+                <meta property="og:url" content="http://blog.carlcarl.me/20/linux-several-ways-to-open-or-close-service/" />
+                <meta property="og:description" content="(如果想立即開啟或關掉就要用 service 或是直接到 /etc/init.d/ 底下去操作) 以下是用來設定在系統開啟時預設要執行的 service 在 RedHat 系列底下可以用 chkconfig，啟用 httpd (如果已經加到 chkconfig 裡了 就可以不用輸入第一行) chkconfig httpd --add chkconfig http on 停用 httpd (第二行是把 httpd 從 chkconfig 的管理中移除，我的建議是輸入第一行就好了) chkconfig httpd off chkconfig httpd --del 在 Debian 或 Ubuntu 底下的話 可以用 update-rc.d 開啟 apache2: update-rc ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

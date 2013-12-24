@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Python setup.py package_data permission" />
+                <meta property="og:url" content="http://blog.carlcarl.me/941/python-setup-py-package_data-permission/" />
+                <meta property="og:description" content="最近嘗試把一些額外的 static 檔案加入到 python 的 package 裡來讓程式操作，後來有查到可以在 setup.py 裡設定 package_data，照著做之後好像滿順利的，但是在用 root 權限 install 完，用一般使用者執行就遇到 permission 的錯誤了。 看了一下安裝目錄下的 static 檔案，結果權限是 400，owner 是 root，難怪一般使用者無法讀取，想說會不會是因為我的原本檔案權限的關係，檢查了一下，果然是 400，但是我改了權限再重新安裝居然還是一樣，這時我還想說會不會是原本就有這樣的限制，還查了一堆資料 orz。 最後想到，會不會是因為我那些 build 所產生的目錄的關係，於是我把 xxx.pkg-info，build 和 dist 這三個資料夾都移除掉後再重新安裝，果然就 ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

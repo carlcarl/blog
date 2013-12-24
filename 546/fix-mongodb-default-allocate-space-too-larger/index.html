@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="fix mongodb default allocate space too larger" />
+                <meta property="og:url" content="http://blog.carlcarl.me/546/fix-mongodb-default-allocate-space-too-larger/" />
+                <meta property="og:description" content="最近在做 VM template 的時候才發現到這個問題，安裝好 mongodb 之後，在 /var/lib/mongodb/journal/ 下面可以發現 mongodb 佔用了 3 GB 的 journal 檔案。 當然，如果硬碟夠大或是沒啥必要的話，這其實可以不用去理它，但是我由於需要加快利用 VM template 安裝系統的速度，而 template 的大小會影響中間網路傳送 template 的時間，因此還是希望能避免不必要的空間浪費。 而其實 mongodb 本身有提供一個參數 smallfiles ，這個參數可以讓這些預先生成的 journal 檔案一個從 1G 降到約 13X MB 左右，所以總共 3 個 journal file ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

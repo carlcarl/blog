@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="(98)Address already in use: make_sock: could not bind to address 80" />
+                <meta property="og:url" content="http://blog.carlcarl.me/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/" />
+                <meta property="og:description" content="最近在重開 server 的時候突然發現 apache 怎麼沒有開，重開之後就出現如標題的錯誤，查了一下，應該是有個莫名的 process 把 port 給 bind 住了，用了一堆指令，一直 kill process，結果怎麼好像都沒用囧，後來才試到一個可以解決的指令： sudo fuser 80/tcp 執行之後就會顯示是哪個 process id 佔住的。 很奇怪的是我使用「netstat」去看居然是找不到的= =，另外要注意的是記得使用「sudo」或者是用 root 來查看，不然有可能會看不到。砍掉之後，再開啟 apache 就可以成功開啟了，算是一個滿怪的問題，當初忙著砍掉，忘記先查看 process 的名稱是什麼，只能先紀錄起來，下次如果還是發生一樣的情況的話，再來看看哩。 參考網址 ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

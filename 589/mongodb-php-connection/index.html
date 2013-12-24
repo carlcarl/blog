@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="mongodb php connection" />
+                <meta property="og:url" content="http://blog.carlcarl.me/589/mongodb-php-connection/" />
+                <meta property="og:description" content="大概寫一下 mongodb + auth 的連線步驟，之前我是這樣做連線認証： <?php $m = new Mongo("mongodb://localhost:27017"); $db = $m->mytable; $db->authenticate($DB_USERNAME, $DB_USERPASSWORD); 不過後來更新 php mongodb 的 library 後，發現 authenticate 這個 method 已經 deprecated 了，所以改用原本 mongodb 的建構式做連線認証： <?php $m = new Mongo("mongodb://${DB_USERNAME}:${DB_USERPASSWORD}@localhost/mydb"); $db = $m->mydb; 這邊要注意的一點就是，雖然在 Mongo ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="ssh slow" />
+                <meta property="og:url" content="http://blog.carlcarl.me/47/ssh-slow/" />
+                <meta property="og:description" content="貌似是學校最近 DNS 常出問題還是怎樣，ssh 的速度非常緩慢，後來決定把 config 檔案改一改，改完之後速度果然快很多= =+。 修改 /etc/ssh/sshd_config，以下是修改內容： UseDNS no GSSAPIAuthentication no 修改完後執行： sudo /etc/init.d/ssh restart 收工~，不過如果 DNS 沒問題的話，可能修改這個設定速度不會差太多。 參考網址： http://jeffxie.blog.51cto.com/1365360/293869 http://www.dk101.com/Discuz/viewthread.php?tid=157716" />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

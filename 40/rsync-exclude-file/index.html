@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="rsync exclude file" />
+                <meta property="og:url" content="http://blog.carlcarl.me/40/rsync-exclude-file/" />
+                <meta property="og:description" content="最近想打包線上在跑的網站(在 Ubuntu 上)。本來想說用 cp 就好，但是 cp 沒辦法去 exclude 一些檔案列表，偏偏網站上面有些是暫存檔和使用者上傳的東西，另外還有一些雜七雜八不該包的 code。 後來查到可以用 rsync 來作 因為有支援 exclude 的參數，以下是範例，a 參數包含了一堆其他參數的功能，v 參數就是將詳細資訊印出來： rsync -av --exclude 'dir' source destination 想要 exclude 多一點的話可以這樣下： rsync -av --exclude 'dir1' --exclude 'dir2' source destination 要注意的一點是： 如果想要避掉 某幾個目錄下的子目錄 像是每個目錄下的 .svn 資料夾，可以直接用 ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

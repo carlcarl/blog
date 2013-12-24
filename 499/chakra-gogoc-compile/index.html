@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Chakra gogoc compile" />
+                <meta property="og:url" content="http://blog.carlcarl.me/499/chakra-gogoc-compile/" />
+                <meta property="og:description" content="之前在 Ubuntu 系列上可以很方便的安裝 gogoc，但是後來換到 Chakra 之後，ccr 裡並沒有提供安裝包，沒辦法，只好自己編譯。 1.首先先下載安裝包(不能下載的話，就必須到官網註冊帳號並下載囉)、解壓縮，並進入到資料夾中： wget http://content.gogo6.com/gogoc-1_2-RELEASE.tar.gz tar -xf gogoc-1_2-RELEASE.tar.gz cd gogoc-1_2-RELEASE/gogoc-tsp 2.接下來是編譯，這邊沒意外的話會有錯（至少我是這樣XD），所以要先做點修改，將 #include <stddef.h> 加到 ../gogoc-messaging/gogocmessaging/message.h 的檔案最上方即可 ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

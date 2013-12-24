@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="C use qsort sort string array" />
+                <meta property="og:url" content="http://blog.carlcarl.me/14/c-use-qsort-sort-string-array/" />
+                <meta property="og:description" content="指標真的好難 寫了那麼久還是不太懂 想用qsort sort 字串 array 結果compare函式怎麼用都會錯囧 後來上網查了一下資料 才知道用錯了orz 以下是compare函式範例 int compare(void* a, void* b) { return(strcmp(*(char**)a, *(char**)b); } 像以下這種就可以用上面的compare函式來處理 array[0] = "123" array[1] = "111222" 參考網址 http://www.c.happycodings.com/Sorting_Searching/code15.html" />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

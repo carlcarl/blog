@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="MongoDB Web management tool： rockmongo" />
+                <meta property="og:url" content="http://blog.carlcarl.me/43/mongodb-rockmongo/" />
+                <meta property="og:description" content="最近找到的一個管理 MongoDB 的網頁介面工具，是用 php5 寫的，介面不是說很好看啦，不過還算好用囉，而且很重要的一點是他有中文繁體，真的是倍感親切XD。 首先先到這邊下載。 下載完之後解壓縮並且移到網頁目錄下，然後試著連上去看看。如果出現要下載 php 的 mongodb module 的話，就照以下步驟去安裝： sudo apt-get install php-pecl sudo pecl install mongo 接著在 php.ini 裡面加上一行： extension=mongo.so 接著重啟 Web Server。如果有用 php-fpm 的話記得這個也要重啟才有用，一開始忘記，結果這邊卡好久=.=。再連一次網頁看看應該就可以連上了。 預設帳密是「admin」(帳密一樣)，接著按登錄就可以進去管理頁面了。但是預設帳密一樣感覺很容易會被侵入 ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

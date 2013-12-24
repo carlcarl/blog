@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Python multiprocessing share counter" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/" />
+                <meta property="og:description" content="找了一下，以下是基本的寫法： counter = 0 def countdown(data): counter_lock = Lock() global counter with counter_lock: counter.value -= 1 print(data) def main(): def init(args): global counter counter = args data_list = ['a', 'b', 'c'] global counter counter = multiprocessing.Value('i', len(data_list)) pool = multiprocessing.Pool( initializer=init, initargs=(counter,) ) pool.map(countdown, data_list ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

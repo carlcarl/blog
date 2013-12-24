@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="C useful DEBUG function" />
+                <meta property="og:url" content="http://blog.carlcarl.me/15/c-useful-debug-function/" />
+                <meta property="og:description" content="學了那麼久才知道有這種好功能可以用 = =" #define DBG(msg, arg...) printf("%s:%s(%d): " msg, __FILE__, __FUNCTION__, __LINE__, ##arg) FILE 表示這行所在的程式檔案 FUNCTION 表示這個函式所在的函式(唸起來好繞口= =) 不過如果是用 gcc 來編譯的話 建議是用 func, 我之前用 gcc 編譯前者好像不會過...... LINE 代表這函式是在哪一行 其實也只是把 printf 有印出一些資訊的版本 define 為一個函式這樣![][] (不過要我寫我還真不會= =||) 而在實際上運用可以這樣: if(i != 2) DBG("%dn", index); 這樣如果 i 不等於 2 的話 就會在前面先印出那些資訊 然後才會印出 index ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>

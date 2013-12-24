@@ -10,6 +10,11 @@
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Chakra vim not support pythoncomplete" />
+                <meta property="og:url" content="http://blog.carlcarl.me/515/chakra-vim-not-support-pythoncomplete/" />
+                <meta property="og:description" content="最近在 Chakra 上用 vim 寫 python 的時候才突然發現這個問題，原因似乎是因為 vim 在編譯的時候沒有加上 python 的編譯參數，解決這個問題很簡單，只要改安裝 vim-qt-git 就 OK 了，因為它所提供的 vim 是有支援 pythoncomplete 的。vim-qt-git 本身包含一套完整的 vim 以及加上 GUI 的套件，所以安裝的時候會要求將原本的 vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的補完功能了。 參考網址： https://bbs.archlinux.org/viewtopic.php?id=122091 https://wiki.archlinux.org/index ..." />
+                    <meta property="article:author" content="carlcarl" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
