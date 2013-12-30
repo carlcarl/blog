@@ -63,8 +63,6 @@
 
                     <section class="post-content">
                         <p>終於從 <a href="http://tw.wordpress.org">wordpress</a> 轉到 <a href="https://github.com/carlcarl/pelican/tree/support-post-id">pelican</a> 了，中間經歷了不少的問題，之所以從 wordpress 離開到 pelican，主要是覺得 wordpress 本身其實綁了很多我不需要的功能，現在我只是想純粹做一些筆記而已，於是朝 static site generator 這方面去看，之前是有看過 <a href="http://octopress.org">octopress</a>，但是對 ruby 實在沒啥興趣，找了一下 python 寫的，發現其實也有蠻多種的，後來看 pelican 有蠻多人都有試過，而且開發也還蠻熱烈的，於是就選擇了這個 blog 系統。</p>
-<!--more-->
-
 <p>接下來就是想想該怎麼轉移，從 wordpress export 文章出來之後，pelican 提供了 <code>pelican-import</code> 這個工具可以將 wordpress 文章匯入的功能，還蠻方便的，但是卻沒有支援 <code>post_id</code> 這個文章屬性，於是我自己 <a href="https://github.com/carlcarl/pelican/tree/support-post-id">fork</a> 了出來，加上了這個功能，丟了一個 pull request 過去，只可惜作者好像不領情，內容大概是說我不應該這樣做，會變成要加一個屬性，就得加一個參數進去之類的，後來想想也沒錯，而且不一定每個人都需要這個 id，但是其實我覺得可以透過參數來加入自己要的 metadata，而且這些額外的 metadata 也可以考慮直接丟到一個 list，直接 loop scan就可以了，但是作者後來就沒理我了 orz。</p>
 <p>import 完之後就是惡夢的開始了，因為我中間轉了很多次 blog 平台，從 pixnet，wordpress(轉了幾次放的地方)，現在到 pelican，發現以前很多連結和圖片，還有一些 code snippet 都出問題，還有就是 code highlight 的 syntax 也不同，還有修補以前不愛用標點符號的文章，於是我每天花一點時間改個十多篇，過了幾個禮拜終於改完了 QQ。</p>
 <p>domain name......，決定改成 carlcarl.me！原本是 carlcarl.tw，後來覺得前者比較順眼，於是就決定換掉了，以後可能就要跟這個 carlcarl.tw 說再見了。</p>

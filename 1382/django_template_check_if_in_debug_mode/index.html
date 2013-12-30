@@ -63,8 +63,6 @@
 
                     <section class="post-content">
                         <p>找了一下在 template 中確認是否在 debug mode 底下的方法，找了很多，不過好像都有點繞圈子，後來發現其實 Django 內建還是有<a href="http://www.djangobook.com/en/2.0/chapter09.html">簡單的方法</a>。</p>
-<!--more-->
-
 <p>在 <code>settings.py</code> 裡，先確認 <code>debug</code> 是 <code>True</code>，然後再加上：</p>
 <div class="highlight"><pre><span class="n">INTERNAL_IPS</span> <span class="o">=</span> <span class="p">(</span>
     <span class="s">&#39;127.0.0.1&#39;</span><span class="p">,</span>

@@ -60,8 +60,6 @@
                     </header>
                     <section class="post-content">
                         <p>找了一下在 template 中確認是否在 debug mode 底下的方法，找了很多，不過好像都有點繞圈子，後來發現其實 Django 內建還是有<a href="http://www.djangobook.com/en/2.0/chapter09.html">簡單的方法</a>。</p>
-<!--more-->
-
 <p>在 <code>settings.py</code> 裡，先確認 <code>debug</code> 是 <code>True</code>，然後再加上：</p>
 <div class="highlight"><pre><span class="n">INTERNAL_IPS</span> <span class="o">=</span> <span class="p">(</span>
     <span class="s">&#39;127.0.0.1&#39;</span><span class="p">,</span>
@@ -79,7 +77,7 @@
 </pre></div>
 
 
-<p>如果到 production 的話，就將 <code>debug</code> 設為 ...</p></!--more-->
+<p>如果到 production 的話，就將 <code>debug</code> 設為 ...</p>
                     </section>
                 </article>
             </li>
@@ -133,8 +131,6 @@
                     </header>
                     <section class="post-content">
                         <p>記錄一下 celery crontab 的用法，分成兩個部分：service 和 worker。service 負責定期塞 job 到 message queue 裡面，worker 則將 queue 裡的 job 拿出來執行，message queue 的部分這裡使用 <code>rabbitmq</code>。這邊為了方便，用了一個簡單的加法為例。</p>
-<!--more-->
-
 <h2>Worker</h2>
 <h3>tasks.py</h3>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
@@ -143,7 +139,7 @@
 <span class="n">celery</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s">&#39;tasks&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s">&#39;amqp&#39;</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="s">&#39;amqp://guest@localhost//&#39;</span><span class="p">)</span>
 
 <span class="nd">@task</span>
-<span class="k">def</span> <span class="nf">add ...</span></pre></div></!--more-->
+<span class="k">def</span> <span class="nf">add ...</span></pre></div>
                     </section>
                 </article>
             </li>
@@ -200,9 +196,7 @@ sudo vim /etc/resolvconf/resolv.conf.d/base
                     </header>
                     <section class="post-content">
                         <p>終於從 <a href="http://tw.wordpress.org">wordpress</a> 轉到 <a href="https://github.com/carlcarl/pelican/tree/support-post-id">pelican</a> 了，中間經歷了不少的問題，之所以從 wordpress 離開到 pelican，主要是覺得 wordpress 本身其實綁了很多我不需要的功能，現在我只是想純粹做一些筆記而已，於是朝 static site generator 這方面去看，之前是有看過 <a href="http://octopress.org">octopress</a>，但是對 ruby 實在沒啥興趣，找了一下 python 寫的，發現其實也有蠻多種的，後來看 pelican 有蠻多人都有試過，而且開發也還蠻熱烈的，於是就選擇了這個 blog 系統。</p>
-<!--more-->
-
-<p>接下來就是想想該怎麼轉移，從 wordpress export 文章出來之後，pelican 提供了 <code>pelican-import</code> 這個工具可以將 wordpress 文章匯入的功能，還蠻方便的，但是卻沒有支援 <code>post_id</code> 這個文章屬性 ...</p></!--more-->
+<p>接下來就是想想該怎麼轉移，從 wordpress export 文章出來之後，pelican 提供了 <code>pelican-import</code> 這個工具可以將 wordpress 文章匯入的功能，還蠻方便的，但是卻沒有支援 <code>post_id</code> 這個文章屬性 ...</p>
                     </section>
                 </article>
             </li>
@@ -219,15 +213,13 @@ sudo vim /etc/resolvconf/resolv.conf.d/base
                         <p>這個問題已經困擾我滿久了，在 <a href="http://tmux.sourceforge.net">tmux</a> 裡用 <a href="https://github.com/jonas/tig">tig</a>
 畫面會一直破碎，不過一直找不到原因，最近想到，於是又找看看有沒有解法，後來試了<a href="https://wiki.archlinux.org/index.php/tmux">一篇</a>裡面的做法就
 OK 了 QQ。</p>
-<!--more-->
-
 <p>靈感是在查資料的時候看到有人是因為在 <code>tmux.conf</code> 裡設定了
 <code>default-terminal=xterm</code> 想到的，中間有試了一下 screen，發現 tig 在
 screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</code>，而我在 tmux
 下得到的輸出卻是 <code>xterm-256color</code>，想說朝這個方向去找資料。這邊先找了
 <code>tmux.conf</code> 中，但是我並沒有設定這個東西，看了
 <code>.zshrc</code>，原來我是在這邊設定了
-<code>export TERM ...</code></p></!--more-->
+<code>export TERM ...</code></p>
                     </section>
                 </article>
             </li>
@@ -245,8 +237,6 @@ screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</
 <p>這個文章是根據 <a href="http://raxcloud.blogspot.tw/2013/02/documenting-python-code-using-sphinx.html">Documenting python code using sphinx and github</a> 和
 <a href="http://datadesk.latimes.com/posts/2012/01/sphinx-on-github/">Sphinx documentation on GitHub</a>
 整理而成的，兩個地方的資料都不錯，不過都沒有很完美，所以就寫了這篇。</p>
-<!--more-->
-
 <h2>建立 github page repo</h2>
 <p>這邊看到大部分的做法都是直接在 project 根目錄下直接開另外一個
 branch，不過我後來在上面連結看到一個不錯的做法，就是直接把 branch 建立在
@@ -255,7 +245,7 @@ subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資
 </pre></div>
 
 
-<p>接著利用 <code>git-new-workdir</code> 這個指令建立一個 ...</p></!--more-->
+<p>接著利用 <code>git-new-workdir</code> 這個指令建立一個 ...</p>
                     </section>
                 </article>
             </li>
@@ -271,8 +261,6 @@ subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資
                     <section class="post-content">
                         <p>查了很多資料，遇到一堆鬼打牆問題，終於弄成我要的樣子了，不過其實也沒有加多少東西，只是基本的設定一直搞不定
 orz。</p>
-<!--more-->
-
 <hr />
 <p>下面是一開始的 project 結構，接著會利用 <code>sphinx</code> 在根目錄下建立 <code>doc</code>
 這個目錄：</p>
@@ -293,7 +281,7 @@ orz。</p>
 <h2>安裝並產生設定</h2>
 <p>首先先安裝 <code>sphinx</code>(ex: <code>pip install sphinx</code>)，接著在 project
 根目錄下輸入 <code>sphinx-quickstart</code>，設定步驟如下：</p>
-<div class="highlight"><pre>Welcome to the Sphinx 1.1.3 ...</pre></div></!--more-->
+<div class="highlight"><pre>Welcome to the Sphinx 1.1.3 ...</pre></div>
                     </section>
                 </article>
             </li>
