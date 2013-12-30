@@ -9,8 +9,6 @@ Slug: python_celery_crontab
 
 記錄一下 celery crontab 的用法，分成兩個部分：service 和 worker。service 負責定期塞 job 到 message queue 裡面，worker 則將 queue 裡的 job 拿出來執行，message queue 的部分這裡使用 `rabbitmq`。這邊為了方便，用了一個簡單的加法為例。
 
-<!--more-->
-
 ## Worker
 
 ### tasks.py

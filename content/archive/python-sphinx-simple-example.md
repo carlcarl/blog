@@ -9,8 +9,6 @@ Slug: python-sphinx-simple-example
 查了很多資料，遇到一堆鬼打牆問題，終於弄成我要的樣子了，不過其實也沒有加多少東西，只是基本的設定一直搞不定
 orz。
 
-<!--more-->
-
 * * * * *
 
 下面是一開始的 project 結構，接著會利用 `sphinx` 在根目錄下建立 `doc`

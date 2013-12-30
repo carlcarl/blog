@@ -9,8 +9,6 @@ Slug: django_template_check_if_in_debug_mode
 
 找了一下在 template 中確認是否在 debug mode 底下的方法，找了很多，不過好像都有點繞圈子，後來發現其實 Django 內建還是有[簡單的方法]。
 
-<!--more-->
-
 在 `settings.py` 裡，先確認 `debug` 是 `True`，然後再加上：
 
 	:::python

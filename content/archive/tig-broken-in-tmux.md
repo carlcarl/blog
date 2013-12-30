@@ -10,8 +10,6 @@ Slug: tig-broken-in-tmux
 畫面會一直破碎，不過一直找不到原因，最近想到，於是又找看看有沒有解法，後來試了[一篇][]裡面的做法就
 OK 了 QQ。
 
-<!--more-->
-
 靈感是在查資料的時候看到有人是因為在 `tmux.conf` 裡設定了
 `default-terminal=xterm` 想到的，中間有試了一下 screen，發現 tig 在
 screen 中是 OK 的，`echo $TERM` 得到的輸出是 `screen`，而我在 tmux

@@ -12,8 +12,6 @@ Slug: sphinx-and-github-pages
 [Sphinx documentation on GitHub][]
 整理而成的，兩個地方的資料都不錯，不過都沒有很完美，所以就寫了這篇。
 
-<!--more-->
-
 建立 github page repo
 ---------------------
 
