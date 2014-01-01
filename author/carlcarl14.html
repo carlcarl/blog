@@ -53,6 +53,32 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-16T12:11:00" pubdate>
+                            Sat 16 July 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/36/ubuntu-vpn-server-with-pptp/" rel="bookmark"><h1>Ubuntu VPN Server with pptp</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近想架 VPN Server，查了一下資料，最常見的好像是 <code>OpenVPN</code> 和 <code>pptp</code> 兩種方法。pptp 的方式比較簡單，但是相對於 OpenVPN 較為不安全，是說我們系上的好像也是用 pptp，所以我想問題應該不大吧</p>
+<p>網路環境：</p>
+<ul>
+<li>使用Public IP</li>
+<li>單網卡</li>
+</ul>
+<h3>首先要先安裝 <code>pptpd</code></h3>
+<div class="highlight"><pre>sudo apt-get install pptpd
+</pre></div>
+
+
+<h3>接著修改 <code>/etc/pptpd.conf</code></h3>
+<p>這邊 <code>localip</code> 是 Server 連線之後要用的 IP，基本上跟 Server 本身的 Public IP沒有關係，可以給個 private ip 就 ok 了，<code>remoteip</code> 是給 ...</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-07-13T16:24:00" pubdate>
                             Wed 13 July 2011
                         </time>
@@ -70,8 +96,8 @@
 <a href="http://www.lampblog.net/2011/01/svn-delete%EF%BC%8D%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/">http://www.lampblog.net/2011/01/svn-delete</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -90,8 +116,8 @@
 <div class="highlight"><pre>ctags -R --c++-kinds<span class="o">=</span>+p --fields<span class="o">=</span>+iaS --extra<span class="o">=</span>+q --language-force<span class="o">=</span>C++ cpp_src ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -118,8 +144,8 @@
     g++ -o <span class="nb">test </span>test.o test2.o ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -142,8 +168,8 @@
 <p>接著根據 <code>apps</code> : <code>metacity</code> : <code>global_keybindings</code> 的順序下去找，應該可以找到一個叫做 <code>show_desktop</code> 的設定。然後對應的值應該會是 <code>&lt;Super&gt;d</code>，這邊就直接把這個值刪掉就好了 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -171,8 +197,8 @@
 <div class="highlight"><pre>logresolvemerge.pl /var/log/apache2/.gz &gt; temp ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -199,8 +225,8 @@
 <p>到時候指定好 config 的參數 他就會去讀這個檔案的設定，然後要稍微修改一下 <code>awstats ...</code></p></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -224,8 +250,8 @@ sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
 <p>接著在 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -249,8 +275,8 @@ html/html
 <p><a href="http://groups.google.com/group/xptemplate/browse_thread/thread/9af94f0e27007817#">http://groups.google.com/group/xptemplate/browse_thread/thread/9af94f0e27007817#</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -266,25 +292,8 @@ html/html
 <p>這次我要在 dotcloud 上裝的是 python + django。首先先準備裝套件吧 話說 python-setuptools 這個套件，官網好像沒有講得很清楚，查了一下才發現要裝 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-06-21T00:48:00" pubdate>
-                            Tue 21 June 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/26/windows-xdebug-wincachegrind-zend-server/" rel="bookmark"><h1>windows xdebug, wincachegrind, Zend server</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在想辦法加速 zend framework 的執行速度，弄了超久。下次有這種 case，我死都不用 zend 了= =。</p>
-<p>這次要用的是利用 xdebug 和 wincachegrind 來分析一下 php 執行的速度和呼叫情況之類的。首先要裝的是<a href="http://xdebug.org/">xdebug</a>這個工具，進去官網後的下載頁面後可以看到幾種執行檔，我這邊用的是 php5.2 版 有兩種可以選 <a href="http://xdebug.org/files/php_xdebug-2.1.1-5.2-vc6-nts.dll">PHP 5.2 VC6 (32 bit)</a>, <a href="http://xdebug.org/files/php_xdebug-2.1.1-5.2-vc6.dll">PHP 5.2 VC6
-TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分不太清楚前後兩種的差別 不過如果是用一般的 apache server 的話可以用後面那種試試看。</p>
-<p>下載後放至 <code>php ...</code></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl13.html">

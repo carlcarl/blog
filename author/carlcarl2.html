@@ -53,6 +53,42 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-10-02T02:32:00" pubdate>
+                            Wed 02 October 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1331/python-sphinx-simple-example/" rel="bookmark"><h1>Python Sphinx simple example</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查了很多資料，遇到一堆鬼打牆問題，終於弄成我要的樣子了，不過其實也沒有加多少東西，只是基本的設定一直搞不定
+orz。</p>
+<hr />
+<p>下面是一開始的 project 結構，接著會利用 <code>sphinx</code> 在根目錄下建立 <code>doc</code>
+這個目錄：</p>
+<h2>Project 目錄架構</h2>
+<div class="highlight"><pre>.
+├── CHANGES.txt
+├── MANIFEST.in
+├── README.rst
+├── test
+│   ├── __init__.py
+│   └── test.py
+├── requirements.txt
+└── setup.py
+</pre></div>
+
+
+<hr />
+<h2>安裝並產生設定</h2>
+<p>首先先安裝 <code>sphinx</code>(ex: <code>pip install sphinx</code>)，接著在 project
+根目錄下輸入 <code>sphinx-quickstart</code>，設定步驟如下：</p>
+<div class="highlight"><pre>Welcome to the Sphinx 1.1.3 ...</pre></div>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-09-19T00:09:00" pubdate>
                             Thu 19 September 2013
                         </time>
@@ -85,8 +121,8 @@
     <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">countdown</span><span class="p">,</span> <span class="n">data_list ...</span></pre></div></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -116,8 +152,8 @@ build 好的 css，這個問題一直困擾我很久，每次都要重新跑一�
     <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less ...</span></pre></div></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -143,8 +179,8 @@ orz，不過也比原來的情況好多了(汗)，之後功力如果好一點再
 會很難去設定，因為 margin ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -176,8 +212,8 @@ Link 如果在下面的情況是 OK 的：</p>
 上(炸)。目前看來是沒問題，Firefox ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -212,8 +248,8 @@ Link 如果在下面的情況是 OK 的：</p>
 <li><code>CM_DBGG</code> 改成跟原本功能一樣 ...</li></ol></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -237,8 +273,8 @@ Link 如果在下面的情況是 OK 的：</p>
 </ol>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -271,8 +307,8 @@ Link 如果在下面的情況是 OK 的：</p>
 attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</code></p></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -294,8 +330,8 @@ attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</cod
 陣列中最後兩個值加起來再 append ...</p></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -323,30 +359,8 @@ assign 成這個物件。</p>
 <h3>logging ...</h3></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-17T16:27:00" pubdate>
-                            Wed 17 July 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1224/ipk-unarchive/" rel="bookmark"><h1>ipk unarchive</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>記錄一下:P</p>
-<p>查了一下資料，有些說直接用 <code>tar</code>
-就可以了，不過怎麼試就是不行zzzzzz。後來看到 <a href="http://stackoverflow.com/questions/17369127/extracting-and-creating-ipk-files">stackoverflow</a>
-上有人提供的方法，試了一下就成功了 XD。</p>
-<p>先用 <code>ar x xxx.ipk</code> 就可以解壓縮出幾個檔案，其中 <code>data.tar.gz</code>
-放的就是程式執行檔之類的，<code>control.tar.gz</code> 放的是 ipk 的一些
-information。</p>
-<p>接下來用 <code>tar -xf data.tar.gz</code> or <code>tar -xf control.tar.gz</code>
-就可以看到裡面的資料了。</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl.html">

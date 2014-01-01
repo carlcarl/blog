@@ -53,6 +53,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-10-15T20:44:00" pubdate>
+                            Mon 15 October 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/690/ubuntu-install-salt-tool/" rel="bookmark"><h1>Ubuntu install salt tool</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>現在有操作多台機器執行同樣指令的需求，想說裝 <a href="http://docs.saltstack.org/en/latest/contents.html">salt</a>
+來管理看看，詳細介紹可以點連結進去看看。簡單來講，這套工具可以讓你方便一次去對多個機器進行操作，另外還可以透過用 Python 並 import salt module 來處理整個流程和回傳的資料。<br />
+<!--more--><br />
+salt 分成了兩個部份，<code>salt-master</code> 和 <code>salt-minion</code> ，<code>salt-master</code>
+就是 server 端，也就是你用來管理其他機器的機器上要裝的 (有點饒舌=
+=")，minion 則是 client 端，就是被管理的機器所要裝的套件。server
+端會開個 service 讓 client 連，所以 client 端必須能夠知道 server 端的 IP
+或者是 host name ，client 端連上來後，server 端可以決定是否接受這個
+client ...</!--more--></p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-10-12T03:19:00" pubdate>
                             Fri 12 October 2012
                         </time>
@@ -74,8 +96,8 @@ query 的時機，所以在測試的時候，query 其實都沒有發出，難�
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$cursor</span><span class="o">-&gt;</span><span class="na">getNext</span><span class="p">());</span> <span class="c1">// 這時才發出 ...</span></pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -103,8 +125,8 @@ query 的時機，所以在測試的時候，query 其實都沒有發出，難�
 <div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">runCommand ...</span></pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -149,8 +171,8 @@ mongostat
 <p>參考網址 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -173,8 +195,8 @@ mongostat
 搞錯（<strong>大括弧的位置要注意 ...</strong></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -194,8 +216,8 @@ mongostat
 <p>雖然 KineticJS 有提供 layer ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -226,8 +248,8 @@ mongostat
 <h3>輸入 <code>workon 你的project</code> 時，自動切換至 ...</h3>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -257,8 +279,8 @@ mongostat
 <p>這邊要注意的一點就是，雖然在 Mongo ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -280,8 +302,8 @@ mongostat
 <a href="http://https://bbs.archlinux.org/viewtopic.php?id=72573">https://bbs.archlinux.org/viewtopic ...</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -300,30 +322,8 @@ plugin，但是在使用的時候發現，一旦按下 enter 鍵再加上有縮�
 </pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-08-09T04:15:00" pubdate>
-                            Thu 09 August 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/555/cloudstack-port-forwarding-and-load-balancing-note/" rel="bookmark"><h1>CloudStack port forwarding and load balancing note</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>我用的是 Advanced network 的架構，而當我在弄 CloudStack 的 VM port
-forwarding 時，發現 port 怎麼樣都 forward 不到 VM
-上，找了很多資料，後來才發現原來是前端的 firewall 也要開對應的 port
-才行。<br />
-<!--more--><br />
-<img alt="firewall
-rule" src="http://i.imgur.com/Q59NTKhl.png" title="firewall rule" /> </p>
-<p>像是這邊我開了 5566 ~ 5567 port 的 TCP 連線，然後 Source
-CIDR 設 0 ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/index6.html">

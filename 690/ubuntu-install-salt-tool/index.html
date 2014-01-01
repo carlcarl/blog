@@ -15,6 +15,7 @@
                 <meta property="og:title" content="Ubuntu install salt tool" />
                 <meta property="og:url" content="http://blog.carlcarl.me/690/ubuntu-install-salt-tool/" />
                 <meta property="og:description" content="現在有操作多台機器執行同樣指令的需求，想說裝 salt 來管理看看，詳細介紹可以點連結進去看看。簡單來講，這套工具可以讓你方便一次去對多個機器進行操作，另外還可以透過用 Python 並 import salt module 來處理整個流程和回傳的資料。 salt 分成了兩個部份，salt-master 和 salt-minion ，salt-master 就是 server 端，也就是你用來管理其他機器的機器上要裝的 (有點饒舌= =")，minion 則是 client 端，就是被管理的機器所要裝的套件。server 端會開個 service 讓 client 連，所以 client 端必須能夠知道 server 端的 IP 或者是 host name ，client 端連上來後，server 端可以決定是否接受這個 client ..." />
+                    <meta property="article:tag" content="saltstack" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -132,7 +133,8 @@ sudo apt-get install salt-minion
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="http://blog.carlcarl.me/category/cloud-linux.html">cloud, linux</a></p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/python.html">python</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/saltstack.html">saltstack</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">

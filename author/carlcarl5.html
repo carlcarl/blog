@@ -53,6 +53,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-03T11:48:00" pubdate>
+                            Mon 03 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/873/ubuntu-service-cant-restart-or-stop/" rel="bookmark"><h1>Ubuntu service can't restart or stop</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在自己編 nginx 的時候遇到的小問題，因為自己裝的 conf 設定和原本 Ubuntu
+repo 裡的的不一樣，然後 init script 我是用 repo 裡提供的。</p>
+<p>看了一下 repo 提供的 init script，似乎是因為找不到 start service 所建立的
+pid 檔案，google 了一下，在 stackoverflow
+找到 <a href="http://stackoverflow.com/questions/10939072/add-nginx-as-a-ubuntu-service-stop-and-reload-doesnt-work">這篇問題</a> 剛好和我遇到的情況一樣，check 了一下 nginx conf 裡的 pid
+檔案位置和 init script 裡的 pid
+檔案位置，發現設定並不一樣，改成一樣後，問題就解決了～～。</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-02T04:45:00" pubdate>
                             Sun 02 June 2013
                         </time>
@@ -74,8 +94,8 @@
                 <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs ...</span></pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -100,8 +120,8 @@ Python3，看起來好像很順利，不過在執行的時候就出現了 Excepi
 type，還需要做 encode ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -132,8 +152,8 @@ period update 的方式做更新，由於中間測量的 function
 <span class="n">val</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end ...</span></pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -148,8 +168,8 @@ period update 的方式做更新，由於中間測量的 function
 <p>找了一堆資料，後來只想到用 <code>fgetc</code> 來讀，再用讀不讀得到值作為判斷 orz，不知道有沒有其他更好的解法就是。</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -173,8 +193,8 @@ openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
 <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&#39;python setup.py develop ...</span></pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -204,8 +224,8 @@ doc，設置還算簡單，不過好像漏了個小地方。<br />
 <p>這樣就完成了 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -224,8 +244,8 @@ go 按鈕跟 enter 是一樣的 event。</p>
 event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有用一些 icon 在按鈕中 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -250,8 +270,8 @@ git repo，裏面包含 submodule，且是
 <p><a href="http://stackoverflow.com/questions/4891527/git-protocol-blocked-by-company-how-can-i-get-around-that">http://stackoverflow.com/questions/4891527/git-protocol-blocked-by-company-how-can-i-get-around-that</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -273,27 +293,8 @@ hdiutil create -size 100m -fs <span class="s2">&quot;Case-sensitive HFS+&quot;</
 <span class="c"># xxx.dmg 是 image ...</span></pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-02-28T02:02:00" pubdate>
-                            Thu 28 February 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/794/kde-dolphin-network-folder-ssh-fail/" rel="bookmark"><h1>KDE dolphin network folder ssh fail</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>鬼打牆的小問題，感覺比較像 bug ，想說還是筆記下來好了。</p>
-<p>解決方法：<br />
-把 <code>~/.ssh/known_hosts</code> 中，找到要連線的 host 那行，然後把那行刪掉，
-dolphin 這邊再重連就能夠連上了。</p>
-<p>參考連結：  </p>
-<p><a href="http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder">http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder</a></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl4.html">

@@ -53,6 +53,107 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-08-28T00:01:00" pubdate>
+                            Tue 28 August 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" rel="bookmark"><h1>virtualenvwrapper setting</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近為了方便，加了幾個 virtualenvwrapper 的設定。<br />
+<!--more--></p>
+<h3>使用 <code>mkvirtualenv</code> 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。</h3>
+<p>在 <code>~/.virtualenv/postmkvirtualenv</code>裡加入：</p>
+<div class="highlight"><pre><span class="nv">proj_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$VIRTUAL_ENV</span>|awk -F<span class="s1">&#39;/&#39;</span> <span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
+
+<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span>mkdir ~/Projects/<span class="nv">$proj_name</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;${PWD##*/}&quot;</span> !<span class="o">=</span> <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span><span class="nb">cd</span> ~/Projects/<span class="nv">$proj_name</span>
+<span class="k">fi</span>
+</pre></div>
+
+
+<p>其中，把 <code>Projects</code> 換成你的 project 位置。</p>
+<hr />
+<h3>輸入 <code>workon 你的project</code> 時，自動切換至 ...</h3>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-09T17:38:00" pubdate>
+                            Wed 09 May 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/444/django-name-array/" rel="bookmark"><h1>Django name array</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在寫 php 的時候，如果想傳多個 checkbox 的值的話，常會在 html
+裏面設定這些 checkbox 的 name 為
+<code>list[]</code>，也就是會加個 <code>[]</code> 在名稱後面，在 php 處理的時候就可以利用
+<code>$_POST['list']</code> 取出這個 array。</p>
+<p>而如果是 django name array
+要處理的話，方式有點不太一樣，它並不會自動去判斷 <code>[]</code>，所以在 django
+這邊還是必須讀 <code>list[]</code> 這樣的名稱，這也表示在 html
+裡，<code>[]</code> 是可以不加的，但是我還是建議加上就是了，至少這樣我覺得會比較好懂。<br />
+<!--more--><br />
+來看一下簡單的範例：</p>
+<p>html</p>
+<div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;list[]&quot;</span> <span class="na">value=</span><span class="s">&quot;value ...</span></pre></div>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-04-01T16:05:00" pubdate>
+                            Sun 01 April 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/335/python-documentation-epydoc/" rel="bookmark"><h1>python documentation: epydoc</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="http://epydoc.sourceforge.net/index.html">epydoc</a> 是利用 parse python 的程式來製作文件，文件的類型像是一般的 html 和 pdf 都能產生。我個人是比較偏好 html 的格式囉，它的 html 樣板跟 Javadoc 的配置差不多，比較習慣。</p>
+<p>它 parse 程式的方法主要是利用 method 一開始的 <code>"""</code> 註解，不習慣寫的人可以參考它的 <a href="http://epydoc.sourceforge.net/fields.html#fields">欄位官方範例</a>。</p>
+<p>首先要先安裝 <code>epydoc</code>，在官方網站上沒講到 ubuntu
+的安裝包，用 <code>apt-get</code> 也找不到，後來試看看 <code>pip install epydoc</code> 就 OK
+了。這邊有點要注意的是，如果你的 project
+是在 <code>virtualenv</code> 環境下的話，建議將 <code>epydoc ...</code></p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-11-27T16:53:00" pubdate>
+                            Sun 27 November 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/135/dotcloud-django-admin-login-error/" rel="bookmark"><h1>DotCloud Django admin login error</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在建置好 admin 相關的設定和 static file 路徑後，終於進到輸入 admin
+帳密的畫面了，但是按鈕連結卻是錯誤的，看了一下 source code
+的部份，「app_path」這個變數似乎有問題。</p>
+<p>找了好久都找不到解決的辦法，後來看到一篇文章發現似乎是 DotCloud
+本身的問題。<br />
+[http://stackoverflow.com/questions/7057111 ][]<br />
+如果真的想試試看的話，可以 ssh 到你的 app.www，然後使用 vim：</p>
+<div class="highlight"><pre>vim env/lib/python2.6/site-packages/django/contrib/admin/templates/admin/login.html
+</pre></div>
+
+
+<p>將 <code>{{ app_path }}</code> 改為 <code>/admin ...</code></p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-06-28T20:43:00" pubdate>
                             Tue 28 June 2011
                         </time>
@@ -73,8 +174,8 @@ sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
 <p>接著在 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -90,8 +191,8 @@ sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
 <p>這次我要在 dotcloud 上裝的是 python + django。首先先準備裝套件吧 話說 python-setuptools 這個套件，官網好像沒有講得很清楚，查了一下才發現要裝 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -116,8 +217,8 @@ sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
 <p>這樣就可以使用了~~。</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -141,8 +242,8 @@ sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
 <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200 ...</span></pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/category/python2.html">

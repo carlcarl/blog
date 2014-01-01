@@ -53,6 +53,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-04-06T04:39:00" pubdate>
+                            Fri 06 April 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/355/ajaxfileupload-syntaxerror-missing-in-xml-expression/" rel="bookmark"><h1>ajaxfileupload SyntaxError: missing } in XML expression</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>本來用 <a href="http://www.phpletter.com/Our-Projects/AjaxFileUpload/">ajaxfileupload</a>
+用得好好的，結果不知道為什麼就突然出現這個錯誤，查了一下資料再加上自己比對的結果才發現，原來是因為我在
+server 端的 response 加上 content type="application/json"
+的關係，而這個結果導致在 client 這邊的 response 被 <code>&lt;pre&gt;&lt;/pre&gt;</code>
+給包了起來，也因此在 parse 的時候出現錯誤。</p>
+<p>解決方法有兩種：<br />
+1. server 端拿掉 minetype<br />
+2. client 端把 response 的 <code>&lt;pre&gt;&lt;/pre&gt;</code> 處理掉。<br />
+這邊我是選擇了第2種方法來做，因為我覺得 minetype
+這東西是需要加的，現在不加怕以後會有相容性問題。</p>
+<p>這邊其實很簡單，只要在 ajaxfileupload.js 中修改 uploadHttpData ...</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-04-03T21:56:00" pubdate>
                             Tue 03 April 2012
                         </time>
@@ -70,8 +94,8 @@ error，如果我加上了，則是會跟我說 csrf token 找不到。</p>
 token 當作參數傳送回去就 OK ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -89,8 +113,8 @@ token 當作參數傳送回去就 OK ...</p>
 是在 <code>virtualenv</code> 環境下的話，建議將 <code>epydoc ...</code></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -108,8 +132,8 @@ webm ，用 smplayer 之類的應該都能開來看，我自己測試錄影的�
 <p><a href="http://www.ubuntubuzz.com/2011/11/ubuntu-desktop-screen-recording-tool.html">http://www.ubuntubuzz.com/2011/11/ubuntu-desktop-screen-recording-tool.html</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -132,8 +156,8 @@ sudo apt-get update
 sudo apt-get ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -157,8 +181,8 @@ README，這是<a href="https://github.com/carlcarl/masquerade">我的連結</a>
 <p>首先要先建立好 RoR 的環境，這邊提供一個可以作為參考的 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -177,8 +201,8 @@ ntp server
 <a href="http://bbs.bitscn.com/146159">http://bbs.bitscn.com/146159</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -197,8 +221,8 @@ received</code>，查了老半天，還跟其他台的 git 比較設定，還是
 <p><a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=559371">http://bugs.debian.org/cgi-bin/bugreport ...</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -217,8 +241,8 @@ received</code>，查了老半天，還跟其他台的 git 比較設定，還是
 -A RH-Firewall-1-INPUT -d 224.0.0.251 -p udp -m udp --dport 5353 -j ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -242,30 +266,8 @@ disk type 7.</code></p>
 <p>兩個檔案名稱不要重複，轉完之後 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-17T21:43:00" pubdate>
-                            Fri 17 February 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/254/quorum-read/" rel="bookmark"><h1>Quorum read</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在看 paper，剛好看到這個名詞，似乎是 Cassandra 有用到的一個技巧。</p>
-<p>在 cluster
-的環境中，有時候並不能保證說讀取到的值一定會是最新的，可能會因為架構或設計上的不同，可能在做
-replication 的部份是非同步進行的，所以更大大增加拿到舊值的機率。</p>
-<p>此方法簡單說就是讀取多個 node 的值來作比較，基本上這些值都會有
-timestamp，所以可以根據時間的新舊來決定該用哪個值，但是還是會有一些問題，像是如果讀到的值都是舊的那該怎麼辦，如果變成一次測全部
-node 的值，效能上不用說一定會很慢，所以這個問題我不知道是怎麼解決的。</p>
-<p>其實還滿詭異的，如果真的要要求資料一致性的話，我覺得還不如就選資料一致性較強的
-HBase（不過我不太喜歡要分一堆角色的分散式系統，感覺在架構配置上會比較麻煩）。</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl9.html">

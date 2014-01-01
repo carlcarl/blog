@@ -15,6 +15,7 @@
                 <meta property="og:title" content="Zend Framework add Acl setting" />
                 <meta property="og:url" content="http://blog.carlcarl.me/18/zend-framework-add-acl-setting/" />
                 <meta property="og:description" content="首先先在 bootstrap.php 檔案裡加上下面這個 function <?php protected function _initControllers() { $this->bootstrap('FrontController'); //require_once '../library/Controller/Helper/Acl.php'; //require_once '../library/Controller/Plugin/Auth.php'; $acl = new Controller_Helper_Acl(); $auth = Zend_Auth::getInstance(); $front = Zend_Controller_Front::getInstance(); $front->registerPlugin(new Controller_Plugin_Auth($auth, $acl)); } $acl 和 $auth 這兩個都需要實作，我分別把 auth 和 acl 這兩個 class 放在 ..." />
+                    <meta property="article:tag" content="zend framework" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -187,7 +188,8 @@
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="http://blog.carlcarl.me/category/zend-framework.html">Zend Framework</a></p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/php.html">php</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/zend-framework.html">zend framework</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">

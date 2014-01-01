@@ -53,6 +53,97 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-02-19T16:06:00" pubdate>
+                            Sun 19 February 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/262/xenserver-enable-snmpd/" rel="bookmark"><h1>xenserver enable snmpd</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>我用的 xenserver 版本為「5.6」，6 以上的版本就不能確定能否這樣做囉。</p>
+<h3>首先要先修改防火牆規則</h3>
+<p>xenserver 雖然本身就有 snmpd 了，不過只單純打開 snmpd 是沒用的，會被防火牆擋下。用 vi
+    編輯 <code>/etc/sysconfig/iptables</code>，找到 <code>-A RH-Firewall-1-INPUT –p udp
+    –dport 5353</code> 這行：</p>
+<div class="highlight"><pre>-A RH-Firewall-1-INPUT -p ah -j ACCEPT
+-A RH-Firewall-1-INPUT -d 224.0.0.251 -p udp -m udp --dport 5353 -j ...</pre></div>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-02-10T00:43:00" pubdate>
+                            Fri 10 February 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/245/different-color-in-screen-and-normal-mode/" rel="bookmark"><h1>Different color in screen and normal mode</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查了一下資料，發現應該是跟顏色的支援有關，要在 <code>.screerc</code> 裡加上一行：</p>
+<div class="highlight"><pre>termcapinfo xterm &#39;Co#256:AB=E[48;5;%dm:AF=E[38;5;%dm&#39;
+</pre></div>
+
+
+<p>參考網址：<br />
+<a href="http://fcamel-fc.blogspot.com/2009/04/python-vim.html">http://fcamel-fc.blogspot.com/2009/04/python-vim.html</a></p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-02-04T18:56:00" pubdate>
+                            Sat 04 February 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/239/linux-mint-cinnanmon-change-position-of-window-buttons/" rel="bookmark"><h1>Linux Mint cinnamon change position of window buttons</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>==================================================<br />
+2012/03/28更新</p>
+<h1>cinnamon 已經有提供修改按鈕位置的設定了，所以就不用照以下的方法來改哩。</h1>
+<p>最近裝了 cinnamon 來玩玩，是有一些有趣的東西沒錯，像是視窗動畫，不過整體來說，我覺得並沒有好到值得我換成這套，所以用了沒多久我就換回來 Gnome 啦～～。</p>
+<p>不過這邊還是來講一下 cinnamon 怎麼改變視窗按鈕位置的方法吧。</p>
+<p>首先先裝編輯設定的套件</p>
+<div class="highlight"><pre>apt-get install gconf-editor
+</pre></div>
+
+
+<p>執行後會出現一個視窗，接著如以下圖片，可以看到右邊有 <code>button layout</code> 這個欄位，有關閉，最小化，最大化的值，<code>:</code> 代表相對位置，如下圖的話指的是放在左邊，如果要放在右邊的話就把 <code>:</code> 移到前面就
+OK 了。</p>
+<p><img alt="gconf-editor" src="http://198.199.117.21/wp-content/uploads/2012/02/502.png" /></p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-12-19T17:01:00" pubdate>
+                            Mon 19 December 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/233/naming-apache-log-with-date/" rel="bookmark"><h1>naming apache log with date</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>目前是用 <code>logrotate</code> 來作，只要在 <code>/etc/logrotate.d/apache2</code> 裡加入下面這個參數即可：</p>
+<ul>
+<li>dateext</li>
+</ul>
+<p>另外可以根據需求看要不要把 <code>weekly</code> 改為 <code>daily</code> 這樣。</p>
+<p>處理過後的檔名就會像這樣 <code>access.log-20111218.gz</code>，這樣在之後處理和分析
+log 會比較方便，另外記得數量也要根據需求改，因為改完後變成能保存的 log
+日期也會跟著減少，要增多的話也是直接修改上面 <code>/etc/logrotate.d/apache2</code> 這個檔案，將 <code>rotate</code> 後面的數字加大，後面的數字表示要存的 log 數量，超過的話就會將最舊的刪除這樣。</p>
+<p>後記：<br />
+如果要跟 awstats 搭配的話可以在裡面加入：</p>
+<div class="highlight"><pre>prerotate
+    /usr/lib/cgi-bin/awstats.pl -config ...</pre></div>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-12-15T02:51:00" pubdate>
                             Thu 15 December 2011
                         </time>
@@ -74,8 +165,8 @@
 fuser 80:tcp ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -102,8 +193,8 @@ process，結果怎麼好像都沒用囧，後來才試到一個可以解決的�
 <p>參考網址 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -130,8 +221,8 @@ php。另外還有一種方法也是可以作，不過是用副檔名的方法�
 <a href="http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html">http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -151,8 +242,8 @@ dropbox 把資料 sync 到我電腦上的時候會突然出問題呢？<br />
 <div class="highlight"><pre>/dev/sda2   /media/Data     ntfs-3g  rw,defaults,umask=0000 ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -172,8 +263,8 @@ dropbox 把資料 sync 到我電腦上的時候會突然出問題呢？<br />
 <p><a href="http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?viewmode=compact&amp;topic_id=9430&amp;forum=4">http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?viewmode=compact&amp;topic_id=9430&amp;forum=4</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -188,123 +279,8 @@ server 的時候卻出現了錯誤，看了一下 log 檔，訊息是 <code>Clie
 <p>不知道可能是 mail server 找不到 svn server 的 hostname 還是怎樣，然後試了一些方法好像也都不行，最後想說直接在 <code>/etc/hosts</code> 裡直接加上「ip」和自定義「hostname」看看，結果就 OK 哩，個人覺得這個方法算是還滿不錯的，不過前提是要有 mail server ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-10-27T20:41:00" pubdate>
-                            Thu 27 October 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/47/ssh-slow/" rel="bookmark"><h1>ssh slow</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>貌似是學校最近 DNS 常出問題還是怎樣，ssh 的速度非常緩慢，後來決定把 config 檔案改一改，改完之後速度果然快很多= =+。</p>
-<p>修改 <code>/etc/ssh/sshd_config</code>，以下是修改內容：</p>
-<div class="highlight"><pre>UseDNS no
-GSSAPIAuthentication no
-</pre></div>
-
-
-<p>修改完後執行：</p>
-<div class="highlight"><pre>sudo /etc/init.d/ssh restart
-</pre></div>
-
-
-<p>收工~，不過如果 DNS 沒問題的話，可能修改這個設定速度不會差太多。</p>
-<p>參考網址：</p>
-<p><a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://jeffxie.blog.51cto.com/1365360/293869</a><br />
-<a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://www.dk101.com/Discuz/viewthread.php?tid=157716</a>  </p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-09-30T18:15:00" pubdate>
-                            Fri 30 September 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/46/doxygen-show-files-with-directory-level/" rel="bookmark"><h1>doxygen show files with directory level</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>因為 project 的檔案太多，用 doxygen parse過後檔案還是多的要死，想說有沒有分資料夾階層顯示的方式。找了很久，後來找到一個折衷的方法，那就是在 config 檔中作以下設定。</p>
-<div class="highlight"><pre>SHOW_DIRECTORIES = YES
-</pre></div>
-
-
-<p>以下是顯示出來的樣子......。好吧，個人是覺得有點陽春，可以的話如果有收合的功能就更好了，只能希望之後的版本會有囉。</p>
-<p><img alt="doxygen_dir.png" src="http://i.imgur.com/WlsqsDB.png" title="doxygen_dir.png" />  </p>
-<p>參考網址：</p>
-<p><a href="http://stackoverflow.com/questions/6874800/directories-within-file-list-in-doxygen">http://stackoverflow.com/questions/6874800/directories-within-file-list-in-doxygen</a></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-09-05T18:51:00" pubdate>
-                            Mon 05 September 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/44/vimrc-check-hostname/" rel="bookmark"><h1>vimrc check hostname</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>因為在不同電腦用了一個共用的 vimrc 檔，但是又想在兩邊作一些不同的設定，所以找了一下資料看要怎麼作。雖然有判斷作業系統的方式，不過好像不太適合我的用法，然後我通常不同的電腦都會設個有意義的 hostname，所以最後想說就用 hostname 去作判斷啦，以下是一個範例：</p>
-<div class="highlight"><pre>let hostname = substitute(system(&#39;hostname&#39;), &#39;n&#39;, &#39;&#39;, &#39;&#39;)
-if hostname == &quot;lab&quot;
-    &quot;do something
-elseif hostname == &quot;home&quot;
-    &quot;do something
-endif
-</pre></div>
-
-
-<p>另外附上判斷 OS 的方式：</p>
-<div class="highlight"><pre>if has(&#39;win32&#39;)
-    &quot;do something
-elseif has(&#39;mac&#39;)
-    &quot;do something
-elseif has(&#39;unix&#39;)
-    &quot;do something
-endif
-</pre></div>
-
-
-<p>參考網址 ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-08-27T11:18:00" pubdate>
-                            Sat 27 August 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/40/rsync-exclude-file/" rel="bookmark"><h1>rsync exclude file</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近想打包線上在跑的網站(在 Ubuntu 上)。本來想說用 <code>cp</code> 就好，但是 <code>cp</code>
-沒辦法去 exclude 一些檔案列表，偏偏網站上面有些是暫存檔和使用者上傳的東西，另外還有一些雜七雜八不該包的 code。</p>
-<p>後來查到可以用 <code>rsync</code> 來作 因為有支援 exclude 的參數，以下是範例，a
-參數包含了一堆其他參數的功能，v 參數就是將詳細資訊印出來：</p>
-<div class="highlight"><pre>rsync -av --exclude <span class="s1">&#39;dir&#39;</span> <span class="nb">source </span>destination
-</pre></div>
-
-
-<p>想要 exclude 多一點的話可以這樣下：</p>
-<div class="highlight"><pre>rsync -av --exclude <span class="s1">&#39;dir1&#39;</span> --exclude <span class="s1">&#39;dir2&#39;</span> <span class="nb">source </span>destination
-</pre></div>
-
-
-<p>要注意的一點是：<br />
-如果想要避掉 某幾個目錄下的子目錄
-像是每個目錄下的 <code>.svn</code> 資料夾，可以直接用 ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/category/linux2.html">

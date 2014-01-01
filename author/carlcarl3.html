@@ -53,6 +53,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-17T16:27:00" pubdate>
+                            Wed 17 July 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1224/ipk-unarchive/" rel="bookmark"><h1>ipk unarchive</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>記錄一下:P</p>
+<p>查了一下資料，有些說直接用 <code>tar</code>
+就可以了，不過怎麼試就是不行zzzzzz。後來看到 <a href="http://stackoverflow.com/questions/17369127/extracting-and-creating-ipk-files">stackoverflow</a>
+上有人提供的方法，試了一下就成功了 XD。</p>
+<p>先用 <code>ar x xxx.ipk</code> 就可以解壓縮出幾個檔案，其中 <code>data.tar.gz</code>
+放的就是程式執行檔之類的，<code>control.tar.gz</code> 放的是 ipk 的一些
+information。</p>
+<p>接下來用 <code>tar -xf data.tar.gz</code> or <code>tar -xf control.tar.gz</code>
+就可以看到裡面的資料了。</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-07-16T18:30:00" pubdate>
                             Tue 16 July 2013
                         </time>
@@ -68,8 +90,8 @@
 <div class="highlight"><pre>http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D%22TWXX0009%22%20and%20u%3D%22c%22&amp;format=json&amp;diagnostics=true&amp;callback ...</pre></div></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -88,8 +110,8 @@
 也不是囧。後來才看到<a href="http://unix.stackexchange.com/questions/61074/tree-command-for-multiple-includes-and-excludes">用法</a>應該是 <code>-I pattern1|pattern2</code> 才對 orz。</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -115,8 +137,8 @@ XD。</p>
 javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -138,8 +160,8 @@ javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
 <div class="highlight"><pre><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode5</span><span class="o">-</span><span class="n">DP</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="p">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="mf">.9 ...</span></pre></div></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -162,8 +184,8 @@ extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通�
 ready 以外，另外就是 ...</p></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -185,8 +207,8 @@ ready 以外，另外就是 ...</p></!--more-->
 <a href="http://stackoverflow.com/questions/4787527/how-to-find-the-width-of-a-div">How to find the width of a div</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -212,8 +234,8 @@ CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 
 <code>--delay</code>, <code>--clipboard</code>...等選項 ...</p></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -239,8 +261,8 @@ port，發現還是有連線存在，來源是從 NAT
 內部到外面 ...</p></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -270,44 +292,8 @@ port，發現還是有連線存在，來源是從 NAT
 <span class="n">verify ...</span></pre></div></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-19T00:19:00" pubdate>
-                            Wed 19 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1053/ssh-with-firewall/" rel="bookmark"><h1>ssh with firewall</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh
-的主機，這裡以 <code>example.com</code> 為例。 (其實參考資料的連結內容更詳細
-XD，有需要的人建議點進去看看唄～～。)</p>
-<!--more-->
-
-<ol>
-<li>從內部往外。</li>
-</ol>
-<!-- -->
-
-<div class="highlight"><pre><span class="c"># 在 local 開一個 9999 的 port 轉到 `example.com` 的 22 port，</span>
-<span class="c"># 接下來只要把 proxy 的設定指到 localhost 的 9999 就可以了。</span>
-ssh -NfD 9999 user@example.com
-</pre></div>
-
-
-<ol>
-<li>從外部連內。</li>
-</ol>
-<!-- -->
-
-<div class="highlight"><pre><span class="c"># 這邊必須先在內部的 server 輸入下面這一行，連到 example.com，</span>
-<span class="c"># 然後在 example.com ...</span></pre></div></!--></!--></!--more-->
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl2.html">

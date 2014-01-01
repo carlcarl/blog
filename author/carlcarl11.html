@@ -53,6 +53,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-02-17T21:43:00" pubdate>
+                            Fri 17 February 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/254/quorum-read/" rel="bookmark"><h1>Quorum read</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近在看 paper，剛好看到這個名詞，似乎是 Cassandra 有用到的一個技巧。</p>
+<p>在 cluster
+的環境中，有時候並不能保證說讀取到的值一定會是最新的，可能會因為架構或設計上的不同，可能在做
+replication 的部份是非同步進行的，所以更大大增加拿到舊值的機率。</p>
+<p>此方法簡單說就是讀取多個 node 的值來作比較，基本上這些值都會有
+timestamp，所以可以根據時間的新舊來決定該用哪個值，但是還是會有一些問題，像是如果讀到的值都是舊的那該怎麼辦，如果變成一次測全部
+node 的值，效能上不用說一定會很慢，所以這個問題我不知道是怎麼解決的。</p>
+<p>其實還滿詭異的，如果真的要要求資料一致性的話，我覺得還不如就選資料一致性較強的
+HBase（不過我不太喜歡要分一堆角色的分散式系統，感覺在架構配置上會比較麻煩）。</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-02-14T23:46:00" pubdate>
                             Tue 14 February 2012
                         </time>
@@ -74,8 +96,8 @@ svn add <span class="nb">test</span>
 add，應該就會顯示正常了。</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -94,8 +116,8 @@ add，應該就會顯示正常了。</p>
 <a href="http://fcamel-fc.blogspot.com/2009/04/python-vim.html">http://fcamel-fc.blogspot.com/2009/04/python-vim.html</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -120,8 +142,8 @@ OK 了。</p>
 <p><img alt="gconf-editor" src="http://198.199.117.21/wp-content/uploads/2012/02/502.png" /></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -145,8 +167,8 @@ log 會比較方便，另外記得數量也要根據需求改，因為改完後�
     /usr/lib/cgi-bin/awstats.pl -config ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -176,8 +198,8 @@ index 和 update。）</p>
 <li>作 select 的機率也是微乎其微 ...</li></ul>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -202,8 +224,8 @@ index 和 update。）</p>
 fuser 80:tcp ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -227,8 +249,8 @@ engine，不過為了這個寫 php 總是覺得很奇怪。後來查到另外一
 <p>要注意 <code>table_name</code> 不用改，這個是 <code>informatio_schema ...</code></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -255,8 +277,8 @@ process，結果怎麼好像都沒用囧，後來才試到一個可以解決的�
 <p>參考網址 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -283,23 +305,8 @@ php。另外還有一種方法也是可以作，不過是用副檔名的方法�
 <a href="http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html">http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-11-27T17:10:00" pubdate>
-                            Sun 27 November 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/153/wordpress-preview-cant-find-the-page/" rel="bookmark"><h1>wordpress preview can't find the page</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近終於申請好網域，把我的部落格網址給更新，一開始我只有更新「網誌網址」，「Wordpress網址」我本來想說用舊的就好了，可是後來在發表文章的時候發現，<strong>預覽網頁會找不到網頁啊～～</strong>，後來把「WordPress網址」改成跟「網誌網址」一樣之後，預覽就沒問題了，這算是 Bug 嗎= ="。</p>
-<p><img alt="wordpress網址" src="http://i.imgur.com/sTtl5Dsl.png" title="wordpress網址" /></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl10.html">

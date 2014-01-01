@@ -53,6 +53,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-07T19:56:00" pubdate>
+                            Fri 07 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/893/brew-install-macvim/" rel="bookmark"><h1>brew install Macvim</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>單純小筆記一下，因為每次重裝都會忘記 XDD，放在自己 blog，以後比較好查。</p>
+<!--more-->
+
+<p>如果只單純下 <code>brew install macvim</code> 的話，原本的 vim 還是會留著，如果想用
+Macvim 裡的 vim 的話，你可能會想說移掉原本的 vim，然後用 <code>ln -s</code>，來建個
+link 就好，不過實際做是不行的，會出現一些
+error，如：<code>E254: Cannot allocate color</code>，解決方法很簡單，就是下：</p>
+<div class="highlight"><pre>brew install macvim --override-system-vim
+brew linkapps
+</pre></div>
+
+
+<p>這樣就會把原本的 vim 幹掉，直接套用 Macvim 裡的。</p>
+<p>參考網址 ...</p></!--more-->
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-02-22T02:58:00" pubdate>
                             Fri 22 February 2013
                         </time>
@@ -72,8 +99,8 @@ html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverfl
 <p>將以上內容複製到 <code>.vimrc</code> 內即可。</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -94,8 +121,8 @@ html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverfl
 <a href="https://github.com/Shougo/neocomplcache/issues/276">https://github.com/Shougo/neocomplcache/issues/276</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -117,8 +144,8 @@ html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverfl
 <a href="http://https://bbs.archlinux.org/viewtopic.php?id=72573">https://bbs.archlinux.org/viewtopic ...</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -137,8 +164,8 @@ plugin，但是在使用的時候發現，一旦按下 enter 鍵再加上有縮�
 </pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -169,8 +196,8 @@ pylint：</p>
 <p>接下來如果要整合到 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -189,8 +216,8 @@ pylint：</p>
 <div class="highlight"><pre>ctags -R --c++-kinds<span class="o">=</span>+p --fields<span class="o">=</span>+iaS --extra<span class="o">=</span>+q --language-force<span class="o">=</span>C++ cpp_src ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -214,8 +241,8 @@ html/html
 <p><a href="http://groups.google.com/group/xptemplate/browse_thread/thread/9af94f0e27007817#">http://groups.google.com/group/xptemplate/browse_thread/thread/9af94f0e27007817#</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
         </ol>
         <div class="paginator">
             Page 1 / 1

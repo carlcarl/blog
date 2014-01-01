@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog - linux, 版本管理</title>
+        <title>carlcarl's blog - linux</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
@@ -53,52 +53,35 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-05T02:15:00" pubdate>
-                            Sat 05 October 2013
+                        <time class="post-time" datetime="2013-04-27T00:23:00" pubdate>
+                            Sat 27 April 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1375/tig-broken-in-tmux/" rel="bookmark"><h1>tig broken in tmux</h1></a>
+                        <a href="http://blog.carlcarl.me/838/linux-kernel-space-get-time-interval/" rel="bookmark"><h1>Linux kernel space get time interval</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>這個問題已經困擾我滿久了，在 <a href="http://tmux.sourceforge.net">tmux</a> 裡用 <a href="https://github.com/jonas/tig">tig</a>
-畫面會一直破碎，不過一直找不到原因，最近想到，於是又找看看有沒有解法，後來試了<a href="https://wiki.archlinux.org/index.php/tmux">一篇</a>裡面的做法就
-OK 了 QQ。</p>
-<p>靈感是在查資料的時候看到有人是因為在 <code>tmux.conf</code> 裡設定了
-<code>default-terminal=xterm</code> 想到的，中間有試了一下 screen，發現 tig 在
-screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</code>，而我在 tmux
-下得到的輸出卻是 <code>xterm-256color</code>，想說朝這個方向去找資料。這邊先找了
-<code>tmux.conf</code> 中，但是我並沒有設定這個東西，看了
-<code>.zshrc</code>，原來我是在這邊設定了
-<code>export TERM ...</code></p>
+                        <p>之前聽到可以用 <code>jiffies</code>
+來抓時間，可是我自己測的結果是前後抓的時間會都一樣囧。查了一下
+stackoverflow，也有<a href="http://stackoverflow.com/questions/4655711/measuring-execution-time-of-a-function-inside-linux-kernel">一個遇到一樣的問題</a>，我猜可能 <code>jiffies</code> 也是用
+period update 的方式做更新，由於中間測量的 function
+太快，導致來不及更新就拿到了一樣的值這樣。而在下面的回答中看到可以用
+<code>do_gettimeofday()</code> 來抓時間區間，簡單範例如下：<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="cp">#include &lt;linux/time.h&gt;</span>
+<span class="c1">// ...</span>
+<span class="k">struct</span> <span class="n">timeval</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">;</span>
+<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
+
+<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">begin</span><span class="p">);</span>
+<span class="c1">// Do something here</span>
+<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">end</span><span class="p">);</span>
+
+<span class="c1">// Get milliseconds </span>
+<span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">-</span> <span class="n">begin</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="n">val</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end ...</span></pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-14T23:46:00" pubdate>
-                            Tue 14 February 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/249/svn-status/" rel="bookmark"><h1>svn status appear「~」</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近遇到有人有這個問題，查了一下，這個問題的原因是因為從「一般檔案, 資料夾, 連結」這三種屬性，該檔案從其中一個屬性換成另外一種屬性就會出現這個波浪號狀態。</p>
-<p>不過當然有時候事情不是那麼簡單......，這次遇到的主要原因應該是因為資料夾內的
-<code>.svn</code> 被刪掉了，所以從外面看就會出現這種情形，以下是查到的解決方法：</p>
-<div class="highlight"><pre>mv <span class="nb">test </span>test2
-svn delete <span class="nb">test</span>
-mv test2 <span class="nb">test</span>
-svn add <span class="nb">test</span>
-</pre></div>
-
-
-<p>首先先改資料夾名稱，因為等下要刪掉原本這個資料夾的 svn 紀錄，直接 delete
-的話，資料夾就真的會被刪掉，刪完之後再把改過名稱的資料夾改回原來的名稱，改完之後再重新
-add，應該就會顯示正常了。</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
             Page 1 / 1

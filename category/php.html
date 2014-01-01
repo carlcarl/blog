@@ -68,8 +68,54 @@
 有調大的關係。可能之後還要再觀察看看，目前過了幾天，看起來是都沒問題這樣～～。</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-21T00:48:00" pubdate>
+                            Tue 21 June 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/26/windows-xdebug-wincachegrind-zend-server/" rel="bookmark"><h1>windows xdebug, wincachegrind, Zend server</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近在想辦法加速 zend framework 的執行速度，弄了超久。下次有這種 case，我死都不用 zend 了= =。</p>
+<p>這次要用的是利用 xdebug 和 wincachegrind 來分析一下 php 執行的速度和呼叫情況之類的。首先要裝的是<a href="http://xdebug.org/">xdebug</a>這個工具，進去官網後的下載頁面後可以看到幾種執行檔，我這邊用的是 php5.2 版 有兩種可以選 <a href="http://xdebug.org/files/php_xdebug-2.1.1-5.2-vc6-nts.dll">PHP 5.2 VC6 (32 bit)</a>, <a href="http://xdebug.org/files/php_xdebug-2.1.1-5.2-vc6.dll">PHP 5.2 VC6
+TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分不太清楚前後兩種的差別 不過如果是用一般的 apache server 的話可以用後面那種試試看。</p>
+<p>下載後放至 <code>php ...</code></p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-04-24T15:22:00" pubdate>
+                            Sun 24 April 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/18/zend-framework-add-acl-setting/" rel="bookmark"><h1>Zend Framework add Acl setting</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>首先先在 <code>bootstrap.php</code> 檔案裡加上下面這個 function<!--more--></p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">protected</span> <span class="k">function</span> <span class="nf">_initControllers</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bootstrap</span><span class="p">(</span><span class="s1">&#39;FrontController&#39;</span><span class="p">);</span>
+    <span class="c1">//require_once &#39;../library/Controller/Helper/Acl.php&#39;;</span>
+    <span class="c1">//require_once &#39;../library/Controller/Plugin/Auth.php&#39;;</span>
+    <span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Controller_Helper_Acl</span><span class="p">();</span>
+    <span class="nv">$auth</span> <span class="o">=</span> <span class="nx">Zend_Auth</span><span class="o">::</span><span class="na">getInstance</span><span class="p">();</span>
+    <span class="nv">$front</span> <span class="o">=</span> <span class="nx">Zend_Controller_Front</span><span class="o">::</span><span class="na">getInstance</span><span class="p">();</span>
+    <span class="nv">$front</span><span class="o">-&gt;</span><span class="na">registerPlugin</span><span class="p">(</span><span class="k">new</span> <span class="nx">Controller_Plugin_Auth</span><span class="p">(</span><span class="nv">$auth</span><span class="p">,</span> <span class="nv">$acl</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><code>$acl</code> 和 <code>$auth</code> 這兩個都需要實作，我分別把 <code>auth</code> 和 <code>acl</code> 這兩個 class 放在 ...</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
         </ol>
         <div class="paginator">
             Page 1 / 1

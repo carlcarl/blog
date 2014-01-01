@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    g0v.tw nav menu fix
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="g0v.tw nav menu fix" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1383/g0v_tw_nav_menu_fix/" />
+                <meta property="og:description" content="g0v.tw 最近改版了，css framework 也改用 semantic-ui，看起來還蠻潮的，不過目前在用，感覺問題還蠻多的，其中一個大問題應該就是沒有 responsive layout 可以直接套用，所以大概就只能自己土炮吧～。不過這次修的問題跟這個無關，主要是要讓 nav menu 可以隨著在不同網頁，然後 highlight color 到不同 menu item 上，主要有遇到幾個問題： 網頁不是用 ajax，而是直接連結到不同網頁 所以就不能用 javascript 直接 assign class 到對應的 menu item 上，只能在 template 上動手腳，template 是用 jade。首先先在 nav menu 的 ..." />
+                    <meta property="article:tag" content="g0v" />
+                    <meta property="article:tag" content="jade" />
+                    <meta property="article:tag" content="css" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header">
+        <a id="site-title" href="http://blog.carlcarl.me"><h1><i class="icon-coffee"></i> carlcarl's blog</h1></a>
+        <p id="site-desc"></p>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-02T00:40:00" pubdate>
+                            Thu 02 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1383/g0v_tw_nav_menu_fix/" rel="bookmark"><h1>g0v.tw nav menu fix</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p><a href="http://g0v.tw">g0v.tw</a> 最近改版了，css framework 也改用 <a href="http://semantic-ui.com">semantic-ui</a>，看起來還蠻潮的，不過目前在用，感覺問題還蠻多的，其中一個大問題應該就是沒有 responsive layout 可以直接套用，所以大概就只能自己土炮吧～。不過這次修的問題跟這個無關，主要是要讓 nav menu 可以隨著在不同網頁，然後 highlight color 到不同 menu item 上，主要有遇到幾個問題：</p>
+<h2>網頁不是用 ajax，而是直接連結到不同網頁</h2>
+<p>所以就不能用 javascript 直接 assign class 到對應的 menu item 上，只能在 template 上動手腳，template 是用 <code>jade</code>。首先先在 nav menu 的 template 開頭加上變數宣告，define 一個 <code>vars</code> block，然後把這些變數塞到各個 menu item 的 classs 內：</p>
+<div class="highlight"><pre><span class="p">-</span> <span class="k">var</span> <span class="n">nav_cls</span> <span class="k">=</span> <span class="o">{}</span>
+<span class="p">-</span> <span class="n">nav_cls</span><span class="o">.</span><span class="n">index</span> <span class="k">=</span> <span class="n">nav_cls</span><span class="o">.</span><span class="n">about</span> <span class="k">=</span> <span class="n">nav_cls</span><span class="o">.</span><span class="n">talk</span> <span class="k">=</span> <span class="err">&#39;&#39;</span>
+<span class="p">-</span> <span class="n">nav_cls</span><span class="o">.</span><span class="n">actinfo</span> <span class="k">=</span> <span class="n">nav_cls</span><span class="o">.</span><span class="n">join</span> <span class="k">=</span> <span class="n">nav_cls</span><span class="o">.</span><span class="n">contact</span> <span class="k">=</span> <span class="err">&#39;&#39;</span>
+<span class="nt">block</span> vars
+<span class="nc">.ui.fluid.seven.item.menu</span>
+<span class="nt">a</span>(<span class="na">class=</span><span class="s">&quot;item #{ nav_cls.index }&quot;</span><span class="err">,</span><span class="na">href=</span><span class="s">&quot;/index.html&quot;</span>)
+  | 首頁
+<span class="nt">div</span>(<span class="na">class=</span><span class="s">&quot;ui pointing dropdown link item #{ nav_cls.about }&quot;</span>)
+</pre></div>
+
+
+<p>然後在各個 sub template 引用 <code>vars</code> 這個 block，然後在這個 block 內，assgin value 給對應的 variable ,至於為啥用 <code>highlight</code> 不用 <code>active</code> 下面還會再解釋：</p>
+<div class="highlight"><pre><span class="nt">block</span> vars
+<span class="p">-</span> <span class="n">nav_cls</span><span class="o">.</span><span class="n">about</span> <span class="k">=</span> <span class="-Symbol">&#39;highlight</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>這個是目前想到的解法。有想過直接給一個固定的 variable，裡面塞對應的 element id，再用 javascript assign class 進去就好，寫法簡潔得多，不過這樣在 render 上就有點不太好看了 orz。</p>
+<h2>Dropdown menu 不支援 active 下的 color 顯示</h2>
+<p>嗯...，用 semantic-ui 本身的 menu color highlight，只對 <code>&lt;a&gt;</code> element 有效，而且 dropdown menu 在 pop  menu 時會加上 <code>.active</code>，但是 hide menu 之後會把 <code>.active</code> 拿掉囧，所以乾脆自己生一個 class 來代替，如下：</p>
+<div class="highlight"><pre><span class="nc">.highlight</span> <span class="p">{</span>
+    <span class="k">border-color</span><span class="o">:</span> <span class="m">#F05940</span><span class="cp">!important</span><span class="p">;</span>
+    <span class="k">color</span><span class="o">:</span> <span class="m">#F05940</span><span class="cp">!important</span><span class="p">;</span>
+    <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">.2em</span> <span class="m">0</span> <span class="k">inset</span> <span class="cp">!important</span><span class="p">;</span>
+    <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">.2em</span> <span class="m">0</span> <span class="k">inset</span> <span class="cp">!important</span><span class="p">;</span>
+    <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">0</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Ref commit: <a href="https://github.com/g0v/g0v.tw/commit/df20f4c917521977eb33f0f29ab932395843de49">https://github.com/g0v/g0v.tw/commit/df20f4c917521977eb33f0f29ab932395843de49</a></p>
+<p>參考連結:<br />
+<a href="http://stackoverflow.com/questions/13668881/variable-in-class-name-jade">variable in class name jade</a><br />
+<a href="https://github.com/visionmedia/jade/issues/698">Multi-line variable declaration is not supported</a>  </p>
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/web.html">web</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/g0v.html">g0v</a>, <a href="http://blog.carlcarl.me/tag/jade.html">jade</a>, <a href="http://blog.carlcarl.me/tag/css.html">css</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>

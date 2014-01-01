@@ -53,6 +53,247 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-11-15T07:33:00" pubdate>
+                            Thu 15 November 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/721/mongodb-uptime-query/" rel="bookmark"><h1>MongoDB uptime query</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 <a href="http://stackoverflow.com/questions/13379170/how-long-was-a-mongo-instance-running">stackoverflow</a>
+看到這個問題，就順便查個資料回了一下，另外有個人是回答可以用 <code>ps -ef</code>
+來看，不過我想說 MongoDB 本身應該也會有這樣的功能，所以還是查了一下。</p>
+<!--more-->
+
+<p>後來果然在 <a href="http://docs.mongodb.org/manual/reference/server-status/">MongoDB 官方文件</a>
+找到我要的資料，不過拿到的數據會是以秒為單位，所以必須自己作轉換。</p>
+<p>進入 mongo shell 之後輸入：</p>
+<div class="highlight"><pre><span class="c1">// seconds</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span>
+</pre></div>
+
+
+<p>其他的就照單位轉換一下就可以：</p>
+<div class="highlight"><pre><span class="c1">// minutes</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span> <span class="o">/</span> <span class="mi">60</span>
+<span class="c1">// hours</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span> <span class="o">/</span> <span class="mi">3600</span>
+<span class="c1">// days</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span> <span class="o">/</span> <span class="mi">86400</span>
+</pre></div>
+
+
+<p>如果要固定格式的話，目前似乎沒有直接的 function 可以 call，所以還是必須自己作轉換，像是 <a href="http://stackoverflow.com/questions/175554/how-to-convert-milliseconds-into-human-readable-form">這篇</a> 。</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-10-12T03:19:00" pubdate>
+                            Fri 12 October 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/680/php-mongodb-query-timing/" rel="bookmark"><h1>PHP MongoDB query timing</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近在用 PHP 在對 MongoDB 作壓力測試的時候，發現怎麼我 1 shard 和 3
+shards 的 performance 會一樣，卡了很久後來才發現原來是我搞錯 MongoDB
+query 的時機，所以在測試的時候，query 其實都沒有發出，難怪數據會一樣。<br />
+<!--more--><br />
+在 PHP 的 <a href="http://php.net/manual/en/class.mongocursor.php">manual</a> 裡有說明，以下拿它的範例程式來說明 query 的時機：</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$cursor</span> <span class="o">=</span> <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="c1">// query 還沒發出</span>
+
+<span class="nv">$cursor</span> <span class="o">=</span> <span class="nv">$cursor</span><span class="o">-&gt;</span><span class="na">sort</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">));</span>
+<span class="c1">// query 還是沒發出</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$cursor</span><span class="o">-&gt;</span><span class="na">getNext</span><span class="p">());</span> <span class="c1">// 這時才發出 ...</span></pre></div>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-10-09T03:21:00" pubdate>
+                            Tue 09 October 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/671/mongodb-split-chunk/" rel="bookmark"><h1>MongoDB split chunk</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>練習了一下自己手動切 chunk，因為有時候 MongoDB
+切出來的不一定是理想的範圍 orz。</p>
+<p>大致就兩個步驟，第一個是切 chunk，第二個是移動 chunk 到某個 shard
+上，如果 balancer 沒關掉的話，第二個步驟會由 balancer 幫你決定你的 chunk
+要移到哪個 shard 上。<br />
+<!--more-->  </p>
+<h3>切 chunk 指令</h3>
+<div class="highlight"><pre><span class="c1">// 第一個參數是指定在哪個 DB 中的 collection，</span>
+<span class="c1">// 因為文件裡只說是 collection，所以可能會忘了加上 DB 的名稱</span>
+<span class="c1">// 第二個參數是你指定的 sharding key，cutPoint 則是要從哪個數值下去切</span>
+<span class="nx">sh</span><span class="p">.</span><span class="nx">splitAt</span><span class="p">(</span><span class="s2">&quot;yourDB.yourCollection&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="nx">cutPoint</span><span class="p">})</span>
+</pre></div>
+
+
+<p>or</p>
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">runCommand ...</span></pre></div>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-10-09T02:15:00" pubdate>
+                            Tue 09 October 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/663/mongodb-check-status-command/" rel="bookmark"><h1>MongoDB check status command</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>紀錄一下 MongoDB 看狀態時常會用到的指令。<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="c"># 看目前 state 的指令</span>
+mongostat
+</pre></div>
+
+
+<p>以下都是進 mongo shell 後的指令。</p>
+<div class="highlight"><pre><span class="c1">// 狀態總覽</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">()</span>
+
+<span class="c1">// 看 memory</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">mem</span>
+
+<span class="c1">// 看 page fault</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">extra_info</span>
+
+<span class="c1">// 看 sharding 的狀態，兩個指令同樣功能</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">printShardingStatus</span><span class="p">()</span>
+<span class="nx">sh</span><span class="p">.</span><span class="nx">status</span><span class="p">()</span>
+
+<span class="c1">// 查看 db 本身的資訊</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">stats</span><span class="p">()</span>
+
+<span class="c1">// 查看 collection 的 index</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">getIndexes</span><span class="p">()</span>
+
+<span class="c1">// 查看目前執行的 operation</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">currentOP</span><span class="p">()</span>
+</pre></div>
+
+
+<p>參考網址 ...</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-09-14T05:05:00" pubdate>
+                            Fri 14 September 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/645/mongodb-aggregation-group-count-sort/" rel="bookmark"><h1>mongodb aggregation group count sort</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>感覺不是很難的 query，想說用 mongodb aggregation 來解決，不過查資料查了好久才知道怎麼用。<br />
+<!--more--><br />
+以 sql 來說的話，我是要對某個欄位作 group by，分類完之後再對分類完的欄位作 count，算完之後再根據 count 的數字作 sort。下面這段是 MongoDB 中的用法：</p>
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">mytable</span><span class="p">.</span><span class="nx">aggregate</span><span class="p">({</span> <span class="nx">$group</span><span class="o">:</span><span class="p">{</span> <span class="nx">_id</span><span class="o">:</span> <span class="s2">&quot;$b_cd&quot;</span><span class="p">,</span> <span class="nx">num</span><span class="o">:</span> <span class="p">{</span><span class="nx">$sum</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span> <span class="p">}},</span> <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">num</span><span class="o">:</span><span class="mi">1</span><span class="p">}}</span> <span class="p">);</span>
+</pre></div>
+
+
+<p><code>$b_cd</code> 是我要分類的欄位，<code>num</code> 是各分類欄位的數目，這邊利用 <code>$sum</code>
+作累加，接著再用 <code>$sort</code> 對 num 作排序。</p>
+<p>中間我卡很久的原因是因為 syntax
+搞錯（<strong>大括弧的位置要注意 ...</strong></p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-08-13T22:16:00" pubdate>
+                            Mon 13 August 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/589/mongodb-php-connection/" rel="bookmark"><h1>mongodb php connection</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>大概寫一下 mongodb + auth 的連線步驟，之前我是這樣做連線認証：<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://localhost:27017&quot;</span><span class="p">);</span>    
+<span class="nv">$db</span> <span class="o">=</span> <span class="nv">$m</span><span class="o">-&gt;</span><span class="na">mytable</span><span class="p">;</span>
+<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">authenticate</span><span class="p">(</span><span class="nv">$DB_USERNAME</span><span class="p">,</span> <span class="nv">$DB_USERPASSWORD</span><span class="p">);</span>
+</pre></div>
+
+
+<p>不過後來更新 php mongodb 的 library 後，發現 <code>authenticate</code> 這個 method
+已經 deprecated 了，所以改用原本 mongodb 的建構式做連線認証：</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://</span><span class="si">${</span><span class="nv">DB_USERNAME}:${DB_USERPASSWORD</span><span class="si">}</span><span class="s2">@localhost/mydb&quot;</span><span class="p">);</span>
+<span class="nv">$db</span> <span class="o">=</span> <span class="nv">$m</span><span class="o">-&gt;</span><span class="na">mydb</span><span class="p">;</span>
+</pre></div>
+
+
+<p>這邊要注意的一點就是，雖然在 Mongo ...</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-07-27T20:19:00" pubdate>
+                            Fri 27 July 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/546/fix-mongodb-default-allocate-space-too-larger/" rel="bookmark"><h1>fix mongodb default allocate space too larger</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近在做 VM template 的時候才發現到這個問題，安裝好 mongodb 之後，在
+<code>/var/lib/mongodb/journal/</code> 下面可以發現 mongodb 佔用了 3 GB 的 journal
+檔案。</p>
+<p>當然，如果硬碟夠大或是沒啥必要的話，這其實可以不用去理它，但是我由於需要加快利用
+VM template 安裝系統的速度，而 template 的大小會影響中間網路傳送
+template 的時間，因此還是希望能避免不必要的空間浪費。</p>
+<p>而其實 mongodb 本身有提供一個參數 <code>smallfiles</code>
+，這個參數可以讓這些預先生成的 journal 檔案一個從 1G 降到約 13X MB
+左右，所以總共 3 個 journal file ...</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-31T15:26:00" pubdate>
+                            Thu 31 May 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/495/mysql-table_cache-fail/" rel="bookmark"><h1>MySQL table_cache fail</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>一直記得之前好像遇過同樣的問題，後來才想到應該是 ulimit 的限制。ulimit
+會限制一個 user 可開啟的檔案，MySQL 也不例外，預設會被限制在最多開 1024
+個檔案，以下是跟 MySQL 有關的算式：</p>
+<div class="highlight"><pre>max_open_files = max_connections + (table_cache * 2)
+</pre></div>
+
+
+<p><code>max_open_files</code> 基本上是固定 1024，所以後面的部份一旦自己設太大，MySQL
+會自己再調整參數，所以可能會遇到你將 <code>max_connections</code> 設到
+1024、<code>table_cache</code> 設到512，可是在 MySQL command line
+中去查，<code>table_cache</code> 卻還是預設 64 的情形，<code>max_connections</code>
+的值也會同樣被降低。</p>
+<p>要預防這種情形就必須修改 <code>ulimit</code> 限制，在 <code>/etc/security/limits ...</code></p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-05-29T22:42:00" pubdate>
                             Tue 29 May 2012
                         </time>
@@ -70,8 +311,8 @@ operation，如果在 SELECT 完之後有其他人也進行 SELECT
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="n">num</span><span class="o">=</span><span class="n">num</span><span class="o">+</span><span class="mi">1 ...</span></pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -92,11 +333,14 @@ node 的值，效能上不用說一定會很慢，所以這個問題我不知道
 HBase（不過我不太喜歡要分一堆角色的分散式系統，感覺在架構配置上會比較麻煩）。</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
         </ol>
         <div class="paginator">
-            Page 1 / 1
+            Page 1 / 2
+                <a href="http://blog.carlcarl.me/category/database2.html">
+                    <i class="icon-circle-arrow-right"></i>
+                </a>
         </div>
 
     </div>

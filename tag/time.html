@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog - linux, python</title>
+        <title>carlcarl's blog - time</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
@@ -53,25 +53,35 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-06-17T22:47:00" pubdate>
-                            Sun 17 June 2012
+                        <time class="post-time" datetime="2013-04-27T00:23:00" pubdate>
+                            Sat 27 April 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/515/chakra-vim-not-support-pythoncomplete/" rel="bookmark"><h1>Chakra vim not support pythoncomplete</h1></a>
+                        <a href="http://blog.carlcarl.me/838/linux-kernel-space-get-time-interval/" rel="bookmark"><h1>Linux kernel space get time interval</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>最近在 Chakra 上用 vim 寫 python
-的時候才突然發現這個問題，原因似乎是因為 vim 在編譯的時候沒有加上 python
-的編譯參數，解決這個問題很簡單，只要改安裝 <code>vim-qt-git</code> 就 OK
-了，因為它所提供的 vim 是有支援 pythoncomplete 的。vim-qt-git
-本身包含一套完整的 vim 以及加上 GUI 的套件，所以安裝的時候會要求將原本的
-vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的補完功能了。</p>
-<p>參考網址：<br />
-<a href="https://bbs.archlinux.org/viewtopic.php?id=122091">https://bbs.archlinux.org/viewtopic.php?id=122091</a><br />
-<a href="https://wiki.archlinux.org/index.php/Vim">https://wiki.archlinux.org/index ...</a></p>
+                        <p>之前聽到可以用 <code>jiffies</code>
+來抓時間，可是我自己測的結果是前後抓的時間會都一樣囧。查了一下
+stackoverflow，也有<a href="http://stackoverflow.com/questions/4655711/measuring-execution-time-of-a-function-inside-linux-kernel">一個遇到一樣的問題</a>，我猜可能 <code>jiffies</code> 也是用
+period update 的方式做更新，由於中間測量的 function
+太快，導致來不及更新就拿到了一樣的值這樣。而在下面的回答中看到可以用
+<code>do_gettimeofday()</code> 來抓時間區間，簡單範例如下：<br />
+<!--more--></p>
+<div class="highlight"><pre><span class="cp">#include &lt;linux/time.h&gt;</span>
+<span class="c1">// ...</span>
+<span class="k">struct</span> <span class="n">timeval</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">;</span>
+<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
+
+<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">begin</span><span class="p">);</span>
+<span class="c1">// Do something here</span>
+<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">end</span><span class="p">);</span>
+
+<span class="c1">// Get milliseconds </span>
+<span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">-</span> <span class="n">begin</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="n">val</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end ...</span></pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
         </ol>
         <div class="paginator">
             Page 1 / 1

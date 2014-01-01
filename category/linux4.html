@@ -53,6 +53,121 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-10-27T20:41:00" pubdate>
+                            Thu 27 October 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/47/ssh-slow/" rel="bookmark"><h1>ssh slow</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>貌似是學校最近 DNS 常出問題還是怎樣，ssh 的速度非常緩慢，後來決定把 config 檔案改一改，改完之後速度果然快很多= =+。</p>
+<p>修改 <code>/etc/ssh/sshd_config</code>，以下是修改內容：</p>
+<div class="highlight"><pre>UseDNS no
+GSSAPIAuthentication no
+</pre></div>
+
+
+<p>修改完後執行：</p>
+<div class="highlight"><pre>sudo /etc/init.d/ssh restart
+</pre></div>
+
+
+<p>收工~，不過如果 DNS 沒問題的話，可能修改這個設定速度不會差太多。</p>
+<p>參考網址：</p>
+<p><a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://jeffxie.blog.51cto.com/1365360/293869</a><br />
+<a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://www.dk101.com/Discuz/viewthread.php?tid=157716</a>  </p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-09-30T18:15:00" pubdate>
+                            Fri 30 September 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/46/doxygen-show-files-with-directory-level/" rel="bookmark"><h1>doxygen show files with directory level</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>因為 project 的檔案太多，用 doxygen parse過後檔案還是多的要死，想說有沒有分資料夾階層顯示的方式。找了很久，後來找到一個折衷的方法，那就是在 config 檔中作以下設定。</p>
+<div class="highlight"><pre>SHOW_DIRECTORIES = YES
+</pre></div>
+
+
+<p>以下是顯示出來的樣子......。好吧，個人是覺得有點陽春，可以的話如果有收合的功能就更好了，只能希望之後的版本會有囉。</p>
+<p><img alt="doxygen_dir.png" src="http://i.imgur.com/WlsqsDB.png" title="doxygen_dir.png" />  </p>
+<p>參考網址：</p>
+<p><a href="http://stackoverflow.com/questions/6874800/directories-within-file-list-in-doxygen">http://stackoverflow.com/questions/6874800/directories-within-file-list-in-doxygen</a></p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-09-05T18:51:00" pubdate>
+                            Mon 05 September 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/44/vimrc-check-hostname/" rel="bookmark"><h1>vimrc check hostname</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>因為在不同電腦用了一個共用的 vimrc 檔，但是又想在兩邊作一些不同的設定，所以找了一下資料看要怎麼作。雖然有判斷作業系統的方式，不過好像不太適合我的用法，然後我通常不同的電腦都會設個有意義的 hostname，所以最後想說就用 hostname 去作判斷啦，以下是一個範例：</p>
+<div class="highlight"><pre>let hostname = substitute(system(&#39;hostname&#39;), &#39;n&#39;, &#39;&#39;, &#39;&#39;)
+if hostname == &quot;lab&quot;
+    &quot;do something
+elseif hostname == &quot;home&quot;
+    &quot;do something
+endif
+</pre></div>
+
+
+<p>另外附上判斷 OS 的方式：</p>
+<div class="highlight"><pre>if has(&#39;win32&#39;)
+    &quot;do something
+elseif has(&#39;mac&#39;)
+    &quot;do something
+elseif has(&#39;unix&#39;)
+    &quot;do something
+endif
+</pre></div>
+
+
+<p>參考網址 ...</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-08-27T11:18:00" pubdate>
+                            Sat 27 August 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/40/rsync-exclude-file/" rel="bookmark"><h1>rsync exclude file</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近想打包線上在跑的網站(在 Ubuntu 上)。本來想說用 <code>cp</code> 就好，但是 <code>cp</code>
+沒辦法去 exclude 一些檔案列表，偏偏網站上面有些是暫存檔和使用者上傳的東西，另外還有一些雜七雜八不該包的 code。</p>
+<p>後來查到可以用 <code>rsync</code> 來作 因為有支援 exclude 的參數，以下是範例，a
+參數包含了一堆其他參數的功能，v 參數就是將詳細資訊印出來：</p>
+<div class="highlight"><pre>rsync -av --exclude <span class="s1">&#39;dir&#39;</span> <span class="nb">source </span>destination
+</pre></div>
+
+
+<p>想要 exclude 多一點的話可以這樣下：</p>
+<div class="highlight"><pre>rsync -av --exclude <span class="s1">&#39;dir1&#39;</span> --exclude <span class="s1">&#39;dir2&#39;</span> <span class="nb">source </span>destination
+</pre></div>
+
+
+<p>要注意的一點是：<br />
+如果想要避掉 某幾個目錄下的子目錄
+像是每個目錄下的 <code>.svn</code> 資料夾，可以直接用 ...</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-07-16T12:11:00" pubdate>
                             Sat 16 July 2011
                         </time>
@@ -74,8 +189,8 @@
 <p>這邊 <code>localip</code> 是 Server 連線之後要用的 IP，基本上跟 Server 本身的 Public IP沒有關係，可以給個 private ip 就 ok 了，<code>remoteip</code> 是給 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -98,8 +213,8 @@
 <p>接著根據 <code>apps</code> : <code>metacity</code> : <code>global_keybindings</code> 的順序下去找，應該可以找到一個叫做 <code>show_desktop</code> 的設定。然後對應的值應該會是 <code>&lt;Super&gt;d</code>，這邊就直接把這個值刪掉就好了 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -127,8 +242,8 @@
 <div class="highlight"><pre>logresolvemerge.pl /var/log/apache2/.gz &gt; temp ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -155,8 +270,8 @@
 <p>到時候指定好 config 的參數 他就會去讀這個檔案的設定，然後要稍微修改一下 <code>awstats ...</code></p></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -188,8 +303,8 @@
         set $php_root ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -218,116 +333,8 @@
     location /phpmyadmin ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-06-13T10:44:00" pubdate>
-                            Mon 13 June 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/23/linux-check-dist-io/" rel="bookmark"><h1>Linux check disk IO</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>讀取速度 輸入下面這行指令</p>
-<div class="highlight"><pre>hdparm -t /dev/sda
-</pre></div>
-
-
-<p><code>/dev/sda</code> 可以換成想測的硬碟裝置</p>
-<p>輸入之後會產生類似以下的輸出</p>
-<div class="highlight"><pre>Timing buffered disk reads:  1168 MB in  3.00 seconds = 389.29 MB/sec
-</pre></div>
-
-
-<p>組 RAID5 速度快很多= =+</p>
-<p>寫入速度 輸入下面這行指令</p>
-<div class="highlight"><pre><span class="nb">time </span>sh -c <span class="s2">&quot;dd if=/dev/zero of=tmp.dd bs=1000k count=100; sync&quot;</span>
-</pre></div>
-
-
-<p>會產生類似以下的輸入</p>
-<div class="highlight"><pre>100+0 records in
-100 ...</pre></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-05-12T07:29:00" pubdate>
-                            Thu 12 May 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/20/linux-several-ways-to-open-or-close-service/" rel="bookmark"><h1>linux several ways to open or close service</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>(如果想立即開啟或關掉就要用 service 或是直接到 /etc/init.d/ 底下去操作)</p>
-<p>以下是用來設定在系統開啟時預設要執行的 service</p>
-<p>在 RedHat 系列底下可以用 <code>chkconfig</code>，啟用 httpd (如果已經加到 chkconfig 裡了 就可以不用輸入第一行)</p>
-<div class="highlight"><pre>chkconfig httpd --add
-chkconfig http on
-</pre></div>
-
-
-<p>停用 httpd (第二行是把 httpd 從 chkconfig 的管理中移除，我的建議是輸入第一行就好了)</p>
-<div class="highlight"><pre>chkconfig httpd off
-chkconfig httpd --del
-</pre></div>
-
-
-<p>在 Debian 或 Ubuntu 底下的話 可以用 <code>update-rc.d</code> 開啟 apache2:</p>
-<div class="highlight"><pre>update-rc ...</pre></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-05-04T13:55:00" pubdate>
-                            Wed 04 May 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/19/vim-auto-complete-with-clang_complete/" rel="bookmark"><h1>vim auto complete with clang_complete</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>剛才裝完了，其實安裝還滿簡單的。</p>
-<p>首先先到<a href="https://github.com/Rip-Rip/clang_complete/tree/master/plugin">下載頁面</a>，下面會有個 <code>clang_complete.vim</code> 檔案</p>
-<p>下載這個檔案後 將其放置在 <code>~/.vim/plugin/</code> 底下
-(如果找不到 <code>plugin</code> 資料夾的話可以自己建)</p>
-<p>接著到這個<a href="https://github.com/Rip-Rip/clang_complete/wiki">wiki</a>頁面，照你的作業系統版本來決定要怎麼安裝 clang 這個套件(這個套件還滿肥的，
-好像有7X MB)</p>
-<p>裝完之後咧? 就可以用啦XDD，超快。</p>
-<p>以下這張是功能截圖。以這張圖來說，輸入 <code>-&gt;</code> 或是 <code>.</code> 之類的，他就會出現提示，這時候就可以用鍵盤上下鍵來選擇要選哪一個來用。</p>
-<p><img alt="clang_complete" src="http://i.imgur.com/PyNjikJ.png" title="clang_complete" />  </p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-04-21T18:55:00" pubdate>
-                            Thu 21 April 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/17/how-to-connect-the-server-in-virtualbox/" rel="bookmark"><h1>How to connect the server in virtualbox</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>如果是要用ssh連的話 就輸入以下指令<!--more--></p>
-<p><code>C:Program FilesOracleVirtualBoxVBoxManage.exe" modifyvm "VM name" --natpf1
-"guestssh,tcp,,2222,,22"</code></p>
-<p>前面如果有改 virtualbox 的安裝位置的話 就要跟著改</p>
-<p><code>VM name</code> 請輸入當初在建VM時所輸入的名稱</p>
-<p>後面指的是如果連到本機的 2222 port 的話 就轉向到VM中的 22 port</p>
-<p>同樣的也可以用 <code>guesthttp,tcp,,80,,80</code> 的方式來把連到本機 80 port的轉向連到VM中的 80 port</p>
-<p>把server建在VM中這樣還可以降低本機被攻擊的危險(如果不考慮效能的因素的話):P</p>
-<p>而且系統備份也很方便~~</p>
-<p>參考資料:</p>
-<p><a href="http://slo.twbbs.org/?p=417">http://slo.twbbs.org/?p=417</a></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/category/linux3.html">

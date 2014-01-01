@@ -53,6 +53,23 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-21T00:48:00" pubdate>
+                            Tue 21 June 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/26/windows-xdebug-wincachegrind-zend-server/" rel="bookmark"><h1>windows xdebug, wincachegrind, Zend server</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近在想辦法加速 zend framework 的執行速度，弄了超久。下次有這種 case，我死都不用 zend 了= =。</p>
+<p>這次要用的是利用 xdebug 和 wincachegrind 來分析一下 php 執行的速度和呼叫情況之類的。首先要裝的是<a href="http://xdebug.org/">xdebug</a>這個工具，進去官網後的下載頁面後可以看到幾種執行檔，我這邊用的是 php5.2 版 有兩種可以選 <a href="http://xdebug.org/files/php_xdebug-2.1.1-5.2-vc6-nts.dll">PHP 5.2 VC6 (32 bit)</a>, <a href="http://xdebug.org/files/php_xdebug-2.1.1-5.2-vc6.dll">PHP 5.2 VC6
+TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分不太清楚前後兩種的差別 不過如果是用一般的 apache server 的話可以用後面那種試試看。</p>
+<p>下載後放至 <code>php ...</code></p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-06-21T00:31:00" pubdate>
                             Tue 21 June 2011
                         </time>
@@ -81,8 +98,8 @@
         set $php_root ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -111,8 +128,8 @@
     location /phpmyadmin ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -144,8 +161,8 @@
 100 ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -172,8 +189,8 @@
 <p>下面這行還滿方便的，不過記得要先到 <code>/etc/init.d ...</code></p></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -197,8 +214,8 @@
 git remote add origin ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -226,8 +243,8 @@ chkconfig httpd --del
 <div class="highlight"><pre>update-rc ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -248,8 +265,8 @@ chkconfig httpd --del
 <p><img alt="clang_complete" src="http://i.imgur.com/PyNjikJ.png" title="clang_complete" />  </p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -277,8 +294,8 @@ chkconfig httpd --del
 <p><code>$acl</code> 和 <code>$auth</code> 這兩個都需要實作，我分別把 <code>auth</code> 和 <code>acl</code> 這兩個 class 放在 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -301,28 +318,8 @@ chkconfig httpd --del
 <p><a href="http://slo.twbbs.org/?p=417">http://slo.twbbs.org/?p=417</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-04-17T11:31:00" pubdate>
-                            Sun 17 April 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/16/postfix-modify-setting-after-installation/" rel="bookmark"><h1>postfix-modify-setting-after-installation</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前在裝的時候沒有設定到，結果後來也不知道怎麼再去設定畫面，後來查到了:</p>
-<div class="highlight"><pre>sudo apt-get install --reinstall postfix
-sudo dpkg-reconfigure postfix
-</pre></div>
-
-
-<p>第一行是重新安裝，第二行是再次設定。下完後就會進入設定畫面了~。</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl14.html">

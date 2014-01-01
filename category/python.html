@@ -80,8 +80,8 @@
 <p>如果到 production 的話，就將 <code>debug</code> 設為 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -96,8 +96,8 @@
 <p>從 kivy 的官網可以看到它的一些特色，像 cross platform，license 也是很 free 的 MIT，其他還有像常被拿來講的 multi-touch 之類的 feature。在書中可以看到 kivy 還有一個比較特別的地方就是它有一個 kivy language，其實有種 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -119,8 +119,34 @@
 <span class="k">def</span> <span class="nf">add ...</span></pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-10-04T21:26:00" pubdate>
+                            Fri 04 October 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>就之前產生的 sphinx document，接下來是如何 deploy 到 github page 上。</p>
+<p>這個文章是根據 <a href="http://raxcloud.blogspot.tw/2013/02/documenting-python-code-using-sphinx.html">Documenting python code using sphinx and github</a> 和
+<a href="http://datadesk.latimes.com/posts/2012/01/sphinx-on-github/">Sphinx documentation on GitHub</a>
+整理而成的，兩個地方的資料都不錯，不過都沒有很完美，所以就寫了這篇。</p>
+<h2>建立 github page repo</h2>
+<p>這邊看到大部分的做法都是直接在 project 根目錄下直接開另外一個
+branch，不過我後來在上面連結看到一個不錯的做法，就是直接把 branch 建立在
+subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資料夾：</p>
+<div class="highlight"><pre>mkdir gh-pages
+</pre></div>
+
+
+<p>接著利用 <code>git-new-workdir</code> 這個指令建立一個 ...</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -155,8 +181,8 @@ orz。</p>
 <div class="highlight"><pre>Welcome to the Sphinx 1.1.3 ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -192,8 +218,8 @@ orz。</p>
     <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">countdown</span><span class="p">,</span> <span class="n">data_list ...</span></pre></div></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -226,8 +252,8 @@ orz。</p>
 attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</code></p></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -249,8 +275,8 @@ attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</cod
 陣列中最後兩個值加起來再 append ...</p></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -278,8 +304,8 @@ assign 成這個物件。</p>
 <h3>logging ...</h3></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -298,35 +324,8 @@ assign 成這個物件。</p>
 <div class="highlight"><pre>http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D%22TWXX0009%22%20and%20u%3D%22c%22&amp;format=json&amp;diagnostics=true&amp;callback ...</pre></div></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-14T05:11:00" pubdate>
-                            Sun 14 July 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1131/python-pyramid-with-grunt-js/" rel="bookmark"><h1>Python Pyramid with Grunt.js</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>這幾天試玩了一下
-<a href="http://gruntjs.com">Grunt.js</a>，感覺還不錯方便，所以來筆記一些自己的設定。一開始還在想
-<a href="http://www.pylonsproject.org">Pyramid</a> 和 Grunt 要怎麼結合，雖然有 Google
-了一下，不過好像都沒有一個比較準確的答案，所以這邊我就照自己想的來做
-XD。</p>
-<p>我主要在 Grunt 中用的功能有：</p>
-<ol>
-<li>minify 和 combine css, js</li>
-<li>監控檔案的變化，有變動的話就做 1 的步驟</li>
-<li>做完 1 的步驟就自動 reload browser (livereload)</li>
-</ol>
-<p>livereload 這邊是透過 Grunt bind 一個 port
-並監視檔案的變化，接著網頁的部分加入這個 port 底下所提供的
-javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
             Page 1 / 3

@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog - C &amp; C++, linux</title>
+        <title>carlcarl's blog - jade</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
@@ -53,71 +53,19 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-08-13T15:50:00" pubdate>
-                            Tue 13 August 2013
+                        <time class="post-time" datetime="2014-01-02T00:40:00" pubdate>
+                            Thu 02 January 2014
                         </time>
-                        <a href="http://blog.carlcarl.me/1267/c-define-debug-function/" rel="bookmark"><h1>C define debug function</h1></a>
+                        <a href="http://blog.carlcarl.me/1383/g0v_tw_nav_menu_fix/" rel="bookmark"><h1>g0v.tw nav menu fix</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>參考<a href="http://www.makelinux.net/ldd3/chp-4-sect-2">這篇</a>，然後做了點修改。</p>
-<!--more-->
-
-<div class="highlight"><pre>#undef CM_DBG
-#ifdef LTE_CM_DEBUG
-#   define CM_DBG(fmt, args...) do{   
-    printf(&quot;  (%d/%s): &quot;fmt, __LINE__, __FILE__, ## args);   
-}while(0)
-#else
-#   define CM_DBG(fmt, args...)
-#endif
-
-#undef CM_DBGG
-#define CM_DBGG(fmt, args...) do{   
-    printf(&quot;  (%d/%s): &quot;fmt, __LINE__, __FILE__, ## args);   
-}while(0)
-</pre></div>
-
-
-<p>大致除了命名外還做了點修改：</p>
-<ol>
-<li>把 <code>printk</code> 的部分拿掉，因為我不需要。</li>
-<li><code>CM_DBGG</code> 改成跟原本功能一樣 ...</li></ol></!--more-->
+                        <p><a href="http://g0v.tw">g0v.tw</a> 最近改版了，css framework 也改用 <a href="http://semantic-ui.com">semantic-ui</a>，看起來還蠻潮的，不過目前在用，感覺問題還蠻多的，其中一個大問題應該就是沒有 responsive layout 可以直接套用，所以大概就只能自己土炮吧～。不過這次修的問題跟這個無關，主要是要讓 nav menu 可以隨著在不同網頁，然後 highlight color 到不同 menu item 上，主要有遇到幾個問題：</p>
+<h2>網頁不是用 ajax，而是直接連結到不同網頁</h2>
+<p>所以就不能用 javascript 直接 assign class 到對應的 menu item 上，只能在 template 上動手腳，template 是用 <code>jade</code>。首先先在 nav menu 的 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-04-27T00:23:00" pubdate>
-                            Sat 27 April 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/838/linux-kernel-space-get-time-interval/" rel="bookmark"><h1>Linux kernel space get time interval</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前聽到可以用 <code>jiffies</code>
-來抓時間，可是我自己測的結果是前後抓的時間會都一樣囧。查了一下
-stackoverflow，也有<a href="http://stackoverflow.com/questions/4655711/measuring-execution-time-of-a-function-inside-linux-kernel">一個遇到一樣的問題</a>，我猜可能 <code>jiffies</code> 也是用
-period update 的方式做更新，由於中間測量的 function
-太快，導致來不及更新就拿到了一樣的值這樣。而在下面的回答中看到可以用
-<code>do_gettimeofday()</code> 來抓時間區間，簡單範例如下：<br />
-<!--more--></p>
-<div class="highlight"><pre><span class="cp">#include &lt;linux/time.h&gt;</span>
-<span class="c1">// ...</span>
-<span class="k">struct</span> <span class="n">timeval</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">;</span>
-<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
-
-<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">begin</span><span class="p">);</span>
-<span class="c1">// Do something here</span>
-<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">end</span><span class="p">);</span>
-
-<span class="c1">// Get milliseconds </span>
-<span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">-</span> <span class="n">begin</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
-<span class="n">val</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end ...</span></pre></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
             Page 1 / 1

@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog - python, 版本管理</title>
+        <title>carlcarl's blog - brunch</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
@@ -53,29 +53,34 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-04T21:26:00" pubdate>
-                            Fri 04 October 2013
+                        <time class="post-time" datetime="2013-09-09T02:10:00" pubdate>
+                            Mon 09 September 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
+                        <a href="http://blog.carlcarl.me/1302/brunch-watch-stylesheet-dependency/" rel="bookmark"><h1>brunch watch stylesheet dependency</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>就之前產生的 sphinx document，接下來是如何 deploy 到 github page 上。</p>
-<p>這個文章是根據 <a href="http://raxcloud.blogspot.tw/2013/02/documenting-python-code-using-sphinx.html">Documenting python code using sphinx and github</a> 和
-<a href="http://datadesk.latimes.com/posts/2012/01/sphinx-on-github/">Sphinx documentation on GitHub</a>
-整理而成的，兩個地方的資料都不錯，不過都沒有很完美，所以就寫了這篇。</p>
-<h2>建立 github page repo</h2>
-<p>這邊看到大部分的做法都是直接在 project 根目錄下直接開另外一個
-branch，不過我後來在上面連結看到一個不錯的做法，就是直接把 branch 建立在
-subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資料夾：</p>
-<div class="highlight"><pre>mkdir gh-pages
+                        <p>之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生
+build 好的 css，這個問題一直困擾我很久，每次都要重新跑一次
+<code>brunch watch --server</code> 實在是很不爽，今天晚上剛好有一點時間就來修了。</p>
+<!--more-->
+
+<p>網站是用 <code>less</code>，然後有一個主要的 less 檔來 <code>@import</code> 其他在 <code>less</code>
+資料夾底下的 .less 檔，目錄架構大概像底下這樣：</p>
+<div class="highlight"><pre>├── less
+│   ├── archives.less
+│   ├── index.less
+└── less_proxy.less
 </pre></div>
 
 
-<p>接著利用 <code>git-new-workdir</code> 這個指令建立一個 ...</p>
+<p>然後 <code>config.ls</code> (這邊是用 livescript) 裡對應的設定部分：</p>
+<div class="highlight"><pre><span class="nv">stylesheets:</span>
+  <span class="nv">joinTo:</span>
+    <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less ...</span></pre></div></!--more-->
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
         </ol>
         <div class="paginator">
             Page 1 / 1

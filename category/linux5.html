@@ -53,6 +53,114 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-13T10:44:00" pubdate>
+                            Mon 13 June 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/23/linux-check-dist-io/" rel="bookmark"><h1>Linux check disk IO</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>讀取速度 輸入下面這行指令</p>
+<div class="highlight"><pre>hdparm -t /dev/sda
+</pre></div>
+
+
+<p><code>/dev/sda</code> 可以換成想測的硬碟裝置</p>
+<p>輸入之後會產生類似以下的輸出</p>
+<div class="highlight"><pre>Timing buffered disk reads:  1168 MB in  3.00 seconds = 389.29 MB/sec
+</pre></div>
+
+
+<p>組 RAID5 速度快很多= =+</p>
+<p>寫入速度 輸入下面這行指令</p>
+<div class="highlight"><pre><span class="nb">time </span>sh -c <span class="s2">&quot;dd if=/dev/zero of=tmp.dd bs=1000k count=100; sync&quot;</span>
+</pre></div>
+
+
+<p>會產生類似以下的輸入</p>
+<div class="highlight"><pre>100+0 records in
+100 ...</pre></div>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-05-12T07:29:00" pubdate>
+                            Thu 12 May 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/20/linux-several-ways-to-open-or-close-service/" rel="bookmark"><h1>linux several ways to open or close service</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>(如果想立即開啟或關掉就要用 service 或是直接到 /etc/init.d/ 底下去操作)</p>
+<p>以下是用來設定在系統開啟時預設要執行的 service</p>
+<p>在 RedHat 系列底下可以用 <code>chkconfig</code>，啟用 httpd (如果已經加到 chkconfig 裡了 就可以不用輸入第一行)</p>
+<div class="highlight"><pre>chkconfig httpd --add
+chkconfig http on
+</pre></div>
+
+
+<p>停用 httpd (第二行是把 httpd 從 chkconfig 的管理中移除，我的建議是輸入第一行就好了)</p>
+<div class="highlight"><pre>chkconfig httpd off
+chkconfig httpd --del
+</pre></div>
+
+
+<p>在 Debian 或 Ubuntu 底下的話 可以用 <code>update-rc.d</code> 開啟 apache2:</p>
+<div class="highlight"><pre>update-rc ...</pre></div>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-05-04T13:55:00" pubdate>
+                            Wed 04 May 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/19/vim-auto-complete-with-clang_complete/" rel="bookmark"><h1>vim auto complete with clang_complete</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>剛才裝完了，其實安裝還滿簡單的。</p>
+<p>首先先到<a href="https://github.com/Rip-Rip/clang_complete/tree/master/plugin">下載頁面</a>，下面會有個 <code>clang_complete.vim</code> 檔案</p>
+<p>下載這個檔案後 將其放置在 <code>~/.vim/plugin/</code> 底下
+(如果找不到 <code>plugin</code> 資料夾的話可以自己建)</p>
+<p>接著到這個<a href="https://github.com/Rip-Rip/clang_complete/wiki">wiki</a>頁面，照你的作業系統版本來決定要怎麼安裝 clang 這個套件(這個套件還滿肥的，
+好像有7X MB)</p>
+<p>裝完之後咧? 就可以用啦XDD，超快。</p>
+<p>以下這張是功能截圖。以這張圖來說，輸入 <code>-&gt;</code> 或是 <code>.</code> 之類的，他就會出現提示，這時候就可以用鍵盤上下鍵來選擇要選哪一個來用。</p>
+<p><img alt="clang_complete" src="http://i.imgur.com/PyNjikJ.png" title="clang_complete" />  </p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2011-04-21T18:55:00" pubdate>
+                            Thu 21 April 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/17/how-to-connect-the-server-in-virtualbox/" rel="bookmark"><h1>How to connect the server in virtualbox</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>如果是要用ssh連的話 就輸入以下指令<!--more--></p>
+<p><code>C:Program FilesOracleVirtualBoxVBoxManage.exe" modifyvm "VM name" --natpf1
+"guestssh,tcp,,2222,,22"</code></p>
+<p>前面如果有改 virtualbox 的安裝位置的話 就要跟著改</p>
+<p><code>VM name</code> 請輸入當初在建VM時所輸入的名稱</p>
+<p>後面指的是如果連到本機的 2222 port 的話 就轉向到VM中的 22 port</p>
+<p>同樣的也可以用 <code>guesthttp,tcp,,80,,80</code> 的方式來把連到本機 80 port的轉向連到VM中的 80 port</p>
+<p>把server建在VM中這樣還可以降低本機被攻擊的危險(如果不考慮效能的因素的話):P</p>
+<p>而且系統備份也很方便~~</p>
+<p>參考資料:</p>
+<p><a href="http://slo.twbbs.org/?p=417">http://slo.twbbs.org/?p=417</a></p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-04-17T11:31:00" pubdate>
                             Sun 17 April 2011
                         </time>
@@ -68,8 +176,8 @@ sudo dpkg-reconfigure postfix
 <p>第一行是重新安裝，第二行是再次設定。下完後就會進入設定畫面了~。</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -86,8 +194,8 @@ set shiftwidth=4
 </pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -107,8 +215,8 @@ hardstatus alwayslastline &quot; %-Lw%{= Bw}%n%f %t%{-  }%+Lw %=| %0c:%s &quot;
 <p>參數設定的話在<a href="http://cytseng.twbbs.org/?p=26">小明的網誌</a>可以看到。</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/category/linux4.html">

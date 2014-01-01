@@ -53,6 +53,84 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-06-09T01:29:00" pubdate>
+                            Sat 09 June 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/512/chakra-firefox-kde-opensuse-repo/" rel="bookmark"><h1>Chakra firefox-kde-opensuse repo</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>2012/10/14 更新<br />
+firefox-kde-opensuse 已經進 chakra 的 bundle 了，就叫 firefox ，以後從
+bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
+畢竟不是官方的，所以更新維護上可能也會有點問題。</p>
+<hr />
+<p>因為 firefox-kde-opensuse 要自己編太麻煩了，所以加個 repo
+這樣以後安裝比較省時，是說要不是 <a href="http://www.plurk.com/maxwux">Whiksy</a>
+有提供我還真的不知道原來有......。<br />
+<!--more--><br />
+以下複製到 <code>/etc/pacman.conf</code> 中：</p>
+<div class="highlight"><pre><span class="k">[chakra-gtk-repo]</span>
+<span class="na">Server</span> <span class="o">=</span> <span class="s">http://chakra-gtk-repo.tk/repo/x86_64/</span>
+<span class="k">[packccr]</span>
+<span class="na">Server</span> <span class="o">=</span> <span class="s">http://repo.stephenmac.com/</span>
+</pre></div>
+
+
+<p>這樣就 OK ...</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-06-07T02:31:00" pubdate>
+                            Thu 07 June 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/499/chakra-gogoc-compile/" rel="bookmark"><h1>Chakra gogoc compile</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前在 <a href="http://blog.carlcarl.tw/397/ubuntu-tunnel-broker" title="Ubuntu Tunnel Broker IPv6 連 中研院">Ubuntu 系列上可以很方便的安裝 gogoc</a>，但是後來換到 Chakra
+之後，ccr 裡並沒有提供安裝包，沒辦法，只好自己編譯。</p>
+<p><!--more-->  </p>
+<p>1.首先先下載安裝包(不能下載的話，就必須到<a href="http://www.gogo6.com/">官網</a>註冊帳號並下載囉)、解壓縮，並進入到資料夾中：</p>
+<div class="highlight"><pre>wget http://content.gogo6.com/gogoc-1_2-RELEASE.tar.gz
+tar -xf gogoc-1_2-RELEASE.tar.gz
+<span class="nb">cd </span>gogoc-1_2-RELEASE/gogoc-tsp
+</pre></div>
+
+
+<p>2.接下來是編譯，這邊沒意外的話會有錯（至少我是這樣XD），所以要先做點修改，將
+    <code>#include &lt;stddef.h&gt;</code> 加到
+    <code>../gogoc-messaging/gogocmessaging/message.h</code>
+    的檔案最上方即可 ...</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-28T10:57:00" pubdate>
+                            Mon 28 May 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/482/kde-oxygen-transparent-error-with-playing-video/" rel="bookmark"><h1>KDE oxygen-transparent error with playing video</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近改用 Chakra + KDE 的環境，另外再裝了 oxygen-transparent
+這個佈景主題，但是卻發現一個問題，那就是 Qt based
+的影片播放器會因為這個主題而出問題，影片播放會變透明，什麼都看不到囧，只有聲音。</p>
+<p>目前還找不太到很好的解決方案，只想到一個比較簡單的替代方案，就是使用
+VLC。但是預設的情況下播放還是會透明，必須到 Interface -&gt; Preference
+底下，使用 custom skin，VLC 就會使用他自己的佈景主題，既然是用它自己的佈景主題，影片播放自然就不會因為系統套用 oxygen transparent 的主題而受到影響了。</p>
+<p>不過目前用一用，偶爾還是會怪怪的，但是就撐著加減用吧，因為我不太想換系統的佈景主題XD。</p>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-05-06T00:34:00" pubdate>
                             Sun 06 May 2012
                         </time>
@@ -71,8 +149,8 @@ host name、時間、和 進 git repo 會有的提示，git repo
 <p>把這個檔案下載下來存成 <code>carlcarl ...</code></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -103,8 +181,8 @@ bash 換成 zsh 看看囉。</p>
 <h3>改成預設使用 zsh，執行以下指令並輸入你的密碼 ...</h3>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -134,8 +212,8 @@ prefixlen=64
 if_prefix=eth0 ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -165,8 +243,8 @@ if_prefix=eth0 ...</pre></div>
 <p>這邊還需要再另外安裝 libapp，這邊需要用到 git ，沒有的話就要安裝 ...</p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -184,8 +262,8 @@ webm ，用 smplayer 之類的應該都能開來看，我自己測試錄影的�
 <p><a href="http://www.ubuntubuzz.com/2011/11/ubuntu-desktop-screen-recording-tool.html">http://www.ubuntubuzz.com/2011/11/ubuntu-desktop-screen-recording-tool.html</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -208,8 +286,8 @@ sudo apt-get update
 sudo apt-get ...</pre></div>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
@@ -228,79 +306,8 @@ ntp server
 <a href="http://bbs.bitscn.com/146159">http://bbs.bitscn.com/146159</a></p>
                     </section>
                 </article>
+				<hr/>
             </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-10T00:43:00" pubdate>
-                            Fri 10 February 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/245/different-color-in-screen-and-normal-mode/" rel="bookmark"><h1>Different color in screen and normal mode</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>查了一下資料，發現應該是跟顏色的支援有關，要在 <code>.screerc</code> 裡加上一行：</p>
-<div class="highlight"><pre>termcapinfo xterm &#39;Co#256:AB=E[48;5;%dm:AF=E[38;5;%dm&#39;
-</pre></div>
-
-
-<p>參考網址：<br />
-<a href="http://fcamel-fc.blogspot.com/2009/04/python-vim.html">http://fcamel-fc.blogspot.com/2009/04/python-vim.html</a></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-04T18:56:00" pubdate>
-                            Sat 04 February 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/239/linux-mint-cinnanmon-change-position-of-window-buttons/" rel="bookmark"><h1>Linux Mint cinnamon change position of window buttons</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>==================================================<br />
-2012/03/28更新</p>
-<h1>cinnamon 已經有提供修改按鈕位置的設定了，所以就不用照以下的方法來改哩。</h1>
-<p>最近裝了 cinnamon 來玩玩，是有一些有趣的東西沒錯，像是視窗動畫，不過整體來說，我覺得並沒有好到值得我換成這套，所以用了沒多久我就換回來 Gnome 啦～～。</p>
-<p>不過這邊還是來講一下 cinnamon 怎麼改變視窗按鈕位置的方法吧。</p>
-<p>首先先裝編輯設定的套件</p>
-<div class="highlight"><pre>apt-get install gconf-editor
-</pre></div>
-
-
-<p>執行後會出現一個視窗，接著如以下圖片，可以看到右邊有 <code>button layout</code> 這個欄位，有關閉，最小化，最大化的值，<code>:</code> 代表相對位置，如下圖的話指的是放在左邊，如果要放在右邊的話就把 <code>:</code> 移到前面就
-OK 了。</p>
-<p><img alt="gconf-editor" src="http://198.199.117.21/wp-content/uploads/2012/02/502.png" /></p>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-12-19T17:01:00" pubdate>
-                            Mon 19 December 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/233/naming-apache-log-with-date/" rel="bookmark"><h1>naming apache log with date</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>目前是用 <code>logrotate</code> 來作，只要在 <code>/etc/logrotate.d/apache2</code> 裡加入下面這個參數即可：</p>
-<ul>
-<li>dateext</li>
-</ul>
-<p>另外可以根據需求看要不要把 <code>weekly</code> 改為 <code>daily</code> 這樣。</p>
-<p>處理過後的檔名就會像這樣 <code>access.log-20111218.gz</code>，這樣在之後處理和分析
-log 會比較方便，另外記得數量也要根據需求改，因為改完後變成能保存的 log
-日期也會跟著減少，要增多的話也是直接修改上面 <code>/etc/logrotate.d/apache2</code> 這個檔案，將 <code>rotate</code> 後面的數字加大，後面的數字表示要存的 log 數量，超過的話就會將最舊的刪除這樣。</p>
-<p>後記：<br />
-如果要跟 awstats 搭配的話可以在裡面加入：</p>
-<div class="highlight"><pre>prerotate
-    /usr/lib/cgi-bin/awstats.pl -config ...</pre></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/category/linux.html">
