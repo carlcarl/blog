@@ -9,7 +9,7 @@ Slug: php-mongodb-query-timing
 最近在用 PHP 在對 MongoDB 作壓力測試的時候，發現怎麼我 1 shard 和 3
 shards 的 performance 會一樣，卡了很久後來才發現原來是我搞錯 MongoDB
 query 的時機，所以在測試的時候，query 其實都沒有發出，難怪數據會一樣。  
-<!--more-->  
+
 在 PHP 的 [manual][] 裡有說明，以下拿它的範例程式來說明 query 的時機：
 
 	:::php

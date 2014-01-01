@@ -7,7 +7,7 @@ Tags: nginx, pagespeed, ubuntu
 Slug: ubuntu-nginx-pagespeed-module
 
 Ubuntu 版本：12.04 Nginx 版本：1.4.1 pagespeed 版本：1.5.27.3
-記錄一下安裝的步驟： <!--more-->
+記錄一下安裝的步驟：
 
 	:::bash
     # 到 home 目錄下做，看個人習慣就是

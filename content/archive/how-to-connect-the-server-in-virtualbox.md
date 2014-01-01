@@ -5,7 +5,7 @@ Post_ID: 17
 Category: linux
 Slug: how-to-connect-the-server-in-virtualbox
 
-如果是要用ssh連的話 就輸入以下指令<!--more-->
+如果是要用ssh連的話 就輸入以下指令
 
 `C:Program FilesOracleVirtualBoxVBoxManage.exe" modifyvm "VM name" --natpf1
 "guestssh,tcp,,2222,,22"`

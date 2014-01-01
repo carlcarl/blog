@@ -7,7 +7,6 @@ Tags: argparse
 Slug: python-argparse
 
 紀錄一些 python argparse module 的使用方法和問題：  
-<!--more-->
 
 ### 選項的參數為 optional
 譬如說 `-f` 這選項允許一個檔案的路徑名稱： `-f test.txt`，如果沒給檔案名稱就預設使用 example.txt：

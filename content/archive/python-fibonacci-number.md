@@ -8,8 +8,6 @@ Slug: python-fibonacci-number
 
 在 Python Taiwan 社團看到的寫法：
 
-<!--more-->
-
 	:::python
     print (lambda n, p: (([p.append(p[-1]+p[-2]) for k in range(n-2)]) and False) or p[-1])(10, [1,1])
 

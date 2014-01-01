@@ -8,8 +8,6 @@ Slug: python-yahoo-weather
 
 實際做起來不難，是說弄完才發現有 [yweather][] 這個可以用囧。
 
-<!--more-->
-
 首先到 [YQL][] 這邊下 query，這邊可以參考[這篇][]最下面的兩種 query
 方法。格式可以選 JSON 然後把 callback 名稱拿掉，下完 query
 就可以產生一段網址，以新竹的例子來說就是:

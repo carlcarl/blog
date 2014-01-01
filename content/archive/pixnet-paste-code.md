@@ -6,7 +6,6 @@ Category: blog
 Slug: pixnet-paste-code
 
 在側邊欄位設定裡 -> 頁尾描述的部分貼上下面的 code
-<!--more-->
 
 	:::html
 	<script type="text/javascript" src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js"></script>

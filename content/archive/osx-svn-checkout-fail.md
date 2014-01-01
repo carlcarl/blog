@@ -10,7 +10,6 @@ Slug: osx-svn-checkout-fail
 底下少了某個檔案，後來才發現有兩個同樣名稱的檔案，只是大小寫不一樣，看來好像是因為
 OSX 的檔案系統預設大小寫視為一樣的。如果要解決這個問題除了換個名稱，要不然就是做個
 case sensitive 的 image mount 上去，指令如下：  
-<!--more-->
 
 	:::bash
 	# 建立 image 檔案

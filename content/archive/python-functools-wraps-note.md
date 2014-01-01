@@ -8,8 +8,6 @@ Slug: python-functools-wraps-note
 
 研究一下 `functools.wraps`。
 
-<!--more-->
-
 ### 用法
 	
 	:::python

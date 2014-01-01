@@ -9,8 +9,6 @@ Slug: nginx-pagespeed-gzip-combine-js
 在用 [GTmetrix][] 看網站的效能的時候，發現只有 pagespeed combine 出來的
 js，沒有被 gzip 處理過。
 
-<!--more-->
-
 google 了一下，在 [Github 上也找到同樣的問題][]，裡面說要加上
 `application/javascript`，回頭看了一下我的 nginx 設定檔，果然沒加到= =。
 

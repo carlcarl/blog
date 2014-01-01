@@ -12,8 +12,6 @@ Beta 版的 header file 位置有些不同，看到幾個地方都傳出災情�
 -   [The gem doesn't yet build in Mavericks][]
 -   [Installation fails on OS X Mavericks][]
 
-<!--more-->
-
 原本的 `/usr/include` 已經不見了，找了一下，位置是在：
 
     /Applications/Xcode5-DP.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/include/

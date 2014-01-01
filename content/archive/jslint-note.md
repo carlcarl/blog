@@ -6,7 +6,7 @@ Category: js
 Tags: jslint
 Slug: jslint-note
 
-記錄一些錯誤的處理方式。 <!--more-->
+記錄一些錯誤的處理方式。
 
 ### 1. Document was used before it was defined
 

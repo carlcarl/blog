@@ -9,7 +9,6 @@ Slug: vim-syntastic-disable-html-check
 最近在用 vim 修改 html 的時候會在儲存的時候爛掉，後來發現好像是
 [syntastic][] 的問題，而且只有 html 會有這個問題，所以看了一下有沒有關掉
 html check 的設定，後來在 stackoverflow 看到[解答][]：  
-<!--more-->
 
 	:::text
     let g:syntastic_mode_map={ 'mode': 'active',

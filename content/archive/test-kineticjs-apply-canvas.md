@@ -8,7 +8,7 @@ Slug: test-kineticjs-apply-canvas
 
 寫起來跟以前寫 Java 作類似東西的感覺很像，東西基本上都已經用物件包好，然後還有提供 layer
 讓你可以很方便的在不同 layer 放你要的物件。  
-<!--more-->  
+
 我嘗試把我原本[播放棋譜][]的 canvas 改成套用 KineticJS，不過後來發現，因為我的 canvas
 操作沒很複雜，所以真的是太大材小用了...。
 

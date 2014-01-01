@@ -23,8 +23,6 @@ livereload 這邊是透過 Grunt bind 一個 port
 javascript，一旦檔案發生變化，Grunt 就會 push 消息，通知 browser 做
 reload 的動作。
 
-<!--more-->
-
 ### Project 架構
 
 下面是整個 project 的大致架構，架構應該還算簡單 XD。附帶一提，template

@@ -12,7 +12,6 @@ Python3，看起來好像很順利，不過在執行的時候就出現了 Excepi
 `can't use a string pattern on a bytes-like object`，看了一下，是 `json`
 的 `loads` 在轉`httplib` `read` 的 output 出現問題，而原來在 Python2
 中並不會出現這個問題，原來程式如下：  
-<!--more-->
 
 	:::python
 	result = json.loads(self._connect.getresponse().read())

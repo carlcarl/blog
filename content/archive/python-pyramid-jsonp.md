@@ -8,7 +8,7 @@ Slug: python-pyramid-jsonp
 
 Python 的 Pyramid Framework 有支援 jsonp 的 renderer，看了一下
 doc，設置還算簡單，不過好像漏了個小地方。  
-<!--more-->  
+
 首先要先在 `Configurator` 的檔案加入下面內容 (官方 doc 裡面沒提到要從哪邊
  `import JSONP`)：
 

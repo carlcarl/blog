@@ -12,7 +12,6 @@ Slug: python-logging-stream
 `sys.stdout` 的屬性複製上去，再加上編碼的功能，最後再將 `sys.stdout`
 assign 成這個物件。
 
-<!--more-->
 
 ### 我用的 logger 程式
 

@@ -10,8 +10,6 @@ Slug: ubuntu-install-awstats-to-analyze-web-traffic
 
 awstats 這個工具可以透過分析 Server 的access log 檔來統計網站流量，資料的部份可以透過時間長短、來訪者的資料(國籍之類的)、瀏覽器種類來作分類，這些統計資訊則透過Web介面顯示出來。而上面這個圖是裝完 awstats 後的 Web 介面(還不錯精美= =+)
 
-<!--more-->
- 
 
 接下來就是安裝的部份啦，首先先安裝套件:
 

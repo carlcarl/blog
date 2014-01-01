@@ -6,7 +6,7 @@ Category: php
 Tags: zend framework
 Slug: zend-framework-add-acl-setting
 
-首先先在 `bootstrap.php` 檔案裡加上下面這個 function<!--more-->
+首先先在 `bootstrap.php` 檔案裡加上下面這個 function
 
 	:::php
 	<?php

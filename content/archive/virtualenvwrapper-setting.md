@@ -7,7 +7,6 @@ Tags: python, virtualenvwrapper
 Slug: virtualenvwrapper-setting
 
 最近為了方便，加了幾個 virtualenvwrapper 的設定。  
-<!--more-->
 
 ### 使用 `mkvirtualenv` 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。  
 在 `~/.virtualenv/postmkvirtualenv`裡加入：

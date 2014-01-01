@@ -7,7 +7,6 @@ Slug: ubuntu-eucalyptus-installation
 
 我是在已有的 Ubuntu 上安裝 Eucalyptus，如果是直接用 Ubuntu Enterprise Cloud 應該會比較簡單 orz。
 
-<!--more-->
 
 大概講一下幾個我遇到的問題 orz。
 

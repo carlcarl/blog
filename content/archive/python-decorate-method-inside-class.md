@@ -8,7 +8,7 @@ Slug: python-decorate-method-inside-class
 
 簡易版的可以直接參考
 <http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class>。  
-<!--more-->  
+
 以我的例子來說，我需要對某些 method 加上 retry
 的機制，除了需要有參數外，還希望能夠把 decorate method 放在 class
 裡頭，這樣我才能呼叫 class 裡頭另外的 method。以下是簡單的例子：

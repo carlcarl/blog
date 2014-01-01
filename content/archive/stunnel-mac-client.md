@@ -3,7 +3,7 @@ Date: 2013-06-22 15:18
 Author: carlcarl
 Post_ID: 1070
 Category: Mac
-Tags: stunnel
+Tags: stunnel, mac
 Slug: stunnel-mac-client
 
 stunnel server 的設定就照[這篇][]的教學，不過 Mac client
@@ -12,7 +12,6 @@ stunnel server 的設定就照[這篇][]的教學，不過 Mac client
 的了，以下是我的設定，比較要注意的就是 `cert` 的位置要設對，另外就是
 `connect` 的 `host` 要改成你 stunnel server 的位置：
 
-<!--more-->
 
 	:::conf
     setuid = nobody

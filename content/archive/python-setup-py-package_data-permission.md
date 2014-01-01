@@ -10,7 +10,6 @@ Slug: python-setup-py-package_data-permission
 `package_data`，照著做之後好像滿順利的，但是在用 root 權限 install
 完，用一般使用者執行就遇到 permission 的錯誤了。
 
-<!--more-->
 
 看了一下安裝目錄下的 static 檔案，結果權限是 `400`，owner 是
 `root`，難怪一般使用者無法讀取，想說會不會是因為我的原本檔案權限的關係，檢查了一下，果然是

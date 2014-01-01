@@ -7,7 +7,6 @@ Tags: logging
 Slug: python-logging
 
 紀錄一下 python logging 的一些簡單設定。  
-<!--more-->
 
 ### 可以在一開始設定 log 訊息顯示的等級：
 	:::python

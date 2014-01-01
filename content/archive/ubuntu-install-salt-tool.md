@@ -8,7 +8,7 @@ Slug: ubuntu-install-salt-tool
 
 現在有操作多台機器執行同樣指令的需求，想說裝 [salt][]
 來管理看看，詳細介紹可以點連結進去看看。簡單來講，這套工具可以讓你方便一次去對多個機器進行操作，另外還可以透過用 Python 並 import salt module 來處理整個流程和回傳的資料。  
-<!--more-->  
+
 salt 分成了兩個部份，`salt-master` 和 `salt-minion` ，`salt-master`
 就是 server 端，也就是你用來管理其他機器的機器上要裝的 (有點饒舌=
 =")，minion 則是 client 端，就是被管理的機器所要裝的套件。server

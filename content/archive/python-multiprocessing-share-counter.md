@@ -8,7 +8,6 @@ Slug: python-multiprocessing-share-counter
 
 找了一下，以下是基本的寫法：
 
-<!--more-->
 
 	:::python
     counter = 0

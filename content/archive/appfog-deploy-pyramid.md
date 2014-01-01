@@ -9,7 +9,7 @@ Slug: appfog-deploy-pyramid
 這篇是參考
 <http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/>
 這篇所講的，其實他講的就差不多了，但是漏掉了一些細節，所以幫忙補完一下。  
-<!--more-->  
+
 [appfog][] 的 deploy 相對 [openshift][] 來說，算是簡單很多 (不過
 openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
 [pyramid][] 來講，主要就是在 project 根目錄新增一個 `wsgi.py`

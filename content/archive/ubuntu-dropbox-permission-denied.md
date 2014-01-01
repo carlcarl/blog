@@ -9,7 +9,7 @@ Slug: ubuntu-dropbox-permission-denied
 最近在備份 wordpress 的資料到 dropbox
 上的時候，突然出現了錯誤：`cant sync "file name" permission denied`，看了一下資料夾，只有資料夾有建立起來，但是檔案都沒 sync 成功。但是之前用了也一兩年了都沒有發生這樣的問題，為什麼
 dropbox 把資料 sync 到我電腦上的時候會突然出問題呢？  
-<!--more-->  
+
 花了一段時間查了一些資料，後來才發現是因為我用 ubuntu，然後又用另外一個 `ntfs` 裝置來存 dropbox
 的東西，才會有這樣的問題。解決方法就是在 `mount` 設定檔要多設定一個「uid」的參數。
 
