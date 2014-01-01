@@ -2,7 +2,7 @@ Title: appfog deploy pyramid
 Date: 2013-04-14 23:45
 Author: carlcarl
 Post_ID: 827
-Category: cloud, python
+Category: python
 Tags: appfog, pyramid, python
 Slug: appfog-deploy-pyramid
 

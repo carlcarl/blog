@@ -2,8 +2,8 @@ Title: brunch watch stylesheet dependency
 Date: 2013-09-09 02:10
 Author: carlcarl
 Post_ID: 1302
-Category: css, js
-Tags: grunch
+Category: web
+Tags: brunch
 Slug: brunch-watch-stylesheet-dependency
 
 之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生

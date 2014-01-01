@@ -2,7 +2,7 @@ Title: xenserver enable snmpd
 Date: 2012-02-19 16:06
 Author: carlcarl
 Post_ID: 262
-Category: cloud, linux
+Category: linux
 Tags: iptables, snmp, snmpd, xenserver
 Slug: xenserver-enable-snmpd
 

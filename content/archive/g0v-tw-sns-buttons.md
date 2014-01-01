@@ -2,8 +2,8 @@ Title: g0v.tw sns buttons
 Date: 2013-08-28 01:40
 Author: carlcarl
 Post_ID: 1292
-Category: css
-Tags: g0v
+Category: web
+Tags: g0v, css
 Slug: g0v-tw-sns-buttons
 
 修了一下 render 的問題，以結果來看其實並沒有完全做好，還是會有 render

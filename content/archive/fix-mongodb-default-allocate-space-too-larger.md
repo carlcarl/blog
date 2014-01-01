@@ -2,7 +2,7 @@ Title: fix mongodb default allocate space too larger
 Date: 2012-07-27 20:19
 Author: carlcarl
 Post_ID: 546
-Category: database, mongodb
+Category: database
 Tags: mongodb
 Slug: fix-mongodb-default-allocate-space-too-larger
 

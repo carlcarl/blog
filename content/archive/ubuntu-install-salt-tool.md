@@ -2,7 +2,8 @@ Title: Ubuntu install salt tool
 Date: 2012-10-15 20:44
 Author: carlcarl
 Post_ID: 690
-Category: cloud, linux
+Category: python
+Tags: saltstack
 Slug: ubuntu-install-salt-tool
 
 現在有操作多台機器執行同樣指令的需求，想說裝 [salt][]

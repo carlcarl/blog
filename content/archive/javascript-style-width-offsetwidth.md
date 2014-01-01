@@ -2,8 +2,8 @@ Title: javascript style.width offsetWidth
 Date: 2013-06-28 20:29
 Author: carlcarl
 Post_ID: 1107
-Category: css, js
-Tags: offsetWidth
+Category: web
+Tags: js, css, offsetWidth
 Slug: javascript-style-width-offsetwidth
 
 查了一些資料，看起來 `style.width` 是如果 css 沒指定 element 的 width

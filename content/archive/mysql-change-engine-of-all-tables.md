@@ -2,7 +2,7 @@ Title: MySQL change engine of all tables
 Date: 2011-12-10 00:22
 Author: carlcarl
 Post_ID: 170
-Category: mysql
+Category: database
 Tags: aria, mariadb, mysql
 Slug: mysql-change-engine-of-all-tables
 

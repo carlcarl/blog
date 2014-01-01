@@ -2,7 +2,7 @@ Title: tig broken in tmux
 Date: 2013-10-05 02:15
 Author: carlcarl
 Post_ID: 1375
-Category: linux, 版本管理
+Category: linux
 Tags: screen, tig, tmux
 Slug: tig-broken-in-tmux
 

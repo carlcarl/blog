@@ -3,6 +3,7 @@ Date: 2013-07-12 02:15
 Author: carlcarl
 Post_ID: 1120
 Category: Mac
+Tags: mac
 Slug: osx-mavericks-betaheader-file-position
 
 Beta 版的 header file 位置有些不同，看到幾個地方都傳出災情：

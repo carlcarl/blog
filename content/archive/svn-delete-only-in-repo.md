@@ -2,7 +2,7 @@ Title: svn delete only in repo
 Date: 2011-07-13 16:24
 Author: carlcarl
 Post_ID: 35
-Category: 版本管理
+Category: version-control
 Tags: svn
 Slug: svn-delete-only-in-repo
 

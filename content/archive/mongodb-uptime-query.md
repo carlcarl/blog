@@ -2,8 +2,8 @@ Title: MongoDB uptime query
 Date: 2012-11-15 07:33
 Author: carlcarl
 Post_ID: 721
-Category: database, mongodb
-Tags: mongodb, uptime
+Category: database
+Tags: mongodb
 Slug: mongodb-uptime-query
 
 在 [stackoverflow][]

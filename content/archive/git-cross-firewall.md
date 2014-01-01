@@ -2,7 +2,7 @@ Title: git cross firewall
 Date: 2013-03-17 23:33
 Author: carlcarl
 Post_ID: 808
-Category: 版本管理
+Category: version-control
 Slug: git-cross-firewall
 
 `git://` readonly 的 port 是使用

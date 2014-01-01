@@ -2,8 +2,8 @@ Title: Chrome tab key accessibility bug
 Date: 2013-08-22 00:58
 Author: carlcarl
 Post_ID: 1277
-Category: css
-Tags: chrome
+Category: web
+Tags: chrome, g0v, css
 Slug: chrome-tab-key-accessibility-bug
 
 簡單說就是在 link 內容如果是 float 的情況下，這個 link 沒辦法在按 tab

@@ -2,7 +2,7 @@ Title: MongoDB Web management tool： rockmongo
 Date: 2011-09-05 18:12
 Author: carlcarl
 Post_ID: 43
-Category: database, mongodb
+Category: database
 Tags: mongodb, rockmongo
 Slug: mongodb-rockmongo
 

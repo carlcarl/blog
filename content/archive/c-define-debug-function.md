@@ -2,7 +2,7 @@ Title: C define debug function
 Date: 2013-08-13 15:50
 Author: carlcarl
 Post_ID: 1267
-Category: C &amp; C++, linux
+Category: C
 Tags: debug, makefile
 Slug: c-define-debug-function
 

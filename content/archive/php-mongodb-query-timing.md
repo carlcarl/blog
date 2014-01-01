@@ -2,7 +2,7 @@ Title: PHP MongoDB query timing
 Date: 2012-10-12 03:19
 Author: carlcarl
 Post_ID: 680
-Category: database, mongodb, php
+Category: database
 Tags: mongodb, php
 Slug: php-mongodb-query-timing
 

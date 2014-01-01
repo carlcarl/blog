@@ -2,7 +2,8 @@ Title: windows xdebug, wincachegrind, Zend server
 Date: 2011-06-21 00:48
 Author: carlcarl
 Post_ID: 26
-Category: Zend Framework
+Category: php
+Tags: zend framework
 Slug: windows-xdebug-wincachegrind-zend-server
 
 最近在想辦法加速 zend framework 的執行速度，弄了超久。下次有這種 case，我死都不用 zend 了= =。

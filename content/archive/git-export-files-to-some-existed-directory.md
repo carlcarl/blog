@@ -2,7 +2,7 @@ Title: git export files to some existed directory
 Date: 2011-05-24 16:14
 Author: carlcarl
 Post_ID: 21
-Category: 版本管理
+Category: version-control
 Tags: bashrc, git, vimrc
 Slug: git-export-files-to-some-existed-directory
 

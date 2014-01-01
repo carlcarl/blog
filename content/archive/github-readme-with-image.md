@@ -2,7 +2,7 @@ Title: github readme with image
 Date: 2012-04-08 02:09
 Author: carlcarl
 Post_ID: 366
-Category: 版本管理
+Category: version-control
 Tags: git, github, markdown
 Slug: github-readme-with-image
 

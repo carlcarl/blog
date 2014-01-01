@@ -2,7 +2,7 @@ Title: Ubuntu 11.04 install mongoDB
 Date: 2011-09-04 14:28
 Author: carlcarl
 Post_ID: 42
-Category: linux, mongodb
+Category: database
 Tags: mongodb
 Slug: ubuntu-11-04-install-mongodb
 

@@ -2,7 +2,7 @@ Title: svn status appear「~」
 Date: 2012-02-14 23:46
 Author: carlcarl
 Post_ID: 249
-Category: linux, 版本管理
+Category: version-control
 Tags: svn
 Slug: svn-status
 

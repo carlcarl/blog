@@ -2,7 +2,7 @@ Title: mongodb aggregation group count sort
 Date: 2012-09-14 05:05
 Author: carlcarl
 Post_ID: 645
-Category: database, mongodb
+Category: database
 Tags: mongodb
 Slug: mongodb-aggregation-group-count-sort
 

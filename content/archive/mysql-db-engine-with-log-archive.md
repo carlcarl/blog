@@ -2,7 +2,7 @@ Title: MySQL DB engine with log: Archive
 Date: 2011-12-17 18:00
 Author: carlcarl
 Post_ID: 226
-Category: mysql
+Category: database
 Tags: archive, innodb, mariadb, myisam, mysql
 Slug: mysql-db-engine-with-log-archive
 

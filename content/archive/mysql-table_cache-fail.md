@@ -2,7 +2,7 @@ Title: MySQL table_cache fail
 Date: 2012-05-31 15:26
 Author: carlcarl
 Post_ID: 495
-Category: database, mysql
+Category: database
 Tags: mysql, table_cache
 Slug: mysql-table_cache-fail
 

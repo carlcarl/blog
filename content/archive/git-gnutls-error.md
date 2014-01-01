@@ -2,7 +2,7 @@ Title: git gnuTLS error
 Date: 2012-02-22 15:53
 Author: carlcarl
 Post_ID: 269
-Category: 版本管理
+Category: version-control
 Tags: git, gnutls
 Slug: git-gnutls-error
 

@@ -2,7 +2,7 @@ Title: MongoDB check status command
 Date: 2012-10-09 02:15
 Author: carlcarl
 Post_ID: 663
-Category: database, mongodb
+Category: database
 Tags: mongodb
 Slug: mongodb-check-status-command
 

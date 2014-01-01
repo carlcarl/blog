@@ -2,8 +2,8 @@ Title: OSX svn checkout fail
 Date: 2013-03-13 15:36
 Author: carlcarl
 Post_ID: 799
-Category: Mac, 版本管理
-Tags: hdiutil, svn
+Category: version-control
+Tags: svn, mac
 Slug: osx-svn-checkout-fail
 
 在 OSX 上 checkout svn 的 repo 遇到了 error，跟我說 .svn

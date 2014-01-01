@@ -2,7 +2,7 @@ Title: Chakra vim not support pythoncomplete
 Date: 2012-06-17 22:47
 Author: carlcarl
 Post_ID: 515
-Category: linux, python
+Category: linux
 Tags: chakra, python, vim
 Slug: chakra-vim-not-support-pythoncomplete
 

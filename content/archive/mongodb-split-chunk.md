@@ -2,7 +2,7 @@ Title: MongoDB split chunk
 Date: 2012-10-09 03:21
 Author: carlcarl
 Post_ID: 671
-Category: database, mongodb
+Category: database
 Tags: mongodb
 Slug: mongodb-split-chunk
 

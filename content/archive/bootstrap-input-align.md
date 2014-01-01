@@ -2,8 +2,8 @@ Title: bootstrap input align
 Date: 2013-02-22 03:07
 Author: carlcarl
 Post_ID: 788
-Category: css
-Tags: bootstrap
+Category: web
+Tags: bootstrap, css
 Slug: bootstrap-input-align
 
 使用 bootstrap 的 input element 的時候遇到 text 和 button

@@ -2,7 +2,7 @@ Title: sphinx and github pages
 Date: 2013-10-04 21:26
 Author: carlcarl
 Post_ID: 1365
-Category: python, 版本管理
+Category: python
 Tags: github, sphinx
 Slug: sphinx-and-github-pages
 

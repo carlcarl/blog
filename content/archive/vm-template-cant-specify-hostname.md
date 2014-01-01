@@ -2,7 +2,7 @@ Title: VM template can't specify hostname
 Date: 2012-06-18 18:07
 Author: carlcarl
 Post_ID: 519
-Category: cloud, linux
+Category: linux
 Tags: hostname, template
 Slug: vm-template-cant-specify-hostname
 

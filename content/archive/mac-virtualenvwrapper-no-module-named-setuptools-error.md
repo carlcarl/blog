@@ -2,8 +2,8 @@ Title: Mac virtualenvwrapper "No module named setuptools" error
 Date: 2012-10-22 01:05
 Author: carlcarl
 Post_ID: 709
-Category: Mac, python
-Tags: virtualenvwrapper
+Category: python
+Tags: virtualenvwrapper, mac
 Slug: mac-virtualenvwrapper-no-module-named-setuptools-error
 
 在 Mac 上安裝 virtualenvwrapper 的時候遇到的錯誤，解決方法：  

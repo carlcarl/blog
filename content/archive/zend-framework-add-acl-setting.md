@@ -2,7 +2,8 @@ Title: Zend Framework add Acl setting
 Date: 2011-04-24 15:22
 Author: carlcarl
 Post_ID: 18
-Category: Zend Framework
+Category: php
+Tags: zend framework
 Slug: zend-framework-add-acl-setting
 
 首先先在 `bootstrap.php` 檔案裡加上下面這個 function<!--more-->

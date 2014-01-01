@@ -2,7 +2,8 @@ Title: Linux kernel space get time interval
 Date: 2013-04-27 00:23
 Author: carlcarl
 Post_ID: 838
-Category: C &amp; C++, linux
+Category: C
+Tags: linux, time
 Slug: linux-kernel-space-get-time-interval
 
 之前聽到可以用 `jiffies`

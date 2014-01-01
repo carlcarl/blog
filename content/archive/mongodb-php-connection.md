@@ -2,7 +2,7 @@ Title: mongodb php connection
 Date: 2012-08-13 22:16
 Author: carlcarl
 Post_ID: 589
-Category: database, mongodb, php
+Category: database
 Tags: mongodb, php
 Slug: mongodb-php-connection
 

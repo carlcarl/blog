@@ -2,7 +2,7 @@ Title: brew install Macvim
 Date: 2013-06-07 19:56
 Author: carlcarl
 Post_ID: 893
-Category: Mac, vim
+Category: vim
 Tags: brew, macvim
 Slug: brew-install-macvim
 
