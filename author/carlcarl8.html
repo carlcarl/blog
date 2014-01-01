@@ -166,9 +166,8 @@ template 的時間，因此還是希望能避免不必要的空間浪費。</p>
                         <p>這個應該很多 hypervisor 都適用，在做完 vm 的 template 之後，因為
 hostname 在這裡已經固定，所以利用這個 template 再開啟一個新的 instance
 的時候，hostname 會還是原本舊的，如果是用 DHCP
-的方式的話，照理來說是可以拿到當初指定的 hostname 的。<br />
-<!--more--><br />
-這邊我找了很多資料，本來從 hypervisor
+的方式的話，照理來說是可以拿到當初指定的 hostname 的。  </p>
+<p>這邊我找了很多資料，本來從 hypervisor
 這邊去找資料，不過都沒什麼結果，後來才發現原來從 Guest OS 這邊去修改就
 OK 了，方法很簡單，在你的 VM 裡執行：</p>
 <div class="highlight"><pre>sudo mv /etc/hostname /etc/hostname.old
@@ -299,9 +298,8 @@ tar -xf gogoc-1_2-RELEASE.tar.gz
 SELECT 出來的資料加 1 並給 UPDATE 來使用，但是這樣並不是一個 atomic 的
 operation，如果在 SELECT 完之後有其他人也進行 SELECT
 就變成會拿一樣的資料且都加 1，兩個做完 UPDATE 的結果就會只是加 1
-過的數據，但是預期的結果應該要是加 2 的。<br />
-<!--more--><br />
-查了一下資料，發現有個簡單的語法可以使用：</p>
+過的數據，但是預期的結果應該要是加 2 的。  </p>
+<p>查了一下資料，發現有個簡單的語法可以使用：</p>
 <div class="highlight"><pre><span class="cm">/* If id is the UNIQUE KEY */</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="n">num</span><span class="o">=</span><span class="n">num</span><span class="o">+</span><span class="mi">1 ...</span></pre></div>
                     </section>

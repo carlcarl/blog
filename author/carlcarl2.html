@@ -96,8 +96,6 @@ orz。</p>
                     </header>
                     <section class="post-content">
                         <p>找了一下，以下是基本的寫法：</p>
-<!--more-->
-
 <div class="highlight"><pre><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -118,7 +116,7 @@ orz。</p>
         <span class="n">initializer</span><span class="o">=</span><span class="n">init</span><span class="p">,</span>
         <span class="n">initargs</span><span class="o">=</span><span class="p">(</span><span class="n">counter</span><span class="p">,)</span>
     <span class="p">)</span>
-    <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">countdown</span><span class="p">,</span> <span class="n">data_list ...</span></pre></div></!--more-->
+    <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">countdown</span><span class="p">,</span> <span class="n">data_list ...</span></pre></div>
                     </section>
                 </article>
 				<hr/>
@@ -285,8 +283,6 @@ Link 如果在下面的情況是 OK 的：</p>
                     </header>
                     <section class="post-content">
                         <p>研究一下 <code>functools.wraps</code>。</p>
-<!--more-->
-
 <h3>用法</h3>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">deco</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
     <span class="c"># @wraps(f)</span>
@@ -304,7 +300,7 @@ Link 如果在下面的情況是 OK 的：</p>
 
 <p>在 <code>hello</code> 裡 print 出
 'test'，這個沒什麼問題，但是在宣告完後，如果想確認 <code>test</code> 的 <code>__name__</code>
-attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</code></p></!--more-->
+attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</code></p>
                     </section>
                 </article>
 				<hr/>
@@ -319,15 +315,13 @@ attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</cod
                     </header>
                     <section class="post-content">
                         <p>在 Python Taiwan 社團看到的寫法：</p>
-<!--more-->
-
 <div class="highlight"><pre><span class="k">print</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="p">(([</span><span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)])</span> <span class="ow">and</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">or</span> <span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
 
 <p><code>n</code> 和 <code>p</code> 分別對應 <code>10</code> 和 <code>[1,1]</code> 這兩個參數，<code>10</code> 表示要 fibonacci
 的第十個項數，<code>[1,1]</code> 是第一項和第二項的值。然後是一個 loop 將 <code>p</code>
-陣列中最後兩個值加起來再 append ...</p></!--more-->
+陣列中最後兩個值加起來再 append ...</p>
                     </section>
                 </article>
 				<hr/>
@@ -346,8 +340,6 @@ attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</cod
 囧)，看了一下 <code>uniout</code> 的 code，看來做法是另外用了一個物件，然後把
 <code>sys.stdout</code> 的屬性複製上去，再加上編碼的功能，最後再將 <code>sys.stdout</code>
 assign 成這個物件。</p>
-<!--more-->
-
 <h3>我用的 logger 程式</h3>
 <div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(levelname)s</span><span class="s">: </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
@@ -356,7 +348,7 @@ assign 成這個物件。</p>
 
 <p>想說 <code>logging</code> module 應該也是丟
 <code>stdout</code>，不過怎麼設就是不行，所以還是看一下 source code。</p>
-<h3>logging ...</h3></!--more-->
+<h3>logging ...</h3>
                     </section>
                 </article>
 				<hr/>

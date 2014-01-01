@@ -157,8 +157,6 @@ port，發現還是有連線存在，來源是從 NAT
                         <p>記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh
 的主機，這裡以 <code>example.com</code> 為例。 (其實參考資料的連結內容更詳細
 XD，有需要的人建議點進去看看唄～～。)</p>
-<!--more-->
-
 <ol>
 <li>從內部往外。</li>
 </ol>
@@ -176,7 +174,7 @@ ssh -NfD 9999 user@example.com
 <!-- -->
 
 <div class="highlight"><pre><span class="c"># 這邊必須先在內部的 server 輸入下面這一行，連到 example.com，</span>
-<span class="c"># 然後在 example.com ...</span></pre></div></!--></!--></!--more-->
+<span class="c"># 然後在 example.com ...</span></pre></div></!--></!-->
                     </section>
                 </article>
 				<hr/>
@@ -192,13 +190,11 @@ ssh -NfD 9999 user@example.com
                     <section class="post-content">
                         <p>在用 <a href="http://gtmetrix.com">GTmetrix</a> 看網站的效能的時候，發現只有 pagespeed combine 出來的
 js，沒有被 gzip 處理過。</p>
-<!--more-->
-
 <p>google 了一下，在 <a href="https://github.com/pagespeed/ngx_pagespeed/issues/368">Github 上也找到同樣的問題</a>，裡面說要加上
 <code>application/javascript</code>，回頭看了一下我的 nginx 設定檔，果然沒加到= =。</p>
 <p>我原本設定是
 <code>gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript</code>，想說該設的都設了，想不到還是有漏網之魚，加上之後重啟，果然就 OK 哩。</p>
-<p>附帶一提，我把 ...</p></!--more-->
+<p>附帶一提，我把 ...</p>
                     </section>
                 </article>
 				<hr/>
@@ -213,7 +209,7 @@ js，沒有被 gzip 處理過。</p>
                     </header>
                     <section class="post-content">
                         <p>Ubuntu 版本：12.04 Nginx 版本：1.4.1 pagespeed 版本：1.5.27.3
-記錄一下安裝的步驟： <!--more--></p>
+記錄一下安裝的步驟：</p>
 <div class="highlight"><pre><span class="c"># 到 home 目錄下做，看個人習慣就是</span>
 <span class="nb">cd</span> ~
 <span class="c"># add-apt-repository 這個指令需要裝 python-software-properties</span>
@@ -260,9 +256,8 @@ pid 檔案，google 了一下，在 stackoverflow
                         <p>這個應該很多 hypervisor 都適用，在做完 vm 的 template 之後，因為
 hostname 在這裡已經固定，所以利用這個 template 再開啟一個新的 instance
 的時候，hostname 會還是原本舊的，如果是用 DHCP
-的方式的話，照理來說是可以拿到當初指定的 hostname 的。<br />
-<!--more--><br />
-這邊我找了很多資料，本來從 hypervisor
+的方式的話，照理來說是可以拿到當初指定的 hostname 的。  </p>
+<p>這邊我找了很多資料，本來從 hypervisor
 這邊去找資料，不過都沒什麼結果，後來才發現原來從 Guest OS 這邊去修改就
 OK 了，方法很簡單，在你的 VM 裡執行：</p>
 <div class="highlight"><pre>sudo mv /etc/hostname /etc/hostname.old

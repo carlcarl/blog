@@ -82,12 +82,10 @@ information。</p>
                     </header>
                     <section class="post-content">
                         <p>實際做起來不難，是說弄完才發現有 <a href="https://pypi.python.org/pypi/yweather/0.1">yweather</a> 這個可以用囧。</p>
-<!--more-->
-
 <p>首先到 <a href="http://developer.yahoo.com/yql/console/">YQL</a> 這邊下 query，這邊可以參考<a href="http://my.opera.com/weiyu/blog/2012/04/08/yql-yahoo">這篇</a>最下面的兩種 query
 方法。格式可以選 JSON 然後把 callback 名稱拿掉，下完 query
 就可以產生一段網址，以新竹的例子來說就是:</p>
-<div class="highlight"><pre>http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D%22TWXX0009%22%20and%20u%3D%22c%22&amp;format=json&amp;diagnostics=true&amp;callback ...</pre></div></!--more-->
+<div class="highlight"><pre>http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D%22TWXX0009%22%20and%20u%3D%22c%22&amp;format=json&amp;diagnostics=true&amp;callback ...</pre></div>
                     </section>
                 </article>
 				<hr/>
@@ -154,10 +152,8 @@ javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
 <li><a href="https://github.com/jfahrenkrug/WWDC-Downloader/issues/5">The gem doesn't yet build in Mavericks</a></li>
 <li><a href="https://github.com/josegonzalez/homebrew-php/issues/591">Installation fails on OS X Mavericks</a></li>
 </ul>
-<!--more-->
-
 <p>原本的 <code>/usr/include</code> 已經不見了，找了一下，位置是在：</p>
-<div class="highlight"><pre><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode5</span><span class="o">-</span><span class="n">DP</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="p">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="mf">.9 ...</span></pre></div></!--more-->
+<div class="highlight"><pre><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode5</span><span class="o">-</span><span class="n">DP</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="p">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="mf">.9 ...</span></pre></div>
                     </section>
                 </article>
 				<hr/>
@@ -277,8 +273,6 @@ port，發現還是有連線存在，來源是從 NAT
 的，試了一下網路上的一些設定，總算有可以 work
 的了，以下是我的設定，比較要注意的就是 <code>cert</code> 的位置要設對，另外就是
 <code>connect</code> 的 <code>host</code> 要改成你 stunnel server 的位置：</p>
-<!--more-->
-
 <div class="highlight"><pre><span class="n">setuid</span> <span class="o">=</span> <span class="n">nobody</span>
 <span class="n">setgid</span> <span class="o">=</span> <span class="n">nogroup</span>
 <span class="n">pid</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">stunnel</span><span class="p">.</span><span class="n">pid</span>
@@ -289,7 +283,7 @@ port，發現還是有連線存在，來源是從 NAT
 <span class="n">debug</span> <span class="o">=</span> <span class="mi">7</span>
 
 <span class="n">sslVersion</span> <span class="o">=</span> <span class="n">SSLv3</span>
-<span class="n">verify ...</span></pre></div></!--more-->
+<span class="n">verify ...</span></pre></div>
                     </section>
                 </article>
 				<hr/>

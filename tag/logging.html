@@ -64,8 +64,6 @@
 囧)，看了一下 <code>uniout</code> 的 code，看來做法是另外用了一個物件，然後把
 <code>sys.stdout</code> 的屬性複製上去，再加上編碼的功能，最後再將 <code>sys.stdout</code>
 assign 成這個物件。</p>
-<!--more-->
-
 <h3>我用的 logger 程式</h3>
 <div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(levelname)s</span><span class="s">: </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
@@ -74,7 +72,7 @@ assign 成這個物件。</p>
 
 <p>想說 <code>logging</code> module 應該也是丟
 <code>stdout</code>，不過怎麼設就是不行，所以還是看一下 source code。</p>
-<h3>logging ...</h3></!--more-->
+<h3>logging ...</h3>
                     </section>
                 </article>
 				<hr/>
@@ -88,8 +86,7 @@ assign 成這個物件。</p>
                         <a href="http://blog.carlcarl.me/759/python-logging/" rel="bookmark"><h1>python logging</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>紀錄一下 python logging 的一些簡單設定。<br />
-<!--more--></p>
+                        <p>紀錄一下 python logging 的一些簡單設定。  </p>
 <h3>可以在一開始設定 log 訊息顯示的等級：</h3>
 <div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
 </pre></div>

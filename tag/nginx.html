@@ -61,13 +61,11 @@
                     <section class="post-content">
                         <p>在用 <a href="http://gtmetrix.com">GTmetrix</a> 看網站的效能的時候，發現只有 pagespeed combine 出來的
 js，沒有被 gzip 處理過。</p>
-<!--more-->
-
 <p>google 了一下，在 <a href="https://github.com/pagespeed/ngx_pagespeed/issues/368">Github 上也找到同樣的問題</a>，裡面說要加上
 <code>application/javascript</code>，回頭看了一下我的 nginx 設定檔，果然沒加到= =。</p>
 <p>我原本設定是
 <code>gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript</code>，想說該設的都設了，想不到還是有漏網之魚，加上之後重啟，果然就 OK 哩。</p>
-<p>附帶一提，我把 ...</p></!--more-->
+<p>附帶一提，我把 ...</p>
                     </section>
                 </article>
 				<hr/>
@@ -102,7 +100,7 @@ js，沒有被 gzip 處理過。</p>
                     </header>
                     <section class="post-content">
                         <p>Ubuntu 版本：12.04 Nginx 版本：1.4.1 pagespeed 版本：1.5.27.3
-記錄一下安裝的步驟： <!--more--></p>
+記錄一下安裝的步驟：</p>
 <div class="highlight"><pre><span class="c"># 到 home 目錄下做，看個人習慣就是</span>
 <span class="nb">cd</span> ~
 <span class="c"># add-apt-repository 這個指令需要裝 python-software-properties</span>

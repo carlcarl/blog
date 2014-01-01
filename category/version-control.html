@@ -88,8 +88,7 @@ git repo，裏面包含 submodule，且是
                         <p>在 OSX 上 checkout svn 的 repo 遇到了 error，跟我說 .svn
 底下少了某個檔案，後來才發現有兩個同樣名稱的檔案，只是大小寫不一樣，看來好像是因為
 OSX 的檔案系統預設大小寫視為一樣的。如果要解決這個問題除了換個名稱，要不然就是做個
-case sensitive 的 image mount 上去，指令如下：<br />
-<!--more--></p>
+case sensitive 的 image mount 上去，指令如下：  </p>
 <div class="highlight"><pre><span class="c"># 建立 image 檔案</span>
 hdiutil create -size 100m -fs <span class="s2">&quot;Case-sensitive HFS+&quot;</span> -volname xxx xxx.dmg
 <span class="c"># size 後面的參數表示 image 大小</span>

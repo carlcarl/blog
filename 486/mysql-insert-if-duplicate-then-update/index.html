@@ -66,9 +66,8 @@
 SELECT 出來的資料加 1 並給 UPDATE 來使用，但是這樣並不是一個 atomic 的
 operation，如果在 SELECT 完之後有其他人也進行 SELECT
 就變成會拿一樣的資料且都加 1，兩個做完 UPDATE 的結果就會只是加 1
-過的數據，但是預期的結果應該要是加 2 的。<br />
-<!--more--><br />
-查了一下資料，發現有個簡單的語法可以使用：</p>
+過的數據，但是預期的結果應該要是加 2 的。  </p>
+<p>查了一下資料，發現有個簡單的語法可以使用：</p>
 <div class="highlight"><pre><span class="cm">/* If id is the UNIQUE KEY */</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="n">num</span><span class="o">=</span><span class="n">num</span><span class="o">+</span><span class="mi">1</span>
 </pre></div>

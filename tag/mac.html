@@ -69,6 +69,78 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-12T02:15:00" pubdate>
+                            Fri 12 July 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1120/osx-mavericks-betaheader-file-position/" rel="bookmark"><h1>OSX Mavericks Beta header file position</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>Beta 版的 header file 位置有些不同，看到幾個地方都傳出災情：</p>
+<ul>
+<li><a href="https://github.com/mxcl/homebrew/pull/20938">gpg-agent: Set correct stdint.h header path for Mac OSX Mavericks</a></li>
+<li><a href="https://github.com/jfahrenkrug/WWDC-Downloader/issues/5">The gem doesn't yet build in Mavericks</a></li>
+<li><a href="https://github.com/josegonzalez/homebrew-php/issues/591">Installation fails on OS X Mavericks</a></li>
+</ul>
+<p>原本的 <code>/usr/include</code> 已經不見了，找了一下，位置是在：</p>
+<div class="highlight"><pre><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode5</span><span class="o">-</span><span class="n">DP</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="p">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="mf">.9 ...</span></pre></div>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-22T15:18:00" pubdate>
+                            Sat 22 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1070/stunnel-mac-client/" rel="bookmark"><h1>stunnel Mac client</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>stunnel server 的設定就照<a href="https://wido.me/sunteya/setup-a-socks-proxy-server-pass-by-secure-firewall/">這篇</a>的教學，不過 Mac client
+的設定似乎不能直接套用 Ubuntu client
+的，試了一下網路上的一些設定，總算有可以 work
+的了，以下是我的設定，比較要注意的就是 <code>cert</code> 的位置要設對，另外就是
+<code>connect</code> 的 <code>host</code> 要改成你 stunnel server 的位置：</p>
+<div class="highlight"><pre><span class="n">setuid</span> <span class="o">=</span> <span class="n">nobody</span>
+<span class="n">setgid</span> <span class="o">=</span> <span class="n">nogroup</span>
+<span class="n">pid</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">stunnel</span><span class="p">.</span><span class="n">pid</span>
+
+<span class="n">cert</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">stunnel</span><span class="o">/</span><span class="n">client</span><span class="p">.</span><span class="n">pem</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">yes</span>
+
+<span class="n">debug</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="n">sslVersion</span> <span class="o">=</span> <span class="n">SSLv3</span>
+<span class="n">verify ...</span></pre></div>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2013-03-13T15:36:00" pubdate>
+                            Wed 13 March 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/799/osx-svn-checkout-fail/" rel="bookmark"><h1>OSX svn checkout fail</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 OSX 上 checkout svn 的 repo 遇到了 error，跟我說 .svn
+底下少了某個檔案，後來才發現有兩個同樣名稱的檔案，只是大小寫不一樣，看來好像是因為
+OSX 的檔案系統預設大小寫視為一樣的。如果要解決這個問題除了換個名稱，要不然就是做個
+case sensitive 的 image mount 上去，指令如下：  </p>
+<div class="highlight"><pre><span class="c"># 建立 image 檔案</span>
+hdiutil create -size 100m -fs <span class="s2">&quot;Case-sensitive HFS+&quot;</span> -volname xxx xxx.dmg
+<span class="c"># size 後面的參數表示 image 大小</span>
+<span class="c"># volname 後面的參數表示掛載後的名稱</span>
+<span class="c"># xxx.dmg 是 image ...</span></pre></div>
+                    </section>
+                </article>
+				<hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-10-22T01:05:00" pubdate>
                             Mon 22 October 2012
                         </time>

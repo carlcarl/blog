@@ -173,8 +173,6 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
                     </header>
                     <section class="post-content">
                         <p>我是在已有的 Ubuntu 上安裝 Eucalyptus，如果是直接用 Ubuntu Enterprise Cloud 應該會比較簡單 orz。</p>
-<!--more-->
-
 <p>大概講一下幾個我遇到的問題 orz。</p>
 <h3>eucalyptus-cloud restart : Unknown instance</h3>
 <p>改直接執行 <code>eucalyptus-cloud</code>看看:</p>
@@ -186,7 +184,7 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
 
 <p>如果出現以上的錯誤就是要裝 <code>openjdk-6-jre-headless</code>。</p>
 <h3>記得先執行 service</h3>
-<p>下面這行還滿方便的，不過記得要先到 <code>/etc/init.d ...</code></p></!--more-->
+<p>下面這行還滿方便的，不過記得要先到 <code>/etc/init.d ...</code></p>
                     </section>
                 </article>
 				<hr/>
@@ -276,7 +274,7 @@ chkconfig httpd --del
                         <a href="http://blog.carlcarl.me/18/zend-framework-add-acl-setting/" rel="bookmark"><h1>Zend Framework add Acl setting</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>首先先在 <code>bootstrap.php</code> 檔案裡加上下面這個 function<!--more--></p>
+                        <p>首先先在 <code>bootstrap.php</code> 檔案裡加上下面這個 function</p>
 <div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="k">protected</span> <span class="k">function</span> <span class="nf">_initControllers</span><span class="p">()</span>
 <span class="p">{</span>
@@ -305,7 +303,7 @@ chkconfig httpd --del
                         <a href="http://blog.carlcarl.me/17/how-to-connect-the-server-in-virtualbox/" rel="bookmark"><h1>How to connect the server in virtualbox</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>如果是要用ssh連的話 就輸入以下指令<!--more--></p>
+                        <p>如果是要用ssh連的話 就輸入以下指令</p>
 <p><code>C:Program FilesOracleVirtualBoxVBoxManage.exe" modifyvm "VM name" --natpf1
 "guestssh,tcp,,2222,,22"</code></p>
 <p>前面如果有改 virtualbox 的安裝位置的話 就要跟著改</p>

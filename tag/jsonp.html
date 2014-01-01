@@ -60,9 +60,8 @@
                     </header>
                     <section class="post-content">
                         <p>Python 的 Pyramid Framework 有支援 jsonp 的 renderer，看了一下
-doc，設置還算簡單，不過好像漏了個小地方。<br />
-<!--more--><br />
-首先要先在 <code>Configurator</code> 的檔案加入下面內容 (官方 doc 裡面沒提到要從哪邊
+doc，設置還算簡單，不過好像漏了個小地方。  </p>
+<p>首先要先在 <code>Configurator</code> 的檔案加入下面內容 (官方 doc 裡面沒提到要從哪邊
  <code>import JSONP</code>)：</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyramid.renderers</span> <span class="kn">import</span> <span class="n">JSONP</span>
 <span class="c"># 這裡使用 &#39;callback&#39; 當作預設的 callback function 名稱</span>

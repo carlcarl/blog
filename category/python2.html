@@ -90,15 +90,13 @@ javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
 裡來讓程式操作，後來有查到可以在 setup.py 裡設定
 <code>package_data</code>，照著做之後好像滿順利的，但是在用 root 權限 install
 完，用一般使用者執行就遇到 permission 的錯誤了。</p>
-<!--more-->
-
 <p>看了一下安裝目錄下的 static 檔案，結果權限是 <code>400</code>，owner 是
 <code>root</code>，難怪一般使用者無法讀取，想說會不會是因為我的原本檔案權限的關係，檢查了一下，果然是
 <code>400</code>，但是我改了權限再重新安裝居然還是一樣，這時我還想說會不會是原本就有這樣的限制，還查了一堆資料
 orz。</p>
 <p>最後想到，會不會是因為我那些 build 所產生的目錄的關係，於是我把
 <code>xxx.pkg-info</code>，<code>build</code> 和 <code>dist</code>
-這三個資料夾都移除掉後再重新安裝，果然就 ...</p></!--more-->
+這三個資料夾都移除掉後再重新安裝，果然就 ...</p>
                     </section>
                 </article>
 				<hr/>
@@ -113,9 +111,8 @@ orz。</p>
                     </header>
                     <section class="post-content">
                         <p>簡易版的可以直接參考
-<a href="http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class">http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class</a>。<br />
-<!--more--><br />
-以我的例子來說，我需要對某些 method 加上 retry
+<a href="http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class">http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class</a>。  </p>
+<p>以我的例子來說，我需要對某些 method 加上 retry
 的機制，除了需要有參數外，還希望能夠把 decorate method 放在 class
 裡頭，這樣我才能呼叫 class 裡頭另外的 method。以下是簡單的例子：</p>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Test</span><span class="p">():</span>
@@ -143,8 +140,7 @@ Python3，看起來好像很順利，不過在執行的時候就出現了 Excepi
 囧，內容就是
 <code>can't use a string pattern on a bytes-like object</code>，看了一下，是 <code>json</code>
 的 <code>loads</code> 在轉<code>httplib</code> <code>read</code> 的 output 出現問題，而原來在 Python2
-中並不會出現這個問題，原來程式如下：<br />
-<!--more--></p>
+中並不會出現這個問題，原來程式如下：  </p>
 <div class="highlight"><pre><span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 
@@ -166,9 +162,8 @@ type，還需要做 encode ...</p>
                     <section class="post-content">
                         <p>這篇是參考
 <a href="http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/">http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/</a>
-這篇所講的，其實他講的就差不多了，但是漏掉了一些細節，所以幫忙補完一下。<br />
-<!--more--><br />
-<a href="https://www.appfog.com/">appfog</a> 的 deploy 相對 <a href="https://www.openshift.com/">openshift</a> 來說，算是簡單很多 (不過
+這篇所講的，其實他講的就差不多了，但是漏掉了一些細節，所以幫忙補完一下。  </p>
+<p><a href="https://www.appfog.com/">appfog</a> 的 deploy 相對 <a href="https://www.openshift.com/">openshift</a> 來說，算是簡單很多 (不過
 openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
 <a href="http://www.pylonsproject.org/">pyramid</a> 來講，主要就是在 project 根目錄新增一個 <code>wsgi.py</code>
 的檔案，內容引用文章連結內的程式：</p>
@@ -190,9 +185,8 @@ openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
                     </header>
                     <section class="post-content">
                         <p>Python 的 Pyramid Framework 有支援 jsonp 的 renderer，看了一下
-doc，設置還算簡單，不過好像漏了個小地方。<br />
-<!--more--><br />
-首先要先在 <code>Configurator</code> 的檔案加入下面內容 (官方 doc 裡面沒提到要從哪邊
+doc，設置還算簡單，不過好像漏了個小地方。  </p>
+<p>首先要先在 <code>Configurator</code> 的檔案加入下面內容 (官方 doc 裡面沒提到要從哪邊
  <code>import JSONP</code>)：</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyramid.renderers</span> <span class="kn">import</span> <span class="n">JSONP</span>
 <span class="c"># 這裡使用 &#39;callback&#39; 當作預設的 callback function 名稱</span>
@@ -220,8 +214,7 @@ doc，設置還算簡單，不過好像漏了個小地方。<br />
                         <a href="http://blog.carlcarl.me/772/python-argparse/" rel="bookmark"><h1>python argparse</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>紀錄一些 python argparse module 的使用方法和問題：<br />
-<!--more--></p>
+                        <p>紀錄一些 python argparse module 的使用方法和問題：  </p>
 <h3>選項的參數為 optional</h3>
 <p>譬如說 <code>-f</code> 這選項允許一個檔案的路徑名稱： <code>-f test.txt</code>，如果沒給檔案名稱就預設使用 example.txt：</p>
 <div class="highlight"><pre><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;example.txt&#39;</span><span class="p">)</span>
@@ -246,8 +239,7 @@ doc，設置還算簡單，不過好像漏了個小地方。<br />
                         <a href="http://blog.carlcarl.me/759/python-logging/" rel="bookmark"><h1>python logging</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>紀錄一下 python logging 的一些簡單設定。<br />
-<!--more--></p>
+                        <p>紀錄一下 python logging 的一些簡單設定。  </p>
 <h3>可以在一開始設定 log 訊息顯示的等級：</h3>
 <div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
 </pre></div>
@@ -316,14 +308,13 @@ doc，設置還算簡單，不過好像漏了個小地方。<br />
                     </header>
                     <section class="post-content">
                         <p>現在有操作多台機器執行同樣指令的需求，想說裝 <a href="http://docs.saltstack.org/en/latest/contents.html">salt</a>
-來管理看看，詳細介紹可以點連結進去看看。簡單來講，這套工具可以讓你方便一次去對多個機器進行操作，另外還可以透過用 Python 並 import salt module 來處理整個流程和回傳的資料。<br />
-<!--more--><br />
-salt 分成了兩個部份，<code>salt-master</code> 和 <code>salt-minion</code> ，<code>salt-master</code>
+來管理看看，詳細介紹可以點連結進去看看。簡單來講，這套工具可以讓你方便一次去對多個機器進行操作，另外還可以透過用 Python 並 import salt module 來處理整個流程和回傳的資料。  </p>
+<p>salt 分成了兩個部份，<code>salt-master</code> 和 <code>salt-minion</code> ，<code>salt-master</code>
 就是 server 端，也就是你用來管理其他機器的機器上要裝的 (有點饒舌=
 =")，minion 則是 client 端，就是被管理的機器所要裝的套件。server
 端會開個 service 讓 client 連，所以 client 端必須能夠知道 server 端的 IP
 或者是 host name ，client 端連上來後，server 端可以決定是否接受這個
-client ...</!--more--></p>
+client ...</p>
                     </section>
                 </article>
 				<hr/>

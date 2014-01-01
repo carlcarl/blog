@@ -62,8 +62,6 @@
                         <p>記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh
 的主機，這裡以 <code>example.com</code> 為例。 (其實參考資料的連結內容更詳細
 XD，有需要的人建議點進去看看唄～～。)</p>
-<!--more-->
-
 <ol>
 <li>從內部往外。</li>
 </ol>
@@ -81,7 +79,7 @@ ssh -NfD 9999 user@example.com
 <!-- -->
 
 <div class="highlight"><pre><span class="c"># 這邊必須先在內部的 server 輸入下面這一行，連到 example.com，</span>
-<span class="c"># 然後在 example.com ...</span></pre></div></!--></!--></!--more-->
+<span class="c"># 然後在 example.com ...</span></pre></div></!--></!-->
                     </section>
                 </article>
 				<hr/>
@@ -118,13 +116,11 @@ function 處理一堆 array 結構的校能的話，就可以不需要理這欄�
                     <section class="post-content">
                         <p>在用 <a href="http://gtmetrix.com">GTmetrix</a> 看網站的效能的時候，發現只有 pagespeed combine 出來的
 js，沒有被 gzip 處理過。</p>
-<!--more-->
-
 <p>google 了一下，在 <a href="https://github.com/pagespeed/ngx_pagespeed/issues/368">Github 上也找到同樣的問題</a>，裡面說要加上
 <code>application/javascript</code>，回頭看了一下我的 nginx 設定檔，果然沒加到= =。</p>
 <p>我原本設定是
 <code>gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript</code>，想說該設的都設了，想不到還是有漏網之魚，加上之後重啟，果然就 OK 哩。</p>
-<p>附帶一提，我把 ...</p></!--more-->
+<p>附帶一提，我把 ...</p>
                     </section>
                 </article>
 				<hr/>
@@ -207,15 +203,13 @@ buffer 的部分 render 上去呢？以下是我的鍵盤猜測：</p>
 裡來讓程式操作，後來有查到可以在 setup.py 裡設定
 <code>package_data</code>，照著做之後好像滿順利的，但是在用 root 權限 install
 完，用一般使用者執行就遇到 permission 的錯誤了。</p>
-<!--more-->
-
 <p>看了一下安裝目錄下的 static 檔案，結果權限是 <code>400</code>，owner 是
 <code>root</code>，難怪一般使用者無法讀取，想說會不會是因為我的原本檔案權限的關係，檢查了一下，果然是
 <code>400</code>，但是我改了權限再重新安裝居然還是一樣，這時我還想說會不會是原本就有這樣的限制，還查了一堆資料
 orz。</p>
 <p>最後想到，會不會是因為我那些 build 所產生的目錄的關係，於是我把
 <code>xxx.pkg-info</code>，<code>build</code> 和 <code>dist</code>
-這三個資料夾都移除掉後再重新安裝，果然就 ...</p></!--more-->
+這三個資料夾都移除掉後再重新安裝，果然就 ...</p>
                     </section>
                 </article>
 				<hr/>
@@ -229,7 +223,7 @@ orz。</p>
                         <a href="http://blog.carlcarl.me/897/jslint-note/" rel="bookmark"><h1>JSLint note</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>記錄一些錯誤的處理方式。 <!--more--></p>
+                        <p>記錄一些錯誤的處理方式。</p>
 <h3>1. Document was used before it was defined</h3>
 <p>因為 JSLint 只是用來分析一般的 javascript code，像 <code>document</code>
 這種在瀏覽器上才有用的 global variable，就要在檔案開始加個宣告：</p>
@@ -287,7 +281,7 @@ brew linkapps
                     </header>
                     <section class="post-content">
                         <p>Ubuntu 版本：12.04 Nginx 版本：1.4.1 pagespeed 版本：1.5.27.3
-記錄一下安裝的步驟： <!--more--></p>
+記錄一下安裝的步驟：</p>
 <div class="highlight"><pre><span class="c"># 到 home 目錄下做，看個人習慣就是</span>
 <span class="nb">cd</span> ~
 <span class="c"># add-apt-repository 這個指令需要裝 python-software-properties</span>

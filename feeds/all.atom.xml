@@ -466,8 +466,6 @@ module 裡用 &lt;code&gt;argparse&lt;/code&gt;，本身不是個問題，問題
 &lt;a href="http://stackoverflow.com/questions/10324393/sphinx-build-fail-autodoc-cant-import-find-module"&gt;sphinx-build fail - autodoc can't import/find module&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://scienceoss.com/minimal-sphinx-setup-for-autodocumenting-python-modules/"&gt;http://scienceoss.com/minimal-sphinx-setup-for-autodocumenting-python-modules/&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://api.mongodb.org/python/current/"&gt;Example: PyMongo documentation&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="sphinx"></category></entry><entry><title>Python multiprocessing share counter</title><link href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/" rel="alternate"></link><updated>2013-09-19T00:09:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-09-19:1315/python-multiprocessing-share-counter/</id><summary type="html">&lt;p&gt;找了一下，以下是基本的寫法：&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;counter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;countdown&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -769,8 +767,6 @@ debug，執行上會更簡單。&lt;/p&gt;</summary><category term="debug"></cat
     就好。&lt;/li&gt;
 &lt;li&gt;new 會帶來多的 overhead，所以 new Number 又比 Number 慢。&lt;/li&gt;
 &lt;/ol&gt;</summary><category term="Number"></category><category term="parseInt"></category></entry><entry><title>Python functools.wraps note</title><link href="http://blog.carlcarl.me/1249/python-functools-wraps-note/" rel="alternate"></link><updated>2013-08-06T15:38:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-08-06:1249/python-functools-wraps-note/</id><summary type="html">&lt;p&gt;研究一下 &lt;code&gt;functools.wraps&lt;/code&gt;。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;h3&gt;用法&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;deco&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c"&gt;# @wraps(f)&lt;/span&gt;
@@ -858,8 +854,6 @@ decorate 的 function 的參數這樣(這邊沒有使用)。&lt;/p&gt;
 &lt;a href="http://stackoverflow.com/questions/308999/what-does-functools-wraps-do"&gt;What does functools.wraps do?&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://artemrudenko.wordpress.com/2013/04/15/python-why-you-need-to-use-wraps-with-decorators/"&gt;Python: Why to use @wraps with decorators?&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://stackoverflow.com/questions/15357776/what-is-the-difference-between-functools-wraps-and-update-wrapper"&gt;what is the difference between functools.wraps and update_wrapper&lt;/a&gt;&lt;/p&gt;</summary><category term="wraps"></category></entry><entry><title>Python fibonacci number</title><link href="http://blog.carlcarl.me/1240/python-fibonacci-number/" rel="alternate"></link><updated>2013-08-04T02:35:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-08-04:1240/python-fibonacci-number/</id><summary type="html">&lt;p&gt;在 Python Taiwan 社團看到的寫法：&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(([&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -876,8 +870,6 @@ list，於是用了 &lt;code&gt;and False&lt;/code&gt; 將整個值算成 &lt;co
 囧)，看了一下 &lt;code&gt;uniout&lt;/code&gt; 的 code，看來做法是另外用了一個物件，然後把
 &lt;code&gt;sys.stdout&lt;/code&gt; 的屬性複製上去，再加上編碼的功能，最後再將 &lt;code&gt;sys.stdout&lt;/code&gt;
 assign 成這個物件。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;h3&gt;我用的 logger 程式&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;basicConfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%(levelname)s&lt;/span&gt;&lt;span class="s"&gt;: &lt;/span&gt;&lt;span class="si"&gt;%(message)s&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;level&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;logger&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getLogger&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -965,8 +957,6 @@ XD，不過想說還是有始有終的的把它 trace 下去。接下來要 fix
 information。&lt;/p&gt;
 &lt;p&gt;接下來用 &lt;code&gt;tar -xf data.tar.gz&lt;/code&gt; or &lt;code&gt;tar -xf control.tar.gz&lt;/code&gt;
 就可以看到裡面的資料了。&lt;/p&gt;</summary><category term="ipk"></category><category term="tar"></category></entry><entry><title>Python Yahoo weather</title><link href="http://blog.carlcarl.me/1212/python-yahoo-weather/" rel="alternate"></link><updated>2013-07-16T18:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-07-16:1212/python-yahoo-weather/</id><summary type="html">&lt;p&gt;實際做起來不難，是說弄完才發現有 &lt;a href="https://pypi.python.org/pypi/yweather/0.1"&gt;yweather&lt;/a&gt; 這個可以用囧。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;首先到 &lt;a href="http://developer.yahoo.com/yql/console/"&gt;YQL&lt;/a&gt; 這邊下 query，這邊可以參考&lt;a href="http://my.opera.com/weiyu/blog/2012/04/08/yql-yahoo"&gt;這篇&lt;/a&gt;最下面的兩種 query
 方法。格式可以選 JSON 然後把 callback 名稱拿掉，下完 query
 就可以產生一段網址，以新竹的例子來說就是:&lt;/p&gt;
@@ -1007,8 +997,6 @@ XD。&lt;/p&gt;
 並監視檔案的變化，接著網頁的部分加入這個 port 底下所提供的
 javascript，一旦檔案發生變化，Grunt 就會 push 消息，通知 browser 做
 reload 的動作。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;h3&gt;Project 架構&lt;/h3&gt;
 &lt;p&gt;下面是整個 project 的大致架構，架構應該還算簡單 XD。附帶一提，template
 我是使用 &lt;a href="http://docs.pylonsproject.org/projects/pyramid_jinja2/en/latest/"&gt;jinja2&lt;/a&gt;。&lt;/p&gt;
@@ -1200,15 +1188,13 @@ js 檔案並儲存看看，應該會自動產生處理後的檔案並自動 relo
 &lt;li&gt;&lt;a href="https://github.com/jfahrenkrug/WWDC-Downloader/issues/5"&gt;The gem doesn't yet build in Mavericks&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/josegonzalez/homebrew-php/issues/591"&gt;Installation fails on OS X Mavericks&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;原本的 &lt;code&gt;/usr/include&lt;/code&gt; 已經不見了，找了一下，位置是在：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Applications&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Xcode5&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;DP&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Contents&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Developer&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Platforms&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;MacOSX&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;platform&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Developer&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;SDKs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;MacOSX10&lt;/span&gt;&lt;span class="mf"&gt;.9&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sdk&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;如果像是 vim 有 plugin (ex: youcompleteme) 需要指定 header file
-位置的話，可以另外把這個位置加上去。&lt;/p&gt;</summary></entry><entry><title>Javascript MutationObserver</title><link href="http://blog.carlcarl.me/1113/javascript-mutationobserver/" rel="alternate"></link><updated>2013-07-03T18:46:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-07-03:1113/javascript-mutationobserver/</id><summary type="html">&lt;p&gt;最近看到 Aol Reader release，試用了一下，感覺還滿不錯的，但是右邊的廣告實在很礙眼，就算用
+位置的話，可以另外把這個位置加上去。&lt;/p&gt;</summary><category term="mac"></category></entry><entry><title>Javascript MutationObserver</title><link href="http://blog.carlcarl.me/1113/javascript-mutationobserver/" rel="alternate"></link><updated>2013-07-03T18:46:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-07-03:1113/javascript-mutationobserver/</id><summary type="html">&lt;p&gt;最近看到 Aol Reader release，試用了一下，感覺還滿不錯的，但是右邊的廣告實在很礙眼，就算用
 adblock 擋掉，右邊還是會留空，想說都沒寫過 browser 的 extension
 ，所以就拿這個來練功啦～，不然其實寫 userscript 也可以就是。要弄的
 extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通，寫起來 CP
@@ -1337,8 +1323,6 @@ conntrack 中的內容，清完後再把這條規則清掉就可以了。&lt;/p&
 的，試了一下網路上的一些設定，總算有可以 work
 的了，以下是我的設定，比較要注意的就是 &lt;code&gt;cert&lt;/code&gt; 的位置要設對，另外就是
 &lt;code&gt;connect&lt;/code&gt; 的 &lt;code&gt;host&lt;/code&gt; 要改成你 stunnel server 的位置：&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;setuid&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nobody&lt;/span&gt;
 &lt;span class="n"&gt;setgid&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nogroup&lt;/span&gt;
 &lt;span class="n"&gt;pid&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;stunnel&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pid&lt;/span&gt;
@@ -1357,11 +1341,9 @@ conntrack 中的內容，清完後再把這條規則清掉就可以了。&lt;/p&
 
 
 &lt;p&gt;參考資料：&lt;br /&gt;
-&lt;a href="http://briteming.blogspot.tw/2012/01/vpsstunnel.html"&gt;在vps上搭建stunnel，用来翻墙的详细方法(原创文章）&lt;/a&gt;&lt;/p&gt;</summary><category term="stunnel"></category></entry><entry><title>ssh with firewall</title><link href="http://blog.carlcarl.me/1053/ssh-with-firewall/" rel="alternate"></link><updated>2013-06-19T00:19:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-06-19:1053/ssh-with-firewall/</id><summary type="html">&lt;p&gt;記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh
+&lt;a href="http://briteming.blogspot.tw/2012/01/vpsstunnel.html"&gt;在vps上搭建stunnel，用来翻墙的详细方法(原创文章）&lt;/a&gt;&lt;/p&gt;</summary><category term="stunnel"></category><category term="mac"></category></entry><entry><title>ssh with firewall</title><link href="http://blog.carlcarl.me/1053/ssh-with-firewall/" rel="alternate"></link><updated>2013-06-19T00:19:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-06-19:1053/ssh-with-firewall/</id><summary type="html">&lt;p&gt;記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh
 的主機，這裡以 &lt;code&gt;example.com&lt;/code&gt; 為例。 (其實參考資料的連結內容更詳細
 XD，有需要的人建議點進去看看唄～～。)&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;ol&gt;
 &lt;li&gt;從內部往外。&lt;/li&gt;
 &lt;/ol&gt;
@@ -1403,8 +1385,6 @@ function 處理一堆 array 結構的校能的話，就可以不需要理這欄�
 &lt;a href="https://groups.google.com/forum/?fromgroups#!topic/chromium-discuss/02CEYDcuO18"&gt;What does (program) signify in the Chrome profiler?&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://stackoverflow.com/questions/3847954/chrome-debugger-what-is-program-in-the-profiler"&gt;Chrome debugger - what is “(program)” in the profiler?&lt;/a&gt;&lt;/p&gt;</summary><category term="chrome"></category></entry><entry><title>nginx pagespeed gzip combine js</title><link href="http://blog.carlcarl.me/1043/nginx-pagespeed-gzip-combine-js/" rel="alternate"></link><updated>2013-06-16T23:10:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-06-16:1043/nginx-pagespeed-gzip-combine-js/</id><summary type="html">&lt;p&gt;在用 &lt;a href="http://gtmetrix.com"&gt;GTmetrix&lt;/a&gt; 看網站的效能的時候，發現只有 pagespeed combine 出來的
 js，沒有被 gzip 處理過。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;google 了一下，在 &lt;a href="https://github.com/pagespeed/ngx_pagespeed/issues/368"&gt;Github 上也找到同樣的問題&lt;/a&gt;，裡面說要加上
 &lt;code&gt;application/javascript&lt;/code&gt;，回頭看了一下我的 nginx 設定檔，果然沒加到= =。&lt;/p&gt;
 &lt;p&gt;我原本設定是
@@ -1460,8 +1440,6 @@ drawImage 把 buffering canvas 畫到 display 用的 canvas
 裡來讓程式操作，後來有查到可以在 setup.py 裡設定
 &lt;code&gt;package_data&lt;/code&gt;，照著做之後好像滿順利的，但是在用 root 權限 install
 完，用一般使用者執行就遇到 permission 的錯誤了。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;看了一下安裝目錄下的 static 檔案，結果權限是 &lt;code&gt;400&lt;/code&gt;，owner 是
 &lt;code&gt;root&lt;/code&gt;，難怪一般使用者無法讀取，想說會不會是因為我的原本檔案權限的關係，檢查了一下，果然是
 &lt;code&gt;400&lt;/code&gt;，但是我改了權限再重新安裝居然還是一樣，這時我還想說會不會是原本就有這樣的限制，還查了一堆資料
@@ -1477,7 +1455,7 @@ orz。&lt;/p&gt;
 &lt;li&gt;鬼打牆的時候，記得把那些 build 資料夾刪一刪。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;前面在查資料的時候，看到在 &lt;a href="http://stackoverflow.com/questions/14861634/how-do-i-distribute-data-files-with-a-python-package-such-that-theyre-readable"&gt;stackoverflow&lt;/a&gt;
-也有個人跟我有一樣的問題，後來就順便回了一下，不過不確定這樣是否能解決他的問題就是，而且也滿久以前發的了:P。&lt;/p&gt;</summary></entry><entry><title>JSLint note</title><link href="http://blog.carlcarl.me/897/jslint-note/" rel="alternate"></link><updated>2013-06-08T01:36:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-06-08:897/jslint-note/</id><summary type="html">&lt;p&gt;記錄一些錯誤的處理方式。 &lt;!--more--&gt;&lt;/p&gt;
+也有個人跟我有一樣的問題，後來就順便回了一下，不過不確定這樣是否能解決他的問題就是，而且也滿久以前發的了:P。&lt;/p&gt;</summary></entry><entry><title>JSLint note</title><link href="http://blog.carlcarl.me/897/jslint-note/" rel="alternate"></link><updated>2013-06-08T01:36:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-06-08:897/jslint-note/</id><summary type="html">&lt;p&gt;記錄一些錯誤的處理方式。&lt;/p&gt;
 &lt;h3&gt;1. Document was used before it was defined&lt;/h3&gt;
 &lt;p&gt;因為 JSLint 只是用來分析一般的 javascript code，像 &lt;code&gt;document&lt;/code&gt;
 這種在瀏覽器上才有用的 global variable，就要在檔案開始加個宣告：&lt;/p&gt;
@@ -1588,7 +1566,7 @@ brew linkapps
 &lt;p&gt;參考網址：  &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://apple.stackexchange.com/questions/14299/replaced-usr-bin-vim-now-i-get-error-messages"&gt;http://apple.stackexchange.com/questions/14299/replaced-usr-bin-vim-now-i-get-error-messages&lt;/a&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://apple.stackexchange.com/questions/59375/how-do-i-install-macvim"&gt;http://apple.stackexchange.com/questions/59375/how-do-i-install-macvim&lt;/a&gt;&lt;/p&gt;</summary><category term="brew"></category><category term="macvim"></category></entry><entry><title>Ubuntu nginx pagespeed module</title><link href="http://blog.carlcarl.me/879/ubuntu-nginx-pagespeed-module/" rel="alternate"></link><updated>2013-06-03T21:25:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-06-03:879/ubuntu-nginx-pagespeed-module/</id><summary type="html">&lt;p&gt;Ubuntu 版本：12.04 Nginx 版本：1.4.1 pagespeed 版本：1.5.27.3
-記錄一下安裝的步驟： &lt;!--more--&gt;&lt;/p&gt;
+記錄一下安裝的步驟：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 到 home 目錄下做，看個人習慣就是&lt;/span&gt;
 &lt;span class="nb"&gt;cd&lt;/span&gt; ~
 &lt;span class="c"&gt;# add-apt-repository 這個指令需要裝 python-software-properties&lt;/span&gt;
@@ -1689,9 +1667,8 @@ pid 檔案，google 了一下，在 stackoverflow
 找到 &lt;a href="http://stackoverflow.com/questions/10939072/add-nginx-as-a-ubuntu-service-stop-and-reload-doesnt-work"&gt;這篇問題&lt;/a&gt; 剛好和我遇到的情況一樣，check 了一下 nginx conf 裡的 pid
 檔案位置和 init script 裡的 pid
 檔案位置，發現設定並不一樣，改成一樣後，問題就解決了～～。&lt;/p&gt;</summary><category term="nginx"></category><category term="ubuntu"></category></entry><entry><title>Python decorate method inside class</title><link href="http://blog.carlcarl.me/865/python-decorate-method-inside-class/" rel="alternate"></link><updated>2013-06-02T04:45:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-06-02:865/python-decorate-method-inside-class/</id><summary type="html">&lt;p&gt;簡易版的可以直接參考
-&lt;a href="http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class"&gt;http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class&lt;/a&gt;。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
-以我的例子來說，我需要對某些 method 加上 retry
+&lt;a href="http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class"&gt;http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class&lt;/a&gt;。  &lt;/p&gt;
+&lt;p&gt;以我的例子來說，我需要對某些 method 加上 retry
 的機制，除了需要有參數外，還希望能夠把 decorate method 放在 class
 裡頭，這樣我才能呼叫 class 裡頭另外的 method。以下是簡單的例子：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Test&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
@@ -1722,8 +1699,7 @@ Python3，看起來好像很順利，不過在執行的時候就出現了 Excepi
 囧，內容就是
 &lt;code&gt;can't use a string pattern on a bytes-like object&lt;/code&gt;，看了一下，是 &lt;code&gt;json&lt;/code&gt;
 的 &lt;code&gt;loads&lt;/code&gt; 在轉&lt;code&gt;httplib&lt;/code&gt; &lt;code&gt;read&lt;/code&gt; 的 output 出現問題，而原來在 Python2
-中並不會出現這個問題，原來程式如下：&lt;br /&gt;
-&lt;!--more--&gt;&lt;/p&gt;
+中並不會出現這個問題，原來程式如下：  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_connect&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getresponse&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1768,9 +1744,8 @@ function，故在這裡不考慮。ftrace 感覺好像很威，不過需要調�
 找出大小來做判斷，不過&lt;a href="http://stackoverflow.com/questions/7705338/ftell-function-giving-1-in-c-for-stdout"&gt;後來證明不行&lt;/a&gt;，pipe 跟一般的檔案還是有差別。&lt;/p&gt;
 &lt;p&gt;找了一堆資料，後來只想到用 &lt;code&gt;fgetc&lt;/code&gt; 來讀，再用讀不讀得到值作為判斷 orz，不知道有沒有其他更好的解法就是。&lt;/p&gt;</summary><category term="popen"></category></entry><entry><title>appfog deploy pyramid</title><link href="http://blog.carlcarl.me/827/appfog-deploy-pyramid/" rel="alternate"></link><updated>2013-04-14T23:45:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-04-14:827/appfog-deploy-pyramid/</id><summary type="html">&lt;p&gt;這篇是參考
 &lt;a href="http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/"&gt;http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/&lt;/a&gt;
-這篇所講的，其實他講的就差不多了，但是漏掉了一些細節，所以幫忙補完一下。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
-&lt;a href="https://www.appfog.com/"&gt;appfog&lt;/a&gt; 的 deploy 相對 &lt;a href="https://www.openshift.com/"&gt;openshift&lt;/a&gt; 來說，算是簡單很多 (不過
+這篇所講的，其實他講的就差不多了，但是漏掉了一些細節，所以幫忙補完一下。  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.appfog.com/"&gt;appfog&lt;/a&gt; 的 deploy 相對 &lt;a href="https://www.openshift.com/"&gt;openshift&lt;/a&gt; 來說，算是簡單很多 (不過
 openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
 &lt;a href="http://www.pylonsproject.org/"&gt;pyramid&lt;/a&gt; 來講，主要就是在 project 根目錄新增一個 &lt;code&gt;wsgi.py&lt;/code&gt;
 的檔案，內容引用文章連結內的程式：&lt;/p&gt;
@@ -1800,9 +1775,8 @@ appfog 使用，不然用原本的兩個設定檔也是可以。&lt;/p&gt;
 &lt;p&gt;大致比較要注意的就是這些，另外還有 &lt;code&gt;requirements.txt&lt;/code&gt; 要弄，DB
 設定的部分就從 &lt;code&gt;os.getenv("VCAP_SERVICES")&lt;/code&gt;裏去讀取就 OK 了。&lt;/p&gt;
 &lt;p&gt;另外這個是那篇文章作者的 &lt;a href="https://github.com/antoineleclair/OpenCode20121030/tree/master/shout"&gt;appfog repo&lt;/a&gt;，也可以參考看看。&lt;/p&gt;</summary><category term="appfog"></category><category term="pyramid"></category><category term="python"></category></entry><entry><title>Python Pyramid jsonp</title><link href="http://blog.carlcarl.me/819/python-pyramid-jsonp/" rel="alternate"></link><updated>2013-04-09T13:35:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-04-09:819/python-pyramid-jsonp/</id><summary type="html">&lt;p&gt;Python 的 Pyramid Framework 有支援 jsonp 的 renderer，看了一下
-doc，設置還算簡單，不過好像漏了個小地方。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
-首先要先在 &lt;code&gt;Configurator&lt;/code&gt; 的檔案加入下面內容 (官方 doc 裡面沒提到要從哪邊
+doc，設置還算簡單，不過好像漏了個小地方。  &lt;/p&gt;
+&lt;p&gt;首先要先在 &lt;code&gt;Configurator&lt;/code&gt; 的檔案加入下面內容 (官方 doc 裡面沒提到要從哪邊
  &lt;code&gt;import JSONP&lt;/code&gt;)：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pyramid.renderers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;JSONP&lt;/span&gt;
 &lt;span class="c"&gt;# 這裡使用 &amp;#39;callback&amp;#39; 當作預設的 callback function 名稱&lt;/span&gt;
@@ -1845,8 +1819,7 @@ git repo，裏面包含 submodule，且是
 &lt;p&gt;&lt;a href="http://stackoverflow.com/questions/4891527/git-protocol-blocked-by-company-how-can-i-get-around-that"&gt;http://stackoverflow.com/questions/4891527/git-protocol-blocked-by-company-how-can-i-get-around-that&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>OSX svn checkout fail</title><link href="http://blog.carlcarl.me/799/osx-svn-checkout-fail/" rel="alternate"></link><updated>2013-03-13T15:36:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-03-13:799/osx-svn-checkout-fail/</id><summary type="html">&lt;p&gt;在 OSX 上 checkout svn 的 repo 遇到了 error，跟我說 .svn
 底下少了某個檔案，後來才發現有兩個同樣名稱的檔案，只是大小寫不一樣，看來好像是因為
 OSX 的檔案系統預設大小寫視為一樣的。如果要解決這個問題除了換個名稱，要不然就是做個
-case sensitive 的 image mount 上去，指令如下：&lt;br /&gt;
-&lt;!--more--&gt;&lt;/p&gt;
+case sensitive 的 image mount 上去，指令如下：  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 建立 image 檔案&lt;/span&gt;
 hdiutil create -size 100m -fs &lt;span class="s2"&gt;&amp;quot;Case-sensitive HFS+&amp;quot;&lt;/span&gt; -volname xxx xxx.dmg
 &lt;span class="c"&gt;# size 後面的參數表示 image 大小&lt;/span&gt;
@@ -1860,7 +1833,7 @@ hdiutil attach xxx.dmg
 
 &lt;p&gt;接著就可以在 &lt;code&gt;/Volumes/&lt;/code&gt; 底下看到剛才掛上去的 image 資料夾。&lt;/p&gt;
 &lt;p&gt;參考網址：&lt;br /&gt;
-&lt;a href="http://stackoverflow.com/questions/2986786"&gt;http://stackoverflow.com/questions/2986786&lt;/a&gt;&lt;/p&gt;</summary><category term="svn"></category></entry><entry><title>KDE dolphin network folder ssh fail</title><link href="http://blog.carlcarl.me/794/kde-dolphin-network-folder-ssh-fail/" rel="alternate"></link><updated>2013-02-28T02:02:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-02-28:794/kde-dolphin-network-folder-ssh-fail/</id><summary type="html">&lt;p&gt;鬼打牆的小問題，感覺比較像 bug ，想說還是筆記下來好了。&lt;/p&gt;
+&lt;a href="http://stackoverflow.com/questions/2986786"&gt;http://stackoverflow.com/questions/2986786&lt;/a&gt;&lt;/p&gt;</summary><category term="svn"></category><category term="mac"></category></entry><entry><title>KDE dolphin network folder ssh fail</title><link href="http://blog.carlcarl.me/794/kde-dolphin-network-folder-ssh-fail/" rel="alternate"></link><updated>2013-02-28T02:02:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-02-28:794/kde-dolphin-network-folder-ssh-fail/</id><summary type="html">&lt;p&gt;鬼打牆的小問題，感覺比較像 bug ，想說還是筆記下來好了。&lt;/p&gt;
 &lt;p&gt;解決方法：&lt;br /&gt;
 把 &lt;code&gt;~/.ssh/known_hosts&lt;/code&gt; 中，找到要連線的 host 那行，然後把那行刪掉，
 dolphin 這邊再重連就能夠連上了。&lt;/p&gt;
@@ -1879,16 +1852,14 @@ dolphin 這邊再重連就能夠連上了。&lt;/p&gt;
 &lt;code&gt;input-append&lt;/code&gt; 雖然也可以達到類似的效果，不過由於 input element
 會貼在一起，所以不建議用。&lt;/p&gt;</summary><category term="bootstrap"></category><category term="css"></category></entry><entry><title>vim syntastic disable html check</title><link href="http://blog.carlcarl.me/785/vim-syntastic-disable-html-check/" rel="alternate"></link><updated>2013-02-22T02:58:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-02-22:785/vim-syntastic-disable-html-check/</id><summary type="html">&lt;p&gt;最近在用 vim 修改 html 的時候會在儲存的時候爛掉，後來發現好像是
 &lt;a href="https://github.com/scrooloose/syntastic"&gt;syntastic&lt;/a&gt; 的問題，而且只有 html 會有這個問題，所以看了一下有沒有關掉
-html check 的設定，後來在 stackoverflow 看到&lt;a href="http://stackoverflow.com/questions/12215710/how-to-invalid-syntastic-check-for-html-file-with-vim"&gt;解答&lt;/a&gt;：&lt;br /&gt;
-&lt;!--more--&gt;&lt;/p&gt;
+html check 的設定，後來在 stackoverflow 看到&lt;a href="http://stackoverflow.com/questions/12215710/how-to-invalid-syntastic-check-for-html-file-with-vim"&gt;解答&lt;/a&gt;：  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;let g:syntastic_mode_map={ &amp;#39;mode&amp;#39;: &amp;#39;active&amp;#39;,
                       &amp;#39;active_filetypes&amp;#39;: [],
                       &amp;#39;passive_filetypes&amp;#39;: [&amp;#39;html&amp;#39;] }
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;將以上內容複製到 &lt;code&gt;.vimrc&lt;/code&gt; 內即可。&lt;/p&gt;</summary><category term="syntastic"></category><category term="vim"></category></entry><entry><title>python argparse</title><link href="http://blog.carlcarl.me/772/python-argparse/" rel="alternate"></link><updated>2013-01-29T16:50:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-01-29:772/python-argparse/</id><summary type="html">&lt;p&gt;紀錄一些 python argparse module 的使用方法和問題：&lt;br /&gt;
-&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;將以上內容複製到 &lt;code&gt;.vimrc&lt;/code&gt; 內即可。&lt;/p&gt;</summary><category term="syntastic"></category><category term="vim"></category></entry><entry><title>python argparse</title><link href="http://blog.carlcarl.me/772/python-argparse/" rel="alternate"></link><updated>2013-01-29T16:50:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-01-29:772/python-argparse/</id><summary type="html">&lt;p&gt;紀錄一些 python argparse module 的使用方法和問題：  &lt;/p&gt;
 &lt;h3&gt;選項的參數為 optional&lt;/h3&gt;
 &lt;p&gt;譬如說 &lt;code&gt;-f&lt;/code&gt; 這選項允許一個檔案的路徑名稱： &lt;code&gt;-f test.txt&lt;/code&gt;，如果沒給檔案名稱就預設使用 example.txt：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;-f&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nargs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;?&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;example.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1919,8 +1890,7 @@ html check 的設定，後來在 stackoverflow 看到&lt;a href="http://stackove
 &lt;a href="http://www.doughellmann.com/PyMOTW/argparse/"&gt;http://www.doughellmann.com/PyMOTW/argparse/&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://stackoverflow.com/questions/4480075/argparse-optional-positional-arguments"&gt;http://stackoverflow.com/questions/4480075/argparse-optional-positional-arguments&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://stackoverflow.com/questions/8250010/argparse-identify-which-subparser-was-used"&gt;http://stackoverflow.com/questions/8250010/argparse-identify-which-subparser-was-used&lt;/a&gt;&lt;br /&gt;
-&lt;a href="http://stackoverflow.com/questions/7869345/how-to-make-python-argparse-mutually-exclusive-group-arguments-without-prefix"&gt;http://stackoverflow.com/questions/7869345/&lt;/a&gt;&lt;/p&gt;</summary><category term="argparse"></category></entry><entry><title>python logging</title><link href="http://blog.carlcarl.me/759/python-logging/" rel="alternate"></link><updated>2013-01-28T15:08:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-01-28:759/python-logging/</id><summary type="html">&lt;p&gt;紀錄一下 python logging 的一些簡單設定。&lt;br /&gt;
-&lt;!--more--&gt;&lt;/p&gt;
+&lt;a href="http://stackoverflow.com/questions/7869345/how-to-make-python-argparse-mutually-exclusive-group-arguments-without-prefix"&gt;http://stackoverflow.com/questions/7869345/&lt;/a&gt;&lt;/p&gt;</summary><category term="argparse"></category></entry><entry><title>python logging</title><link href="http://blog.carlcarl.me/759/python-logging/" rel="alternate"></link><updated>2013-01-28T15:08:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-01-28:759/python-logging/</id><summary type="html">&lt;p&gt;紀錄一下 python logging 的一些簡單設定。  &lt;/p&gt;
 &lt;h3&gt;可以在一開始設定 log 訊息顯示的等級：&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;basicConfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;level&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1945,8 +1915,7 @@ html check 的設定，後來在 stackoverflow 看到&lt;a href="http://stackove
 &lt;p&gt;最近這一年開始參加這類的 conf，而這次的 WebConf
 也不例外啦，本來在去年年底就有在關注這個 conf
 了，無奈開始賣票的時候我正在軍中新訓，當新訓結束的時候才發現票已經售完了囧。所幸後來同學那邊有多買一張賣我，我後來才有這個機會能夠參加這次的
-WebConf。(這次的 WebConf 官方網站作得還滿不錯的，再加上這背景樣式，個人還滿喜歡的:P)&lt;br /&gt;
-&lt;!--more--&gt;  &lt;/p&gt;
+WebConf。(這次的 WebConf 官方網站作得還滿不錯的，再加上這背景樣式，個人還滿喜歡的:P)  &lt;/p&gt;
 &lt;p&gt;這次的議程分為兩天三軌，不過大部分的場次都有決定好了，不外乎就是~~正妹先決模式~~選擇涉獵較多方面的領域，以擴充所學，增廣見聞。不過也可惜因此錯過了幾場想聽的主題，像是
 TonyQ 的「網站效能調整」，感覺上就滿實用的，後來也有去找 slide
 來看；「敏捷 Web 開發之 Python 工具菜單」這場也沒有聽到，後來看了一下相片，似乎聽的人不多，可能是因為~~打對台的講者太強大了~~大家聽一整天程式相關的議題都累了，所以都想聽聽其他領域的分享吧。&lt;/p&gt;
@@ -1995,8 +1964,6 @@ improved&lt;/a&gt;，個人覺得還滿方便的～。&lt;/p&gt;
 &lt;a href="http://majewsky.wordpress.com/2010/03/24/the-kwin-button-applet/"&gt;http://majewsky.wordpress.com/2010/03/24/the-kwin-button-applet/&lt;/a&gt;&lt;/p&gt;</summary><category term="KDE"></category></entry><entry><title>MongoDB uptime query</title><link href="http://blog.carlcarl.me/721/mongodb-uptime-query/" rel="alternate"></link><updated>2012-11-15T07:33:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-11-15:721/mongodb-uptime-query/</id><summary type="html">&lt;p&gt;在 &lt;a href="http://stackoverflow.com/questions/13379170/how-long-was-a-mongo-instance-running"&gt;stackoverflow&lt;/a&gt;
 看到這個問題，就順便查個資料回了一下，另外有個人是回答可以用 &lt;code&gt;ps -ef&lt;/code&gt;
 來看，不過我想說 MongoDB 本身應該也會有這樣的功能，所以還是查了一下。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;後來果然在 &lt;a href="http://docs.mongodb.org/manual/reference/server-status/"&gt;MongoDB 官方文件&lt;/a&gt;
 找到我要的資料，不過拿到的數據會是以秒為單位，所以必須自己作轉換。&lt;/p&gt;
 &lt;p&gt;進入 mongo shell 之後輸入：&lt;/p&gt;
@@ -2035,9 +2002,8 @@ improved&lt;/a&gt;，個人覺得還滿方便的～。&lt;/p&gt;
 &lt;p&gt;到這邊就 OK 了。&lt;/p&gt;
 &lt;p&gt;參考網址：  &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://code.doughellmann.com/virtualenvwrapper/issue/158/installing-virtualenvwrapper-on-on-osx-108"&gt;http://code.doughellmann.com/virtualenvwrapper/issue/158/installing-virtualenvwrapper-on-on-osx-108&lt;/a&gt;&lt;/p&gt;</summary><category term="virtualenvwrapper"></category><category term="mac"></category></entry><entry><title>Ubuntu install salt tool</title><link href="http://blog.carlcarl.me/690/ubuntu-install-salt-tool/" rel="alternate"></link><updated>2012-10-15T20:44:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-10-15:690/ubuntu-install-salt-tool/</id><summary type="html">&lt;p&gt;現在有操作多台機器執行同樣指令的需求，想說裝 &lt;a href="http://docs.saltstack.org/en/latest/contents.html"&gt;salt&lt;/a&gt;
-來管理看看，詳細介紹可以點連結進去看看。簡單來講，這套工具可以讓你方便一次去對多個機器進行操作，另外還可以透過用 Python 並 import salt module 來處理整個流程和回傳的資料。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
-salt 分成了兩個部份，&lt;code&gt;salt-master&lt;/code&gt; 和 &lt;code&gt;salt-minion&lt;/code&gt; ，&lt;code&gt;salt-master&lt;/code&gt;
+來管理看看，詳細介紹可以點連結進去看看。簡單來講，這套工具可以讓你方便一次去對多個機器進行操作，另外還可以透過用 Python 並 import salt module 來處理整個流程和回傳的資料。  &lt;/p&gt;
+&lt;p&gt;salt 分成了兩個部份，&lt;code&gt;salt-master&lt;/code&gt; 和 &lt;code&gt;salt-minion&lt;/code&gt; ，&lt;code&gt;salt-master&lt;/code&gt;
 就是 server 端，也就是你用來管理其他機器的機器上要裝的 (有點饒舌=
 =")，minion 則是 client 端，就是被管理的機器所要裝的套件。server
 端會開個 service 讓 client 連，所以 client 端必須能夠知道 server 端的 IP
@@ -2103,9 +2069,8 @@ sudo apt-get install salt-minion
 &lt;a href="http://docs.saltstack.org/en/latest/topics/installation/ubuntu.html"&gt;http://docs.saltstack.org/en/latest/topics/installation/ubuntu.html&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://docs.saltstack.org/en/latest/topics/tutorials/modules.html"&gt;http://docs.saltstack.org/en/latest/topics/tutorials/modules.html&lt;/a&gt;&lt;/p&gt;</summary><category term="saltstack"></category></entry><entry><title>PHP MongoDB query timing</title><link href="http://blog.carlcarl.me/680/php-mongodb-query-timing/" rel="alternate"></link><updated>2012-10-12T03:19:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-10-12:680/php-mongodb-query-timing/</id><summary type="html">&lt;p&gt;最近在用 PHP 在對 MongoDB 作壓力測試的時候，發現怎麼我 1 shard 和 3
 shards 的 performance 會一樣，卡了很久後來才發現原來是我搞錯 MongoDB
-query 的時機，所以在測試的時候，query 其實都沒有發出，難怪數據會一樣。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
-在 PHP 的 &lt;a href="http://php.net/manual/en/class.mongocursor.php"&gt;manual&lt;/a&gt; 裡有說明，以下拿它的範例程式來說明 query 的時機：&lt;/p&gt;
+query 的時機，所以在測試的時候，query 其實都沒有發出，難怪數據會一樣。  &lt;/p&gt;
+&lt;p&gt;在 PHP 的 &lt;a href="http://php.net/manual/en/class.mongocursor.php"&gt;manual&lt;/a&gt; 裡有說明，以下拿它的範例程式來說明 query 的時機：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class="nv"&gt;$cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$collection&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;find&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="c1"&gt;// query 還沒發出&lt;/span&gt;
@@ -2236,9 +2201,8 @@ object&lt;/strong&gt; 才行。&lt;/p&gt;
 &lt;p&gt;參考網址：&lt;br /&gt;
 &lt;a href="http://docs.mongodb.org/manual/applications/aggregation/"&gt;http://docs.mongodb.org/manual/applications/aggregation/&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://docs.mongodb.org/manual/reference/aggregation/"&gt;http://docs.mongodb.org/manual/reference/aggregation/&lt;/a&gt;&lt;/p&gt;</summary><category term="mongodb"></category></entry><entry><title>Test KineticJS apply canvas</title><link href="http://blog.carlcarl.me/606/test-kineticjs-apply-canvas/" rel="alternate"></link><updated>2012-09-04T01:54:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-09-04:606/test-kineticjs-apply-canvas/</id><summary type="html">&lt;p&gt;寫起來跟以前寫 Java 作類似東西的感覺很像，東西基本上都已經用物件包好，然後還有提供 layer
-讓你可以很方便的在不同 layer 放你要的物件。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
-我嘗試把我原本&lt;a href="https://github.com/carlcarl/CaGo/blob/master/js/cago.js"&gt;播放棋譜&lt;/a&gt;的 canvas 改成套用 KineticJS，不過後來發現，因為我的 canvas
+讓你可以很方便的在不同 layer 放你要的物件。  &lt;/p&gt;
+&lt;p&gt;我嘗試把我原本&lt;a href="https://github.com/carlcarl/CaGo/blob/master/js/cago.js"&gt;播放棋譜&lt;/a&gt;的 canvas 改成套用 KineticJS，不過後來發現，因為我的 canvas
 操作沒很複雜，所以真的是太大材小用了...。&lt;/p&gt;
 &lt;p&gt;以可讀性來講，因為我大部分畫 canvas 都是放在一個 function 裡，大致用幾個註解分幾個段落，其實就知道各部份的流程，換成物件的方式後，整個 function 感覺並沒有更好讀，而且程式沒有比較短=.=。&lt;/p&gt;
 &lt;p&gt;然後我用一個固定的測試流程來作測試(這個流程不包括前面的 js file loading，是讀完後才開始作操作測試)，測試的結果原本是 200ms，換成 KineticJS 之後是 800ms，整個很不划算 ~.~。&lt;/p&gt;
@@ -2254,8 +2218,7 @@ layer中的哪個棋子，但是這樣就變成需要多一個資料結構來紀
 &lt;p&gt;所以結論是 我覺得如果會需要用到一些 mouse event(ex: drag) 或是
 animation...等一些比較複雜的操作的話，這時候再考慮用 KineticJS
 吧，不然只有一些簡單的操作的話用 canvas 就好。另外 KineticJS 在設定一些
-shape 的 attr，會發現比 canvas 的還少一點，因為有些都在程式裡寫死了，這個可能要注意一下。&lt;/p&gt;</summary><category term="canvas"></category><category term="kineticjs"></category></entry><entry><title>virtualenvwrapper setting</title><link href="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" rel="alternate"></link><updated>2012-08-28T00:01:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-08-28:598/virtualenvwrapper-setting/</id><summary type="html">&lt;p&gt;最近為了方便，加了幾個 virtualenvwrapper 的設定。&lt;br /&gt;
-&lt;!--more--&gt;&lt;/p&gt;
+shape 的 attr，會發現比 canvas 的還少一點，因為有些都在程式裡寫死了，這個可能要注意一下。&lt;/p&gt;</summary><category term="canvas"></category><category term="kineticjs"></category></entry><entry><title>virtualenvwrapper setting</title><link href="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" rel="alternate"></link><updated>2012-08-28T00:01:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-08-28:598/virtualenvwrapper-setting/</id><summary type="html">&lt;p&gt;最近為了方便，加了幾個 virtualenvwrapper 的設定。  &lt;/p&gt;
 &lt;h3&gt;使用 &lt;code&gt;mkvirtualenv&lt;/code&gt; 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。&lt;/h3&gt;
 &lt;p&gt;在 &lt;code&gt;~/.virtualenv/postmkvirtualenv&lt;/code&gt;裡加入：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;proj_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$VIRTUAL_ENV&lt;/span&gt;|awk -F&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{print $NF}&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
@@ -2420,9 +2383,8 @@ mongodb
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="javascript"></category></entry><entry><title>VM template can't specify hostname</title><link href="http://blog.carlcarl.me/519/vm-template-cant-specify-hostname/" rel="alternate"></link><updated>2012-06-18T18:07:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-06-18:519/vm-template-cant-specify-hostname/</id><summary type="html">&lt;p&gt;這個應該很多 hypervisor 都適用，在做完 vm 的 template 之後，因為
 hostname 在這裡已經固定，所以利用這個 template 再開啟一個新的 instance
 的時候，hostname 會還是原本舊的，如果是用 DHCP
-的方式的話，照理來說是可以拿到當初指定的 hostname 的。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
-這邊我找了很多資料，本來從 hypervisor
+的方式的話，照理來說是可以拿到當初指定的 hostname 的。  &lt;/p&gt;
+&lt;p&gt;這邊我找了很多資料，本來從 hypervisor
 這邊去找資料，不過都沒什麼結果，後來才發現原來從 Guest OS 這邊去修改就
 OK 了，方法很簡單，在你的 VM 裡執行：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sudo mv /etc/hostname /etc/hostname.old
@@ -2542,9 +2504,8 @@ tar -xf gogoc-1_2-RELEASE.tar.gz
 SELECT 出來的資料加 1 並給 UPDATE 來使用，但是這樣並不是一個 atomic 的
 operation，如果在 SELECT 完之後有其他人也進行 SELECT
 就變成會拿一樣的資料且都加 1，兩個做完 UPDATE 的結果就會只是加 1
-過的數據，但是預期的結果應該要是加 2 的。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
-查了一下資料，發現有個簡單的語法可以使用：&lt;/p&gt;
+過的數據，但是預期的結果應該要是加 2 的。  &lt;/p&gt;
+&lt;p&gt;查了一下資料，發現有個簡單的語法可以使用：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/* If id is the UNIQUE KEY */&lt;/span&gt;
 &lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="k"&gt;table&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;DUPLICATE&lt;/span&gt; &lt;span class="k"&gt;KEY&lt;/span&gt; &lt;span class="k"&gt;UPDATE&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -3322,9 +3283,8 @@ push 都會重新覆蓋掉，只能等之後看會不會修正了。或者是可
 script，然後加入到 &lt;code&gt;postinstall&lt;/code&gt; 這個檔案，每次 push
 完就去修改這個檔案之類的，不過我個人是懶得這樣用就是了orz。&lt;/p&gt;</summary><category term="django"></category><category term="Dotcloud"></category><category term="python"></category></entry><entry><title>Dropbox can't sync permission denied</title><link href="http://blog.carlcarl.me/124/ubuntu-dropbox-permission-denied/" rel="alternate"></link><updated>2011-11-23T00:28:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2011-11-23:124/ubuntu-dropbox-permission-denied/</id><summary type="html">&lt;p&gt;最近在備份 wordpress 的資料到 dropbox
 上的時候，突然出現了錯誤：&lt;code&gt;cant sync "file name" permission denied&lt;/code&gt;，看了一下資料夾，只有資料夾有建立起來，但是檔案都沒 sync 成功。但是之前用了也一兩年了都沒有發生這樣的問題，為什麼
-dropbox 把資料 sync 到我電腦上的時候會突然出問題呢？&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
-花了一段時間查了一些資料，後來才發現是因為我用 ubuntu，然後又用另外一個 &lt;code&gt;ntfs&lt;/code&gt; 裝置來存 dropbox
+dropbox 把資料 sync 到我電腦上的時候會突然出問題呢？  &lt;/p&gt;
+&lt;p&gt;花了一段時間查了一些資料，後來才發現是因為我用 ubuntu，然後又用另外一個 &lt;code&gt;ntfs&lt;/code&gt; 裝置來存 dropbox
 的東西，才會有這樣的問題。解決方法就是在 &lt;code&gt;mount&lt;/code&gt; 設定檔要多設定一個「uid」的參數。&lt;/p&gt;
 &lt;p&gt;首先要修改 &lt;code&gt;/etc/fstab&lt;/code&gt;，範例如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;/dev/sda2   /media/Data     ntfs-3g  rw,defaults,umask=0000,uid=1000  0  0
@@ -3996,8 +3956,6 @@ file的話，make的時候就不知道要去檢查哪個檔案是否有更新這
 &lt;a href="http://www.webmasterworld.com/forum40/1536.htm"&gt;http://www.webmasterworld.com/forum40/1536.htm&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://www.internetofficer.com/forum/awstats-iis-installation-and-configuration/how-to-analyze-multiple-logfiles/"&gt;http://www.internetofficer.com/forum/awstats-iis-installation-and-configuration/how-to-analyze-multiple-logfiles/&lt;/a&gt;&lt;/p&gt;</summary><category term="awstats"></category></entry><entry><title>ubuntu install awstats to analyze web traffic</title><link href="http://blog.carlcarl.me/30/ubuntu-install-awstats-to-analyze-web-traffic/" rel="alternate"></link><updated>2011-07-04T13:04:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2011-07-04:30/ubuntu-install-awstats-to-analyze-web-traffic/</id><summary type="html">&lt;p&gt;&lt;a href="http://i.imgur.com/gjdRNUQl.png"&gt;&lt;img alt="1309785078-4e7966370fbebe6c564d5c251d18d3da_n" src="http://i.imgur.com/gjdRNUQl.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;awstats 這個工具可以透過分析 Server 的access log 檔來統計網站流量，資料的部份可以透過時間長短、來訪者的資料(國籍之類的)、瀏覽器種類來作分類，這些統計資訊則透過Web介面顯示出來。而上面這個圖是裝完 awstats 後的 Web 介面(還不錯精美= =+)&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;接下來就是安裝的部份啦，首先先安裝套件:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install awstats
 &lt;/pre&gt;&lt;/div&gt;
@@ -4431,8 +4389,6 @@ sys 0m0.088s
 &lt;p&gt;接著將 102MB 除以 real 的時間(這裡是 1.669)就可以算出寫入的時間了，測完記得要把 &lt;code&gt;outfile&lt;/code&gt; 這個檔案刪掉，因為他是直接生出一個檔案到目錄底下。&lt;/p&gt;
 &lt;p&gt;參考網址&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://cha.homeip.net/blog/2010/05/2263.html"&gt;http://cha.homeip.net/blog/2010/05/2263.html&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>Ubuntu Eucalyptus installation</title><link href="http://blog.carlcarl.me/22/ubuntu-eucalyptus-installation/" rel="alternate"></link><updated>2011-05-26T09:05:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2011-05-26:22/ubuntu-eucalyptus-installation/</id><summary type="html">&lt;p&gt;我是在已有的 Ubuntu 上安裝 Eucalyptus，如果是直接用 Ubuntu Enterprise Cloud 應該會比較簡單 orz。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;大概講一下幾個我遇到的問題 orz。&lt;/p&gt;
 &lt;h3&gt;eucalyptus-cloud restart : Unknown instance&lt;/h3&gt;
 &lt;p&gt;改直接執行 &lt;code&gt;eucalyptus-cloud&lt;/code&gt;看看:&lt;/p&gt;
@@ -4528,7 +4484,7 @@ chkconfig httpd --del
 好像有7X MB)&lt;/p&gt;
 &lt;p&gt;裝完之後咧? 就可以用啦XDD，超快。&lt;/p&gt;
 &lt;p&gt;以下這張是功能截圖。以這張圖來說，輸入 &lt;code&gt;-&amp;gt;&lt;/code&gt; 或是 &lt;code&gt;.&lt;/code&gt; 之類的，他就會出現提示，這時候就可以用鍵盤上下鍵來選擇要選哪一個來用。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="clang_complete" src="http://i.imgur.com/PyNjikJ.png" title="clang_complete" /&gt;  &lt;/p&gt;</summary></entry><entry><title>Zend Framework add Acl setting</title><link href="http://blog.carlcarl.me/18/zend-framework-add-acl-setting/" rel="alternate"></link><updated>2011-04-24T15:22:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2011-04-24:18/zend-framework-add-acl-setting/</id><summary type="html">&lt;p&gt;首先先在 &lt;code&gt;bootstrap.php&lt;/code&gt; 檔案裡加上下面這個 function&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="clang_complete" src="http://i.imgur.com/PyNjikJ.png" title="clang_complete" /&gt;  &lt;/p&gt;</summary></entry><entry><title>Zend Framework add Acl setting</title><link href="http://blog.carlcarl.me/18/zend-framework-add-acl-setting/" rel="alternate"></link><updated>2011-04-24T15:22:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2011-04-24:18/zend-framework-add-acl-setting/</id><summary type="html">&lt;p&gt;首先先在 &lt;code&gt;bootstrap.php&lt;/code&gt; 檔案裡加上下面這個 function&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class="k"&gt;protected&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;_initControllers&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
@@ -4650,7 +4606,7 @@ chkconfig httpd --del
 &lt;p&gt;參考網址:&lt;br /&gt;
 &lt;a href="http://blogold.chinaunix.net/u2/86974/showart_2219380.html"&gt;http://blogold.chinaunix.net/u2/86974/showart_2219380.html&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://stackoverflow.com/questions/5209671/zend-framework-nedd-typical-example-of-acl"&gt;http://stackoverflow.com/questions/5209671/zend-framework-nedd-typical-example-of-acl&lt;/a&gt;&lt;br /&gt;
-&lt;a href="http://codeutopia.net/blog/2009/02/06/zend_acl-part-1-misconceptions-and-simple-acls/"&gt;http://codeutopia.net/blog/2009/02/06/zend_acl-part-1-misconceptions-and-simple-acls/&lt;/a&gt;  &lt;/p&gt;</summary><category term="zend framework"></category></entry><entry><title>How to connect the server in virtualbox</title><link href="http://blog.carlcarl.me/17/how-to-connect-the-server-in-virtualbox/" rel="alternate"></link><updated>2011-04-21T18:55:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2011-04-21:17/how-to-connect-the-server-in-virtualbox/</id><summary type="html">&lt;p&gt;如果是要用ssh連的話 就輸入以下指令&lt;!--more--&gt;&lt;/p&gt;
+&lt;a href="http://codeutopia.net/blog/2009/02/06/zend_acl-part-1-misconceptions-and-simple-acls/"&gt;http://codeutopia.net/blog/2009/02/06/zend_acl-part-1-misconceptions-and-simple-acls/&lt;/a&gt;  &lt;/p&gt;</summary><category term="zend framework"></category></entry><entry><title>How to connect the server in virtualbox</title><link href="http://blog.carlcarl.me/17/how-to-connect-the-server-in-virtualbox/" rel="alternate"></link><updated>2011-04-21T18:55:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2011-04-21:17/how-to-connect-the-server-in-virtualbox/</id><summary type="html">&lt;p&gt;如果是要用ssh連的話 就輸入以下指令&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;C:Program FilesOracleVirtualBoxVBoxManage.exe" modifyvm "VM name" --natpf1
 "guestssh,tcp,,2222,,22"&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;前面如果有改 virtualbox 的安裝位置的話 就要跟著改&lt;/p&gt;
@@ -4849,8 +4805,7 @@ set shiftwidth=4
     &lt;span class="nx"&gt;link&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;setAttribute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;href&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;style.css&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
     &lt;span class="nx"&gt;otherhead&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;appendChild&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;link&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;});&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Pixnet paste code</title><link href="http://blog.carlcarl.me/6/pixnet-paste-code/" rel="alternate"></link><updated>2011-03-14T16:11:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2011-03-14:6/pixnet-paste-code/</id><summary type="html">&lt;p&gt;在側邊欄位設定裡 -&amp;gt; 頁尾描述的部分貼上下面的 code
-&lt;!--more--&gt;&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Pixnet paste code</title><link href="http://blog.carlcarl.me/6/pixnet-paste-code/" rel="alternate"></link><updated>2011-03-14T16:11:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2011-03-14:6/pixnet-paste-code/</id><summary type="html">&lt;p&gt;在側邊欄位設定裡 -&amp;gt; 頁尾描述的部分貼上下面的 code&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;script &lt;/span&gt;&lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;script &lt;/span&gt;&lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;script &lt;/span&gt;&lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://alexgorbatchev.com/pub/sh/current/scripts/shBrushBash.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;

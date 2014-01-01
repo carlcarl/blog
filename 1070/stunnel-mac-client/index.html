@@ -16,6 +16,7 @@
                 <meta property="og:url" content="http://blog.carlcarl.me/1070/stunnel-mac-client/" />
                 <meta property="og:description" content="stunnel server 的設定就照這篇的教學，不過 Mac client 的設定似乎不能直接套用 Ubuntu client 的，試了一下網路上的一些設定，總算有可以 work 的了，以下是我的設定，比較要注意的就是 cert 的位置要設對，另外就是 connect 的 host 要改成你 stunnel server 的位置： setuid = nobody setgid = nogroup pid = /tmp/stunnel.pid cert = /usr/local/etc/stunnel/client.pem client = yes debug = 7 sslVersion = SSLv3 verify ..." />
                     <meta property="article:tag" content="stunnel" />
+                    <meta property="article:tag" content="mac" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -67,8 +68,6 @@
 的，試了一下網路上的一些設定，總算有可以 work
 的了，以下是我的設定，比較要注意的就是 <code>cert</code> 的位置要設對，另外就是
 <code>connect</code> 的 <code>host</code> 要改成你 stunnel server 的位置：</p>
-<!--more-->
-
 <div class="highlight"><pre><span class="n">setuid</span> <span class="o">=</span> <span class="n">nobody</span>
 <span class="n">setgid</span> <span class="o">=</span> <span class="n">nogroup</span>
 <span class="n">pid</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">stunnel</span><span class="p">.</span><span class="n">pid</span>
@@ -92,7 +91,7 @@
                     <hr/>
                     <aside class="post-meta">
                         <p>Category: <a href="http://blog.carlcarl.me/category/mac.html">Mac</a></p>
-                        <p>Tags: <a href="http://blog.carlcarl.me/tag/stunnel.html">stunnel</a>, </p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/stunnel.html">stunnel</a>, <a href="http://blog.carlcarl.me/tag/mac.html">mac</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">

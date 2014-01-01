@@ -59,8 +59,7 @@
                         <a href="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" rel="bookmark"><h1>virtualenvwrapper setting</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>最近為了方便，加了幾個 virtualenvwrapper 的設定。<br />
-<!--more--></p>
+                        <p>最近為了方便，加了幾個 virtualenvwrapper 的設定。  </p>
 <h3>使用 <code>mkvirtualenv</code> 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。</h3>
 <p>在 <code>~/.virtualenv/postmkvirtualenv</code>裡加入：</p>
 <div class="highlight"><pre><span class="nv">proj_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$VIRTUAL_ENV</span>|awk -F<span class="s1">&#39;/&#39;</span> <span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>

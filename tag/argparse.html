@@ -59,8 +59,7 @@
                         <a href="http://blog.carlcarl.me/772/python-argparse/" rel="bookmark"><h1>python argparse</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>紀錄一些 python argparse module 的使用方法和問題：<br />
-<!--more--></p>
+                        <p>紀錄一些 python argparse module 的使用方法和問題：  </p>
 <h3>選項的參數為 optional</h3>
 <p>譬如說 <code>-f</code> 這選項允許一個檔案的路徑名稱： <code>-f test.txt</code>，如果沒給檔案名稱就預設使用 example.txt：</p>
 <div class="highlight"><pre><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;example.txt&#39;</span><span class="p">)</span>

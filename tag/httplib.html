@@ -64,8 +64,7 @@ Python3，看起來好像很順利，不過在執行的時候就出現了 Excepi
 囧，內容就是
 <code>can't use a string pattern on a bytes-like object</code>，看了一下，是 <code>json</code>
 的 <code>loads</code> 在轉<code>httplib</code> <code>read</code> 的 output 出現問題，而原來在 Python2
-中並不會出現這個問題，原來程式如下：<br />
-<!--more--></p>
+中並不會出現這個問題，原來程式如下：  </p>
 <div class="highlight"><pre><span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 

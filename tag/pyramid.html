@@ -88,9 +88,8 @@ javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
                     <section class="post-content">
                         <p>這篇是參考
 <a href="http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/">http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/</a>
-這篇所講的，其實他講的就差不多了，但是漏掉了一些細節，所以幫忙補完一下。<br />
-<!--more--><br />
-<a href="https://www.appfog.com/">appfog</a> 的 deploy 相對 <a href="https://www.openshift.com/">openshift</a> 來說，算是簡單很多 (不過
+這篇所講的，其實他講的就差不多了，但是漏掉了一些細節，所以幫忙補完一下。  </p>
+<p><a href="https://www.appfog.com/">appfog</a> 的 deploy 相對 <a href="https://www.openshift.com/">openshift</a> 來說，算是簡單很多 (不過
 openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
 <a href="http://www.pylonsproject.org/">pyramid</a> 來講，主要就是在 project 根目錄新增一個 <code>wsgi.py</code>
 的檔案，內容引用文章連結內的程式：</p>
@@ -112,9 +111,8 @@ openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
                     </header>
                     <section class="post-content">
                         <p>Python 的 Pyramid Framework 有支援 jsonp 的 renderer，看了一下
-doc，設置還算簡單，不過好像漏了個小地方。<br />
-<!--more--><br />
-首先要先在 <code>Configurator</code> 的檔案加入下面內容 (官方 doc 裡面沒提到要從哪邊
+doc，設置還算簡單，不過好像漏了個小地方。  </p>
+<p>首先要先在 <code>Configurator</code> 的檔案加入下面內容 (官方 doc 裡面沒提到要從哪邊
  <code>import JSONP</code>)：</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyramid.renderers</span> <span class="kn">import</span> <span class="n">JSONP</span>
 <span class="c"># 這裡使用 &#39;callback&#39; 當作預設的 callback function 名稱</span>

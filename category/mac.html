@@ -101,10 +101,8 @@
 <li><a href="https://github.com/jfahrenkrug/WWDC-Downloader/issues/5">The gem doesn't yet build in Mavericks</a></li>
 <li><a href="https://github.com/josegonzalez/homebrew-php/issues/591">Installation fails on OS X Mavericks</a></li>
 </ul>
-<!--more-->
-
 <p>原本的 <code>/usr/include</code> 已經不見了，找了一下，位置是在：</p>
-<div class="highlight"><pre><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode5</span><span class="o">-</span><span class="n">DP</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="p">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="mf">.9 ...</span></pre></div></!--more-->
+<div class="highlight"><pre><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode5</span><span class="o">-</span><span class="n">DP</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="p">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="mf">.9 ...</span></pre></div>
                     </section>
                 </article>
 				<hr/>
@@ -123,8 +121,6 @@
 的，試了一下網路上的一些設定，總算有可以 work
 的了，以下是我的設定，比較要注意的就是 <code>cert</code> 的位置要設對，另外就是
 <code>connect</code> 的 <code>host</code> 要改成你 stunnel server 的位置：</p>
-<!--more-->
-
 <div class="highlight"><pre><span class="n">setuid</span> <span class="o">=</span> <span class="n">nobody</span>
 <span class="n">setgid</span> <span class="o">=</span> <span class="n">nogroup</span>
 <span class="n">pid</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">stunnel</span><span class="p">.</span><span class="n">pid</span>
@@ -135,7 +131,7 @@
 <span class="n">debug</span> <span class="o">=</span> <span class="mi">7</span>
 
 <span class="n">sslVersion</span> <span class="o">=</span> <span class="n">SSLv3</span>
-<span class="n">verify ...</span></pre></div></!--more-->
+<span class="n">verify ...</span></pre></div>
                     </section>
                 </article>
 				<hr/>

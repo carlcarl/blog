@@ -106,8 +106,7 @@ dolphin 這邊再重連就能夠連上了。</p>
                     <section class="post-content">
                         <p>最近在用 vim 修改 html 的時候會在儲存的時候爛掉，後來發現好像是
 <a href="https://github.com/scrooloose/syntastic">syntastic</a> 的問題，而且只有 html 會有這個問題，所以看了一下有沒有關掉
-html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverflow.com/questions/12215710/how-to-invalid-syntastic-check-for-html-file-with-vim">解答</a>：<br />
-<!--more--></p>
+html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverflow.com/questions/12215710/how-to-invalid-syntastic-check-for-html-file-with-vim">解答</a>：  </p>
 <div class="highlight"><pre>let g:syntastic_mode_map={ &#39;mode&#39;: &#39;active&#39;,
                       &#39;active_filetypes&#39;: [],
                       &#39;passive_filetypes&#39;: [&#39;html&#39;] }
@@ -128,8 +127,7 @@ html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverfl
                         <a href="http://blog.carlcarl.me/772/python-argparse/" rel="bookmark"><h1>python argparse</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>紀錄一些 python argparse module 的使用方法和問題：<br />
-<!--more--></p>
+                        <p>紀錄一些 python argparse module 的使用方法和問題：  </p>
 <h3>選項的參數為 optional</h3>
 <p>譬如說 <code>-f</code> 這選項允許一個檔案的路徑名稱： <code>-f test.txt</code>，如果沒給檔案名稱就預設使用 example.txt：</p>
 <div class="highlight"><pre><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;example.txt&#39;</span><span class="p">)</span>
@@ -154,8 +152,7 @@ html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverfl
                         <a href="http://blog.carlcarl.me/759/python-logging/" rel="bookmark"><h1>python logging</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>紀錄一下 python logging 的一些簡單設定。<br />
-<!--more--></p>
+                        <p>紀錄一下 python logging 的一些簡單設定。  </p>
 <h3>可以在一開始設定 log 訊息顯示的等級：</h3>
 <div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
 </pre></div>
@@ -194,8 +191,7 @@ html check 的設定，後來在 stackoverflow 看到<a href="http://stackoverfl
 <p>最近這一年開始參加這類的 conf，而這次的 WebConf
 也不例外啦，本來在去年年底就有在關注這個 conf
 了，無奈開始賣票的時候我正在軍中新訓，當新訓結束的時候才發現票已經售完了囧。所幸後來同學那邊有多買一張賣我，我後來才有這個機會能夠參加這次的
-WebConf。(這次的 WebConf 官方網站作得還滿不錯的，再加上這背景樣式，個人還滿喜歡的:P)<br />
-<!--more-->  </p>
+WebConf。(這次的 WebConf 官方網站作得還滿不錯的，再加上這背景樣式，個人還滿喜歡的:P)  </p>
 <p>這次的議程分為兩天三軌，不過大部分的場次都有決定好了，不外乎就是~~正妹先決模式~~選擇涉獵較多方面的領域，以擴充所學，增廣見聞。不過也可惜因此錯過了幾場想聽的主題，像是
 TonyQ 的「網站效能調整」，感覺上就滿實用的，後來也有去找 slide
 來看；「敏捷 Web 開發之 Python 工具菜單」這場也沒有聽到，後來看了一下相片，似乎聽的人不多，可能是因為~~打對台的講者太強大了~~大家聽一整天程式相關的議題都累了，所以都想聽聽其他領域的分享吧。</p>
@@ -271,8 +267,6 @@ improved</a>，個人覺得還滿方便的～。</p>
                         <p>在 <a href="http://stackoverflow.com/questions/13379170/how-long-was-a-mongo-instance-running">stackoverflow</a>
 看到這個問題，就順便查個資料回了一下，另外有個人是回答可以用 <code>ps -ef</code>
 來看，不過我想說 MongoDB 本身應該也會有這樣的功能，所以還是查了一下。</p>
-<!--more-->
-
 <p>後來果然在 <a href="http://docs.mongodb.org/manual/reference/server-status/">MongoDB 官方文件</a>
 找到我要的資料，不過拿到的數據會是以秒為單位，所以必須自己作轉換。</p>
 <p>進入 mongo shell 之後輸入：</p>
