@@ -1,5 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2014-01-02T00:40:00+08:00</updated><entry><title>g0v.tw nav menu fix</title><link href="http://blog.carlcarl.me/1383/g0v_tw_nav_menu_fix/" rel="alternate"></link><updated>2014-01-02T00:40:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-01-02:1383/g0v_tw_nav_menu_fix/</id><summary type="html">&lt;p&gt;&lt;a href="http://g0v.tw"&gt;g0v.tw&lt;/a&gt; 最近改版了，css framework 也改用 &lt;a href="http://semantic-ui.com"&gt;semantic-ui&lt;/a&gt;，看起來還蠻潮的，不過目前在用，感覺問題還蠻多的，其中一個大問題應該就是沒有 responsive layout 可以直接套用，所以大概就只能自己土炮吧～。不過這次修的問題跟這個無關，主要是要讓 nav menu 可以隨著在不同網頁，然後 highlight color 到不同 menu item 上，主要有遇到幾個問題：&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2014-01-15T01:00:00+08:00</updated><entry><title>backbone.js some tips</title><link href="http://blog.carlcarl.me/1384/backbone_js_some_tips/" rel="alternate"></link><updated>2014-01-15T01:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-01-15:1384/backbone_js_some_tips/</id><summary type="html">&lt;p&gt;用了個簡單的網站改成用 &lt;a href="http://backbonejs.org"&gt;backbone.js&lt;/a&gt; 來套，之所以用 backbone 是因為不太喜歡在 html 上加一堆 attributes，backbone 這樣偏純 js，再加上 &lt;a href="http://underscorejs.org"&gt;underscore&lt;/a&gt; 做 template 的方式覺得比較適合我，以後如果有興趣再碰看看 &lt;a href="http://emberjs.com"&gt;ember.js&lt;/a&gt; 吧，&lt;a href="http://angularjs.org"&gt;angular.js&lt;/a&gt; 現階段感覺還蠻流行的，不過就不太想碰就是 XD。&lt;/p&gt;
+&lt;p&gt;套完 backbone 之後，程式硬是多出了一倍的量，不知道到底有沒有幫助到我(炸)，而且 backbone 官網的 docuemtn 常會漏掉一些重要的資訊，讓我卡超久= =，這邊順便記錄一下這樣。架構的話，看到有篇 stackoverflow 上的問題，他的 example code 我還蠻喜歡的，也許可以參考看看: &lt;a href="http://stackoverflow.com/questions/13257722/backbone-parsing-json-response"&gt;Backbone parsing json response&lt;/a&gt;。&lt;/p&gt;
+&lt;h2&gt;Create element in views&lt;/h2&gt;
+&lt;p&gt;如果是要 create elements 的話，在 views 裡要用 &lt;code&gt;tagname&lt;/code&gt;，例如要 create 一個 &lt;code&gt;&amp;lt;tr&amp;gt;&amp;lt;/tr&amp;gt;&lt;/code&gt;的話就用: &lt;code&gt;tagname: tr&lt;/code&gt;，而如果是要操作在 DOM 中的 element 的話就用 &lt;code&gt;el&lt;/code&gt;，例如: &lt;code&gt;el: $('#content')&lt;/code&gt;。&lt;/p&gt;
+&lt;h2&gt;Receive events&lt;/h2&gt;
+&lt;p&gt;要注意 event 中要 monitor 的 element，必須在 &lt;code&gt;el&lt;/code&gt; 這個 element 裡面，不然永遠聽不到= =。例如:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;Backbone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;View&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+    &lt;span class="nx"&gt;el&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#content&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="nx"&gt;events&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;submit #myform&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;mysubmit&amp;#39;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;#myform&lt;/code&gt; 就必須是在 &lt;code&gt;#content&lt;/code&gt; 裡面。&lt;/p&gt;
+&lt;h2&gt;Parse ajax response&lt;/h2&gt;
+&lt;p&gt;Ajax 的 response 格式有很多種，每個網站可能都有自己的格式，在 Collection 的部分，假如要讀的多筆資料都在 &lt;code&gt;response.data&lt;/code&gt; 裡的話，就會需要在 Collection 裡頭加上 &lt;code&gt;parse&lt;/code&gt; 來處理:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/* json example&lt;/span&gt;
+&lt;span class="cm"&gt;{&lt;/span&gt;
+&lt;span class="cm"&gt;    &amp;quot;data&amp;quot;: [ {&lt;/span&gt;
+&lt;span class="cm"&gt;        &amp;quot;id&amp;quot;: &amp;quot;1&amp;quot;,&lt;/span&gt;
+&lt;span class="cm"&gt;        &amp;quot;value&amp;quot;: &amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;span class="cm"&gt;        }, {&lt;/span&gt;
+&lt;span class="cm"&gt;        &amp;quot;id&amp;quot;: &amp;quot;2&amp;quot;,&lt;/span&gt;
+&lt;span class="cm"&gt;        &amp;quot;value&amp;quot;: &amp;quot;2&amp;quot;&lt;/span&gt;
+&lt;span class="cm"&gt;    } ],&lt;/span&gt;
+&lt;span class="cm"&gt;    &amp;quot;meta&amp;quot;: &amp;quot;test&amp;quot;&lt;/span&gt;
+&lt;span class="cm"&gt;}&lt;/span&gt;
+&lt;span class="cm"&gt;*/&lt;/span&gt;
+&lt;span class="nx"&gt;App&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Collections&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Items&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;Backbone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Collection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+    &lt;span class="nx"&gt;model&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;App&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Models&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Item&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+    &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nx"&gt;parse&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;response&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;response&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;又假如在 &lt;code&gt;response.data&lt;/code&gt; 這個 array 裡，主要的 attribute 名稱不是 &lt;code&gt;id&lt;/code&gt;，而是其他名稱，比如說 &lt;code&gt;name&lt;/code&gt;，就要在 Model 裡加上定義，不然 Model parse 會有問題:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/* json example from response&lt;/span&gt;
+&lt;span class="cm"&gt;{&lt;/span&gt;
+&lt;span class="cm"&gt;    &amp;quot;data&amp;quot;: [ {&lt;/span&gt;
+&lt;span class="cm"&gt;        &amp;quot;name&amp;quot;: &amp;quot;1&amp;quot;,&lt;/span&gt;
+&lt;span class="cm"&gt;        &amp;quot;value&amp;quot;: &amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;span class="cm"&gt;        }, {&lt;/span&gt;
+&lt;span class="cm"&gt;        &amp;quot;name&amp;quot;: &amp;quot;2&amp;quot;,&lt;/span&gt;
+&lt;span class="cm"&gt;        &amp;quot;value&amp;quot;: &amp;quot;2&amp;quot;&lt;/span&gt;
+&lt;span class="cm"&gt;    } ],&lt;/span&gt;
+&lt;span class="cm"&gt;    &amp;quot;meta&amp;quot;: &amp;quot;test&amp;quot;&lt;/span&gt;
+&lt;span class="cm"&gt;}&lt;/span&gt;
+&lt;span class="cm"&gt;*/&lt;/span&gt;
+
+&lt;span class="nx"&gt;App&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Models&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Item&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;Backbone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+    &lt;span class="nx"&gt;idAttribute&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Serialize form inputs&lt;/h2&gt;
+&lt;p&gt;我之前是用 &lt;a href="https://github.com/macek/jquery-serialize-object"&gt;jquery-serialize-object&lt;/a&gt;，後來因為要 submit 的資料不多，所以就把這個 plugin 拿掉，改用 jquery selector 來拿了。&lt;/p&gt;
+&lt;p&gt;其他也可以參考這篇: &lt;a href="http://stackoverflow.com/questions/14554111/serialize-form-inputs-to-json-using-backbone-js"&gt;Serialize form inputs to JSON using Backbone.js&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Pass values to Model&lt;/h2&gt;
+&lt;p&gt;如果不想要傳過去的資料變成 Model 的 attributes，而是其他額外的資料的話，例如要傳一個 flag 的話，可以這樣做:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;App&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Models&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Item&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;Backbone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+    &lt;span class="nx"&gt;initialize&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;attributes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;flag&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;flag&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;item&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;App&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Models&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Item&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;car&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;flag&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;spinner animation with ajax&lt;/h2&gt;
+&lt;p&gt;在 ajax 發出和收到的時候分別顯示和隱藏 spinner，原本其實就可以用 &lt;code&gt;ajaxStart&lt;/code&gt; 和 &lt;code&gt;ajaxStop&lt;/code&gt; 這兩個 event 來處理，在 backbone 裡也可以用以下的方式:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;initialize&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+    &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;items&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;APP&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Models&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Item&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;items&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ajaxStart&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;items&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sync&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ajaxComplete&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nx"&gt;ajaxStart&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;arg1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;arg2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;arg3&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#loading&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;fadeIn&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="nx"&gt;duration&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="nx"&gt;ajaxComplete&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#loading&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;fadeOut&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="nx"&gt;duration&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;How to render tables&lt;/h2&gt;
+&lt;p&gt;參考這篇的解答: &lt;a href="http://stackoverflow.com/questions/10257401/render-html-table-with-underscore-template-engine-using-a-backbone-complex-model"&gt;Render html table with underscore template engine using a backbone complex model&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Post collections&lt;/h2&gt;
+&lt;p&gt;這個我還沒試過，不過可以參考這篇解答的做法: &lt;a href="http://stackoverflow.com/questions/6879138/how-to-save-an-entire-collection-in-backbone-js-backbone-sync-or-jquery-ajax"&gt;“How” to save an entire collection in Backbone.js - Backbone.sync or jQuery.ajax?&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;2-way data binding&lt;/h2&gt;
+&lt;p&gt;backbone 本身沒提供，只能用 jquery selector 來抓，看到有個 plugin 也許可以用用看，我是還沒用過lol: &lt;a href="http://nytimes.github.io/backbone.stickit/"&gt;backbone.stickit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;參考資料:&lt;br /&gt;
+&lt;a href="http://backbonetutorials.com/what-is-a-view/"&gt;Backbone.js Beginner Video Tutorial&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://stackoverflow.com/questions/11331604/backbone-js-ajax-calls"&gt;backbone.js ajax calls&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://stackoverflow.com/questions/7084651/how-can-i-pass-properties-into-a-backbone-model-which-i-do-not-wish-to-be-treate"&gt;How can I pass properties into a Backbone.Model which I do not wish to be treated as attributes?&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://stackoverflow.com/questions/5832295/backbone-js-how-and-when-to-show-a-spinner"&gt;backbone.js - how and when to show a spinner&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://eviltrout.com/2013/06/15/ember-vs-angular.html"&gt;AngularJS vs Ember&lt;/a&gt;  &lt;/p&gt;</summary><category term="backbone"></category></entry><entry><title>g0v.tw nav menu fix</title><link href="http://blog.carlcarl.me/1383/g0v_tw_nav_menu_fix/" rel="alternate"></link><updated>2014-01-02T00:40:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-01-02:1383/g0v_tw_nav_menu_fix/</id><summary type="html">&lt;p&gt;&lt;a href="http://g0v.tw"&gt;g0v.tw&lt;/a&gt; 最近改版了，css framework 也改用 &lt;a href="http://semantic-ui.com"&gt;semantic-ui&lt;/a&gt;，看起來還蠻潮的，不過目前在用，感覺問題還蠻多的，其中一個大問題應該就是沒有 responsive layout 可以直接套用，所以大概就只能自己土炮吧～。不過這次修的問題跟這個無關，主要是要讓 nav menu 可以隨著在不同網頁，然後 highlight color 到不同 menu item 上，主要有遇到幾個問題：&lt;/p&gt;
 &lt;h2&gt;網頁不是用 ajax，而是直接連結到不同網頁&lt;/h2&gt;
 &lt;p&gt;所以就不能用 javascript 直接 assign class 到對應的 menu item 上，只能在 template 上動手腳，template 是用 &lt;code&gt;jade&lt;/code&gt;。首先先在 nav menu 的 template 開頭加上變數宣告，define 一個 &lt;code&gt;vars&lt;/code&gt; block，然後把這些變數塞到各個 menu item 的 classs 內：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;nav_cls&lt;/span&gt; &lt;span class="k"&gt;=&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt;

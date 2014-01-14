@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    backbone.js some tips
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="backbone.js some tips" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1384/backbone_js_some_tips/" />
+                <meta property="og:description" content="用了個簡單的網站改成用 backbone.js 來套，之所以用 backbone 是因為不太喜歡在 html 上加一堆 attributes，backbone 這樣偏純 js，再加上 underscore 做 template 的方式覺得比較適合我，以後如果有興趣再碰看看 ember.js 吧，angular.js 現階段感覺還蠻流行的，不過就不太想碰就是 XD。 套完 backbone 之後，程式硬是多出了一倍的量，不知道到底有沒有幫助到我(炸)，而且 backbone 官網的 docuemtn 常會漏掉一些重要的資訊，讓我卡超久= =，這邊順便記錄一下這樣。架構的話，看到有篇 stackoverflow 上的問題，他的 example code 我還蠻喜歡的，也許可以參考看看: Backbone ..." />
+                    <meta property="article:tag" content="backbone" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <p id="site-desc"></p>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-15T01:00:00" pubdate>
+                            Wed 15 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1384/backbone_js_some_tips/" rel="bookmark"><h1>backbone.js some tips</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p>用了個簡單的網站改成用 <a href="http://backbonejs.org">backbone.js</a> 來套，之所以用 backbone 是因為不太喜歡在 html 上加一堆 attributes，backbone 這樣偏純 js，再加上 <a href="http://underscorejs.org">underscore</a> 做 template 的方式覺得比較適合我，以後如果有興趣再碰看看 <a href="http://emberjs.com">ember.js</a> 吧，<a href="http://angularjs.org">angular.js</a> 現階段感覺還蠻流行的，不過就不太想碰就是 XD。</p>
+<p>套完 backbone 之後，程式硬是多出了一倍的量，不知道到底有沒有幫助到我(炸)，而且 backbone 官網的 docuemtn 常會漏掉一些重要的資訊，讓我卡超久= =，這邊順便記錄一下這樣。架構的話，看到有篇 stackoverflow 上的問題，他的 example code 我還蠻喜歡的，也許可以參考看看: <a href="http://stackoverflow.com/questions/13257722/backbone-parsing-json-response">Backbone parsing json response</a>。</p>
+<h2>Create element in views</h2>
+<p>如果是要 create elements 的話，在 views 裡要用 <code>tagname</code>，例如要 create 一個 <code>&lt;tr&gt;&lt;/tr&gt;</code>的話就用: <code>tagname: tr</code>，而如果是要操作在 DOM 中的 element 的話就用 <code>el</code>，例如: <code>el: $('#content')</code>。</p>
+<h2>Receive events</h2>
+<p>要注意 event 中要 monitor 的 element，必須在 <code>el</code> 這個 element 裡面，不然永遠聽不到= =。例如:</p>
+<div class="highlight"><pre><span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">el</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#content&#39;</span><span class="p">),</span>
+    <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;submit #myform&#39;</span><span class="o">:</span> <span class="s1">&#39;mysubmit&#39;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p><code>#myform</code> 就必須是在 <code>#content</code> 裡面。</p>
+<h2>Parse ajax response</h2>
+<p>Ajax 的 response 格式有很多種，每個網站可能都有自己的格式，在 Collection 的部分，假如要讀的多筆資料都在 <code>response.data</code> 裡的話，就會需要在 Collection 裡頭加上 <code>parse</code> 來處理:</p>
+<div class="highlight"><pre><span class="cm">/* json example</span>
+<span class="cm">{</span>
+<span class="cm">    &quot;data&quot;: [ {</span>
+<span class="cm">        &quot;id&quot;: &quot;1&quot;,</span>
+<span class="cm">        &quot;value&quot;: &quot;1&quot;</span>
+<span class="cm">        }, {</span>
+<span class="cm">        &quot;id&quot;: &quot;2&quot;,</span>
+<span class="cm">        &quot;value&quot;: &quot;2&quot;</span>
+<span class="cm">    } ],</span>
+<span class="cm">    &quot;meta&quot;: &quot;test&quot;</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+<span class="nx">App</span><span class="p">.</span><span class="nx">Collections</span><span class="p">.</span><span class="nx">Items</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">model</span><span class="o">:</span> <span class="k">new</span> <span class="nx">App</span><span class="p">.</span><span class="nx">Models</span><span class="p">.</span><span class="nx">Item</span><span class="p">(),</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+    <span class="nx">parse</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>又假如在 <code>response.data</code> 這個 array 裡，主要的 attribute 名稱不是 <code>id</code>，而是其他名稱，比如說 <code>name</code>，就要在 Model 裡加上定義，不然 Model parse 會有問題:</p>
+<div class="highlight"><pre><span class="cm">/* json example from response</span>
+<span class="cm">{</span>
+<span class="cm">    &quot;data&quot;: [ {</span>
+<span class="cm">        &quot;name&quot;: &quot;1&quot;,</span>
+<span class="cm">        &quot;value&quot;: &quot;1&quot;</span>
+<span class="cm">        }, {</span>
+<span class="cm">        &quot;name&quot;: &quot;2&quot;,</span>
+<span class="cm">        &quot;value&quot;: &quot;2&quot;</span>
+<span class="cm">    } ],</span>
+<span class="cm">    &quot;meta&quot;: &quot;test&quot;</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+
+<span class="nx">App</span><span class="p">.</span><span class="nx">Models</span><span class="p">.</span><span class="nx">Item</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">idAttribute</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<h2>Serialize form inputs</h2>
+<p>我之前是用 <a href="https://github.com/macek/jquery-serialize-object">jquery-serialize-object</a>，後來因為要 submit 的資料不多，所以就把這個 plugin 拿掉，改用 jquery selector 來拿了。</p>
+<p>其他也可以參考這篇: <a href="http://stackoverflow.com/questions/14554111/serialize-form-inputs-to-json-using-backbone-js">Serialize form inputs to JSON using Backbone.js</a></p>
+<h2>Pass values to Model</h2>
+<p>如果不想要傳過去的資料變成 Model 的 attributes，而是其他額外的資料的話，例如要傳一個 flag 的話，可以這樣做:</p>
+<div class="highlight"><pre><span class="nx">App</span><span class="p">.</span><span class="nx">Models</span><span class="p">.</span><span class="nx">Item</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">attributes</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">flag</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">flag</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">App</span><span class="p">.</span><span class="nx">Models</span><span class="p">.</span><span class="nx">Item</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;car&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nx">flag</span><span class="o">:</span> <span class="kc">true</span><span class="p">});</span>
+</pre></div>
+
+
+<h2>spinner animation with ajax</h2>
+<p>在 ajax 發出和收到的時候分別顯示和隱藏 spinner，原本其實就可以用 <code>ajaxStart</code> 和 <code>ajaxStop</code> 這兩個 event 來處理，在 backbone 裡也可以用以下的方式:</p>
+<div class="highlight"><pre><span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">APP</span><span class="p">.</span><span class="nx">Models</span><span class="p">.</span><span class="nx">Item</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">ajaxStart</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;sync&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">ajaxComplete</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">ajaxStart</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span><span class="nx">arg2</span><span class="p">,</span><span class="nx">arg3</span><span class="p">){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#loading&#39;</span><span class="p">).</span><span class="nx">fadeIn</span><span class="p">({</span><span class="nx">duration</span><span class="o">:</span><span class="mi">100</span><span class="p">});</span>
+<span class="p">},</span>
+<span class="nx">ajaxComplete</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#loading&#39;</span><span class="p">).</span><span class="nx">fadeOut</span><span class="p">({</span><span class="nx">duration</span><span class="o">:</span><span class="mi">100</span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>How to render tables</h2>
+<p>參考這篇的解答: <a href="http://stackoverflow.com/questions/10257401/render-html-table-with-underscore-template-engine-using-a-backbone-complex-model">Render html table with underscore template engine using a backbone complex model</a></p>
+<h2>Post collections</h2>
+<p>這個我還沒試過，不過可以參考這篇解答的做法: <a href="http://stackoverflow.com/questions/6879138/how-to-save-an-entire-collection-in-backbone-js-backbone-sync-or-jquery-ajax">“How” to save an entire collection in Backbone.js - Backbone.sync or jQuery.ajax?</a></p>
+<h2>2-way data binding</h2>
+<p>backbone 本身沒提供，只能用 jquery selector 來抓，看到有個 plugin 也許可以用用看，我是還沒用過lol: <a href="http://nytimes.github.io/backbone.stickit/">backbone.stickit</a></p>
+<p>參考資料:<br />
+<a href="http://backbonetutorials.com/what-is-a-view/">Backbone.js Beginner Video Tutorial</a><br />
+<a href="http://stackoverflow.com/questions/11331604/backbone-js-ajax-calls">backbone.js ajax calls</a><br />
+<a href="http://stackoverflow.com/questions/7084651/how-can-i-pass-properties-into-a-backbone-model-which-i-do-not-wish-to-be-treate">How can I pass properties into a Backbone.Model which I do not wish to be treated as attributes?</a><br />
+<a href="http://stackoverflow.com/questions/5832295/backbone-js-how-and-when-to-show-a-spinner">backbone.js - how and when to show a spinner</a><br />
+<a href="http://eviltrout.com/2013/06/15/ember-vs-angular.html">AngularJS vs Ember</a>  </p>
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/web.html">web</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/backbone.html">backbone</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>

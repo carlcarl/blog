@@ -51,6 +51,35 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-10-27T20:41:00" pubdate>
+                            Thu 27 October 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/47/ssh-slow/" rel="bookmark"><h1>ssh slow</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>貌似是學校最近 DNS 常出問題還是怎樣，ssh 的速度非常緩慢，後來決定把 config 檔案改一改，改完之後速度果然快很多= =+。</p>
+<p>修改 <code>/etc/ssh/sshd_config</code>，以下是修改內容：</p>
+<div class="highlight"><pre>UseDNS no
+GSSAPIAuthentication no
+</pre></div>
+
+
+<p>修改完後執行：</p>
+<div class="highlight"><pre>sudo /etc/init.d/ssh restart
+</pre></div>
+
+
+<p>收工~，不過如果 DNS 沒問題的話，可能修改這個設定速度不會差太多。</p>
+<p>參考網址：</p>
+<p><a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://jeffxie.blog.51cto.com/1365360/293869</a><br />
+<a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://www.dk101.com/Discuz/viewthread.php?tid=157716</a>  </p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-09-30T18:15:00" pubdate>
                             Fri 30 September 2011
                         </time>
@@ -305,37 +334,6 @@ sudo apt-get install mongodb-10gen
 
 <p>參考網頁</p>
 <p><a href="http://www.java2s.com/Tutorial/Cpp/0240__File-Stream/Redirectouputintothefile.htm">http://www.java2s.com/Tutorial ...</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-07-22T09:43:00" pubdate>
-                            Fri 22 July 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/37/freebsd-use-mpd-to-build-vpn/" rel="bookmark"><h1>FreeBSD use mpd to build VPN</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>不習慣用FreeBSD，所以花了一點時間研究要怎麼裝orz</p>
-<p>感覺比Linux的還麻煩QQ</p>
-<h3>首先先裝 mpd</h3>
-<p>到 <code>/usr/ports/net/mpd/</code> 底下輸入</p>
-<div class="highlight"><pre>make install clean
-</pre></div>
-
-
-<p>這樣就安裝好了~。</p>
-<h3>接下來是要作設定，先修改 <code>/usr/local/etc/mpd/mpd.conf</code></h3>
-<div class="highlight"><pre><span class="k">default</span><span class="o">:</span>
-<span class="n">load</span> <span class="n">pptp1</span>
-<span class="n">pptp1</span><span class="o">:</span>
-<span class="k">new</span> <span class="o">-</span><span class="n">i</span> <span class="n">ng0</span> <span class="n">pptp1</span> <span class="n">pptp1</span>
-<span class="kd">set</span> <span class="n">ipcp</span> <span class="n">ranges</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">88.1</span><span class="sr">/32 192.168.88.56/</span><span class="mi">32</span>
-<span class="n">load</span> <span class="n">pptp_def</span>
-<span class="n">pptp_def</span><span class="o">:</span>
-<span class="kd">set</span> <span class="n">iface ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

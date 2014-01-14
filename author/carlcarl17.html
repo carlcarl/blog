@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-03-19T19:07:00" pubdate>
+                            Sat 19 March 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/7/html-iframe-use-javascript-to-add-css-files/" rel="bookmark"><h1>html iframe use javascript to add css files</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <div class="highlight"><pre><span class="nx">frame</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">frm</span> <span class="o">=</span> <span class="nx">frames</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">].</span><span class="nb">document</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">otherhead</span> <span class="o">=</span> <span class="nx">frm</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">link</span> <span class="o">=</span> <span class="nx">frm</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;link&quot;</span><span class="p">);</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;rel&quot;</span><span class="p">,</span> <span class="s2">&quot;stylesheet&quot;</span><span class="p">);</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;text/css&quot;</span><span class="p">);</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">,</span> <span class="s2">&quot;style.css&quot;</span><span class="p">);</span>
+    <span class="nx">otherhead</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">link</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-03-14T16:11:00" pubdate>
                             Mon 14 March 2011
                         </time>

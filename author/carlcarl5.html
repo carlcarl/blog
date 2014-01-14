@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-03T21:25:00" pubdate>
+                            Mon 03 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/879/ubuntu-nginx-pagespeed-module/" rel="bookmark"><h1>Ubuntu nginx pagespeed module</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>Ubuntu 版本：12.04 Nginx 版本：1.4.1 pagespeed 版本：1.5.27.3
+記錄一下安裝的步驟：</p>
+<div class="highlight"><pre><span class="c"># 到 home 目錄下做，看個人習慣就是</span>
+<span class="nb">cd</span> ~
+<span class="c"># add-apt-repository 這個指令需要裝 python-software-properties</span>
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:nginx/stable
+sudo apt-get update
+<span class="c"># 下載 nginx source code</span>
+sudo apt-get <span class="nb">source </span>nginx
+<span class="c"># 裝 build nginx 需要的套件</span>
+sudo apt-get ...</pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-03T11:48:00" pubdate>
                             Mon 03 June 2013
                         </time>
@@ -262,28 +287,6 @@ git repo，裏面包含 submodule，且是
 <p>設定的部分存在 <code>~/.gitconfig</code>，不需要的話可以直接從這邊拿掉。</p>
 <p>參考網址：  </p>
 <p><a href="http://stackoverflow.com/questions/4891527/git-protocol-blocked-by-company-how-can-i-get-around-that">http://stackoverflow.com/questions/4891527/git-protocol-blocked-by-company-how-can-i-get-around-that</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-03-13T15:36:00" pubdate>
-                            Wed 13 March 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/799/osx-svn-checkout-fail/" rel="bookmark"><h1>OSX svn checkout fail</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在 OSX 上 checkout svn 的 repo 遇到了 error，跟我說 .svn
-底下少了某個檔案，後來才發現有兩個同樣名稱的檔案，只是大小寫不一樣，看來好像是因為
-OSX 的檔案系統預設大小寫視為一樣的。如果要解決這個問題除了換個名稱，要不然就是做個
-case sensitive 的 image mount 上去，指令如下：  </p>
-<div class="highlight"><pre><span class="c"># 建立 image 檔案</span>
-hdiutil create -size 100m -fs <span class="s2">&quot;Case-sensitive HFS+&quot;</span> -volname xxx xxx.dmg
-<span class="c"># size 後面的參數表示 image 大小</span>
-<span class="c"># volname 後面的參數表示掛載後的名稱</span>
-<span class="c"># xxx.dmg 是 image ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>
