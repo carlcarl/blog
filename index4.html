@@ -164,8 +164,6 @@ js，沒有被 gzip 處理過。</p>
                         <p>因為之前寫 java 的經驗，讓我以為在 html5 的 canvas 上也要自己實作 double
 buffering，但是在我後來實作後發現，好像哪裡怪怪的，因為其實原本就沒有在閃的感覺了，所以加了
 double buffering 好像也沒啥差，重點是 performance 下降很多......。</p>
-<!--more-->
-
 <p>後來花了一些時間找資料，我得到的結論－是大部分的情況，不需要自己做
 double buffering，因為瀏覽器會很聰明的幫你做。但是它怎麼判斷什麼時候該把
 buffer 的部分 render 上去呢？以下是我的鍵盤猜測：</p>
@@ -173,7 +171,7 @@ buffer 的部分 render 上去呢？以下是我的鍵盤猜測：</p>
 就會刷新一次螢幕，而瀏覽器本身在刷新的頻率可能也會接近這個時間，但是有沒有比較高就不知道了，因為你所看到的可能會被你螢幕的更新頻率所限制，就算瀏覽器刷新頻率是
 1000Hz，反正一般的銀幕也看不出來:P。</p>
 <p>以一個簡單的例子來實驗，假如我在一開始把一個方形塗上顏色然後 clear
-掉 ...</p></!--more-->
+掉 ...</p>
                     </section>
                 </article>
                 <hr/>
@@ -281,8 +279,6 @@ feature。在一些舊瀏覽器可能會有問題，如果不想管那些舊瀏�
                     </header>
                     <section class="post-content">
                         <p>單純小筆記一下，因為每次重裝都會忘記 XDD，放在自己 blog，以後比較好查。</p>
-<!--more-->
-
 <p>如果只單純下 <code>brew install macvim</code> 的話，原本的 vim 還是會留著，如果想用
 Macvim 裡的 vim 的話，你可能會想說移掉原本的 vim，然後用 <code>ln -s</code>，來建個
 link 就好，不過實際做是不行的，會出現一些
@@ -293,7 +289,7 @@ brew linkapps
 
 
 <p>這樣就會把原本的 vim 幹掉，直接套用 Macvim 裡的。</p>
-<p>參考網址 ...</p></!--more-->
+<p>參考網址 ...</p>
                     </section>
                 </article>
                 <hr/>

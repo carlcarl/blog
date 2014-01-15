@@ -81,7 +81,6 @@ plugin，但是在使用的時候發現，一旦按下 enter 鍵再加上有縮�
 forwarding 時，發現 port 怎麼樣都 forward 不到 VM
 上，找了很多資料，後來才發現原來是前端的 firewall 也要開對應的 port
 才行。<br />
-<!--more--><br />
 <img alt="firewall
 rule" src="http://i.imgur.com/Q59NTKhl.png" title="firewall rule" /> </p>
 <p>像是這邊我開了 5566 ~ 5567 port 的 TCP 連線，然後 Source
@@ -122,8 +121,7 @@ template 的時間，因此還是希望能避免不必要的空間浪費。</p>
                     </header>
                     <section class="post-content">
                         <p>之前在找 Javascript 這方面的 library
-該怎麼寫，看了一些資料，覺得以下這種方式不錯<br />
-<!--more--></p>
+該怎麼寫，看了一些資料，覺得以下這種方式不錯  </p>
 <div class="highlight"><pre><span class="c1">// library example</span>
 <span class="kd">var</span> <span class="nx">animal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;tom&#39;</span><span class="p">;</span> <span class="c1">// private variable</span>
@@ -161,13 +159,11 @@ template 的時間，因此還是希望能避免不必要的空間浪費。</p>
                         <p>在 <a href="http://blog.xuite.net/vexed/tech/61308318">script tag 屬性 async defer 差別</a> 這邊看到了 script tag 有 async
 和 defer 的用法，所以就來試試看。大致測試了一下，速度的確有快了一些(大概加快50 ~ 100ms
 左右吧XD)。以下大概講一下我的測試範例內容：</p>
-<!--more-->
-
 <div class="highlight"><pre><span class="c">&lt;!-- </span>
 <span class="c">這是原本的程式</span>
 <span class="c">a-b.js 需要 a.js, 而 a-c.js 需要 a.js, 這是這 3 個 js 檔的相依關係</span>
 <span class="c">最後會從 a-c.js 裡呼叫 library 來執行</span>
-<span class="c">由於 async 屬性並不適合用來處理有相依性的 js 檔案 ...</span></pre></div></!--more-->
+<span class="c">由於 async 屬性並不適合用來處理有相依性的 js 檔案 ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>
@@ -236,7 +232,6 @@ bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
 <p>因為 firefox-kde-opensuse 要自己編太麻煩了，所以加個 repo
 這樣以後安裝比較省時，是說要不是 <a href="http://www.plurk.com/maxwux">Whiksy</a>
 有提供我還真的不知道原來有......。<br />
-<!--more--><br />
 以下複製到 <code>/etc/pacman.conf</code> 中：</p>
 <div class="highlight"><pre><span class="k">[chakra-gtk-repo]</span>
 <span class="na">Server</span> <span class="o">=</span> <span class="s">http://chakra-gtk-repo.tk/repo/x86_64/</span>
@@ -261,7 +256,6 @@ bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
                     <section class="post-content">
                         <p>之前在 <a href="http://blog.carlcarl.tw/397/ubuntu-tunnel-broker" title="Ubuntu Tunnel Broker IPv6 連 中研院">Ubuntu 系列上可以很方便的安裝 gogoc</a>，但是後來換到 Chakra
 之後，ccr 裡並沒有提供安裝包，沒辦法，只好自己編譯。</p>
-<p><!--more-->  </p>
 <p>1.首先先下載安裝包(不能下載的話，就必須到<a href="http://www.gogo6.com/">官網</a>註冊帳號並下載囉)、解壓縮，並進入到資料夾中：</p>
 <div class="highlight"><pre>wget http://content.gogo6.com/gogoc-1_2-RELEASE.tar.gz
 tar -xf gogoc-1_2-RELEASE.tar.gz

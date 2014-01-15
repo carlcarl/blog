@@ -734,8 +734,6 @@ lock，這邊可以再看一下 &lt;code&gt;SynchronizedBase&lt;/code&gt; 的定
 &lt;a href="http://stackoverflow.com/questions/8276933/python-multiprocessing-lock-issue"&gt;python multiprocessing lock issue&lt;/a&gt;&lt;/p&gt;</summary><category term="multiprocessing"></category></entry><entry><title>brunch watch stylesheet dependency</title><link href="http://blog.carlcarl.me/1302/brunch-watch-stylesheet-dependency/" rel="alternate"></link><updated>2013-09-09T02:10:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-09-09:1302/brunch-watch-stylesheet-dependency/</id><summary type="html">&lt;p&gt;之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生
 build 好的 css，這個問題一直困擾我很久，每次都要重新跑一次
 &lt;code&gt;brunch watch --server&lt;/code&gt; 實在是很不爽，今天晚上剛好有一點時間就來修了。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;網站是用 &lt;code&gt;less&lt;/code&gt;，然後有一個主要的 less 檔來 &lt;code&gt;@import&lt;/code&gt; 其他在 &lt;code&gt;less&lt;/code&gt;
 資料夾底下的 .less 檔，目錄架構大概像底下這樣：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;├── less
@@ -795,7 +793,6 @@ banner，而這邊其實也不需要特別去設定高度，所以就跟著拿�
 &lt;a href="http://stackoverflow.com/questions/6116423/how-to-vertically-align-floating-divs-to-the-bottom"&gt;How to vertically align floating divs to the bottom?&lt;/a&gt;&lt;/p&gt;</summary><category term="g0v"></category><category term="css"></category></entry><entry><title>Chrome tab key accessibility bug</title><link href="http://blog.carlcarl.me/1277/chrome-tab-key-accessibility-bug/" rel="alternate"></link><updated>2013-08-22T00:58:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-08-22:1277/chrome-tab-key-accessibility-bug/</id><summary type="html">&lt;p&gt;簡單說就是在 link 內容如果是 float 的情況下，這個 link 沒辦法在按 tab
 鍵的時候得到 focus。Google 了一下，好像是 &lt;a href="https://bugs.webkit.org/show_bug.cgi?id=51333"&gt;Webkit 的
 bug&lt;/a&gt;，不過好像沒有打算要修的樣子(汗)。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
 Link 如果在下面的情況是 OK 的：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;div&amp;gt;&lt;/span&gt;test&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
@@ -817,8 +814,6 @@ Link 如果在下面的情況是 OK 的：&lt;/p&gt;
 order][]&lt;/p&gt;
 &lt;p&gt;[Webkit removes links containing only floated elements from the tab
   order]: http://www.heresonesolution.com/2010/12/google-chrome-float-tab-order/&lt;/p&gt;</summary><category term="chrome"></category><category term="g0v"></category><category term="css"></category></entry><entry><title>C define debug function</title><link href="http://blog.carlcarl.me/1267/c-define-debug-function/" rel="alternate"></link><updated>2013-08-13T15:50:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-08-13:1267/c-define-debug-function/</id><summary type="html">&lt;p&gt;參考&lt;a href="http://www.makelinux.net/ldd3/chp-4-sect-2"&gt;這篇&lt;/a&gt;，然後做了點修改。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;div class="highlight"&gt;&lt;pre&gt;#undef CM_DBG
 #ifdef LTE_CM_DEBUG
 #   define CM_DBG(fmt, args...) do{   
@@ -1301,8 +1296,6 @@ adblock 擋掉，右邊還是會留空，想說都沒寫過 browser 的 extensio
 ，所以就拿這個來練功啦～，不然其實寫 userscript 也可以就是。要弄的
 extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通，寫起來 CP
 值比較高 XD。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;本來想說直接綁定 &lt;code&gt;window.onload&lt;/code&gt; 在裡面做就好了，不過後來發現 Aol Reader
 在 &lt;code&gt;onload&lt;/code&gt; 之後還會有個它自己 loading
 的頁面，處理起來就變麻煩很多，因為除了要觀察 dom 來判斷何時才算真的
@@ -1355,8 +1348,6 @@ attribute 有變化的時候也呼叫 callback，這邊設定只對 &lt;code&gt;
 &lt;a href="http://stackoverflow.com/questions/4787527/how-to-find-the-width-of-a-div"&gt;How to find the width of a div&lt;/a&gt;&lt;/p&gt;</summary><category term="js"></category><category term="css"></category><category term="offsetWidth"></category></entry><entry><title>firefox developer tool screenshot</title><link href="http://blog.carlcarl.me/1095/firefox-developer-tool-screenshot/" rel="alternate"></link><updated>2013-06-27T19:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-06-27:1095/firefox-developer-tool-screenshot/</id><summary type="html">&lt;p&gt;雖然也可以用另外的軟體截圖，不過有時候截的大小不是很準確
 orz。這邊我是要對某個 element 做截圖，而且大小要很精確，後來剛好看到
 firefox 的 developer tool 也有這樣的功能，所以就試了一下。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;一開始按 &lt;code&gt;shift+F2&lt;/code&gt; 就會出現一個輸入視窗。嗯，沒錯，它的 screenshot 是
 CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 叫做 target
 的區塊，可以這樣下：&lt;/p&gt;
@@ -1372,8 +1363,6 @@ CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 
 Toolbar(裡面前面是舊版的 API，要注意)&lt;/a&gt;&lt;/p&gt;</summary><category term="firefox"></category></entry><entry><title>Linux conntrack delete destination NAT</title><link href="http://blog.carlcarl.me/1080/linux-conntrack-delete-destination-nat/" rel="alternate"></link><updated>2013-06-27T16:41:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-06-27:1080/linux-conntrack-delete-destination-nat/</id><summary type="html">&lt;p&gt;最近遇到在測 throughput 中，有一定機率無法關掉 DMZ
 的問題，而且這邊只要關掉 throughput 後，DMZ 就會順利關掉，看起來像是
 throughput 的連線讓被刪掉的 conntrack 連線又復活(?)了這樣 =.=。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;看了一下 firewall 的 rule，裡面確實是有刪除 conntrack connection 的
 rule，指令如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;conntrack -D conntrack -g -r xxx.xxx.xxx.xxx
@@ -1495,8 +1484,6 @@ js，沒有被 gzip 處理過。&lt;/p&gt;
 基本上算是可以取代掉它了（而且 wp-minfiy 還有一些怪怪的 bug...）。&lt;/p&gt;</summary><category term="nginx"></category><category term="pagespeed"></category></entry><entry><title>html5 canvas double buffering</title><link href="http://blog.carlcarl.me/1023/html5-canvas-double-buffering/" rel="alternate"></link><updated>2013-06-16T19:25:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-06-16:1023/html5-canvas-double-buffering/</id><summary type="html">&lt;p&gt;因為之前寫 java 的經驗，讓我以為在 html5 的 canvas 上也要自己實作 double
 buffering，但是在我後來實作後發現，好像哪裡怪怪的，因為其實原本就沒有在閃的感覺了，所以加了
 double buffering 好像也沒啥差，重點是 performance 下降很多......。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;後來花了一些時間找資料，我得到的結論－是大部分的情況，不需要自己做
 double buffering，因為瀏覽器會很聰明的幫你做。但是它怎麼判斷什麼時候該把
 buffer 的部分 render 上去呢？以下是我的鍵盤猜測：&lt;/p&gt;
@@ -1653,8 +1640,6 @@ XD。如果硬要解的話，因為 &lt;code&gt;continue&lt;/code&gt; 通常會�
 &lt;a href="http://stackoverflow.com/questions/6071762/unexpected-continue"&gt;http://stackoverflow.com/questions/6071762/unexpected-continue&lt;/a&gt;
 &lt;a href="http://stackoverflow.com/questions/806163/jslint-using-a-function-before-its-defined-error"&gt;http://stackoverflow.com/questions/806163/jslint-using-a-function-before-its-defined-error&lt;/a&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://stackoverflow.com/questions/3000276/the-unexpected-error-in-jslint"&gt;http://stackoverflow.com/questions/3000276/the-unexpected-error-in-jslint&lt;/a&gt;&lt;/p&gt;</summary><category term="jslint"></category></entry><entry><title>brew install Macvim</title><link href="http://blog.carlcarl.me/893/brew-install-macvim/" rel="alternate"></link><updated>2013-06-07T19:56:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-06-07:893/brew-install-macvim/</id><summary type="html">&lt;p&gt;單純小筆記一下，因為每次重裝都會忘記 XDD，放在自己 blog，以後比較好查。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;如果只單純下 &lt;code&gt;brew install macvim&lt;/code&gt; 的話，原本的 vim 還是會留著，如果想用
 Macvim 裡的 vim 的話，你可能會想說移掉原本的 vim，然後用 &lt;code&gt;ln -s&lt;/code&gt;，來建個
 link 就好，不過實際做是不行的，會出現一些
@@ -1819,8 +1804,7 @@ type，還需要做 encode 才行，所以後來加上 encode utf-8 之後，在
 stackoverflow，也有&lt;a href="http://stackoverflow.com/questions/4655711/measuring-execution-time-of-a-function-inside-linux-kernel"&gt;一個遇到一樣的問題&lt;/a&gt;，我猜可能 &lt;code&gt;jiffies&lt;/code&gt; 也是用
 period update 的方式做更新，由於中間測量的 function
 太快，導致來不及更新就拿到了一樣的值這樣。而在下面的回答中看到可以用
-&lt;code&gt;do_gettimeofday()&lt;/code&gt; 來抓時間區間，簡單範例如下：&lt;br /&gt;
-&lt;!--more--&gt;&lt;/p&gt;
+&lt;code&gt;do_gettimeofday()&lt;/code&gt; 來抓時間區間，簡單範例如下：  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#include &amp;lt;linux/time.h&amp;gt;&lt;/span&gt;
 &lt;span class="c1"&gt;// ...&lt;/span&gt;
 &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;timeval&lt;/span&gt; &lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -1941,8 +1925,7 @@ hdiutil attach xxx.dmg
 dolphin 這邊再重連就能夠連上了。&lt;/p&gt;
 &lt;p&gt;參考連結：  &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder"&gt;http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder&lt;/a&gt;&lt;/p&gt;</summary><category term="dolphin"></category><category term="ssh"></category></entry><entry><title>bootstrap input align</title><link href="http://blog.carlcarl.me/788/bootstrap-input-align/" rel="alternate"></link><updated>2013-02-22T03:07:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2013-02-22:788/bootstrap-input-align/</id><summary type="html">&lt;p&gt;使用 bootstrap 的 input element 的時候遇到 text 和 button
-位置不齊的情況，去 stackoverflow 找了一下就看到&lt;a href="http://stackoverflow.com/questions/10615872/bootstrap-align-input-with-button"&gt;解決的辦法&lt;/a&gt;了：&lt;br /&gt;
-&lt;!--more--&gt;&lt;/p&gt;
+位置不齊的情況，去 stackoverflow 找了一下就看到&lt;a href="http://stackoverflow.com/questions/10615872/bootstrap-align-input-with-button"&gt;解決的辦法&lt;/a&gt;了：  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;form-horizontal&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;search&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;search&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;button&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;btn&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;button&lt;span class="nt"&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
@@ -2047,8 +2030,6 @@ WebConf。感謝這次辛苦的主辦人以及其他工作人員！&lt;/p&gt;</s
 &lt;a href="https://github.com/Shougo/neocomplcache/issues/276"&gt;https://github.com/Shougo/neocomplcache/issues/276&lt;/a&gt;&lt;/p&gt;</summary><category term="neocomplcache"></category><category term="vim"></category></entry><entry><title>KDE hide decoration</title><link href="http://blog.carlcarl.me/726/kde-hide-decoration/" rel="alternate"></link><updated>2012-12-02T08:45:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-12-02:726/kde-hide-decoration/</id><summary type="html">&lt;p&gt;之前為了隱藏 KDE 視窗的 decoration
 找方法找好久，結果後來不經意就看到了這個資訊囧，不過可惜只能透過改設定檔的方式，GUI
 上似乎沒有這個設定。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;修改 &lt;code&gt;.kde4/share/config/kwinrc&lt;/code&gt;，找到 &lt;code&gt;[Windows]&lt;/code&gt;，在下一行加上：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;BorderlessMaximizedWindows&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -2084,8 +2065,7 @@ improved&lt;/a&gt;，個人覺得還滿方便的～。&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;如果要固定格式的話，目前似乎沒有直接的 function 可以 call，所以還是必須自己作轉換，像是 &lt;a href="http://stackoverflow.com/questions/175554/how-to-convert-milliseconds-into-human-readable-form"&gt;這篇&lt;/a&gt; 。&lt;/p&gt;</summary><category term="mongodb"></category></entry><entry><title>Mac virtualenvwrapper "No module named setuptools" error</title><link href="http://blog.carlcarl.me/709/mac-virtualenvwrapper-no-module-named-setuptools-error/" rel="alternate"></link><updated>2012-10-22T01:05:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-10-22:709/mac-virtualenvwrapper-no-module-named-setuptools-error/</id><summary type="html">&lt;p&gt;在 Mac 上安裝 virtualenvwrapper 的時候遇到的錯誤，解決方法：&lt;br /&gt;
-&lt;!--more--&gt;  &lt;/p&gt;
+&lt;p&gt;如果要固定格式的話，目前似乎沒有直接的 function 可以 call，所以還是必須自己作轉換，像是 &lt;a href="http://stackoverflow.com/questions/175554/how-to-convert-milliseconds-into-human-readable-form"&gt;這篇&lt;/a&gt; 。&lt;/p&gt;</summary><category term="mongodb"></category></entry><entry><title>Mac virtualenvwrapper "No module named setuptools" error</title><link href="http://blog.carlcarl.me/709/mac-virtualenvwrapper-no-module-named-setuptools-error/" rel="alternate"></link><updated>2012-10-22T01:05:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-10-22:709/mac-virtualenvwrapper-no-module-named-setuptools-error/</id><summary type="html">&lt;p&gt;在 Mac 上安裝 virtualenvwrapper 的時候遇到的錯誤，解決方法：  &lt;/p&gt;
 &lt;h3&gt;首先先重新安裝 setuptools &lt;a href="http://peak.telecommunity.com/dist/ez_setup.py"&gt;載點&lt;/a&gt; ，下載完執行：&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sudo python ez_setup.py
 &lt;/pre&gt;&lt;/div&gt;
@@ -2209,8 +2189,7 @@ query 就包含了 &lt;code&gt;find()&lt;/code&gt; 和 &lt;code&gt;limit()&lt;/c
 切出來的不一定是理想的範圍 orz。&lt;/p&gt;
 &lt;p&gt;大致就兩個步驟，第一個是切 chunk，第二個是移動 chunk 到某個 shard
 上，如果 balancer 沒關掉的話，第二個步驟會由 balancer 幫你決定你的 chunk
-要移到哪個 shard 上。&lt;br /&gt;
-&lt;!--more--&gt;  &lt;/p&gt;
+要移到哪個 shard 上。  &lt;/p&gt;
 &lt;h3&gt;切 chunk 指令&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// 第一個參數是指定在哪個 DB 中的 collection，&lt;/span&gt;
 &lt;span class="c1"&gt;// 因為文件裡只說是 collection，所以可能會忘了加上 DB 的名稱&lt;/span&gt;
@@ -2244,8 +2223,7 @@ query 就包含了 &lt;code&gt;find()&lt;/code&gt; 和 &lt;code&gt;limit()&lt;/c
 &lt;p&gt;參考網址：&lt;br /&gt;
 &lt;a href="http://docs.mongodb.org/manual/reference/method/sh.splitAt/"&gt;http://docs.mongodb.org/manual/reference/method/sh.splitAt/&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://docs.mongodb.org/manual/reference/method/sh.moveChunk/"&gt;http://docs.mongodb.org/manual/reference/method/sh.moveChunk/&lt;/a&gt;&lt;br /&gt;
-&lt;a href="http://hedatou.com/archives/introduction_to_mongodb.html"&gt;http://hedatou.com/archives/introduction_to_mongodb.html&lt;/a&gt;&lt;/p&gt;</summary><category term="mongodb"></category></entry><entry><title>MongoDB check status command</title><link href="http://blog.carlcarl.me/663/mongodb-check-status-command/" rel="alternate"></link><updated>2012-10-09T02:15:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-10-09:663/mongodb-check-status-command/</id><summary type="html">&lt;p&gt;紀錄一下 MongoDB 看狀態時常會用到的指令。&lt;br /&gt;
-&lt;!--more--&gt;&lt;/p&gt;
+&lt;a href="http://hedatou.com/archives/introduction_to_mongodb.html"&gt;http://hedatou.com/archives/introduction_to_mongodb.html&lt;/a&gt;&lt;/p&gt;</summary><category term="mongodb"></category></entry><entry><title>MongoDB check status command</title><link href="http://blog.carlcarl.me/663/mongodb-check-status-command/" rel="alternate"></link><updated>2012-10-09T02:15:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-10-09:663/mongodb-check-status-command/</id><summary type="html">&lt;p&gt;紀錄一下 MongoDB 看狀態時常會用到的指令。  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 看目前 state 的指令&lt;/span&gt;
 mongostat
 &lt;/pre&gt;&lt;/div&gt;
@@ -2281,7 +2259,6 @@ mongostat
 &lt;a href="http://www.mongodb.org/display/DOCS/Sharding+Administration"&gt;http://www.mongodb.org/display/DOCS/Sharding+Administration&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://docs.mongodb.org/manual/reference/database-statistics/"&gt;http://docs.mongodb.org/manual/reference/database-statistics/&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://www.mongodb.org/display/DOCS/Indexes"&gt;http://www.mongodb.org/display/DOCS/Indexes&lt;/a&gt;&lt;/p&gt;</summary><category term="mongodb"></category></entry><entry><title>mongodb aggregation group count sort</title><link href="http://blog.carlcarl.me/645/mongodb-aggregation-group-count-sort/" rel="alternate"></link><updated>2012-09-14T05:05:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-09-14:645/mongodb-aggregation-group-count-sort/</id><summary type="html">&lt;p&gt;感覺不是很難的 query，想說用 mongodb aggregation 來解決，不過查資料查了好久才知道怎麼用。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
 以 sql 來說的話，我是要對某個欄位作 group by，分類完之後再對分類完的欄位作 count，算完之後再根據 count 的數字作 sort。下面這段是 MongoDB 中的用法：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;mytable&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;aggregate&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt; &lt;span class="nx"&gt;$group&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nx"&gt;_id&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$b_cd&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;num&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;$sum&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;}},&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;$sort&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;num&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;}}&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -2353,8 +2330,7 @@ fi
 &lt;p&gt;目前似乎沒辦法（炸），因為在 deactivate 狀態下 &lt;code&gt;$VIRTUAL_ENV&lt;/code&gt; 是不會有值的，而在 activate 下又不能刪除環境，所以目前看來是無解，只能自己手動刪除了。&lt;/p&gt;
 &lt;p&gt;參考網址：&lt;br /&gt;
 &lt;a href="http://http://virtualenvwrapper.readthedocs.org/en/latest/tips.html"&gt;http://virtualenvwrapper.readthedocs.org/en/latest/tips.html&lt;/a&gt;&lt;br /&gt;
-&lt;a href="http://http://stackoverflow.com/questions/11005457/how-do-i-remove-delete-a-virtualenv"&gt;http://stackoverflow.com/questions/11005457/how-do-i-remove-delete-a-virtualenv&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="virtualenvwrapper"></category></entry><entry><title>mongodb php connection</title><link href="http://blog.carlcarl.me/589/mongodb-php-connection/" rel="alternate"></link><updated>2012-08-13T22:16:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-08-13:589/mongodb-php-connection/</id><summary type="html">&lt;p&gt;大概寫一下 mongodb + auth 的連線步驟，之前我是這樣做連線認証：&lt;br /&gt;
-&lt;!--more--&gt;&lt;/p&gt;
+&lt;a href="http://http://stackoverflow.com/questions/11005457/how-do-i-remove-delete-a-virtualenv"&gt;http://stackoverflow.com/questions/11005457/how-do-i-remove-delete-a-virtualenv&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="virtualenvwrapper"></category></entry><entry><title>mongodb php connection</title><link href="http://blog.carlcarl.me/589/mongodb-php-connection/" rel="alternate"></link><updated>2012-08-13T22:16:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-08-13:589/mongodb-php-connection/</id><summary type="html">&lt;p&gt;大概寫一下 mongodb + auth 的連線步驟，之前我是這樣做連線認証：  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class="nv"&gt;$m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Mongo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mongodb://localhost:27017&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;    
 &lt;span class="nv"&gt;$db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$m&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;mytable&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -2395,7 +2371,6 @@ plugin，但是在使用的時候發現，一旦按下 enter 鍵再加上有縮�
 forwarding 時，發現 port 怎麼樣都 forward 不到 VM
 上，找了很多資料，後來才發現原來是前端的 firewall 也要開對應的 port
 才行。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
 &lt;img alt="firewall
 rule" src="http://i.imgur.com/Q59NTKhl.png" title="firewall rule" /&gt; &lt;/p&gt;
 &lt;p&gt;像是這邊我開了 5566 ~ 5567 port 的 TCP 連線，然後 Source
@@ -2422,8 +2397,7 @@ mongodb
 ，重啟完再察看檔案大小是否有改掉，如果沒有的話可以嘗試重啟幾遍試試看唄。&lt;/p&gt;
 &lt;p&gt;參考網址：&lt;br /&gt;
 &lt;a href="http://www.mongodb.org/display/DOCS/Command+Line+Parameters"&gt;http://www.mongodb.org/display/DOCS/Command+Line+Parameters&lt;/a&gt;&lt;/p&gt;</summary><category term="mongodb"></category></entry><entry><title>Javascript Library simple structure</title><link href="http://blog.carlcarl.me/537/javascript-library-simple-structure/" rel="alternate"></link><updated>2012-07-23T02:03:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-07-23:537/javascript-library-simple-structure/</id><summary type="html">&lt;p&gt;之前在找 Javascript 這方面的 library
-該怎麼寫，看了一些資料，覺得以下這種方式不錯&lt;br /&gt;
-&lt;!--more--&gt;&lt;/p&gt;
+該怎麼寫，看了一些資料，覺得以下這種方式不錯  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// library example&lt;/span&gt;
 &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;animal&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;tom&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// private variable&lt;/span&gt;
@@ -2456,8 +2430,6 @@ mongodb
 &lt;a href="http://www.atlanticbt.com/blog/create-your-own-javascript-library/"&gt;http://www.atlanticbt.com/blog/create-your-own-javascript-library/&lt;/a&gt;&lt;/p&gt;</summary><category term="javascript"></category></entry><entry><title>HTML script speed up with defer</title><link href="http://blog.carlcarl.me/525/html-script-speed-up-with-defer/" rel="alternate"></link><updated>2012-07-06T03:49:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-07-06:525/html-script-speed-up-with-defer/</id><summary type="html">&lt;p&gt;在 &lt;a href="http://blog.xuite.net/vexed/tech/61308318"&gt;script tag 屬性 async defer 差別&lt;/a&gt; 這邊看到了 script tag 有 async
 和 defer 的用法，所以就來試試看。大致測試了一下，速度的確有快了一些(大概加快50 ~ 100ms
 左右吧XD)。以下大概講一下我的測試範例內容：&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;&amp;lt;!-- &lt;/span&gt;
 &lt;span class="c"&gt;這是原本的程式&lt;/span&gt;
 &lt;span class="c"&gt;a-b.js 需要 a.js, 而 a-c.js 需要 a.js, 這是這 3 個 js 檔的相依關係&lt;/span&gt;
@@ -2515,7 +2487,6 @@ bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
 &lt;p&gt;因為 firefox-kde-opensuse 要自己編太麻煩了，所以加個 repo
 這樣以後安裝比較省時，是說要不是 &lt;a href="http://www.plurk.com/maxwux"&gt;Whiksy&lt;/a&gt;
 有提供我還真的不知道原來有......。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
 以下複製到 &lt;code&gt;/etc/pacman.conf&lt;/code&gt; 中：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[chakra-gtk-repo]&lt;/span&gt;
 &lt;span class="na"&gt;Server&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;http://chakra-gtk-repo.tk/repo/x86_64/&lt;/span&gt;
@@ -2526,7 +2497,6 @@ bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
 
 &lt;p&gt;這樣就 OK 了。&lt;/p&gt;</summary><category term="chakra"></category><category term="firefox"></category><category term="firefox-kde-opensuse"></category></entry><entry><title>Chakra gogoc compile</title><link href="http://blog.carlcarl.me/499/chakra-gogoc-compile/" rel="alternate"></link><updated>2012-06-07T02:31:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-06-07:499/chakra-gogoc-compile/</id><summary type="html">&lt;p&gt;之前在 &lt;a href="http://blog.carlcarl.tw/397/ubuntu-tunnel-broker" title="Ubuntu Tunnel Broker IPv6 連 中研院"&gt;Ubuntu 系列上可以很方便的安裝 gogoc&lt;/a&gt;，但是後來換到 Chakra
 之後，ccr 裡並沒有提供安裝包，沒辦法，只好自己編譯。&lt;/p&gt;
-&lt;p&gt;&lt;!--more--&gt;  &lt;/p&gt;
 &lt;p&gt;1.首先先下載安裝包(不能下載的話，就必須到&lt;a href="http://www.gogo6.com/"&gt;官網&lt;/a&gt;註冊帳號並下載囉)、解壓縮，並進入到資料夾中：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;wget http://content.gogo6.com/gogoc-1_2-RELEASE.tar.gz
 tar -xf gogoc-1_2-RELEASE.tar.gz
@@ -2625,7 +2595,6 @@ id 必須設定為 UNIQUE KEY 或 PRIMARY KEY。&lt;/p&gt;
 VLC。但是預設的情況下播放還是會透明，必須到 Interface -&amp;gt; Preference
 底下，使用 custom skin，VLC 就會使用他自己的佈景主題，既然是用它自己的佈景主題，影片播放自然就不會因為系統套用 oxygen transparent 的主題而受到影響了。&lt;/p&gt;
 &lt;p&gt;不過目前用一用，偶爾還是會怪怪的，但是就撐著加減用吧，因為我不太想換系統的佈景主題XD。&lt;/p&gt;</summary><category term="KDE"></category><category term="oxygen"></category><category term="vlc"></category></entry><entry><title>CloudStack comment</title><link href="http://blog.carlcarl.me/473/cloudstack/" rel="alternate"></link><updated>2012-05-23T19:56:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2012-05-23:473/cloudstack/</id><summary type="html">&lt;p&gt;&lt;img alt="CloudStack" src="http://i.imgur.com/QqDmZipl.png" title="Selection_49cef6" /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
 用 CloudStack 也算用了一段時間了，來講一下心得好了 XD。 當初會看到是在
 Youtube 上面看到教學影片，覺得安裝還滿方便的，而且是 Citrix
 推出的，所以搭配 XenServer 的效果看起來還不錯，所以就來裝裝看了。&lt;/p&gt;
@@ -2696,7 +2665,6 @@ hypervisor 開啟幾個 System VM ，CloudStack 才能運作。&lt;/p&gt;
 要處理的話，方式有點不太一樣，它並不會自動去判斷 &lt;code&gt;[]&lt;/code&gt;，所以在 django
 這邊還是必須讀 &lt;code&gt;list[]&lt;/code&gt; 這樣的名稱，這也表示在 html
 裡，&lt;code&gt;[]&lt;/code&gt; 是可以不加的，但是我還是建議加上就是了，至少這樣我覺得會比較好懂。&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
 來看一下簡單的範例：&lt;/p&gt;
 &lt;p&gt;html&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;checkbox&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list[]&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;value 1&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -3620,8 +3588,6 @@ endif
 &lt;p&gt;&lt;a href="http://superuser.com/questions/194715/how-to-make-vim-settings-computer-dependent-in-vimrc"&gt;http://superuser.com/questions/194715/how-to-make-vim-settings-computer-dependent-in-vimrc&lt;/a&gt;&lt;/p&gt;</summary><category term="vim"></category></entry><entry><title>MongoDB Web management tool： rockmongo</title><link href="http://blog.carlcarl.me/43/mongodb-rockmongo/" rel="alternate"></link><updated>2011-09-05T18:12:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2011-09-05:43/mongodb-rockmongo/</id><summary type="html">&lt;p&gt;&lt;a href="http://i.imgur.com/BtTNDdsl.png"&gt;&lt;img alt="1315246483-954501738" src="http://i.imgur.com/BtTNDdsl.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;最近找到的一個管理 MongoDB 的網頁介面工具，是用 php5
 寫的，介面不是說很好看啦，不過還算好用囉，而且很重要的一點是他有中文繁體，真的是倍感親切XD。&lt;/p&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;首先先到&lt;a href="http://code.google.com/p/rock-php/downloads/list"&gt;這邊下載&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;下載完之後解壓縮並且移到網頁目錄下，然後試著連上去看看。如果出現要下載
 php 的 mongodb module 的話，就照以下步驟去安裝：&lt;/p&gt;
@@ -4724,8 +4690,7 @@ sudo dpkg-reconfigure postfix
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;第一行是重新安裝，第二行是再次設定。下完後就會進入設定畫面了~。&lt;/p&gt;</summary></entry><entry><title>C useful DEBUG function</title><link href="http://blog.carlcarl.me/15/c-useful-debug-function/" rel="alternate"></link><updated>2011-03-31T18:29:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2011-03-31:15/c-useful-debug-function/</id><summary type="html">&lt;p&gt;學了那麼久才知道有這種好功能可以用 = ="
-&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;第一行是重新安裝，第二行是再次設定。下完後就會進入設定畫面了~。&lt;/p&gt;</summary></entry><entry><title>C useful DEBUG function</title><link href="http://blog.carlcarl.me/15/c-useful-debug-function/" rel="alternate"></link><updated>2011-03-31T18:29:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2011-03-31:15/c-useful-debug-function/</id><summary type="html">&lt;p&gt;學了那麼久才知道有這種好功能可以用 = ="&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#define DBG(msg, arg...) printf(&amp;quot;%s:%s(%d): &amp;quot; msg,  __FILE__, __FUNCTION__, __LINE__, ##arg)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

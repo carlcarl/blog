@@ -66,8 +66,7 @@
 stackoverflow，也有<a href="http://stackoverflow.com/questions/4655711/measuring-execution-time-of-a-function-inside-linux-kernel">一個遇到一樣的問題</a>，我猜可能 <code>jiffies</code> 也是用
 period update 的方式做更新，由於中間測量的 function
 太快，導致來不及更新就拿到了一樣的值這樣。而在下面的回答中看到可以用
-<code>do_gettimeofday()</code> 來抓時間區間，簡單範例如下：<br />
-<!--more--></p>
+<code>do_gettimeofday()</code> 來抓時間區間，簡單範例如下：  </p>
 <div class="highlight"><pre><span class="cp">#include &lt;linux/time.h&gt;</span>
 <span class="c1">// ...</span>
 <span class="k">struct</span> <span class="n">timeval</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">;</span>

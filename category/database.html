@@ -121,8 +121,7 @@ query 的時機，所以在測試的時候，query 其實都沒有發出，難�
 切出來的不一定是理想的範圍 orz。</p>
 <p>大致就兩個步驟，第一個是切 chunk，第二個是移動 chunk 到某個 shard
 上，如果 balancer 沒關掉的話，第二個步驟會由 balancer 幫你決定你的 chunk
-要移到哪個 shard 上。<br />
-<!--more-->  </p>
+要移到哪個 shard 上。  </p>
 <h3>切 chunk 指令</h3>
 <div class="highlight"><pre><span class="c1">// 第一個參數是指定在哪個 DB 中的 collection，</span>
 <span class="c1">// 因為文件裡只說是 collection，所以可能會忘了加上 DB 的名稱</span>
@@ -146,8 +145,7 @@ query 的時機，所以在測試的時候，query 其實都沒有發出，難�
                         <a href="http://blog.carlcarl.me/663/mongodb-check-status-command/" rel="bookmark"><h1>MongoDB check status command</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>紀錄一下 MongoDB 看狀態時常會用到的指令。<br />
-<!--more--></p>
+                        <p>紀錄一下 MongoDB 看狀態時常會用到的指令。  </p>
 <div class="highlight"><pre><span class="c"># 看目前 state 的指令</span>
 mongostat
 </pre></div>
@@ -193,7 +191,6 @@ mongostat
                     </header>
                     <section class="post-content">
                         <p>感覺不是很難的 query，想說用 mongodb aggregation 來解決，不過查資料查了好久才知道怎麼用。<br />
-<!--more--><br />
 以 sql 來說的話，我是要對某個欄位作 group by，分類完之後再對分類完的欄位作 count，算完之後再根據 count 的數字作 sort。下面這段是 MongoDB 中的用法：</p>
 <div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">mytable</span><span class="p">.</span><span class="nx">aggregate</span><span class="p">({</span> <span class="nx">$group</span><span class="o">:</span><span class="p">{</span> <span class="nx">_id</span><span class="o">:</span> <span class="s2">&quot;$b_cd&quot;</span><span class="p">,</span> <span class="nx">num</span><span class="o">:</span> <span class="p">{</span><span class="nx">$sum</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span> <span class="p">}},</span> <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">num</span><span class="o">:</span><span class="mi">1</span><span class="p">}}</span> <span class="p">);</span>
 </pre></div>
@@ -216,8 +213,7 @@ mongostat
                         <a href="http://blog.carlcarl.me/589/mongodb-php-connection/" rel="bookmark"><h1>mongodb php connection</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>大概寫一下 mongodb + auth 的連線步驟，之前我是這樣做連線認証：<br />
-<!--more--></p>
+                        <p>大概寫一下 mongodb + auth 的連線步驟，之前我是這樣做連線認証：  </p>
 <div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="nv">$m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://localhost:27017&quot;</span><span class="p">);</span>    
 <span class="nv">$db</span> <span class="o">=</span> <span class="nv">$m</span><span class="o">-&gt;</span><span class="na">mytable</span><span class="p">;</span>

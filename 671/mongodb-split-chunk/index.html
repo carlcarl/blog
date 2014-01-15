@@ -64,8 +64,7 @@
 切出來的不一定是理想的範圍 orz。</p>
 <p>大致就兩個步驟，第一個是切 chunk，第二個是移動 chunk 到某個 shard
 上，如果 balancer 沒關掉的話，第二個步驟會由 balancer 幫你決定你的 chunk
-要移到哪個 shard 上。<br />
-<!--more-->  </p>
+要移到哪個 shard 上。  </p>
 <h3>切 chunk 指令</h3>
 <div class="highlight"><pre><span class="c1">// 第一個參數是指定在哪個 DB 中的 collection，</span>
 <span class="c1">// 因為文件裡只說是 collection，所以可能會忘了加上 DB 的名稱</span>

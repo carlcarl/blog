@@ -60,8 +60,6 @@
                         <p>之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生
 build 好的 css，這個問題一直困擾我很久，每次都要重新跑一次
 <code>brunch watch --server</code> 實在是很不爽，今天晚上剛好有一點時間就來修了。</p>
-<!--more-->
-
 <p>網站是用 <code>less</code>，然後有一個主要的 less 檔來 <code>@import</code> 其他在 <code>less</code>
 資料夾底下的 .less 檔，目錄架構大概像底下這樣：</p>
 <div class="highlight"><pre>├── less
@@ -74,7 +72,7 @@ build 好的 css，這個問題一直困擾我很久，每次都要重新跑一�
 <p>然後 <code>config.ls</code> (這邊是用 livescript) 裡對應的設定部分：</p>
 <div class="highlight"><pre><span class="nv">stylesheets:</span>
   <span class="nv">joinTo:</span>
-    <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less ...</span></pre></div></!--more-->
+    <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

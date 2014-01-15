@@ -197,12 +197,10 @@ adblock 擋掉，右邊還是會留空，想說都沒寫過 browser 的 extensio
 ，所以就拿這個來練功啦～，不然其實寫 userscript 也可以就是。要弄的
 extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通，寫起來 CP
 值比較高 XD。</p>
-<!--more-->
-
 <p>本來想說直接綁定 <code>window.onload</code> 在裡面做就好了，不過後來發現 Aol Reader
 在 <code>onload</code> 之後還會有個它自己 loading
 的頁面，處理起來就變麻煩很多，因為除了要觀察 dom 來判斷何時才算真的
-ready 以外，另外就是 ...</p></!--more-->
+ready 以外，另外就是 ...</p>
                     </section>
                 </article>
                 <hr/>
@@ -242,8 +240,6 @@ ready 以外，另外就是 ...</p></!--more-->
                         <p>雖然也可以用另外的軟體截圖，不過有時候截的大小不是很準確
 orz。這邊我是要對某個 element 做截圖，而且大小要很精確，後來剛好看到
 firefox 的 developer tool 也有這樣的功能，所以就試了一下。</p>
-<!--more-->
-
 <p>一開始按 <code>shift+F2</code> 就會出現一個輸入視窗。嗯，沒錯，它的 screenshot 是
 CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 叫做 target
 的區塊，可以這樣下：</p>
@@ -252,7 +248,7 @@ CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 
 
 
 <p>這樣就會把 <code>#target</code> 這個部分存成一個圖片檔，名稱為 <code>test.png</code>。其他還有
-<code>--delay</code>, <code>--clipboard</code>...等選項 ...</p></!--more-->
+<code>--delay</code>, <code>--clipboard</code>...等選項 ...</p>
                     </section>
                 </article>
                 <hr/>
@@ -269,8 +265,6 @@ CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 
                         <p>最近遇到在測 throughput 中，有一定機率無法關掉 DMZ
 的問題，而且這邊只要關掉 throughput 後，DMZ 就會順利關掉，看起來像是
 throughput 的連線讓被刪掉的 conntrack 連線又復活(?)了這樣 =.=。</p>
-<!--more-->
-
 <p>看了一下 firewall 的 rule，裡面確實是有刪除 conntrack connection 的
 rule，指令如下：</p>
 <div class="highlight"><pre>conntrack -D conntrack -g -r xxx.xxx.xxx.xxx
@@ -279,7 +273,7 @@ rule，指令如下：</p>
 
 <p>看了一下 <code>conntrack －L conntrack</code> 的記錄，grep 了在接收 throughput 的
 port，發現還是有連線存在，來源是從 NAT
-內部到外面 ...</p></!--more-->
+內部到外面 ...</p>
                     </section>
                 </article>
                 <hr/>

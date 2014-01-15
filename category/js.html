@@ -87,12 +87,10 @@ adblock 擋掉，右邊還是會留空，想說都沒寫過 browser 的 extensio
 ，所以就拿這個來練功啦～，不然其實寫 userscript 也可以就是。要弄的
 extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通，寫起來 CP
 值比較高 XD。</p>
-<!--more-->
-
 <p>本來想說直接綁定 <code>window.onload</code> 在裡面做就好了，不過後來發現 Aol Reader
 在 <code>onload</code> 之後還會有個它自己 loading
 的頁面，處理起來就變麻煩很多，因為除了要觀察 dom 來判斷何時才算真的
-ready 以外，另外就是 ...</p></!--more-->
+ready 以外，另外就是 ...</p>
                     </section>
                 </article>
                 <hr/>
@@ -130,8 +128,6 @@ function 處理一堆 array 結構的校能的話，就可以不需要理這欄�
                         <p>因為之前寫 java 的經驗，讓我以為在 html5 的 canvas 上也要自己實作 double
 buffering，但是在我後來實作後發現，好像哪裡怪怪的，因為其實原本就沒有在閃的感覺了，所以加了
 double buffering 好像也沒啥差，重點是 performance 下降很多......。</p>
-<!--more-->
-
 <p>後來花了一些時間找資料，我得到的結論－是大部分的情況，不需要自己做
 double buffering，因為瀏覽器會很聰明的幫你做。但是它怎麼判斷什麼時候該把
 buffer 的部分 render 上去呢？以下是我的鍵盤猜測：</p>
@@ -139,7 +135,7 @@ buffer 的部分 render 上去呢？以下是我的鍵盤猜測：</p>
 就會刷新一次螢幕，而瀏覽器本身在刷新的頻率可能也會接近這個時間，但是有沒有比較高就不知道了，因為你所看到的可能會被你螢幕的更新頻率所限制，就算瀏覽器刷新頻率是
 1000Hz，反正一般的銀幕也看不出來:P。</p>
 <p>以一個簡單的例子來實驗，假如我在一開始把一個方形塗上顏色然後 clear
-掉 ...</p></!--more-->
+掉 ...</p>
                     </section>
                 </article>
                 <hr/>
@@ -224,8 +220,7 @@ event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有�
                     </header>
                     <section class="post-content">
                         <p>之前在找 Javascript 這方面的 library
-該怎麼寫，看了一些資料，覺得以下這種方式不錯<br />
-<!--more--></p>
+該怎麼寫，看了一些資料，覺得以下這種方式不錯  </p>
 <div class="highlight"><pre><span class="c1">// library example</span>
 <span class="kd">var</span> <span class="nx">animal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;tom&#39;</span><span class="p">;</span> <span class="c1">// private variable</span>
@@ -263,13 +258,11 @@ event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有�
                         <p>在 <a href="http://blog.xuite.net/vexed/tech/61308318">script tag 屬性 async defer 差別</a> 這邊看到了 script tag 有 async
 和 defer 的用法，所以就來試試看。大致測試了一下，速度的確有快了一些(大概加快50 ~ 100ms
 左右吧XD)。以下大概講一下我的測試範例內容：</p>
-<!--more-->
-
 <div class="highlight"><pre><span class="c">&lt;!-- </span>
 <span class="c">這是原本的程式</span>
 <span class="c">a-b.js 需要 a.js, 而 a-c.js 需要 a.js, 這是這 3 個 js 檔的相依關係</span>
 <span class="c">最後會從 a-c.js 裡呼叫 library 來執行</span>
-<span class="c">由於 async 屬性並不適合用來處理有相依性的 js 檔案 ...</span></pre></div></!--more-->
+<span class="c">由於 async 屬性並不適合用來處理有相依性的 js 檔案 ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

@@ -61,7 +61,6 @@
 
                     <section class="post-content">
                         <p>感覺不是很難的 query，想說用 mongodb aggregation 來解決，不過查資料查了好久才知道怎麼用。<br />
-<!--more--><br />
 以 sql 來說的話，我是要對某個欄位作 group by，分類完之後再對分類完的欄位作 count，算完之後再根據 count 的數字作 sort。下面這段是 MongoDB 中的用法：</p>
 <div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">mytable</span><span class="p">.</span><span class="nx">aggregate</span><span class="p">({</span> <span class="nx">$group</span><span class="o">:</span><span class="p">{</span> <span class="nx">_id</span><span class="o">:</span> <span class="s2">&quot;$b_cd&quot;</span><span class="p">,</span> <span class="nx">num</span><span class="o">:</span> <span class="p">{</span><span class="nx">$sum</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span> <span class="p">}},</span> <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">num</span><span class="o">:</span><span class="mi">1</span><span class="p">}}</span> <span class="p">);</span>
 </pre></div>

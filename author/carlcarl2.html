@@ -157,8 +157,6 @@ orz。</p>
                         <p>之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生
 build 好的 css，這個問題一直困擾我很久，每次都要重新跑一次
 <code>brunch watch --server</code> 實在是很不爽，今天晚上剛好有一點時間就來修了。</p>
-<!--more-->
-
 <p>網站是用 <code>less</code>，然後有一個主要的 less 檔來 <code>@import</code> 其他在 <code>less</code>
 資料夾底下的 .less 檔，目錄架構大概像底下這樣：</p>
 <div class="highlight"><pre>├── less
@@ -171,7 +169,7 @@ build 好的 css，這個問題一直困擾我很久，每次都要重新跑一�
 <p>然後 <code>config.ls</code> (這邊是用 livescript) 裡對應的設定部分：</p>
 <div class="highlight"><pre><span class="nv">stylesheets:</span>
   <span class="nv">joinTo:</span>
-    <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less ...</span></pre></div></!--more-->
+    <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>
@@ -215,7 +213,6 @@ orz，不過也比原來的情況好多了(汗)，之後功力如果好一點再
                         <p>簡單說就是在 link 內容如果是 float 的情況下，這個 link 沒辦法在按 tab
 鍵的時候得到 focus。Google 了一下，好像是 <a href="https://bugs.webkit.org/show_bug.cgi?id=51333">Webkit 的
 bug</a>，不過好像沒有打算要修的樣子(汗)。<br />
-<!--more--><br />
 Link 如果在下面的情況是 OK 的：</p>
 <div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div&gt;</span>test<span class="nt">&lt;/div&gt;</span>
@@ -246,8 +243,6 @@ Link 如果在下面的情況是 OK 的：</p>
                     </header>
                     <section class="post-content">
                         <p>參考<a href="http://www.makelinux.net/ldd3/chp-4-sect-2">這篇</a>，然後做了點修改。</p>
-<!--more-->
-
 <div class="highlight"><pre>#undef CM_DBG
 #ifdef LTE_CM_DEBUG
 #   define CM_DBG(fmt, args...) do{   
@@ -267,7 +262,7 @@ Link 如果在下面的情況是 OK 的：</p>
 <p>大致除了命名外還做了點修改：</p>
 <ol>
 <li>把 <code>printk</code> 的部分拿掉，因為我不需要。</li>
-<li><code>CM_DBGG</code> 改成跟原本功能一樣 ...</li></ol></!--more-->
+<li><code>CM_DBGG</code> 改成跟原本功能一樣 ...</li></ol>
                     </section>
                 </article>
                 <hr/>
