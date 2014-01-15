@@ -10,8 +10,6 @@ Slug: html-script-speed-up-with-defer
 和 defer 的用法，所以就來試試看。大致測試了一下，速度的確有快了一些(大概加快50 ~ 100ms
 左右吧XD)。以下大概講一下我的測試範例內容：
 
-<!--more-->
-
 	:::html
 	<!-- 
 	這是原本的程式

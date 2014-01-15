@@ -10,8 +10,6 @@ Slug: kde-hide-decoration
 找方法找好久，結果後來不經意就看到了這個資訊囧，不過可惜只能透過改設定檔的方式，GUI
 上似乎沒有這個設定。
 
-<!--more-->
-
 修改 `.kde4/share/config/kwinrc`，找到 `[Windows]`，在下一行加上：
 
 	:::conf

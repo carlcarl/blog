@@ -8,7 +8,6 @@ Slug: javascript-library-simple-structure
 
 之前在找 Javascript 這方面的 library
 該怎麼寫，看了一些資料，覺得以下這種方式不錯  
-<!--more-->
 
 	:::javascript
 	// library example

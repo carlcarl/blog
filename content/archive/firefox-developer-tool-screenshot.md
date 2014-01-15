@@ -10,8 +10,6 @@ Slug: firefox-developer-tool-screenshot
 orz。這邊我是要對某個 element 做截圖，而且大小要很精確，後來剛好看到
 firefox 的 developer tool 也有這樣的功能，所以就試了一下。
 
-<!--more-->
-
 一開始按 `shift+F2` 就會出現一個輸入視窗。嗯，沒錯，它的 screenshot 是
 CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 叫做 target
 的區塊，可以這樣下：

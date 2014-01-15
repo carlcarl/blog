@@ -7,7 +7,6 @@ Tags: mongodb
 Slug: mongodb-check-status-command
 
 紀錄一下 MongoDB 看狀態時常會用到的指令。  
-<!--more-->
 
 	:::bash
 	# 看目前 state 的指令

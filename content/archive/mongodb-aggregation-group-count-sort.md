@@ -7,7 +7,6 @@ Tags: mongodb
 Slug: mongodb-aggregation-group-count-sort
 
 感覺不是很難的 query，想說用 mongodb aggregation 來解決，不過查資料查了好久才知道怎麼用。  
-<!--more-->  
 以 sql 來說的話，我是要對某個欄位作 group by，分類完之後再對分類完的欄位作 count，算完之後再根據 count 的數字作 sort。下面這段是 MongoDB 中的用法：
 
 	:::javascript

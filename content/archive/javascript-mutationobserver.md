@@ -12,7 +12,6 @@ adblock 擋掉，右邊還是會留空，想說都沒寫過 browser 的 extensio
 extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通，寫起來 CP
 值比較高 XD。
 
-<!--more-->
 
 本來想說直接綁定 `window.onload` 在裡面做就好了，不過後來發現 Aol Reader
 在 `onload` 之後還會有個它自己 loading

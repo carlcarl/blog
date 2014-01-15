@@ -10,7 +10,6 @@ Slug: cloudstack-port-forwarding-and-load-balancing-note
 forwarding 時，發現 port 怎麼樣都 forward 不到 VM
 上，找了很多資料，後來才發現原來是前端的 firewall 也要開對應的 port
 才行。  
-<!--more-->  
 ![firewall
 rule][] 
 

@@ -10,8 +10,6 @@ Slug: html5-canvas-double-buffering
 buffering，但是在我後來實作後發現，好像哪裡怪怪的，因為其實原本就沒有在閃的感覺了，所以加了
 double buffering 好像也沒啥差，重點是 performance 下降很多......。
 
-<!--more-->
-
 後來花了一些時間找資料，我得到的結論－是大部分的情況，不需要自己做
 double buffering，因為瀏覽器會很聰明的幫你做。但是它怎麼判斷什麼時候該把
 buffer 的部分 render 上去呢？以下是我的鍵盤猜測：

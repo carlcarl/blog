@@ -6,7 +6,6 @@ Category: C &amp; C++
 Slug: c-useful-debug-function
 
 學了那麼久才知道有這種好功能可以用 = ="
-<!--more-->
 
 	:::c
 	#define DBG(msg, arg...) printf("%s:%s(%d): " msg, 	__FILE__, __FUNCTION__, __LINE__, ##arg)

@@ -12,7 +12,6 @@ Slug: mongodb-split-chunk
 大致就兩個步驟，第一個是切 chunk，第二個是移動 chunk 到某個 shard
 上，如果 balancer 沒關掉的話，第二個步驟會由 balancer 幫你決定你的 chunk
 要移到哪個 shard 上。  
-<!--more-->  
 
 ### 切 chunk 指令
 

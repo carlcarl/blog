@@ -12,7 +12,6 @@ stackoverflow，也有[一個遇到一樣的問題][]，我猜可能 `jiffies` �
 period update 的方式做更新，由於中間測量的 function
 太快，導致來不及更新就拿到了一樣的值這樣。而在下面的回答中看到可以用
 `do_gettimeofday()` 來抓時間區間，簡單範例如下：  
-<!--more-->
 
 	:::c
 	#include <linux/time.h>

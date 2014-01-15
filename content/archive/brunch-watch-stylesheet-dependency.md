@@ -10,8 +10,6 @@ Slug: brunch-watch-stylesheet-dependency
 build 好的 css，這個問題一直困擾我很久，每次都要重新跑一次
 `brunch watch --server` 實在是很不爽，今天晚上剛好有一點時間就來修了。
 
-<!--more-->
-
 網站是用 `less`，然後有一個主要的 less 檔來 `@import` 其他在 `less`
 資料夾底下的 .less 檔，目錄架構大概像底下這樣：
 

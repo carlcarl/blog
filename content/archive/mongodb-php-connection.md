@@ -7,7 +7,6 @@ Tags: mongodb, php
 Slug: mongodb-php-connection
 
 大概寫一下 mongodb + auth 的連線步驟，之前我是這樣做連線認証：  
-<!--more-->
 
 	:::php
 	<?php

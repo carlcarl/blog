@@ -16,7 +16,6 @@ bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
 因為 firefox-kde-opensuse 要自己編太麻煩了，所以加個 repo
 這樣以後安裝比較省時，是說要不是 [Whiksy][]
 有提供我還真的不知道原來有......。  
-<!--more-->  
 以下複製到 `/etc/pacman.conf` 中：
 
     [chakra-gtk-repo]

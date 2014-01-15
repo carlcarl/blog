@@ -7,7 +7,6 @@ Tags: virtualenvwrapper, mac
 Slug: mac-virtualenvwrapper-no-module-named-setuptools-error
 
 在 Mac 上安裝 virtualenvwrapper 的時候遇到的錯誤，解決方法：  
-<!--more-->  
 ### 首先先重新安裝 setuptools [載點][] ，下載完執行：
 
 	:::bash

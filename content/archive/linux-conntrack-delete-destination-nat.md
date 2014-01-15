@@ -10,8 +10,6 @@ Slug: linux-conntrack-delete-destination-nat
 的問題，而且這邊只要關掉 throughput 後，DMZ 就會順利關掉，看起來像是
 throughput 的連線讓被刪掉的 conntrack 連線又復活(?)了這樣 =.=。
 
-<!--more-->
-
 看了一下 firewall 的 rule，裡面確實是有刪除 conntrack connection 的
 rule，指令如下：
 

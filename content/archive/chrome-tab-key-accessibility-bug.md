@@ -9,7 +9,6 @@ Slug: chrome-tab-key-accessibility-bug
 簡單說就是在 link 內容如果是 float 的情況下，這個 link 沒辦法在按 tab
 鍵的時候得到 focus。Google 了一下，好像是 [Webkit 的
 bug][]，不過好像沒有打算要修的樣子(汗)。  
-<!--more-->  
 Link 如果在下面的情況是 OK 的：
 
 	:::html

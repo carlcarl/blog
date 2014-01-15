@@ -8,8 +8,6 @@ Slug: c-define-debug-function
 
 參考[這篇][]，然後做了點修改。
 
-<!--more-->
-
 	:::text
     #undef CM_DBG
     #ifdef LTE_CM_DEBUG
