@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    [Review] Learning Python Design Patterns
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="[Review] Learning Python Design Patterns" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1385/review_learning_python_design_patterns/" />
+                <meta property="og:description" content="其實之前就想看有關 design pattern 的書了，前一陣子剛好有這個機會看這本書，順便想看看在 Python 上要怎麼運用這些 pattern。 這本書頁數並沒有說很多，約 130 頁左右，看起來不會說很吃力。書中每一章都會對一至兩種 pattern 做解釋，然後說明優缺點，並附上一個不算偷懶的 example，還算好理解的就是，不過覺得有點可惜的是如果有加上沒有應用和應用後的一些實際比較就更好了。 而這本書本身應該會比較適合剛學 Python 一些時間的中 ~ 新手，例如第一章講 MVC 其實我自己就覺得不是很必要了，不過就適合不是很熟的人吧。接下來幾章則會講到 Singleton pattern，Factory Method, Facade pattern, Proxy pattern, Observer pattern, Command pattern 和 Template Method design pattern 這些。 而上述的這些 ..." />
+                    <meta property="article:tag" content="python" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <p id="site-desc"></p>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-19T16:00:00" pubdate>
+                            Sun 19 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1385/review_learning_python_design_patterns/" rel="bookmark"><h1>[Review] Learning Python Design Patterns</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p><img alt="learning python design pattern" src="http://i.imgur.com/y1iu7cl.png" /></p>
+<p>其實之前就想看有關 design pattern 的書了，前一陣子剛好有這個機會看這本書，順便想看看在 Python 上要怎麼運用這些 pattern。</p>
+<p>這本書頁數並沒有說很多，約 130 頁左右，看起來不會說很吃力。書中每一章都會對一至兩種 pattern 做解釋，然後說明優缺點，並附上一個不算偷懶的 example，還算好理解的就是，不過覺得有點可惜的是如果有加上沒有應用和應用後的一些實際比較就更好了。</p>
+<p>而這本書本身應該會比較適合剛學 Python 一些時間的中 ~ 新手，例如第一章講 MVC 其實我自己就覺得不是很必要了，不過就適合不是很熟的人吧。接下來幾章則會講到 Singleton pattern，Factory Method, Facade pattern, Proxy pattern, Observer pattern, Command pattern 和 Template Method design pattern 這些。</p>
+<p>而上述的這些 patterns，其中像是 Facade, Proxy, Command 和 Template Method 我都沒看過 XD。從這本書中所描述的來看，Facade pattern 簡單說就是封裝，把複雜的底層包起來提供一個 interface ；Proxy pattern 則是用來做中介管理，就感覺上，好像也能做到 Singleton pattern 的事，另外也適合拿來做 cache 管理之類的；Command pattern 跟 Proxy 其實也滿像的，不過實際應用的時候細節上會不太一樣，例如 undo, history maintain 的功能；Template Method 看完發現我之前用的好像還蠻像這個的XD，主要是對同類型的應用，細節上可能不太一樣，所以提供一個 abstact 的 template class，再由這些應用繼承並實作不同細節的地方，不過這樣其實就必須先知道每個應用的大概實作方法和架構，才有辦法切開不同的地方，我自己之前寫是分三層，整個功能的流程，每個 method 的流程以及 method 的細部實作，把前兩層寫好一個大致通用的之後，再把細部留給繼承的 class 實作，如果有些差異太大，沒辦法只實作細部實作的話，再考慮覆寫整個 method 的流程這樣。我自己寫的可以參考 <a href="https://github.com/carlcarl/imgurup">這裡</a>。</p>
+<p>總之，這本書個人是覺得還算 OK 囉，有興趣的可以參考看看 :)。</p>
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/python.html">python</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/python.html">python</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>
