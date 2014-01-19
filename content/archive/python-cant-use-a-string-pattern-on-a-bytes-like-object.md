@@ -3,7 +3,7 @@ Date: 2013-05-23 16:25
 Author: carlcarl
 Post_ID: 852
 Category: python
-Tags: encode, httplib, json, python, python2, python3
+Tags: encode, httplib, json, python
 Slug: python-cant-use-a-string-pattern-on-a-bytes-like-object
 
 最近嘗試將 Python2 的程式轉成
