@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-16T18:30:00" pubdate>
+                            Tue 16 July 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1212/python-yahoo-weather/" rel="bookmark"><h1>Python Yahoo weather</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>實際做起來不難，是說弄完才發現有 <a href="https://pypi.python.org/pypi/yweather/0.1">yweather</a> 這個可以用囧。</p>
+<p>首先到 <a href="http://developer.yahoo.com/yql/console/">YQL</a> 這邊下 query，這邊可以參考<a href="http://my.opera.com/weiyu/blog/2012/04/08/yql-yahoo">這篇</a>最下面的兩種 query
+方法。格式可以選 JSON 然後把 callback 名稱拿掉，下完 query
+就可以產生一段網址，以新竹的例子來說就是:</p>
+<div class="highlight"><pre>http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D%22TWXX0009%22%20and%20u%3D%22c%22&amp;format=json&amp;diagnostics=true&amp;callback ...</pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-07-14T05:11:00" pubdate>
                             Sun 14 July 2013
                         </time>
@@ -291,27 +309,6 @@ doc，設置還算簡單，不過好像漏了個小地方。  </p>
 <p>到這邊就 OK 了。</p>
 <p>參考網址：  </p>
 <p><a href="http://code.doughellmann.com/virtualenvwrapper/issue/158/installing-virtualenvwrapper-on-on-osx-108">http://code.doughellmann.com/virtualenvwrapper/issue/158/installing-virtualenvwrapper-on-on-osx-108</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-10-15T20:44:00" pubdate>
-                            Mon 15 October 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/690/ubuntu-install-salt-tool/" rel="bookmark"><h1>Ubuntu install salt tool</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>現在有操作多台機器執行同樣指令的需求，想說裝 <a href="http://docs.saltstack.org/en/latest/contents.html">salt</a>
-來管理看看，詳細介紹可以點連結進去看看。簡單來講，這套工具可以讓你方便一次去對多個機器進行操作，另外還可以透過用 Python 並 import salt module 來處理整個流程和回傳的資料。  </p>
-<p>salt 分成了兩個部份，<code>salt-master</code> 和 <code>salt-minion</code> ，<code>salt-master</code>
-就是 server 端，也就是你用來管理其他機器的機器上要裝的 (有點饒舌=
-=")，minion 則是 client 端，就是被管理的機器所要裝的套件。server
-端會開個 service 讓 client 連，所以 client 端必須能夠知道 server 端的 IP
-或者是 host name ，client 端連上來後，server 端可以決定是否接受這個
-client ...</p>
                     </section>
                 </article>
                 <hr/>

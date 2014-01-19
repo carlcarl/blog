@@ -51,6 +51,27 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-10-15T20:44:00" pubdate>
+                            Mon 15 October 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/690/ubuntu-install-salt-tool/" rel="bookmark"><h1>Ubuntu install salt tool</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>現在有操作多台機器執行同樣指令的需求，想說裝 <a href="http://docs.saltstack.org/en/latest/contents.html">salt</a>
+來管理看看，詳細介紹可以點連結進去看看。簡單來講，這套工具可以讓你方便一次去對多個機器進行操作，另外還可以透過用 Python 並 import salt module 來處理整個流程和回傳的資料。  </p>
+<p>salt 分成了兩個部份，<code>salt-master</code> 和 <code>salt-minion</code> ，<code>salt-master</code>
+就是 server 端，也就是你用來管理其他機器的機器上要裝的 (有點饒舌=
+=")，minion 則是 client 端，就是被管理的機器所要裝的套件。server
+端會開個 service 讓 client 連，所以 client 端必須能夠知道 server 端的 IP
+或者是 host name ，client 端連上來後，server 端可以決定是否接受這個
+client ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-08-28T00:01:00" pubdate>
                             Tue 28 August 2012
                         </time>

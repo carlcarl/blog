@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-19T16:00:00" pubdate>
+                            Sun 19 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1385/review_learning_python_design_pattern/" rel="bookmark"><h1>[Review] Learning Python Design Pattern</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="learning python design pattern" src="http://i.imgur.com/y1iu7cl.png" /></p>
+<p>其實之前就想看有關 design pattern 的書了，前一陣子剛好有這個機會看這本書，順便想看看在 Python 上要怎麼運用這些 pattern。</p>
+<p>這本書頁數並沒有說很多，約 130 頁左右，看起來不會說很吃力。書中每一章都會對一至兩種 pattern 做解釋，然後說明優缺點，並附上一個不算偷懶的 example，還算好理解的就是，不過覺得有點可惜的是如果有加上沒有應用和應用後的一些實際比較就更好了。</p>
+<p>而這本書本身應該會比較適合剛學 Python 一些時間的中 ~ 新手，例如第一章講 MVC 其實我自己就覺得不是很必要了，不過就適合不是很熟的人吧。接下來幾章則會講到 Singleton pattern，Factory Method, Facade pattern, Proxy pattern, Observer pattern, Command pattern 和 Template Method design pattern 這些。</p>
+<p>而上述的這些 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-15T01:00:00" pubdate>
                             Wed 15 January 2014
                         </time>
@@ -226,29 +244,6 @@ sudo vim /etc/resolvconf/resolv.conf.d/base
                     <section class="post-content">
                         <p>終於從 <a href="http://tw.wordpress.org">wordpress</a> 轉到 <a href="https://github.com/carlcarl/pelican/tree/support-post-id">pelican</a> 了，中間經歷了不少的問題，之所以從 wordpress 離開到 pelican，主要是覺得 wordpress 本身其實綁了很多我不需要的功能，現在我只是想純粹做一些筆記而已，於是朝 static site generator 這方面去看，之前是有看過 <a href="http://octopress.org">octopress</a>，但是對 ruby 實在沒啥興趣，找了一下 python 寫的，發現其實也有蠻多種的，後來看 pelican 有蠻多人都有試過，而且開發也還蠻熱烈的，於是就選擇了這個 blog 系統。</p>
 <p>接下來就是想想該怎麼轉移，從 wordpress export 文章出來之後，pelican 提供了 <code>pelican-import</code> 這個工具可以將 wordpress 文章匯入的功能，還蠻方便的，但是卻沒有支援 <code>post_id</code> 這個文章屬性 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-05T02:15:00" pubdate>
-                            Sat 05 October 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1375/tig-broken-in-tmux/" rel="bookmark"><h1>tig broken in tmux</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>這個問題已經困擾我滿久了，在 <a href="http://tmux.sourceforge.net">tmux</a> 裡用 <a href="https://github.com/jonas/tig">tig</a>
-畫面會一直破碎，不過一直找不到原因，最近想到，於是又找看看有沒有解法，後來試了<a href="https://wiki.archlinux.org/index.php/tmux">一篇</a>裡面的做法就
-OK 了 QQ。</p>
-<p>靈感是在查資料的時候看到有人是因為在 <code>tmux.conf</code> 裡設定了
-<code>default-terminal=xterm</code> 想到的，中間有試了一下 screen，發現 tig 在
-screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</code>，而我在 tmux
-下得到的輸出卻是 <code>xterm-256color</code>，想說朝這個方向去找資料。這邊先找了
-<code>tmux.conf</code> 中，但是我並沒有設定這個東西，看了
-<code>.zshrc</code>，原來我是在這邊設定了
-<code>export TERM ...</code></p>
                     </section>
                 </article>
                 <hr/>

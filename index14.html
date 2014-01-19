@@ -51,6 +51,46 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-22T18:31:00" pubdate>
+                            Fri 22 July 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/38/c-plus-plus-redirect-cout-to-file/" rel="bookmark"><h1>C++ redirect cout to file</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>可能有些人會覺得說用 <code>fstream</code> 另外寫就好了</p>
+<p>不過程式如果有設定可以輸出至螢幕或是檔案的話</p>
+<p>分開兩個寫就會讓人覺得很麻煩</p>
+<p>可能有關輸出的部份都需要用 <code>if</code> 判斷，然後分兩塊輸出</p>
+<p>如果在一開始就設定 <code>cout</code> 是輸出到螢幕或是檔案的話</p>
+<p>之後就不用再用 <code>if</code> 來一個一個判斷了，這個是我覺得的優點</p>
+<p>程式碼片段範例</p>
+<div class="highlight"><pre><span class="kt">bool</span> <span class="n">readFromFile</span><span class="p">;</span>
+<span class="c1">//根據一些判斷去設定readFromFile的值</span>
+<span class="n">readFromFile</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="n">readFromFile</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">ofstream</span> <span class="n">outputFile</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">fileName</span> <span class="o">=</span> <span class="s">&quot;file.txt&quot;</span><span class="p">;</span>
+    <span class="n">outputFile</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">fstream</span><span class="o">::</span><span class="n">out</span><span class="p">);</span>
+    <span class="n">cout</span><span class="p">.</span><span class="n">rdbuf</span><span class="p">(</span><span class="n">outputFile</span><span class="p">.</span><span class="n">rdbuf</span><span class="p">());</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="c1">//表示輸出到stdout</span>
+<span class="p">{</span>
+    <span class="c1">//不做任何事情 因為cout本來就是輸出到stdout</span>
+<span class="p">}</span>
+<span class="c1">//之後就直接用cout就可以了~</span>
+</pre></div>
+
+
+<p>參考網頁</p>
+<p><a href="http://www.java2s.com/Tutorial/Cpp/0240__File-Stream/Redirectouputintothefile.htm">http://www.java2s.com/Tutorial ...</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-07-22T09:43:00" pubdate>
                             Fri 22 July 2011
                         </time>
@@ -275,31 +315,6 @@ sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
 
 
 <p>接著在 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-06-22T14:10:00" pubdate>
-                            Wed 22 June 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/28/vim-xptemplate-add-smartytpl-support/" rel="bookmark"><h1>vim xptemplate add smarty(tpl) support</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>弄了很久 查了一下資料才發現原來那麼簡單=.=。</p>
-<p>在 <code>personal_ftplugin/</code> 底下要先建一個 <code>smarty</code> 資料夾，接著在裡面新增一個 <code>smarty.xpt.vim</code> 檔案。</p>
-<p>以下是檔案的內容:</p>
-<div class="highlight"><pre>XPTemplate priority=personal
-XPTinclude
-html/html
-</pre></div>
-
-
-<p>這樣就 ok 了，其實就是把 html 的設定拿來用而已。接著開一個 tpl 副檔名的試試看，應該是 ok。我想應該底層有去做 smarty 和 tpl 副檔名的對應，要不然這邊的內容完全都沒看到 tpl 的對應。</p>
-<p>參考網頁</p>
-<p><a href="http://groups.google.com/group/xptemplate/browse_thread/thread/9af94f0e27007817#">http://groups.google.com/group/xptemplate/browse_thread/thread/9af94f0e27007817#</a></p>
                     </section>
                 </article>
                 <hr/>

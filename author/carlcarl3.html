@@ -51,6 +51,27 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-04T02:35:00" pubdate>
+                            Sun 04 August 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1240/python-fibonacci-number/" rel="bookmark"><h1>Python fibonacci number</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 Python Taiwan 社團看到的寫法：</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="p">(([</span><span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)])</span> <span class="ow">and</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">or</span> <span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+
+<p><code>n</code> 和 <code>p</code> 分別對應 <code>10</code> 和 <code>[1,1]</code> 這兩個參數，<code>10</code> 表示要 fibonacci
+的第十個項數，<code>[1,1]</code> 是第一項和第二項的值。然後是一個 loop 將 <code>p</code>
+陣列中最後兩個值加起來再 append ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-07-25T17:11:00" pubdate>
                             Thu 25 July 2013
                         </time>
@@ -249,31 +270,6 @@ CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 
 
 <p>這樣就會把 <code>#target</code> 這個部分存成一個圖片檔，名稱為 <code>test.png</code>。其他還有
 <code>--delay</code>, <code>--clipboard</code>...等選項 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-27T16:41:00" pubdate>
-                            Thu 27 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1080/linux-conntrack-delete-destination-nat/" rel="bookmark"><h1>Linux conntrack delete destination NAT</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近遇到在測 throughput 中，有一定機率無法關掉 DMZ
-的問題，而且這邊只要關掉 throughput 後，DMZ 就會順利關掉，看起來像是
-throughput 的連線讓被刪掉的 conntrack 連線又復活(?)了這樣 =.=。</p>
-<p>看了一下 firewall 的 rule，裡面確實是有刪除 conntrack connection 的
-rule，指令如下：</p>
-<div class="highlight"><pre>conntrack -D conntrack -g -r xxx.xxx.xxx.xxx
-</pre></div>
-
-
-<p>看了一下 <code>conntrack －L conntrack</code> 的記錄，grep 了在接收 throughput 的
-port，發現還是有連線存在，來源是從 NAT
-內部到外面 ...</p>
                     </section>
                 </article>
                 <hr/>

@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-08-13T17:51:00" pubdate>
+                            Mon 13 August 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/584/vim-neocomplcache-sudo-vim/" rel="bookmark"><h1>vim neocomplcache sudo vim error</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>指令輸入 <code>sudo vim 檔案</code> 的時候會出現錯誤
+<code>neocomplcache Please use sudo.vim plugin instead of sudo command...</code>
+，不過目前遇到只有在 Ubuntu 環境底下有發生，FreeBSD 和 Chakra
+倒是沒出問題。</p>
+<p>因為我懶得去裝 sudo.vim
+這個套件，而且操作會變麻煩，所以照它另外一個錯誤訊息建議去修改
+<code>/etc/sudoers</code> 檔案，只要加上 <code>Defaults always_set_home</code> 這行就 OK 了。</p>
+<p>參考網址：<br />
+<a href="http://https://github.com/Shougo/neocomplcache/issues/179">https://github.com/Shougo/neocomplcache/issues/179</a><br />
+<a href="http://https://bbs.archlinux.org/viewtopic.php?id=72573">https://bbs.archlinux.org/viewtopic ...</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-08-12T22:18:00" pubdate>
                             Sun 12 August 2012
                         </time>
@@ -267,32 +290,6 @@ tar -xf gogoc-1_2-RELEASE.tar.gz
     <code>#include &lt;stddef.h&gt;</code> 加到
     <code>../gogoc-messaging/gogocmessaging/message.h</code>
     的檔案最上方即可 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-31T15:26:00" pubdate>
-                            Thu 31 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/495/mysql-table_cache-fail/" rel="bookmark"><h1>MySQL table_cache fail</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>一直記得之前好像遇過同樣的問題，後來才想到應該是 ulimit 的限制。ulimit
-會限制一個 user 可開啟的檔案，MySQL 也不例外，預設會被限制在最多開 1024
-個檔案，以下是跟 MySQL 有關的算式：</p>
-<div class="highlight"><pre>max_open_files = max_connections + (table_cache * 2)
-</pre></div>
-
-
-<p><code>max_open_files</code> 基本上是固定 1024，所以後面的部份一旦自己設太大，MySQL
-會自己再調整參數，所以可能會遇到你將 <code>max_connections</code> 設到
-1024、<code>table_cache</code> 設到512，可是在 MySQL command line
-中去查，<code>table_cache</code> 卻還是預設 64 的情形，<code>max_connections</code>
-的值也會同樣被降低。</p>
-<p>要預防這種情形就必須修改 <code>ulimit</code> 限制，在 <code>/etc/security/limits ...</code></p>
                     </section>
                 </article>
                 <hr/>
