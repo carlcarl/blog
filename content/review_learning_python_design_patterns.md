@@ -1,10 +1,10 @@
-Title: [Review] Learning Python Design Pattern
+Title: [Review] Learning Python Design Patterns
 Date: 2014-01-19 16:00
 Author: carlcarl
 Post_ID: 1385
 Category: python
 Tags: python
-Slug: review_learning_python_design_pattern
+Slug: review_learning_python_design_patterns
 
 
 ![learning python design pattern](http://i.imgur.com/y1iu7cl.png)
