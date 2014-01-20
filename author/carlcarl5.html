@@ -51,6 +51,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-10T02:12:00" pubdate>
+                            Mon 10 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/941/python-setup-py-package_data-permission/" rel="bookmark"><h1>Python setup.py package_data permission</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近嘗試把一些額外的 static 檔案加入到 python 的 package
+裡來讓程式操作，後來有查到可以在 setup.py 裡設定
+<code>package_data</code>，照著做之後好像滿順利的，但是在用 root 權限 install
+完，用一般使用者執行就遇到 permission 的錯誤了。</p>
+<p>看了一下安裝目錄下的 static 檔案，結果權限是 <code>400</code>，owner 是
+<code>root</code>，難怪一般使用者無法讀取，想說會不會是因為我的原本檔案權限的關係，檢查了一下，果然是
+<code>400</code>，但是我改了權限再重新安裝居然還是一樣，這時我還想說會不會是原本就有這樣的限制，還查了一堆資料
+orz。</p>
+<p>最後想到，會不會是因為我那些 build 所產生的目錄的關係，於是我把
+<code>xxx.pkg-info</code>，<code>build</code> 和 <code>dist</code>
+這三個資料夾都移除掉後再重新安裝，果然就 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-08T01:36:00" pubdate>
                             Sat 08 June 2013
                         </time>
@@ -265,36 +289,6 @@ openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
 <span class="kn">from</span> <span class="nn">paste.deploy</span> <span class="kn">import</span> <span class="n">loadapp</span>
 
 <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&#39;python setup.py develop ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-04-09T13:35:00" pubdate>
-                            Tue 09 April 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/819/python-pyramid-jsonp/" rel="bookmark"><h1>Python Pyramid jsonp</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>Python 的 Pyramid Framework 有支援 jsonp 的 renderer，看了一下
-doc，設置還算簡單，不過好像漏了個小地方。  </p>
-<p>首先要先在 <code>Configurator</code> 的檔案加入下面內容 (官方 doc 裡面沒提到要從哪邊
- <code>import JSONP</code>)：</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyramid.renderers</span> <span class="kn">import</span> <span class="n">JSONP</span>
-<span class="c"># 這裡使用 &#39;callback&#39; 當作預設的 callback function 名稱</span>
-<span class="n">config</span><span class="o">.</span><span class="n">add_renderer</span><span class="p">(</span><span class="s">&#39;jsonp&#39;</span><span class="p">,</span> <span class="n">JSONP</span><span class="p">(</span><span class="n">param_name</span><span class="o">=</span><span class="s">&#39;callback&#39;</span><span class="p">))</span>
-</pre></div>
-
-
-<p>然後在 view 裡面將 <code>renderer</code> 改用 <code>jsonp</code>，這邊你還是可以加上 <code>route_name</code>
-等參數：</p>
-<div class="highlight"><pre><span class="nd">@view_config</span><span class="p">(</span><span class="n">renderer</span><span class="o">=</span><span class="s">&#39;jsonp&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>這樣就完成了 ...</p>
                     </section>
                 </article>
                 <hr/>

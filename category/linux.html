@@ -51,6 +51,35 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-21T03:00:00" pubdate>
+                            Tue 21 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1387/raspberry_pi_bt_transmission/" rel="bookmark"><h1>Raspberry Pi BT Transmission</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>研究了一下怎麼在 <a href="http://www.raspberrypi.org">raspberry pi</a> + <a href="https://www.archlinux.org">ArchLinux</a> 上用 BT，好像都是用 <a href="http://www.transmissionbt.com">transmission</a>，所以我就跟著用了XD，下面是一些步驟。</p>
+<h2>安裝 transmission daemon</h2>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">transmission</span><span class="o">-</span><span class="n">cli</span>
+</pre></div>
+
+
+<h2>Run transmission daemon</h2>
+<p>由於一開始沒有設定檔，要先跑過才有，所以先跑一下，是說要這樣做也太囧。</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">transmission</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">transmission</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">stop</span> <span class="n">transmission</span>
+</pre></div>
+
+
+<h2>修改設定檔</h2>
+<p>設定檔位置在 <code>/var/lib/transmission/.config/transmission-daemon/settings.json</code> (這位置好爛)，我自己的設定檔如下，後方的 <code>M ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-21T02:30:00" pubdate>
                             Tue 21 January 2014
                         </time>
@@ -254,31 +283,6 @@ pid 檔案，google 了一下，在 stackoverflow
 找到 <a href="http://stackoverflow.com/questions/10939072/add-nginx-as-a-ubuntu-service-stop-and-reload-doesnt-work">這篇問題</a> 剛好和我遇到的情況一樣，check 了一下 nginx conf 裡的 pid
 檔案位置和 init script 裡的 pid
 檔案位置，發現設定並不一樣，改成一樣後，問題就解決了～～。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-06-18T18:07:00" pubdate>
-                            Mon 18 June 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/519/vm-template-cant-specify-hostname/" rel="bookmark"><h1>VM template can't specify hostname</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>這個應該很多 hypervisor 都適用，在做完 vm 的 template 之後，因為
-hostname 在這裡已經固定，所以利用這個 template 再開啟一個新的 instance
-的時候，hostname 會還是原本舊的，如果是用 DHCP
-的方式的話，照理來說是可以拿到當初指定的 hostname 的。  </p>
-<p>這邊我找了很多資料，本來從 hypervisor
-這邊去找資料，不過都沒什麼結果，後來才發現原來從 Guest OS 這邊去修改就
-OK 了，方法很簡單，在你的 VM 裡執行：</p>
-<div class="highlight"><pre>sudo mv /etc/hostname /etc/hostname.old
-</pre></div>
-
-
-<p>然後重開 VM，這樣就會根據 DHCP ...</p>
                     </section>
                 </article>
                 <hr/>

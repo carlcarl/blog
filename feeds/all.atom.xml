@@ -1,5 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2014-01-21T02:30:00+08:00</updated><entry><title>Raspberry Pi beginner</title><link href="http://blog.carlcarl.me/1386/raspberry_pi_beginner/" rel="alternate"></link><updated>2014-01-21T02:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-01-21:1386/raspberry_pi_beginner/</id><summary type="html">&lt;p&gt;之前在 COSCUP 拿到的 Raspberry Pi 一直放著沒動，最近想說還是拿來玩一下好了，不然有點浪費XD。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2014-01-21T03:00:00+08:00</updated><entry><title>Raspberry Pi BT Transmission</title><link href="http://blog.carlcarl.me/1387/raspberry_pi_bt_transmission/" rel="alternate"></link><updated>2014-01-21T03:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-01-21:1387/raspberry_pi_bt_transmission/</id><summary type="html">&lt;p&gt;研究了一下怎麼在 &lt;a href="http://www.raspberrypi.org"&gt;raspberry pi&lt;/a&gt; + &lt;a href="https://www.archlinux.org"&gt;ArchLinux&lt;/a&gt; 上用 BT，好像都是用 &lt;a href="http://www.transmissionbt.com"&gt;transmission&lt;/a&gt;，所以我就跟著用了XD，下面是一些步驟。&lt;/p&gt;
+&lt;h2&gt;安裝 transmission daemon&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;transmission&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cli&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Run transmission daemon&lt;/h2&gt;
+&lt;p&gt;由於一開始沒有設定檔，要先跑過才有，所以先跑一下，是說要這樣做也太囧。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;systemctl&lt;/span&gt; &lt;span class="n"&gt;enable&lt;/span&gt; &lt;span class="n"&gt;transmission&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;systemctl&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="n"&gt;transmission&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;systemctl&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt; &lt;span class="n"&gt;transmission&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;修改設定檔&lt;/h2&gt;
+&lt;p&gt;設定檔位置在 &lt;code&gt;/var/lib/transmission/.config/transmission-daemon/settings.json&lt;/code&gt; (這位置好爛)，我自己的設定檔如下，後方的 &lt;code&gt;M&lt;/code&gt; 表示新增或改過的:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;alt-speed-down&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;alt-speed-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;alt-speed-time-begin&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;540&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;alt-speed-time-day&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;alt-speed-time-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;alt-speed-time-end&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1020&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;alt-speed-up&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;bind-address-ipv4&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;0.0.0.0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;bind-address-ipv6&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;::&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;blocklist-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;blocklist-url&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;http://www.example.com/blocklist&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;cache-size-mb&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;dht-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;download-dir&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/mnt/BT/Complete&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="cm"&gt;/* M */&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;download-queue-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;download-queue-size&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="cm"&gt;/* M */&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;encryption&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;idle-seeding-limit&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;idle-seeding-limit-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;incomplete-dir&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/mnt/BT/Incomplete&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="cm"&gt;/* M */&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;incomplete-dir-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="cm"&gt;/* M */&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;lpd-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;message-level&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;peer-congestion-algorithm&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;peer-id-ttl-hours&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;peer-limit-global&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;peer-limit-per-torrent&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;peer-port&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;51413&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;peer-port-random-high&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;65535&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;peer-port-random-low&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;49152&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;peer-port-random-on-start&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;peer-socket-tos&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;pex-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;port-forwarding-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;preallocation&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;prefetch-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;    
+    &lt;span class="s2"&gt;&amp;quot;queue-stalled-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;queue-stalled-minutes&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;ratio-limit&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;ratio-limit-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;rename-partial-files&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;rpc-authentication-required&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;rpc-bind-address&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;0.0.0.0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;rpc-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;rpc-password&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;{a803e8f49fd53e7d4516b14511e68ea109f4a62bfbiCsfoS&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;rpc-port&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;9091&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;rpc-url&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/transmission/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;rpc-username&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;carlcarl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="cm"&gt;/* M */&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;rpc-whitelist&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;192.168.11.*&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="cm"&gt;/* M */&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;rpc-whitelist-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;scrape-paused-torrents-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;script-torrent-done-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;script-torrent-done-filename&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;seed-queue-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;seed-queue-size&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;speed-limit-down&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2500&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="cm"&gt;/* M */&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;speed-limit-down-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="cm"&gt;/* M */&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;speed-limit-up&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="cm"&gt;/* M */&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;speed-limit-up-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="cm"&gt;/* M */&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;start-added-torrents&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;trash-original-torrent-files&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;umask&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;upload-slots-per-torrent&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;utp-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;watch-dir&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/mnt/BT/Torrents&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="cm"&gt;/* M */&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;watch-dir-enabled&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt; &lt;span class="cm"&gt;/* M */&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;download-dir&lt;/code&gt; 和 &lt;code&gt;incomplete-dir&lt;/code&gt; 分開來放比較能分清楚；rpc 的部分就修改了一下可以連 web 的 ip，這邊限制在 &lt;code&gt;192.168.11.*&lt;/code&gt;，&lt;code&gt;rpc-username&lt;/code&gt; 這邊應該可以不用，就改一下放著這樣XD，&lt;code&gt;speed-limit-*&lt;/code&gt; 系列的就是限制下載和上傳的速度，基本上是要設，也可以透過 web 界面再來設定，&lt;code&gt;watch-dir&lt;/code&gt; 是自動偵測如果這個資料夾底下有新的 torrent，就開始那個 torrent 的下載，目前可能還用不太到，也是先放著這樣，目前透過 web 上傳 torrent 應該就夠用了。&lt;/p&gt;
+&lt;h2&gt;執行 transmission deamon again&lt;/h2&gt;
+&lt;p&gt;改完設定檔後，連 &lt;code&gt;http://&amp;lt;ip&amp;gt;:9091&lt;/code&gt; 應該就看得到了(&lt;code&gt;&amp;lt;ip&amp;gt;&lt;/code&gt; 就是你板子的 ip)。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;systemctl&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="n"&gt;transmission&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;其他建議&lt;/h2&gt;
+&lt;p&gt;我個人是建議可以把下載資料夾改成 &lt;code&gt;775&lt;/code&gt; 權限，然後將資料夾的 owner 設為自己的帳號，group owner 則用 &lt;code&gt;transmission&lt;/code&gt;，使用上會比較方便，權限也做一點保留。&lt;/p&gt;
+&lt;p&gt;參考資料：&lt;br /&gt;
+&lt;a href="https://lnxslck.wordpress.com/2013/03/08/transmission-daemon-on-archlinux-arm/"&gt;Transmission-daemon on Archlinux ARM&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://wiki.archlinux.org/index.php/Transmission"&gt;Transmission Archlinux Wiki&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://wwssllabcd.github.io/blog/2013/04/22/how-to-setup-transmission-deamon-in-raspberry-pi/"&gt;打造脫機下載農場，使用Raspberry Pi + Transmission-daemon&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://kasdia.tw/blog/2013/09/16/在vps上安裝transmission來進行bt下載/"&gt;在VPS上安裝TRANSMISSION來進行BT下載&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://wiki.archlinux.org/index.php/fstab"&gt;fstab&lt;/a&gt;  &lt;/p&gt;</summary><category term="raspberry"></category></entry><entry><title>Raspberry Pi beginner</title><link href="http://blog.carlcarl.me/1386/raspberry_pi_beginner/" rel="alternate"></link><updated>2014-01-21T02:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-01-21:1386/raspberry_pi_beginner/</id><summary type="html">&lt;p&gt;之前在 COSCUP 拿到的 Raspberry Pi 一直放著沒動，最近想說還是拿來玩一下好了，不然有點浪費XD。&lt;/p&gt;
 &lt;h2&gt;基本配備&lt;/h2&gt;
 &lt;p&gt;大部份其實都有了，SD 卡則是自己另外買了一張 &lt;a href="http://shopping.pchome.com.tw/?mod=item&amp;amp;func=exhibit&amp;amp;IT_NO=DGAG0H-A79608303&amp;amp;SR_NO=DGAG0H&amp;amp;ROWNO=25"&gt;SanDisk Extreme SDHC UHS-I 16GB&lt;/a&gt;，USB hub 可能之後也會需要，不過還不知道要買哪一個，這邊有 &lt;a href="http://elinux.org/RPi_Powered_USB_Hubs"&gt;USB hubs 的清單&lt;/a&gt; 可以看。OS 則是用 Arch。&lt;/p&gt;
 &lt;h2&gt;燒錄 image 到 SD 卡&lt;/h2&gt;

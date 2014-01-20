@@ -51,6 +51,39 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-21T00:31:00" pubdate>
+                            Tue 21 June 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/25/ubuntu-nginx-installation-easier/" rel="bookmark"><h1>Ubuntu nginx installation(easier)</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>從 <a href="/24/ubuntu-nginx-installation">之前這篇</a> 做了點修改</p>
+<div class="highlight"><pre>apt-get install nginx php5-cli php5-cgi spawn-fcgi psmisc
+</pre></div>
+
+
+<p>接著在 <code>/etc/nginx/sites-available/</code> 底下會有個 <code>default</code>，直接來修改這個檔案:</p>
+<div class="highlight"><pre>server {
+    listen   80 default;
+    server_name  localhost;
+    access_log  /var/log/nginx/localhost.access.log;
+    location / {
+        root   /var/www/nginx-default;
+        index   index.php;
+    }
+    location /phpmyadmin {
+    root /usr/share;
+    index index.php;
+    }
+    location ~ .php$ {
+        set $php_root ...</pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-06-13T15:51:00" pubdate>
                             Mon 13 June 2011
                         </time>
