@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-21T02:30:00" pubdate>
+                            Tue 21 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1386/raspberry_pi_beginner/" rel="bookmark"><h1>Raspberry Pi beginner</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前在 COSCUP 拿到的 Raspberry Pi 一直放著沒動，最近想說還是拿來玩一下好了，不然有點浪費XD。</p>
+<h2>基本配備</h2>
+<p>大部份其實都有了，SD 卡則是自己另外買了一張 <a href="http://shopping.pchome.com.tw/?mod=item&amp;func=exhibit&amp;IT_NO=DGAG0H-A79608303&amp;SR_NO=DGAG0H&amp;ROWNO=25">SanDisk Extreme SDHC UHS-I 16GB</a>，USB hub 可能之後也會需要，不過還不知道要買哪一個，這邊有 <a href="http://elinux.org/RPi_Powered_USB_Hubs">USB hubs 的清單</a> 可以看。OS 則是用 Arch。</p>
+<h2>燒錄 image 到 SD 卡</h2>
+<p>在 Mac 和 Linux 底下可以直接用 <code>dd</code>，ex: <code>dd bs=1M if=Path/to/archlinux-hf-2013-02-11.img of ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-19T16:00:00" pubdate>
                             Sun 19 January 2014
                         </time>
@@ -229,21 +247,6 @@ sudo vim /etc/resolvconf/resolv.conf.d/base
                         <p>當初用攝影機照了一張當作頭像，不過後來一直找不到原圖的位置，google 了一下，發現很多人講的都不一樣，我是用 OSX 10.9 Mavericks，位置是在 <code>~/Library/Containers/com.apple.ImageKit.RecentPictureService/Data/Library/Images/Recent\ Pictures</code>。</p>
 <p>參考資料<br />
 <a href="http://apple.stackexchange.com/questions/44956/where-does-the-mac-store-account-pictures">Where does the Mac store account pictures?</a>  </p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-24T02:18:00" pubdate>
-                            Thu 24 October 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1376/from-wordpress-to-pelican/" rel="bookmark"><h1>From wordpress to pelican</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>終於從 <a href="http://tw.wordpress.org">wordpress</a> 轉到 <a href="https://github.com/carlcarl/pelican/tree/support-post-id">pelican</a> 了，中間經歷了不少的問題，之所以從 wordpress 離開到 pelican，主要是覺得 wordpress 本身其實綁了很多我不需要的功能，現在我只是想純粹做一些筆記而已，於是朝 static site generator 這方面去看，之前是有看過 <a href="http://octopress.org">octopress</a>，但是對 ruby 實在沒啥興趣，找了一下 python 寫的，發現其實也有蠻多種的，後來看 pelican 有蠻多人都有試過，而且開發也還蠻熱烈的，於是就選擇了這個 blog 系統。</p>
-<p>接下來就是想想該怎麼轉移，從 wordpress export 文章出來之後，pelican 提供了 <code>pelican-import</code> 這個工具可以將 wordpress 文章匯入的功能，還蠻方便的，但是卻沒有支援 <code>post_id</code> 這個文章屬性 ...</p>
                     </section>
                 </article>
                 <hr/>

@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-27T19:00:00" pubdate>
+                            Thu 27 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1095/firefox-developer-tool-screenshot/" rel="bookmark"><h1>firefox developer tool screenshot</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>雖然也可以用另外的軟體截圖，不過有時候截的大小不是很準確
+orz。這邊我是要對某個 element 做截圖，而且大小要很精確，後來剛好看到
+firefox 的 developer tool 也有這樣的功能，所以就試了一下。</p>
+<p>一開始按 <code>shift+F2</code> 就會出現一個輸入視窗。嗯，沒錯，它的 screenshot 是
+CLI 的 XD。如果是要對某個 element 做截圖的話，例如是一個 id 叫做 target
+的區塊，可以這樣下：</p>
+<div class="highlight"><pre>screenshot test.png --selector #target
+</pre></div>
+
+
+<p>這樣就會把 <code>#target</code> 這個部分存成一個圖片檔，名稱為 <code>test.png</code>。其他還有
+<code>--delay</code>, <code>--clipboard</code>...等選項 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-27T16:41:00" pubdate>
                             Thu 27 June 2013
                         </time>
@@ -260,36 +285,6 @@ orz。</p>
 <p>最後想到，會不會是因為我那些 build 所產生的目錄的關係，於是我把
 <code>xxx.pkg-info</code>，<code>build</code> 和 <code>dist</code>
 這三個資料夾都移除掉後再重新安裝，果然就 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-08T01:36:00" pubdate>
-                            Sat 08 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/897/jslint-note/" rel="bookmark"><h1>JSLint note</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>記錄一些錯誤的處理方式。</p>
-<h3>1. Document was used before it was defined</h3>
-<p>因為 JSLint 只是用來分析一般的 javascript code，像 <code>document</code>
-這種在瀏覽器上才有用的 global variable，就要在檔案開始加個宣告：</p>
-<div class="highlight"><pre><span class="cm">/* jslint browser:true */</span>
-</pre></div>
-
-
-<h3>2. This is an ES5 feature</h3>
-<p>比較新的
-feature。在一些舊瀏覽器可能會有問題，如果不想管那些舊瀏覽器的話，簡單加上以下這樣就可解決：</p>
-<div class="highlight"><pre><span class="cm">/* jslint es5: true */</span>
-</pre></div>
-
-
-<h3>3. Move the invocation into the parens that contain the function</h3>
-<p>改成用括弧將 function ...</p>
                     </section>
                 </article>
                 <hr/>

@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-21T02:30:00" pubdate>
+                            Tue 21 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1386/raspberry_pi_beginner/" rel="bookmark"><h1>Raspberry Pi beginner</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前在 COSCUP 拿到的 Raspberry Pi 一直放著沒動，最近想說還是拿來玩一下好了，不然有點浪費XD。</p>
+<h2>基本配備</h2>
+<p>大部份其實都有了，SD 卡則是自己另外買了一張 <a href="http://shopping.pchome.com.tw/?mod=item&amp;func=exhibit&amp;IT_NO=DGAG0H-A79608303&amp;SR_NO=DGAG0H&amp;ROWNO=25">SanDisk Extreme SDHC UHS-I 16GB</a>，USB hub 可能之後也會需要，不過還不知道要買哪一個，這邊有 <a href="http://elinux.org/RPi_Powered_USB_Hubs">USB hubs 的清單</a> 可以看。OS 則是用 Arch。</p>
+<h2>燒錄 image 到 SD 卡</h2>
+<p>在 Mac 和 Linux 底下可以直接用 <code>dd</code>，ex: <code>dd bs=1M if=Path/to/archlinux-hf-2013-02-11.img of ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-11-29T23:00:00" pubdate>
                             Fri 29 November 2013
                         </time>
@@ -261,28 +279,6 @@ OK 了，方法很簡單，在你的 VM 裡執行：</p>
 
 
 <p>然後重開 VM，這樣就會根據 DHCP ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-06-17T22:47:00" pubdate>
-                            Sun 17 June 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/515/chakra-vim-not-support-pythoncomplete/" rel="bookmark"><h1>Chakra vim not support pythoncomplete</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在 Chakra 上用 vim 寫 python
-的時候才突然發現這個問題，原因似乎是因為 vim 在編譯的時候沒有加上 python
-的編譯參數，解決這個問題很簡單，只要改安裝 <code>vim-qt-git</code> 就 OK
-了，因為它所提供的 vim 是有支援 pythoncomplete 的。vim-qt-git
-本身包含一套完整的 vim 以及加上 GUI 的套件，所以安裝的時候會要求將原本的
-vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的補完功能了。</p>
-<p>參考網址：<br />
-<a href="https://bbs.archlinux.org/viewtopic.php?id=122091">https://bbs.archlinux.org/viewtopic.php?id=122091</a><br />
-<a href="https://wiki.archlinux.org/index.php/Vim">https://wiki.archlinux.org/index ...</a></p>
                     </section>
                 </article>
                 <hr/>

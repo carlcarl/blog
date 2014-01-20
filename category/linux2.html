@@ -51,6 +51,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-06-17T22:47:00" pubdate>
+                            Sun 17 June 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/515/chakra-vim-not-support-pythoncomplete/" rel="bookmark"><h1>Chakra vim not support pythoncomplete</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近在 Chakra 上用 vim 寫 python
+的時候才突然發現這個問題，原因似乎是因為 vim 在編譯的時候沒有加上 python
+的編譯參數，解決這個問題很簡單，只要改安裝 <code>vim-qt-git</code> 就 OK
+了，因為它所提供的 vim 是有支援 pythoncomplete 的。vim-qt-git
+本身包含一套完整的 vim 以及加上 GUI 的套件，所以安裝的時候會要求將原本的
+vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的補完功能了。</p>
+<p>參考網址：<br />
+<a href="https://bbs.archlinux.org/viewtopic.php?id=122091">https://bbs.archlinux.org/viewtopic.php?id=122091</a><br />
+<a href="https://wiki.archlinux.org/index.php/Vim">https://wiki.archlinux.org/index ...</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-06-09T01:29:00" pubdate>
                             Sat 09 June 2012
                         </time>
@@ -280,26 +302,6 @@ webm ，用 smplayer 之類的應該都能開來看，我自己測試錄影的�
 <div class="highlight"><pre>sudo add-apt-repository ppa:ap10336/ppa
 sudo apt-get update
 sudo apt-get ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-24T00:32:00" pubdate>
-                            Fri 24 February 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/273/centos6-2-timezone-tzselect/" rel="bookmark"><h1>centos6.2 timezone「tzselect」</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在裝 centos
-來用的時候，在設定的時候也用了 <code>ntpd</code> 來同步時間，不過發現一直沒辦法把時間弄正常，即使我把
-ntp server
-換成台灣的也一樣，後來想到了之前有用過的辦法，用 <code>/usr/share/zone/info/Asia/Taipei</code> 覆蓋掉 <code>/etc/localtime</code>，結果還是不行（之前這樣用有成功過的說 QQ）。</p>
-<p>後來查到一個好像更好的辦法，就是用 <code>tzselect</code> 這個指令，執行後會出現互動式介面，照著選時區，設定完就正常啦～～。</p>
-<p>參考網址：<br />
-<a href="http://bbs.bitscn.com/146159">http://bbs.bitscn.com/146159</a></p>
                     </section>
                 </article>
                 <hr/>

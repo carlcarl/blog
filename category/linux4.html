@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-10-28T13:16:00" pubdate>
+                            Fri 28 October 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/48/postfix-error-client-host-rejected-cannot-find-your-hostname-allow-ip/" rel="bookmark"><h1>postfix error: Client host rejected: cannot find your hostname allow ip</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近用了一個 public ip 開了個 svn + trac server，大致上都還滿順利的，不過在測試寄信到 mail
+server 的時候卻出現了錯誤，看了一下 log 檔，訊息是 <code>Client host rejected: cannot find your hostname allow ip</code>。</p>
+<p>不知道可能是 mail server 找不到 svn server 的 hostname 還是怎樣，然後試了一些方法好像也都不行，最後想說直接在 <code>/etc/hosts</code> 裡直接加上「ip」和自定義「hostname」看看，結果就 OK 哩，個人覺得這個方法算是還滿不錯的，不過前提是要有 mail server ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-10-27T20:41:00" pubdate>
                             Thu 27 October 2011
                         </time>
@@ -297,36 +313,6 @@ endif
     }
     location ~ .php$ {
         set $php_root ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-06-13T15:51:00" pubdate>
-                            Mon 13 June 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/24/ubuntu-nginx-installation/" rel="bookmark"><h1>Ubuntu Nginx installation</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>[更新] 這邊有修改過的<a href="/25/ubuntu-nginx-installation-easier/">簡單版</a></p>
-<p>弄了好久，參考了幾篇教學，應該算是能跑了吧囧a。話說有幾篇教學講得都不太一樣 害我也不知道該看哪篇才好，後來是找了<a href="http://library.linode.com/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid">這一篇</a>來作看看。</p>
-<p>首先先抓套件來安裝吧:</p>
-<div class="highlight"><pre>apt-get install nginx php5-cli php5-cgi spawn-fcgi psmisc
-</pre></div>
-
-
-<p>接著在 <code>/etc/nginx/sites-available/</code>，底下應該會有個 <code>default</code> 設定檔，直接來修改這個檔案:</p>
-<div class="highlight"><pre>server {
-    listen   80 default;
-    server_name  localhost;
-    access_log  /var/log/nginx/localhost.access.log;
-    location / {
-        root   /var/www/nginx-default;
-        index   index.php;
-    }
-    location /phpmyadmin ...</pre></div>
                     </section>
                 </article>
                 <hr/>
