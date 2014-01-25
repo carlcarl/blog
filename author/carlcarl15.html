@@ -51,6 +51,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-07T18:35:00" pubdate>
+                            Thu 07 July 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/32/xrdp-shortcut-d-with-remote-connection/" rel="bookmark"><h1>XRDP shortcut d with remote connection</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前裝了 XRDP，還滿不錯用的。不僅可以用 Linux 的 Terminal server client，也可以用 Windows 內建的遠端連線直接連進去。</p>
+<p>但是卻發現了一個很討厭的問題，那就是按 <code>d</code> 的時候會發現，怎麼視窗被縮小跑到桌面去orz，後來查了一些資料好不容易才找到，我以為這個問題很多人都會遇到的說......。
+ </p>
+<p>首先，問題是出在裝 XRDP 的主機上沒錯，且就是因為快捷鍵的問題，所以只要修改這個設定就 OK 了，這邊假設裝 XRDP 的主機是有 GUI 介面的(沒有的話用 ssh 就好啦XD)</p>
+<p>先輸入:</p>
+<div class="highlight"><pre>gconf-editor
+</pre></div>
+
+
+<p>應該會出現一個視窗。</p>
+<p>接著根據 <code>apps</code> : <code>metacity</code> : <code>global_keybindings</code> 的順序下去找，應該可以找到一個叫做 <code>show_desktop</code> 的設定。然後對應的值應該會是 <code>&lt;Super&gt;d</code>，這邊就直接把這個值刪掉就好了 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-07-04T14:22:00" pubdate>
                             Mon 04 July 2011
                         </time>
@@ -279,32 +303,6 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
 <p>會產生類似以下的輸入</p>
 <div class="highlight"><pre>100+0 records in
 100 ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-05-26T09:05:00" pubdate>
-                            Thu 26 May 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/22/ubuntu-eucalyptus-installation/" rel="bookmark"><h1>Ubuntu Eucalyptus installation</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>我是在已有的 Ubuntu 上安裝 Eucalyptus，如果是直接用 Ubuntu Enterprise Cloud 應該會比較簡單 orz。</p>
-<p>大概講一下幾個我遇到的問題 orz。</p>
-<h3>eucalyptus-cloud restart : Unknown instance</h3>
-<p>改直接執行 <code>eucalyptus-cloud</code>看看:</p>
-<div class="highlight"><pre>[error:0185] User &#39;eucalyptus&#39; validated
-[error:0077] Path /usr/lib/jvm/java-6-openjdk is not a directory
-[error:0323] Cannot locate Java Home
-</pre></div>
-
-
-<p>如果出現以上的錯誤就是要裝 <code>openjdk-6-jre-headless</code>。</p>
-<h3>記得先執行 service</h3>
-<p>下面這行還滿方便的，不過記得要先到 <code>/etc/init.d ...</code></p>
                     </section>
                 </article>
                 <hr/>
