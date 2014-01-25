@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-25T23:00:00" pubdate>
+                            Sat 25 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1388/shell_script_set_current_working_directory/" rel="bookmark"><h1>Shell script set current working directory</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 <a href="http://stackoverflow.com/questions/3349105/bash-script-set-current-working-directory-to-the-directory-of-the-script">stackoverflow</a> 上看到的，好像很常會用到所以先記下來，兩種方法:</p>
+<div class="highlight"><pre><span class="c"># First method</span>
+<span class="nb">cd</span> <span class="k">${</span><span class="nv">0</span><span class="p">%\*</span><span class="k">}</span>
+
+<span class="c"># Second method</span>
+<span class="nb">cd</span> <span class="s2">&quot;$(dirname &quot;</span><span class="nv">$0</span><span class="s2">&quot;)&quot;</span>
+</pre></div>
+
+
+<p>第一個是用 <a href="http://stackoverflow.com/questions/6393551/what-is-the-meaning-of-0-in-a-bash-script">parameter expansion</a>。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-21T03:00:00" pubdate>
                             Tue 21 January 2014
                         </time>
@@ -234,32 +257,6 @@
 
 <span class="nd">@task</span>
 <span class="k">def</span> <span class="nf">add ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-11-02T11:00:00" pubdate>
-                            Sat 02 November 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1378/ubuntu_resolveconf_setting/" rel="bookmark"><h1>Ubuntu resolveconf setting</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>好久沒設定 ubuntu server 了，最近在用的時候發現重開的時候，DNS 設定 (<code>resol.conf</code>) 會 reset，可是我也沒裝 NetworkManager 之類的東西啊 =.=，查了一下，是 <code>resolveconf</code> 這個套件的影響，可是我不太想直接把它移除，因為怕有啥 side effect，所以就還是照它的使用方法做，順便記錄一下該怎麼設定：</p>
-<h2>先刪除原本預設的 DNS 設定</h2>
-<div class="highlight"><pre>sudo resolvconf -d eth0.inet
-</pre></div>
-
-
-<h2>新增設定檔</h2>
-<div class="highlight"><pre>sudo mkdir -p /etc/resolvconf/resolv.conf.d
-sudo vim /etc/resolvconf/resolv.conf.d/base
-</pre></div>
-
-
-<h2>base ...</h2>
                     </section>
                 </article>
                 <hr/>

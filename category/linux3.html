@@ -51,6 +51,25 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-03-29T02:35:00" pubdate>
+                            Thu 29 March 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/332/gnome-shell-built-in-desktop-recording/" rel="bookmark"><h1>Gnome shell built-in desktop recording</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近才發現 Gnome shell
+有內建的錄影功能，虧我之前還找工具找超久囧，這個功能算是滿簡單的，大概講一下它的限制：只能錄影沒有聲音，沒有設定介面，只有快捷鍵，快捷鍵的設定和影片存放的位置都沒辦法修改，都是固定的這樣。不知道以後會不會有介面出來就是了。</p>
+<p>快捷鍵為 <code>ctrl+shift+alt+r</code>，你沒看錯，就是這四個鍵一起按，按下後，右下角會出現一個小紅色的圓點，表示為錄影中，再按一次快捷鍵就是停止（它沒有暫停的功能），影片預設會存到 <code>/home/你的帳號/</code> 底下，格式為
+webm ，用 smplayer 之類的應該都能開來看，我自己測試錄影的結果是還不錯。</p>
+<p>參考網址：  </p>
+<p><a href="http://www.ubuntubuzz.com/2011/11/ubuntu-desktop-screen-recording-tool.html">http://www.ubuntubuzz.com/2011/11/ubuntu-desktop-screen-recording-tool.html</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-03-29T02:13:00" pubdate>
                             Thu 29 March 2012
                         </time>
@@ -261,26 +280,6 @@ php，就會改成下載 php 而不是執行
 php。另外還有一種方法也是可以作，不過是用副檔名的方法作過濾，顯然還是上面的方法會比較好囉。</p>
 <p>參考網址：<br />
 <a href="http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html">http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-11-23T00:28:00" pubdate>
-                            Wed 23 November 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/124/ubuntu-dropbox-permission-denied/" rel="bookmark"><h1>Dropbox can't sync  permission denied</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在備份 wordpress 的資料到 dropbox
-上的時候，突然出現了錯誤：<code>cant sync "file name" permission denied</code>，看了一下資料夾，只有資料夾有建立起來，但是檔案都沒 sync 成功。但是之前用了也一兩年了都沒有發生這樣的問題，為什麼
-dropbox 把資料 sync 到我電腦上的時候會突然出問題呢？  </p>
-<p>花了一段時間查了一些資料，後來才發現是因為我用 ubuntu，然後又用另外一個 <code>ntfs</code> 裝置來存 dropbox
-的東西，才會有這樣的問題。解決方法就是在 <code>mount</code> 設定檔要多設定一個「uid」的參數。</p>
-<p>首先要修改 <code>/etc/fstab</code>，範例如下：</p>
-<div class="highlight"><pre>/dev/sda2   /media/Data     ntfs-3g  rw,defaults,umask=0000 ...</pre></div>
                     </section>
                 </article>
                 <hr/>

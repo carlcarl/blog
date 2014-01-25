@@ -51,6 +51,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-03T18:46:00" pubdate>
+                            Wed 03 July 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1113/javascript-mutationobserver/" rel="bookmark"><h1>Javascript MutationObserver</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近看到 Aol Reader release，試用了一下，感覺還滿不錯的，但是右邊的廣告實在很礙眼，就算用
+adblock 擋掉，右邊還是會留空，想說都沒寫過 browser 的 extension
+，所以就拿這個來練功啦～，不然其實寫 userscript 也可以就是。要弄的
+extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通，寫起來 CP
+值比較高 XD。</p>
+<p>本來想說直接綁定 <code>window.onload</code> 在裡面做就好了，不過後來發現 Aol Reader
+在 <code>onload</code> 之後還會有個它自己 loading
+的頁面，處理起來就變麻煩很多，因為除了要觀察 dom 來判斷何時才算真的
+ready 以外，另外就是 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-28T20:29:00" pubdate>
                             Fri 28 June 2013
                         </time>
@@ -264,26 +286,6 @@ buffer 的部分 render 上去呢？以下是我的鍵盤猜測：</p>
 發現<a href="http://stackoverflow.com/questions/13773315/java-paintcomponent-paints-a-copy-of-the-top-gui-panel-for-no-apparent-reason">有人有一樣的問題</a>。解決方法也很簡單，只要在 <code>paintComponent</code>
 一開始加上
 <code>super.paintComponent(g);</code>，可惜的是不懂為啥不呼叫的話會出現這樣的結果就是。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-10T22:29:00" pubdate>
-                            Mon 10 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/961/php-unable-to-allocate-memory-for-pool/" rel="bookmark"><h1>PHP: Unable to allocate memory for pool</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>其實本來一開始的問題是 nginx 突然出現 <code>404 bad gateway</code>，後來去看 log
-才發現這個錯誤，所以看來如果出現 bad gateway
-的問題的話，可能就是跟後端的連線出了問題這樣。</p>
-<p>查了一下資料，發現到<a href="http://www.cyberciti.biz/faq/linux-unix-php-warning-unable-to-allocate-memory-for-pool/">這篇</a>說可能是 php apc
-的關係，剛好我也有裝，於是跟著把 <code>apc.shm_size</code> 調大之後並重開就 OK 了。</p>
-<p>不過老實說不能確定是因為重開，還是因為 cache
-有調大的關係。可能之後還要再觀察看看，目前過了幾天，看起來是都沒問題這樣～～。</p>
                     </section>
                 </article>
                 <hr/>

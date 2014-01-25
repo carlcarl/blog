@@ -6,14 +6,16 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog - bash</title>
+        <title>    Shell script set current working directory
+</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="carlcarl's blog" />
-                <meta property="og:url" content="http://blog.carlcarl.me" />
-                <meta property="og:description" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Shell script set current working directory" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1388/shell_script_set_current_working_directory/" />
+                <meta property="og:description" content="在 stackoverflow 上看到的，好像很常會用到所以先記下來，兩種方法: # First method cd ${0%\*} # Second method cd "$(dirname "$0")" 第一個是用 parameter expansion。" />
+                    <meta property="article:tag" content="bash" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -56,6 +58,7 @@
                         </time>
                         <a href="http://blog.carlcarl.me/1388/shell_script_set_current_working_directory/" rel="bookmark"><h1>Shell script set current working directory</h1></a>
                     </header>
+
                     <section class="post-content">
                         <p>在 <a href="http://stackoverflow.com/questions/3349105/bash-script-set-current-working-directory-to-the-directory-of-the-script">stackoverflow</a> 上看到的，好像很常會用到所以先記下來，兩種方法:</p>
 <div class="highlight"><pre><span class="c"># First method</span>
@@ -68,44 +71,28 @@
 
 <p>第一個是用 <a href="http://stackoverflow.com/questions/6393551/what-is-the-meaning-of-0-in-a-bash-script">parameter expansion</a>。</p>
                     </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/linux.html">linux</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/bash.html">bash</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
                 </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-11-06T08:58:00" pubdate>
-                            Sun 06 November 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/50/freebsd-set-default-shell-to-bash/" rel="bookmark"><h1>FreeBSD set default shell to bash</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近興致來，就想說來把 FreeBSD 上的 csh 改成 bash，畢竟我還是比較習慣用 bash～。</p>
-<p>首先先修改預設 shell：</p>
-<div class="highlight"><pre>chsh -s /usr/local/bin/bash
-</pre></div>
-
-
-<p>輸入密碼後就修改成功了～。<br />
-</p>
-<p>再下來你可能會有一個已經有設定過的 <code>.bashrc</code> 檔案，當你放到家目錄底下的時候可能會發現說："怎麼都沒有反應？"，那是因為FreeBSD這邊吃的是 <code>.bash\_profile</code>這個設定檔=.=||，為了能夠兼容，我是自己又另外開了 <code>.bash_profile</code> 檔案，然後在裡面輸入：</p>
-<div class="highlight"><pre><span class="nb">source</span> ~/.bashrc
-</pre></div>
-
-
-<p>這樣以後就只要更新 <code>.bashrc</code> 這個設定檔就好了～。<br />
-</p>
-<p>然後後來又遇到中文無法輸入的問題，這個只要在 <code>.bashrc</code> 檔案中加入語系設定就可以了，另外再加上 <code>ls</code> 的 <code>alias</code>，不然 <code>ls</code> 輸出的目錄都不會標顏色：</p>
-<div class="highlight"><pre><span class="nb">export </span><span class="nv">LANG ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
             </li>
         </ol>
-        <div class="paginator">
-            Page 1 / 1
-        </div>
-
     </div>
         </div>
 

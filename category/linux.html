@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-25T23:00:00" pubdate>
+                            Sat 25 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1388/shell_script_set_current_working_directory/" rel="bookmark"><h1>Shell script set current working directory</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 <a href="http://stackoverflow.com/questions/3349105/bash-script-set-current-working-directory-to-the-directory-of-the-script">stackoverflow</a> 上看到的，好像很常會用到所以先記下來，兩種方法:</p>
+<div class="highlight"><pre><span class="c"># First method</span>
+<span class="nb">cd</span> <span class="k">${</span><span class="nv">0</span><span class="p">%\*</span><span class="k">}</span>
+
+<span class="c"># Second method</span>
+<span class="nb">cd</span> <span class="s2">&quot;$(dirname &quot;</span><span class="nv">$0</span><span class="s2">&quot;)&quot;</span>
+</pre></div>
+
+
+<p>第一個是用 <a href="http://stackoverflow.com/questions/6393551/what-is-the-meaning-of-0-in-a-bash-script">parameter expansion</a>。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-21T03:00:00" pubdate>
                             Tue 21 January 2014
                         </time>
@@ -263,26 +286,6 @@ sudo apt-get update
 sudo apt-get <span class="nb">source </span>nginx
 <span class="c"># 裝 build nginx 需要的套件</span>
 sudo apt-get ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-03T11:48:00" pubdate>
-                            Mon 03 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/873/ubuntu-service-cant-restart-or-stop/" rel="bookmark"><h1>Ubuntu service can't restart or stop</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在自己編 nginx 的時候遇到的小問題，因為自己裝的 conf 設定和原本 Ubuntu
-repo 裡的的不一樣，然後 init script 我是用 repo 裡提供的。</p>
-<p>看了一下 repo 提供的 init script，似乎是因為找不到 start service 所建立的
-pid 檔案，google 了一下，在 stackoverflow
-找到 <a href="http://stackoverflow.com/questions/10939072/add-nginx-as-a-ubuntu-service-stop-and-reload-doesnt-work">這篇問題</a> 剛好和我遇到的情況一樣，check 了一下 nginx conf 裡的 pid
-檔案位置和 init script 裡的 pid
-檔案位置，發現設定並不一樣，改成一樣後，問題就解決了～～。</p>
                     </section>
                 </article>
                 <hr/>
