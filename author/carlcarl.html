@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-27T23:00:00" pubdate>
+                            Mon 27 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1390/osx_mavericks_ftp_in_finder/" rel="bookmark"><h1>OSX Mavericks ftp in finder</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>找了一下 OSX 怎麼把 ftp 的目錄顯示在 finder 中，finder 雖然有內建 <code>Connect to Server</code> 的功能，不過非常爛，帳密登入的一直沒辦法 work，而且好像還是 read only，ftp command line 卻都沒啥問題，所以建議就放棄內建的功能，別浪費時間了了 = =。</p>
+<p>後來看到 <a href="http://macfusionapp.org">MacFusion</a> 搭配 <a href="http://osxfuse.github.io">OSXFUSE</a>，想說來試試看，就結果來看，還是沒有 KDE 的 Dolphin 來得方便啊QQ，不過也還算堪用就是。</p>
+<p>兩個都裝完之後，開啓 MacFusion，加入要 mount 的 ftp 或其他種 folder，但是我的沒有在 Finder sidebar 中出現可以點選的 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-26T01:00:00" pubdate>
                             Sun 26 January 2014
                         </time>
@@ -233,29 +249,6 @@
                         <p><img alt="kivy interactive applications in python" src="http://i.imgur.com/87z6yUy.png" /></p>
 <p>其實很久沒看有關 GUI library 相關的書了，會看這本是因為之前其實就有聽說過 <a href="http://kivy.org">kivy</a> 這個 python library，但是一直沒機會摸摸看。前一陣子剛好 <a href="http://www.packtpub.com">packt</a> 在找人 review 一些電子書，所以就想說可以試試看。是說 packt 最近感覺還滿活躍的，常在一些網站徵求可以幫忙 review 的人，譬如說我現在就有在看另外一本 zsh 的書，幫忙訂正草稿和給一些意見，事後除了可以得到原來的電子書，也可以另外在網站上選一本自己想要的電子書，還蠻不錯的~~。</p>
 <p>從 kivy 的官網可以看到它的一些特色，像 cross platform，license 也是很 free 的 MIT，其他還有像常被拿來講的 multi-touch 之類的 feature。在書中可以看到 kivy 還有一個比較特別的地方就是它有一個 kivy language，其實有種 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-11-29T23:00:00" pubdate>
-                            Fri 29 November 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1380/define_makefile_variable_in_rule/" rel="bookmark"><h1>Define Makefile variable in rule</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>沒在寫啥 Makefile，要用的時候才發現不會在 rule 裡面 assign variable XD。具體用法如下:</p>
-<div class="highlight"><pre><span class="nf">all</span><span class="o">:</span> 
-    <span class="k">$(</span><span class="nb">eval </span>tmp :<span class="o">=</span> <span class="k">$(</span>shell <span class="nb">echo </span>1<span class="k">))</span>
-    @echo <span class="k">$(</span>tmp<span class="k">)</span>
-</pre></div>
-
-
-<p>參考資料:<br />
-<a href="http://stackoverflow.com/questions/1909188/define-make-variable-at-rule-execution-time">Define make variable at rule execution time</a><br />
-<a href="http://stackoverflow.com/questions/2019989/how-to-assign-the-output-of-a-command-to-a-makefile-variable">How to assign the output of a command to a Makefile variable</a>  </p>
                     </section>
                 </article>
                 <hr/>

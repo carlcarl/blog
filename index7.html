@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-01-29T16:50:00" pubdate>
+                            Tue 29 January 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/772/python-argparse/" rel="bookmark"><h1>python argparse</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>紀錄一些 python argparse module 的使用方法和問題：  </p>
+<h3>選項的參數為 optional</h3>
+<p>譬如說 <code>-f</code> 這選項允許一個檔案的路徑名稱： <code>-f test.txt</code>，如果沒給檔案名稱就預設使用 example.txt：</p>
+<div class="highlight"><pre><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;example.txt&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>設定各個選項分開，不允許放在一起使用</h3>
+<p>如果我希望 <code>-f</code> 和 <code>-b</code> 只有其中一個能被執行而已的話，這時候要用 <code>add_mutually_exclusive_group</code> 產生一個 group ，之後被加入這個 group 的參數就會套用這個分開使用的規則：</p>
+<div class="highlight"><pre><span class="n">group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
+<span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">)</span>
+<span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-b&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-01-28T15:08:00" pubdate>
                             Mon 28 January 2013
                         </time>
@@ -295,51 +320,6 @@ query 的時機，所以在測試的時候，query 其實都沒有發出，難�
 
 <p>or</p>
 <div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">runCommand ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-10-09T02:15:00" pubdate>
-                            Tue 09 October 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/663/mongodb-check-status-command/" rel="bookmark"><h1>MongoDB check status command</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>紀錄一下 MongoDB 看狀態時常會用到的指令。  </p>
-<div class="highlight"><pre><span class="c"># 看目前 state 的指令</span>
-mongostat
-</pre></div>
-
-
-<p>以下都是進 mongo shell 後的指令。</p>
-<div class="highlight"><pre><span class="c1">// 狀態總覽</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">()</span>
-
-<span class="c1">// 看 memory</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">mem</span>
-
-<span class="c1">// 看 page fault</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">extra_info</span>
-
-<span class="c1">// 看 sharding 的狀態，兩個指令同樣功能</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">printShardingStatus</span><span class="p">()</span>
-<span class="nx">sh</span><span class="p">.</span><span class="nx">status</span><span class="p">()</span>
-
-<span class="c1">// 查看 db 本身的資訊</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">stats</span><span class="p">()</span>
-
-<span class="c1">// 查看 collection 的 index</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">getIndexes</span><span class="p">()</span>
-
-<span class="c1">// 查看目前執行的 operation</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">currentOP</span><span class="p">()</span>
-</pre></div>
-
-
-<p>參考網址 ...</p>
                     </section>
                 </article>
                 <hr/>
