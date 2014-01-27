@@ -22,12 +22,14 @@ Slug: osx_mavericks_ftp_in_finder
 
 
 參考資料：  
+[MacFuse and MacFusion]
 [Can I edit content on an FTP server through Finder?]  
 [FTP from Mac OS X]  
 [Mac: Mounting FTP/SFTP volumes with the Finder]  
 [Connect to FTP server in Finder not working]
 
 
+[MacFuse and MacFusion]: http://help.pop.psu.edu/popnet-help/mac/macfuse-and-macfusion
 [Can I edit content on an FTP server through Finder?]: https://apple.stackexchange.com/questions/24699/can-i-edit-content-on-an-ftp-server-through-finder
 [FTP from Mac OS X]: http://osxdaily.com/2011/02/07/ftp-from-mac/
 [Mac: Mounting FTP/SFTP volumes with the Finder]: http://www.thxbye.de/mac/mac-mounting-ftpsftp-volumes-with-the-finder.html
