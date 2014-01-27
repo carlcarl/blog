@@ -13,19 +13,19 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="svn status appear「~」" />
-                <meta property="og:url" content="http://blog.carlcarl.me/249/svn-status/" />
+                <meta property="og:url" content="../../249/svn-status/" />
                 <meta property="og:description" content="最近遇到有人有這個問題，查了一下，這個問題的原因是因為從「一般檔案, 資料夾, 連結」這三種屬性，該檔案從其中一個屬性換成另外一種屬性就會出現這個波浪號狀態。 不過當然有時候事情不是那麼簡單......，這次遇到的主要原因應該是因為資料夾內的 .svn 被刪掉了，所以從外面看就會出現這種情形，以下是查到的解決方法： mv test test2 svn delete test mv test2 test svn add test 首先先改資料夾名稱，因為等下要刪掉原本這個資料夾的 svn 紀錄，直接 delete 的話，資料夾就真的會被刪掉，刪完之後再把改過名稱的資料夾改回原來的名稱，改完之後再重新 add，應該就會顯示正常了。" />
                     <meta property="article:tag" content="svn" />
-            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+            <link rel="stylesheet" href="../../theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../theme/css/main.css">
 
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+    <link rel="stylesheet" href="../../theme/css/blog.css">
+    <link rel="stylesheet" href="../../theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -34,7 +34,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -56,7 +56,7 @@
                         <time class="post-time" datetime="2012-02-14T23:46:00" pubdate>
                             Tue 14 February 2012
                         </time>
-                        <a href="http://blog.carlcarl.me/249/svn-status/" rel="bookmark"><h1>svn status appear「~」</h1></a>
+                        <a href="../../249/svn-status/" rel="bookmark"><h1>svn status appear「~」</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -76,8 +76,8 @@ add，應該就會顯示正常了。</p>
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="http://blog.carlcarl.me/category/version-control.html">version-control</a></p>
-                        <p>Tags: <a href="http://blog.carlcarl.me/tag/svn.html">svn</a>, </p>
+                        <p>Category: <a href="../../category/version-control.html">version-control</a></p>
+                        <p>Tags: <a href="../../tag/svn.html">svn</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -105,6 +105,6 @@ add，應該就會顯示正常了。</p>
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+        <script src="../../theme/js/main.js"></script>
     </body>
 </html>

@@ -12,18 +12,18 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="carlcarl's blog" />
-                <meta property="og:url" content="http://blog.carlcarl.me" />
+                <meta property="og:url" content=".." />
                 <meta property="og:description" content="carlcarl's blog" />
-            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+            <link rel="stylesheet" href="../theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+        <link rel="stylesheet" href="../theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../theme/css/main.css">
 
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+    <link rel="stylesheet" href="../theme/css/blog.css">
+    <link rel="stylesheet" href="../theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -32,7 +32,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href=".."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -54,7 +54,7 @@
                         <time class="post-time" datetime="2013-11-02T11:00:00" pubdate>
                             Sat 02 November 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1378/ubuntu_resolveconf_setting/" rel="bookmark"><h1>Ubuntu resolveconf setting</h1></a>
+                        <a href="../1378/ubuntu_resolveconf_setting/" rel="bookmark"><h1>Ubuntu resolveconf setting</h1></a>
                     </header>
                     <section class="post-content">
                         <p>好久沒設定 ubuntu server 了，最近在用的時候發現重開的時候，DNS 設定 (<code>resol.conf</code>) 會 reset，可是我也沒裝 NetworkManager 之類的東西啊 =.=，查了一下，是 <code>resolveconf</code> 這個套件的影響，可是我不太想直接把它移除，因為怕有啥 side effect，所以就還是照它的使用方法做，順便記錄一下該怎麼設定：</p>
@@ -88,6 +88,6 @@ sudo vim /etc/resolvconf/resolv.conf.d/base
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+        <script src="../theme/js/main.js"></script>
     </body>
 </html>

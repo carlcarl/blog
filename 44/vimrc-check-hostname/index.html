@@ -13,19 +13,19 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="vimrc check hostname" />
-                <meta property="og:url" content="http://blog.carlcarl.me/44/vimrc-check-hostname/" />
+                <meta property="og:url" content="../../44/vimrc-check-hostname/" />
                 <meta property="og:description" content="因為在不同電腦用了一個共用的 vimrc 檔，但是又想在兩邊作一些不同的設定，所以找了一下資料看要怎麼作。雖然有判斷作業系統的方式，不過好像不太適合我的用法，然後我通常不同的電腦都會設個有意義的 hostname，所以最後想說就用 hostname 去作判斷啦，以下是一個範例： let hostname = substitute(system('hostname'), 'n', '', '') if hostname == "lab" "do something elseif hostname == "home" "do something endif 另外附上判斷 OS 的方式： if has('win32') "do something elseif has('mac') "do something elseif has('unix') "do something endif 參考網址 ..." />
                     <meta property="article:tag" content="vim" />
-            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+            <link rel="stylesheet" href="../../theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../theme/css/main.css">
 
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+    <link rel="stylesheet" href="../../theme/css/blog.css">
+    <link rel="stylesheet" href="../../theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -34,7 +34,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -56,7 +56,7 @@
                         <time class="post-time" datetime="2011-09-05T18:51:00" pubdate>
                             Mon 05 September 2011
                         </time>
-                        <a href="http://blog.carlcarl.me/44/vimrc-check-hostname/" rel="bookmark"><h1>vimrc check hostname</h1></a>
+                        <a href="../../44/vimrc-check-hostname/" rel="bookmark"><h1>vimrc check hostname</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -86,8 +86,8 @@ endif
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="http://blog.carlcarl.me/category/linux.html">linux</a></p>
-                        <p>Tags: <a href="http://blog.carlcarl.me/tag/vim.html">vim</a>, </p>
+                        <p>Category: <a href="../../category/linux.html">linux</a></p>
+                        <p>Tags: <a href="../../tag/vim.html">vim</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -115,6 +115,6 @@ endif
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+        <script src="../../theme/js/main.js"></script>
     </body>
 </html>

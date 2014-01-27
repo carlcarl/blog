@@ -13,19 +13,19 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="MongoDB split chunk" />
-                <meta property="og:url" content="http://blog.carlcarl.me/671/mongodb-split-chunk/" />
+                <meta property="og:url" content="../../671/mongodb-split-chunk/" />
                 <meta property="og:description" content="練習了一下自己手動切 chunk，因為有時候 MongoDB 切出來的不一定是理想的範圍 orz。 大致就兩個步驟，第一個是切 chunk，第二個是移動 chunk 到某個 shard 上，如果 balancer 沒關掉的話，第二個步驟會由 balancer 幫你決定你的 chunk 要移到哪個 shard 上。 切 chunk 指令 // 第一個參數是指定在哪個 DB 中的 collection， // 因為文件裡只說是 collection，所以可能會忘了加上 DB 的名稱 // 第二個參數是你指定的 sharding key，cutPoint 則是要從哪個數值下去切 sh.splitAt("yourDB.yourCollection", {key:cutPoint}) or db.runCommand ..." />
                     <meta property="article:tag" content="mongodb" />
-            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+            <link rel="stylesheet" href="../../theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../theme/css/main.css">
 
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+    <link rel="stylesheet" href="../../theme/css/blog.css">
+    <link rel="stylesheet" href="../../theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -34,7 +34,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -56,7 +56,7 @@
                         <time class="post-time" datetime="2012-10-09T03:21:00" pubdate>
                             Tue 09 October 2012
                         </time>
-                        <a href="http://blog.carlcarl.me/671/mongodb-split-chunk/" rel="bookmark"><h1>MongoDB split chunk</h1></a>
+                        <a href="../../671/mongodb-split-chunk/" rel="bookmark"><h1>MongoDB split chunk</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -102,8 +102,8 @@
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="http://blog.carlcarl.me/category/database.html">database</a></p>
-                        <p>Tags: <a href="http://blog.carlcarl.me/tag/mongodb.html">mongodb</a>, </p>
+                        <p>Category: <a href="../../category/database.html">database</a></p>
+                        <p>Tags: <a href="../../tag/mongodb.html">mongodb</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -131,6 +131,6 @@
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+        <script src="../../theme/js/main.js"></script>
     </body>
 </html>

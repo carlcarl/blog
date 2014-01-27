@@ -13,18 +13,18 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="C useful DEBUG function" />
-                <meta property="og:url" content="http://blog.carlcarl.me/15/c-useful-debug-function/" />
+                <meta property="og:url" content="../../15/c-useful-debug-function/" />
                 <meta property="og:description" content="學了那麼久才知道有這種好功能可以用 = =" #define DBG(msg, arg...) printf("%s:%s(%d): " msg, __FILE__, __FUNCTION__, __LINE__, ##arg) FILE 表示這行所在的程式檔案 FUNCTION 表示這個函式所在的函式(唸起來好繞口= =) 不過如果是用 gcc 來編譯的話 建議是用 func, 我之前用 gcc 編譯前者好像不會過...... LINE 代表這函式是在哪一行 其實也只是把 printf 有印出一些資訊的版本 define 為一個函式這樣![][] (不過要我寫我還真不會= =||) 而在實際上運用可以這樣: if(i != 2) DBG("%dn", index); 這樣如果 i 不等於 2 的話 就會在前面先印出那些資訊 然後才會印出 index ..." />
-            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+            <link rel="stylesheet" href="../../theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../theme/css/main.css">
 
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+    <link rel="stylesheet" href="../../theme/css/blog.css">
+    <link rel="stylesheet" href="../../theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -33,7 +33,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -55,7 +55,7 @@
                         <time class="post-time" datetime="2011-03-31T18:29:00" pubdate>
                             Thu 31 March 2011
                         </time>
-                        <a href="http://blog.carlcarl.me/15/c-useful-debug-function/" rel="bookmark"><h1>C useful DEBUG function</h1></a>
+                        <a href="../../15/c-useful-debug-function/" rel="bookmark"><h1>C useful DEBUG function</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -86,7 +86,7 @@
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a></p>
+                        <p>Category: <a href="../../category/c-c.html">C &amp; C++</a></p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -114,6 +114,6 @@
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+        <script src="../../theme/js/main.js"></script>
     </body>
 </html>

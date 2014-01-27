@@ -13,19 +13,19 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="ssh with firewall" />
-                <meta property="og:url" content="http://blog.carlcarl.me/1053/ssh-with-firewall/" />
+                <meta property="og:url" content="../../1053/ssh-with-firewall/" />
                 <meta property="og:description" content="記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh 的主機，這裡以 example.com 為例。 (其實參考資料的連結內容更詳細 XD，有需要的人建議點進去看看唄～～。) 從內部往外。 # 在 local 開一個 9999 的 port 轉到 `example.com` 的 22 port， # 接下來只要把 proxy 的設定指到 localhost 的 9999 就可以了。 ssh -NfD 9999 user@example.com 從外部連內。 # 這邊必須先在內部的 server 輸入下面這一行，連到 example.com， # 然後在 example.com ..." />
                     <meta property="article:tag" content="ssh" />
-            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+            <link rel="stylesheet" href="../../theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../theme/css/main.css">
 
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+    <link rel="stylesheet" href="../../theme/css/blog.css">
+    <link rel="stylesheet" href="../../theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -34,7 +34,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -56,7 +56,7 @@
                         <time class="post-time" datetime="2013-06-19T00:19:00" pubdate>
                             Wed 19 June 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1053/ssh-with-firewall/" rel="bookmark"><h1>ssh with firewall</h1></a>
+                        <a href="../../1053/ssh-with-firewall/" rel="bookmark"><h1>ssh with firewall</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -99,8 +99,8 @@ ssh -p 9999 -l user -D 9998 localhost
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="http://blog.carlcarl.me/category/linux.html">linux</a></p>
-                        <p>Tags: <a href="http://blog.carlcarl.me/tag/ssh.html">ssh</a>, </p>
+                        <p>Category: <a href="../../category/linux.html">linux</a></p>
+                        <p>Tags: <a href="../../tag/ssh.html">ssh</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -128,6 +128,6 @@ ssh -p 9999 -l user -D 9998 localhost
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+        <script src="../../theme/js/main.js"></script>
     </body>
 </html>

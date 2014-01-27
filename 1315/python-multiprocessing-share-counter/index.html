@@ -13,19 +13,19 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Python multiprocessing share counter" />
-                <meta property="og:url" content="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/" />
+                <meta property="og:url" content="../../1315/python-multiprocessing-share-counter/" />
                 <meta property="og:description" content="找了一下，以下是基本的寫法： counter = 0 def countdown(data): counter_lock = Lock() global counter with counter_lock: counter.value -= 1 print(data) def main(): def init(args): global counter counter = args data_list = ['a', 'b', 'c'] global counter counter = multiprocessing.Value('i', len(data_list)) pool = multiprocessing.Pool( initializer=init, initargs=(counter,) ) pool.map(countdown, data_list ..." />
                     <meta property="article:tag" content="multiprocessing" />
-            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+            <link rel="stylesheet" href="../../theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../theme/css/main.css">
 
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+    <link rel="stylesheet" href="../../theme/css/blog.css">
+    <link rel="stylesheet" href="../../theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -34,7 +34,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -56,7 +56,7 @@
                         <time class="post-time" datetime="2013-09-19T00:09:00" pubdate>
                             Thu 19 September 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/" rel="bookmark"><h1>Python multiprocessing share counter</h1></a>
+                        <a href="../../1315/python-multiprocessing-share-counter/" rel="bookmark"><h1>Python multiprocessing share counter</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -228,8 +228,8 @@ lock，這邊可以再看一下 <code>SynchronizedBase</code> 的定義：</p>
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="http://blog.carlcarl.me/category/python.html">python</a></p>
-                        <p>Tags: <a href="http://blog.carlcarl.me/tag/multiprocessing.html">multiprocessing</a>, </p>
+                        <p>Category: <a href="../../category/python.html">python</a></p>
+                        <p>Tags: <a href="../../tag/multiprocessing.html">multiprocessing</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -257,6 +257,6 @@ lock，這邊可以再看一下 <code>SynchronizedBase</code> 的定義：</p>
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+        <script src="../../theme/js/main.js"></script>
     </body>
 </html>

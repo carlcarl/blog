@@ -13,20 +13,20 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="ajaxfileupload SyntaxError: missing } in XML expression" />
-                <meta property="og:url" content="http://blog.carlcarl.me/355/ajaxfileupload-syntaxerror-missing-in-xml-expression/" />
+                <meta property="og:url" content="../../355/ajaxfileupload-syntaxerror-missing-in-xml-expression/" />
                 <meta property="og:description" content="本來用 ajaxfileupload 用得好好的，結果不知道為什麼就突然出現這個錯誤，查了一下資料再加上自己比對的結果才發現，原來是因為我在 server 端的 response 加上 content type="application/json" 的關係，而這個結果導致在 client 這邊的 response 被 <pre></pre> 給包了起來，也因此在 parse 的時候出現錯誤。 解決方法有兩種： 1. server 端拿掉 minetype 2. client 端把 response 的 <pre></pre> 處理掉。 這邊我是選擇了第2種方法來做，因為我覺得 minetype 這東西是需要加的，現在不加怕以後會有相容性問題。 這邊其實很簡單，只要在 ajaxfileupload.js 中修改 uploadHttpData ..." />
                     <meta property="article:tag" content="ajax" />
                     <meta property="article:tag" content="ajaxfileupload" />
-            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+            <link rel="stylesheet" href="../../theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../theme/css/main.css">
 
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+    <link rel="stylesheet" href="../../theme/css/blog.css">
+    <link rel="stylesheet" href="../../theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -35,7 +35,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -57,7 +57,7 @@
                         <time class="post-time" datetime="2012-04-06T04:39:00" pubdate>
                             Fri 06 April 2012
                         </time>
-                        <a href="http://blog.carlcarl.me/355/ajaxfileupload-syntaxerror-missing-in-xml-expression/" rel="bookmark"><h1>ajaxfileupload SyntaxError: missing } in XML expression</h1></a>
+                        <a href="../../355/ajaxfileupload-syntaxerror-missing-in-xml-expression/" rel="bookmark"><h1>ajaxfileupload SyntaxError: missing } in XML expression</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -108,8 +108,8 @@ server 端的 response 加上 content type="application/json"
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="http://blog.carlcarl.me/category/js.html">js</a></p>
-                        <p>Tags: <a href="http://blog.carlcarl.me/tag/ajax.html">ajax</a>, <a href="http://blog.carlcarl.me/tag/ajaxfileupload.html">ajaxfileupload</a>, </p>
+                        <p>Category: <a href="../../category/js.html">js</a></p>
+                        <p>Tags: <a href="../../tag/ajax.html">ajax</a>, <a href="../../tag/ajaxfileupload.html">ajaxfileupload</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -137,6 +137,6 @@ server 端的 response 加上 content type="application/json"
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+        <script src="../../theme/js/main.js"></script>
     </body>
 </html>

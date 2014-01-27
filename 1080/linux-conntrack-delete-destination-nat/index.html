@@ -13,19 +13,19 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Linux conntrack delete destination NAT" />
-                <meta property="og:url" content="http://blog.carlcarl.me/1080/linux-conntrack-delete-destination-nat/" />
+                <meta property="og:url" content="../../1080/linux-conntrack-delete-destination-nat/" />
                 <meta property="og:description" content="最近遇到在測 throughput 中，有一定機率無法關掉 DMZ 的問題，而且這邊只要關掉 throughput 後，DMZ 就會順利關掉，看起來像是 throughput 的連線讓被刪掉的 conntrack 連線又復活(?)了這樣 =.=。 看了一下 firewall 的 rule，裡面確實是有刪除 conntrack connection 的 rule，指令如下： conntrack -D conntrack -g -r xxx.xxx.xxx.xxx 看了一下 conntrack －L conntrack 的記錄，grep 了在接收 throughput 的 port，發現還是有連線存在，來源是從 NAT 內部到外面 ..." />
                     <meta property="article:tag" content="conntrack" />
-            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+            <link rel="stylesheet" href="../../theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../theme/css/main.css">
 
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+    <link rel="stylesheet" href="../../theme/css/blog.css">
+    <link rel="stylesheet" href="../../theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -34,7 +34,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -56,7 +56,7 @@
                         <time class="post-time" datetime="2013-06-27T16:41:00" pubdate>
                             Thu 27 June 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1080/linux-conntrack-delete-destination-nat/" rel="bookmark"><h1>Linux conntrack delete destination NAT</h1></a>
+                        <a href="../../1080/linux-conntrack-delete-destination-nat/" rel="bookmark"><h1>Linux conntrack delete destination NAT</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -113,8 +113,8 @@ conntrack 中的內容，清完後再把這條規則清掉就可以了。</p>
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="http://blog.carlcarl.me/category/linux.html">linux</a></p>
-                        <p>Tags: <a href="http://blog.carlcarl.me/tag/conntrack.html">conntrack</a>, </p>
+                        <p>Category: <a href="../../category/linux.html">linux</a></p>
+                        <p>Tags: <a href="../../tag/conntrack.html">conntrack</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -142,6 +142,6 @@ conntrack 中的內容，清完後再把這條規則清掉就可以了。</p>
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+        <script src="../../theme/js/main.js"></script>
     </body>
 </html>

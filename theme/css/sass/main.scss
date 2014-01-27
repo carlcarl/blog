@@ -79,6 +79,18 @@ textarea {
     resize: vertical;
 }
 
+code {
+	background-color: #ebebeb;
+	color: #d14;
+	// font-family: "Source Code Pro",Menlo,Monaco,Courier,monospace;
+	text-shadow: 0 1px 1px rgba(255,255,255,0.9);
+	border: 1px solid rgba(0,0,0,0.15);
+	padding: 0.15em 0.3em;
+	vertical-align: 0.15em;
+	font-size: 0.8em;
+	line-height: 2em;
+}
+
 /* ==========================================================================
    Chrome Frame prompt
    ========================================================================== */

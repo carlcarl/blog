@@ -13,20 +13,20 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="virtualenvwrapper setting" />
-                <meta property="og:url" content="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" />
+                <meta property="og:url" content="../../598/virtualenvwrapper-setting/" />
                 <meta property="og:description" content="最近為了方便，加了幾個 virtualenvwrapper 的設定。 使用 mkvirtualenv 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。 在 ~/.virtualenv/postmkvirtualenv裡加入： proj_name=$(echo $VIRTUAL_ENV|awk -F'/' '{print $NF}') if [ ! -d "~/Projects/$proj_name" ]; then mkdir ~/Projects/$proj_name fi if [ "${PWD##*/}" != "~/Projects/$proj_name" ]; then cd ~/Projects/$proj_name fi 其中，把 Projects 換成你的 project 位置。 輸入 workon 你的project 時，自動切換至 ..." />
                     <meta property="article:tag" content="python" />
                     <meta property="article:tag" content="virtualenvwrapper" />
-            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+            <link rel="stylesheet" href="../../theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../theme/css/main.css">
 
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+    <link rel="stylesheet" href="../../theme/css/blog.css">
+    <link rel="stylesheet" href="../../theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -35,7 +35,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -57,7 +57,7 @@
                         <time class="post-time" datetime="2012-08-28T00:01:00" pubdate>
                             Tue 28 August 2012
                         </time>
-                        <a href="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" rel="bookmark"><h1>virtualenvwrapper setting</h1></a>
+                        <a href="../../598/virtualenvwrapper-setting/" rel="bookmark"><h1>virtualenvwrapper setting</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -98,8 +98,8 @@ fi
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="http://blog.carlcarl.me/category/python.html">python</a></p>
-                        <p>Tags: <a href="http://blog.carlcarl.me/tag/python.html">python</a>, <a href="http://blog.carlcarl.me/tag/virtualenvwrapper.html">virtualenvwrapper</a>, </p>
+                        <p>Category: <a href="../../category/python.html">python</a></p>
+                        <p>Tags: <a href="../../tag/python.html">python</a>, <a href="../../tag/virtualenvwrapper.html">virtualenvwrapper</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -127,6 +127,6 @@ fi
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+        <script src="../../theme/js/main.js"></script>
     </body>
 </html>

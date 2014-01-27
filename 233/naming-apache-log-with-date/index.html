@@ -13,21 +13,21 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="naming apache log with date" />
-                <meta property="og:url" content="http://blog.carlcarl.me/233/naming-apache-log-with-date/" />
+                <meta property="og:url" content="../../233/naming-apache-log-with-date/" />
                 <meta property="og:description" content="目前是用 logrotate 來作，只要在 /etc/logrotate.d/apache2 裡加入下面這個參數即可： dateext 另外可以根據需求看要不要把 weekly 改為 daily 這樣。 處理過後的檔名就會像這樣 access.log-20111218.gz，這樣在之後處理和分析 log 會比較方便，另外記得數量也要根據需求改，因為改完後變成能保存的 log 日期也會跟著減少，要增多的話也是直接修改上面 /etc/logrotate.d/apache2 這個檔案，將 rotate 後面的數字加大，後面的數字表示要存的 log 數量，超過的話就會將最舊的刪除這樣。 後記： 如果要跟 awstats 搭配的話可以在裡面加入： prerotate /usr/lib/cgi-bin/awstats.pl -config ..." />
                     <meta property="article:tag" content="apache" />
                     <meta property="article:tag" content="daily" />
                     <meta property="article:tag" content="logrotate" />
-            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+            <link rel="stylesheet" href="../../theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../theme/css/main.css">
 
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+    <link rel="stylesheet" href="../../theme/css/blog.css">
+    <link rel="stylesheet" href="../../theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -36,7 +36,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -58,7 +58,7 @@
                         <time class="post-time" datetime="2011-12-19T17:01:00" pubdate>
                             Mon 19 December 2011
                         </time>
-                        <a href="http://blog.carlcarl.me/233/naming-apache-log-with-date/" rel="bookmark"><h1>naming apache log with date</h1></a>
+                        <a href="../../233/naming-apache-log-with-date/" rel="bookmark"><h1>naming apache log with date</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -85,8 +85,8 @@ endscript
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="http://blog.carlcarl.me/category/linux.html">linux</a></p>
-                        <p>Tags: <a href="http://blog.carlcarl.me/tag/apache.html">apache</a>, <a href="http://blog.carlcarl.me/tag/daily.html">daily</a>, <a href="http://blog.carlcarl.me/tag/logrotate.html">logrotate</a>, </p>
+                        <p>Category: <a href="../../category/linux.html">linux</a></p>
+                        <p>Tags: <a href="../../tag/apache.html">apache</a>, <a href="../../tag/daily.html">daily</a>, <a href="../../tag/logrotate.html">logrotate</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -114,6 +114,6 @@ endscript
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+        <script src="../../theme/js/main.js"></script>
     </body>
 </html>

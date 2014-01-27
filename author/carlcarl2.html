@@ -12,18 +12,18 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="carlcarl's blog" />
-                <meta property="og:url" content="http://blog.carlcarl.me" />
+                <meta property="og:url" content=".." />
                 <meta property="og:description" content="carlcarl's blog" />
-            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+            <link rel="stylesheet" href="../theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+        <link rel="stylesheet" href="../theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../theme/css/main.css">
 
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
-    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+    <link rel="stylesheet" href="../theme/css/blog.css">
+    <link rel="stylesheet" href="../theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -32,7 +32,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href=".."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -54,7 +54,7 @@
                         <time class="post-time" datetime="2013-11-29T23:00:00" pubdate>
                             Fri 29 November 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1380/define_makefile_variable_in_rule/" rel="bookmark"><h1>Define Makefile variable in rule</h1></a>
+                        <a href="../1380/define_makefile_variable_in_rule/" rel="bookmark"><h1>Define Makefile variable in rule</h1></a>
                     </header>
                     <section class="post-content">
                         <p>沒在寫啥 Makefile，要用的時候才發現不會在 rule 裡面 assign variable XD。具體用法如下:</p>
@@ -77,7 +77,7 @@
                         <time class="post-time" datetime="2013-11-15T00:19:00" pubdate>
                             Fri 15 November 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1379/python_celery_crontab/" rel="bookmark"><h1>Python celery crontab</h1></a>
+                        <a href="../1379/python_celery_crontab/" rel="bookmark"><h1>Python celery crontab</h1></a>
                     </header>
                     <section class="post-content">
                         <p>記錄一下 celery crontab 的用法，分成兩個部分：service 和 worker。service 負責定期塞 job 到 message queue 裡面，worker 則將 queue 裡的 job 拿出來執行，message queue 的部分這裡使用 <code>rabbitmq</code>。這邊為了方便，用了一個簡單的加法為例。</p>
@@ -100,7 +100,7 @@
                         <time class="post-time" datetime="2013-11-02T11:00:00" pubdate>
                             Sat 02 November 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1378/ubuntu_resolveconf_setting/" rel="bookmark"><h1>Ubuntu resolveconf setting</h1></a>
+                        <a href="../1378/ubuntu_resolveconf_setting/" rel="bookmark"><h1>Ubuntu resolveconf setting</h1></a>
                     </header>
                     <section class="post-content">
                         <p>好久沒設定 ubuntu server 了，最近在用的時候發現重開的時候，DNS 設定 (<code>resol.conf</code>) 會 reset，可是我也沒裝 NetworkManager 之類的東西啊 =.=，查了一下，是 <code>resolveconf</code> 這個套件的影響，可是我不太想直接把它移除，因為怕有啥 side effect，所以就還是照它的使用方法做，順便記錄一下該怎麼設定：</p>
@@ -126,7 +126,7 @@ sudo vim /etc/resolvconf/resolv.conf.d/base
                         <time class="post-time" datetime="2013-10-24T18:57:00" pubdate>
                             Thu 24 October 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1377/mac_osx_user_ogiginal_thumbnail_location/" rel="bookmark"><h1>Mac OSX user original thumbnail location</h1></a>
+                        <a href="../1377/mac_osx_user_ogiginal_thumbnail_location/" rel="bookmark"><h1>Mac OSX user original thumbnail location</h1></a>
                     </header>
                     <section class="post-content">
                         <p>當初用攝影機照了一張當作頭像，不過後來一直找不到原圖的位置，google 了一下，發現很多人講的都不一樣，我是用 OSX 10.9 Mavericks，位置是在 <code>~/Library/Containers/com.apple.ImageKit.RecentPictureService/Data/Library/Images/Recent\ Pictures</code>。</p>
@@ -142,7 +142,7 @@ sudo vim /etc/resolvconf/resolv.conf.d/base
                         <time class="post-time" datetime="2013-10-24T02:18:00" pubdate>
                             Thu 24 October 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1376/from-wordpress-to-pelican/" rel="bookmark"><h1>From wordpress to pelican</h1></a>
+                        <a href="../1376/from-wordpress-to-pelican/" rel="bookmark"><h1>From wordpress to pelican</h1></a>
                     </header>
                     <section class="post-content">
                         <p>終於從 <a href="http://tw.wordpress.org">wordpress</a> 轉到 <a href="https://github.com/carlcarl/pelican/tree/support-post-id">pelican</a> 了，中間經歷了不少的問題，之所以從 wordpress 離開到 pelican，主要是覺得 wordpress 本身其實綁了很多我不需要的功能，現在我只是想純粹做一些筆記而已，於是朝 static site generator 這方面去看，之前是有看過 <a href="http://octopress.org">octopress</a>，但是對 ruby 實在沒啥興趣，找了一下 python 寫的，發現其實也有蠻多種的，後來看 pelican 有蠻多人都有試過，而且開發也還蠻熱烈的，於是就選擇了這個 blog 系統。</p>
@@ -157,7 +157,7 @@ sudo vim /etc/resolvconf/resolv.conf.d/base
                         <time class="post-time" datetime="2013-10-05T02:15:00" pubdate>
                             Sat 05 October 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1375/tig-broken-in-tmux/" rel="bookmark"><h1>tig broken in tmux</h1></a>
+                        <a href="../1375/tig-broken-in-tmux/" rel="bookmark"><h1>tig broken in tmux</h1></a>
                     </header>
                     <section class="post-content">
                         <p>這個問題已經困擾我滿久了，在 <a href="http://tmux.sourceforge.net">tmux</a> 裡用 <a href="https://github.com/jonas/tig">tig</a>
@@ -180,7 +180,7 @@ screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</
                         <time class="post-time" datetime="2013-10-04T21:26:00" pubdate>
                             Fri 04 October 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
+                        <a href="../1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
                     </header>
                     <section class="post-content">
                         <p>就之前產生的 sphinx document，接下來是如何 deploy 到 github page 上。</p>
@@ -206,7 +206,7 @@ subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資
                         <time class="post-time" datetime="2013-10-02T02:32:00" pubdate>
                             Wed 02 October 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1331/python-sphinx-simple-example/" rel="bookmark"><h1>Python Sphinx simple example</h1></a>
+                        <a href="../1331/python-sphinx-simple-example/" rel="bookmark"><h1>Python Sphinx simple example</h1></a>
                     </header>
                     <section class="post-content">
                         <p>查了很多資料，遇到一堆鬼打牆問題，終於弄成我要的樣子了，不過其實也沒有加多少東西，只是基本的設定一直搞不定
@@ -242,7 +242,7 @@ orz。</p>
                         <time class="post-time" datetime="2013-09-19T00:09:00" pubdate>
                             Thu 19 September 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/" rel="bookmark"><h1>Python multiprocessing share counter</h1></a>
+                        <a href="../1315/python-multiprocessing-share-counter/" rel="bookmark"><h1>Python multiprocessing share counter</h1></a>
                     </header>
                     <section class="post-content">
                         <p>找了一下，以下是基本的寫法：</p>
@@ -277,7 +277,7 @@ orz。</p>
                         <time class="post-time" datetime="2013-09-09T02:10:00" pubdate>
                             Mon 09 September 2013
                         </time>
-                        <a href="http://blog.carlcarl.me/1302/brunch-watch-stylesheet-dependency/" rel="bookmark"><h1>brunch watch stylesheet dependency</h1></a>
+                        <a href="../1302/brunch-watch-stylesheet-dependency/" rel="bookmark"><h1>brunch watch stylesheet dependency</h1></a>
                     </header>
                     <section class="post-content">
                         <p>之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生
@@ -302,11 +302,11 @@ build 好的 css，這個問題一直困擾我很久，每次都要重新跑一�
             </li>
         </ol>
         <div class="paginator">
-                    <a href="http://blog.carlcarl.me/author/carlcarl.html">
+                    <a href="../author/carlcarl.html">
                         <i class="icon-circle-arrow-left"></i>
                     </a>
             Page 2 / 17
-                <a href="http://blog.carlcarl.me/author/carlcarl3.html">
+                <a href="../author/carlcarl3.html">
                     <i class="icon-circle-arrow-right"></i>
                 </a>
         </div>
@@ -320,6 +320,6 @@ build 好的 css，這個問題一直困擾我很久，每次都要重新跑一�
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+        <script src="../theme/js/main.js"></script>
     </body>
 </html>
