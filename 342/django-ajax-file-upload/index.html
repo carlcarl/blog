@@ -13,23 +13,23 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Django ajax file upload" />
-                <meta property="og:url" content="../../342/django-ajax-file-upload/" />
+                <meta property="og:url" content="http://blog.carlcarl.me/342/django-ajax-file-upload/" />
                 <meta property="og:description" content="原本以為很簡單可以完成的東西，結果花了我不少時間解決囧。 Ajax 檔案上傳我用的是 ajaxfileupload 這個 jQuery 套件，問題在於 Django 會檢查 csrf 的問題，如果我不在 settings.py 裡的 MIDDLEWARE_CLASSES 加上 django.middleware.csrf.CsrfViewMiddleware，上傳會出現 syntax error，如果我加上了，則是會跟我說 csrf token 找不到。 後來找到的解決辦法就是在 views.py 裡拿到 csrf token 並傳到 template 中，然後再改寫 ajaxfileupload.js 中的內容，讓它支援傳送參數，接著將 csrf token 當作參數傳送回去就 OK ..." />
                     <meta property="article:tag" content="ajax" />
                     <meta property="article:tag" content="ajaxfileupload" />
                     <meta property="article:tag" content="csrf" />
                     <meta property="article:tag" content="django" />
                     <meta property="article:tag" content="python" />
-            <link rel="stylesheet" href="../../theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="../../theme/css/blog.css">
-    <link rel="stylesheet" href="../../theme/css/github.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -38,7 +38,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -60,7 +60,7 @@
                         <time class="post-time" datetime="2012-04-03T21:56:00" pubdate>
                             Tue 03 April 2012
                         </time>
-                        <a href="../../342/django-ajax-file-upload/" rel="bookmark"><h1>Django ajax file upload</h1></a>
+                        <a href="http://blog.carlcarl.me/342/django-ajax-file-upload/" rel="bookmark"><h1>Django ajax file upload</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -117,8 +117,8 @@ template，以下是個簡單的範例：</p>
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="../../category/js-python.html">js, python</a></p>
-                        <p>Tags: <a href="../../tag/ajax.html">ajax</a>, <a href="../../tag/ajaxfileupload.html">ajaxfileupload</a>, <a href="../../tag/csrf.html">csrf</a>, <a href="../../tag/django.html">django</a>, <a href="../../tag/python.html">python</a>, </p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/js-python.html">js, python</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/ajax.html">ajax</a>, <a href="http://blog.carlcarl.me/tag/ajaxfileupload.html">ajaxfileupload</a>, <a href="http://blog.carlcarl.me/tag/csrf.html">csrf</a>, <a href="http://blog.carlcarl.me/tag/django.html">django</a>, <a href="http://blog.carlcarl.me/tag/python.html">python</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -146,6 +146,6 @@ template，以下是個簡單的範例：</p>
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="../../theme/js/main.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>

@@ -13,20 +13,20 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="html5 canvas double buffering" />
-                <meta property="og:url" content="../../1023/html5-canvas-double-buffering/" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1023/html5-canvas-double-buffering/" />
                 <meta property="og:description" content="因為之前寫 java 的經驗，讓我以為在 html5 的 canvas 上也要自己實作 double buffering，但是在我後來實作後發現，好像哪裡怪怪的，因為其實原本就沒有在閃的感覺了，所以加了 double buffering 好像也沒啥差，重點是 performance 下降很多......。 後來花了一些時間找資料，我得到的結論－是大部分的情況，不需要自己做 double buffering，因為瀏覽器會很聰明的幫你做。但是它怎麼判斷什麼時候該把 buffer 的部分 render 上去呢？以下是我的鍵盤猜測： 因為現在大多數的螢幕更新頻率都是 60Hz，也就是說大概每 16 ms 就會刷新一次螢幕，而瀏覽器本身在刷新的頻率可能也會接近這個時間，但是有沒有比較高就不知道了，因為你所看到的可能會被你螢幕的更新頻率所限制，就算瀏覽器刷新頻率是 1000Hz，反正一般的銀幕也看不出來:P。 以一個簡單的例子來實驗，假如我在一開始把一個方形塗上顏色然後 clear 掉 ..." />
                     <meta property="article:tag" content="canvas" />
                     <meta property="article:tag" content="html5" />
-            <link rel="stylesheet" href="../../theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="../../theme/css/blog.css">
-    <link rel="stylesheet" href="../../theme/css/github.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -35,7 +35,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -57,7 +57,7 @@
                         <time class="post-time" datetime="2013-06-16T19:25:00" pubdate>
                             Sun 16 June 2013
                         </time>
-                        <a href="../../1023/html5-canvas-double-buffering/" rel="bookmark"><h1>html5 canvas double buffering</h1></a>
+                        <a href="http://blog.carlcarl.me/1023/html5-canvas-double-buffering/" rel="bookmark"><h1>html5 canvas double buffering</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -98,8 +98,8 @@ drawImage 把 buffering canvas 畫到 display 用的 canvas
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="../../category/js.html">js</a></p>
-                        <p>Tags: <a href="../../tag/canvas.html">canvas</a>, <a href="../../tag/html5.html">html5</a>, </p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/js.html">js</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/canvas.html">canvas</a>, <a href="http://blog.carlcarl.me/tag/html5.html">html5</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -127,6 +127,6 @@ drawImage 把 buffering canvas 畫到 display 用的 canvas
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="../../theme/js/main.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>

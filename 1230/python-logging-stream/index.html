@@ -13,20 +13,20 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Python logging stream" />
-                <meta property="og:url" content="../../1230/python-logging-stream/" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1230/python-logging-stream/" />
                 <meta property="og:description" content="在用 uniout 的時候發現 logging 的時候沒辦法自動轉輸出為中文(因為資料有些是中文，然後有時候又需要做些log 囧)，看了一下 uniout 的 code，看來做法是另外用了一個物件，然後把 sys.stdout 的屬性複製上去，再加上編碼的功能，最後再將 sys.stdout assign 成這個物件。 我用的 logger 程式 logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.DEBUG) logger = logging.getLogger(__name__) 想說 logging module 應該也是丟 stdout，不過怎麼設就是不行，所以還是看一下 source code。 logging ..." />
                     <meta property="article:tag" content="logging" />
                     <meta property="article:tag" content="uniout" />
-            <link rel="stylesheet" href="../../theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="../../theme/css/blog.css">
-    <link rel="stylesheet" href="../../theme/css/github.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -35,7 +35,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -57,7 +57,7 @@
                         <time class="post-time" datetime="2013-07-25T17:11:00" pubdate>
                             Thu 25 July 2013
                         </time>
-                        <a href="../../1230/python-logging-stream/" rel="bookmark"><h1>Python logging stream</h1></a>
+                        <a href="http://blog.carlcarl.me/1230/python-logging-stream/" rel="bookmark"><h1>Python logging stream</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -148,8 +148,8 @@ XD，不過想說還是有始有終的的把它 trace 下去。接下來要 fix
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="../../category/python.html">python</a></p>
-                        <p>Tags: <a href="../../tag/logging.html">logging</a>, <a href="../../tag/uniout.html">uniout</a>, </p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/python.html">python</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/logging.html">logging</a>, <a href="http://blog.carlcarl.me/tag/uniout.html">uniout</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -177,6 +177,6 @@ XD，不過想說還是有始有終的的把它 trace 下去。接下來要 fix
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="../../theme/js/main.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>

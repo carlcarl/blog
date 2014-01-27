@@ -13,21 +13,21 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="tig broken in tmux" />
-                <meta property="og:url" content="../../1375/tig-broken-in-tmux/" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1375/tig-broken-in-tmux/" />
                 <meta property="og:description" content="這個問題已經困擾我滿久了，在 tmux 裡用 tig 畫面會一直破碎，不過一直找不到原因，最近想到，於是又找看看有沒有解法，後來試了一篇裡面的做法就 OK 了 QQ。 靈感是在查資料的時候看到有人是因為在 tmux.conf 裡設定了 default-terminal=xterm 想到的，中間有試了一下 screen，發現 tig 在 screen 中是 OK 的，echo $TERM 得到的輸出是 screen，而我在 tmux 下得到的輸出卻是 xterm-256color，想說朝這個方向去找資料。這邊先找了 tmux.conf 中，但是我並沒有設定這個東西，看了 .zshrc，原來我是在這邊設定了 export TERM ..." />
                     <meta property="article:tag" content="screen" />
                     <meta property="article:tag" content="tig" />
                     <meta property="article:tag" content="tmux" />
-            <link rel="stylesheet" href="../../theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="../../theme/css/blog.css">
-    <link rel="stylesheet" href="../../theme/css/github.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -36,7 +36,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -58,7 +58,7 @@
                         <time class="post-time" datetime="2013-10-05T02:15:00" pubdate>
                             Sat 05 October 2013
                         </time>
-                        <a href="../../1375/tig-broken-in-tmux/" rel="bookmark"><h1>tig broken in tmux</h1></a>
+                        <a href="http://blog.carlcarl.me/1375/tig-broken-in-tmux/" rel="bookmark"><h1>tig broken in tmux</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -78,8 +78,8 @@ screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="../../category/linux.html">linux</a></p>
-                        <p>Tags: <a href="../../tag/screen.html">screen</a>, <a href="../../tag/tig.html">tig</a>, <a href="../../tag/tmux.html">tmux</a>, </p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/linux.html">linux</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/screen.html">screen</a>, <a href="http://blog.carlcarl.me/tag/tig.html">tig</a>, <a href="http://blog.carlcarl.me/tag/tmux.html">tmux</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -107,6 +107,6 @@ screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="../../theme/js/main.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>

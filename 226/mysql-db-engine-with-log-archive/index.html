@@ -13,23 +13,23 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="MySQL DB engine with log: Archive" />
-                <meta property="og:url" content="../../226/mysql-db-engine-with-log-archive/" />
+                <meta property="og:url" content="http://blog.carlcarl.me/226/mysql-db-engine-with-log-archive/" />
                 <meta property="og:description" content="前一陣子在看什麼 engine 比較適合拿來單純存 log，後來看到 Archive 這個似乎不錯，主要有以下優點： insert 速度更快。 佔的資料量較 Myisam 少。 但是有優勢，就會有相對的劣勢，Archive 有以下缺點： 不支援 delete 和 update，只能 insert 和 select。 不支援 index。 （如果你是想要存每次最後登入時間的話，那 Archive 的確是不適合，因為不支援 index 和 update。） 但是以現實角度來看單純的 log 表，像是存每次登入的紀錄： 其實真的就只會用到 insert，會用到 delete 和 update 那這個應該不太叫 log。 作 select 的機率也是微乎其微 ..." />
                     <meta property="article:tag" content="archive" />
                     <meta property="article:tag" content="innodb" />
                     <meta property="article:tag" content="mariadb" />
                     <meta property="article:tag" content="myisam" />
                     <meta property="article:tag" content="mysql" />
-            <link rel="stylesheet" href="../../theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="../../theme/css/blog.css">
-    <link rel="stylesheet" href="../../theme/css/github.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -38,7 +38,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -60,7 +60,7 @@
                         <time class="post-time" datetime="2011-12-17T18:00:00" pubdate>
                             Sat 17 December 2011
                         </time>
-                        <a href="../../226/mysql-db-engine-with-log-archive/" rel="bookmark"><h1>MySQL DB engine with log: Archive</h1></a>
+                        <a href="http://blog.carlcarl.me/226/mysql-db-engine-with-log-archive/" rel="bookmark"><h1>MySQL DB engine with log: Archive</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -138,8 +138,8 @@ Average number of queries per client: 1338
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="../../category/database.html">database</a></p>
-                        <p>Tags: <a href="../../tag/archive.html">archive</a>, <a href="../../tag/innodb.html">innodb</a>, <a href="../../tag/mariadb.html">mariadb</a>, <a href="../../tag/myisam.html">myisam</a>, <a href="../../tag/mysql.html">mysql</a>, </p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/database.html">database</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/archive.html">archive</a>, <a href="http://blog.carlcarl.me/tag/innodb.html">innodb</a>, <a href="http://blog.carlcarl.me/tag/mariadb.html">mariadb</a>, <a href="http://blog.carlcarl.me/tag/myisam.html">myisam</a>, <a href="http://blog.carlcarl.me/tag/mysql.html">mysql</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -167,6 +167,6 @@ Average number of queries per client: 1338
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="../../theme/js/main.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>

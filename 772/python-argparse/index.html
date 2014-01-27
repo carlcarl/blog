@@ -13,19 +13,19 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="python argparse" />
-                <meta property="og:url" content="../../772/python-argparse/" />
+                <meta property="og:url" content="http://blog.carlcarl.me/772/python-argparse/" />
                 <meta property="og:description" content="紀錄一些 python argparse module 的使用方法和問題： 選項的參數為 optional 譬如說 -f 這選項允許一個檔案的路徑名稱： -f test.txt，如果沒給檔案名稱就預設使用 example.txt： parser.add_argument('-f', nargs='?', default='example.txt') 設定各個選項分開，不允許放在一起使用 如果我希望 -f 和 -b 只有其中一個能被執行而已的話，這時候要用 add_mutually_exclusive_group 產生一個 group ，之後被加入這個 group 的參數就會套用這個分開使用的規則： group = parser.add_mutually_exclusive_group() group.add_argument('-f', action='store_true') group.add_argument('-b', action='store_true ..." />
                     <meta property="article:tag" content="argparse" />
-            <link rel="stylesheet" href="../../theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="../../theme/css/blog.css">
-    <link rel="stylesheet" href="../../theme/css/github.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -34,7 +34,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -56,7 +56,7 @@
                         <time class="post-time" datetime="2013-01-29T16:50:00" pubdate>
                             Tue 29 January 2013
                         </time>
-                        <a href="../../772/python-argparse/" rel="bookmark"><h1>python argparse</h1></a>
+                        <a href="http://blog.carlcarl.me/772/python-argparse/" rel="bookmark"><h1>python argparse</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -95,8 +95,8 @@
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="../../category/python.html">python</a></p>
-                        <p>Tags: <a href="../../tag/argparse.html">argparse</a>, </p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/python.html">python</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/argparse.html">argparse</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -124,6 +124,6 @@
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="../../theme/js/main.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>

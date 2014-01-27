@@ -13,20 +13,20 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="(98)Address already in use: make_sock: could not bind to address 80" />
-                <meta property="og:url" content="../../166/98address-already-in-use-make_sock-could-not-bind-to-address-80/" />
+                <meta property="og:url" content="http://blog.carlcarl.me/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/" />
                 <meta property="og:description" content="最近在重開 server 的時候突然發現 apache 怎麼沒有開，重開之後就出現如標題的錯誤，查了一下，應該是有個莫名的 process 把 port 給 bind 住了，用了一堆指令，一直 kill process，結果怎麼好像都沒用囧，後來才試到一個可以解決的指令： sudo fuser 80/tcp 執行之後就會顯示是哪個 process id 佔住的。 很奇怪的是我使用「netstat」去看居然是找不到的= =，另外要注意的是記得使用「sudo」或者是用 root 來查看，不然有可能會看不到。砍掉之後，再開啟 apache 就可以成功開啟了，算是一個滿怪的問題，當初忙著砍掉，忘記先查看 process 的名稱是什麼，只能先紀錄起來，下次如果還是發生一樣的情況的話，再來看看哩。 參考網址 ..." />
                     <meta property="article:tag" content="fuser" />
                     <meta property="article:tag" content="ubuntu" />
-            <link rel="stylesheet" href="../../theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="../../theme/css/blog.css">
-    <link rel="stylesheet" href="../../theme/css/github.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -35,7 +35,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -57,7 +57,7 @@
                         <time class="post-time" datetime="2011-12-05T19:37:00" pubdate>
                             Mon 05 December 2011
                         </time>
-                        <a href="../../166/98address-already-in-use-make_sock-could-not-bind-to-address-80/" rel="bookmark"><h1>(98)Address already in use: make_sock: could not bind to address 80</h1></a>
+                        <a href="http://blog.carlcarl.me/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/" rel="bookmark"><h1>(98)Address already in use: make_sock: could not bind to address 80</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -83,8 +83,8 @@ process，結果怎麼好像都沒用囧，後來才試到一個可以解決的�
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="../../category/linux.html">linux</a></p>
-                        <p>Tags: <a href="../../tag/fuser.html">fuser</a>, <a href="../../tag/ubuntu.html">ubuntu</a>, </p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/linux.html">linux</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/fuser.html">fuser</a>, <a href="http://blog.carlcarl.me/tag/ubuntu.html">ubuntu</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -112,6 +112,6 @@ process，結果怎麼好像都沒用囧，後來才試到一個可以解決的�
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="../../theme/js/main.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>

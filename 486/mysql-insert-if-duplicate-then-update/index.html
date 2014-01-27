@@ -13,19 +13,19 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="MySQL insert if duplicate then update" />
-                <meta property="og:url" content="../../486/mysql-insert-if-duplicate-then-update/" />
+                <meta property="og:url" content="http://blog.carlcarl.me/486/mysql-insert-if-duplicate-then-update/" />
                 <meta property="og:description" content="在做壓力測試的時候發現出來的數值不太對，後來看了一下，發現是因為程式裏面是拿 SELECT 出來的資料加 1 並給 UPDATE 來使用，但是這樣並不是一個 atomic 的 operation，如果在 SELECT 完之後有其他人也進行 SELECT 就變成會拿一樣的資料且都加 1，兩個做完 UPDATE 的結果就會只是加 1 過的數據，但是預期的結果應該要是加 2 的。 查了一下資料，發現有個簡單的語法可以使用： /* If id is the UNIQUE KEY */ INSERT INTO table (id, num) VALUES ('1', '1') ON DUPLICATE KEY UPDATE num=num+1 ..." />
                     <meta property="article:tag" content="mysql" />
-            <link rel="stylesheet" href="../../theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="../../theme/css/blog.css">
-    <link rel="stylesheet" href="../../theme/css/github.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -34,7 +34,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -56,7 +56,7 @@
                         <time class="post-time" datetime="2012-05-29T22:42:00" pubdate>
                             Tue 29 May 2012
                         </time>
-                        <a href="../../486/mysql-insert-if-duplicate-then-update/" rel="bookmark"><h1>MySQL insert if duplicate then update</h1></a>
+                        <a href="http://blog.carlcarl.me/486/mysql-insert-if-duplicate-then-update/" rel="bookmark"><h1>MySQL insert if duplicate then update</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -80,8 +80,8 @@ id 必須設定為 UNIQUE KEY 或 PRIMARY KEY。</p>
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="../../category/database.html">database</a></p>
-                        <p>Tags: <a href="../../tag/mysql.html">mysql</a>, </p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/database.html">database</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/mysql.html">mysql</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -109,6 +109,6 @@ id 必須設定為 UNIQUE KEY 或 PRIMARY KEY。</p>
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="../../theme/js/main.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>

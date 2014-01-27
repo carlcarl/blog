@@ -13,20 +13,20 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="FreeBSD set default shell to bash" />
-                <meta property="og:url" content="../../50/freebsd-set-default-shell-to-bash/" />
+                <meta property="og:url" content="http://blog.carlcarl.me/50/freebsd-set-default-shell-to-bash/" />
                 <meta property="og:description" content="最近興致來，就想說來把 FreeBSD 上的 csh 改成 bash，畢竟我還是比較習慣用 bash～。 首先先修改預設 shell： chsh -s /usr/local/bin/bash 輸入密碼後就修改成功了～。 再下來你可能會有一個已經有設定過的 .bashrc 檔案，當你放到家目錄底下的時候可能會發現說："怎麼都沒有反應？"，那是因為FreeBSD這邊吃的是 .bash\_profile這個設定檔=.=||，為了能夠兼容，我是自己又另外開了 .bash_profile 檔案，然後在裡面輸入： source ~/.bashrc 這樣以後就只要更新 .bashrc 這個設定檔就好了～。 然後後來又遇到中文無法輸入的問題，這個只要在 .bashrc 檔案中加入語系設定就可以了，另外再加上 ls 的 alias，不然 ls 輸出的目錄都不會標顏色： export LANG ..." />
                     <meta property="article:tag" content="bash" />
                     <meta property="article:tag" content="freebsd" />
-            <link rel="stylesheet" href="../../theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="../../theme/css/blog.css">
-    <link rel="stylesheet" href="../../theme/css/github.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -35,7 +35,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -57,7 +57,7 @@
                         <time class="post-time" datetime="2011-11-06T08:58:00" pubdate>
                             Sun 06 November 2011
                         </time>
-                        <a href="../../50/freebsd-set-default-shell-to-bash/" rel="bookmark"><h1>FreeBSD set default shell to bash</h1></a>
+                        <a href="http://blog.carlcarl.me/50/freebsd-set-default-shell-to-bash/" rel="bookmark"><h1>FreeBSD set default shell to bash</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -107,8 +107,8 @@
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="../../category/freebsd.html">FreeBSD</a></p>
-                        <p>Tags: <a href="../../tag/bash.html">bash</a>, <a href="../../tag/freebsd.html">freebsd</a>, </p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/freebsd.html">FreeBSD</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/bash.html">bash</a>, <a href="http://blog.carlcarl.me/tag/freebsd.html">freebsd</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -136,6 +136,6 @@
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="../../theme/js/main.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>

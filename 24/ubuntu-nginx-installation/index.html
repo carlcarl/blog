@@ -13,18 +13,18 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Ubuntu Nginx installation" />
-                <meta property="og:url" content="../../24/ubuntu-nginx-installation/" />
+                <meta property="og:url" content="http://blog.carlcarl.me/24/ubuntu-nginx-installation/" />
                 <meta property="og:description" content="[更新] 這邊有修改過的簡單版 弄了好久，參考了幾篇教學，應該算是能跑了吧囧a。話說有幾篇教學講得都不太一樣 害我也不知道該看哪篇才好，後來是找了這一篇來作看看。 首先先抓套件來安裝吧: apt-get install nginx php5-cli php5-cgi spawn-fcgi psmisc 接著在 /etc/nginx/sites-available/，底下應該會有個 default 設定檔，直接來修改這個檔案: server { listen 80 default; server_name localhost; access_log /var/log/nginx/localhost.access.log; location / { root /var/www/nginx-default; index index.php; } location /phpmyadmin ..." />
-            <link rel="stylesheet" href="../../theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="../../theme/css/blog.css">
-    <link rel="stylesheet" href="../../theme/css/github.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -33,7 +33,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -55,7 +55,7 @@
                         <time class="post-time" datetime="2011-06-13T15:51:00" pubdate>
                             Mon 13 June 2011
                         </time>
-                        <a href="../../24/ubuntu-nginx-installation/" rel="bookmark"><h1>Ubuntu Nginx installation</h1></a>
+                        <a href="http://blog.carlcarl.me/24/ubuntu-nginx-installation/" rel="bookmark"><h1>Ubuntu Nginx installation</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -204,7 +204,7 @@ update-rc.d php-fastcgi defaults
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="../../category/linux.html">linux</a></p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/linux.html">linux</a></p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -232,6 +232,6 @@ update-rc.d php-fastcgi defaults
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="../../theme/js/main.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>

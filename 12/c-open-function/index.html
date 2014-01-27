@@ -13,18 +13,18 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="C open function" />
-                <meta property="og:url" content="../../12/c-open-function/" />
+                <meta property="og:url" content="http://blog.carlcarl.me/12/c-open-function/" />
                 <meta property="og:description" content="最近好久沒有用 C 寫程式了，一直狂卡QQ 晚上在用 open 函式開檔案, 結果後來看發現權限都沒有設，後來查了一下才發現原來後面要加權限的設定，這裡來講就是 0666 這串數字： open(filename, O_RDWR|O_CREAT, 0666) 這數字可以設定使用者、群組、其他人的寫讀執行權限。如果只是開個一般的檔可以無腦一點，0666 就行了~，至於第二個參數 O_RDWR 代表在程式中可讀寫，也可以用 O_WRONLY 或 O_RDONLY 代表只寫或只讀，O_CREATE 則代表建立這個檔案。 參考網址： http://stackoverflow.com/questions/2245193/c-linux-file-permission-problem-with-open" />
-            <link rel="stylesheet" href="../../theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="../../theme/css/blog.css">
-    <link rel="stylesheet" href="../../theme/css/github.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -33,7 +33,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -55,7 +55,7 @@
                         <time class="post-time" datetime="2011-03-21T17:31:00" pubdate>
                             Mon 21 March 2011
                         </time>
-                        <a href="../../12/c-open-function/" rel="bookmark"><h1>C open function</h1></a>
+                        <a href="http://blog.carlcarl.me/12/c-open-function/" rel="bookmark"><h1>C open function</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -73,7 +73,7 @@
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="../../category/c-c.html">C &amp; C++</a></p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/c-c.html">C &amp; C++</a></p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -101,6 +101,6 @@
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="../../theme/js/main.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>

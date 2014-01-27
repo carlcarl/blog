@@ -13,19 +13,19 @@
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="MongoDB uptime query" />
-                <meta property="og:url" content="../../721/mongodb-uptime-query/" />
+                <meta property="og:url" content="http://blog.carlcarl.me/721/mongodb-uptime-query/" />
                 <meta property="og:description" content="在 stackoverflow 看到這個問題，就順便查個資料回了一下，另外有個人是回答可以用 ps -ef 來看，不過我想說 MongoDB 本身應該也會有這樣的功能，所以還是查了一下。 後來果然在 MongoDB 官方文件 找到我要的資料，不過拿到的數據會是以秒為單位，所以必須自己作轉換。 進入 mongo shell 之後輸入： // seconds db.serverStatus().uptime 其他的就照單位轉換一下就可以： // minutes db.serverStatus().uptime / 60 // hours db.serverStatus().uptime / 3600 // days db.serverStatus().uptime / 86400 如果要固定格式的話，目前似乎沒有直接的 function 可以 call，所以還是必須自己作轉換，像是 這篇 。" />
                     <meta property="article:tag" content="mongodb" />
-            <link rel="stylesheet" href="../../theme/css/normalize.css">
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../theme/css/main.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
 
-    <link rel="stylesheet" href="../../theme/css/blog.css">
-    <link rel="stylesheet" href="../../theme/css/github.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
         <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
-        <script src="../../theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -34,7 +34,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow">
-        <h1><a id="site-title" href="../.."><i class="icon-coffee"></i> carlcarl's blog</a></h1>
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="icon-coffee"></i> carlcarl's blog</a></h1>
         <p id="site-desc"></p>
     <nav>
         <ul id="nav-links">
@@ -56,7 +56,7 @@
                         <time class="post-time" datetime="2012-11-15T07:33:00" pubdate>
                             Thu 15 November 2012
                         </time>
-                        <a href="../../721/mongodb-uptime-query/" rel="bookmark"><h1>MongoDB uptime query</h1></a>
+                        <a href="http://blog.carlcarl.me/721/mongodb-uptime-query/" rel="bookmark"><h1>MongoDB uptime query</h1></a>
                     </header>
 
                     <section class="post-content">
@@ -85,8 +85,8 @@
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="../../category/database.html">database</a></p>
-                        <p>Tags: <a href="../../tag/mongodb.html">mongodb</a>, </p>
+                        <p>Category: <a href="http://blog.carlcarl.me/category/database.html">database</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/mongodb.html">mongodb</a>, </p>
                     </aside>
                     <hr/>
 <div class="comments">
@@ -114,6 +114,6 @@
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-        <script src="../../theme/js/main.js"></script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
     </body>
 </html>
