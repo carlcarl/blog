@@ -4,7 +4,7 @@
 &lt;p&gt;兩個都裝完之後，開啓 MacFusion，加入要 mount 的 ftp 或其他種 folder，但是我的沒有在 Finder sidebar 中出現可以點選的 folder，要先點選 Finder 中你這台 device，在裡面就看得到你 mount 的 folder 了。我試過加到 finder 的 sidebar 中，不過在 umount 之後，點選 sidebar 中的圖示也不會自動 mount，有點麻煩...。&lt;/p&gt;
 &lt;p&gt;總之，目前先這樣用吧，以後有啥更好的用法再試試看。&lt;/p&gt;
 &lt;p&gt;參考資料：&lt;br /&gt;
-&lt;a href="https://apple.stackexchange.com/questions/24699/can-i-edit-content-on-an-ftp-server-through-finder"&gt;Can I edit content on an FTP server through Finder?&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://apple.stackexchange.com/questions/24699/can-i-edit-content-on-an-ftp-server-through-finder"&gt;MacFuse and MacFusion&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://osxdaily.com/2011/02/07/ftp-from-mac/"&gt;FTP from Mac OS X&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://www.thxbye.de/mac/mac-mounting-ftpsftp-volumes-with-the-finder.html"&gt;Mac: Mounting FTP/SFTP volumes with the Finder&lt;/a&gt;&lt;br /&gt;
 &lt;a href="https://apple.stackexchange.com/questions/110965/connect-to-ftp-server-in-finder-not-working"&gt;Connect to FTP server in Finder not working&lt;/a&gt;&lt;/p&gt;</summary><category term="mac"></category><category term="ftp"></category></entry><entry><title>OSX Mavericks ext4</title><link href="http://blog.carlcarl.me/1389/osx_mavericks_ext4/" rel="alternate"></link><updated>2014-01-26T01:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-01-26:1389/osx_mavericks_ext4/</id><summary type="html">&lt;p&gt;記錄一下 OSX Mavericks 讀寫 ext4 的方法：&lt;/p&gt;
