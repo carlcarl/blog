@@ -7,7 +7,7 @@ Tags: mac, ftp
 Slug: osx_mavericks_ftp_in_finder
 
 
-找了一下 OSX 怎麼把 ftp 的目錄顯示在 finder 中，finder 雖然有內建 `Connect to Server` 的功能，不過非常爛，帳密登入的一直沒辦法 work，而且好像還是 read only，ftp command line 卻都沒啥問題，所以建議就放棄內建的功能，別浪費時間了了 = =。
+找了一下 OSX 怎麼把 ftp 的目錄顯示在 finder 中，finder 雖然有內建 `Connect to Server` 的功能，不過非常爛，帳密登入的一直沒辦法 work，而且好像還是 read only，ftp command line 卻都沒啥問題，所以建議就放棄內建的功能，別浪費時間了 = =。
 
 後來看到 [MacFusion] 搭配 [OSXFUSE]，想說來試試看，就結果來看，還是沒有 KDE 的 Dolphin 來得方便啊QQ，不過也還算堪用就是。
 

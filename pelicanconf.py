@@ -51,4 +51,4 @@ USE_OPEN_GRAPH = True
 # MD_EXTENSIONS = ['codehilite','extra']
 # MD_EXTENSIONS = ['extra']
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+# RELATIVE_URLS = True
