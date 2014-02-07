@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-03T21:25:00" pubdate>
+                            Mon 03 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/879/ubuntu-nginx-pagespeed-module/" rel="bookmark"><h1>Ubuntu nginx pagespeed module</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>Ubuntu 版本：12.04 Nginx 版本：1.4.1 pagespeed 版本：1.5.27.3
+記錄一下安裝的步驟：</p>
+<div class="highlight"><pre><span class="c"># 到 home 目錄下做，看個人習慣就是</span>
+<span class="nb">cd</span> ~
+<span class="c"># add-apt-repository 這個指令需要裝 python-software-properties</span>
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:nginx/stable
+sudo apt-get update
+<span class="c"># 下載 nginx source code</span>
+sudo apt-get <span class="nb">source </span>nginx
+<span class="c"># 裝 build nginx 需要的套件</span>
+sudo apt-get ...</pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-03T11:48:00" pubdate>
                             Mon 03 June 2013
                         </time>
@@ -277,43 +302,12 @@ if_prefix=eth0 ...</pre></div>
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-04-20T00:20:00" pubdate>
-                            Fri 20 April 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/390/ubuntu-mount-box-service/" rel="bookmark"><h1>Ubuntu mount Box service</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前在 PTT 看到有人分享可以用 boxfs 這個套件來掛載 <a href="http://www.box.com/">Box</a> 到本地端的資料夾上，感覺好像還不錯，而且因為之前買 Sony Ericsson 的手機，所以有 Box 額外送的 50G 空間，所以就想說拿來加減用啦。</p>
-<p>首先要先安裝相依的套件：</p>
-<div class="highlight"><pre>sudo apt-get install libxml2-dev libfuse-dev libcurl4-gnutls-dev libzip-dev
-</pre></div>
-
-
-<p>接著到 <a href="http://code.google.com/p/boxfs/downloads/list">這邊</a> 下載最新版本的 boxfs。下載完成後，解壓縮：</p>
-<div class="highlight"><pre>
-</pre></div>
-
-
-<p>tar xzf boxfs-relno.tgz</p>
-<p>接著進入 <code>box-版本</code> 資料夾，像我的就是 <code>boxfs-0.7</code>:</p>
-<div class="highlight"><pre><span class="nb">cd </span>boxfs-0.7
-</pre></div>
-
-
-<p>這邊還需要再另外安裝 libapp，這邊需要用到 git ，沒有的話就要安裝 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/category/linux.html">
                         <i class="icon-circle-arrow-left"></i>
                     </a>
-            Page 2 / 5
+            Page 2 / 6
                 <a href="http://blog.carlcarl.me/category/linux3.html">
                     <i class="icon-circle-arrow-right"></i>
                 </a>

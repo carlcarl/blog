@@ -51,6 +51,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-02-08T02:00:00" pubdate>
+                            Sat 08 February 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1391/check_if_command_exist/" rel="bookmark"><h1>Check if command exist</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>本來直覺是用 <code>which</code>，不過查了一下資料，在 <a href="https://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script">How to check if a program exists from a bash script?</a> 發現有幾個不建議用 <code>which</code> 的理由：</p>
+<ol>
+<li>cost 太大，需要另外 call 一個 process 來處理</li>
+<li>exit status 在一些系統並沒有定義</li>
+<li>很多 operating system 會對 <code>which</code> 做額外的 tweak，可能會有其他的 side effect</li>
+</ol>
+<p>在解答中建議可以用 <code>hash</code>, <code>command</code>, <code>type</code> 等指令來判斷，其中 <code>command</code> 的 exit code 在 POSIX ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-25T23:00:00" pubdate>
                             Sat 25 January 2014
                         </time>
@@ -265,34 +285,9 @@ js，沒有被 gzip 處理過。</p>
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-03T21:25:00" pubdate>
-                            Mon 03 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/879/ubuntu-nginx-pagespeed-module/" rel="bookmark"><h1>Ubuntu nginx pagespeed module</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>Ubuntu 版本：12.04 Nginx 版本：1.4.1 pagespeed 版本：1.5.27.3
-記錄一下安裝的步驟：</p>
-<div class="highlight"><pre><span class="c"># 到 home 目錄下做，看個人習慣就是</span>
-<span class="nb">cd</span> ~
-<span class="c"># add-apt-repository 這個指令需要裝 python-software-properties</span>
-sudo apt-get install python-software-properties
-sudo add-apt-repository ppa:nginx/stable
-sudo apt-get update
-<span class="c"># 下載 nginx source code</span>
-sudo apt-get <span class="nb">source </span>nginx
-<span class="c"># 裝 build nginx 需要的套件</span>
-sudo apt-get ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
-            Page 1 / 5
+            Page 1 / 6
                 <a href="http://blog.carlcarl.me/category/linux2.html">
                     <i class="icon-circle-arrow-right"></i>
                 </a>

@@ -51,6 +51,35 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-04T14:22:00" pubdate>
+                            Mon 04 July 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/31/awstats-analyze-large-logs-at-once-include-gz-files/" rel="bookmark"><h1>awstats analyze large logs at once (include gz files)</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="http://carl830.pixnet.net/blog/post/66466219">awstats的簡易安裝教學</a></p>
+<p>因為在維護的網站log檔有一年份，而且都已經壓縮成gz檔，要用awstats分析的話實在很費工夫，後來發現awstats有好用的工具可以用：<span style="color: #3366ff;">logresolvemerge.pl</span>。</p>
+<p>簡單講就是用這個工具將log檔(包含gz壓縮檔)都merge起來為一個大檔案後，再用awstats作分析。</p>
+<p>這邊首先要注意的就是
+<span style="color: #ff0000;">awstats不會讀較舊的log檔</span>，所以像我之閒已經讀了最新的log檔後想讀舊的，就只能直接砍掉紀錄檔重新開始，到
+/var/lib/awstats/底下將底下的檔案刪光，如此就能回到最初的狀態</p>
+<p>logresolvemerge.pl預設是在<span style="color: #3366ff;">/usr/share/doc/awstats/examples/</span>裡<br />
+可以移到其他地方，不然每次打路徑應該會打到手很酸XD</p>
+<p>這裡給個幾個簡單的範例</p>
+<h3>將多個log檔merge成一個log檔</h3>
+<div class="highlight"><pre>logresolvemerge.pl /var/log/apache2/.log &gt; temp.log
+</pre></div>
+
+
+<h3>將多個gz檔merge成一個log檔(其實跟上面的差不多~)</h3>
+<div class="highlight"><pre>logresolvemerge.pl /var/log/apache2/.gz &gt; temp ...</pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-07-04T13:04:00" pubdate>
                             Mon 04 July 2011
                         </time>
@@ -283,33 +312,15 @@ set shiftwidth=4
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-14T15:21:00" pubdate>
-                            Mon 14 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/5/screenrc-setting/" rel="bookmark"><h1>screenrc setting</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在<a href="http://antontw.blogspot.com/2007/04/screenrc-screenrc.html">大步向前走</a>看到不錯的設定檔 把顏色稍微改一下!</p>
-<p><img alt="screenrc" src="http://i.imgur.com/yCkhXdUl.png" title="screenrc" /></p>
-<div class="highlight"><pre>caption always &quot;%{= rk} %{= bY} [%n]%t @ %H %{-} %= %{= rr} %l %{-} | %{= rG} %Y-%m-%d %{-} &quot;
-hardstatus alwayslastline &quot; %-Lw%{= Bw}%n%f %t%{-  }%+Lw %=| %0c:%s &quot;
-</pre></div>
-
-
-<p>參數設定的話在<a href="http://cytseng.twbbs.org/?p=26">小明的網誌</a>可以看到。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/category/linux4.html">
                         <i class="icon-circle-arrow-left"></i>
                     </a>
-            Page 5 / 5
+            Page 5 / 6
+                <a href="http://blog.carlcarl.me/category/linux6.html">
+                    <i class="icon-circle-arrow-right"></i>
+                </a>
         </div>
 
     </div>

@@ -51,6 +51,37 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-04-20T00:20:00" pubdate>
+                            Fri 20 April 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/390/ubuntu-mount-box-service/" rel="bookmark"><h1>Ubuntu mount Box service</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前在 PTT 看到有人分享可以用 boxfs 這個套件來掛載 <a href="http://www.box.com/">Box</a> 到本地端的資料夾上，感覺好像還不錯，而且因為之前買 Sony Ericsson 的手機，所以有 Box 額外送的 50G 空間，所以就想說拿來加減用啦。</p>
+<p>首先要先安裝相依的套件：</p>
+<div class="highlight"><pre>sudo apt-get install libxml2-dev libfuse-dev libcurl4-gnutls-dev libzip-dev
+</pre></div>
+
+
+<p>接著到 <a href="http://code.google.com/p/boxfs/downloads/list">這邊</a> 下載最新版本的 boxfs。下載完成後，解壓縮：</p>
+<div class="highlight"><pre>
+</pre></div>
+
+
+<p>tar xzf boxfs-relno.tgz</p>
+<p>接著進入 <code>box-版本</code> 資料夾，像我的就是 <code>boxfs-0.7</code>:</p>
+<div class="highlight"><pre><span class="nb">cd </span>boxfs-0.7
+</pre></div>
+
+
+<p>這邊還需要再另外安裝 libapp，這邊需要用到 git ，沒有的話就要安裝 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-03-29T02:35:00" pubdate>
                             Thu 29 March 2012
                         </time>
@@ -256,40 +287,12 @@ process，結果怎麼好像都沒用囧，後來才試到一個可以解決的�
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-12-04T23:12:00" pubdate>
-                            Sun 04 December 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/159/apache-prevent-executing-php-in-specific-directory/" rel="bookmark"><h1>apache prevent executing php in specific directory</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近剛修復的問題，其實也滿常見的，不過有時候總是會忽略這種簡單的問題orz。</p>
-<p>如果要預防使用者將 php 檔案上傳後去執行的話，只要在 apache 的 config
-檔中加入以下設定：</p>
-<div class="highlight"><pre>AllowOverride None
-php_flag engine off
-Allow from all
-</pre></div>
-
-
-<p><code>Directory</code> 後面的 <code>/var/www/upload</code>
-記得使用自己要的路徑，設定完並重開 apache 後，如果是在這個目錄底下的
-php，就會改成下載 php 而不是執行
-php。另外還有一種方法也是可以作，不過是用副檔名的方法作過濾，顯然還是上面的方法會比較好囉。</p>
-<p>參考網址：<br />
-<a href="http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html">http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/category/linux2.html">
                         <i class="icon-circle-arrow-left"></i>
                     </a>
-            Page 3 / 5
+            Page 3 / 6
                 <a href="http://blog.carlcarl.me/category/linux4.html">
                     <i class="icon-circle-arrow-right"></i>
                 </a>

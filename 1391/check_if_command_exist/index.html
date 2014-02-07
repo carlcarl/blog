@@ -6,14 +6,16 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog - linux</title>
+        <title>    Check if command exist
+</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="carlcarl's blog" />
-                <meta property="og:url" content="http://blog.carlcarl.me" />
-                <meta property="og:description" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Check if command exist" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1391/check_if_command_exist/" />
+                <meta property="og:description" content="本來直覺是用 which，不過查了一下資料，在 How to check if a program exists from a bash script? 發現有幾個不建議用 which 的理由： cost 太大，需要另外 call 一個 process 來處理 exit status 在一些系統並沒有定義 很多 operating system 會對 which 做額外的 tweak，可能會有其他的 side effect 在解答中建議可以用 hash, command, type 等指令來判斷，其中 command 的 exit code 在 POSIX ..." />
+                    <meta property="article:tag" content="linux" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -56,6 +58,7 @@
                         </time>
                         <a href="http://blog.carlcarl.me/1391/check_if_command_exist/" rel="bookmark"><h1>Check if command exist</h1></a>
                     </header>
+
                     <section class="post-content">
                         <p>本來直覺是用 <code>which</code>，不過查了一下資料，在 <a href="https://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script">How to check if a program exists from a bash script?</a> 發現有幾個不建議用 <code>which</code> 的理由：</p>
 <ol>
@@ -63,47 +66,30 @@
 <li>exit status 在一些系統並沒有定義</li>
 <li>很多 operating system 會對 <code>which</code> 做額外的 tweak，可能會有其他的 side effect</li>
 </ol>
-<p>在解答中建議可以用 <code>hash</code>, <code>command</code>, <code>type</code> 等指令來判斷，其中 <code>command</code> 的 exit code 在 POSIX ...</p>
+<p>在解答中建議可以用 <code>hash</code>, <code>command</code>, <code>type</code> 等指令來判斷，其中 <code>command</code> 的 exit code 在 POSIX 中是有明確定義的，其他的則無，所以使用 <code>command</code> 應該是最安全的方式。如果不 care 的話也是可以用另外兩種，而像 <code>hash</code> 本身執行會有額外的 side effect，那就是會算出 command 的 hash，讓下次可以更快找到並執行指令，以這點來看，似乎算是個不錯的好處。</p>
                     </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/linux.html">linux</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/linux.html">linux</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
                 </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-04-27T00:23:00" pubdate>
-                            Sat 27 April 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/838/linux-kernel-space-get-time-interval/" rel="bookmark"><h1>Linux kernel space get time interval</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前聽到可以用 <code>jiffies</code>
-來抓時間，可是我自己測的結果是前後抓的時間會都一樣囧。查了一下
-stackoverflow，也有<a href="http://stackoverflow.com/questions/4655711/measuring-execution-time-of-a-function-inside-linux-kernel">一個遇到一樣的問題</a>，我猜可能 <code>jiffies</code> 也是用
-period update 的方式做更新，由於中間測量的 function
-太快，導致來不及更新就拿到了一樣的值這樣。而在下面的回答中看到可以用
-<code>do_gettimeofday()</code> 來抓時間區間，簡單範例如下：  </p>
-<div class="highlight"><pre><span class="cp">#include &lt;linux/time.h&gt;</span>
-<span class="c1">// ...</span>
-<span class="k">struct</span> <span class="n">timeval</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">;</span>
-<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
-
-<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">begin</span><span class="p">);</span>
-<span class="c1">// Do something here</span>
-<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">end</span><span class="p">);</span>
-
-<span class="c1">// Get milliseconds </span>
-<span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">-</span> <span class="n">begin</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
-<span class="n">val</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
             </li>
         </ol>
-        <div class="paginator">
-            Page 1 / 1
-        </div>
-
     </div>
         </div>
 
