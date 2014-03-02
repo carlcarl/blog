@@ -51,6 +51,39 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-21T00:31:00" pubdate>
+                            Tue 21 June 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/25/ubuntu-nginx-installation-easier/" rel="bookmark"><h1>Ubuntu nginx installation(easier)</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>從 <a href="/24/ubuntu-nginx-installation">之前這篇</a> 做了點修改</p>
+<div class="highlight"><pre>apt-get install nginx php5-cli php5-cgi spawn-fcgi psmisc
+</pre></div>
+
+
+<p>接著在 <code>/etc/nginx/sites-available/</code> 底下會有個 <code>default</code>，直接來修改這個檔案:</p>
+<div class="highlight"><pre>server {
+    listen   80 default;
+    server_name  localhost;
+    access_log  /var/log/nginx/localhost.access.log;
+    location / {
+        root   /var/www/nginx-default;
+        index   index.php;
+    }
+    location /phpmyadmin {
+    root /usr/share;
+    index index.php;
+    }
+    location ~ .php$ {
+        set $php_root ...</pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-06-13T15:51:00" pubdate>
                             Mon 13 June 2011
                         </time>
@@ -286,44 +319,12 @@ sudo dpkg-reconfigure postfix
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-31T18:29:00" pubdate>
-                            Thu 31 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/15/c-useful-debug-function/" rel="bookmark"><h1>C useful DEBUG function</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>學了那麼久才知道有這種好功能可以用 = ="</p>
-<div class="highlight"><pre><span class="cp">#define DBG(msg, arg...) printf(&quot;%s:%s(%d): &quot; msg,  __FILE__, __FUNCTION__, __LINE__, ##arg)</span>
-</pre></div>
-
-
-<p><code>FILE</code> 表示這行所在的程式檔案</p>
-<p><code>FUNCTION</code> 表示這個函式所在的函式(唸起來好繞口= =)
-不過如果是用 gcc 來編譯的話 建議是用 <code>func</code>, 我之前用 gcc
-編譯前者好像不會過......</p>
-<p><code>LINE</code> 代表這函式是在哪一行</p>
-<p>其實也只是把 <code>printf</code> 有印出一些資訊的版本 define 為一個函式這樣![][]</p>
-<p>(不過要我寫我還真不會= =||)</p>
-<p>而在實際上運用可以這樣:</p>
-<div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">DBG</span><span class="p">(</span><span class="s">&quot;%dn&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">);</span>
-</pre></div>
-
-
-<p>這樣如果 i 不等於 2 的話 就會在前面先印出那些資訊 然後才會印出 index ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/index15.html">
                         <i class="icon-circle-arrow-left"></i>
                     </a>
-            Page 16 / 17
+            Page 16 / 18
                 <a href="http://blog.carlcarl.me/index17.html">
                     <i class="icon-circle-arrow-right"></i>
                 </a>

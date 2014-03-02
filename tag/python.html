@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-03-03T01:00:00" pubdate>
+                            Mon 03 March 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1392/review_python_high_performance_programming/" rel="bookmark"><h1>[Review] Python High Performance Programming</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="Python High Performance Programming" src="http://i.imgur.com/xFWeiYk.jpg" /></p>
+<p>之前在網站上看到這本書，當初看到書的標題其實就蠻有興趣的了，這次剛好有機會可以 review 這本書，所以就來看看了。</p>
+<p>書本身的章節並不多，主要分成四個章節：Profiling, Numpy, Cython, Parallel Processing. 不過跟我預想的其實不太一樣，我當初其實以為會是有關寫法，記憶體控制或是 Python 特殊演算法的介紹，不過這本書其實比較偏向這幾個工具或 lib 的使用和一些技巧這樣，我覺得是比較可惜的地方。現在自己的 Python 程式其實比較少注意在效能方面，所以其實還對這些工具的使用沒有太大的感覺XD，希望之後有機會可以試著用這些工具來 tune 一些 performance 的問題。</p>
+<p>而我比較有興趣的應該是最後的 parallel processing 的部分，這部分應該算是在平常就會常接觸到的用法，另外就是還有一定會提到的 synchronization 和 locks 的問題，書中的話有用一些簡單的例子來說明為何在 MultiProcesses 下需要注意這個問題，不過算是滿基本的就是，如果還能有較進階一點的用法和例子，我覺得是會更好。</p>
+<p>就個人而言，不太算是我的菜，大概是因為跟我預想的 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-19T16:00:00" pubdate>
                             Sun 19 January 2014
                         </time>
@@ -271,25 +289,6 @@ error，如果我加上了，則是會跟我說 csrf token 找不到。</p>
 <p>後來找到的解決辦法就是在 views.py 裡拿到 csrf token 並傳到 template
 中，然後再改寫 ajaxfileupload.js 中的內容，讓它支援傳送參數，接著將 csrf
 token 當作參數傳送回去就 OK ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-04-01T16:05:00" pubdate>
-                            Sun 01 April 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/335/python-documentation-epydoc/" rel="bookmark"><h1>python documentation: epydoc</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><a href="http://epydoc.sourceforge.net/index.html">epydoc</a> 是利用 parse python 的程式來製作文件，文件的類型像是一般的 html 和 pdf 都能產生。我個人是比較偏好 html 的格式囉，它的 html 樣板跟 Javadoc 的配置差不多，比較習慣。</p>
-<p>它 parse 程式的方法主要是利用 method 一開始的 <code>"""</code> 註解，不習慣寫的人可以參考它的 <a href="http://epydoc.sourceforge.net/fields.html#fields">欄位官方範例</a>。</p>
-<p>首先要先安裝 <code>epydoc</code>，在官方網站上沒講到 ubuntu
-的安裝包，用 <code>apt-get</code> 也找不到，後來試看看 <code>pip install epydoc</code> 就 OK
-了。這邊有點要注意的是，如果你的 project
-是在 <code>virtualenv</code> 環境下的話，建議將 <code>epydoc ...</code></p>
                     </section>
                 </article>
                 <hr/>

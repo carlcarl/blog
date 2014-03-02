@@ -51,6 +51,38 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-03-31T18:29:00" pubdate>
+                            Thu 31 March 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/15/c-useful-debug-function/" rel="bookmark"><h1>C useful DEBUG function</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>學了那麼久才知道有這種好功能可以用 = ="</p>
+<div class="highlight"><pre><span class="cp">#define DBG(msg, arg...) printf(&quot;%s:%s(%d): &quot; msg,  __FILE__, __FUNCTION__, __LINE__, ##arg)</span>
+</pre></div>
+
+
+<p><code>FILE</code> 表示這行所在的程式檔案</p>
+<p><code>FUNCTION</code> 表示這個函式所在的函式(唸起來好繞口= =)
+不過如果是用 gcc 來編譯的話 建議是用 <code>func</code>, 我之前用 gcc
+編譯前者好像不會過......</p>
+<p><code>LINE</code> 代表這函式是在哪一行</p>
+<p>其實也只是把 <code>printf</code> 有印出一些資訊的版本 define 為一個函式這樣![][]</p>
+<p>(不過要我寫我還真不會= =||)</p>
+<p>而在實際上運用可以這樣:</p>
+<div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">DBG</span><span class="p">(</span><span class="s">&quot;%dn&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">);</span>
+</pre></div>
+
+
+<p>這樣如果 i 不等於 2 的話 就會在前面先印出那些資訊 然後才會印出 index ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-03-27T19:58:00" pubdate>
                             Sun 27 March 2011
                         </time>
@@ -272,33 +304,15 @@ set shiftwidth=4
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-14T15:21:00" pubdate>
-                            Mon 14 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/5/screenrc-setting/" rel="bookmark"><h1>screenrc setting</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在<a href="http://antontw.blogspot.com/2007/04/screenrc-screenrc.html">大步向前走</a>看到不錯的設定檔 把顏色稍微改一下!</p>
-<p><img alt="screenrc" src="http://i.imgur.com/yCkhXdUl.png" title="screenrc" /></p>
-<div class="highlight"><pre>caption always &quot;%{= rk} %{= bY} [%n]%t @ %H %{-} %= %{= rr} %l %{-} | %{= rG} %Y-%m-%d %{-} &quot;
-hardstatus alwayslastline &quot; %-Lw%{= Bw}%n%f %t%{-  }%+Lw %=| %0c:%s &quot;
-</pre></div>
-
-
-<p>參數設定的話在<a href="http://cytseng.twbbs.org/?p=26">小明的網誌</a>可以看到。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl16.html">
                         <i class="icon-circle-arrow-left"></i>
                     </a>
-            Page 17 / 17
+            Page 17 / 18
+                <a href="http://blog.carlcarl.me/author/carlcarl18.html">
+                    <i class="icon-circle-arrow-right"></i>
+                </a>
         </div>
 
     </div>

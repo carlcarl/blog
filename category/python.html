@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-03-03T01:00:00" pubdate>
+                            Mon 03 March 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1392/review_python_high_performance_programming/" rel="bookmark"><h1>[Review] Python High Performance Programming</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="Python High Performance Programming" src="http://i.imgur.com/xFWeiYk.jpg" /></p>
+<p>之前在網站上看到這本書，當初看到書的標題其實就蠻有興趣的了，這次剛好有機會可以 review 這本書，所以就來看看了。</p>
+<p>書本身的章節並不多，主要分成四個章節：Profiling, Numpy, Cython, Parallel Processing. 不過跟我預想的其實不太一樣，我當初其實以為會是有關寫法，記憶體控制或是 Python 特殊演算法的介紹，不過這本書其實比較偏向這幾個工具或 lib 的使用和一些技巧這樣，我覺得是比較可惜的地方。現在自己的 Python 程式其實比較少注意在效能方面，所以其實還對這些工具的使用沒有太大的感覺XD，希望之後有機會可以試著用這些工具來 tune 一些 performance 的問題。</p>
+<p>而我比較有興趣的應該是最後的 parallel processing 的部分，這部分應該算是在平常就會常接觸到的用法，另外就是還有一定會提到的 synchronization 和 locks 的問題，書中的話有用一些簡單的例子來說明為何在 MultiProcesses 下需要注意這個問題，不過算是滿基本的就是，如果還能有較進階一點的用法和例子，我覺得是會更好。</p>
+<p>就個人而言，不太算是我的菜，大概是因為跟我預想的 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-19T16:00:00" pubdate>
                             Sun 19 January 2014
                         </time>
@@ -283,33 +301,6 @@ attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</cod
 <p><code>n</code> 和 <code>p</code> 分別對應 <code>10</code> 和 <code>[1,1]</code> 這兩個參數，<code>10</code> 表示要 fibonacci
 的第十個項數，<code>[1,1]</code> 是第一項和第二項的值。然後是一個 loop 將 <code>p</code>
 陣列中最後兩個值加起來再 append ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-25T17:11:00" pubdate>
-                            Thu 25 July 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1230/python-logging-stream/" rel="bookmark"><h1>Python logging stream</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在用 <a href="https://github.com/moskytw/uniout">uniout</a> 的時候發現 logging
-的時候沒辦法自動轉輸出為中文(因為資料有些是中文，然後有時候又需要做些log
-囧)，看了一下 <code>uniout</code> 的 code，看來做法是另外用了一個物件，然後把
-<code>sys.stdout</code> 的屬性複製上去，再加上編碼的功能，最後再將 <code>sys.stdout</code>
-assign 成這個物件。</p>
-<h3>我用的 logger 程式</h3>
-<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(levelname)s</span><span class="s">: </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
-</pre></div>
-
-
-<p>想說 <code>logging</code> module 應該也是丟
-<code>stdout</code>，不過怎麼設就是不行，所以還是看一下 source code。</p>
-<h3>logging ...</h3>
                     </section>
                 </article>
                 <hr/>
