@@ -51,6 +51,27 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-04T02:35:00" pubdate>
+                            Sun 04 August 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1240/python-fibonacci-number/" rel="bookmark"><h1>Python fibonacci number</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 Python Taiwan 社團看到的寫法：</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="p">(([</span><span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)])</span> <span class="ow">and</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">or</span> <span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+
+<p><code>n</code> 和 <code>p</code> 分別對應 <code>10</code> 和 <code>[1,1]</code> 這兩個參數，<code>10</code> 表示要 fibonacci
+的第十個項數，<code>[1,1]</code> 是第一項和第二項的值。然後是一個 loop 將 <code>p</code>
+陣列中最後兩個值加起來再 append ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-07-25T17:11:00" pubdate>
                             Thu 25 July 2013
                         </time>
@@ -273,47 +294,12 @@ doc，設置還算簡單，不過好像漏了個小地方。  </p>
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-01-28T15:08:00" pubdate>
-                            Mon 28 January 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/759/python-logging/" rel="bookmark"><h1>python logging</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>紀錄一下 python logging 的一些簡單設定。  </p>
-<h3>可以在一開始設定 log 訊息顯示的等級：</h3>
-<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
-</pre></div>
-
-
-<h3>設定顯示的訊息格式, ex: <code>ERROR: error message</code></h3>
-<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(levelname)s</span><span class="s">: </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<h3>log message 加上變數</h3>
-<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;The value is </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-</pre></div>
-
-
-<p>有人可能會想用另外一個較基本的方法：</p>
-<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;The value is </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
-</pre></div>
-
-
-<p>但是這種方法，就會變成不管 log 不 log，都會執行組合字串的動作，所以並不建議，這邊可以參考 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/category/python.html">
                         <i class="fa fa-arrow-circle-left"></i>
                     </a>
-            Page 2 / 3
+            Page 2 / 4
                 <a href="http://blog.carlcarl.me/category/python3.html">
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>

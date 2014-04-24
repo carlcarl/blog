@@ -51,6 +51,34 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-04-24T15:00:00" pubdate>
+                            Thu 24 April 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1393/python_mocking_requests/" rel="bookmark"><h1>Python mocking requests</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查了一下有沒有相關的 library 可以做 web request 的 mocking，後來看到 <a href="https://github.com/gabrielfalcao/HTTPretty">httpretty</a> 這個可以用，除了內建的 <code>urlopen</code> 這類以外，也支援 <code>requests</code> library，不過有點可惜的是 <code>httpretty</code> 不是內建的，所以必須用 <code>pip</code> 先安裝來用。它的用法還算簡單，以下是個簡單的例子：</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">httpretty</span>
+
+<span class="nd">@httpretty.activate</span>
+<span class="k">def</span> <span class="nf">test_request_new_token</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">token_response</span> <span class="o">=</span> <span class="s">&#39;123&#39;</span>
+
+    <span class="n">httpretty</span><span class="o">.</span><span class="n">register_uri</span><span class="p">(</span>
+        <span class="n">httpretty</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span>
+        <span class="s">&quot;https://api.imgur.com/oauth2/token&quot;</span><span class="p">,</span>
+        <span class="n">body</span><span class="o">=</span><span class="n">token_response</span><span class="p">,</span>
+        <span class="n">status</span><span class="o">=</span><span class="mi">200 ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-03-03T01:00:00" pubdate>
                             Mon 03 March 2014
                         </time>
@@ -267,28 +295,6 @@ vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的
 來看一下簡單的範例：</p>
 <p>html</p>
 <div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;list[]&quot;</span> <span class="na">value=</span><span class="s">&quot;value ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-04-03T21:56:00" pubdate>
-                            Tue 03 April 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/342/django-ajax-file-upload/" rel="bookmark"><h1>Django ajax file upload</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>原本以為很簡單可以完成的東西，結果花了我不少時間解決囧。</p>
-<p>Ajax 檔案上傳我用的是 <a href="http://www.phpletter.com/Our-Projects/AjaxFileUpload/">ajaxfileupload</a> 這個 jQuery 套件，問題在於
-Django 會檢查 csrf 的問題，如果我不在 settings.py 裡的
-<code>MIDDLEWARE_CLASSES</code> 加上
-<code>django.middleware.csrf.CsrfViewMiddleware</code>，上傳會出現 syntax
-error，如果我加上了，則是會跟我說 csrf token 找不到。</p>
-<p>後來找到的解決辦法就是在 views.py 裡拿到 csrf token 並傳到 template
-中，然後再改寫 ajaxfileupload.js 中的內容，讓它支援傳送參數，接著將 csrf
-token 當作參數傳送回去就 OK ...</p>
                     </section>
                 </article>
                 <hr/>

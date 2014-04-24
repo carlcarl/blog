@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    Python mocking requests
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Python mocking requests" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1393/python_mocking_requests/" />
+                <meta property="og:description" content="查了一下有沒有相關的 library 可以做 web request 的 mocking，後來看到 httpretty 這個可以用，除了內建的 urlopen 這類以外，也支援 requests library，不過有點可惜的是 httpretty 不是內建的，所以必須用 pip 先安裝來用。它的用法還算簡單，以下是個簡單的例子： import requests import httpretty @httpretty.activate def test_request_new_token(): data = {} headers = [] token_response = '123' httpretty.register_uri( httpretty.POST, "https://api.imgur.com/oauth2/token", body=token_response, status=200 ..." />
+                    <meta property="article:tag" content="python" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="fa fa-coffee"></i> carlcarl's blog</a></h1>
+        <p id="site-desc"></p>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2014-04-24T15:00:00" pubdate>
+                            Thu 24 April 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1393/python_mocking_requests/" rel="bookmark"><h1>Python mocking requests</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p>查了一下有沒有相關的 library 可以做 web request 的 mocking，後來看到 <a href="https://github.com/gabrielfalcao/HTTPretty">httpretty</a> 這個可以用，除了內建的 <code>urlopen</code> 這類以外，也支援 <code>requests</code> library，不過有點可惜的是 <code>httpretty</code> 不是內建的，所以必須用 <code>pip</code> 先安裝來用。它的用法還算簡單，以下是個簡單的例子：</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">httpretty</span>
+
+<span class="nd">@httpretty.activate</span>
+<span class="k">def</span> <span class="nf">test_request_new_token</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">token_response</span> <span class="o">=</span> <span class="s">&#39;123&#39;</span>
+
+    <span class="n">httpretty</span><span class="o">.</span><span class="n">register_uri</span><span class="p">(</span>
+        <span class="n">httpretty</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span>
+        <span class="s">&quot;https://api.imgur.com/oauth2/token&quot;</span><span class="p">,</span>
+        <span class="n">body</span><span class="o">=</span><span class="n">token_response</span><span class="p">,</span>
+        <span class="n">status</span><span class="o">=</span><span class="mi">200</span>
+    <span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s">&#39;https://api.imgur.com/oauth2/token&#39;</span><span class="p">,</span>
+        <span class="n">params</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="n">token_response</span>
+</pre></div>
+
+
+<p>上面的例子，先在 test function 上加入 <code>httpretty.activate</code> decorator，接著在 function 裡頭用 <code>httpretty.register_uri</code> 去註冊要 mocking 的 http method + url，回傳的資料則指定在 <code>body</code> 這個參數，且必須是字串，回傳的 status code 則是指定在 <code>status</code> 這個參數。接著可以測試發出的 request 所回傳的 response 是否會和預期的一樣，這邊的 <code>response.text</code> 會等於 <code>token_response</code>。</p>
+<p>另外，如果想在同一個 test function 去測試同樣的 http method + url，然後需要回傳不一樣的結果的話，必須在兩個 <code>register_uri</code> function 中間呼叫 <code>httpretty.disable()</code> 來 cancel 掉之前的 register。 </p>
+<p>參考網址:<br />
+<a href="http://marekbrzoska.wordpress.com/2013/08/28/mocking-http-requests-in-python/">Mocking HTTP requests in python</a>  </p>
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/python.html">python</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/python.html">python</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>

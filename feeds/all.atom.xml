@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2014-03-03T01:00:00+08:00</updated><entry><title>[Review] Python High Performance Programming</title><link href="http://blog.carlcarl.me/1392/review_python_high_performance_programming/" rel="alternate"></link><updated>2014-03-03T01:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-03-03:1392/review_python_high_performance_programming/</id><summary type="html">&lt;p&gt;&lt;img alt="Python High Performance Programming" src="http://i.imgur.com/xFWeiYk.jpg" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2014-04-24T15:00:00+08:00</updated><entry><title>Python mocking requests</title><link href="http://blog.carlcarl.me/1393/python_mocking_requests/" rel="alternate"></link><updated>2014-04-24T15:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-04-24:1393/python_mocking_requests/</id><summary type="html">&lt;p&gt;查了一下有沒有相關的 library 可以做 web request 的 mocking，後來看到 &lt;a href="https://github.com/gabrielfalcao/HTTPretty"&gt;httpretty&lt;/a&gt; 這個可以用，除了內建的 &lt;code&gt;urlopen&lt;/code&gt; 這類以外，也支援 &lt;code&gt;requests&lt;/code&gt; library，不過有點可惜的是 &lt;code&gt;httpretty&lt;/code&gt; 不是內建的，所以必須用 &lt;code&gt;pip&lt;/code&gt; 先安裝來用。它的用法還算簡單，以下是個簡單的例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;httpretty&lt;/span&gt;
+
+&lt;span class="nd"&gt;@httpretty.activate&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_request_new_token&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="n"&gt;headers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+    &lt;span class="n"&gt;token_response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;123&amp;#39;&lt;/span&gt;
+
+    &lt;span class="n"&gt;httpretty&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register_uri&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;httpretty&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;https://api.imgur.com/oauth2/token&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;token_response&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;https://api.imgur.com/oauth2/token&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;headers&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;headers&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;token_response&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面的例子，先在 test function 上加入 &lt;code&gt;httpretty.activate&lt;/code&gt; decorator，接著在 function 裡頭用 &lt;code&gt;httpretty.register_uri&lt;/code&gt; 去註冊要 mocking 的 http method + url，回傳的資料則指定在 &lt;code&gt;body&lt;/code&gt; 這個參數，且必須是字串，回傳的 status code 則是指定在 &lt;code&gt;status&lt;/code&gt; 這個參數。接著可以測試發出的 request 所回傳的 response 是否會和預期的一樣，這邊的 &lt;code&gt;response.text&lt;/code&gt; 會等於 &lt;code&gt;token_response&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;另外，如果想在同一個 test function 去測試同樣的 http method + url，然後需要回傳不一樣的結果的話，必須在兩個 &lt;code&gt;register_uri&lt;/code&gt; function 中間呼叫 &lt;code&gt;httpretty.disable()&lt;/code&gt; 來 cancel 掉之前的 register。 &lt;/p&gt;
+&lt;p&gt;參考網址:&lt;br /&gt;
+&lt;a href="http://marekbrzoska.wordpress.com/2013/08/28/mocking-http-requests-in-python/"&gt;Mocking HTTP requests in python&lt;/a&gt;  &lt;/p&gt;</summary><category term="python"></category></entry><entry><title>[Review] Python High Performance Programming</title><link href="http://blog.carlcarl.me/1392/review_python_high_performance_programming/" rel="alternate"></link><updated>2014-03-03T01:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-03-03:1392/review_python_high_performance_programming/</id><summary type="html">&lt;p&gt;&lt;img alt="Python High Performance Programming" src="http://i.imgur.com/xFWeiYk.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;之前在網站上看到這本書，當初看到書的標題其實就蠻有興趣的了，這次剛好有機會可以 review 這本書，所以就來看看了。&lt;/p&gt;
 &lt;p&gt;書本身的章節並不多，主要分成四個章節：Profiling, Numpy, Cython, Parallel Processing. 不過跟我預想的其實不太一樣，我當初其實以為會是有關寫法，記憶體控制或是 Python 特殊演算法的介紹，不過這本書其實比較偏向這幾個工具或 lib 的使用和一些技巧這樣，我覺得是比較可惜的地方。現在自己的 Python 程式其實比較少注意在效能方面，所以其實還對這些工具的使用沒有太大的感覺XD，希望之後有機會可以試著用這些工具來 tune 一些 performance 的問題。&lt;/p&gt;
 &lt;p&gt;而我比較有興趣的應該是最後的 parallel processing 的部分，這部分應該算是在平常就會常接觸到的用法，另外就是還有一定會提到的 synchronization 和 locks 的問題，書中的話有用一些簡單的例子來說明為何在 MultiProcesses 下需要注意這個問題，不過算是滿基本的就是，如果還能有較進階一點的用法和例子，我覺得是會更好。&lt;/p&gt;

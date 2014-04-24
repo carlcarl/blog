@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog</title>
+        <title>carlcarl's blog - python</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
@@ -51,48 +51,34 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-14T16:11:00" pubdate>
-                            Mon 14 March 2011
+                        <time class="post-time" datetime="2011-03-19T19:27:00" pubdate>
+                            Sat 19 March 2011
                         </time>
-                        <a href="http://blog.carlcarl.me/6/pixnet-paste-code/" rel="bookmark"><h1>Pixnet paste code</h1></a>
+                        <a href="http://blog.carlcarl.me/8/python-django-beautiful-soup-in-google-app-engine/" rel="bookmark"><h1>Python Django Beautiful Soup in Google app engine</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>在側邊欄位設定裡 -&gt; 頁尾描述的部分貼上下面的 code</p>
-<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://alexgorbatchev.com/pub/sh/current/scripts/shBrushBash.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-14T15:21:00" pubdate>
-                            Mon 14 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/5/screenrc-setting/" rel="bookmark"><h1>screenrc setting</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在<a href="http://antontw.blogspot.com/2007/04/screenrc-screenrc.html">大步向前走</a>看到不錯的設定檔 把顏色稍微改一下!</p>
-<p><img alt="screenrc" src="http://i.imgur.com/yCkhXdUl.png" title="screenrc" /></p>
-<div class="highlight"><pre>caption always &quot;%{= rk} %{= bY} [%n]%t @ %H %{-} %= %{= rr} %l %{-} | %{= rG} %Y-%m-%d %{-} &quot;
-hardstatus alwayslastline &quot; %-Lw%{= Bw}%n%f %t%{-  }%+Lw %=| %0c:%s &quot;
+                        <p>之前用原生的 HTMLParser 用到很囧，感覺功能還是不夠強大</p>
+<p>後來看到了 <code>BeautifulSoup</code> 這個 plugin 就想說用用看，使用很方便，只要把裏面的 BeautifulSoup 複製一份到自己的目錄下，然後 import 進來就好了:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">BeautifulSoup</span>
 </pre></div>
 
 
-<p>參數設定的話在<a href="http://cytseng.twbbs.org/?p=26">小明的網誌</a>可以看到。</p>
+<p>在 Google app engine 裡，我是搭配urlfetch來使用，如以下的片段範例:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">google.appengine.api</span> <span class="kn">import</span> <span class="n">urlfetch</span>
+<span class="kn">from</span> <span class="nn">BeautifulSoup</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;the url address you want&#39;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">urlfetch</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="c"># 抓網頁</span>
+<span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200 ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>
             </li>
         </ol>
         <div class="paginator">
-                    <a href="http://blog.carlcarl.me/index17.html">
+                    <a href="http://blog.carlcarl.me/category/python3.html">
                         <i class="fa fa-arrow-circle-left"></i>
                     </a>
-            Page 18 / 18
+            Page 4 / 4
         </div>
 
     </div>
