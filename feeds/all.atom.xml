@@ -25,7 +25,7 @@
 
 
 &lt;p&gt;上面的例子，先在 test function 上加入 &lt;code&gt;httpretty.activate&lt;/code&gt; decorator，接著在 function 裡頭用 &lt;code&gt;httpretty.register_uri&lt;/code&gt; 去註冊要 mocking 的 http method + url，回傳的資料則指定在 &lt;code&gt;body&lt;/code&gt; 這個參數，且必須是字串，回傳的 status code 則是指定在 &lt;code&gt;status&lt;/code&gt; 這個參數。接著可以測試發出的 request 所回傳的 response 是否會和預期的一樣，這邊的 &lt;code&gt;response.text&lt;/code&gt; 會等於 &lt;code&gt;token_response&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;另外，如果想在同一個 test function 去測試同樣的 http method + url，然後需要回傳不一樣的結果的話，必須在兩個 &lt;code&gt;register_uri&lt;/code&gt; function 中間呼叫 &lt;code&gt;httpretty.disable()&lt;/code&gt; 來 cancel 掉之前的 register。 &lt;/p&gt;
+&lt;p&gt;另外，如果想在同一個 test function 去測試同樣的 http method + url，然後需要回傳不一樣的結果的話，必須在兩個 &lt;code&gt;register_uri&lt;/code&gt; function 中間呼叫 &lt;code&gt;httpretty.reset()&lt;/code&gt; 來 cancel 掉之前的 register。 &lt;/p&gt;
 &lt;p&gt;參考網址:&lt;br /&gt;
 &lt;a href="http://marekbrzoska.wordpress.com/2013/08/28/mocking-http-requests-in-python/"&gt;Mocking HTTP requests in python&lt;/a&gt;  &lt;/p&gt;</summary><category term="python"></category></entry><entry><title>[Review] Python High Performance Programming</title><link href="http://blog.carlcarl.me/1392/review_python_high_performance_programming/" rel="alternate"></link><updated>2014-03-03T01:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-03-03:1392/review_python_high_performance_programming/</id><summary type="html">&lt;p&gt;&lt;img alt="Python High Performance Programming" src="http://i.imgur.com/xFWeiYk.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;之前在網站上看到這本書，當初看到書的標題其實就蠻有興趣的了，這次剛好有機會可以 review 這本書，所以就來看看了。&lt;/p&gt;
