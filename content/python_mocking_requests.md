@@ -34,7 +34,7 @@ Slug: python_mocking_requests
         
  上面的例子，先在 test function 上加入 `httpretty.activate` decorator，接著在 function 裡頭用 `httpretty.register_uri` 去註冊要 mocking 的 http method + url，回傳的資料則指定在 `body` 這個參數，且必須是字串，回傳的 status code 則是指定在 `status` 這個參數。接著可以測試發出的 request 所回傳的 response 是否會和預期的一樣，這邊的 `response.text` 會等於 `token_response`。
  
-另外，如果想在同一個 test function 去測試同樣的 http method + url，然後需要回傳不一樣的結果的話，必須在兩個 `register_uri` function 中間呼叫 `httpretty.disable()` 來 cancel 掉之前的 register。 
+另外，如果想在同一個 test function 去測試同樣的 http method + url，然後需要回傳不一樣的結果的話，必須在兩個 `register_uri` function 中間呼叫 `httpretty.reset()` 來 cancel 掉之前的 register。 
 
 參考網址:  
 [Mocking HTTP requests in python]  
