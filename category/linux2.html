@@ -51,6 +51,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-16T23:10:00" pubdate>
+                            Sun 16 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1043/nginx-pagespeed-gzip-combine-js/" rel="bookmark"><h1>nginx pagespeed gzip combine js</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在用 <a href="http://gtmetrix.com">GTmetrix</a> 看網站的效能的時候，發現只有 pagespeed combine 出來的
+js，沒有被 gzip 處理過。</p>
+<p>google 了一下，在 <a href="https://github.com/pagespeed/ngx_pagespeed/issues/368">Github 上也找到同樣的問題</a>，裡面說要加上
+<code>application/javascript</code>，回頭看了一下我的 nginx 設定檔，果然沒加到= =。</p>
+<p>我原本設定是
+<code>gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript</code>，想說該設的都設了，想不到還是有漏網之魚，加上之後重啟，果然就 OK 哩。</p>
+<p>附帶一提，我把 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-03T21:25:00" pubdate>
                             Mon 03 June 2013
                         </time>
@@ -267,37 +287,6 @@ bash 換成 zsh 看看囉。</p>
 
 
 <h3>改成預設使用 zsh，執行以下指令並輸入你的密碼 ...</h3>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-04T16:36:00" pubdate>
-                            Fri 04 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/397/ubuntu-tunnel-broker/" rel="bookmark"><h1>Ubuntu Tunnel Broker IPv6 連 中研院</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近看到有人用 <a href="http://planykao.blogspot.com/2012/04/archlinux-ipv6-tunnel-broker.html">Archlinux 設定 Tunnel Broker
-的方法</a>，所以研究了一下該怎麼用，發現還滿簡單的0.0。</p>
-<h3>申請帳號</h3>
-<p>到 <a href="http://tb2.ipv6.ascc.net/">http://tb2.ipv6.ascc.net/</a> 註冊一個帳號。</p>
-<h3>安裝 gogoc</h3>
-<div class="highlight"><pre>sudo apt-get install gogoc
-</pre></div>
-
-
-<h3>設定 gogoc (<code>/etc/gogoc/gogoc.conf</code>)</h3>
-<p><code>if_prefix</code> 要看你的網卡裝置名稱叫啥，不過預設應該都是 eth0。</p>
-<div class="highlight"><pre>userid=你的帳號
-passwd=你的密碼
-server=tb2.ipv6.ascc.net
-auth_method=digest-md5
-host_type=host
-prefixlen=64
-if_prefix=eth0 ...</pre></div>
                     </section>
                 </article>
                 <hr/>

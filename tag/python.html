@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-05-05T21:30:00" pubdate>
+                            Mon 05 May 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1394/restart_uwsgi_using_git_push/" rel="bookmark"><h1>Restart uwsgi using git push</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>因為一 push 完都要 ssh 進去重開 uwsgi server，實在很麻煩，所以 google 了一下有沒有什麼好的做法，雖然說用 <a href="http://www.fabfile.org">fabric</a> 進去下指令也是可以，不過想看看有沒有利用 git push 的 hook 來做的例子。</p>
+<h2>如何 restart uwsgi</h2>
+<p>查了一些資料，一般要 restart uwsgi 就要 root 權限，不過可以在 uwsgi 的設定檔中設定 <code>touch-reload</code> 這個參數，以我的 .ini 設定格式的話就是設 <code>touch-reload = /your_path/reload</code> 設完這個路徑後，一旦你在 <code>/your_path/</code> 底下 touch 了一個檔案叫做 <code>reload</code>，uwsgi 就會跟著 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-04-24T15:00:00" pubdate>
                             Thu 24 April 2014
                         </time>
@@ -271,30 +287,6 @@ vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的
 <p>參考網址：<br />
 <a href="https://bbs.archlinux.org/viewtopic.php?id=122091">https://bbs.archlinux.org/viewtopic.php?id=122091</a><br />
 <a href="https://wiki.archlinux.org/index.php/Vim">https://wiki.archlinux.org/index ...</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-09T17:38:00" pubdate>
-                            Wed 09 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/444/django-name-array/" rel="bookmark"><h1>Django name array</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在寫 php 的時候，如果想傳多個 checkbox 的值的話，常會在 html
-裏面設定這些 checkbox 的 name 為
-<code>list[]</code>，也就是會加個 <code>[]</code> 在名稱後面，在 php 處理的時候就可以利用
-<code>$_POST['list']</code> 取出這個 array。</p>
-<p>而如果是 django name array
-要處理的話，方式有點不太一樣，它並不會自動去判斷 <code>[]</code>，所以在 django
-這邊還是必須讀 <code>list[]</code> 這樣的名稱，這也表示在 html
-裡，<code>[]</code> 是可以不加的，但是我還是建議加上就是了，至少這樣我覺得會比較好懂。<br />
-來看一下簡單的範例：</p>
-<p>html</p>
-<div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;list[]&quot;</span> <span class="na">value=</span><span class="s">&quot;value ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

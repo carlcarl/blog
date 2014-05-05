@@ -51,6 +51,37 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-04T16:36:00" pubdate>
+                            Fri 04 May 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/397/ubuntu-tunnel-broker/" rel="bookmark"><h1>Ubuntu Tunnel Broker IPv6 連 中研院</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近看到有人用 <a href="http://planykao.blogspot.com/2012/04/archlinux-ipv6-tunnel-broker.html">Archlinux 設定 Tunnel Broker
+的方法</a>，所以研究了一下該怎麼用，發現還滿簡單的0.0。</p>
+<h3>申請帳號</h3>
+<p>到 <a href="http://tb2.ipv6.ascc.net/">http://tb2.ipv6.ascc.net/</a> 註冊一個帳號。</p>
+<h3>安裝 gogoc</h3>
+<div class="highlight"><pre>sudo apt-get install gogoc
+</pre></div>
+
+
+<h3>設定 gogoc (<code>/etc/gogoc/gogoc.conf</code>)</h3>
+<p><code>if_prefix</code> 要看你的網卡裝置名稱叫啥，不過預設應該都是 eth0。</p>
+<div class="highlight"><pre>userid=你的帳號
+passwd=你的密碼
+server=tb2.ipv6.ascc.net
+auth_method=digest-md5
+host_type=host
+prefixlen=64
+if_prefix=eth0 ...</pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-04-20T00:20:00" pubdate>
                             Fri 20 April 2012
                         </time>
@@ -255,34 +286,6 @@ log 會比較方便，另外記得數量也要根據需求改，因為改完後�
 <p>如果是要看 80 port 被什麼所佔用，可以如下使用：</p>
 <div class="highlight"><pre>lsof -i :80
 fuser 80:tcp ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-12-05T19:37:00" pubdate>
-                            Mon 05 December 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/" rel="bookmark"><h1>(98)Address already in use: make_sock: could not bind to address 80</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在重開 server 的時候突然發現 apache
-怎麼沒有開，重開之後就出現如標題的錯誤，查了一下，應該是有個莫名的
-process 把 port 給 bind 住了，用了一堆指令，一直 kill
-process，結果怎麼好像都沒用囧，後來才試到一個可以解決的指令：</p>
-<div class="highlight"><pre>sudo fuser 80/tcp
-</pre></div>
-
-
-<p>執行之後就會顯示是哪個 process id 佔住的。<br />
-很奇怪的是我使用「netstat」去看居然是找不到的=
-=，另外要注意的是記得使用「sudo」或者是用 root
-來查看，不然有可能會看不到。砍掉之後，再開啟 apache
-就可以成功開啟了，算是一個滿怪的問題，當初忙著砍掉，忘記先查看 process
-的名稱是什麼，只能先紀錄起來，下次如果還是發生一樣的情況的話，再來看看哩。</p>
-<p>參考網址 ...</p>
                     </section>
                 </article>
                 <hr/>

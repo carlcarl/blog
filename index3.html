@@ -51,6 +51,32 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-10-04T21:26:00" pubdate>
+                            Fri 04 October 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>就之前產生的 sphinx document，接下來是如何 deploy 到 github page 上。</p>
+<p>這個文章是根據 <a href="http://raxcloud.blogspot.tw/2013/02/documenting-python-code-using-sphinx.html">Documenting python code using sphinx and github</a> 和
+<a href="http://datadesk.latimes.com/posts/2012/01/sphinx-on-github/">Sphinx documentation on GitHub</a>
+整理而成的，兩個地方的資料都不錯，不過都沒有很完美，所以就寫了這篇。</p>
+<h2>建立 github page repo</h2>
+<p>這邊看到大部分的做法都是直接在 project 根目錄下直接開另外一個
+branch，不過我後來在上面連結看到一個不錯的做法，就是直接把 branch 建立在
+subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資料夾：</p>
+<div class="highlight"><pre>mkdir gh-pages
+</pre></div>
+
+
+<p>接著利用 <code>git-new-workdir</code> 這個指令建立一個 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-10-02T02:32:00" pubdate>
                             Wed 02 October 2013
                         </time>
@@ -315,33 +341,6 @@ attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</cod
 <p><code>n</code> 和 <code>p</code> 分別對應 <code>10</code> 和 <code>[1,1]</code> 這兩個參數，<code>10</code> 表示要 fibonacci
 的第十個項數，<code>[1,1]</code> 是第一項和第二項的值。然後是一個 loop 將 <code>p</code>
 陣列中最後兩個值加起來再 append ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-25T17:11:00" pubdate>
-                            Thu 25 July 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1230/python-logging-stream/" rel="bookmark"><h1>Python logging stream</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在用 <a href="https://github.com/moskytw/uniout">uniout</a> 的時候發現 logging
-的時候沒辦法自動轉輸出為中文(因為資料有些是中文，然後有時候又需要做些log
-囧)，看了一下 <code>uniout</code> 的 code，看來做法是另外用了一個物件，然後把
-<code>sys.stdout</code> 的屬性複製上去，再加上編碼的功能，最後再將 <code>sys.stdout</code>
-assign 成這個物件。</p>
-<h3>我用的 logger 程式</h3>
-<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(levelname)s</span><span class="s">: </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
-</pre></div>
-
-
-<p>想說 <code>logging</code> module 應該也是丟
-<code>stdout</code>，不過怎麼設就是不行，所以還是看一下 source code。</p>
-<h3>logging ...</h3>
                     </section>
                 </article>
                 <hr/>

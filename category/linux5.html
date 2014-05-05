@@ -51,6 +51,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-07T18:35:00" pubdate>
+                            Thu 07 July 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/32/xrdp-shortcut-d-with-remote-connection/" rel="bookmark"><h1>XRDP shortcut d with remote connection</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前裝了 XRDP，還滿不錯用的。不僅可以用 Linux 的 Terminal server client，也可以用 Windows 內建的遠端連線直接連進去。</p>
+<p>但是卻發現了一個很討厭的問題，那就是按 <code>d</code> 的時候會發現，怎麼視窗被縮小跑到桌面去orz，後來查了一些資料好不容易才找到，我以為這個問題很多人都會遇到的說......。
+ </p>
+<p>首先，問題是出在裝 XRDP 的主機上沒錯，且就是因為快捷鍵的問題，所以只要修改這個設定就 OK 了，這邊假設裝 XRDP 的主機是有 GUI 介面的(沒有的話用 ssh 就好啦XD)</p>
+<p>先輸入:</p>
+<div class="highlight"><pre>gconf-editor
+</pre></div>
+
+
+<p>應該會出現一個視窗。</p>
+<p>接著根據 <code>apps</code> : <code>metacity</code> : <code>global_keybindings</code> 的順序下去找，應該可以找到一個叫做 <code>show_desktop</code> 的設定。然後對應的值應該會是 <code>&lt;Super&gt;d</code>，這邊就直接把這個值刪掉就好了 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-07-04T14:22:00" pubdate>
                             Mon 04 July 2011
                         </time>
@@ -290,24 +314,6 @@ sudo dpkg-reconfigure postfix
 
 
 <p>第一行是重新安裝，第二行是再次設定。下完後就會進入設定畫面了~。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-19T19:44:00" pubdate>
-                            Sat 19 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/10/vim-indent-and-tab-width/" rel="bookmark"><h1>vim indent and tab width</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>設定 Tab 長度為 4，以及自動縮排長度為 4：<br />
-在 <code>.vimrc</code> 中加入下面兩行  </p>
-<div class="highlight"><pre>set tabstop=4  
-set shiftwidth=4
-</pre></div>
                     </section>
                 </article>
                 <hr/>
