@@ -51,6 +51,40 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-19T00:19:00" pubdate>
+                            Wed 19 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1053/ssh-with-firewall/" rel="bookmark"><h1>ssh with firewall</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>記錄一下實用的 ssh 穿牆指令，然後這邊有個前提是：在牆外要有可以 ssh
+的主機，這裡以 <code>example.com</code> 為例。 (其實參考資料的連結內容更詳細
+XD，有需要的人建議點進去看看唄～～。)</p>
+<ol>
+<li>從內部往外。</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span class="c"># 在 local 開一個 9999 的 port 轉到 `example.com` 的 22 port，</span>
+<span class="c"># 接下來只要把 proxy 的設定指到 localhost 的 9999 就可以了。</span>
+ssh -NfD 9999 user@example.com
+</pre></div>
+
+
+<ol>
+<li>從外部連內。</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span class="c"># 這邊必須先在內部的 server 輸入下面這一行，連到 example.com，</span>
+<span class="c"># 然後在 example.com ...</span></pre></div></!--></!-->
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-16T23:10:00" pubdate>
                             Sun 16 June 2013
                         </time>
@@ -255,38 +289,6 @@ host name、時間、和 進 git repo 會有的提示，git repo
 <p>我的 theme 可以在這邊下載：<a href="%20http://dl.dropbox.com/u/4413406/carlcarl.zsh-theme">載點</a>。（或是可以直接 clone 我的
 <a href="https://github.com/carlcarl/oh-my-zsh">repo</a>）</p>
 <p>把這個檔案下載下來存成 <code>carlcarl ...</code></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-05T23:41:00" pubdate>
-                            Sat 05 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/410/ubuntu-install-oh-my-zsh/" rel="bookmark"><h1>ubuntu install oh my zsh</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在網路上看到 <a href="https://github.com/robbyrussell/oh-my-zsh">oh my zsh</a> 這套件，這個套件對 zsh
-做了一些客製化，包含很多外掛以及提示字元主題，感覺還滿炫的，所以就想說從
-bash 換成 zsh 看看囉。</p>
-<h3>首先要先安裝 zsh，因為 zsh 預設在 ubuntu 上是沒有安裝的</h3>
-<div class="highlight"><pre>sudo apt-get install zsh
-</pre></div>
-
-
-<h3>下載 oh-my-zsh 套件到家目錄底下的 <code>.oh-my-zsh</code> 資料夾</h3>
-<div class="highlight"><pre>git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-</pre></div>
-
-
-<h3>複製設定檔樣板出來使用</h3>
-<div class="highlight"><pre>cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-</pre></div>
-
-
-<h3>改成預設使用 zsh，執行以下指令並輸入你的密碼 ...</h3>
                     </section>
                 </article>
                 <hr/>

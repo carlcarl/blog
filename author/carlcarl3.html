@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-10-05T02:15:00" pubdate>
+                            Sat 05 October 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1375/tig-broken-in-tmux/" rel="bookmark"><h1>tig broken in tmux</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>這個問題已經困擾我滿久了，在 <a href="http://tmux.sourceforge.net">tmux</a> 裡用 <a href="https://github.com/jonas/tig">tig</a>
+畫面會一直破碎，不過一直找不到原因，最近想到，於是又找看看有沒有解法，後來試了<a href="https://wiki.archlinux.org/index.php/tmux">一篇</a>裡面的做法就
+OK 了 QQ。</p>
+<p>靈感是在查資料的時候看到有人是因為在 <code>tmux.conf</code> 裡設定了
+<code>default-terminal=xterm</code> 想到的，中間有試了一下 screen，發現 tig 在
+screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</code>，而我在 tmux
+下得到的輸出卻是 <code>xterm-256color</code>，想說朝這個方向去找資料。這邊先找了
+<code>tmux.conf</code> 中，但是我並沒有設定這個東西，看了
+<code>.zshrc</code>，原來我是在這邊設定了
+<code>export TERM ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-10-04T21:26:00" pubdate>
                             Fri 04 October 2013
                         </time>
@@ -320,27 +343,6 @@ Link 如果在下面的情況是 OK 的：</p>
 <p>在 <code>hello</code> 裡 print 出
 'test'，這個沒什麼問題，但是在宣告完後，如果想確認 <code>test</code> 的 <code>__name__</code>
 attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</code></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-08-04T02:35:00" pubdate>
-                            Sun 04 August 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1240/python-fibonacci-number/" rel="bookmark"><h1>Python fibonacci number</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在 Python Taiwan 社團看到的寫法：</p>
-<div class="highlight"><pre><span class="k">print</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="p">(([</span><span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)])</span> <span class="ow">and</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">or</span> <span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-
-
-<p><code>n</code> 和 <code>p</code> 分別對應 <code>10</code> 和 <code>[1,1]</code> 這兩個參數，<code>10</code> 表示要 fibonacci
-的第十個項數，<code>[1,1]</code> 是第一項和第二項的值。然後是一個 loop 將 <code>p</code>
-陣列中最後兩個值加起來再 append ...</p>
                     </section>
                 </article>
                 <hr/>

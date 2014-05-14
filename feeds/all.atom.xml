@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2014-05-05T21:30:00+08:00</updated><entry><title>Restart uwsgi using git push</title><link href="http://blog.carlcarl.me/1394/restart_uwsgi_using_git_push/" rel="alternate"></link><updated>2014-05-05T21:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-05-05:1394/restart_uwsgi_using_git_push/</id><summary type="html">&lt;p&gt;因為一 push 完都要 ssh 進去重開 uwsgi server，實在很麻煩，所以 google 了一下有沒有什麼好的做法，雖然說用 &lt;a href="http://www.fabfile.org"&gt;fabric&lt;/a&gt; 進去下指令也是可以，不過想看看有沒有利用 git push 的 hook 來做的例子。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2014-05-14T16:30:00+08:00</updated><entry><title>tcp_tw_recycle note</title><link href="http://blog.carlcarl.me/1395/tcp_tw_recycle_note/" rel="alternate"></link><updated>2014-05-14T16:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-05-14:1395/tcp_tw_recycle_note/</id><summary type="html">&lt;h2&gt;簡單結論&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/proc/sys/net/ipv4/tcp_tw_reuse&lt;/code&gt; 可以開。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/proc/sys/net/ipv4/tcp_tw_recycle&lt;/code&gt; 不應該開。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Links:&lt;br /&gt;
+&lt;a href="http://blog.sina.com.cn/s/blog_781b0c850100znjd.html"&gt;tcp_tw_recycle和tcp_timestamps导致connect失败问题&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://www.pagefault.info/?p=416"&gt;打开tcp_tw_recycle引起的一个问题&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://stackoverflow.com/questions/6426253/tcp-tw-reuse-vs-tcp-tw-recycle-which-to-use-or-both"&gt;tcp_tw_reuse vs tcp_tw_recycle : Which to use (or both)?&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://www.speedguide.net/articles/linux-tweaking-121"&gt;Linux Tweaking&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://stackoverflow.com/questions/8893888/dropping-of-connections-with-tcp-tw-recycle"&gt;Dropping of connections with tcp_tw_recycle&lt;/a&gt;  &lt;/p&gt;</summary><category term="linux"></category></entry><entry><title>Restart uwsgi using git push</title><link href="http://blog.carlcarl.me/1394/restart_uwsgi_using_git_push/" rel="alternate"></link><updated>2014-05-05T21:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-05-05:1394/restart_uwsgi_using_git_push/</id><summary type="html">&lt;p&gt;因為一 push 完都要 ssh 進去重開 uwsgi server，實在很麻煩，所以 google 了一下有沒有什麼好的做法，雖然說用 &lt;a href="http://www.fabfile.org"&gt;fabric&lt;/a&gt; 進去下指令也是可以，不過想看看有沒有利用 git push 的 hook 來做的例子。&lt;/p&gt;
 &lt;h2&gt;如何 restart uwsgi&lt;/h2&gt;
 &lt;p&gt;查了一些資料，一般要 restart uwsgi 就要 root 權限，不過可以在 uwsgi 的設定檔中設定 &lt;code&gt;touch-reload&lt;/code&gt; 這個參數，以我的 .ini 設定格式的話就是設 &lt;code&gt;touch-reload = /your_path/reload&lt;/code&gt; 設完這個路徑後，一旦你在 &lt;code&gt;/your_path/&lt;/code&gt; 底下 touch 了一個檔案叫做 &lt;code&gt;reload&lt;/code&gt;，uwsgi 就會跟著 reload，相當方便，也不需要管什麼權限問題。&lt;/p&gt;
 &lt;h2&gt;加進 git hook 裡&lt;/h2&gt;

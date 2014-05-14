@@ -51,6 +51,41 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-11-15T07:33:00" pubdate>
+                            Thu 15 November 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/721/mongodb-uptime-query/" rel="bookmark"><h1>MongoDB uptime query</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 <a href="http://stackoverflow.com/questions/13379170/how-long-was-a-mongo-instance-running">stackoverflow</a>
+看到這個問題，就順便查個資料回了一下，另外有個人是回答可以用 <code>ps -ef</code>
+來看，不過我想說 MongoDB 本身應該也會有這樣的功能，所以還是查了一下。</p>
+<p>後來果然在 <a href="http://docs.mongodb.org/manual/reference/server-status/">MongoDB 官方文件</a>
+找到我要的資料，不過拿到的數據會是以秒為單位，所以必須自己作轉換。</p>
+<p>進入 mongo shell 之後輸入：</p>
+<div class="highlight"><pre><span class="c1">// seconds</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span>
+</pre></div>
+
+
+<p>其他的就照單位轉換一下就可以：</p>
+<div class="highlight"><pre><span class="c1">// minutes</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span> <span class="o">/</span> <span class="mi">60</span>
+<span class="c1">// hours</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span> <span class="o">/</span> <span class="mi">3600</span>
+<span class="c1">// days</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">().</span><span class="nx">uptime</span> <span class="o">/</span> <span class="mi">86400</span>
+</pre></div>
+
+
+<p>如果要固定格式的話，目前似乎沒有直接的 function 可以 call，所以還是必須自己作轉換，像是 <a href="http://stackoverflow.com/questions/175554/how-to-convert-milliseconds-into-human-readable-form">這篇</a> 。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-10-22T01:05:00" pubdate>
                             Mon 22 October 2012
                         </time>
@@ -299,29 +334,6 @@ mongostat
 
 
 <p>這邊要注意的一點就是，雖然在 Mongo ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-08-13T17:51:00" pubdate>
-                            Mon 13 August 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/584/vim-neocomplcache-sudo-vim/" rel="bookmark"><h1>vim neocomplcache sudo vim error</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>指令輸入 <code>sudo vim 檔案</code> 的時候會出現錯誤
-<code>neocomplcache Please use sudo.vim plugin instead of sudo command...</code>
-，不過目前遇到只有在 Ubuntu 環境底下有發生，FreeBSD 和 Chakra
-倒是沒出問題。</p>
-<p>因為我懶得去裝 sudo.vim
-這個套件，而且操作會變麻煩，所以照它另外一個錯誤訊息建議去修改
-<code>/etc/sudoers</code> 檔案，只要加上 <code>Defaults always_set_home</code> 這行就 OK 了。</p>
-<p>參考網址：<br />
-<a href="http://https://github.com/Shougo/neocomplcache/issues/179">https://github.com/Shougo/neocomplcache/issues/179</a><br />
-<a href="http://https://bbs.archlinux.org/viewtopic.php?id=72573">https://bbs.archlinux.org/viewtopic ...</a></p>
                     </section>
                 </article>
                 <hr/>

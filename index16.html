@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-06-22T14:10:00" pubdate>
+                            Wed 22 June 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/28/vim-xptemplate-add-smartytpl-support/" rel="bookmark"><h1>vim xptemplate add smarty(tpl) support</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>弄了很久 查了一下資料才發現原來那麼簡單=.=。</p>
+<p>在 <code>personal_ftplugin/</code> 底下要先建一個 <code>smarty</code> 資料夾，接著在裡面新增一個 <code>smarty.xpt.vim</code> 檔案。</p>
+<p>以下是檔案的內容:</p>
+<div class="highlight"><pre>XPTemplate priority=personal
+XPTinclude
+html/html
+</pre></div>
+
+
+<p>這樣就 ok 了，其實就是把 html 的設定拿來用而已。接著開一個 tpl 副檔名的試試看，應該是 ok。我想應該底層有去做 smarty 和 tpl 副檔名的對應，要不然這邊的內容完全都沒看到 tpl 的對應。</p>
+<p>參考網頁</p>
+<p><a href="http://groups.google.com/group/xptemplate/browse_thread/thread/9af94f0e27007817#">http://groups.google.com/group/xptemplate/browse_thread/thread/9af94f0e27007817#</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-06-21T09:00:00" pubdate>
                             Tue 21 June 2011
                         </time>
@@ -276,35 +301,6 @@ chkconfig httpd --del
 <p>裝完之後咧? 就可以用啦XDD，超快。</p>
 <p>以下這張是功能截圖。以這張圖來說，輸入 <code>-&gt;</code> 或是 <code>.</code> 之類的，他就會出現提示，這時候就可以用鍵盤上下鍵來選擇要選哪一個來用。</p>
 <p><img alt="clang_complete" src="http://i.imgur.com/PyNjikJ.png" title="clang_complete" />  </p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-04-24T15:22:00" pubdate>
-                            Sun 24 April 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/18/zend-framework-add-acl-setting/" rel="bookmark"><h1>Zend Framework add Acl setting</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>首先先在 <code>bootstrap.php</code> 檔案裡加上下面這個 function</p>
-<div class="highlight"><pre><span class="cp">&lt;?php</span>
-<span class="k">protected</span> <span class="k">function</span> <span class="nf">_initControllers</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bootstrap</span><span class="p">(</span><span class="s1">&#39;FrontController&#39;</span><span class="p">);</span>
-    <span class="c1">//require_once &#39;../library/Controller/Helper/Acl.php&#39;;</span>
-    <span class="c1">//require_once &#39;../library/Controller/Plugin/Auth.php&#39;;</span>
-    <span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Controller_Helper_Acl</span><span class="p">();</span>
-    <span class="nv">$auth</span> <span class="o">=</span> <span class="nx">Zend_Auth</span><span class="o">::</span><span class="na">getInstance</span><span class="p">();</span>
-    <span class="nv">$front</span> <span class="o">=</span> <span class="nx">Zend_Controller_Front</span><span class="o">::</span><span class="na">getInstance</span><span class="p">();</span>
-    <span class="nv">$front</span><span class="o">-&gt;</span><span class="na">registerPlugin</span><span class="p">(</span><span class="k">new</span> <span class="nx">Controller_Plugin_Auth</span><span class="p">(</span><span class="nv">$auth</span><span class="p">,</span> <span class="nv">$acl</span><span class="p">));</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><code>$acl</code> 和 <code>$auth</code> 這兩個都需要實作，我分別把 <code>auth</code> 和 <code>acl</code> 這兩個 class 放在 ...</p>
                     </section>
                 </article>
                 <hr/>

@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-07T19:56:00" pubdate>
+                            Fri 07 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/893/brew-install-macvim/" rel="bookmark"><h1>brew install Macvim</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>單純小筆記一下，因為每次重裝都會忘記 XDD，放在自己 blog，以後比較好查。</p>
+<p>如果只單純下 <code>brew install macvim</code> 的話，原本的 vim 還是會留著，如果想用
+Macvim 裡的 vim 的話，你可能會想說移掉原本的 vim，然後用 <code>ln -s</code>，來建個
+link 就好，不過實際做是不行的，會出現一些
+error，如：<code>E254: Cannot allocate color</code>，解決方法很簡單，就是下：</p>
+<div class="highlight"><pre>brew install macvim --override-system-vim
+brew linkapps
+</pre></div>
+
+
+<p>這樣就會把原本的 vim 幹掉，直接套用 Macvim 裡的。</p>
+<p>參考網址 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-03T21:25:00" pubdate>
                             Mon 03 June 2013
                         </time>
@@ -260,32 +285,6 @@ go 按鈕跟 enter 是一樣的 event。</p>
 包起來，ajax 的按鈕則改成 <code>&lt;button type="submit"&gt;&lt;/button&gt;</code>，<code>type</code> 用
 <code>submit</code> 可以使得在按 enter 或是 手機上按 go 的時候能 trigger submit 的
 event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有用一些 icon 在按鈕中 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-03-17T23:33:00" pubdate>
-                            Sun 17 March 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/808/git-cross-firewall/" rel="bookmark"><h1>git cross firewall</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><code>git://</code> readonly 的 port 是使用
-9418，雖然速度較快，但是也容易被防火牆擋掉，查了一下資料，發現一個不錯的方法：</p>
-<div class="highlight"><pre>git config --global url.<span class="s2">&quot;https://&quot;</span>.insteadOf git://
-</pre></div>
-
-
-<p>輸入以上指令就可以把 git 開頭的自動轉爲 https
-協定的了，自然就不會無緣無故被擋掉。那爲什麼不直接一開始就改掉就好呢？以我的例子來說，如果我抓了一個別人的
-git repo，裏面包含 submodule，且是
-<code>git://</code>，因爲我沒辦法直接改他的設定，這時就可以考慮這樣用。</p>
-<p>設定的部分存在 <code>~/.gitconfig</code>，不需要的話可以直接從這邊拿掉。</p>
-<p>參考網址：  </p>
-<p><a href="http://stackoverflow.com/questions/4891527/git-protocol-blocked-by-company-how-can-i-get-around-that">http://stackoverflow.com/questions/4891527/git-protocol-blocked-by-company-how-can-i-get-around-that</a></p>
                     </section>
                 </article>
                 <hr/>
