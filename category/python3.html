@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-01-29T16:50:00" pubdate>
+                            Tue 29 January 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/772/python-argparse/" rel="bookmark"><h1>python argparse</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>紀錄一些 python argparse module 的使用方法和問題：  </p>
+<h3>選項的參數為 optional</h3>
+<p>譬如說 <code>-f</code> 這選項允許一個檔案的路徑名稱： <code>-f test.txt</code>，如果沒給檔案名稱就預設使用 example.txt：</p>
+<div class="highlight"><pre><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;example.txt&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>設定各個選項分開，不允許放在一起使用</h3>
+<p>如果我希望 <code>-f</code> 和 <code>-b</code> 只有其中一個能被執行而已的話，這時候要用 <code>add_mutually_exclusive_group</code> 產生一個 group ，之後被加入這個 group 的參數就會套用這個分開使用的規則：</p>
+<div class="highlight"><pre><span class="n">group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
+<span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">)</span>
+<span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-b&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-01-28T15:08:00" pubdate>
                             Mon 28 January 2013
                         </time>
@@ -273,32 +298,6 @@ sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
 <p>除了提供多種開發套件以外，dotcloud 有個不錯的地方是支援ssh連線登入，超方便!</p>
 <p>之前在 PTT 就有看過有人在講這個服務了，雖然現在還在beta的階段 不過就我現在用起來 感覺其實還滿不錯的，希望以後還是有提供免費的服務XD。如果要註冊的話，這部份還滿特別的，先在首頁輸入 email，接著等大概一天吧(還滿久的 = =||)，就會收到email認證，接著就能順利註冊了。</p>
 <p>這次我要在 dotcloud 上裝的是 python + django。首先先準備裝套件吧 話說 python-setuptools 這個套件，官網好像沒有講得很清楚，查了一下才發現要裝 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-19T19:36:00" pubdate>
-                            Sat 19 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/9/python-django-use-media-url-in-templates/" rel="bookmark"><h1>Python Django use MEDIA_URL in templates</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在 settings 裏面已經設好 <code>MEDIA_URL</code>了，可是一直不知道怎麼在 templates 中使用<br />
-像是:</p>
-<div class="highlight"><pre>href=&quot;{{ MEDIA_URL }}styles/base.css&quot;
-</pre></div>
-
-
-<p>後來看到一篇有說在 <code>retrun render_to_response</code> 這邊需要修改，改成這樣, 把第三個參數加上 <code>context_instance</code> 這句:</p>
-<div class="highlight"><pre><span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;base/index.html&#39;</span><span class="p">,</span> <span class="p">{},</span> <span class="n">context_instance</span> <span class="o">=</span>
-    <span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
-</pre></div>
-
-
-<p>這樣就可以使用了~~。</p>
                     </section>
                 </article>
                 <hr/>

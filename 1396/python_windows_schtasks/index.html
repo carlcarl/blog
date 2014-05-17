@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    Python Windows schtasks
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Python Windows schtasks" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1396/python_windows_schtasks/" />
+                <meta property="og:description" content="最近在找 Windows 上有啥功能是像 Linux 上的 crontab 一樣可以設定週期性的工作，後來找到有 command line 版本的 schtasks 可以用。這邊我主要想做的事是透過執行 bat 檔案，將我要的執行檔加入 daily job 裡，同樣的也可以透過另一個 bat 檔案簡單移除掉這個 job，下面是我的程式範例: 加入 bat 檔案目錄下的某個執行檔到 daily task 中 @SET file_dir=%~dp0 @SET exec_file=%file_dir%a.exe schtasks /CREATE /TN "my_task" /SC DAILY /TR "%exec_file% -a" /ST 14 ..." />
+                    <meta property="article:tag" content="python" />
+                    <meta property="article:tag" content="windows" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="fa fa-coffee"></i> carlcarl's blog</a></h1>
+        <p id="site-desc"></p>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2014-05-18T02:00:00" pubdate>
+                            Sun 18 May 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1396/python_windows_schtasks/" rel="bookmark"><h1>Python Windows schtasks</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p>最近在找 Windows 上有啥功能是像 Linux 上的 crontab 一樣可以設定週期性的工作，後來找到有 command line 版本的 <code>schtasks</code> 可以用。這邊我主要想做的事是透過執行 bat 檔案，將我要的執行檔加入 daily job 裡，同樣的也可以透過另一個 bat 檔案簡單移除掉這個 job，下面是我的程式範例:</p>
+<h2>加入 bat 檔案目錄下的某個執行檔到 daily task 中</h2>
+<div class="highlight"><pre><span class="p">@</span><span class="k">SET</span> <span class="nv">file_dir</span><span class="o">=</span><span class="nv">%~dp0</span>
+<span class="p">@</span><span class="k">SET</span> <span class="nv">exec_file</span><span class="o">=</span><span class="nv">%file_dir%</span>a.exe
+schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="s2">&quot;my_task&quot;</span> <span class="n">/SC</span> DAILY <span class="n">/TR</span> <span class="s2">&quot;%exec_file% -a&quot;</span> <span class="n">/ST</span> <span class="m">14</span><span class="nl">:00</span>
+<span class="k">pause</span>
+</pre></div>
+
+
+<p>這邊的 <code>%~dp0</code> 表示為這個 bat 檔案的絕對路徑，<code>a.exe</code> 是我要執行的執行檔，將路徑和執行檔串起來後，利用 <code>schtasks</code> 加入，<code>/TN</code> 是 task name，必須是唯一，不可與其他 task 的一樣，<code>/SC DAILY</code> 表示為 daily job，<code>/TR</code> 是要執行的執行檔，參數的部分可以直接接在後面，<code>/ST</code> 表示何時執行，這裡的時間是設定下午兩點。然後最後記得加 <code>pause</code>，避免視窗出來後馬上就消失。</p>
+<h2>移除 task</h2>
+<div class="highlight"><pre>schtasks <span class="n">/DELETE</span> <span class="n">/TN</span> <span class="s2">&quot;my_task&quot;</span>
+<span class="k">pause</span>
+</pre></div>
+
+
+<p>由於 task name 是唯一，所以刪除的話，只要指定 task name 就可以簡單的刪除掉 task 了。</p>
+<p>參考資料：<br />
+<a href="http://www.howtogeek.com/51236/how-to-create-modify-and-delete-scheduled-tasks-from-the-command-line/">How to Create, Modify and Delete Scheduled Tasks from the Command Line</a><br />
+<a href="http://stackoverflow.com/questions/3016452/how-do-i-create-a-scheduled-task-via-command-line-which-includes-advanced-opti">How do I create a scheduled task, via command line, which includes advanced options</a><br />
+<a href="http://stackoverflow.com/questions/3827567/how-to-get-the-path-of-the-batch-script-in-windows">How to get the path of the batch script in Windows?</a><br />
+<a href="http://serverfault.com/questions/319701/how-to-delete-scheduled-task-from-command-line-without-confirmation-schtasks-d#_=_">How to delete scheduled task from command line without confirmation? (schtasks delete)</a></p>
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/python.html">python</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/python.html">python</a>, <a href="http://blog.carlcarl.me/tag/windows.html">windows</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>

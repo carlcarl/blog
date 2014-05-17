@@ -51,6 +51,38 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-06T15:38:00" pubdate>
+                            Tue 06 August 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1249/python-functools-wraps-note/" rel="bookmark"><h1>Python functools.wraps note</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>研究一下 <code>functools.wraps</code>。</p>
+<h3>用法</h3>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">deco</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="c"># @wraps(f)</span>
+    <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="c"># print `test`</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@deco</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="c"># print `hello`</span>
+</pre></div>
+
+
+<p>在 <code>hello</code> 裡 print 出
+'test'，這個沒什麼問題，但是在宣告完後，如果想確認 <code>test</code> 的 <code>__name__</code>
+attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-08-04T02:35:00" pubdate>
                             Sun 04 August 2013
                         </time>
@@ -265,31 +297,6 @@ doc，設置還算簡單，不過好像漏了個小地方。  </p>
 
 
 <p>這樣就完成了 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-01-29T16:50:00" pubdate>
-                            Tue 29 January 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/772/python-argparse/" rel="bookmark"><h1>python argparse</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>紀錄一些 python argparse module 的使用方法和問題：  </p>
-<h3>選項的參數為 optional</h3>
-<p>譬如說 <code>-f</code> 這選項允許一個檔案的路徑名稱： <code>-f test.txt</code>，如果沒給檔案名稱就預設使用 example.txt：</p>
-<div class="highlight"><pre><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;example.txt&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<h3>設定各個選項分開，不允許放在一起使用</h3>
-<p>如果我希望 <code>-f</code> 和 <code>-b</code> 只有其中一個能被執行而已的話，這時候要用 <code>add_mutually_exclusive_group</code> 產生一個 group ，之後被加入這個 group 的參數就會套用這個分開使用的規則：</p>
-<div class="highlight"><pre><span class="n">group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
-<span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">)</span>
-<span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-b&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2014-05-14T16:30:00+08:00</updated><entry><title>tcp_tw_recycle note</title><link href="http://blog.carlcarl.me/1395/tcp_tw_recycle_note/" rel="alternate"></link><updated>2014-05-14T16:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-05-14:1395/tcp_tw_recycle_note/</id><summary type="html">&lt;h2&gt;簡單結論&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2014-05-18T02:00:00+08:00</updated><entry><title>Python Windows schtasks</title><link href="http://blog.carlcarl.me/1396/python_windows_schtasks/" rel="alternate"></link><updated>2014-05-18T02:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-05-18:1396/python_windows_schtasks/</id><summary type="html">&lt;p&gt;最近在找 Windows 上有啥功能是像 Linux 上的 crontab 一樣可以設定週期性的工作，後來找到有 command line 版本的 &lt;code&gt;schtasks&lt;/code&gt; 可以用。這邊我主要想做的事是透過執行 bat 檔案，將我要的執行檔加入 daily job 裡，同樣的也可以透過另一個 bat 檔案簡單移除掉這個 job，下面是我的程式範例:&lt;/p&gt;
+&lt;h2&gt;加入 bat 檔案目錄下的某個執行檔到 daily task 中&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;SET&lt;/span&gt; &lt;span class="nv"&gt;file_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;%~dp0&lt;/span&gt;
+&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;SET&lt;/span&gt; &lt;span class="nv"&gt;exec_file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;%file_dir%&lt;/span&gt;a.exe
+schtasks &lt;span class="n"&gt;/CREATE&lt;/span&gt; &lt;span class="n"&gt;/TN&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;my_task&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;/SC&lt;/span&gt; DAILY &lt;span class="n"&gt;/TR&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;%exec_file% -a&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;/ST&lt;/span&gt; &lt;span class="m"&gt;14&lt;/span&gt;&lt;span class="nl"&gt;:00&lt;/span&gt;
+&lt;span class="k"&gt;pause&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這邊的 &lt;code&gt;%~dp0&lt;/code&gt; 表示為這個 bat 檔案的絕對路徑，&lt;code&gt;a.exe&lt;/code&gt; 是我要執行的執行檔，將路徑和執行檔串起來後，利用 &lt;code&gt;schtasks&lt;/code&gt; 加入，&lt;code&gt;/TN&lt;/code&gt; 是 task name，必須是唯一，不可與其他 task 的一樣，&lt;code&gt;/SC DAILY&lt;/code&gt; 表示為 daily job，&lt;code&gt;/TR&lt;/code&gt; 是要執行的執行檔，參數的部分可以直接接在後面，&lt;code&gt;/ST&lt;/code&gt; 表示何時執行，這裡的時間是設定下午兩點。然後最後記得加 &lt;code&gt;pause&lt;/code&gt;，避免視窗出來後馬上就消失。&lt;/p&gt;
+&lt;h2&gt;移除 task&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;schtasks &lt;span class="n"&gt;/DELETE&lt;/span&gt; &lt;span class="n"&gt;/TN&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;my_task&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;pause&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;由於 task name 是唯一，所以刪除的話，只要指定 task name 就可以簡單的刪除掉 task 了。&lt;/p&gt;
+&lt;p&gt;參考資料：&lt;br /&gt;
+&lt;a href="http://www.howtogeek.com/51236/how-to-create-modify-and-delete-scheduled-tasks-from-the-command-line/"&gt;How to Create, Modify and Delete Scheduled Tasks from the Command Line&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://stackoverflow.com/questions/3016452/how-do-i-create-a-scheduled-task-via-command-line-which-includes-advanced-opti"&gt;How do I create a scheduled task, via command line, which includes advanced options&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://stackoverflow.com/questions/3827567/how-to-get-the-path-of-the-batch-script-in-windows"&gt;How to get the path of the batch script in Windows?&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://serverfault.com/questions/319701/how-to-delete-scheduled-task-from-command-line-without-confirmation-schtasks-d#_=_"&gt;How to delete scheduled task from command line without confirmation? (schtasks delete)&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="windows"></category></entry><entry><title>tcp_tw_recycle note</title><link href="http://blog.carlcarl.me/1395/tcp_tw_recycle_note/" rel="alternate"></link><updated>2014-05-14T16:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-05-14:1395/tcp_tw_recycle_note/</id><summary type="html">&lt;h2&gt;簡單結論&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;/proc/sys/net/ipv4/tcp_tw_reuse&lt;/code&gt; 可以開。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;/proc/sys/net/ipv4/tcp_tw_recycle&lt;/code&gt; 不應該開。&lt;/li&gt;

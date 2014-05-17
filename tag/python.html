@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-05-18T02:00:00" pubdate>
+                            Sun 18 May 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1396/python_windows_schtasks/" rel="bookmark"><h1>Python Windows schtasks</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近在找 Windows 上有啥功能是像 Linux 上的 crontab 一樣可以設定週期性的工作，後來找到有 command line 版本的 <code>schtasks</code> 可以用。這邊我主要想做的事是透過執行 bat 檔案，將我要的執行檔加入 daily job 裡，同樣的也可以透過另一個 bat 檔案簡單移除掉這個 job，下面是我的程式範例:</p>
+<h2>加入 bat 檔案目錄下的某個執行檔到 daily task 中</h2>
+<div class="highlight"><pre><span class="p">@</span><span class="k">SET</span> <span class="nv">file_dir</span><span class="o">=</span><span class="nv">%~dp0</span>
+<span class="p">@</span><span class="k">SET</span> <span class="nv">exec_file</span><span class="o">=</span><span class="nv">%file_dir%</span>a.exe
+schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="s2">&quot;my_task&quot;</span> <span class="n">/SC</span> DAILY <span class="n">/TR</span> <span class="s2">&quot;%exec_file% -a&quot;</span> <span class="n">/ST</span> <span class="m">14 ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-05-05T21:30:00" pubdate>
                             Mon 05 May 2014
                         </time>
@@ -265,28 +283,6 @@ openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
 <p>其中，把 <code>Projects</code> 換成你的 project 位置。</p>
 <hr />
 <h3>輸入 <code>workon 你的project</code> 時，自動切換至 ...</h3>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-06-17T22:47:00" pubdate>
-                            Sun 17 June 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/515/chakra-vim-not-support-pythoncomplete/" rel="bookmark"><h1>Chakra vim not support pythoncomplete</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在 Chakra 上用 vim 寫 python
-的時候才突然發現這個問題，原因似乎是因為 vim 在編譯的時候沒有加上 python
-的編譯參數，解決這個問題很簡單，只要改安裝 <code>vim-qt-git</code> 就 OK
-了，因為它所提供的 vim 是有支援 pythoncomplete 的。vim-qt-git
-本身包含一套完整的 vim 以及加上 GUI 的套件，所以安裝的時候會要求將原本的
-vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的補完功能了。</p>
-<p>參考網址：<br />
-<a href="https://bbs.archlinux.org/viewtopic.php?id=122091">https://bbs.archlinux.org/viewtopic.php?id=122091</a><br />
-<a href="https://wiki.archlinux.org/index.php/Vim">https://wiki.archlinux.org/index ...</a></p>
                     </section>
                 </article>
                 <hr/>
