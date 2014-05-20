@@ -51,6 +51,35 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-21T03:00:00" pubdate>
+                            Tue 21 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1387/raspberry_pi_bt_transmission/" rel="bookmark"><h1>Raspberry Pi BT Transmission</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>研究了一下怎麼在 <a href="http://www.raspberrypi.org">raspberry pi</a> + <a href="https://www.archlinux.org">ArchLinux</a> 上用 BT，好像都是用 <a href="http://www.transmissionbt.com">transmission</a>，所以我就跟著用了XD，下面是一些步驟。</p>
+<h2>安裝 transmission daemon</h2>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">transmission</span><span class="o">-</span><span class="n">cli</span>
+</pre></div>
+
+
+<h2>Run transmission daemon</h2>
+<p>由於一開始沒有設定檔，要先跑過才有，所以先跑一下，是說要這樣做也太囧。</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">transmission</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">transmission</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">stop</span> <span class="n">transmission</span>
+</pre></div>
+
+
+<h2>修改設定檔</h2>
+<p>設定檔位置在 <code>/var/lib/transmission/.config/transmission-daemon/settings.json</code> (這位置好爛)，我自己的設定檔如下，後方的 <code>M ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-21T02:30:00" pubdate>
                             Tue 21 January 2014
                         </time>
@@ -231,22 +260,6 @@ sudo vim /etc/resolvconf/resolv.conf.d/base
 
 
 <h2>base ...</h2>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-24T18:57:00" pubdate>
-                            Thu 24 October 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1377/mac_osx_user_ogiginal_thumbnail_location/" rel="bookmark"><h1>Mac OSX user original thumbnail location</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>當初用攝影機照了一張當作頭像，不過後來一直找不到原圖的位置，google 了一下，發現很多人講的都不一樣，我是用 OSX 10.9 Mavericks，位置是在 <code>~/Library/Containers/com.apple.ImageKit.RecentPictureService/Data/Library/Images/Recent\ Pictures</code>。</p>
-<p>參考資料<br />
-<a href="http://apple.stackexchange.com/questions/44956/where-does-the-mac-store-account-pictures">Where does the Mac store account pictures?</a>  </p>
                     </section>
                 </article>
                 <hr/>

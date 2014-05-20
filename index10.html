@@ -51,6 +51,36 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-06-09T01:29:00" pubdate>
+                            Sat 09 June 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/512/chakra-firefox-kde-opensuse-repo/" rel="bookmark"><h1>Chakra firefox-kde-opensuse repo</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>2012/10/14 更新<br />
+firefox-kde-opensuse 已經進 chakra 的 bundle 了，就叫 firefox ，以後從
+bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
+畢竟不是官方的，所以更新維護上可能也會有點問題。</p>
+<hr />
+<p>因為 firefox-kde-opensuse 要自己編太麻煩了，所以加個 repo
+這樣以後安裝比較省時，是說要不是 <a href="http://www.plurk.com/maxwux">Whiksy</a>
+有提供我還真的不知道原來有......。<br />
+以下複製到 <code>/etc/pacman.conf</code> 中：</p>
+<div class="highlight"><pre><span class="k">[chakra-gtk-repo]</span>
+<span class="na">Server</span> <span class="o">=</span> <span class="s">http://chakra-gtk-repo.tk/repo/x86_64/</span>
+<span class="k">[packccr]</span>
+<span class="na">Server</span> <span class="o">=</span> <span class="s">http://repo.stephenmac.com/</span>
+</pre></div>
+
+
+<p>這樣就 OK ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-06-07T02:31:00" pubdate>
                             Thu 07 June 2012
                         </time>
@@ -278,37 +308,6 @@ bash 換成 zsh 看看囉。</p>
 
 
 <h3>改成預設使用 zsh，執行以下指令並輸入你的密碼 ...</h3>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-04T16:36:00" pubdate>
-                            Fri 04 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/397/ubuntu-tunnel-broker/" rel="bookmark"><h1>Ubuntu Tunnel Broker IPv6 連 中研院</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近看到有人用 <a href="http://planykao.blogspot.com/2012/04/archlinux-ipv6-tunnel-broker.html">Archlinux 設定 Tunnel Broker
-的方法</a>，所以研究了一下該怎麼用，發現還滿簡單的0.0。</p>
-<h3>申請帳號</h3>
-<p>到 <a href="http://tb2.ipv6.ascc.net/">http://tb2.ipv6.ascc.net/</a> 註冊一個帳號。</p>
-<h3>安裝 gogoc</h3>
-<div class="highlight"><pre>sudo apt-get install gogoc
-</pre></div>
-
-
-<h3>設定 gogoc (<code>/etc/gogoc/gogoc.conf</code>)</h3>
-<p><code>if_prefix</code> 要看你的網卡裝置名稱叫啥，不過預設應該都是 eth0。</p>
-<div class="highlight"><pre>userid=你的帳號
-passwd=你的密碼
-server=tb2.ipv6.ascc.net
-auth_method=digest-md5
-host_type=host
-prefixlen=64
-if_prefix=eth0 ...</pre></div>
                     </section>
                 </article>
                 <hr/>
