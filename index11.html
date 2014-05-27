@@ -51,6 +51,38 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-05T23:41:00" pubdate>
+                            Sat 05 May 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/410/ubuntu-install-oh-my-zsh/" rel="bookmark"><h1>ubuntu install oh my zsh</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在網路上看到 <a href="https://github.com/robbyrussell/oh-my-zsh">oh my zsh</a> 這套件，這個套件對 zsh
+做了一些客製化，包含很多外掛以及提示字元主題，感覺還滿炫的，所以就想說從
+bash 換成 zsh 看看囉。</p>
+<h3>首先要先安裝 zsh，因為 zsh 預設在 ubuntu 上是沒有安裝的</h3>
+<div class="highlight"><pre>sudo apt-get install zsh
+</pre></div>
+
+
+<h3>下載 oh-my-zsh 套件到家目錄底下的 <code>.oh-my-zsh</code> 資料夾</h3>
+<div class="highlight"><pre>git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+</pre></div>
+
+
+<h3>複製設定檔樣板出來使用</h3>
+<div class="highlight"><pre>cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+</pre></div>
+
+
+<h3>改成預設使用 zsh，執行以下指令並輸入你的密碼 ...</h3>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-05-04T16:36:00" pubdate>
                             Fri 04 May 2012
                         </time>
@@ -266,31 +298,6 @@ webm ，用 smplayer 之類的應該都能開來看，我自己測試錄影的�
 <div class="highlight"><pre>sudo add-apt-repository ppa:ap10336/ppa
 sudo apt-get update
 sudo apt-get ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-03-21T04:08:00" pubdate>
-                            Wed 21 March 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/287/install-openid-server-masquerade/" rel="bookmark"><h1>Install openid server: masquerade</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><img alt="masquerade" src="http://i.imgur.com/cdwZUHDl.png" title="masquerade" /> </p>
-<p>最近需要安裝 openid server，所以找了很多的 library
-來試，我是從這個<a href="http://wiki.openid.net/w/page/12995226/Run-your-own-identity-server">openid server
-清單</a>下去找，主要功能需求是希望能夠支援多人+資料庫+可以直接連線做認證的部份，但是試了好幾個
-php, python 的沒一個可以說是符合我需求的，perl
-那個文件更是完全看不懂orz。</p>
-<p>後來考慮試試看<a href="https://github.com/dbloete/masquerade">masquerade</a> 這個基於 RoR 的
-library，建完之後發現幾乎符合我的需求，而且安裝基本上不會說太難，所以就選這套啦。作者在
-github project 首頁的 README 是比較新的版本(相較於它的 project wiki
-)，但是還是有部份是有問題的，所以我另外 fork 出來，再修改一下
-README，這是<a href="https://github.com/carlcarl/masquerade">我的連結</a>。</p>
-<p>首先要先建立好 RoR 的環境，這邊提供一個可以作為參考的 ...</p>
                     </section>
                 </article>
                 <hr/>

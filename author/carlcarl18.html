@@ -51,6 +51,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-03-20T18:36:00" pubdate>
+                            Sun 20 March 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/11/c-getopt-usage/" rel="bookmark"><h1>C getopt usage</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><code>getopt</code> 是用來判斷程式參數的函式。像是 <code>./a.out -s</code> 之類的, <code>getopt</code>
+能對後面的 <code>-s</code> 這類參數做判斷處理。<br />
+一開始要使用的話記得先：</p>
+<div class="highlight"><pre><span class="cp">#include &lt;unistd.h&gt;</span>
+</pre></div>
+
+
+<p><code>getopt</code> 有三個參數
+<code>(int argc, char* argv[], const char* optsting)</code>，第一個和第二個就直接把
+<code>main</code> 裡頭的參數丟進去就好了，第三個參數就是用來處理前面講到的 <code>-s</code>
+的這類參數。<br />
+舉個例子來講，像是 <code>optstring = "abf"</code>
+的話，就能夠抓到這三個參數值，如：<br />
+<code>./a.out -a</code> 或 <code>./a.out -b</code> 或 <code>./a.out -abf</code> 都 OK ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-03-19T19:44:00" pubdate>
                             Sat 19 March 2011
                         </time>

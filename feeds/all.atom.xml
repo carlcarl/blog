@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2014-05-20T11:30:00+08:00</updated><entry><title>py2exe note</title><link href="http://blog.carlcarl.me/1397/py2exe_note/" rel="alternate"></link><updated>2014-05-20T11:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-05-20:1397/py2exe_note/</id><summary type="html">&lt;p&gt;setup.py 簡單範例:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2014-05-27T23:30:00+08:00</updated><entry><title>Simple IPython notebook extension</title><link href="http://blog.carlcarl.me/1398/simple_ipython_notebook_extension/" rel="alternate"></link><updated>2014-05-27T23:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-05-27:1398/simple_ipython_notebook_extension/</id><summary type="html">&lt;p&gt;最近練習寫了一個 &lt;a href="http://ipython.org/"&gt;IPython&lt;/a&gt; 的 notebook extension，查了一些資料就開始著手了。首先是一個簡單的 template，可以在 &lt;a href="http://ipython.org/ipython-doc/rel-0.12.1/config/extensions/index.html#extensions-overview"&gt;IPython extensions&lt;/a&gt; 這邊找到:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# myextension.py&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;load_ipython_extension&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ipython&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c"&gt;# The ``ipython`` argument is the currently active&lt;/span&gt;
+    &lt;span class="c"&gt;# :class:`InteractiveShell` instance that can be used in any way.&lt;/span&gt;
+    &lt;span class="c"&gt;# This allows you do to things like register new magics, plugins or&lt;/span&gt;
+    &lt;span class="c"&gt;# aliases.&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;unload_ipython_extension&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ipython&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c"&gt;# If you want your extension to be unloadable, put that logic here.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;load_ipython_extension&lt;/code&gt; 就是載入這個 extension 後要做的事，&lt;code&gt;unload_ipython_extension&lt;/code&gt; 就是卸載後要做的事。&lt;/p&gt;
+&lt;p&gt;參考上面連結的內容，接下來要在設定檔裡加入以下設定:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;InteractiveShellApp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;myextension&amp;#39;&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是我卻不知道是哪個設定檔(炸)，查了一下，如果是要在 notebook 版本的加入的話，預設會在 &lt;code&gt;~/.ipython/profile_default/ipython_notebook_config.py&lt;/code&gt;，如果沒有的話，可以試試看輸入 &lt;code&gt;ipython profile create&lt;/code&gt;，印象中這樣就會生出來(記憶力不太好...|||)。&lt;/p&gt;
+&lt;p&gt;然後根據我的需求，我需要輸入一些自定的的 command，然後根據參數做不同事，這裡查到 &lt;a href="http://ipython.org/ipython-doc/rel-0.12.1/api/generated/IPython.core.interactiveshell.html#IPython.core.interactiveshell.InteractiveShell.define_magic"&gt;define_magic&lt;/a&gt; 這個 method 可以用，以下是官方的範例:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo_impl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;parameter_s&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;My very own magic!. (Use docstrings, IPython reads them).&amp;#39;&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Magic function. Passed parameter is between &amp;lt; &amp;gt;:&amp;#39;&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;lt;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;parameter_s&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;The self object is:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;
+
+&lt;span class="n"&gt;ipython&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;define_magic&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;foo_impl&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;接著可以把這一段加入到 &lt;code&gt;myextension.py&lt;/code&gt; 中的 &lt;code&gt;def load_ipython_extension(ipython)&lt;/code&gt; 裡面，然後在 ipython notebook 的介面輸入 &lt;code&gt;foo&lt;/code&gt; 就會跑到 &lt;code&gt;foo_impl&lt;/code&gt; 這個 method 來，如果輸入 &lt;code&gt;foo bar&lt;/code&gt;，&lt;code&gt;parameter_s&lt;/code&gt; 就會是 &lt;code&gt;'bar'&lt;/code&gt;。這邊要注意一個地方：如果是輸入 &lt;code&gt;foo bar test&lt;/code&gt;，&lt;code&gt;parameter_s&lt;/code&gt; 會是 &lt;code&gt;'bar test'&lt;/code&gt; (炸)，所以可能還要自己再呼叫個 &lt;code&gt;parameter_s.split()&lt;/code&gt; 來把參數切成 list 這樣。&lt;/p&gt;
+&lt;p&gt;然後 &lt;code&gt;ipython.define_magic('foo',foo_impl)&lt;/code&gt; 的 &lt;code&gt;ipython&lt;/code&gt; 是從最上面程式片段中的 &lt;code&gt;load_ipython_extension(ipython)&lt;/code&gt; 的 &lt;code&gt;ipython&lt;/code&gt; 這個參數來的。&lt;/p&gt;
+&lt;p&gt;實際的範例可以參考我寫的 &lt;a href="https://github.com/carlcarl/curator-for-ipython"&gt;curator-for-ipython&lt;/a&gt;&lt;/p&gt;</summary><category term="ipython"></category></entry><entry><title>py2exe note</title><link href="http://blog.carlcarl.me/1397/py2exe_note/" rel="alternate"></link><updated>2014-05-20T11:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2014-05-20:1397/py2exe_note/</id><summary type="html">&lt;p&gt;setup.py 簡單範例:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env python&lt;/span&gt;
 &lt;span class="c"&gt;# encoding: utf-8&lt;/span&gt;
 

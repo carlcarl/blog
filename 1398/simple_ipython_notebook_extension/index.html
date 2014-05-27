@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    Simple IPython notebook extension
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Simple IPython notebook extension" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1398/simple_ipython_notebook_extension/" />
+                <meta property="og:description" content="最近練習寫了一個 IPython 的 notebook extension，查了一些資料就開始著手了。首先是一個簡單的 template，可以在 IPython extensions 這邊找到: # myextension.py def load_ipython_extension(ipython): # The ``ipython`` argument is the currently active # :class:`InteractiveShell` instance that can be used in any way. # This allows you do to things like register new magics, plugins or # aliases. def unload_ipython_extension(ipython ..." />
+                    <meta property="article:tag" content="ipython" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="fa fa-coffee"></i> carlcarl's blog</a></h1>
+        <p id="site-desc"></p>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2014-05-27T23:30:00" pubdate>
+                            Tue 27 May 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1398/simple_ipython_notebook_extension/" rel="bookmark"><h1>Simple IPython notebook extension</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p>最近練習寫了一個 <a href="http://ipython.org/">IPython</a> 的 notebook extension，查了一些資料就開始著手了。首先是一個簡單的 template，可以在 <a href="http://ipython.org/ipython-doc/rel-0.12.1/config/extensions/index.html#extensions-overview">IPython extensions</a> 這邊找到:</p>
+<div class="highlight"><pre><span class="c"># myextension.py</span>
+
+<span class="k">def</span> <span class="nf">load_ipython_extension</span><span class="p">(</span><span class="n">ipython</span><span class="p">):</span>
+    <span class="c"># The ``ipython`` argument is the currently active</span>
+    <span class="c"># :class:`InteractiveShell` instance that can be used in any way.</span>
+    <span class="c"># This allows you do to things like register new magics, plugins or</span>
+    <span class="c"># aliases.</span>
+
+<span class="k">def</span> <span class="nf">unload_ipython_extension</span><span class="p">(</span><span class="n">ipython</span><span class="p">):</span>
+    <span class="c"># If you want your extension to be unloadable, put that logic here.</span>
+</pre></div>
+
+
+<p><code>load_ipython_extension</code> 就是載入這個 extension 後要做的事，<code>unload_ipython_extension</code> 就是卸載後要做的事。</p>
+<p>參考上面連結的內容，接下來要在設定檔裡加入以下設定:</p>
+<div class="highlight"><pre><span class="n">c</span><span class="o">.</span><span class="n">InteractiveShellApp</span><span class="o">.</span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;myextension&#39;</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<p>但是我卻不知道是哪個設定檔(炸)，查了一下，如果是要在 notebook 版本的加入的話，預設會在 <code>~/.ipython/profile_default/ipython_notebook_config.py</code>，如果沒有的話，可以試試看輸入 <code>ipython profile create</code>，印象中這樣就會生出來(記憶力不太好...|||)。</p>
+<p>然後根據我的需求，我需要輸入一些自定的的 command，然後根據參數做不同事，這裡查到 <a href="http://ipython.org/ipython-doc/rel-0.12.1/api/generated/IPython.core.interactiveshell.html#IPython.core.interactiveshell.InteractiveShell.define_magic">define_magic</a> 這個 method 可以用，以下是官方的範例:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">foo_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">parameter_s</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+    <span class="s">&#39;My very own magic!. (Use docstrings, IPython reads them).&#39;</span>
+    <span class="k">print</span> <span class="s">&#39;Magic function. Passed parameter is between &lt; &gt;:&#39;</span>
+    <span class="k">print</span> <span class="s">&#39;&lt;</span><span class="si">%s</span><span class="s">&gt;&#39;</span> <span class="o">%</span> <span class="n">parameter_s</span>
+    <span class="k">print</span> <span class="s">&#39;The self object is:&#39;</span><span class="p">,</span> <span class="bp">self</span>
+
+<span class="n">ipython</span><span class="o">.</span><span class="n">define_magic</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="n">foo_impl</span><span class="p">)</span>
+</pre></div>
+
+
+<p>接著可以把這一段加入到 <code>myextension.py</code> 中的 <code>def load_ipython_extension(ipython)</code> 裡面，然後在 ipython notebook 的介面輸入 <code>foo</code> 就會跑到 <code>foo_impl</code> 這個 method 來，如果輸入 <code>foo bar</code>，<code>parameter_s</code> 就會是 <code>'bar'</code>。這邊要注意一個地方：如果是輸入 <code>foo bar test</code>，<code>parameter_s</code> 會是 <code>'bar test'</code> (炸)，所以可能還要自己再呼叫個 <code>parameter_s.split()</code> 來把參數切成 list 這樣。</p>
+<p>然後 <code>ipython.define_magic('foo',foo_impl)</code> 的 <code>ipython</code> 是從最上面程式片段中的 <code>load_ipython_extension(ipython)</code> 的 <code>ipython</code> 這個參數來的。</p>
+<p>實際的範例可以參考我寫的 <a href="https://github.com/carlcarl/curator-for-ipython">curator-for-ipython</a></p>
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/python.html">python</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/ipython.html">ipython</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>

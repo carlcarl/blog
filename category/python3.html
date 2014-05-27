@@ -51,6 +51,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-04-14T23:45:00" pubdate>
+                            Sun 14 April 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/827/appfog-deploy-pyramid/" rel="bookmark"><h1>appfog deploy pyramid</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>這篇是參考
+<a href="http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/">http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/</a>
+這篇所講的，其實他講的就差不多了，但是漏掉了一些細節，所以幫忙補完一下。  </p>
+<p><a href="https://www.appfog.com/">appfog</a> 的 deploy 相對 <a href="https://www.openshift.com/">openshift</a> 來說，算是簡單很多 (不過
+openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
+<a href="http://www.pylonsproject.org/">pyramid</a> 來講，主要就是在 project 根目錄新增一個 <code>wsgi.py</code>
+的檔案，內容引用文章連結內的程式：</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">paste.deploy</span> <span class="kn">import</span> <span class="n">loadapp</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&#39;python setup.py develop ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-04-09T13:35:00" pubdate>
                             Tue 09 April 2013
                         </time>
@@ -286,31 +310,6 @@ client ...</p>
 
 
 <p>將 <code>{{ app_path }}</code> 改為 <code>/admin ...</code></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-06-28T20:43:00" pubdate>
-                            Tue 28 June 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/29/cherokee-django-uwsgi-installation/" rel="bookmark"><h1>cherokee + django + uwsgi installation</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>首先要先裝好必要的套件，第一行先加入 cherokee 的來源，接著更新來源後才能夠安裝最新的 cherokee。rrdtool 以下三個都是在裝 uwsgi 所必要的套件，uwsgi 似乎找不到套件可以直接裝 這裡是利用pip 安裝網站上的來源: </p>
-<div class="highlight"><pre>sudo apt-add-repository ppa:cherokee-webserver/ppa
-sudo apt-get update
-sudo apt-get install cherokee
-sudo apt-get install rrdtool
-sudo apt-get install libcherokee-mod-rrd
-sudo apt-get install libxml2
-sudo pip install http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
-</pre></div>
-
-
-<p>接著在 ...</p>
                     </section>
                 </article>
                 <hr/>
