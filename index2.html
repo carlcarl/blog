@@ -51,6 +51,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-26T01:00:00" pubdate>
+                            Sun 26 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1389/osx_mavericks_ext4/" rel="bookmark"><h1>OSX Mavericks ext4</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>記錄一下 OSX Mavericks 讀寫 ext4 的方法：</p>
+<p>先裝 <a href="http://osxfuse.github.io/">OSXFUSE</a>，安裝過程中記得選 <code>MacFUSE Compatibility Layer</code>。</p>
+<p>裝 <a href="http://sourceforge.net/projects/fuse-ext2/">fuse-ext2</a>。</p>
+<p>接下來如果接上 ext4 的隨身碟，應該是能讀，但是卻還是不能寫(死)。根據 <a href="http://tex-numerics.blogspot.tw/2013/05/read-and-write-ext4-file-system-on-mac.html">Read and write ext4 file system on Mac OS X Lion</a> 這篇的做法，需要變成用手動 mount 的方式:</p>
+<div class="highlight"><pre>fuse-ext2 -o force /dev/disk1s1　/where/to/mount/your/ext4/file/system
+</pre></div>
+
+
+<p>記得這邊的 <code>disk1s1 ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-25T23:00:00" pubdate>
                             Sat 25 January 2014
                         </time>
@@ -234,29 +256,6 @@
 <p>參考資料:<br />
 <a href="http://stackoverflow.com/questions/1909188/define-make-variable-at-rule-execution-time">Define make variable at rule execution time</a><br />
 <a href="http://stackoverflow.com/questions/2019989/how-to-assign-the-output-of-a-command-to-a-makefile-variable">How to assign the output of a command to a Makefile variable</a>  </p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-11-15T00:19:00" pubdate>
-                            Fri 15 November 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1379/python_celery_crontab/" rel="bookmark"><h1>Python celery crontab</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>記錄一下 celery crontab 的用法，分成兩個部分：service 和 worker。service 負責定期塞 job 到 message queue 裡面，worker 則將 queue 裡的 job 拿出來執行，message queue 的部分這裡使用 <code>rabbitmq</code>。這邊為了方便，用了一個簡單的加法為例。</p>
-<h2>Worker</h2>
-<h3>tasks.py</h3>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
-<span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">task</span>
-
-<span class="n">celery</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s">&#39;tasks&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s">&#39;amqp&#39;</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="s">&#39;amqp://guest@localhost//&#39;</span><span class="p">)</span>
-
-<span class="nd">@task</span>
-<span class="k">def</span> <span class="nf">add ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

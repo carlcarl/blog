@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-06T00:34:00" pubdate>
+                            Sun 06 May 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/414/oh-my-zsh-mytheme/" rel="bookmark"><h1>oh my zsh: my theme</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="zsh" src="http://i.imgur.com/abOdnAul.png" title="Selection_61b4e7" /></p>
+<p>在之前<a href="http://blog.carlcarl.tw/410/ubuntu%e5%ae%89%e8%a3%9d-oh-my-zsh" title="ubuntu 安裝 oh my zsh">安裝完 zsh 和 oh my zsh</a>之後，就先來設定我的 theme 啦。</p>
+<p>但是因為看了老半天沒有一個 theme
+符合我的需求，所以我就自己另外弄了一個，大致是從 muse 這個 theme
+去改的，另外在搭配部份其他 theme 中的一些小元件。這個 theme 包含了基本的
+host name、時間、和 進 git repo 會有的提示，git repo
+的狀態包含多種圖示，所以很容易可以看出 repo 中有什麼改變。</p>
+<p>我的 theme 可以在這邊下載：<a href="%20http://dl.dropbox.com/u/4413406/carlcarl.zsh-theme">載點</a>。（或是可以直接 clone 我的
+<a href="https://github.com/carlcarl/oh-my-zsh">repo</a>）</p>
+<p>把這個檔案下載下來存成 <code>carlcarl ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-05-05T23:41:00" pubdate>
                             Sat 05 May 2012
                         </time>
@@ -267,31 +290,6 @@ ntp server
 <p>執行後會出現一個視窗，接著如以下圖片，可以看到右邊有 <code>button layout</code> 這個欄位，有關閉，最小化，最大化的值，<code>:</code> 代表相對位置，如下圖的話指的是放在左邊，如果要放在右邊的話就把 <code>:</code> 移到前面就
 OK 了。</p>
 <p><img alt="gconf-editor" src="http://198.199.117.21/wp-content/uploads/2012/02/502.png" /></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-12-19T17:01:00" pubdate>
-                            Mon 19 December 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/233/naming-apache-log-with-date/" rel="bookmark"><h1>naming apache log with date</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>目前是用 <code>logrotate</code> 來作，只要在 <code>/etc/logrotate.d/apache2</code> 裡加入下面這個參數即可：</p>
-<ul>
-<li>dateext</li>
-</ul>
-<p>另外可以根據需求看要不要把 <code>weekly</code> 改為 <code>daily</code> 這樣。</p>
-<p>處理過後的檔名就會像這樣 <code>access.log-20111218.gz</code>，這樣在之後處理和分析
-log 會比較方便，另外記得數量也要根據需求改，因為改完後變成能保存的 log
-日期也會跟著減少，要增多的話也是直接修改上面 <code>/etc/logrotate.d/apache2</code> 這個檔案，將 <code>rotate</code> 後面的數字加大，後面的數字表示要存的 log 數量，超過的話就會將最舊的刪除這樣。</p>
-<p>後記：<br />
-如果要跟 awstats 搭配的話可以在裡面加入：</p>
-<div class="highlight"><pre>prerotate
-    /usr/lib/cgi-bin/awstats.pl -config ...</pre></div>
                     </section>
                 </article>
                 <hr/>

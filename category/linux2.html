@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-27T16:41:00" pubdate>
+                            Thu 27 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1080/linux-conntrack-delete-destination-nat/" rel="bookmark"><h1>Linux conntrack delete destination NAT</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近遇到在測 throughput 中，有一定機率無法關掉 DMZ
+的問題，而且這邊只要關掉 throughput 後，DMZ 就會順利關掉，看起來像是
+throughput 的連線讓被刪掉的 conntrack 連線又復活(?)了這樣 =.=。</p>
+<p>看了一下 firewall 的 rule，裡面確實是有刪除 conntrack connection 的
+rule，指令如下：</p>
+<div class="highlight"><pre>conntrack -D conntrack -g -r xxx.xxx.xxx.xxx
+</pre></div>
+
+
+<p>看了一下 <code>conntrack －L conntrack</code> 的記錄，grep 了在接收 throughput 的
+port，發現還是有連線存在，來源是從 NAT
+內部到外面 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-19T00:19:00" pubdate>
                             Wed 19 June 2013
                         </time>
@@ -266,29 +291,6 @@ tar -xf gogoc-1_2-RELEASE.tar.gz
 VLC。但是預設的情況下播放還是會透明，必須到 Interface -&gt; Preference
 底下，使用 custom skin，VLC 就會使用他自己的佈景主題，既然是用它自己的佈景主題，影片播放自然就不會因為系統套用 oxygen transparent 的主題而受到影響了。</p>
 <p>不過目前用一用，偶爾還是會怪怪的，但是就撐著加減用吧，因為我不太想換系統的佈景主題XD。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-06T00:34:00" pubdate>
-                            Sun 06 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/414/oh-my-zsh-mytheme/" rel="bookmark"><h1>oh my zsh: my theme</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><img alt="zsh" src="http://i.imgur.com/abOdnAul.png" title="Selection_61b4e7" /></p>
-<p>在之前<a href="http://blog.carlcarl.tw/410/ubuntu%e5%ae%89%e8%a3%9d-oh-my-zsh" title="ubuntu 安裝 oh my zsh">安裝完 zsh 和 oh my zsh</a>之後，就先來設定我的 theme 啦。</p>
-<p>但是因為看了老半天沒有一個 theme
-符合我的需求，所以我就自己另外弄了一個，大致是從 muse 這個 theme
-去改的，另外在搭配部份其他 theme 中的一些小元件。這個 theme 包含了基本的
-host name、時間、和 進 git repo 會有的提示，git repo
-的狀態包含多種圖示，所以很容易可以看出 repo 中有什麼改變。</p>
-<p>我的 theme 可以在這邊下載：<a href="%20http://dl.dropbox.com/u/4413406/carlcarl.zsh-theme">載點</a>。（或是可以直接 clone 我的
-<a href="https://github.com/carlcarl/oh-my-zsh">repo</a>）</p>
-<p>把這個檔案下載下來存成 <code>carlcarl ...</code></p>
                     </section>
                 </article>
                 <hr/>

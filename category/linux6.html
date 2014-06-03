@@ -51,6 +51,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-04-21T18:55:00" pubdate>
+                            Thu 21 April 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/17/how-to-connect-the-server-in-virtualbox/" rel="bookmark"><h1>How to connect the server in virtualbox</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>如果是要用ssh連的話 就輸入以下指令</p>
+<p><code>C:Program FilesOracleVirtualBoxVBoxManage.exe" modifyvm "VM name" --natpf1
+"guestssh,tcp,,2222,,22"</code></p>
+<p>前面如果有改 virtualbox 的安裝位置的話 就要跟著改</p>
+<p><code>VM name</code> 請輸入當初在建VM時所輸入的名稱</p>
+<p>後面指的是如果連到本機的 2222 port 的話 就轉向到VM中的 22 port</p>
+<p>同樣的也可以用 <code>guesthttp,tcp,,80,,80</code> 的方式來把連到本機 80 port的轉向連到VM中的 80 port</p>
+<p>把server建在VM中這樣還可以降低本機被攻擊的危險(如果不考慮效能的因素的話):P</p>
+<p>而且系統備份也很方便~~</p>
+<p>參考資料:</p>
+<p><a href="http://slo.twbbs.org/?p=417">http://slo.twbbs.org/?p=417</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-04-17T11:31:00" pubdate>
                             Sun 17 April 2011
                         </time>

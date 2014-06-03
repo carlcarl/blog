@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    Raspberry-pi Archlinux wifi ap
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Raspberry-pi Archlinux wifi ap" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1399/raspberry_pi_archlinux_wifi_ap/" />
+                <meta property="og:description" content="弄了兩天，網路上方法很多，不過用的無線網卡種類繁多，然後 OS 有些是 Arch，有些是 Debian，然後裝的套件也會有些許不同，所以整個實驗的 branch 非常多啊~~~，弄了好久，最後終於成功了QQ。不過因為弄得蠻亂的，所以有些步驟其實不是非常確定，只能憑印象來記錄。 無線網卡我是用 TP-LINK WN725N v2.0 版本，主要是因為體積小，然後網路上也可以查得到一些教學，不過怎麼判斷 v1 還是 v2 就很難了，因為一般網路拍賣好像都不會註明，實際拿到的包裝盒上倒是可以看到是哪一版。 首先，Arch 上最新的版本應該是可以讀到這個網卡，可以用 lsmod 看有沒有 r8188eu，如果有就 OK。 設置 wlan0 接下來要把 wlan0 設置起來，建立 /etc/systemd ..." />
+                    <meta property="article:tag" content="raspberry" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="fa fa-coffee"></i> carlcarl's blog</a></h1>
+        <p id="site-desc"></p>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2014-06-04T02:30:00" pubdate>
+                            Wed 04 June 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1399/raspberry_pi_archlinux_wifi_ap/" rel="bookmark"><h1>Raspberry-pi Archlinux wifi ap</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p>弄了兩天，網路上方法很多，不過用的無線網卡種類繁多，然後 OS 有些是 Arch，有些是 Debian，然後裝的套件也會有些許不同，所以整個實驗的 branch 非常多啊~~~，弄了好久，最後終於成功了QQ。不過因為弄得蠻亂的，所以有些步驟其實不是非常確定，只能憑印象來記錄。</p>
+<p>無線網卡我是用 TP-LINK WN725N v2.0 版本，主要是因為體積小，然後網路上也可以查得到一些教學，不過怎麼判斷 v1 還是 v2 就很難了，因為一般網路拍賣好像都不會註明，實際拿到的包裝盒上倒是可以看到是哪一版。</p>
+<p>首先，Arch 上最新的版本應該是可以讀到這個網卡，可以用 <code>lsmod</code> 看有沒有 <code>r8188eu</code>，如果有就 OK。</p>
+<h2>設置 wlan0</h2>
+<p>接下來要把 <code>wlan0</code> 設置起來，建立 <code>/etc/systemd/system/network-wireless@.service</code> 這個檔案並編輯它的內容:</p>
+<div class="highlight"><pre>[Unit]
+Description=Wireless network connectivity (%i)
+Wants=network.target
+Before=network.target
+BindsTo=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=/etc/conf.d/network-wireless@%i
+
+ExecStart=/usr/bin/ip link set dev %i up
+ExecStart=/usr/bin/ip addr add ${address}/${netmask} broadcast ${broadcast} dev %i
+
+
+ExecStop=/usr/bin/ip addr flush dev %i
+ExecStop=/usr/bin/ip link set dev %i down
+
+[Install]
+WantedBy=multi-user.target
+</pre></div>
+
+
+<p>接著建立並編輯 <code>/etc/conf.d/network-wireless@wlan0</code>:</p>
+<div class="highlight"><pre>address=192.168.42.1
+netmask=24
+broadcast=192.168.42.255
+</pre></div>
+
+
+<p><code>address</code> 的部分就自己設個範圍，預設是由有線出去，所以這邊就不用加上 gateway 了。編輯完就可以 enable 這個 service:</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">network</span><span class="o">-</span><span class="n">wireless</span><span class="err">@</span><span class="n">wlan0</span><span class="p">.</span><span class="n">service</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">network</span><span class="o">-</span><span class="n">wireless</span><span class="err">@</span><span class="n">wlan0</span><span class="p">.</span><span class="n">service</span>
+</pre></div>
+
+
+<h2>設置 dnsmasq</h2>
+<p>安裝 <code>dnsmasq</code>:</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">yaourt</span> <span class="o">-</span><span class="n">S</span> <span class="n">dnsmasq</span>
+</pre></div>
+
+
+<p>編輯 <code>/etc/dnsmasq.conf</code>，參考以下做修改:</p>
+<div class="highlight"><pre>interface=wlan0
+dhcp-range=192.168.42.2,192.168.42.10,255.255.255.0,12h
+</pre></div>
+
+
+<p>Enable service:</p>
+<div class="highlight"><pre>sudo systemctl enable dnsmasq
+sudo systemctl start dnsmasq
+</pre></div>
+
+
+<h2>設置 hostapd</h2>
+<p>安裝 <code>hostapd</code>:</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">yaourt</span> <span class="o">-</span><span class="n">S</span> <span class="n">hostapd</span><span class="o">-</span><span class="mi">8188</span><span class="n">eu</span>
+</pre></div>
+
+
+<p>編輯 <code>/etc/hostapd/hostapd.conf</code> 檔案內容，參考下方做修改，來源參考 <a href="https://wiki.archlinux.org/index.php/Software_Access_Point">Software access point</a>:</p>
+<div class="highlight"><pre>ssid=YourWifiName
+wpa_passphrase=Somepassphrase
+interface=wlan0
+auth_algs=3
+channel=7
+hw_mode=g
+logger_stdout=-1
+logger_stdout_level=2
+max_num_sta=5
+rsn_pairwise=CCMP
+wpa=2
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP CCMP
+</pre></div>
+
+
+<p><code>ssid</code> 是 wifi 的 名稱，<code>wpa_passphrase</code> 是 wifi 密碼，其他的不知道也沒差 lol。</p>
+<p>Enable service:</p>
+<div class="highlight"><pre>sudo systemctl enable hostpad
+sudo systemctl start hostpad
+</pre></div>
+
+
+<p><code>hostpad</code> 啟動後，應該就會有 wifi 的訊號出來，然後輸入 wifi 密碼之後是可以連上的，不過還沒辦法連外才對。這時候還需要設定 NAT 的部分。</p>
+<h2>設置 NAT</h2>
+<p>編輯 <code>/etc/sysctl.d/30-ipforward.conf</code>，加上以下內容:</p>
+<div class="highlight"><pre>net.ipv4.ip_forward=1
+net.ipv6.conf.default.forwarding=1
+net.ipv6.conf.all.forwarding=1
+</pre></div>
+
+
+<p>設定 <code>iptables</code> 並啟動 service:</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">A</span> <span class="n">POSTROUTING</span> <span class="o">-</span><span class="n">o</span> <span class="n">internet0</span> <span class="o">-</span><span class="n">j</span> <span class="n">MASQUERADE</span>
+<span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">FORWARD</span> <span class="o">-</span><span class="n">i</span> <span class="n">net0</span> <span class="o">-</span><span class="n">o</span> <span class="n">internet0</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
+<span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">FORWARD</span> <span class="o">-</span><span class="n">m</span> <span class="n">conntrack</span> <span class="o">--</span><span class="n">ctstate</span> <span class="n">RELATED</span><span class="p">,</span><span class="n">ESTABLISHED</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
+
+<span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;iptables-save &gt; /etc/iptables/iptables.rules&quot;</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">iptables</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">iptables</span>
+</pre></div>
+
+
+<p><code>iptables</code> 預設會讀取 <code>/etc/iptables/iptables.rules</code>，所以不需要再多做讀取 rule 的設置。</p>
+<p>最後 reboot 板子，測試連外是否正常就 ok 了。</p>
+<p>參考資料:<br />
+<a href="http://elinux.org/RPI-Wireless-Hotspot">RPI-Wireless-Hotspot</a><br />
+<a href="https://wiki.archlinux.org/index.php/Wireless_network_configuration#Manual_wireless_connection_at_boot_using_systemd_and_dhcpcd">Wireless network configuration</a><br />
+<a href="https://wiki.archlinux.org/index.php/Internet_sharing">Internet sharing</a><br />
+<a href="https://wiki.archlinux.org/index.php/Network_configuration#Static_IP_address">Network configuration</a><br />
+<a href="http://sirlagz.net/2012/08/09/how-to-use-the-raspberry-pi-as-a-wireless-access-pointrouter-part-1/">How To : Use The Raspberry Pi As A Wireless Access Point/Router Part 1</a><br />
+<a href="http://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;t=27005">Wireless AP</a><br />
+<a href="http://guildwar23.blogspot.tw/2013/03/notebook-ap-arch-linux.html">使用 notebook 上的無線網卡來當無線 AP - arch linux 篇</a><br />
+<a href="https://wiki.archlinux.org/index.php/iptables">iptables</a>  </p>
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/linux.html">linux</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/raspberry.html">raspberry</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>

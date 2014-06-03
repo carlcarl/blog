@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-06-04T02:30:00" pubdate>
+                            Wed 04 June 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1399/raspberry_pi_archlinux_wifi_ap/" rel="bookmark"><h1>Raspberry-pi Archlinux wifi ap</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>弄了兩天，網路上方法很多，不過用的無線網卡種類繁多，然後 OS 有些是 Arch，有些是 Debian，然後裝的套件也會有些許不同，所以整個實驗的 branch 非常多啊~~~，弄了好久，最後終於成功了QQ。不過因為弄得蠻亂的，所以有些步驟其實不是非常確定，只能憑印象來記錄。</p>
+<p>無線網卡我是用 TP-LINK WN725N v2.0 版本，主要是因為體積小，然後網路上也可以查得到一些教學，不過怎麼判斷 v1 還是 v2 就很難了，因為一般網路拍賣好像都不會註明，實際拿到的包裝盒上倒是可以看到是哪一版。</p>
+<p>首先，Arch 上最新的版本應該是可以讀到這個網卡，可以用 <code>lsmod</code> 看有沒有 <code>r8188eu</code>，如果有就 OK。</p>
+<h2>設置 wlan0</h2>
+<p>接下來要把 <code>wlan0</code> 設置起來，建立 <code>/etc/systemd ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-05-14T16:30:00" pubdate>
                             Wed 14 May 2014
                         </time>
@@ -242,31 +260,6 @@ screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</
 information。</p>
 <p>接下來用 <code>tar -xf data.tar.gz</code> or <code>tar -xf control.tar.gz</code>
 就可以看到裡面的資料了。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-27T16:41:00" pubdate>
-                            Thu 27 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1080/linux-conntrack-delete-destination-nat/" rel="bookmark"><h1>Linux conntrack delete destination NAT</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近遇到在測 throughput 中，有一定機率無法關掉 DMZ
-的問題，而且這邊只要關掉 throughput 後，DMZ 就會順利關掉，看起來像是
-throughput 的連線讓被刪掉的 conntrack 連線又復活(?)了這樣 =.=。</p>
-<p>看了一下 firewall 的 rule，裡面確實是有刪除 conntrack connection 的
-rule，指令如下：</p>
-<div class="highlight"><pre>conntrack -D conntrack -g -r xxx.xxx.xxx.xxx
-</pre></div>
-
-
-<p>看了一下 <code>conntrack －L conntrack</code> 的記錄，grep 了在接收 throughput 的
-port，發現還是有連線存在，來源是從 NAT
-內部到外面 ...</p>
                     </section>
                 </article>
                 <hr/>

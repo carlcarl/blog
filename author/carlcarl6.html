@@ -51,6 +51,25 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-11T03:43:00" pubdate>
+                            Tue 11 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/967/java-paintcomponent-paint-duplicate/" rel="bookmark"><h1>Java paintComponent paint duplicate</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前寫 Java 的時候遇到的小問題，在實作 <code>JPanel</code> 的 <code>paintComponent</code>
+時，發現怎麼畫完後會出現多餘的重複物件。</p>
+<p>後來找了一下資料，在 stackoverflow
+發現<a href="http://stackoverflow.com/questions/13773315/java-paintcomponent-paints-a-copy-of-the-top-gui-panel-for-no-apparent-reason">有人有一樣的問題</a>。解決方法也很簡單，只要在 <code>paintComponent</code>
+一開始加上
+<code>super.paintComponent(g);</code>，可惜的是不懂為啥不呼叫的話會出現這樣的結果就是。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-10T22:29:00" pubdate>
                             Mon 10 June 2013
                         </time>
@@ -269,22 +288,6 @@ period update 的方式做更新，由於中間測量的 function
 <span class="c1">// Get milliseconds </span>
 <span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">-</span> <span class="n">begin</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
 <span class="n">val</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-04-26T20:31:00" pubdate>
-                            Fri 26 April 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/835/popen-check-empty/" rel="bookmark"><h1>popen check empty</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近常在用 <code>popen</code> 呼叫系統指令，並讀取執行的結果作判斷，而有時候會有想確認內容是否會為空的需求，因為 popen return 的是一個 file descriptor，本來想說能不能用 <code>ftell</code>
-找出大小來做判斷，不過<a href="http://stackoverflow.com/questions/7705338/ftell-function-giving-1-in-c-for-stdout">後來證明不行</a>，pipe 跟一般的檔案還是有差別。</p>
-<p>找了一堆資料，後來只想到用 <code>fgetc</code> 來讀，再用讀不讀得到值作為判斷 orz，不知道有沒有其他更好的解法就是。</p>
                     </section>
                 </article>
                 <hr/>

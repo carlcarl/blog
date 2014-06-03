@@ -51,6 +51,38 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-22T00:58:00" pubdate>
+                            Thu 22 August 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1277/chrome-tab-key-accessibility-bug/" rel="bookmark"><h1>Chrome tab key accessibility bug</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>簡單說就是在 link 內容如果是 float 的情況下，這個 link 沒辦法在按 tab
+鍵的時候得到 focus。Google 了一下，好像是 <a href="https://bugs.webkit.org/show_bug.cgi?id=51333">Webkit 的
+bug</a>，不過好像沒有打算要修的樣子(汗)。<br />
+Link 如果在下面的情況是 OK 的：</p>
+<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>test<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+
+
+<p>但是如果加了 <code>float</code> 後就會出問題：</p>
+<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;float:left;&quot;</span><span class="nt">&gt;</span>test<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+
+
+<p>我的解決方法很簡單，就是乾脆把 <code>float</code> 移到外面的 element
+上(炸)。目前看來是沒問題，Firefox ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-08-13T15:50:00" pubdate>
                             Tue 13 August 2013
                         </time>
@@ -270,27 +302,6 @@ XD。</p>
 <p>livereload 這邊是透過 Grunt bind 一個 port
 並監視檔案的變化，接著網頁的部分加入這個 port 底下所提供的
 javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-12T02:15:00" pubdate>
-                            Fri 12 July 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1120/osx-mavericks-betaheader-file-position/" rel="bookmark"><h1>OSX Mavericks Beta header file position</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>Beta 版的 header file 位置有些不同，看到幾個地方都傳出災情：</p>
-<ul>
-<li><a href="https://github.com/mxcl/homebrew/pull/20938">gpg-agent: Set correct stdint.h header path for Mac OSX Mavericks</a></li>
-<li><a href="https://github.com/jfahrenkrug/WWDC-Downloader/issues/5">The gem doesn't yet build in Mavericks</a></li>
-<li><a href="https://github.com/josegonzalez/homebrew-php/issues/591">Installation fails on OS X Mavericks</a></li>
-</ul>
-<p>原本的 <code>/usr/include</code> 已經不見了，找了一下，位置是在：</p>
-<div class="highlight"><pre><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode5</span><span class="o">-</span><span class="n">DP</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="p">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="mf">.9 ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>
