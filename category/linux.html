@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-08-11T00:30:00" pubdate>
+                            Mon 11 August 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1400/raspberry_pi_cookbook_for_python_programmers/" rel="bookmark"><h1>Raspberry Pi Cookbook for Python Programmers</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="Raspberry Pi Cookbook for Python Programmers" src="http://i.imgur.com/3oE47eK.jpg" /></p>
+<p>很久沒有看電子書了，最近剛好拿到幾本來看，這本是其中的一本，大致就是在講 Python 在 Raspberry pi 上如何使用和如何操作 Raspberry 的一些硬體功能，像是 GPIO 和 Camera 之類的。其實這本書跟我想像的有點不太一樣，它比較偏向硬體操作，大部分的章節都是如此，反而比較沒有偏向單軟體應用的，所以像我這種硬體不太行的就有點吃癟了QQ。另外要注意的是這本書用的是 Python3，不是 Python2，然後 Raspberry Pi 的作業系統應該是 Debian based 的，這本書裏面其實需要裝蠻多套件的，常看到一堆 <code>apt-get</code>，所以如果像是用 Arch 之類的話就要注意，可能對應的套件也還是會有，不過就需要找一下這樣。</p>
+<p>書裏面大致分幾個部分：</p>
+<ol>
+<li>如何使用 Raspberry Pi。對於第一次摸這塊板子的人有這個章節真的會比較更容易上手，不過跟 Python 其實關係就不大了，是說這部分內容還佔滿多的，我是覺得可以不需要那麼多XD ...</li></ol>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-06-04T02:30:00" pubdate>
                             Wed 04 June 2014
                         </time>
@@ -238,28 +256,6 @@ screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</
 <code>tmux.conf</code> 中，但是我並沒有設定這個東西，看了
 <code>.zshrc</code>，原來我是在這邊設定了
 <code>export TERM ...</code></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-17T16:27:00" pubdate>
-                            Wed 17 July 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1224/ipk-unarchive/" rel="bookmark"><h1>ipk unarchive</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>記錄一下:P</p>
-<p>查了一下資料，有些說直接用 <code>tar</code>
-就可以了，不過怎麼試就是不行zzzzzz。後來看到 <a href="http://stackoverflow.com/questions/17369127/extracting-and-creating-ipk-files">stackoverflow</a>
-上有人提供的方法，試了一下就成功了 XD。</p>
-<p>先用 <code>ar x xxx.ipk</code> 就可以解壓縮出幾個檔案，其中 <code>data.tar.gz</code>
-放的就是程式執行檔之類的，<code>control.tar.gz</code> 放的是 ipk 的一些
-information。</p>
-<p>接下來用 <code>tar -xf data.tar.gz</code> or <code>tar -xf control.tar.gz</code>
-就可以看到裡面的資料了。</p>
                     </section>
                 </article>
                 <hr/>

@@ -51,6 +51,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-28T10:57:00" pubdate>
+                            Mon 28 May 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/482/kde-oxygen-transparent-error-with-playing-video/" rel="bookmark"><h1>KDE oxygen-transparent error with playing video</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近改用 Chakra + KDE 的環境，另外再裝了 oxygen-transparent
+這個佈景主題，但是卻發現一個問題，那就是 Qt based
+的影片播放器會因為這個主題而出問題，影片播放會變透明，什麼都看不到囧，只有聲音。</p>
+<p>目前還找不太到很好的解決方案，只想到一個比較簡單的替代方案，就是使用
+VLC。但是預設的情況下播放還是會透明，必須到 Interface -&gt; Preference
+底下，使用 custom skin，VLC 就會使用他自己的佈景主題，既然是用它自己的佈景主題，影片播放自然就不會因為系統套用 oxygen transparent 的主題而受到影響了。</p>
+<p>不過目前用一用，偶爾還是會怪怪的，但是就撐著加減用吧，因為我不太想換系統的佈景主題XD。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-05-06T00:34:00" pubdate>
                             Sun 06 May 2012
                         </time>
@@ -264,32 +284,6 @@ ntp server
 
 <p>參考網址：<br />
 <a href="http://fcamel-fc.blogspot.com/2009/04/python-vim.html">http://fcamel-fc.blogspot.com/2009/04/python-vim.html</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-04T18:56:00" pubdate>
-                            Sat 04 February 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/239/linux-mint-cinnanmon-change-position-of-window-buttons/" rel="bookmark"><h1>Linux Mint cinnamon change position of window buttons</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>==================================================<br />
-2012/03/28更新</p>
-<h1>cinnamon 已經有提供修改按鈕位置的設定了，所以就不用照以下的方法來改哩。</h1>
-<p>最近裝了 cinnamon 來玩玩，是有一些有趣的東西沒錯，像是視窗動畫，不過整體來說，我覺得並沒有好到值得我換成這套，所以用了沒多久我就換回來 Gnome 啦～～。</p>
-<p>不過這邊還是來講一下 cinnamon 怎麼改變視窗按鈕位置的方法吧。</p>
-<p>首先先裝編輯設定的套件</p>
-<div class="highlight"><pre>apt-get install gconf-editor
-</pre></div>
-
-
-<p>執行後會出現一個視窗，接著如以下圖片，可以看到右邊有 <code>button layout</code> 這個欄位，有關閉，最小化，最大化的值，<code>:</code> 代表相對位置，如下圖的話指的是放在左邊，如果要放在右邊的話就把 <code>:</code> 移到前面就
-OK 了。</p>
-<p><img alt="gconf-editor" src="http://198.199.117.21/wp-content/uploads/2012/02/502.png" /></p>
                     </section>
                 </article>
                 <hr/>

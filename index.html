@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-08-11T00:30:00" pubdate>
+                            Mon 11 August 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1400/raspberry_pi_cookbook_for_python_programmers/" rel="bookmark"><h1>Raspberry Pi Cookbook for Python Programmers</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="Raspberry Pi Cookbook for Python Programmers" src="http://i.imgur.com/3oE47eK.jpg" /></p>
+<p>很久沒有看電子書了，最近剛好拿到幾本來看，這本是其中的一本，大致就是在講 Python 在 Raspberry pi 上如何使用和如何操作 Raspberry 的一些硬體功能，像是 GPIO 和 Camera 之類的。其實這本書跟我想像的有點不太一樣，它比較偏向硬體操作，大部分的章節都是如此，反而比較沒有偏向單軟體應用的，所以像我這種硬體不太行的就有點吃癟了QQ。另外要注意的是這本書用的是 Python3，不是 Python2，然後 Raspberry Pi 的作業系統應該是 Debian based 的，這本書裏面其實需要裝蠻多套件的，常看到一堆 <code>apt-get</code>，所以如果像是用 Arch 之類的話就要注意，可能對應的套件也還是會有，不過就需要找一下這樣。</p>
+<p>書裏面大致分幾個部分：</p>
+<ol>
+<li>如何使用 Raspberry Pi。對於第一次摸這塊板子的人有這個章節真的會比較更容易上手，不過跟 Python 其實關係就不大了，是說這部分內容還佔滿多的，我是覺得可以不需要那麼多XD ...</li></ol>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-06-04T02:30:00" pubdate>
                             Wed 04 June 2014
                         </time>
@@ -247,22 +265,6 @@ schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="
 <li>很多 operating system 會對 <code>which</code> 做額外的 tweak，可能會有其他的 side effect</li>
 </ol>
 <p>在解答中建議可以用 <code>hash</code>, <code>command</code>, <code>type</code> 等指令來判斷，其中 <code>command</code> 的 exit code 在 POSIX ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-27T23:00:00" pubdate>
-                            Mon 27 January 2014
-                        </time>
-                        <a href="http://blog.carlcarl.me/1390/osx_mavericks_ftp_in_finder/" rel="bookmark"><h1>OSX Mavericks ftp in finder</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>找了一下 OSX 怎麼把 ftp 的目錄顯示在 finder 中，finder 雖然有內建 <code>Connect to Server</code> 的功能，不過非常爛，帳密登入的一直沒辦法 work，而且好像還是 read only，ftp command line 卻都沒啥問題，所以建議就放棄內建的功能，別浪費時間了 = =。</p>
-<p>後來看到 <a href="http://macfusionapp.org">MacFusion</a> 搭配 <a href="http://osxfuse.github.io">OSXFUSE</a>，想說來試試看，就結果來看，還是沒有 KDE 的 Dolphin 來得方便啊QQ，不過也還算堪用就是。</p>
-<p>兩個都裝完之後，開啓 MacFusion，加入要 mount 的 ftp 或其他種 folder，但是我的沒有在 Finder sidebar 中出現可以點選的 ...</p>
                     </section>
                 </article>
                 <hr/>

@@ -51,6 +51,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-28T01:40:00" pubdate>
+                            Wed 28 August 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1292/g0v-tw-sns-buttons/" rel="bookmark"><h1>g0v.tw sns buttons</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>修了一下 render 的問題，以結果來看其實並沒有完全做好，還是會有 render
+過程中偏移的問題
+orz，不過也比原來的情況好多了(汗)，之後功力如果好一點再來深入研究吧 =
+=+。</p>
+<p><a href="https://github.com/g0v/g0v.tw/commit/93777efbd4941f3ba74bb0380ffb65c4d4330f13">commit diff</a><br />
+主要修正幾個地方：</p>
+<h3>fb button size</h3>
+<p>fb button 基本上最大就 60px 的樣子，原本設了
+500px，導致一開始預留的空間過大，整個會往左邊撐開，render
+完後又變一個小按鈕，所以整個看起來很囧，解決方法就是不去限制大小，反正按鈕最大也就那樣而已。</p>
+<h3>sns buttons 放大</h3>
+<p>原本的方法是直接把 button 用 css 加上 <code>transform</code> + <code>scale</code>
+放大，不過如果有多個 button 的話，這樣兩者之間的 margin
+會很難去設定，因為 margin ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-08-22T00:58:00" pubdate>
                             Thu 22 August 2013
                         </time>
@@ -275,33 +302,6 @@ information。</p>
 <p>man 了一下，用 <code>-I pattern</code> 就可以略過資料夾，那如果有多個呢？本來猜是
 <code>-I pattern1 pattern2</code>，結果不是囧，<code>-I pattern1 -I pattern2</code>
 也不是囧。後來才看到<a href="http://unix.stackexchange.com/questions/61074/tree-command-for-multiple-includes-and-excludes">用法</a>應該是 <code>-I pattern1|pattern2</code> 才對 orz。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-14T05:11:00" pubdate>
-                            Sun 14 July 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1131/python-pyramid-with-grunt-js/" rel="bookmark"><h1>Python Pyramid with Grunt.js</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>這幾天試玩了一下
-<a href="http://gruntjs.com">Grunt.js</a>，感覺還不錯方便，所以來筆記一些自己的設定。一開始還在想
-<a href="http://www.pylonsproject.org">Pyramid</a> 和 Grunt 要怎麼結合，雖然有 Google
-了一下，不過好像都沒有一個比較準確的答案，所以這邊我就照自己想的來做
-XD。</p>
-<p>我主要在 Grunt 中用的功能有：</p>
-<ol>
-<li>minify 和 combine css, js</li>
-<li>監控檔案的變化，有變動的話就做 1 的步驟</li>
-<li>做完 1 的步驟就自動 reload browser (livereload)</li>
-</ol>
-<p>livereload 這邊是透過 Grunt bind 一個 port
-並監視檔案的變化，接著網頁的部分加入這個 port 底下所提供的
-javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
                     </section>
                 </article>
                 <hr/>

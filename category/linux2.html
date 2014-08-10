@@ -51,6 +51,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-17T16:27:00" pubdate>
+                            Wed 17 July 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1224/ipk-unarchive/" rel="bookmark"><h1>ipk unarchive</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>記錄一下:P</p>
+<p>查了一下資料，有些說直接用 <code>tar</code>
+就可以了，不過怎麼試就是不行zzzzzz。後來看到 <a href="http://stackoverflow.com/questions/17369127/extracting-and-creating-ipk-files">stackoverflow</a>
+上有人提供的方法，試了一下就成功了 XD。</p>
+<p>先用 <code>ar x xxx.ipk</code> 就可以解壓縮出幾個檔案，其中 <code>data.tar.gz</code>
+放的就是程式執行檔之類的，<code>control.tar.gz</code> 放的是 ipk 的一些
+information。</p>
+<p>接下來用 <code>tar -xf data.tar.gz</code> or <code>tar -xf control.tar.gz</code>
+就可以看到裡面的資料了。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-27T16:41:00" pubdate>
                             Thu 27 June 2013
                         </time>
@@ -271,26 +293,6 @@ tar -xf gogoc-1_2-RELEASE.tar.gz
     <code>#include &lt;stddef.h&gt;</code> 加到
     <code>../gogoc-messaging/gogocmessaging/message.h</code>
     的檔案最上方即可 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-28T10:57:00" pubdate>
-                            Mon 28 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/482/kde-oxygen-transparent-error-with-playing-video/" rel="bookmark"><h1>KDE oxygen-transparent error with playing video</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近改用 Chakra + KDE 的環境，另外再裝了 oxygen-transparent
-這個佈景主題，但是卻發現一個問題，那就是 Qt based
-的影片播放器會因為這個主題而出問題，影片播放會變透明，什麼都看不到囧，只有聲音。</p>
-<p>目前還找不太到很好的解決方案，只想到一個比較簡單的替代方案，就是使用
-VLC。但是預設的情況下播放還是會透明，必須到 Interface -&gt; Preference
-底下，使用 custom skin，VLC 就會使用他自己的佈景主題，既然是用它自己的佈景主題，影片播放自然就不會因為系統套用 oxygen transparent 的主題而受到影響了。</p>
-<p>不過目前用一用，偶爾還是會怪怪的，但是就撐著加減用吧，因為我不太想換系統的佈景主題XD。</p>
                     </section>
                 </article>
                 <hr/>

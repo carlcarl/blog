@@ -51,6 +51,32 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-02-04T18:56:00" pubdate>
+                            Sat 04 February 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/239/linux-mint-cinnanmon-change-position-of-window-buttons/" rel="bookmark"><h1>Linux Mint cinnamon change position of window buttons</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>==================================================<br />
+2012/03/28更新</p>
+<h1>cinnamon 已經有提供修改按鈕位置的設定了，所以就不用照以下的方法來改哩。</h1>
+<p>最近裝了 cinnamon 來玩玩，是有一些有趣的東西沒錯，像是視窗動畫，不過整體來說，我覺得並沒有好到值得我換成這套，所以用了沒多久我就換回來 Gnome 啦～～。</p>
+<p>不過這邊還是來講一下 cinnamon 怎麼改變視窗按鈕位置的方法吧。</p>
+<p>首先先裝編輯設定的套件</p>
+<div class="highlight"><pre>apt-get install gconf-editor
+</pre></div>
+
+
+<p>執行後會出現一個視窗，接著如以下圖片，可以看到右邊有 <code>button layout</code> 這個欄位，有關閉，最小化，最大化的值，<code>:</code> 代表相對位置，如下圖的話指的是放在左邊，如果要放在右邊的話就把 <code>:</code> 移到前面就
+OK 了。</p>
+<p><img alt="gconf-editor" src="http://198.199.117.21/wp-content/uploads/2012/02/502.png" /></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-12-19T17:01:00" pubdate>
                             Mon 19 December 2011
                         </time>
@@ -259,41 +285,6 @@ GSSAPIAuthentication no
 <p><img alt="doxygen_dir.png" src="http://i.imgur.com/WlsqsDB.png" title="doxygen_dir.png" />  </p>
 <p>參考網址：</p>
 <p><a href="http://stackoverflow.com/questions/6874800/directories-within-file-list-in-doxygen">http://stackoverflow.com/questions/6874800/directories-within-file-list-in-doxygen</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-09-05T18:51:00" pubdate>
-                            Mon 05 September 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/44/vimrc-check-hostname/" rel="bookmark"><h1>vimrc check hostname</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>因為在不同電腦用了一個共用的 vimrc 檔，但是又想在兩邊作一些不同的設定，所以找了一下資料看要怎麼作。雖然有判斷作業系統的方式，不過好像不太適合我的用法，然後我通常不同的電腦都會設個有意義的 hostname，所以最後想說就用 hostname 去作判斷啦，以下是一個範例：</p>
-<div class="highlight"><pre>let hostname = substitute(system(&#39;hostname&#39;), &#39;n&#39;, &#39;&#39;, &#39;&#39;)
-if hostname == &quot;lab&quot;
-    &quot;do something
-elseif hostname == &quot;home&quot;
-    &quot;do something
-endif
-</pre></div>
-
-
-<p>另外附上判斷 OS 的方式：</p>
-<div class="highlight"><pre>if has(&#39;win32&#39;)
-    &quot;do something
-elseif has(&#39;mac&#39;)
-    &quot;do something
-elseif has(&#39;unix&#39;)
-    &quot;do something
-endif
-</pre></div>
-
-
-<p>參考網址 ...</p>
                     </section>
                 </article>
                 <hr/>

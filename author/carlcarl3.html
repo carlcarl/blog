@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-11-29T23:00:00" pubdate>
+                            Fri 29 November 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1380/define_makefile_variable_in_rule/" rel="bookmark"><h1>Define Makefile variable in rule</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>沒在寫啥 Makefile，要用的時候才發現不會在 rule 裡面 assign variable XD。具體用法如下:</p>
+<div class="highlight"><pre><span class="nf">all</span><span class="o">:</span> 
+    <span class="k">$(</span><span class="nb">eval </span>tmp :<span class="o">=</span> <span class="k">$(</span>shell <span class="nb">echo </span>1<span class="k">))</span>
+    @echo <span class="k">$(</span>tmp<span class="k">)</span>
+</pre></div>
+
+
+<p>參考資料:<br />
+<a href="http://stackoverflow.com/questions/1909188/define-make-variable-at-rule-execution-time">Define make variable at rule execution time</a><br />
+<a href="http://stackoverflow.com/questions/2019989/how-to-assign-the-output-of-a-command-to-a-makefile-variable">How to assign the output of a command to a Makefile variable</a>  </p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-11-15T00:19:00" pubdate>
                             Fri 15 November 2013
                         </time>
@@ -273,33 +296,6 @@ build 好的 css，這個問題一直困擾我很久，每次都要重新跑一�
 <div class="highlight"><pre><span class="nv">stylesheets:</span>
   <span class="nv">joinTo:</span>
     <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-08-28T01:40:00" pubdate>
-                            Wed 28 August 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1292/g0v-tw-sns-buttons/" rel="bookmark"><h1>g0v.tw sns buttons</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>修了一下 render 的問題，以結果來看其實並沒有完全做好，還是會有 render
-過程中偏移的問題
-orz，不過也比原來的情況好多了(汗)，之後功力如果好一點再來深入研究吧 =
-=+。</p>
-<p><a href="https://github.com/g0v/g0v.tw/commit/93777efbd4941f3ba74bb0380ffb65c4d4330f13">commit diff</a><br />
-主要修正幾個地方：</p>
-<h3>fb button size</h3>
-<p>fb button 基本上最大就 60px 的樣子，原本設了
-500px，導致一開始預留的空間過大，整個會往左邊撐開，render
-完後又變一個小按鈕，所以整個看起來很囧，解決方法就是不去限制大小，反正按鈕最大也就那樣而已。</p>
-<h3>sns buttons 放大</h3>
-<p>原本的方法是直接把 button 用 css 加上 <code>transform</code> + <code>scale</code>
-放大，不過如果有多個 button 的話，這樣兩者之間的 margin
-會很難去設定，因為 margin ...</p>
                     </section>
                 </article>
                 <hr/>
