@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-08-15T20:00:00" pubdate>
+                            Fri 15 August 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1401/django_essentials_review/" rel="bookmark"><h1>Django Essentials review</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="Django Essentials" src="http://i.imgur.com/nLMpucb.jpg" /></p>
+<p>這本書的內容是從頭開始講 Django 的使用和開發。大致看過後，我覺得非常適合想學 Django 的初學者。這本書會從一開始 for 各種 OS 的安裝開始講起，可能有些人會覺得有些囉嗦，不過這樣的確可以替新手省下很多時間XD。Django 版本的話這版是用 1.6，要注意的是 Python 是用 3 而不是 2，有些人可能會滿 care 這點的就是。</p>
+<p>接下來包括 Template, Model, View, Form 都會講到個別的用法，也會提到一些需要注意的地方，像 Model 就提到了如何 extend UserProfile 也有提到如何用 South 做 Migration，不過在之後的 Django 1.7 版本，就會內建 migration ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-05-18T02:00:00" pubdate>
                             Sun 18 May 2014
                         </time>
@@ -252,37 +268,6 @@ openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
 <span class="kn">from</span> <span class="nn">paste.deploy</span> <span class="kn">import</span> <span class="n">loadapp</span>
 
 <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&#39;python setup.py develop ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-08-28T00:01:00" pubdate>
-                            Tue 28 August 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" rel="bookmark"><h1>virtualenvwrapper setting</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近為了方便，加了幾個 virtualenvwrapper 的設定。  </p>
-<h3>使用 <code>mkvirtualenv</code> 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。</h3>
-<p>在 <code>~/.virtualenv/postmkvirtualenv</code>裡加入：</p>
-<div class="highlight"><pre><span class="nv">proj_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$VIRTUAL_ENV</span>|awk -F<span class="s1">&#39;/&#39;</span> <span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
-
-<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
-<span class="k">    </span>mkdir ~/Projects/<span class="nv">$proj_name</span>
-<span class="k">fi</span>
-
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;${PWD##*/}&quot;</span> !<span class="o">=</span> <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
-<span class="k">    </span><span class="nb">cd</span> ~/Projects/<span class="nv">$proj_name</span>
-<span class="k">fi</span>
-</pre></div>
-
-
-<p>其中，把 <code>Projects</code> 換成你的 project 位置。</p>
-<hr />
-<h3>輸入 <code>workon 你的project</code> 時，自動切換至 ...</h3>
                     </section>
                 </article>
                 <hr/>

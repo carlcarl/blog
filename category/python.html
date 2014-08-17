@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-08-15T20:00:00" pubdate>
+                            Fri 15 August 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1401/django_essentials_review/" rel="bookmark"><h1>Django Essentials review</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="Django Essentials" src="http://i.imgur.com/nLMpucb.jpg" /></p>
+<p>這本書的內容是從頭開始講 Django 的使用和開發。大致看過後，我覺得非常適合想學 Django 的初學者。這本書會從一開始 for 各種 OS 的安裝開始講起，可能有些人會覺得有些囉嗦，不過這樣的確可以替新手省下很多時間XD。Django 版本的話這版是用 1.6，要注意的是 Python 是用 3 而不是 2，有些人可能會滿 care 這點的就是。</p>
+<p>接下來包括 Template, Model, View, Form 都會講到個別的用法，也會提到一些需要注意的地方，像 Model 就提到了如何 extend UserProfile 也有提到如何用 South 做 Migration，不過在之後的 Django 1.7 版本，就會內建 migration ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-05-27T23:30:00" pubdate>
                             Tue 27 May 2014
                         </time>
@@ -258,32 +274,6 @@ schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="
 
 <span class="nd">@task</span>
 <span class="k">def</span> <span class="nf">add ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-04T21:26:00" pubdate>
-                            Fri 04 October 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>就之前產生的 sphinx document，接下來是如何 deploy 到 github page 上。</p>
-<p>這個文章是根據 <a href="http://raxcloud.blogspot.tw/2013/02/documenting-python-code-using-sphinx.html">Documenting python code using sphinx and github</a> 和
-<a href="http://datadesk.latimes.com/posts/2012/01/sphinx-on-github/">Sphinx documentation on GitHub</a>
-整理而成的，兩個地方的資料都不錯，不過都沒有很完美，所以就寫了這篇。</p>
-<h2>建立 github page repo</h2>
-<p>這邊看到大部分的做法都是直接在 project 根目錄下直接開另外一個
-branch，不過我後來在上面連結看到一個不錯的做法，就是直接把 branch 建立在
-subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資料夾：</p>
-<div class="highlight"><pre>mkdir gh-pages
-</pre></div>
-
-
-<p>接著利用 <code>git-new-workdir</code> 這個指令建立一個 ...</p>
                     </section>
                 </article>
                 <hr/>

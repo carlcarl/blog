@@ -51,6 +51,32 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-10-04T21:26:00" pubdate>
+                            Fri 04 October 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>就之前產生的 sphinx document，接下來是如何 deploy 到 github page 上。</p>
+<p>這個文章是根據 <a href="http://raxcloud.blogspot.tw/2013/02/documenting-python-code-using-sphinx.html">Documenting python code using sphinx and github</a> 和
+<a href="http://datadesk.latimes.com/posts/2012/01/sphinx-on-github/">Sphinx documentation on GitHub</a>
+整理而成的，兩個地方的資料都不錯，不過都沒有很完美，所以就寫了這篇。</p>
+<h2>建立 github page repo</h2>
+<p>這邊看到大部分的做法都是直接在 project 根目錄下直接開另外一個
+branch，不過我後來在上面連結看到一個不錯的做法，就是直接把 branch 建立在
+subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資料夾：</p>
+<div class="highlight"><pre>mkdir gh-pages
+</pre></div>
+
+
+<p>接著利用 <code>git-new-workdir</code> 這個指令建立一個 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-10-02T02:32:00" pubdate>
                             Wed 02 October 2013
                         </time>
@@ -289,31 +315,6 @@ orz。</p>
             <span class="c"># f is the method decorated</span>
             <span class="k">def</span> <span class="nf">f_retry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
                 <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-05-23T16:25:00" pubdate>
-                            Thu 23 May 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/852/python-cant-use-a-string-pattern-on-a-bytes-like-object/" rel="bookmark"><h1>Python: can't use a string pattern on a bytes-like object</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近嘗試將 Python2 的程式轉成
-Python3，看起來好像很順利，不過在執行的時候就出現了 Excepion
-囧，內容就是
-<code>can't use a string pattern on a bytes-like object</code>，看了一下，是 <code>json</code>
-的 <code>loads</code> 在轉<code>httplib</code> <code>read</code> 的 output 出現問題，而原來在 Python2
-中並不會出現這個問題，原來程式如下：  </p>
-<div class="highlight"><pre><span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</pre></div>
-
-
-<p>後來查了一下資料才發現，這邊的 <code>read</code>，似乎讀出的資料是 <code>byte</code> 的
-type，還需要做 encode ...</p>
                     </section>
                 </article>
                 <hr/>
