@@ -15,3 +15,5 @@ Slug: django_essentials_review
 
 總結一下，如我一開始所說的，這本書適合 Django 的初學者，有一點 Python 的基礎會比較好，對熟悉 Django 的人，還是有一些可以參考的地方，也可以當作工具書來看，一直 google 也是會累的 :p。
 
+
+Book Link: [https://www.packtpub.com/web-development/getting-started-django](https://www.packtpub.com/web-development/getting-started-django)
