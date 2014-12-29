@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-10-12T03:19:00" pubdate>
+                            Fri 12 October 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/680/php-mongodb-query-timing/" rel="bookmark"><h1>PHP MongoDB query timing</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近在用 PHP 在對 MongoDB 作壓力測試的時候，發現怎麼我 1 shard 和 3
+shards 的 performance 會一樣，卡了很久後來才發現原來是我搞錯 MongoDB
+query 的時機，所以在測試的時候，query 其實都沒有發出，難怪數據會一樣。  </p>
+<p>在 PHP 的 <a href="http://php.net/manual/en/class.mongocursor.php">manual</a> 裡有說明，以下拿它的範例程式來說明 query 的時機：</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$cursor</span> <span class="o">=</span> <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="c1">// query 還沒發出</span>
+
+<span class="nv">$cursor</span> <span class="o">=</span> <span class="nv">$cursor</span><span class="o">-&gt;</span><span class="na">sort</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">));</span>
+<span class="c1">// query 還是沒發出</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$cursor</span><span class="o">-&gt;</span><span class="na">getNext</span><span class="p">());</span> <span class="c1">// 這時才發出 ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-10-09T03:21:00" pubdate>
                             Tue 09 October 2012
                         </time>
@@ -289,34 +314,12 @@ CIDR 設 0 ...</p>
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-07-27T20:19:00" pubdate>
-                            Fri 27 July 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/546/fix-mongodb-default-allocate-space-too-larger/" rel="bookmark"><h1>fix mongodb default allocate space too larger</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在做 VM template 的時候才發現到這個問題，安裝好 mongodb 之後，在
-<code>/var/lib/mongodb/journal/</code> 下面可以發現 mongodb 佔用了 3 GB 的 journal
-檔案。</p>
-<p>當然，如果硬碟夠大或是沒啥必要的話，這其實可以不用去理它，但是我由於需要加快利用
-VM template 安裝系統的速度，而 template 的大小會影響中間網路傳送
-template 的時間，因此還是希望能避免不必要的空間浪費。</p>
-<p>而其實 mongodb 本身有提供一個參數 <code>smallfiles</code>
-，這個參數可以讓這些預先生成的 journal 檔案一個從 1G 降到約 13X MB
-左右，所以總共 3 個 journal file ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/index8.html">
                         <i class="fa fa-arrow-circle-left"></i>
                     </a>
-            Page 9 / 18
+            Page 9 / 19
                 <a href="http://blog.carlcarl.me/index10.html">
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>

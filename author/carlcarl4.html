@@ -51,6 +51,41 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-09-19T00:09:00" pubdate>
+                            Thu 19 September 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/" rel="bookmark"><h1>Python multiprocessing share counter</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>找了一下，以下是基本的寫法：</p>
+<div class="highlight"><pre><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">counter_lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+    <span class="k">global</span> <span class="n">counter</span>
+    <span class="k">with</span> <span class="n">counter_lock</span><span class="p">:</span>
+        <span class="n">counter</span><span class="o">.</span><span class="n">value</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">global</span> <span class="n">counter</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="n">data_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
+    <span class="k">global</span> <span class="n">counter</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">))</span>
+    <span class="n">pool</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span>
+        <span class="n">initializer</span><span class="o">=</span><span class="n">init</span><span class="p">,</span>
+        <span class="n">initargs</span><span class="o">=</span><span class="p">(</span><span class="n">counter</span><span class="p">,)</span>
+    <span class="p">)</span>
+    <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">countdown</span><span class="p">,</span> <span class="n">data_list ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-09-09T02:10:00" pubdate>
                             Mon 09 September 2013
                         </time>
@@ -297,30 +332,12 @@ information。</p>
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-16T18:30:00" pubdate>
-                            Tue 16 July 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1212/python-yahoo-weather/" rel="bookmark"><h1>Python Yahoo weather</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>實際做起來不難，是說弄完才發現有 <a href="https://pypi.python.org/pypi/yweather/0.1">yweather</a> 這個可以用囧。</p>
-<p>首先到 <a href="http://developer.yahoo.com/yql/console/">YQL</a> 這邊下 query，這邊可以參考<a href="http://my.opera.com/weiyu/blog/2012/04/08/yql-yahoo">這篇</a>最下面的兩種 query
-方法。格式可以選 JSON 然後把 callback 名稱拿掉，下完 query
-就可以產生一段網址，以新竹的例子來說就是:</p>
-<div class="highlight"><pre>http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D%22TWXX0009%22%20and%20u%3D%22c%22&amp;format=json&amp;diagnostics=true&amp;callback ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl3.html">
                         <i class="fa fa-arrow-circle-left"></i>
                     </a>
-            Page 4 / 18
+            Page 4 / 19
                 <a href="http://blog.carlcarl.me/author/carlcarl5.html">
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>

@@ -51,6 +51,27 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-17T15:26:00" pubdate>
+                            Mon 17 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1049/chrome-cpu-profiler-program/" rel="bookmark"><h1>chrome cpu profiler program</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查了一下 chrome 裡 cpu profiler 裡的 program 代表啥意思，像有人說是整個
+js code 的 root，不過看了一下其他的意見，感覺比較像是 native code
+所花的時間，包括 DOM 操作，gc 等一堆雜事等。舉個例子來說，假如你是要看你
+function 處理一堆 array 結構的校能的話，就可以不需要理這欄。</p>
+<p>參考資料：<br />
+<a href="http://stackoverflow.com/questions/9494228/slow-javascript-execution-in-chrome-profiler-yields-program">Slow javascript execution in chrome, profiler yields (program)</a><br />
+<a href="https://groups.google.com/forum/?fromgroups#!topic/chromium-discuss/02CEYDcuO18">What does (program) signify in the Chrome profiler?</a><br />
+<a href="http://stackoverflow.com/questions/3847954/chrome-debugger-what-is-program-in-the-profiler">Chrome debugger - what ...</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-16T23:10:00" pubdate>
                             Sun 16 June 2013
                         </time>
@@ -255,37 +276,12 @@ pid 檔案，google 了一下，在 stackoverflow
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-02T04:45:00" pubdate>
-                            Sun 02 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/865/python-decorate-method-inside-class/" rel="bookmark"><h1>Python decorate method inside class</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>簡易版的可以直接參考
-<a href="http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class">http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class</a>。  </p>
-<p>以我的例子來說，我需要對某些 method 加上 retry
-的機制，除了需要有參數外，還希望能夠把 decorate method 放在 class
-裡頭，這樣我才能呼叫 class 裡頭另外的 method。以下是簡單的例子：</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Test</span><span class="p">():</span>
-
-    <span class="k">def</span> <span class="nf">retry</span><span class="p">(</span><span class="n">tries</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">def</span> <span class="nf">deco_retry</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-            <span class="c"># f is the method decorated</span>
-            <span class="k">def</span> <span class="nf">f_retry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-                <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl5.html">
                         <i class="fa fa-arrow-circle-left"></i>
                     </a>
-            Page 6 / 18
+            Page 6 / 19
                 <a href="http://blog.carlcarl.me/author/carlcarl7.html">
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>

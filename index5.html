@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-16T18:30:00" pubdate>
+                            Tue 16 July 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1212/python-yahoo-weather/" rel="bookmark"><h1>Python Yahoo weather</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>實際做起來不難，是說弄完才發現有 <a href="https://pypi.python.org/pypi/yweather/0.1">yweather</a> 這個可以用囧。</p>
+<p>首先到 <a href="http://developer.yahoo.com/yql/console/">YQL</a> 這邊下 query，這邊可以參考<a href="http://my.opera.com/weiyu/blog/2012/04/08/yql-yahoo">這篇</a>最下面的兩種 query
+方法。格式可以選 JSON 然後把 callback 名稱拿掉，下完 query
+就可以產生一段網址，以新竹的例子來說就是:</p>
+<div class="highlight"><pre>http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D%22TWXX0009%22%20and%20u%3D%22c%22&amp;format=json&amp;diagnostics=true&amp;callback ...</pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-07-14T17:57:00" pubdate>
                             Sun 14 July 2013
                         </time>
@@ -274,33 +292,12 @@ ssh -NfD 9999 user@example.com
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-17T15:26:00" pubdate>
-                            Mon 17 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1049/chrome-cpu-profiler-program/" rel="bookmark"><h1>chrome cpu profiler program</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>查了一下 chrome 裡 cpu profiler 裡的 program 代表啥意思，像有人說是整個
-js code 的 root，不過看了一下其他的意見，感覺比較像是 native code
-所花的時間，包括 DOM 操作，gc 等一堆雜事等。舉個例子來說，假如你是要看你
-function 處理一堆 array 結構的校能的話，就可以不需要理這欄。</p>
-<p>參考資料：<br />
-<a href="http://stackoverflow.com/questions/9494228/slow-javascript-execution-in-chrome-profiler-yields-program">Slow javascript execution in chrome, profiler yields (program)</a><br />
-<a href="https://groups.google.com/forum/?fromgroups#!topic/chromium-discuss/02CEYDcuO18">What does (program) signify in the Chrome profiler?</a><br />
-<a href="http://stackoverflow.com/questions/3847954/chrome-debugger-what-is-program-in-the-profiler">Chrome debugger - what ...</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/index4.html">
                         <i class="fa fa-arrow-circle-left"></i>
                     </a>
-            Page 5 / 18
+            Page 5 / 19
                 <a href="http://blog.carlcarl.me/index6.html">
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>
