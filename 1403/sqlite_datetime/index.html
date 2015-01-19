@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    Sqlite datetime
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Sqlite datetime" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1403/sqlite_datetime/" />
+                <meta property="og:description" content="一開始以為只要直接 insert timestmap，它就會自動幫我轉，不過好像沒那麼簡單...，原本我是用以下語法: INSERT INTO tbl(tx_bytes, rx_bytes, timestamp) VALUES(?, ?, ?); timestamp 這裏是 datetime type，可是當我要比較時間的時候: SELECT * FROM tbl WHERE timestamp >= '2015-01-00' AND timestamp < '2015-02-00'; 結果會完全沒任何東西，後來查了一下，發現它存的時候是用字串存囧，在輸入之前需要自己做轉換，所以會變成: INSERT INTO data_planner(tx_bytes, rx_bytes, timestamp) VALUES(?, ?, datetime(?, 'unixepoch', 'localtime')); localtime 表示轉成自己所在的時區，不然預設會在 utc+0。 Ref: How ..." />
+                    <meta property="article:tag" content="sqlite" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="fa fa-coffee"></i> carlcarl's blog</a></h1>
+        <p id="site-desc"></p>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2015-01-19T15:00:00" pubdate>
+                            Mon 19 January 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1403/sqlite_datetime/" rel="bookmark"><h1>Sqlite datetime</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p>一開始以為只要直接 insert timestmap，它就會自動幫我轉，不過好像沒那麼簡單...，原本我是用以下語法:</p>
+<div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">tbl</span><span class="p">(</span><span class="n">tx_bytes</span><span class="p">,</span> <span class="n">rx_bytes</span><span class="p">,</span> <span class="k">timestamp</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">);</span>
+</pre></div>
+
+
+<p><code>timestamp</code> 這裏是 <code>datetime</code> type，可是當我要比較時間的時候:</p>
+<div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">tbl</span> <span class="k">WHERE</span> <span class="k">timestamp</span> <span class="o">&gt;=</span> <span class="s1">&#39;2015-01-00&#39;</span> <span class="k">AND</span> <span class="k">timestamp</span> <span class="o">&lt;</span> <span class="s1">&#39;2015-02-00&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>結果會完全沒任何東西，後來查了一下，<a href="http://pro.ctlok.com/2010/08/sqlite-date-time.html">發現它存的時候是用字串存</a>囧，在輸入之前需要自己做轉換，所以會變成:</p>
+<div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">data_planner</span><span class="p">(</span><span class="n">tx_bytes</span><span class="p">,</span> <span class="n">rx_bytes</span><span class="p">,</span> <span class="k">timestamp</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">,</span> <span class="n">datetime</span><span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="s1">&#39;unixepoch&#39;</span><span class="p">,</span> <span class="s1">&#39;localtime&#39;</span><span class="p">));</span>
+</pre></div>
+
+
+<p><code>localtime</code> 表示轉成自己所在的時區，不然預設會在 <code>utc+0</code>。</p>
+<p>Ref:<br />
+<a href="http://stackoverflow.com/questions/1933720/how-do-i-insert-datetime-value-into-a-sqlite-database">How do I insert datetime value into a SQLite database?</a>  </p>
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/database.html">database</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/sqlite.html">sqlite</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>

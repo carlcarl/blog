@@ -51,6 +51,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-03T11:48:00" pubdate>
+                            Mon 03 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/873/ubuntu-service-cant-restart-or-stop/" rel="bookmark"><h1>Ubuntu service can't restart or stop</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在自己編 nginx 的時候遇到的小問題，因為自己裝的 conf 設定和原本 Ubuntu
+repo 裡的的不一樣，然後 init script 我是用 repo 裡提供的。</p>
+<p>看了一下 repo 提供的 init script，似乎是因為找不到 start service 所建立的
+pid 檔案，google 了一下，在 stackoverflow
+找到 <a href="http://stackoverflow.com/questions/10939072/add-nginx-as-a-ubuntu-service-stop-and-reload-doesnt-work">這篇問題</a> 剛好和我遇到的情況一樣，check 了一下 nginx conf 裡的 pid
+檔案位置和 init script 裡的 pid
+檔案位置，發現設定並不一樣，改成一樣後，問題就解決了～～。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-02T04:45:00" pubdate>
                             Sun 02 June 2013
                         </time>
@@ -263,25 +283,6 @@ hdiutil create -size 100m -fs <span class="s2">&quot;Case-sensitive HFS+&quot;</
 <span class="c"># size 後面的參數表示 image 大小</span>
 <span class="c"># volname 後面的參數表示掛載後的名稱</span>
 <span class="c"># xxx.dmg 是 image ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-02-28T02:02:00" pubdate>
-                            Thu 28 February 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/794/kde-dolphin-network-folder-ssh-fail/" rel="bookmark"><h1>KDE dolphin network folder ssh fail</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>鬼打牆的小問題，感覺比較像 bug ，想說還是筆記下來好了。</p>
-<p>解決方法：<br />
-把 <code>~/.ssh/known_hosts</code> 中，找到要連線的 host 那行，然後把那行刪掉，
-dolphin 這邊再重連就能夠連上了。</p>
-<p>參考連結：  </p>
-<p><a href="http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder">http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder</a></p>
                     </section>
                 </article>
                 <hr/>

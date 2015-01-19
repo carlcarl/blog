@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog - carlcarl</title>
+        <title>carlcarl's blog - sqlite</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
@@ -51,48 +51,37 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-14T16:11:00" pubdate>
-                            Mon 14 March 2011
+                        <time class="post-time" datetime="2015-01-19T15:00:00" pubdate>
+                            Mon 19 January 2015
                         </time>
-                        <a href="http://blog.carlcarl.me/6/pixnet-paste-code/" rel="bookmark"><h1>Pixnet paste code</h1></a>
+                        <a href="http://blog.carlcarl.me/1403/sqlite_datetime/" rel="bookmark"><h1>Sqlite datetime</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>在側邊欄位設定裡 -&gt; 頁尾描述的部分貼上下面的 code</p>
-<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://alexgorbatchev.com/pub/sh/current/scripts/shBrushBash.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-14T15:21:00" pubdate>
-                            Mon 14 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/5/screenrc-setting/" rel="bookmark"><h1>screenrc setting</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在<a href="http://antontw.blogspot.com/2007/04/screenrc-screenrc.html">大步向前走</a>看到不錯的設定檔 把顏色稍微改一下!</p>
-<p><img alt="screenrc" src="http://i.imgur.com/yCkhXdUl.png" title="screenrc" /></p>
-<div class="highlight"><pre>caption always &quot;%{= rk} %{= bY} [%n]%t @ %H %{-} %= %{= rr} %l %{-} | %{= rG} %Y-%m-%d %{-} &quot;
-hardstatus alwayslastline &quot; %-Lw%{= Bw}%n%f %t%{-  }%+Lw %=| %0c:%s &quot;
+                        <p>一開始以為只要直接 insert timestmap，它就會自動幫我轉，不過好像沒那麼簡單...，原本我是用以下語法:</p>
+<div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">tbl</span><span class="p">(</span><span class="n">tx_bytes</span><span class="p">,</span> <span class="n">rx_bytes</span><span class="p">,</span> <span class="k">timestamp</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">);</span>
 </pre></div>
 
 
-<p>參數設定的話在<a href="http://cytseng.twbbs.org/?p=26">小明的網誌</a>可以看到。</p>
+<p><code>timestamp</code> 這裏是 <code>datetime</code> type，可是當我要比較時間的時候:</p>
+<div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">tbl</span> <span class="k">WHERE</span> <span class="k">timestamp</span> <span class="o">&gt;=</span> <span class="s1">&#39;2015-01-00&#39;</span> <span class="k">AND</span> <span class="k">timestamp</span> <span class="o">&lt;</span> <span class="s1">&#39;2015-02-00&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>結果會完全沒任何東西，後來查了一下，<a href="http://pro.ctlok.com/2010/08/sqlite-date-time.html">發現它存的時候是用字串存</a>囧，在輸入之前需要自己做轉換，所以會變成:</p>
+<div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">data_planner</span><span class="p">(</span><span class="n">tx_bytes</span><span class="p">,</span> <span class="n">rx_bytes</span><span class="p">,</span> <span class="k">timestamp</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">,</span> <span class="n">datetime</span><span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="s1">&#39;unixepoch&#39;</span><span class="p">,</span> <span class="s1">&#39;localtime&#39;</span><span class="p">));</span>
+</pre></div>
+
+
+<p><code>localtime</code> 表示轉成自己所在的時區，不然預設會在 <code>utc+0</code>。</p>
+<p>Ref:<br />
+<a href="http://stackoverflow.com/questions/1933720/how-do-i-insert-datetime-value-into-a-sqlite-database">How ...</a></p>
                     </section>
                 </article>
                 <hr/>
             </li>
         </ol>
         <div class="paginator">
-                    <a href="http://blog.carlcarl.me/author/carlcarl18.html">
-                        <i class="fa fa-arrow-circle-left"></i>
-                    </a>
-            Page 19 / 19
+            Page 1 / 1
         </div>
 
     </div>

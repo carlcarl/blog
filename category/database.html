@@ -51,6 +51,37 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-01-19T15:00:00" pubdate>
+                            Mon 19 January 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1403/sqlite_datetime/" rel="bookmark"><h1>Sqlite datetime</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>一開始以為只要直接 insert timestmap，它就會自動幫我轉，不過好像沒那麼簡單...，原本我是用以下語法:</p>
+<div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">tbl</span><span class="p">(</span><span class="n">tx_bytes</span><span class="p">,</span> <span class="n">rx_bytes</span><span class="p">,</span> <span class="k">timestamp</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">);</span>
+</pre></div>
+
+
+<p><code>timestamp</code> 這裏是 <code>datetime</code> type，可是當我要比較時間的時候:</p>
+<div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">tbl</span> <span class="k">WHERE</span> <span class="k">timestamp</span> <span class="o">&gt;=</span> <span class="s1">&#39;2015-01-00&#39;</span> <span class="k">AND</span> <span class="k">timestamp</span> <span class="o">&lt;</span> <span class="s1">&#39;2015-02-00&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>結果會完全沒任何東西，後來查了一下，<a href="http://pro.ctlok.com/2010/08/sqlite-date-time.html">發現它存的時候是用字串存</a>囧，在輸入之前需要自己做轉換，所以會變成:</p>
+<div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">data_planner</span><span class="p">(</span><span class="n">tx_bytes</span><span class="p">,</span> <span class="n">rx_bytes</span><span class="p">,</span> <span class="k">timestamp</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">,</span> <span class="n">datetime</span><span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="s1">&#39;unixepoch&#39;</span><span class="p">,</span> <span class="s1">&#39;localtime&#39;</span><span class="p">));</span>
+</pre></div>
+
+
+<p><code>localtime</code> 表示轉成自己所在的時區，不然預設會在 <code>utc+0</code>。</p>
+<p>Ref:<br />
+<a href="http://stackoverflow.com/questions/1933720/how-do-i-insert-datetime-value-into-a-sqlite-database">How ...</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-11-15T07:33:00" pubdate>
                             Thu 15 November 2012
                         </time>
@@ -299,28 +330,6 @@ operation，如果在 SELECT 完之後有其他人也進行 SELECT
 <p>查了一下資料，發現有個簡單的語法可以使用：</p>
 <div class="highlight"><pre><span class="cm">/* If id is the UNIQUE KEY */</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="n">num</span><span class="o">=</span><span class="n">num</span><span class="o">+</span><span class="mi">1 ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-17T21:43:00" pubdate>
-                            Fri 17 February 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/254/quorum-read/" rel="bookmark"><h1>Quorum read</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在看 paper，剛好看到這個名詞，似乎是 Cassandra 有用到的一個技巧。</p>
-<p>在 cluster
-的環境中，有時候並不能保證說讀取到的值一定會是最新的，可能會因為架構或設計上的不同，可能在做
-replication 的部份是非同步進行的，所以更大大增加拿到舊值的機率。</p>
-<p>此方法簡單說就是讀取多個 node 的值來作比較，基本上這些值都會有
-timestamp，所以可以根據時間的新舊來決定該用哪個值，但是還是會有一些問題，像是如果讀到的值都是舊的那該怎麼辦，如果變成一次測全部
-node 的值，效能上不用說一定會很慢，所以這個問題我不知道是怎麼解決的。</p>
-<p>其實還滿詭異的，如果真的要要求資料一致性的話，我覺得還不如就選資料一致性較強的
-HBase（不過我不太喜歡要分一堆角色的分散式系統，感覺在架構配置上會比較麻煩）。</p>
                     </section>
                 </article>
                 <hr/>
