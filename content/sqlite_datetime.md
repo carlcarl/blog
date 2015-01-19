@@ -16,7 +16,7 @@ Slug: sqlite_datetime
 `timestamp` 這裏是 `datetime` type，可是當我要比較時間的時候:
 
 	:::sql
-	SELECT * FROM tbl WHERE timestamp >= '2015-01-00' AND timestamp < '2015-02-00';
+	SELECT * FROM tbl WHERE timestamp >= '2015-01-01' AND timestamp < '2015-02-01';
 
 結果會完全沒任何東西，後來查了一下，[發現它存的時候是用字串存]囧，在輸入之前需要自己做轉換，所以會變成:
 
