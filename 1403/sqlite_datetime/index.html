@@ -6,13 +6,13 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>    Sqlite datetime
+        <title>    SQLite datetime
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content="Sqlite datetime" />
+                <meta property="og:title" content="SQLite datetime" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1403/sqlite_datetime/" />
                 <meta property="og:description" content="一開始以為只要直接 insert timestmap，它就會自動幫我轉，不過好像沒那麼簡單...，原本我是用以下語法: INSERT INTO tbl(tx_bytes, rx_bytes, timestamp) VALUES(?, ?, ?); timestamp 這裏是 datetime type，可是當我要比較時間的時候: SELECT * FROM tbl WHERE timestamp >= '2015-01-01' AND timestamp < '2015-02-01'; 結果會完全沒任何東西，後來查了一下，發現它存的時候是用字串存囧，在輸入之前需要自己做轉換，所以會變成: INSERT INTO data_planner(tx_bytes, rx_bytes, timestamp) VALUES(?, ?, datetime(?, 'unixepoch', 'localtime')); localtime 表示轉成自己所在的時區，不然預設會在 utc+0。 Ref: How ..." />
                     <meta property="article:tag" content="sqlite" />
@@ -56,7 +56,7 @@
                         <time class="post-time" datetime="2015-01-19T15:00:00" pubdate>
                             Mon 19 January 2015
                         </time>
-                        <a href="http://blog.carlcarl.me/1403/sqlite_datetime/" rel="bookmark"><h1>Sqlite datetime</h1></a>
+                        <a href="http://blog.carlcarl.me/1403/sqlite_datetime/" rel="bookmark"><h1>SQLite datetime</h1></a>
                     </header>
 
                     <section class="post-content">
