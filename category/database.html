@@ -51,6 +51,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-01-21T11:00:00" pubdate>
+                            Wed 21 January 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1404/sqlite_foreign_key_support/" rel="bookmark"><h1>SQLite Foreign Key Support</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>SQLite 在設定完 foreign key 之後，對 foreign key 的限制卻沒有生效，例如有一個 table 只有 id=1，但是我在另外一個 table 參照這個 table，並加入 foreign key id=2，是會過的，但是應該是要擋掉才對。查了一下，發現預設並不會開啟= =|||。所以必須在每次的 DB connection 時，都需要做一次這個動作：</p>
+<div class="highlight"><pre><span class="n">PRAGMA</span> <span class="n">foreign_keys</span> <span class="o">=</span> <span class="k">ON</span><span class="p">;</span>
+</pre></div>
+
+
+<p>直接用 <code>sqlite3_exec</code> 之類的執行就可以了。</p>
+<p>Ref:  </p>
+<ul>
+<li><a href="http://www.sqlite.org/foreignkeys.html">SQLite Foreign Key Support</a>  </li>
+<li><a href="http://leeleeju.blogspot.tw/2012/09/sqlite-foreign-key.html">Sqlite Foreign Key</a>  </li>
+<li><a href="http://stackoverflow.com/questions/13534040/sqlite3-foreign-keys-on-pdo">sqlite3 foreign keys on ...</a></li></ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-01-19T15:00:00" pubdate>
                             Mon 19 January 2015
                         </time>
@@ -309,27 +333,6 @@ template 的時間，因此還是希望能避免不必要的空間浪費。</p>
 中去查，<code>table_cache</code> 卻還是預設 64 的情形，<code>max_connections</code>
 的值也會同樣被降低。</p>
 <p>要預防這種情形就必須修改 <code>ulimit</code> 限制，在 <code>/etc/security/limits ...</code></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-29T22:42:00" pubdate>
-                            Tue 29 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/486/mysql-insert-if-duplicate-then-update/" rel="bookmark"><h1>MySQL insert if duplicate then update</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在做壓力測試的時候發現出來的數值不太對，後來看了一下，發現是因為程式裏面是拿
-SELECT 出來的資料加 1 並給 UPDATE 來使用，但是這樣並不是一個 atomic 的
-operation，如果在 SELECT 完之後有其他人也進行 SELECT
-就變成會拿一樣的資料且都加 1，兩個做完 UPDATE 的結果就會只是加 1
-過的數據，但是預期的結果應該要是加 2 的。  </p>
-<p>查了一下資料，發現有個簡單的語法可以使用：</p>
-<div class="highlight"><pre><span class="cm">/* If id is the UNIQUE KEY */</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="n">num</span><span class="o">=</span><span class="n">num</span><span class="o">+</span><span class="mi">1 ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

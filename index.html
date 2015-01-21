@@ -51,6 +51,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-01-21T11:00:00" pubdate>
+                            Wed 21 January 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1404/sqlite_foreign_key_support/" rel="bookmark"><h1>SQLite Foreign Key Support</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>SQLite 在設定完 foreign key 之後，對 foreign key 的限制卻沒有生效，例如有一個 table 只有 id=1，但是我在另外一個 table 參照這個 table，並加入 foreign key id=2，是會過的，但是應該是要擋掉才對。查了一下，發現預設並不會開啟= =|||。所以必須在每次的 DB connection 時，都需要做一次這個動作：</p>
+<div class="highlight"><pre><span class="n">PRAGMA</span> <span class="n">foreign_keys</span> <span class="o">=</span> <span class="k">ON</span><span class="p">;</span>
+</pre></div>
+
+
+<p>直接用 <code>sqlite3_exec</code> 之類的執行就可以了。</p>
+<p>Ref:  </p>
+<ul>
+<li><a href="http://www.sqlite.org/foreignkeys.html">SQLite Foreign Key Support</a>  </li>
+<li><a href="http://leeleeju.blogspot.tw/2012/09/sqlite-foreign-key.html">Sqlite Foreign Key</a>  </li>
+<li><a href="http://stackoverflow.com/questions/13534040/sqlite3-foreign-keys-on-pdo">sqlite3 foreign keys on ...</a></li></ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-01-19T15:00:00" pubdate>
                             Mon 19 January 2015
                         </time>
@@ -245,22 +269,6 @@ schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="
 <a href="http://stackoverflow.com/questions/6426253/tcp-tw-reuse-vs-tcp-tw-recycle-which-to-use-or-both">tcp_tw_reuse vs tcp_tw_recycle : Which to use (or both)?</a><br />
 <a href="http://www.speedguide.net/articles/linux-tweaking-121">Linux Tweaking</a><br />
 <a href="http://stackoverflow.com/questions/8893888/dropping-of-connections-with-tcp-tw-recycle">Dropping of connections with tcp_tw_recycle</a>  </p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-05-05T21:30:00" pubdate>
-                            Mon 05 May 2014
-                        </time>
-                        <a href="http://blog.carlcarl.me/1394/restart_uwsgi_using_git_push/" rel="bookmark"><h1>Restart uwsgi using git push</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>因為一 push 完都要 ssh 進去重開 uwsgi server，實在很麻煩，所以 google 了一下有沒有什麼好的做法，雖然說用 <a href="http://www.fabfile.org">fabric</a> 進去下指令也是可以，不過想看看有沒有利用 git push 的 hook 來做的例子。</p>
-<h2>如何 restart uwsgi</h2>
-<p>查了一些資料，一般要 restart uwsgi 就要 root 權限，不過可以在 uwsgi 的設定檔中設定 <code>touch-reload</code> 這個參數，以我的 .ini 設定格式的話就是設 <code>touch-reload = /your_path/reload</code> 設完這個路徑後，一旦你在 <code>/your_path/</code> 底下 touch 了一個檔案叫做 <code>reload</code>，uwsgi 就會跟著 ...</p>
                     </section>
                 </article>
                 <hr/>

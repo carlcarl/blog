@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-01-19T15:00:00+08:00</updated><entry><title>Sqlite datetime</title><link href="http://blog.carlcarl.me/1403/sqlite_datetime/" rel="alternate"></link><updated>2015-01-19T15:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-01-19:1403/sqlite_datetime/</id><summary type="html">&lt;p&gt;一開始以為只要直接 insert timestmap，它就會自動幫我轉，不過好像沒那麼簡單...，原本我是用以下語法:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-01-21T11:00:00+08:00</updated><entry><title>SQLite Foreign Key Support</title><link href="http://blog.carlcarl.me/1404/sqlite_foreign_key_support/" rel="alternate"></link><updated>2015-01-21T11:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-01-21:1404/sqlite_foreign_key_support/</id><summary type="html">&lt;p&gt;SQLite 在設定完 foreign key 之後，對 foreign key 的限制卻沒有生效，例如有一個 table 只有 id=1，但是我在另外一個 table 參照這個 table，並加入 foreign key id=2，是會過的，但是應該是要擋掉才對。查了一下，發現預設並不會開啟= =|||。所以必須在每次的 DB connection 時，都需要做一次這個動作：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;PRAGMA&lt;/span&gt; &lt;span class="n"&gt;foreign_keys&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;直接用 &lt;code&gt;sqlite3_exec&lt;/code&gt; 之類的執行就可以了。&lt;/p&gt;
+&lt;p&gt;Ref:  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.sqlite.org/foreignkeys.html"&gt;SQLite Foreign Key Support&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://leeleeju.blogspot.tw/2012/09/sqlite-foreign-key.html"&gt;Sqlite Foreign Key&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/13534040/sqlite3-foreign-keys-on-pdo"&gt;sqlite3 foreign keys on PDO&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</summary><category term="sqlite"></category></entry><entry><title>Sqlite datetime</title><link href="http://blog.carlcarl.me/1403/sqlite_datetime/" rel="alternate"></link><updated>2015-01-19T15:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-01-19:1403/sqlite_datetime/</id><summary type="html">&lt;p&gt;一開始以為只要直接 insert timestmap，它就會自動幫我轉，不過好像沒那麼簡單...，原本我是用以下語法:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;tbl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tx_bytes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rx_bytes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
