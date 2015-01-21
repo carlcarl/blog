@@ -1,4 +1,4 @@
-Title: Sqlite datetime 
+Title: SQLite datetime 
 Date: 2015-01-19 15:00
 Author: carlcarl
 Post_ID: 1403
