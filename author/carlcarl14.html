@@ -51,6 +51,34 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-12-05T19:37:00" pubdate>
+                            Mon 05 December 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/166/98address-already-in-use-make_sock-could-not-bind-to-address-80/" rel="bookmark"><h1>(98)Address already in use: make_sock: could not bind to address 80</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近在重開 server 的時候突然發現 apache
+怎麼沒有開，重開之後就出現如標題的錯誤，查了一下，應該是有個莫名的
+process 把 port 給 bind 住了，用了一堆指令，一直 kill
+process，結果怎麼好像都沒用囧，後來才試到一個可以解決的指令：</p>
+<div class="highlight"><pre>sudo fuser 80/tcp
+</pre></div>
+
+
+<p>執行之後就會顯示是哪個 process id 佔住的。<br />
+很奇怪的是我使用「netstat」去看居然是找不到的=
+=，另外要注意的是記得使用「sudo」或者是用 root
+來查看，不然有可能會看不到。砍掉之後，再開啟 apache
+就可以成功開啟了，算是一個滿怪的問題，當初忙著砍掉，忘記先查看 process
+的名稱是什麼，只能先紀錄起來，下次如果還是發生一樣的情況的話，再來看看哩。</p>
+<p>參考網址 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-12-04T23:12:00" pubdate>
                             Sun 04 December 2011
                         </time>
@@ -294,22 +322,6 @@ pylint：</p>
 <p>刪完之後再重新整理就 OK 哩～。</p>
 <p>參考網址：</p>
 <p><a href="http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?viewmode=compact&amp;topic_id=9430&amp;forum=4">http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?viewmode=compact&amp;topic_id=9430&amp;forum=4</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-10-28T13:16:00" pubdate>
-                            Fri 28 October 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/48/postfix-error-client-host-rejected-cannot-find-your-hostname-allow-ip/" rel="bookmark"><h1>postfix error: Client host rejected: cannot find your hostname allow ip</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近用了一個 public ip 開了個 svn + trac server，大致上都還滿順利的，不過在測試寄信到 mail
-server 的時候卻出現了錯誤，看了一下 log 檔，訊息是 <code>Client host rejected: cannot find your hostname allow ip</code>。</p>
-<p>不知道可能是 mail server 找不到 svn server 的 hostname 還是怎樣，然後試了一些方法好像也都不行，最後想說直接在 <code>/etc/hosts</code> 裡直接加上「ip」和自定義「hostname」看看，結果就 OK 哩，個人覺得這個方法算是還滿不錯的，不過前提是要有 mail server ...</p>
                     </section>
                 </article>
                 <hr/>

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-01-21T11:00:00+08:00</updated><entry><title>SQLite Foreign Key Support</title><link href="http://blog.carlcarl.me/1404/sqlite_foreign_key_support/" rel="alternate"></link><updated>2015-01-21T11:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-01-21:1404/sqlite_foreign_key_support/</id><summary type="html">&lt;p&gt;SQLite 在設定完 foreign key 之後，對 foreign key 的限制卻沒有生效，例如有一個 table 只有 id=1，但是我在另外一個 table 參照這個 table，並加入 foreign key id=2，是會過的，但是應該是要擋掉才對。查了一下，發現預設並不會開啟= =|||。所以必須在每次的 DB connection 時，都需要做一次這個動作：&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-01-30T17:00:00+08:00</updated><entry><title>Check Type Size at Compile Time in C</title><link href="http://blog.carlcarl.me/1405/c_check_type_size_at_compile_time/" rel="alternate"></link><updated>2015-01-30T17:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-01-30:1405/c_check_type_size_at_compile_time/</id><summary type="html">&lt;p&gt;查資料的時候看到的，不過資料裡的方式，宣告 0 陣列還是會過，所以我乾脆多減一：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#define TYPE_SIZE ((sizeof(int) == 4) - 1)&lt;/span&gt;
+&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;TYPE_SIZE&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;完全不確定的話，也可以用 &lt;code&gt;&amp;gt;&lt;/code&gt; or &lt;code&gt;&amp;lt;&lt;/code&gt; 抓範圍 lol。&lt;/p&gt;
+&lt;p&gt;Ref:&lt;br /&gt;
+&lt;a href="http://www.jaggersoft.com/pubs/CVu11_3.html"&gt;Compile Time Assertions in C&lt;/a&gt;&lt;/p&gt;</summary><category term="c"></category></entry><entry><title>SQLite Foreign Key Support</title><link href="http://blog.carlcarl.me/1404/sqlite_foreign_key_support/" rel="alternate"></link><updated>2015-01-21T11:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-01-21:1404/sqlite_foreign_key_support/</id><summary type="html">&lt;p&gt;SQLite 在設定完 foreign key 之後，對 foreign key 的限制卻沒有生效，例如有一個 table 只有 id=1，但是我在另外一個 table 參照這個 table，並加入 foreign key id=2，是會過的，但是應該是要擋掉才對。查了一下，發現預設並不會開啟= =|||。所以必須在每次的 DB connection 時，都需要做一次這個動作：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;PRAGMA&lt;/span&gt; &lt;span class="n"&gt;foreign_keys&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

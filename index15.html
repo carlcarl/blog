@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-10-28T13:16:00" pubdate>
+                            Fri 28 October 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/48/postfix-error-client-host-rejected-cannot-find-your-hostname-allow-ip/" rel="bookmark"><h1>postfix error: Client host rejected: cannot find your hostname allow ip</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近用了一個 public ip 開了個 svn + trac server，大致上都還滿順利的，不過在測試寄信到 mail
+server 的時候卻出現了錯誤，看了一下 log 檔，訊息是 <code>Client host rejected: cannot find your hostname allow ip</code>。</p>
+<p>不知道可能是 mail server 找不到 svn server 的 hostname 還是怎樣，然後試了一些方法好像也都不行，最後想說直接在 <code>/etc/hosts</code> 裡直接加上「ip」和自定義「hostname」看看，結果就 OK 哩，個人覺得這個方法算是還滿不錯的，不過前提是要有 mail server ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-10-27T20:41:00" pubdate>
                             Thu 27 October 2011
                         </time>
@@ -292,46 +308,6 @@ sudo apt-get install mongodb-10gen
 -rn</code> 才看到 <code>defaultgateway</code> 不見了！！</p>
 <p>但是我明明在 <code>rc.conf</code> 裡面就有指定了 <code>defaultgateway</code>，看來好像是 <code>rc.conf</code> 只會在 OS 重啟才有用，network重啟也不會讀這個檔 = =。</p>
 <p>後來查到可以用 <code>/etc/rc.d/routing restart</code> 來解決，不過感覺還是麻煩了點，感覺應該有更好的方法才對= =a。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-07-22T18:31:00" pubdate>
-                            Fri 22 July 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/38/c-plus-plus-redirect-cout-to-file/" rel="bookmark"><h1>C++ redirect cout to file</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>可能有些人會覺得說用 <code>fstream</code> 另外寫就好了</p>
-<p>不過程式如果有設定可以輸出至螢幕或是檔案的話</p>
-<p>分開兩個寫就會讓人覺得很麻煩</p>
-<p>可能有關輸出的部份都需要用 <code>if</code> 判斷，然後分兩塊輸出</p>
-<p>如果在一開始就設定 <code>cout</code> 是輸出到螢幕或是檔案的話</p>
-<p>之後就不用再用 <code>if</code> 來一個一個判斷了，這個是我覺得的優點</p>
-<p>程式碼片段範例</p>
-<div class="highlight"><pre><span class="kt">bool</span> <span class="n">readFromFile</span><span class="p">;</span>
-<span class="c1">//根據一些判斷去設定readFromFile的值</span>
-<span class="n">readFromFile</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-<span class="k">if</span><span class="p">(</span><span class="n">readFromFile</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">ofstream</span> <span class="n">outputFile</span><span class="p">;</span>
-    <span class="n">string</span> <span class="n">fileName</span> <span class="o">=</span> <span class="s">&quot;file.txt&quot;</span><span class="p">;</span>
-    <span class="n">outputFile</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">fstream</span><span class="o">::</span><span class="n">out</span><span class="p">);</span>
-    <span class="n">cout</span><span class="p">.</span><span class="n">rdbuf</span><span class="p">(</span><span class="n">outputFile</span><span class="p">.</span><span class="n">rdbuf</span><span class="p">());</span>
-<span class="p">}</span>
-<span class="k">else</span> <span class="c1">//表示輸出到stdout</span>
-<span class="p">{</span>
-    <span class="c1">//不做任何事情 因為cout本來就是輸出到stdout</span>
-<span class="p">}</span>
-<span class="c1">//之後就直接用cout就可以了~</span>
-</pre></div>
-
-
-<p>參考網頁</p>
-<p><a href="http://www.java2s.com/Tutorial/Cpp/0240__File-Stream/Redirectouputintothefile.htm">http://www.java2s.com/Tutorial ...</a></p>
                     </section>
                 </article>
                 <hr/>
