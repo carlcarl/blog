@@ -51,6 +51,32 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-07-04T13:04:00" pubdate>
+                            Mon 04 July 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/30/ubuntu-install-awstats-to-analyze-web-traffic/" rel="bookmark"><h1>ubuntu install awstats to analyze web traffic</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="http://i.imgur.com/gjdRNUQl.png"><img alt="1309785078-4e7966370fbebe6c564d5c251d18d3da_n" src="http://i.imgur.com/gjdRNUQl.png" /></a></p>
+<p>awstats 這個工具可以透過分析 Server 的access log 檔來統計網站流量，資料的部份可以透過時間長短、來訪者的資料(國籍之類的)、瀏覽器種類來作分類，這些統計資訊則透過Web介面顯示出來。而上面這個圖是裝完 awstats 後的 Web 介面(還不錯精美= =+)</p>
+<p>接下來就是安裝的部份啦，首先先安裝套件:</p>
+<div class="highlight"><pre>sudo apt-get install awstats
+</pre></div>
+
+
+<p>接著到 <code>/etc/awstats/</code> 底下可以看到預設的 <code>awstats.conf</code> 檔，把這個檔複製並更名 假如網站名稱為 <code>www.domain.com</code> 的話</p>
+<div class="highlight"><pre>cp awstats.conf awstats.www.domain.com.conf
+</pre></div>
+
+
+<p>到時候指定好 config 的參數 他就會去讀這個檔案的設定，然後要稍微修改一下 <code>awstats ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-06-28T20:43:00" pubdate>
                             Tue 28 June 2011
                         </time>
@@ -275,35 +301,6 @@ TS (32 bit)</a>，如果是 php5.3 版就要選另外幾種了，這邊我是分
 <p>說真的還找得滿久的，以下是我覺得算是比較能接受的一種解決方法(有其他方法歡迎提供QQ)</p>
 <div class="highlight"><pre>git init
 git remote add origin ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-05-12T07:29:00" pubdate>
-                            Thu 12 May 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/20/linux-several-ways-to-open-or-close-service/" rel="bookmark"><h1>linux several ways to open or close service</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>(如果想立即開啟或關掉就要用 service 或是直接到 /etc/init.d/ 底下去操作)</p>
-<p>以下是用來設定在系統開啟時預設要執行的 service</p>
-<p>在 RedHat 系列底下可以用 <code>chkconfig</code>，啟用 httpd (如果已經加到 chkconfig 裡了 就可以不用輸入第一行)</p>
-<div class="highlight"><pre>chkconfig httpd --add
-chkconfig http on
-</pre></div>
-
-
-<p>停用 httpd (第二行是把 httpd 從 chkconfig 的管理中移除，我的建議是輸入第一行就好了)</p>
-<div class="highlight"><pre>chkconfig httpd off
-chkconfig httpd --del
-</pre></div>
-
-
-<p>在 Debian 或 Ubuntu 底下的話 可以用 <code>update-rc.d</code> 開啟 apache2:</p>
-<div class="highlight"><pre>update-rc ...</pre></div>
                     </section>
                 </article>
                 <hr/>

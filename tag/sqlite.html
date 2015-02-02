@@ -51,6 +51,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-02-01T11:30:00" pubdate>
+                            Sun 01 February 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1407/c_sqlite_transaction/" rel="bookmark"><h1>C SQLite Transaction</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <div class="highlight"><pre><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="s">&quot;BEGIN TRANSACTION;&quot;</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+<span class="c1">// if error</span>
+<span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="s">&quot;ROLLBACK;&quot;</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+<span class="c1">//else</span>
+<span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="s">&quot;END TRANSACTION;&quot;</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</pre></div>
+
+
+<p>如果中間發生錯誤，就單做 <code>ROLLBACK</code> 就好, 不需要再做 <code>END TRANSACTION</code>，下面 ref 第二篇裡面的邏輯有點問題，做了 <code>ROLLBACK</code> 然後 <code>break</code> 出去之後又做 <code>COMMIT</code>，怪怪的。</p>
+<p>Ref:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/2880149/sqlite-c-cinterface-how-to-commit-a-transaction">SQLITE (C/C++interface) - How to commit a transaction ...</a></li></ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-01-21T11:00:00" pubdate>
                             Wed 21 January 2015
                         </time>

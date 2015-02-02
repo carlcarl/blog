@@ -51,6 +51,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-02-01T11:30:00" pubdate>
+                            Sun 01 February 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1407/c_sqlite_transaction/" rel="bookmark"><h1>C SQLite Transaction</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <div class="highlight"><pre><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="s">&quot;BEGIN TRANSACTION;&quot;</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+<span class="c1">// if error</span>
+<span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="s">&quot;ROLLBACK;&quot;</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+<span class="c1">//else</span>
+<span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="s">&quot;END TRANSACTION;&quot;</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</pre></div>
+
+
+<p>如果中間發生錯誤，就單做 <code>ROLLBACK</code> 就好, 不需要再做 <code>END TRANSACTION</code>，下面 ref 第二篇裡面的邏輯有點問題，做了 <code>ROLLBACK</code> 然後 <code>break</code> 出去之後又做 <code>COMMIT</code>，怪怪的。</p>
+<p>Ref:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/2880149/sqlite-c-cinterface-how-to-commit-a-transaction">SQLITE (C/C++interface) - How to commit a transaction ...</a></li></ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-02-01T11:00:00" pubdate>
                             Sun 01 February 2015
                         </time>
@@ -233,44 +260,6 @@
     <span class="c"># aliases.</span>
 
 <span class="k">def</span> <span class="nf">unload_ipython_extension</span><span class="p">(</span><span class="n">ipython ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-05-20T11:30:00" pubdate>
-                            Tue 20 May 2014
-                        </time>
-                        <a href="http://blog.carlcarl.me/1397/py2exe_note/" rel="bookmark"><h1>py2exe note</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>setup.py 簡單範例:</p>
-<div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
-<span class="c"># encoding: utf-8</span>
-
-<span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
-<span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">find_packages</span>
-<span class="kn">import</span> <span class="nn">py2exe</span>
-<span class="k">assert</span> <span class="n">py2exe</span>
-
-<span class="n">setup</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s">&#39;&lt;your_package_name&gt;&#39;</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="s">&#39;&lt;your_package_description&gt;&#39;</span><span class="p">,</span>
-    <span class="n">author</span><span class="o">=</span><span class="s">&#39;&lt;author name&gt;&#39;</span><span class="p">,</span>
-    <span class="n">author_email</span><span class="o">=</span><span class="s">&#39;author email&#39;</span><span class="p">,</span>
-    <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(),</span>
-    <span class="n">license</span><span class="o">=</span><span class="s">&#39;MIT&#39;</span><span class="p">,</span>
-    <span class="n">console</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;xxx.py&#39;</span><span class="p">],</span>
-    <span class="n">data_files</span><span class="o">=</span><span class="p">[</span>
-        <span class="s">&#39;xxx.conf.sample&#39;</span>
-    <span class="p">]</span>
-<span class="p">)</span>
-</pre></div>
-
-
-<p><code>assert py2exe</code> 是因為 editor 會警告 <code>py2exe</code> import ...</p>
                     </section>
                 </article>
                 <hr/>

@@ -51,6 +51,37 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-08-28T00:01:00" pubdate>
+                            Tue 28 August 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" rel="bookmark"><h1>virtualenvwrapper setting</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近為了方便，加了幾個 virtualenvwrapper 的設定。  </p>
+<h3>使用 <code>mkvirtualenv</code> 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。</h3>
+<p>在 <code>~/.virtualenv/postmkvirtualenv</code>裡加入：</p>
+<div class="highlight"><pre><span class="nv">proj_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$VIRTUAL_ENV</span>|awk -F<span class="s1">&#39;/&#39;</span> <span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
+
+<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span>mkdir ~/Projects/<span class="nv">$proj_name</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;${PWD##*/}&quot;</span> !<span class="o">=</span> <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span><span class="nb">cd</span> ~/Projects/<span class="nv">$proj_name</span>
+<span class="k">fi</span>
+</pre></div>
+
+
+<p>其中，把 <code>Projects</code> 換成你的 project 位置。</p>
+<hr />
+<h3>輸入 <code>workon 你的project</code> 時，自動切換至 ...</h3>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-08-13T22:16:00" pubdate>
                             Mon 13 August 2012
                         </time>
@@ -264,36 +295,6 @@ vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的
 <p>參考網址：<br />
 <a href="https://bbs.archlinux.org/viewtopic.php?id=122091">https://bbs.archlinux.org/viewtopic.php?id=122091</a><br />
 <a href="https://wiki.archlinux.org/index.php/Vim">https://wiki.archlinux.org/index ...</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-06-09T01:29:00" pubdate>
-                            Sat 09 June 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/512/chakra-firefox-kde-opensuse-repo/" rel="bookmark"><h1>Chakra firefox-kde-opensuse repo</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>2012/10/14 更新<br />
-firefox-kde-opensuse 已經進 chakra 的 bundle 了，就叫 firefox ，以後從
-bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
-畢竟不是官方的，所以更新維護上可能也會有點問題。</p>
-<hr />
-<p>因為 firefox-kde-opensuse 要自己編太麻煩了，所以加個 repo
-這樣以後安裝比較省時，是說要不是 <a href="http://www.plurk.com/maxwux">Whiksy</a>
-有提供我還真的不知道原來有......。<br />
-以下複製到 <code>/etc/pacman.conf</code> 中：</p>
-<div class="highlight"><pre><span class="k">[chakra-gtk-repo]</span>
-<span class="na">Server</span> <span class="o">=</span> <span class="s">http://chakra-gtk-repo.tk/repo/x86_64/</span>
-<span class="k">[packccr]</span>
-<span class="na">Server</span> <span class="o">=</span> <span class="s">http://repo.stephenmac.com/</span>
-</pre></div>
-
-
-<p>這樣就 OK ...</p>
                     </section>
                 </article>
                 <hr/>

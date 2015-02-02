@@ -6,14 +6,17 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog - c</title>
+        <title>    C SQLite Transaction
+</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="carlcarl's blog" />
-                <meta property="og:url" content="http://blog.carlcarl.me" />
-                <meta property="og:description" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="C SQLite Transaction" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1407/c_sqlite_transaction/" />
+                <meta property="og:description" content="sqlite3_exec(db, "BEGIN TRANSACTION;", NULL, NULL, NULL); // if error sqlite3_exec(db, "ROLLBACK;", NULL, NULL, NULL); //else sqlite3_exec(db, "END TRANSACTION;", NULL, NULL, NULL); 如果中間發生錯誤，就單做 ROLLBACK 就好, 不需要再做 END TRANSACTION，下面 ref 第二篇裡面的邏輯有點問題，做了 ROLLBACK 然後 break 出去之後又做 COMMIT，怪怪的。 Ref: SQLITE (C/C++interface) - How to commit a transaction ..." />
+                    <meta property="article:tag" content="c" />
+                    <meta property="article:tag" content="sqlite" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -56,6 +59,7 @@
                         </time>
                         <a href="http://blog.carlcarl.me/1407/c_sqlite_transaction/" rel="bookmark"><h1>C SQLite Transaction</h1></a>
                     </header>
+
                     <section class="post-content">
                         <div class="highlight"><pre><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="s">&quot;BEGIN TRANSACTION;&quot;</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
 
@@ -70,60 +74,33 @@
 <p>如果中間發生錯誤，就單做 <code>ROLLBACK</code> 就好, 不需要再做 <code>END TRANSACTION</code>，下面 ref 第二篇裡面的邏輯有點問題，做了 <code>ROLLBACK</code> 然後 <code>break</code> 出去之後又做 <code>COMMIT</code>，怪怪的。</p>
 <p>Ref:</p>
 <ul>
-<li><a href="http://stackoverflow.com/questions/2880149/sqlite-c-cinterface-how-to-commit-a-transaction">SQLITE (C/C++interface) - How to commit a transaction ...</a></li></ul>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-02-01T11:00:00" pubdate>
-                            Sun 01 February 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1406/c_linux_daemon/" rel="bookmark"><h1>C Linux Daemon</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>查了一些在 Linux 上怎麼用 C 寫一支 daemon 的做法:</p>
-<ul>
-<li><a href="http://stackoverflow.com/questions/17954432/creating-a-daemon-in-linux">http://stackoverflow.com/questions/17954432/creating-a-daemon-in-linux</a></li>
-<li><a href="http://www.netzmafia.de/skripten/unix/linux-daemon-howto.html">http://www.netzmafia.de/skripten/unix/linux-daemon-howto.html</a></li>
-<li><a href="http://shahmirj.com/blog/beginners-guide-to-creating-a-daemon-in-linux">http://shahmirj.com/blog/beginners-guide-to-creating-a-daemon-in-linux</a></li>
-<li><a href="http://man7.org/tlpi/code/online/dist/daemons/become_daemon.c.html">http://man7.org/tlpi/code/online/dist/daemons/become_daemon.c.html</a></li>
-<li><a href="http://www.freedesktop.org/software/systemd/man/daemon.html">http://www.freedesktop.org/software/systemd/man/daemon.html</a></li>
+<li><a href="http://stackoverflow.com/questions/2880149/sqlite-c-cinterface-how-to-commit-a-transaction">SQLITE (C/C++interface) - How to commit a transaction</a></li>
+<li><a href="http://www.askyb.com/cpp/c-sqlite-example-with-atomic-transaction/">C++ SQLite Example with Atomic Transaction</a></li>
+<li><a href="http://www.tutorialspoint.com/sqlite/sqlite_transactions.htm">SQLite - TRANSACTIONS</a></li>
 </ul>
-<p>另外就是有建議說: 不要直接 call <code>unistd ...</code></p>
                     </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/c.html">c</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/c.html">c</a>, <a href="http://blog.carlcarl.me/tag/sqlite.html">sqlite</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
                 </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-01-30T17:00:00" pubdate>
-                            Fri 30 January 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1405/c_check_type_size_at_compile_time/" rel="bookmark"><h1>Check Type Size at Compile Time in C</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>查資料的時候看到的，不過資料裡的方式，宣告 0 陣列還是會過，所以我乾脆多減一：</p>
-<div class="highlight"><pre><span class="cp">#define TYPE_SIZE ((sizeof(int) == 4) - 1)</span>
-<span class="kt">char</span> <span class="n">arr</span><span class="p">[</span><span class="n">TYPE_SIZE</span><span class="p">];</span>
-</pre></div>
-
-
-<p>完全不確定的話，也可以用 <code>&gt;</code> or <code>&lt;</code> 抓範圍 lol。</p>
-<p>Ref:<br />
-<a href="http://www.jaggersoft.com/pubs/CVu11_3.html">Compile Time Assertions in C</a></p>
-                    </section>
-                </article>
-                <hr/>
             </li>
         </ol>
-        <div class="paginator">
-            Page 1 / 1
-        </div>
-
     </div>
         </div>
 
