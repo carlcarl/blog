@@ -51,6 +51,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-02-01T11:00:00" pubdate>
+                            Sun 01 February 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1406/c_linux_daemon/" rel="bookmark"><h1>C Linux Daemon</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查了一些在 Linux 上怎麼用 C 寫一支 daemon 的做法:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/17954432/creating-a-daemon-in-linux">http://stackoverflow.com/questions/17954432/creating-a-daemon-in-linux</a></li>
+<li><a href="http://www.netzmafia.de/skripten/unix/linux-daemon-howto.html">http://www.netzmafia.de/skripten/unix/linux-daemon-howto.html</a></li>
+<li><a href="http://shahmirj.com/blog/beginners-guide-to-creating-a-daemon-in-linux">http://shahmirj.com/blog/beginners-guide-to-creating-a-daemon-in-linux</a></li>
+<li><a href="http://man7.org/tlpi/code/online/dist/daemons/become_daemon.c.html">http://man7.org/tlpi/code/online/dist/daemons/become_daemon.c.html</a></li>
+<li><a href="http://www.freedesktop.org/software/systemd/man/daemon.html">http://www.freedesktop.org/software/systemd/man/daemon.html</a></li>
+</ul>
+<p>另外就是有建議說: 不要直接 call <code>unistd ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-01-30T17:00:00" pubdate>
                             Fri 30 January 2015
                         </time>
@@ -249,24 +271,6 @@
 
 
 <p><code>assert py2exe</code> 是因為 editor 會警告 <code>py2exe</code> import ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-05-18T02:00:00" pubdate>
-                            Sun 18 May 2014
-                        </time>
-                        <a href="http://blog.carlcarl.me/1396/python_windows_schtasks/" rel="bookmark"><h1>Python Windows schtasks</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在找 Windows 上有啥功能是像 Linux 上的 crontab 一樣可以設定週期性的工作，後來找到有 command line 版本的 <code>schtasks</code> 可以用。這邊我主要想做的事是透過執行 bat 檔案，將我要的執行檔加入 daily job 裡，同樣的也可以透過另一個 bat 檔案簡單移除掉這個 job，下面是我的程式範例:</p>
-<h2>加入 bat 檔案目錄下的某個執行檔到 daily task 中</h2>
-<div class="highlight"><pre><span class="p">@</span><span class="k">SET</span> <span class="nv">file_dir</span><span class="o">=</span><span class="nv">%~dp0</span>
-<span class="p">@</span><span class="k">SET</span> <span class="nv">exec_file</span><span class="o">=</span><span class="nv">%file_dir%</span>a.exe
-schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="s2">&quot;my_task&quot;</span> <span class="n">/SC</span> DAILY <span class="n">/TR</span> <span class="s2">&quot;%exec_file% -a&quot;</span> <span class="n">/ST</span> <span class="m">14 ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

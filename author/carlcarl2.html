@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-05-18T02:00:00" pubdate>
+                            Sun 18 May 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1396/python_windows_schtasks/" rel="bookmark"><h1>Python Windows schtasks</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近在找 Windows 上有啥功能是像 Linux 上的 crontab 一樣可以設定週期性的工作，後來找到有 command line 版本的 <code>schtasks</code> 可以用。這邊我主要想做的事是透過執行 bat 檔案，將我要的執行檔加入 daily job 裡，同樣的也可以透過另一個 bat 檔案簡單移除掉這個 job，下面是我的程式範例:</p>
+<h2>加入 bat 檔案目錄下的某個執行檔到 daily task 中</h2>
+<div class="highlight"><pre><span class="p">@</span><span class="k">SET</span> <span class="nv">file_dir</span><span class="o">=</span><span class="nv">%~dp0</span>
+<span class="p">@</span><span class="k">SET</span> <span class="nv">exec_file</span><span class="o">=</span><span class="nv">%file_dir%</span>a.exe
+schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="s2">&quot;my_task&quot;</span> <span class="n">/SC</span> DAILY <span class="n">/TR</span> <span class="s2">&quot;%exec_file% -a&quot;</span> <span class="n">/ST</span> <span class="m">14 ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-05-14T16:30:00" pubdate>
                             Wed 14 May 2014
                         </time>
@@ -240,24 +258,6 @@
 
 <h2>修改設定檔</h2>
 <p>設定檔位置在 <code>/var/lib/transmission/.config/transmission-daemon/settings.json</code> (這位置好爛)，我自己的設定檔如下，後方的 <code>M ...</code></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-21T02:30:00" pubdate>
-                            Tue 21 January 2014
-                        </time>
-                        <a href="http://blog.carlcarl.me/1386/raspberry_pi_beginner/" rel="bookmark"><h1>Raspberry Pi beginner</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前在 COSCUP 拿到的 Raspberry Pi 一直放著沒動，最近想說還是拿來玩一下好了，不然有點浪費XD。</p>
-<h2>基本配備</h2>
-<p>大部份其實都有了，SD 卡則是自己另外買了一張 <a href="http://shopping.pchome.com.tw/?mod=item&amp;func=exhibit&amp;IT_NO=DGAG0H-A79608303&amp;SR_NO=DGAG0H&amp;ROWNO=25">SanDisk Extreme SDHC UHS-I 16GB</a>，USB hub 可能之後也會需要，不過還不知道要買哪一個，這邊有 <a href="http://elinux.org/RPi_Powered_USB_Hubs">USB hubs 的清單</a> 可以看。OS 則是用 Arch。</p>
-<h2>燒錄 image 到 SD 卡</h2>
-<p>在 Mac 和 Linux 底下可以直接用 <code>dd</code>，ex: <code>dd bs=1M if=Path/to/archlinux-hf-2013-02-11.img of ...</code></p>
                     </section>
                 </article>
                 <hr/>
