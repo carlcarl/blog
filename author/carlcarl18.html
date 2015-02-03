@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-05-24T16:14:00" pubdate>
+                            Tue 24 May 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/21/git-export-files-to-some-existed-directory/" rel="bookmark"><h1>git export files to some existed directory</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近想把 vimrc 和 bashrc 等設定檔作同步，想說大家都在用 git，所以就不用 svn 改用 git 看看了!</p>
+<p>但是在同步的時候卻遇到了問題，本來想說直接輸入看看</p>
+<div class="highlight"><pre>git clone &lt;git repo url&gt;
+</pre></div>
+
+
+<p>結果出現錯誤: <code>fatal: destination path
+'home目錄' git clone already exists and is not an empty directory</code></p>
+<p>因為我的 home 目錄已經存在 而且也沒辦法 merge = =，沒辦法，只好來找一下資料。</p>
+<p>說真的還找得滿久的，以下是我覺得算是比較能接受的一種解決方法(有其他方法歡迎提供QQ)</p>
+<div class="highlight"><pre>git init
+git remote add origin ...</pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-05-12T07:29:00" pubdate>
                             Thu 12 May 2011
                         </time>
@@ -287,33 +312,6 @@ sudo dpkg-reconfigure postfix
  <code>O_RDWR</code> 代表在程式中可讀寫，也可以用 <code>O_WRONLY</code> 或 <code>O_RDONLY</code> 代表只寫或只讀，<code>O_CREATE</code> 則代表建立這個檔案。</p>
 <p>參考網址：</p>
 <p><a href="http://stackoverflow.com/questions/2245193/c-linux-file-permission-problem-with-open">http://stackoverflow.com/questions/2245193/c-linux-file-permission-problem-with-open</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-20T18:36:00" pubdate>
-                            Sun 20 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/11/c-getopt-usage/" rel="bookmark"><h1>C getopt usage</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><code>getopt</code> 是用來判斷程式參數的函式。像是 <code>./a.out -s</code> 之類的, <code>getopt</code>
-能對後面的 <code>-s</code> 這類參數做判斷處理。<br />
-一開始要使用的話記得先：</p>
-<div class="highlight"><pre><span class="cp">#include &lt;unistd.h&gt;</span>
-</pre></div>
-
-
-<p><code>getopt</code> 有三個參數
-<code>(int argc, char* argv[], const char* optsting)</code>，第一個和第二個就直接把
-<code>main</code> 裡頭的參數丟進去就好了，第三個參數就是用來處理前面講到的 <code>-s</code>
-的這類參數。<br />
-舉個例子來講，像是 <code>optstring = "abf"</code>
-的話，就能夠抓到這三個參數值，如：<br />
-<code>./a.out -a</code> 或 <code>./a.out -b</code> 或 <code>./a.out -abf</code> 都 OK ...</p>
                     </section>
                 </article>
                 <hr/>

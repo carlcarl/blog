@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    C UNIX Socket
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="C UNIX Socket" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1408/c_unix_socket/" />
+                <meta property="og:description" content="可以參考這個連結的 code: Unix Domain Socket，我後來發現我們 project 裡的 code 也是參考這邊的= =|||，不過的確是還缺少一些東西，像是可以再加上 select 或是 pselect 來另外處理 signal，我自己是用 pselect 就是，有想過用 ppoll 來做，不過實際會聽的連線很少，感覺沒必要就直接用 pselect 了。 修正一下，之後還是改用 ppoll 好了XD，查了一下資料，就算是一個 socket，poll 還是比 select 快～～，參照 Comparative measurements and analysis of I/O event notification mechanisms。epoll ..." />
+                    <meta property="article:tag" content="c" />
+                    <meta property="article:tag" content="socket" />
+                    <meta property="article:tag" content="select" />
+                    <meta property="article:tag" content="poll" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="fa fa-coffee"></i> carlcarl's blog</a></h1>
+        <p id="site-desc"></p>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2015-02-03T15:00:00" pubdate>
+                            Tue 03 February 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1408/c_unix_socket/" rel="bookmark"><h1>C UNIX Socket</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p>可以參考這個連結的 code: <a href="kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-">Unix Domain Socket</a>，我後來發現我們 project 裡的 code 也是參考這邊的= =|||，不過的確是還缺少一些東西，像是可以再加上 <code>select</code> 或是 <code>pselect</code> 來另外處理 signal，我自己是用 <code>pselect</code> 就是，有想過用 <code>ppoll</code> 來做，不過實際會聽的連線很少，感覺沒必要就直接用 <code>pselect</code> 了。</p>
+<p>修正一下，之後還是改用 <code>ppoll</code> 好了XD，查了一下資料，就算是一個 socket，<code>poll</code> 還是比 <code>select</code> 快～～，參照 <a href="http://www.intelliproject.net/articles/showArticle/index/io_multiplexing">Comparative measurements and analysis of I/O event notification mechanisms</a>。<code>epoll</code>看起來還是不用考慮，因為 event-based 在基本處理上的 overhead 都會比較大，只有一個 socket 的話還會比 poll 慢，上面連結內的數據也是顯示如此。</p>
+<p>另外就是傳送資料的方式，因為是 local UNIX socket，所以就直接用 struct 轉了(炸)，如果是不同機器上用 TCP socket 的話，這樣其實會有 endian 和 padding 的問題，參照以下連結:</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/1577161/passing-a-structure-through-sockets-in-c">Passing a structure through Sockets in C</a></li>
+<li><a href="https://stackoverflow.com/questions/8000851/passing-a-struct-over-tcp-sock-stream-socket-in-c">passing a struct over TCP (SOCK_STREAM) socket in C</a></li>
+</ul>
+<p>不是改用 Protocol Buffers 這類的 library 封裝，不然就是直接用字串傳了。</p>
+<p>Ref:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/5647503/with-a-single-file-descriptor-is-there-any-performance-difference-between-selec/28294561#28294561">With a single file descriptor, Is there any performance difference between select, poll and epoll and …?</a></li>
+<li><a href="kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-">unix domain socket</a></li>
+<li><a href="http://daniel.haxx.se/docs/poll-vs-select.html">poll vs select vs event-based</a></li>
+<li><a href="http://blog.csdn.net/feng19870412/article/details/9001857">poll、ppoll 浅析</a></li>
+<li><a href="http://www.ulduzsoft.com/2014/01/select-poll-epoll-practical-difference-for-system-architects/">select / poll / epoll: practical difference for system architects</a></li>
+<li><a href="http://beesbuzz.biz/blog/e/2013/10/10-the_problem_with_select_vs_poll.php">The problem with select() vs. poll() (code)</a></li>
+</ul>
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/c.html">c</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/c.html">c</a>, <a href="http://blog.carlcarl.me/tag/socket.html">socket</a>, <a href="http://blog.carlcarl.me/tag/select.html">select</a>, <a href="http://blog.carlcarl.me/tag/poll.html">poll</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>

@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-03-21T04:08:00" pubdate>
+                            Wed 21 March 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/287/install-openid-server-masquerade/" rel="bookmark"><h1>Install openid server: masquerade</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="masquerade" src="http://i.imgur.com/cdwZUHDl.png" title="masquerade" /> </p>
+<p>最近需要安裝 openid server，所以找了很多的 library
+來試，我是從這個<a href="http://wiki.openid.net/w/page/12995226/Run-your-own-identity-server">openid server
+清單</a>下去找，主要功能需求是希望能夠支援多人+資料庫+可以直接連線做認證的部份，但是試了好幾個
+php, python 的沒一個可以說是符合我需求的，perl
+那個文件更是完全看不懂orz。</p>
+<p>後來考慮試試看<a href="https://github.com/dbloete/masquerade">masquerade</a> 這個基於 RoR 的
+library，建完之後發現幾乎符合我的需求，而且安裝基本上不會說太難，所以就選這套啦。作者在
+github project 首頁的 README 是比較新的版本(相較於它的 project wiki
+)，但是還是有部份是有問題的，所以我另外 fork 出來，再修改一下
+README，這是<a href="https://github.com/carlcarl/masquerade">我的連結</a>。</p>
+<p>首先要先建立好 RoR 的環境，這邊提供一個可以作為參考的 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-02-24T00:32:00" pubdate>
                             Fri 24 February 2012
                         </time>
@@ -248,37 +273,6 @@ log 會比較方便，另外記得數量也要根據需求改，因為改完後�
 如果要跟 awstats 搭配的話可以在裡面加入：</p>
 <div class="highlight"><pre>prerotate
     /usr/lib/cgi-bin/awstats.pl -config ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-12-17T18:00:00" pubdate>
-                            Sat 17 December 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/226/mysql-db-engine-with-log-archive/" rel="bookmark"><h1>MySQL DB engine with log: Archive</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>前一陣子在看什麼 engine 比較適合拿來單純存
-log，後來看到 <code>Archive</code> 這個似乎不錯，主要有以下優點：</p>
-<ul>
-<li>insert 速度更快。</li>
-<li>佔的資料量較 Myisam 少。</li>
-</ul>
-<p>但是有優勢，就會有相對的劣勢，Archive 有以下缺點：</p>
-<ul>
-<li>不支援 delete 和 update，只能 insert 和 select。</li>
-<li>不支援 index。</li>
-</ul>
-<p>（如果你是想要存每次最後登入時間的話，那 Archive 的確是不適合，因為不支援
-index 和 update。）</p>
-<p>但是以現實角度來看單純的 log 表，像是存每次登入的紀錄：</p>
-<ul>
-<li>其實真的就只會用到 insert，會用到 delete 和 update 那這個應該不太叫
-    log。</li>
-<li>作 select 的機率也是微乎其微 ...</li></ul>
                     </section>
                 </article>
                 <hr/>
