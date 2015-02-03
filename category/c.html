@@ -51,6 +51,35 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-02-03T20:00:00" pubdate>
+                            Tue 03 February 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1409/c_ppoll_and_pselect/" rel="bookmark"><h1>C ppoll and pselect</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>通常 <code>ppoll</code> 和 <code>pselect</code> 會搭配 <code>sigprocmask</code> 使用，先透過 <code>sigprocmask</code> block signal，然後在 <code>ppoll</code> 和 <code>pselect</code> 這邊再 unblock signal 做處理，例如常見的 daemon reload 可以這樣做：</p>
+<div class="highlight"><pre><span class="c1">// C</span>
+<span class="k">volatile</span> <span class="kt">sig_atomic_t</span> <span class="n">reload_flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">terminate_flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">sig_handler</span><span class="p">(</span><span class="kt">int</span> <span class="n">sig</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sig</span> <span class="o">==</span> <span class="n">SIGHUP</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">reload_flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">sig</span> <span class="o">==</span> <span class="n">SIGTERM</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">terminate_flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// A</span>
+<span class="kt">sigset_t</span> <span class="n">mask</span><span class="p">,</span> <span class="n">orig_mask ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-02-03T15:00:00" pubdate>
                             Tue 03 February 2015
                         </time>

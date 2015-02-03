@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    C ppoll and pselect
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="C ppoll and pselect" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1409/c_ppoll_and_pselect/" />
+                <meta property="og:description" content="通常 ppoll 和 pselect 會搭配 sigprocmask 使用，先透過 sigprocmask block signal，然後在 ppoll 和 pselect 這邊再 unblock signal 做處理，例如常見的 daemon reload 可以這樣做： // C volatile sig_atomic_t reload_flag = 0, terminate_flag = 0; static void sig_handler(int sig) { if (sig == SIGHUP) { reload_flag = 1; } else if (sig == SIGTERM) { terminate_flag = 1; } } // A sigset_t mask, orig_mask ..." />
+                    <meta property="article:tag" content="poll" />
+                    <meta property="article:tag" content="select" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="fa fa-coffee"></i> carlcarl's blog</a></h1>
+        <p id="site-desc"></p>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2015-02-03T20:00:00" pubdate>
+                            Tue 03 February 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1409/c_ppoll_and_pselect/" rel="bookmark"><h1>C ppoll and pselect</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p>通常 <code>ppoll</code> 和 <code>pselect</code> 會搭配 <code>sigprocmask</code> 使用，先透過 <code>sigprocmask</code> block signal，然後在 <code>ppoll</code> 和 <code>pselect</code> 這邊再 unblock signal 做處理，例如常見的 daemon reload 可以這樣做：</p>
+<div class="highlight"><pre><span class="c1">// C</span>
+<span class="k">volatile</span> <span class="kt">sig_atomic_t</span> <span class="n">reload_flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">terminate_flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">sig_handler</span><span class="p">(</span><span class="kt">int</span> <span class="n">sig</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sig</span> <span class="o">==</span> <span class="n">SIGHUP</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">reload_flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">sig</span> <span class="o">==</span> <span class="n">SIGTERM</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">terminate_flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// A</span>
+<span class="kt">sigset_t</span> <span class="n">mask</span><span class="p">,</span> <span class="n">orig_mask</span><span class="p">;</span>
+<span class="n">sigemptyset</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">mask</span><span class="p">);</span>
+<span class="n">sigaddset</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">mask</span><span class="p">,</span> <span class="n">SIGTERM</span><span class="p">);</span>
+<span class="n">sigaddset</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">mask</span><span class="p">,</span> <span class="n">SIGHUP</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">sigprocmask</span><span class="p">(</span><span class="n">SIG_BLOCK</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">mask</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig_mask</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// B</span>
+<span class="k">struct</span> <span class="n">sigaction</span> <span class="n">sa</span><span class="p">;</span>
+<span class="n">sigemptyset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sa</span><span class="p">.</span><span class="n">sa_mask</span><span class="p">);</span>
+<span class="n">sa</span><span class="p">.</span><span class="n">sa_handler</span> <span class="o">=</span> <span class="n">sig_handler</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">sigaction</span><span class="p">(</span><span class="n">SIGHUP</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sa</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">sigaction</span><span class="p">(</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sa</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="c1">// Set socket blah blah</span>
+
+<span class="c1">// D</span>
+<span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">poll_ret</span> <span class="o">=</span> <span class="n">ppoll</span><span class="p">(</span><span class="n">fds</span><span class="p">,</span> <span class="n">MAX_FDS_SIZE</span><span class="p">,</span> <span class="n">tv</span><span class="p">,</span> <span class="n">orig_mask</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">poll_ret</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">errno</span> <span class="o">!=</span> <span class="n">EINTR</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">reload_flag</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// process reload</span>
+            <span class="n">reload_flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">terminate_flag</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// process terminate</span>
+            <span class="n">terminate_flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">poll_ret</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// process socket</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">poll_ret</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// process timeout</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><code>A</code> 這段先將 <code>SIGTERM</code> 和 <code>SIGHUP</code> block 起來，接著在 <code>B</code> 這邊設定這兩種 signal 的 callback，<code>C</code> 這裏的 callback function 中則去設定 flag，這裏的 <code>sig_atomic_t</code> 是表示這個 type 變數的操作保證是 atomic 的，通常會是 <code>int</code> 就是，資料的部分可以參考:</p>
+<ul>
+<li><a href="http://blog.csdn.net/realdragon2/article/details/2935533">小学一下volatile和sig_atomic_t类型.</a></li>
+<li><a href="stackoverflow.com/questions/8488791/proper-usage-of-volatile-sig-atomic-t#_=_">Proper usage of volatile sig_atomic_t</a></li>
+</ul>
+<p><code>D</code> 的部分，就是在 interrupt 進來之後，判斷這些 flag，做更進一步的處理。</p>
+<p>至於 <code>pselect</code> 的部分可以參考這邊: </p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/9774986/linux-select-vs-ppoll-vs-pselect">Linux select() vs ppoll() vs pselect()</a></li>
+<li><a href="http://www.linuxprogrammingblog.com/code-examples/using-pselect-to-avoid-a-signal-race">Using pselect() to avoid a signal race</a></li>
+</ul>
+<p>另外，如果要用 <code>ppoll</code> 的話，要先 define 一個變數，不然會出現 <code>implicit definition</code> 的警告：</p>
+<div class="highlight"><pre><span class="cp">#ifndef __USE_GNU</span>
+<span class="cm">/* Define this to avoid a warning about implicit definition of ppoll.*/</span>
+<span class="cp">#define __USE_GNU</span>
+<span class="cp">#endif</span>
+<span class="cp">#include &lt;poll.h&gt;</span>
+</pre></div>
+
+
+<p>為啥不用 <code>epoll</code>? 因為連線數很少，用 <code>epoll</code> 不見得比較好，<code>libevent</code> 差不多一樣道理。</p>
+<p>Ref:</p>
+<ul>
+<li><a href="https://searchcode.com/codesearch/view/555780/">/src/lirc_srv.c</a></li>
+<li><a href="http://blog.csdn.net/muge0913/article/details/7334771">sigprocmask 阻塞进程</a></li>
+<li><a href="http://stackoverflow.com/questions/6962150/catching-signals-while-reading-from-pipe-with-select">catching signals while reading from pipe with select()</a></li>
+<li><a href="http://www.cnblogs.com/diegodu/p/3988103.html">pselect 和 select</a></li>
+<li><a href="https://gist.github.com/aspyct/3462238">aspyct / signal.c</a></li>
+</ul>
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/c.html">c</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/poll.html">poll</a>, <a href="http://blog.carlcarl.me/tag/select.html">select</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>
