@@ -105,7 +105,10 @@ Ref:
 * [sigprocmask 阻塞进程]
 * [catching signals while reading from pipe with select()]
 * [pselect 和 select]
+* [poll、ppoll 浅析]
+* [select / poll / epoll: practical difference for system architects]
 * [aspyct / signal.c]
+* [Sockets using poll()]
 
 
 [/src/lirc_srv.c]: https://searchcode.com/codesearch/view/555780/
@@ -116,7 +119,9 @@ Ref:
 [Using pselect() to avoid a signal race]: http://www.linuxprogrammingblog.com/code-examples/using-pselect-to-avoid-a-signal-race
 [catching signals while reading from pipe with select()]: http://stackoverflow.com/questions/6962150/catching-signals-while-reading-from-pipe-with-select
 [pselect 和 select]: http://www.cnblogs.com/diegodu/p/3988103.html
+[poll、ppoll 浅析]: http://blog.csdn.net/feng19870412/article/details/9001857
+[select / poll / epoll: practical difference for system architects]: http://www.ulduzsoft.com/2014/01/select-poll-epoll-practical-difference-for-system-architects/
 [aspyct / signal.c]: https://gist.github.com/aspyct/3462238
-
+[Sockets using poll()]: http://cboard.cprogramming.com/c-programming/158125-sockets-using-poll.html
 
 
