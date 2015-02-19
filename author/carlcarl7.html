@@ -51,6 +51,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-16T19:25:00" pubdate>
+                            Sun 16 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1023/html5-canvas-double-buffering/" rel="bookmark"><h1>html5 canvas double buffering</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>因為之前寫 java 的經驗，讓我以為在 html5 的 canvas 上也要自己實作 double
+buffering，但是在我後來實作後發現，好像哪裡怪怪的，因為其實原本就沒有在閃的感覺了，所以加了
+double buffering 好像也沒啥差，重點是 performance 下降很多......。</p>
+<p>後來花了一些時間找資料，我得到的結論－是大部分的情況，不需要自己做
+double buffering，因為瀏覽器會很聰明的幫你做。但是它怎麼判斷什麼時候該把
+buffer 的部分 render 上去呢？以下是我的鍵盤猜測：</p>
+<p>因為現在大多數的螢幕更新頻率都是 60Hz，也就是說大概每 16 ms
+就會刷新一次螢幕，而瀏覽器本身在刷新的頻率可能也會接近這個時間，但是有沒有比較高就不知道了，因為你所看到的可能會被你螢幕的更新頻率所限制，就算瀏覽器刷新頻率是
+1000Hz，反正一般的銀幕也看不出來:P。</p>
+<p>以一個簡單的例子來實驗，假如我在一開始把一個方形塗上顏色然後 clear
+掉 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-11T03:43:00" pubdate>
                             Tue 11 June 2013
                         </time>
@@ -257,37 +281,6 @@ Python3，看起來好像很順利，不過在執行的時候就出現了 Excepi
 
 <p>後來查了一下資料才發現，這邊的 <code>read</code>，似乎讀出的資料是 <code>byte</code> 的
 type，還需要做 encode ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-04-27T00:23:00" pubdate>
-                            Sat 27 April 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/838/linux-kernel-space-get-time-interval/" rel="bookmark"><h1>Linux kernel space get time interval</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前聽到可以用 <code>jiffies</code>
-來抓時間，可是我自己測的結果是前後抓的時間會都一樣囧。查了一下
-stackoverflow，也有<a href="http://stackoverflow.com/questions/4655711/measuring-execution-time-of-a-function-inside-linux-kernel">一個遇到一樣的問題</a>，我猜可能 <code>jiffies</code> 也是用
-period update 的方式做更新，由於中間測量的 function
-太快，導致來不及更新就拿到了一樣的值這樣。而在下面的回答中看到可以用
-<code>do_gettimeofday()</code> 來抓時間區間，簡單範例如下：  </p>
-<div class="highlight"><pre><span class="cp">#include &lt;linux/time.h&gt;</span>
-<span class="c1">// ...</span>
-<span class="k">struct</span> <span class="n">timeval</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">;</span>
-<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
-
-<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">begin</span><span class="p">);</span>
-<span class="c1">// Do something here</span>
-<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">end</span><span class="p">);</span>
-
-<span class="c1">// Get milliseconds </span>
-<span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">-</span> <span class="n">begin</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
-<span class="n">val</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>
