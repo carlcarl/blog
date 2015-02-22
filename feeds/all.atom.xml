@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-02-22T23:00:00+08:00</updated><entry><title>Ajax Request Header</title><link href="http://blog.carlcarl.me/1411/ajax_request_header/" rel="alternate"></link><updated>2015-02-22T23:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-02-22:1411/ajax_request_header/</id><summary type="html">&lt;p&gt;小筆記一下～。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-02-22T23:10:00+08:00</updated><entry><title>SQLite datetime group by</title><link href="http://blog.carlcarl.me/1412/sqlite_datetime_group_by/" rel="alternate"></link><updated>2015-02-22T23:10:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-02-22:1412/sqlite_datetime_group_by/</id><summary type="html">&lt;p&gt;SQLite 裡的 &lt;code&gt;datetime&lt;/code&gt; 其實也只是 string 而已，所以用的方式跟 MySQL 之類的不同，MySQL 可以直接 &lt;code&gt;Date(xxx)&lt;/code&gt; 或是 &lt;code&gt;Month(xxx)&lt;/code&gt; 之類的做擷取，不過 SQLite 要用 &lt;code&gt;strftime&lt;/code&gt; 來做，例如:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;strftime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%Y&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="k"&gt;year&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+   &lt;span class="n"&gt;strftime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%m&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="k"&gt;month&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+   &lt;span class="k"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;amount&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;Amount&lt;/span&gt; 
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;mytable&lt;/span&gt; 
+&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="k"&gt;year&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ref:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="stackoverflow.com/questions/1639906/sql-combining-group-by-and-sum"&gt;SQL combining GROUP BY and SUM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/366603/mysql-sql-group-by-date-only-on-a-datetime-column"&gt;MySQL/SQL: Group by date only on a Datetime column&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="sqlite"></category></entry><entry><title>Ajax Request Header</title><link href="http://blog.carlcarl.me/1411/ajax_request_header/" rel="alternate"></link><updated>2015-02-22T23:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-02-22:1411/ajax_request_header/</id><summary type="html">&lt;p&gt;小筆記一下～。&lt;/p&gt;
 &lt;p&gt;看了一下 browser 丟出的 request header 有包含 &lt;code&gt;X_REQUESTED_WITH&lt;/code&gt;，不過在 Server side 收到的會在前面加個 &lt;code&gt;HTTP_&lt;/code&gt;，所以會變成 &lt;code&gt;HTTP_X_REQUESTED_WITH&lt;/code&gt;。值的話則是 &lt;code&gt;XMLHttpRequest&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;Ref:&lt;/p&gt;
 &lt;ul&gt;

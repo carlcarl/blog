@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-02T04:45:00" pubdate>
+                            Sun 02 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/865/python-decorate-method-inside-class/" rel="bookmark"><h1>Python decorate method inside class</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>簡易版的可以直接參考
+<a href="http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class">http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class</a>。  </p>
+<p>以我的例子來說，我需要對某些 method 加上 retry
+的機制，除了需要有參數外，還希望能夠把 decorate method 放在 class
+裡頭，這樣我才能呼叫 class 裡頭另外的 method。以下是簡單的例子：</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Test</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="nf">retry</span><span class="p">(</span><span class="n">tries</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">deco_retry</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+            <span class="c"># f is the method decorated</span>
+            <span class="k">def</span> <span class="nf">f_retry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-05-23T16:25:00" pubdate>
                             Thu 23 May 2013
                         </time>
@@ -261,37 +286,12 @@ dolphin 這邊再重連就能夠連上了。</p>
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-02-22T03:07:00" pubdate>
-                            Fri 22 February 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/788/bootstrap-input-align/" rel="bookmark"><h1>bootstrap input align</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>使用 bootstrap 的 input element 的時候遇到 text 和 button
-位置不齊的情況，去 stackoverflow 找了一下就看到<a href="http://stackoverflow.com/questions/10615872/bootstrap-align-input-with-button">解決的辦法</a>了：  </p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">&quot;search&quot;</span> <span class="na">id=</span><span class="s">&quot;search&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn&quot;</span><span class="nt">&gt;</span>button<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</pre></div>
-
-
-<p>簡單說就是在外面那層加上 <code>form-horizontal</code> 這個 class 屬性，另外
-<code>input-append</code> 雖然也可以達到類似的效果，不過由於 input element
-會貼在一起，所以不建議用。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/index7.html">
                         <i class="fa fa-arrow-circle-left"></i>
                     </a>
-            Page 8 / 19
+            Page 8 / 20
                 <a href="http://blog.carlcarl.me/index9.html">
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>
