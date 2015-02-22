@@ -51,6 +51,25 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-04-01T16:05:00" pubdate>
+                            Sun 01 April 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/335/python-documentation-epydoc/" rel="bookmark"><h1>python documentation: epydoc</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="http://epydoc.sourceforge.net/index.html">epydoc</a> 是利用 parse python 的程式來製作文件，文件的類型像是一般的 html 和 pdf 都能產生。我個人是比較偏好 html 的格式囉，它的 html 樣板跟 Javadoc 的配置差不多，比較習慣。</p>
+<p>它 parse 程式的方法主要是利用 method 一開始的 <code>"""</code> 註解，不習慣寫的人可以參考它的 <a href="http://epydoc.sourceforge.net/fields.html#fields">欄位官方範例</a>。</p>
+<p>首先要先安裝 <code>epydoc</code>，在官方網站上沒講到 ubuntu
+的安裝包，用 <code>apt-get</code> 也找不到，後來試看看 <code>pip install epydoc</code> 就 OK
+了。這邊有點要注意的是，如果你的 project
+是在 <code>virtualenv</code> 環境下的話，建議將 <code>epydoc ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-03-29T02:35:00" pubdate>
                             Thu 29 March 2012
                         </time>
@@ -245,26 +264,6 @@ svn add <span class="nb">test</span>
 <p>首先先改資料夾名稱，因為等下要刪掉原本這個資料夾的 svn 紀錄，直接 delete
 的話，資料夾就真的會被刪掉，刪完之後再把改過名稱的資料夾改回原來的名稱，改完之後再重新
 add，應該就會顯示正常了。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-10T00:43:00" pubdate>
-                            Fri 10 February 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/245/different-color-in-screen-and-normal-mode/" rel="bookmark"><h1>Different color in screen and normal mode</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>查了一下資料，發現應該是跟顏色的支援有關，要在 <code>.screerc</code> 裡加上一行：</p>
-<div class="highlight"><pre>termcapinfo xterm &#39;Co#256:AB=E[48;5;%dm:AF=E[38;5;%dm&#39;
-</pre></div>
-
-
-<p>參考網址：<br />
-<a href="http://fcamel-fc.blogspot.com/2009/04/python-vim.html">http://fcamel-fc.blogspot.com/2009/04/python-vim.html</a></p>
                     </section>
                 </article>
                 <hr/>

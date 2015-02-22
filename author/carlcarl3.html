@@ -51,6 +51,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-02-08T02:00:00" pubdate>
+                            Sat 08 February 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1391/check_if_command_exist/" rel="bookmark"><h1>Check if command exist</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>本來直覺是用 <code>which</code>，不過查了一下資料，在 <a href="https://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script">How to check if a program exists from a bash script?</a> 發現有幾個不建議用 <code>which</code> 的理由：</p>
+<ol>
+<li>cost 太大，需要另外 call 一個 process 來處理</li>
+<li>exit status 在一些系統並沒有定義</li>
+<li>很多 operating system 會對 <code>which</code> 做額外的 tweak，可能會有其他的 side effect</li>
+</ol>
+<p>在解答中建議可以用 <code>hash</code>, <code>command</code>, <code>type</code> 等指令來判斷，其中 <code>command</code> 的 exit code 在 POSIX ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-27T23:00:00" pubdate>
                             Mon 27 January 2014
                         </time>
@@ -233,22 +253,6 @@
 
 
 <p>如果到 production 的話，就將 <code>debug</code> 設為 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-12-08T17:00:00" pubdate>
-                            Sun 08 December 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1381/review_kivy_interactive_applications_in_python/" rel="bookmark"><h1>[review] kivy interactive applications in python</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><img alt="kivy interactive applications in python" src="http://i.imgur.com/87z6yUy.png" /></p>
-<p>其實很久沒看有關 GUI library 相關的書了，會看這本是因為之前其實就有聽說過 <a href="http://kivy.org">kivy</a> 這個 python library，但是一直沒機會摸摸看。前一陣子剛好 <a href="http://www.packtpub.com">packt</a> 在找人 review 一些電子書，所以就想說可以試試看。是說 packt 最近感覺還滿活躍的，常在一些網站徵求可以幫忙 review 的人，譬如說我現在就有在看另外一本 zsh 的書，幫忙訂正草稿和給一些意見，事後除了可以得到原來的電子書，也可以另外在網站上選一本自己想要的電子書，還蠻不錯的~~。</p>
-<p>從 kivy 的官網可以看到它的一些特色，像 cross platform，license 也是很 free 的 MIT，其他還有像常被拿來講的 multi-touch 之類的 feature。在書中可以看到 kivy 還有一個比較特別的地方就是它有一個 kivy language，其實有種 ...</p>
                     </section>
                 </article>
                 <hr/>

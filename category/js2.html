@@ -51,6 +51,45 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-09T04:24:00" pubdate>
+                            Wed 09 May 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/438/javascript-check-if-array-and-empty/" rel="bookmark"><h1>Javascript check if array and empty</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>列出一些我覺得比較 OK 的方法，至於其他還有一些方法可以參考最下方的網址。  
+判斷是否為 array 的方式：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">xxx</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="c1">// 第1種：先用 if 判斷瀏覽器是否支援此method 然後再執行</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+
+<span class="c1">// 第2種</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">xxx</span><span class="p">)</span> <span class="o">===</span> <span class="s1">&#39;[object Array]&#39;</span>
+
+<span class="c1">// 第3種</span>
+<span class="mi">3</span><span class="p">.</span> <span class="nx">xxx</span> <span class="k">instanceof</span> <span class="nb">Array</span>
+</pre></div>
+
+
+<p>判斷 array 是否為 empty的方式：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">xxx</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Array is empty&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>另外如果還要判斷在 array ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-04-06T04:39:00" pubdate>
                             Fri 06 April 2012
                         </time>
