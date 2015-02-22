@@ -51,6 +51,34 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-04-24T15:00:00" pubdate>
+                            Thu 24 April 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1393/python_mocking_requests/" rel="bookmark"><h1>Python mocking requests</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查了一下有沒有相關的 library 可以做 web request 的 mocking，後來看到 <a href="https://github.com/gabrielfalcao/HTTPretty">httpretty</a> 這個可以用，除了內建的 <code>urlopen</code> 這類以外，也支援 <code>requests</code> library，不過有點可惜的是 <code>httpretty</code> 不是內建的，所以必須用 <code>pip</code> 先安裝來用。它的用法還算簡單，以下是個簡單的例子：</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">httpretty</span>
+
+<span class="nd">@httpretty.activate</span>
+<span class="k">def</span> <span class="nf">test_request_new_token</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">token_response</span> <span class="o">=</span> <span class="s">&#39;123&#39;</span>
+
+    <span class="n">httpretty</span><span class="o">.</span><span class="n">register_uri</span><span class="p">(</span>
+        <span class="n">httpretty</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span>
+        <span class="s">&quot;https://api.imgur.com/oauth2/token&quot;</span><span class="p">,</span>
+        <span class="n">body</span><span class="o">=</span><span class="n">token_response</span><span class="p">,</span>
+        <span class="n">status</span><span class="o">=</span><span class="mi">200 ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-03-03T01:00:00" pubdate>
                             Mon 03 March 2014
                         </time>
@@ -223,22 +251,6 @@
                     <section class="post-content">
                         <p>用了個簡單的網站改成用 <a href="http://backbonejs.org">backbone.js</a> 來套，之所以用 backbone 是因為不太喜歡在 html 上加一堆 attributes，backbone 這樣偏純 js，再加上 <a href="http://underscorejs.org">underscore</a> 做 template 的方式覺得比較適合我，以後如果有興趣再碰看看 <a href="http://emberjs.com">ember.js</a> 吧，<a href="http://angularjs.org">angular.js</a> 現階段感覺還蠻流行的，不過就不太想碰就是 XD。</p>
 <p>套完 backbone 之後，程式硬是多出了一倍的量，不知道到底有沒有幫助到我(炸)，而且 backbone 官網的 docuemtn 常會漏掉一些重要的資訊，讓我卡超久= =，這邊順便記錄一下這樣。架構的話，看到有篇 stackoverflow 上的問題，他的 example code 我還蠻喜歡的，也許可以參考看看: <a href="http://stackoverflow.com/questions/13257722/backbone-parsing-json-response">Backbone ...</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-02T00:40:00" pubdate>
-                            Thu 02 January 2014
-                        </time>
-                        <a href="http://blog.carlcarl.me/1383/g0v_tw_nav_menu_fix/" rel="bookmark"><h1>g0v.tw nav menu fix</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><a href="http://g0v.tw">g0v.tw</a> 最近改版了，css framework 也改用 <a href="http://semantic-ui.com">semantic-ui</a>，看起來還蠻潮的，不過目前在用，感覺問題還蠻多的，其中一個大問題應該就是沒有 responsive layout 可以直接套用，所以大概就只能自己土炮吧～。不過這次修的問題跟這個無關，主要是要讓 nav menu 可以隨著在不同網頁，然後 highlight color 到不同 menu item 上，主要有遇到幾個問題：</p>
-<h2>網頁不是用 ajax，而是直接連結到不同網頁</h2>
-<p>所以就不能用 javascript 直接 assign class 到對應的 menu item 上，只能在 template 上動手腳，template 是用 <code>jade</code>。首先先在 nav menu 的 ...</p>
                     </section>
                 </article>
                 <hr/>

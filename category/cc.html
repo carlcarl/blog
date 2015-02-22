@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog</title>
+        <title>carlcarl's blog - C/C++</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
@@ -51,48 +51,37 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-14T16:11:00" pubdate>
-                            Mon 14 March 2011
+                        <time class="post-time" datetime="2015-02-22T23:30:00" pubdate>
+                            Sun 22 February 2015
                         </time>
-                        <a href="http://blog.carlcarl.me/6/pixnet-paste-code/" rel="bookmark"><h1>Pixnet paste code</h1></a>
+                        <a href="http://blog.carlcarl.me/1413/c_naming_rule/" rel="bookmark"><h1>C Naming Rule</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>在側邊欄位設定裡 -&gt; 頁尾描述的部分貼上下面的 code</p>
-<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://alexgorbatchev.com/pub/sh/current/scripts/shBrushBash.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-14T15:21:00" pubdate>
-                            Mon 14 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/5/screenrc-setting/" rel="bookmark"><h1>screenrc setting</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在<a href="http://antontw.blogspot.com/2007/04/screenrc-screenrc.html">大步向前走</a>看到不錯的設定檔 把顏色稍微改一下!</p>
-<p><img alt="screenrc" src="http://i.imgur.com/yCkhXdUl.png" title="screenrc" /></p>
-<div class="highlight"><pre>caption always &quot;%{= rk} %{= bY} [%n]%t @ %H %{-} %= %{= rr} %l %{-} | %{= rG} %Y-%m-%d %{-} &quot;
-hardstatus alwayslastline &quot; %-Lw%{= Bw}%n%f %t%{-  }%+Lw %=| %0c:%s &quot;
+                        <p>最近看到的幾個 naming 的問題。</p>
+<h2><code>_t</code> 結尾的變數</h2>
+<p><code>_t</code> 結尾的變數是 for POSIX 的，盡量避免這樣命名。</p>
+<h2><code>_</code> 開頭的變數</h2>
+<p>像是 <code>int _num;</code> 這樣，或是 <code>ifndef</code> 會用到:</p>
+<div class="highlight"><pre><span class="cp">#ifndef _HEADER_H</span>
+<span class="cp">#define _HEADER_H</span>
+<span class="cp">#endif</span>
 </pre></div>
 
 
-<p>參數設定的話在<a href="http://cytseng.twbbs.org/?p=26">小明的網誌</a>可以看到。</p>
+<p>可是同樣的，<code>_</code> 或是 <code>__</code> 開頭的，都是 reserved names，所以一樣能避免就避免。</p>
+<p>Ref:</p>
+<ul>
+<li><a href="stackoverflow.com/questions/3538170/standard-for-typedefing">Standard for typedef'ing</a></li>
+<li><a href="http://www.gnu.org/software/libc/manual/html_node/Reserved-Names.html">Reserved Names</a></li>
+<li><a href="stackoverflow.com/questions/10077025/ifndef-syntax-for-include-guards-in-c">#ifndef syntax for include guards in C++</a></li>
+<li><a href="stackoverflow.com/questions/3799478/c-ifndef-for-include-files-why-is-all-caps-used-for-the-header-file">c++ #ifndef ...</a></li></ul>
                     </section>
                 </article>
                 <hr/>
             </li>
         </ol>
         <div class="paginator">
-                    <a href="http://blog.carlcarl.me/index19.html">
-                        <i class="fa fa-arrow-circle-left"></i>
-                    </a>
-            Page 20 / 20
+            Page 1 / 1
         </div>
 
     </div>

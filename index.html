@@ -51,6 +51,37 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-02-22T23:30:00" pubdate>
+                            Sun 22 February 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1413/c_naming_rule/" rel="bookmark"><h1>C Naming Rule</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近看到的幾個 naming 的問題。</p>
+<h2><code>_t</code> 結尾的變數</h2>
+<p><code>_t</code> 結尾的變數是 for POSIX 的，盡量避免這樣命名。</p>
+<h2><code>_</code> 開頭的變數</h2>
+<p>像是 <code>int _num;</code> 這樣，或是 <code>ifndef</code> 會用到:</p>
+<div class="highlight"><pre><span class="cp">#ifndef _HEADER_H</span>
+<span class="cp">#define _HEADER_H</span>
+<span class="cp">#endif</span>
+</pre></div>
+
+
+<p>可是同樣的，<code>_</code> 或是 <code>__</code> 開頭的，都是 reserved names，所以一樣能避免就避免。</p>
+<p>Ref:</p>
+<ul>
+<li><a href="stackoverflow.com/questions/3538170/standard-for-typedefing">Standard for typedef'ing</a></li>
+<li><a href="http://www.gnu.org/software/libc/manual/html_node/Reserved-Names.html">Reserved Names</a></li>
+<li><a href="stackoverflow.com/questions/10077025/ifndef-syntax-for-include-guards-in-c">#ifndef syntax for include guards in C++</a></li>
+<li><a href="stackoverflow.com/questions/3799478/c-ifndef-for-include-files-why-is-all-caps-used-for-the-header-file">c++ #ifndef ...</a></li></ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-02-22T23:10:00" pubdate>
                             Sun 22 February 2015
                         </time>
@@ -241,37 +272,6 @@
 <li><a href="http://www.sqlite.org/foreignkeys.html">SQLite Foreign Key Support</a>  </li>
 <li><a href="http://leeleeju.blogspot.tw/2012/09/sqlite-foreign-key.html">Sqlite Foreign Key</a>  </li>
 <li><a href="http://stackoverflow.com/questions/13534040/sqlite3-foreign-keys-on-pdo">sqlite3 foreign keys on ...</a></li></ul>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-01-19T15:00:00" pubdate>
-                            Mon 19 January 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1403/sqlite_datetime/" rel="bookmark"><h1>SQLite datetime</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>一開始以為只要直接 insert timestmap，它就會自動幫我轉，不過好像沒那麼簡單...，原本我是用以下語法:</p>
-<div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">tbl</span><span class="p">(</span><span class="n">tx_bytes</span><span class="p">,</span> <span class="n">rx_bytes</span><span class="p">,</span> <span class="k">timestamp</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">);</span>
-</pre></div>
-
-
-<p><code>timestamp</code> 這裏是 <code>datetime</code> type，可是當我要比較時間的時候:</p>
-<div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">tbl</span> <span class="k">WHERE</span> <span class="k">timestamp</span> <span class="o">&gt;=</span> <span class="s1">&#39;2015-01-01&#39;</span> <span class="k">AND</span> <span class="k">timestamp</span> <span class="o">&lt;</span> <span class="s1">&#39;2015-02-01&#39;</span><span class="p">;</span>
-</pre></div>
-
-
-<p>結果會完全沒任何東西，後來查了一下，<a href="http://pro.ctlok.com/2010/08/sqlite-date-time.html">發現它存的時候是用字串存</a>囧，在輸入之前需要自己做轉換，所以會變成:</p>
-<div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">data_planner</span><span class="p">(</span><span class="n">tx_bytes</span><span class="p">,</span> <span class="n">rx_bytes</span><span class="p">,</span> <span class="k">timestamp</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">,</span> <span class="n">datetime</span><span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="s1">&#39;unixepoch&#39;</span><span class="p">,</span> <span class="s1">&#39;localtime&#39;</span><span class="p">));</span>
-</pre></div>
-
-
-<p><code>localtime</code> 表示轉成自己所在的時區，不然預設會在 <code>utc+0</code>。</p>
-<p>Ref:<br />
-<a href="http://stackoverflow.com/questions/1933720/how-do-i-insert-datetime-value-into-a-sqlite-database">How ...</a></p>
                     </section>
                 </article>
                 <hr/>

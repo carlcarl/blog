@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-02-22T23:10:00+08:00</updated><entry><title>SQLite datetime group by</title><link href="http://blog.carlcarl.me/1412/sqlite_datetime_group_by/" rel="alternate"></link><updated>2015-02-22T23:10:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-02-22:1412/sqlite_datetime_group_by/</id><summary type="html">&lt;p&gt;SQLite 裡的 &lt;code&gt;datetime&lt;/code&gt; 其實也只是 string 而已，所以用的方式跟 MySQL 之類的不同，MySQL 可以直接 &lt;code&gt;Date(xxx)&lt;/code&gt; 或是 &lt;code&gt;Month(xxx)&lt;/code&gt; 之類的做擷取，不過 SQLite 要用 &lt;code&gt;strftime&lt;/code&gt; 來做，例如:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-02-22T23:30:00+08:00</updated><entry><title>C Naming Rule</title><link href="http://blog.carlcarl.me/1413/c_naming_rule/" rel="alternate"></link><updated>2015-02-22T23:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-02-22:1413/c_naming_rule/</id><summary type="html">&lt;p&gt;最近看到的幾個 naming 的問題。&lt;/p&gt;
+&lt;h2&gt;&lt;code&gt;_t&lt;/code&gt; 結尾的變數&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;_t&lt;/code&gt; 結尾的變數是 for POSIX 的，盡量避免這樣命名。&lt;/p&gt;
+&lt;h2&gt;&lt;code&gt;_&lt;/code&gt; 開頭的變數&lt;/h2&gt;
+&lt;p&gt;像是 &lt;code&gt;int _num;&lt;/code&gt; 這樣，或是 &lt;code&gt;ifndef&lt;/code&gt; 會用到:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#ifndef _HEADER_H&lt;/span&gt;
+&lt;span class="cp"&gt;#define _HEADER_H&lt;/span&gt;
+&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可是同樣的，&lt;code&gt;_&lt;/code&gt; 或是 &lt;code&gt;__&lt;/code&gt; 開頭的，都是 reserved names，所以一樣能避免就避免。&lt;/p&gt;
+&lt;p&gt;Ref:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="stackoverflow.com/questions/3538170/standard-for-typedefing"&gt;Standard for typedef'ing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.gnu.org/software/libc/manual/html_node/Reserved-Names.html"&gt;Reserved Names&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="stackoverflow.com/questions/10077025/ifndef-syntax-for-include-guards-in-c"&gt;#ifndef syntax for include guards in C++&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="stackoverflow.com/questions/3799478/c-ifndef-for-include-files-why-is-all-caps-used-for-the-header-file"&gt;c++ #ifndef for include files, why is all caps used for the header file?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/228783/what-are-the-rules-about-using-an-underscore-in-a-c-identifier/228797#228797"&gt;What are the rules about using an underscore in a C++ identifier?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="C/C++"></category></entry><entry><title>SQLite datetime group by</title><link href="http://blog.carlcarl.me/1412/sqlite_datetime_group_by/" rel="alternate"></link><updated>2015-02-22T23:10:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-02-22:1412/sqlite_datetime_group_by/</id><summary type="html">&lt;p&gt;SQLite 裡的 &lt;code&gt;datetime&lt;/code&gt; 其實也只是 string 而已，所以用的方式跟 MySQL 之類的不同，MySQL 可以直接 &lt;code&gt;Date(xxx)&lt;/code&gt; 或是 &lt;code&gt;Month(xxx)&lt;/code&gt; 之類的做擷取，不過 SQLite 要用 &lt;code&gt;strftime&lt;/code&gt; 來做，例如:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;strftime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%Y&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="k"&gt;year&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
    &lt;span class="n"&gt;strftime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%m&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="k"&gt;month&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
    &lt;span class="k"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;amount&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;Amount&lt;/span&gt; 

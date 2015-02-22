@@ -51,6 +51,25 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-02-28T02:02:00" pubdate>
+                            Thu 28 February 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/794/kde-dolphin-network-folder-ssh-fail/" rel="bookmark"><h1>KDE dolphin network folder ssh fail</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>鬼打牆的小問題，感覺比較像 bug ，想說還是筆記下來好了。</p>
+<p>解決方法：<br />
+把 <code>~/.ssh/known_hosts</code> 中，找到要連線的 host 那行，然後把那行刪掉，
+dolphin 這邊再重連就能夠連上了。</p>
+<p>參考連結：  </p>
+<p><a href="http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder">http://superuser.com/questions/299940/kubuntu-cant-add-new-ssh-network-folder</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-02-22T03:07:00" pubdate>
                             Fri 22 February 2013
                         </time>
@@ -294,27 +313,6 @@ improved</a>，個人覺得還滿方便的～。</p>
 <p>到這邊就 OK 了。</p>
 <p>參考網址：  </p>
 <p><a href="http://code.doughellmann.com/virtualenvwrapper/issue/158/installing-virtualenvwrapper-on-on-osx-108">http://code.doughellmann.com/virtualenvwrapper/issue/158/installing-virtualenvwrapper-on-on-osx-108</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-10-15T20:44:00" pubdate>
-                            Mon 15 October 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/690/ubuntu-install-salt-tool/" rel="bookmark"><h1>Ubuntu install salt tool</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>現在有操作多台機器執行同樣指令的需求，想說裝 <a href="http://docs.saltstack.org/en/latest/contents.html">salt</a>
-來管理看看，詳細介紹可以點連結進去看看。簡單來講，這套工具可以讓你方便一次去對多個機器進行操作，另外還可以透過用 Python 並 import salt module 來處理整個流程和回傳的資料。  </p>
-<p>salt 分成了兩個部份，<code>salt-master</code> 和 <code>salt-minion</code> ，<code>salt-master</code>
-就是 server 端，也就是你用來管理其他機器的機器上要裝的 (有點饒舌=
-=")，minion 則是 client 端，就是被管理的機器所要裝的套件。server
-端會開個 service 讓 client 連，所以 client 端必須能夠知道 server 端的 IP
-或者是 host name ，client 端連上來後，server 端可以決定是否接受這個
-client ...</p>
                     </section>
                 </article>
                 <hr/>
