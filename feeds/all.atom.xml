@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-02-22T23:30:00+08:00</updated><entry><title>C Naming Rule</title><link href="http://blog.carlcarl.me/1413/c_naming_rule/" rel="alternate"></link><updated>2015-02-22T23:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-02-22:1413/c_naming_rule/</id><summary type="html">&lt;p&gt;最近看到的幾個 naming 的問題。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-02-27T00:30:00+08:00</updated><entry><title>mod_wsgi with newer python version</title><link href="http://blog.carlcarl.me/1414/mod_wsgi_with_newer_python_version/" rel="alternate"></link><updated>2015-02-27T00:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-02-27:1414/mod_wsgi_with_newer_python_version/</id><summary type="html">&lt;p&gt;在執行 Apache + mos_msgi + Django 的時候出現了問題：&lt;code&gt;no module named importlib&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;因為系統是比較舊的 Ubuntu，Python 版本是 2.6，我 Django 是用 1.7，不相容 Python 2.6 以下，所以自己又另外裝了 Python 2.7。本來以為把 virtualenv 設定好後就沒事了，結果因為系統提供的 mod_wsgi 是用 Python 2.6 編譯的，沒有 &lt;code&gt;importlib&lt;/code&gt; 這個 module，所以就掛了。&lt;/p&gt;
+&lt;p&gt;解法很直接，另外下載 mod_wsgi 的 source code: &lt;a href="https://github.com/GrahamDumpleton/mod_wsgi"&gt;mod_wsgi&lt;/a&gt;，然後用 Python 2.7 來編譯就可以了:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;configure&lt;/span&gt;  &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;with&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python2&lt;/span&gt;&lt;span class="mf"&gt;.7&lt;/span&gt;
+&lt;span class="n"&gt;make&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;是說這個問題也是卡超久啊...，一開始根本搞不清楚狀況。&lt;/p&gt;
+&lt;p&gt;Ref:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/11492683/django-apache-mod-wsgi-no-module-named-importlib"&gt;Django / Apache / mod_wsgi: No module named importlib&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://serverfault.com/questions/658666/installing-mod-wsgi-error-config-status-error-cannot-find-input-file-makefi"&gt;Installing mod_wsgi error - config.status: error: cannot find input file: Makefile.in&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/16854023/how-can-i-rebuild-my-mod-wsgi-to-use-python-2-7-3"&gt;How can I rebuild my mod_wsgi to use python 2.7.3?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="python"></category></entry><entry><title>C Naming Rule</title><link href="http://blog.carlcarl.me/1413/c_naming_rule/" rel="alternate"></link><updated>2015-02-22T23:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-02-22:1413/c_naming_rule/</id><summary type="html">&lt;p&gt;最近看到的幾個 naming 的問題。&lt;/p&gt;
 &lt;h2&gt;&lt;code&gt;_t&lt;/code&gt; 結尾的變數&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;_t&lt;/code&gt; 結尾的變數是 for POSIX 的，盡量避免這樣命名。&lt;/p&gt;
 &lt;h2&gt;&lt;code&gt;_&lt;/code&gt; 開頭的變數&lt;/h2&gt;

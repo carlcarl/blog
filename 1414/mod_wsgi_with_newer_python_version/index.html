@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    mod_wsgi with newer python version
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="mod_wsgi with newer python version" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1414/mod_wsgi_with_newer_python_version/" />
+                <meta property="og:description" content="在執行 Apache + mos_msgi + Django 的時候出現了問題：no module named importlib。 因為系統是比較舊的 Ubuntu，Python 版本是 2.6，我 Django 是用 1.7，不相容 Python 2.6 以下，所以自己又另外裝了 Python 2.7。本來以為把 virtualenv 設定好後就沒事了，結果因為系統提供的 mod_wsgi 是用 Python 2.6 編譯的，沒有 importlib 這個 module，所以就掛了。 解法很直接，另外下載 mod_wsgi 的 source code ..." />
+                    <meta property="article:tag" content="python" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="fa fa-coffee"></i> carlcarl's blog</a></h1>
+        <p id="site-desc"></p>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2015-02-27T00:30:00" pubdate>
+                            Fri 27 February 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1414/mod_wsgi_with_newer_python_version/" rel="bookmark"><h1>mod_wsgi with newer python version</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p>在執行 Apache + mos_msgi + Django 的時候出現了問題：<code>no module named importlib</code>。</p>
+<p>因為系統是比較舊的 Ubuntu，Python 版本是 2.6，我 Django 是用 1.7，不相容 Python 2.6 以下，所以自己又另外裝了 Python 2.7。本來以為把 virtualenv 設定好後就沒事了，結果因為系統提供的 mod_wsgi 是用 Python 2.6 編譯的，沒有 <code>importlib</code> 這個 module，所以就掛了。</p>
+<p>解法很直接，另外下載 mod_wsgi 的 source code: <a href="https://github.com/GrahamDumpleton/mod_wsgi">mod_wsgi</a>，然後用 Python 2.7 來編譯就可以了:</p>
+<div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="n">configure</span>  <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">python</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python2</span><span class="mf">.7</span>
+<span class="n">make</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+
+
+<p>是說這個問題也是卡超久啊...，一開始根本搞不清楚狀況。</p>
+<p>Ref:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/11492683/django-apache-mod-wsgi-no-module-named-importlib">Django / Apache / mod_wsgi: No module named importlib</a></li>
+<li><a href="http://serverfault.com/questions/658666/installing-mod-wsgi-error-config-status-error-cannot-find-input-file-makefi">Installing mod_wsgi error - config.status: error: cannot find input file: Makefile.in</a></li>
+<li><a href="http://stackoverflow.com/questions/16854023/how-can-i-rebuild-my-mod-wsgi-to-use-python-2-7-3">How can I rebuild my mod_wsgi to use python 2.7.3?</a></li>
+</ul>
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/python.html">python</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/python.html">python</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>

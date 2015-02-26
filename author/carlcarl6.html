@@ -51,6 +51,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-25T17:11:00" pubdate>
+                            Thu 25 July 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1230/python-logging-stream/" rel="bookmark"><h1>Python logging stream</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在用 <a href="https://github.com/moskytw/uniout">uniout</a> 的時候發現 logging
+的時候沒辦法自動轉輸出為中文(因為資料有些是中文，然後有時候又需要做些log
+囧)，看了一下 <code>uniout</code> 的 code，看來做法是另外用了一個物件，然後把
+<code>sys.stdout</code> 的屬性複製上去，再加上編碼的功能，最後再將 <code>sys.stdout</code>
+assign 成這個物件。</p>
+<h3>我用的 logger 程式</h3>
+<div class="highlight"><pre><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(levelname)s</span><span class="s">: </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+</pre></div>
+
+
+<p>想說 <code>logging</code> module 應該也是丟
+<code>stdout</code>，不過怎麼設就是不行，所以還是看一下 source code。</p>
+<h3>logging ...</h3>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-07-17T16:27:00" pubdate>
                             Wed 17 July 2013
                         </time>
@@ -247,35 +274,6 @@ rule，指令如下：</p>
 <p>看了一下 <code>conntrack －L conntrack</code> 的記錄，grep 了在接收 throughput 的
 port，發現還是有連線存在，來源是從 NAT
 內部到外面 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-22T15:18:00" pubdate>
-                            Sat 22 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1070/stunnel-mac-client/" rel="bookmark"><h1>stunnel Mac client</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>stunnel server 的設定就照<a href="https://wido.me/sunteya/setup-a-socks-proxy-server-pass-by-secure-firewall/">這篇</a>的教學，不過 Mac client
-的設定似乎不能直接套用 Ubuntu client
-的，試了一下網路上的一些設定，總算有可以 work
-的了，以下是我的設定，比較要注意的就是 <code>cert</code> 的位置要設對，另外就是
-<code>connect</code> 的 <code>host</code> 要改成你 stunnel server 的位置：</p>
-<div class="highlight"><pre><span class="n">setuid</span> <span class="o">=</span> <span class="n">nobody</span>
-<span class="n">setgid</span> <span class="o">=</span> <span class="n">nogroup</span>
-<span class="n">pid</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">stunnel</span><span class="p">.</span><span class="n">pid</span>
-
-<span class="n">cert</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">stunnel</span><span class="o">/</span><span class="n">client</span><span class="p">.</span><span class="n">pem</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">yes</span>
-
-<span class="n">debug</span> <span class="o">=</span> <span class="mi">7</span>
-
-<span class="n">sslVersion</span> <span class="o">=</span> <span class="n">SSLv3</span>
-<span class="n">verify ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

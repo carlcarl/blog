@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-02-19T00:55:00" pubdate>
+                            Sun 19 February 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/258/vsphere-failed-to-open-disk-scsi00/" rel="bookmark"><h1>[vsphere]Failed to open disk scsi0:0</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>今天想試試看利用網路上的 Virtual Appliance 開 VM，下載完後利用 client
+介面就可以上傳到 datastore，可是在新增 VM，並選擇完 vmdk
+檔後，開啟VM時就出現了錯誤訊息囧。</p>
+<p>錯誤訊息內容: <code>Failed to open disk scsi0:0: Unsupported and/or invalid
+disk type 7.</code></p>
+<p>Google 了一下，似乎是下載下來後還要做轉換（後來看官方的安裝手冊也是的確講要這樣做 orz）。<br />
+首先要先連到有和上傳的 datastore 連線的 esxi server，接著進到 <code>/vmfs/volumes/你的datastore/</code>，利用以下指令做轉換：</p>
+<div class="highlight"><pre>vmkfstools -i 你原來的vmdk檔 轉完的vmdk檔名
+</pre></div>
+
+
+<p>兩個檔案名稱不要重複，轉完之後 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-02-17T21:43:00" pubdate>
                             Fri 17 February 2012
                         </time>
@@ -273,34 +298,6 @@ process，結果怎麼好像都沒用囧，後來才試到一個可以解決的�
 就可以成功開啟了，算是一個滿怪的問題，當初忙著砍掉，忘記先查看 process
 的名稱是什麼，只能先紀錄起來，下次如果還是發生一樣的情況的話，再來看看哩。</p>
 <p>參考網址 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-12-04T23:12:00" pubdate>
-                            Sun 04 December 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/159/apache-prevent-executing-php-in-specific-directory/" rel="bookmark"><h1>apache prevent executing php in specific directory</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近剛修復的問題，其實也滿常見的，不過有時候總是會忽略這種簡單的問題orz。</p>
-<p>如果要預防使用者將 php 檔案上傳後去執行的話，只要在 apache 的 config
-檔中加入以下設定：</p>
-<div class="highlight"><pre>AllowOverride None
-php_flag engine off
-Allow from all
-</pre></div>
-
-
-<p><code>Directory</code> 後面的 <code>/var/www/upload</code>
-記得使用自己要的路徑，設定完並重開 apache 後，如果是在這個目錄底下的
-php，就會改成下載 php 而不是執行
-php。另外還有一種方法也是可以作，不過是用副檔名的方法作過濾，顯然還是上面的方法會比較好囉。</p>
-<p>參考網址：<br />
-<a href="http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html">http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html</a></p>
                     </section>
                 </article>
                 <hr/>

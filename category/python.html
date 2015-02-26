@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-02-27T00:30:00" pubdate>
+                            Fri 27 February 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1414/mod_wsgi_with_newer_python_version/" rel="bookmark"><h1>mod_wsgi with newer python version</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在執行 Apache + mos_msgi + Django 的時候出現了問題：<code>no module named importlib</code>。</p>
+<p>因為系統是比較舊的 Ubuntu，Python 版本是 2.6，我 Django 是用 1.7，不相容 Python 2.6 以下，所以自己又另外裝了 Python 2.7。本來以為把 virtualenv 設定好後就沒事了，結果因為系統提供的 mod_wsgi 是用 Python 2.6 編譯的，沒有 <code>importlib</code> 這個 module，所以就掛了。</p>
+<p>解法很直接，另外下載 mod_wsgi 的 source code ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-08-15T20:00:00" pubdate>
                             Fri 15 August 2014
                         </time>
@@ -251,29 +267,6 @@ schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="
                         <p><img alt="kivy interactive applications in python" src="http://i.imgur.com/87z6yUy.png" /></p>
 <p>其實很久沒看有關 GUI library 相關的書了，會看這本是因為之前其實就有聽說過 <a href="http://kivy.org">kivy</a> 這個 python library，但是一直沒機會摸摸看。前一陣子剛好 <a href="http://www.packtpub.com">packt</a> 在找人 review 一些電子書，所以就想說可以試試看。是說 packt 最近感覺還滿活躍的，常在一些網站徵求可以幫忙 review 的人，譬如說我現在就有在看另外一本 zsh 的書，幫忙訂正草稿和給一些意見，事後除了可以得到原來的電子書，也可以另外在網站上選一本自己想要的電子書，還蠻不錯的~~。</p>
 <p>從 kivy 的官網可以看到它的一些特色，像 cross platform，license 也是很 free 的 MIT，其他還有像常被拿來講的 multi-touch 之類的 feature。在書中可以看到 kivy 還有一個比較特別的地方就是它有一個 kivy language，其實有種 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-11-15T00:19:00" pubdate>
-                            Fri 15 November 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1379/python_celery_crontab/" rel="bookmark"><h1>Python celery crontab</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>記錄一下 celery crontab 的用法，分成兩個部分：service 和 worker。service 負責定期塞 job 到 message queue 裡面，worker 則將 queue 裡的 job 拿出來執行，message queue 的部分這裡使用 <code>rabbitmq</code>。這邊為了方便，用了一個簡單的加法為例。</p>
-<h2>Worker</h2>
-<h3>tasks.py</h3>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
-<span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">task</span>
-
-<span class="n">celery</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s">&#39;tasks&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s">&#39;amqp&#39;</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="s">&#39;amqp://guest@localhost//&#39;</span><span class="p">)</span>
-
-<span class="nd">@task</span>
-<span class="k">def</span> <span class="nf">add ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

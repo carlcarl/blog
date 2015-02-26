@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-02-27T00:30:00" pubdate>
+                            Fri 27 February 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1414/mod_wsgi_with_newer_python_version/" rel="bookmark"><h1>mod_wsgi with newer python version</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在執行 Apache + mos_msgi + Django 的時候出現了問題：<code>no module named importlib</code>。</p>
+<p>因為系統是比較舊的 Ubuntu，Python 版本是 2.6，我 Django 是用 1.7，不相容 Python 2.6 以下，所以自己又另外裝了 Python 2.7。本來以為把 virtualenv 設定好後就沒事了，結果因為系統提供的 mod_wsgi 是用 Python 2.6 編譯的，沒有 <code>importlib</code> 這個 module，所以就掛了。</p>
+<p>解法很直接，另外下載 mod_wsgi 的 source code ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-02-22T23:30:00" pubdate>
                             Sun 22 February 2015
                         </time>
@@ -248,30 +264,6 @@
 <p>完全不確定的話，也可以用 <code>&gt;</code> or <code>&lt;</code> 抓範圍 lol。</p>
 <p>Ref:<br />
 <a href="http://www.jaggersoft.com/pubs/CVu11_3.html">Compile Time Assertions in C</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-01-21T11:00:00" pubdate>
-                            Wed 21 January 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1404/sqlite_foreign_key_support/" rel="bookmark"><h1>SQLite Foreign Key Support</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>SQLite 在設定完 foreign key 之後，對 foreign key 的限制卻沒有生效，例如有一個 table 只有 id=1，但是我在另外一個 table 參照這個 table，並加入 foreign key id=2，是會過的，但是應該是要擋掉才對。查了一下，發現預設並不會開啟= =|||。所以必須在每次的 DB connection 時，都需要做一次這個動作：</p>
-<div class="highlight"><pre><span class="n">PRAGMA</span> <span class="n">foreign_keys</span> <span class="o">=</span> <span class="k">ON</span><span class="p">;</span>
-</pre></div>
-
-
-<p>直接用 <code>sqlite3_exec</code> 之類的執行就可以了。</p>
-<p>Ref:  </p>
-<ul>
-<li><a href="http://www.sqlite.org/foreignkeys.html">SQLite Foreign Key Support</a>  </li>
-<li><a href="http://leeleeju.blogspot.tw/2012/09/sqlite-foreign-key.html">Sqlite Foreign Key</a>  </li>
-<li><a href="http://stackoverflow.com/questions/13534040/sqlite3-foreign-keys-on-pdo">sqlite3 foreign keys on ...</a></li></ul>
                     </section>
                 </article>
                 <hr/>

@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-02T04:45:00" pubdate>
+                            Sun 02 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/865/python-decorate-method-inside-class/" rel="bookmark"><h1>Python decorate method inside class</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>簡易版的可以直接參考
+<a href="http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class">http://stackoverflow.com/questions/1367514/how-to-decorate-a-method-inside-a-class</a>。  </p>
+<p>以我的例子來說，我需要對某些 method 加上 retry
+的機制，除了需要有參數外，還希望能夠把 decorate method 放在 class
+裡頭，這樣我才能呼叫 class 裡頭另外的 method。以下是簡單的例子：</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Test</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="nf">retry</span><span class="p">(</span><span class="n">tries</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">deco_retry</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+            <span class="c"># f is the method decorated</span>
+            <span class="k">def</span> <span class="nf">f_retry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-05-23T16:25:00" pubdate>
                             Thu 23 May 2013
                         </time>
@@ -291,25 +316,6 @@ client ...</p>
 來看一下簡單的範例：</p>
 <p>html</p>
 <div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;list[]&quot;</span> <span class="na">value=</span><span class="s">&quot;value ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-04-01T16:05:00" pubdate>
-                            Sun 01 April 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/335/python-documentation-epydoc/" rel="bookmark"><h1>python documentation: epydoc</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><a href="http://epydoc.sourceforge.net/index.html">epydoc</a> 是利用 parse python 的程式來製作文件，文件的類型像是一般的 html 和 pdf 都能產生。我個人是比較偏好 html 的格式囉，它的 html 樣板跟 Javadoc 的配置差不多，比較習慣。</p>
-<p>它 parse 程式的方法主要是利用 method 一開始的 <code>"""</code> 註解，不習慣寫的人可以參考它的 <a href="http://epydoc.sourceforge.net/fields.html#fields">欄位官方範例</a>。</p>
-<p>首先要先安裝 <code>epydoc</code>，在官方網站上沒講到 ubuntu
-的安裝包，用 <code>apt-get</code> 也找不到，後來試看看 <code>pip install epydoc</code> 就 OK
-了。這邊有點要注意的是，如果你的 project
-是在 <code>virtualenv</code> 環境下的話，建議將 <code>epydoc ...</code></p>
                     </section>
                 </article>
                 <hr/>
