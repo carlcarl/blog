@@ -51,6 +51,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-01-30T17:00:00" pubdate>
+                            Fri 30 January 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1405/c_check_type_size_at_compile_time/" rel="bookmark"><h1>Check Type Size at Compile Time in C</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>查資料的時候看到的，不過資料裡的方式，宣告 0 陣列還是會過，所以我乾脆多減一：</p>
+<div class="highlight"><pre><span class="cp">#define TYPE_SIZE ((sizeof(int) == 4) - 1)</span>
+<span class="kt">char</span> <span class="n">arr</span><span class="p">[</span><span class="n">TYPE_SIZE</span><span class="p">];</span>
+</pre></div>
+
+
+<p>完全不確定的話，也可以用 <code>&gt;</code> or <code>&lt;</code> 抓範圍 lol。</p>
+<p>Ref:<br />
+<a href="http://www.jaggersoft.com/pubs/CVu11_3.html">Compile Time Assertions in C</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-01-21T11:00:00" pubdate>
                             Wed 21 January 2015
                         </time>
@@ -245,30 +267,6 @@
 <div class="highlight"><pre><span class="p">@</span><span class="k">SET</span> <span class="nv">file_dir</span><span class="o">=</span><span class="nv">%~dp0</span>
 <span class="p">@</span><span class="k">SET</span> <span class="nv">exec_file</span><span class="o">=</span><span class="nv">%file_dir%</span>a.exe
 schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="s2">&quot;my_task&quot;</span> <span class="n">/SC</span> DAILY <span class="n">/TR</span> <span class="s2">&quot;%exec_file% -a&quot;</span> <span class="n">/ST</span> <span class="m">14 ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-05-14T16:30:00" pubdate>
-                            Wed 14 May 2014
-                        </time>
-                        <a href="http://blog.carlcarl.me/1395/tcp_tw_recycle_note/" rel="bookmark"><h1>tcp_tw_recycle note</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <h2>簡單結論</h2>
-<ul>
-<li><code>/proc/sys/net/ipv4/tcp_tw_reuse</code> 可以開。</li>
-<li><code>/proc/sys/net/ipv4/tcp_tw_recycle</code> 不應該開。</li>
-</ul>
-<p>Links:<br />
-<a href="http://blog.sina.com.cn/s/blog_781b0c850100znjd.html">tcp_tw_recycle和tcp_timestamps导致connect失败问题</a><br />
-<a href="http://www.pagefault.info/?p=416">打开tcp_tw_recycle引起的一个问题</a><br />
-<a href="http://stackoverflow.com/questions/6426253/tcp-tw-reuse-vs-tcp-tw-recycle-which-to-use-or-both">tcp_tw_reuse vs tcp_tw_recycle : Which to use (or both)?</a><br />
-<a href="http://www.speedguide.net/articles/linux-tweaking-121">Linux Tweaking</a><br />
-<a href="http://stackoverflow.com/questions/8893888/dropping-of-connections-with-tcp-tw-recycle">Dropping of connections with tcp_tw_recycle</a>  </p>
                     </section>
                 </article>
                 <hr/>
