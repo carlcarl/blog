@@ -51,6 +51,34 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-03-18T19:30:00" pubdate>
+                            Wed 18 March 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1416/semantic_ui_dropdown_restore_default/" rel="bookmark"><h1>Semantic UI dropdown restore default</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>鬼打牆了很久，後來才找到一個方法可以做。</p>
+<div class="highlight"><pre><span class="c1">// dropdown init:</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.ui.dropdown&#39;</span><span class="p">).</span><span class="nx">dropdown</span><span class="p">();</span>
+
+
+<span class="c1">// 假如某個 dropdown 的 id 是 a</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.ui.dropdown&#39;</span><span class="p">).</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">dropdown</span><span class="p">(</span><span class="s1">&#39;restore defaults&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>我有試圖用某個特定 id 做 dropdown init，再用這個 element 做 restore default，不過居然還是會有錯誤...。總之目前用這樣解。總覺得對 semantic UI 的怨念原來越深了...。</p>
+<p>Ref:</p>
+<ul>
+<li><a href="https://github.com/Semantic-Org/Semantic-UI/issues/1717">https://github.com/Semantic-Org/Semantic-UI/issues/1717</a></li>
+</ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-15T01:00:00" pubdate>
                             Wed 15 January 2014
                         </time>

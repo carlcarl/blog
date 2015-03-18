@@ -51,6 +51,32 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-03-19T19:36:00" pubdate>
+                            Sat 19 March 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/9/python-django-use-media-url-in-templates/" rel="bookmark"><h1>Python Django use MEDIA_URL in templates</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 settings 裏面已經設好 <code>MEDIA_URL</code>了，可是一直不知道怎麼在 templates 中使用<br />
+像是:</p>
+<div class="highlight"><pre>href=&quot;{{ MEDIA_URL }}styles/base.css&quot;
+</pre></div>
+
+
+<p>後來看到一篇有說在 <code>retrun render_to_response</code> 這邊需要修改，改成這樣, 把第三個參數加上 <code>context_instance</code> 這句:</p>
+<div class="highlight"><pre><span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;base/index.html&#39;</span><span class="p">,</span> <span class="p">{},</span> <span class="n">context_instance</span> <span class="o">=</span>
+    <span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</pre></div>
+
+
+<p>這樣就可以使用了~~。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-03-19T19:27:00" pubdate>
                             Sat 19 March 2011
                         </time>

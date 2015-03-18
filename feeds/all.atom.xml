@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-03-01T02:00:00+08:00</updated><entry><title>[Review] Swift Essentials</title><link href="http://blog.carlcarl.me/1415/review_swift_essentials/" rel="alternate"></link><updated>2015-03-01T02:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-03-01:1415/review_swift_essentials/</id><summary type="html">&lt;p&gt;&lt;img alt="Swift Essentials" src="http://i.imgur.com/CgIAISG.png" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-03-18T19:30:00+08:00</updated><entry><title>Semantic UI dropdown restore default</title><link href="http://blog.carlcarl.me/1416/semantic_ui_dropdown_restore_default/" rel="alternate"></link><updated>2015-03-18T19:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-03-18:1416/semantic_ui_dropdown_restore_default/</id><summary type="html">&lt;p&gt;鬼打牆了很久，後來才找到一個方法可以做。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// dropdown init:&lt;/span&gt;
+&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.ui.dropdown&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;dropdown&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;// 假如某個 dropdown 的 id 是 a&lt;/span&gt;
+&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.ui.dropdown&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;has&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;dropdown&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;restore defaults&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;我有試圖用某個特定 id 做 dropdown init，再用這個 element 做 restore default，不過居然還是會有錯誤...。總之目前用這樣解。總覺得對 semantic UI 的怨念原來越深了...。&lt;/p&gt;
+&lt;p&gt;Ref:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/Semantic-Org/Semantic-UI/issues/1717"&gt;https://github.com/Semantic-Org/Semantic-UI/issues/1717&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="semantic"></category></entry><entry><title>[Review] Swift Essentials</title><link href="http://blog.carlcarl.me/1415/review_swift_essentials/" rel="alternate"></link><updated>2015-03-01T02:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-03-01:1415/review_swift_essentials/</id><summary type="html">&lt;p&gt;&lt;img alt="Swift Essentials" src="http://i.imgur.com/CgIAISG.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://developer.apple.com/swift/"&gt;Swift&lt;/a&gt; 是之前就還滿想學的程式語言，可是一直沒花時間研究，其實比較想做個東西，然後用 Swift 來做的，不過沒啥 idea，而且開發者帳號又要繳年費orz。&lt;/p&gt;
 &lt;p&gt;之前也有試著找 Swift 的學習資源，不過覺得還是有點太分散，沒有一個完整的介紹。這本 &lt;a href="https://www.packtpub.com/application-development/swift-essentials"&gt;Swift Essentials&lt;/a&gt; 是最近看到的一本介紹 Swift &amp;amp; iOS 開發的書，內容一開始先介紹了 Swift 的語法和使用，也有提供很多的語法範例，有些範例還會挑比較特殊的例子，相對的就會比較花時間理解，但是理解之後的幫助個人覺得比舉一些簡單的例子還要多就是，是說偶爾還是會有一些奇怪的範例，讓人搞不太懂為啥要這樣舉例就是囧。&lt;/p&gt;
 &lt;p&gt;Swift 本身的語法都有一些其他程式語言的影子，不過又會有一些些微的不同，有時候不注意就會搞錯用法。像是 &lt;code&gt;switch case&lt;/code&gt; 不用 &lt;code&gt;break&lt;/code&gt;，&lt;code&gt;--i&lt;/code&gt; 和 &lt;code&gt;i--&lt;/code&gt; 所回傳的值不同，然後還有類似 C 的 &lt;code&gt;goto&lt;/code&gt; 用法，基本上這本書都會提到這些東西，有些還會用個 block 來特別標注這些該注意的地方，還滿不錯的。&lt;/p&gt;
