@@ -15,7 +15,7 @@ Slug: semantic_ui_dropdown_restore_default
 	
 	
 	// 假如某個 dropdown 的 id 是 a
-	$('.ui.dropdown').has('#a').dropdown('restore defaults');
+	$('.ui.dropdown').is('#a').dropdown('restore defaults');
 
 
 我有試圖用某個特定 id 做 dropdown init，再用這個 element 做 restore default，不過居然還是會有錯誤...。總之目前用這樣解。總覺得對 semantic UI 的怨念原來越深了...。
