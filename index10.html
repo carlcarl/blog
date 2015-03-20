@@ -51,6 +51,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-01-10T20:33:00" pubdate>
+                            Thu 10 January 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/738/another-plugin-set-completefunc-disabled-neocomplcache/" rel="bookmark"><h1>Another plugin set completefunc! Disabled neocomplcache</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近替 vim 加上了 cscope
+的設定後，<code>neocomplcache</code>突然有時候會出現問題，查了一下資料發現只要加上一行就可以解決了：</p>
+<div class="highlight"><pre><span class="nb">let </span>g:neocomplcache_force_overwrite_completefunc <span class="o">=</span> 1
+</pre></div>
+
+
+<p>參考資料：  </p>
+<p><a href="http://stackoverflow.com/questions/12975098/using-neocomplcache-and-clang-complete">http://stackoverflow.com/questions/12975098/using-neocomplcache-and-clang-complete</a><br />
+<a href="https://github.com/Shougo/neocomplcache/issues/276">https://github.com/Shougo/neocomplcache/issues/276</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-12-02T08:45:00" pubdate>
                             Sun 02 December 2012
                         </time>
@@ -304,37 +326,6 @@ mongostat
 <p>以可讀性來講，因為我大部分畫 canvas 都是放在一個 function 裡，大致用幾個註解分幾個段落，其實就知道各部份的流程，換成物件的方式後，整個 function 感覺並沒有更好讀，而且程式沒有比較短=.=。</p>
 <p>然後我用一個固定的測試流程來作測試(這個流程不包括前面的 js file loading，是讀完後才開始作操作測試)，測試的結果原本是 200ms，換成 KineticJS 之後是 800ms，整個很不划算 ~.~。</p>
 <p>雖然 KineticJS 有提供 layer ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-08-28T00:01:00" pubdate>
-                            Tue 28 August 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" rel="bookmark"><h1>virtualenvwrapper setting</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近為了方便，加了幾個 virtualenvwrapper 的設定。  </p>
-<h3>使用 <code>mkvirtualenv</code> 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。</h3>
-<p>在 <code>~/.virtualenv/postmkvirtualenv</code>裡加入：</p>
-<div class="highlight"><pre><span class="nv">proj_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$VIRTUAL_ENV</span>|awk -F<span class="s1">&#39;/&#39;</span> <span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
-
-<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
-<span class="k">    </span>mkdir ~/Projects/<span class="nv">$proj_name</span>
-<span class="k">fi</span>
-
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;${PWD##*/}&quot;</span> !<span class="o">=</span> <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
-<span class="k">    </span><span class="nb">cd</span> ~/Projects/<span class="nv">$proj_name</span>
-<span class="k">fi</span>
-</pre></div>
-
-
-<p>其中，把 <code>Projects</code> 換成你的 project 位置。</p>
-<hr />
-<h3>輸入 <code>workon 你的project</code> 時，自動切換至 ...</h3>
                     </section>
                 </article>
                 <hr/>

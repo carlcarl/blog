@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    CSS Instant Search Compatibility
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="CSS Instant Search Compatibility" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1417/css_instant_search_compatibility/" />
+                <meta property="og:description" content="會看這個主要是很久之前看到的這篇文章: 使用 CSS:not 與 data-index 即時搜尋頁面。 最近剛好又用到，所以順便研究了一下 IE 的相容性問題，其中比較明顯的是 :not 這個 pseudo class 在 IE 上的相容性不太好: CSS3 :not Selector，IE 的支援從 9 才開始，不過我實際測 IE8 似乎也是可行，IE7 就真的不行了。 本來想到的解法是先把所有的都 display:none，然後再篩選符合的去做對應的 display，ex: table or block，不過後來測試會死在把 css 塞進已存在的 style 這步，查了一下發現舊 IE 對 style ..." />
+                    <meta property="article:tag" content="css" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="fa fa-coffee"></i> carlcarl's blog</a></h1>
+        <p id="site-desc"></p>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2015-03-21T00:00:00" pubdate>
+                            Sat 21 March 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1417/css_instant_search_compatibility/" rel="bookmark"><h1>CSS Instant Search Compatibility</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p>會看這個主要是很久之前看到的這篇文章: <a href="http://blog.mukispace.com/full-text-search-by-css/">使用 CSS:not 與 data-index 即時搜尋頁面</a>。</p>
+<p>最近剛好又用到，所以順便研究了一下 IE 的相容性問題，其中比較明顯的是 <code>:not</code> 這個 pseudo class 在 IE 上的相容性不太好: <a href="http://www.w3schools.com/cssref/sel_not.asp">CSS3 :not Selector</a>，IE 的支援從 9 才開始，不過我實際測 IE8 似乎也是可行，IE7 就真的不行了。</p>
+<p>本來想到的解法是先把所有的都 <code>display:none</code>，然後再篩選符合的去做對應的 display，ex: <code>table</code> or <code>block</code>，不過後來測試會死在把 css 塞進已存在的 style 這步，查了一下發現<a href="http://stackoverflow.com/questions/2692770/adding-css-rules-with-text-method-to-style-element-does-not-work-in-ie">舊 IE 對 style 的 innerHTML 是設定為 read only</a> = =，所以舊 IE 就沒辦法，只能用 JS 來解，後來發現很奇怪的是在舊 IE 上用 jQuery 來找 <code>:not</code> 居然就可以: <code>$('.wrap:not([data-index*="xxx"])')</code>，jQuery 的這個方式在舊 IE 上是可以 work 的。至於其他瀏覽器就可以直接用最上面那篇連結裡的方式來解，修改了那個範例如下：</p>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>test<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;style&gt;</span>
+  <span class="nt">body</span> <span class="p">{</span>
+    <span class="k">background</span><span class="o">:</span> <span class="m">#333</span><span class="p">;</span>
+    <span class="k">font-size</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span>
+    <span class="k">color</span><span class="o">:</span> <span class="m">#f0f0f0</span><span class="p">;</span>
+    <span class="k">line-height</span><span class="o">:</span> <span class="m">1.1em</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nt">a</span> <span class="p">{</span>
+    <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.section</span> <span class="p">{</span>
+    <span class="k">width</span><span class="o">:</span> <span class="m">500px</span><span class="p">;</span>
+    <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="k">auto</span><span class="p">;</span>
+    <span class="k">background</span><span class="o">:</span> <span class="m">#555</span><span class="p">;</span>
+    <span class="k">padding</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span>
+    <span class="k">overflow</span><span class="o">:</span> <span class="k">hidden</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.header</span> <span class="p">{</span>
+    <span class="k">background</span><span class="o">:</span> <span class="m">#d9444a</span><span class="p">;</span>
+    <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+    <span class="k">color</span><span class="o">:</span> <span class="m">#fff</span><span class="p">;</span>
+    <span class="k">font-size</span><span class="o">:</span> <span class="m">.5em</span><span class="p">;</span>
+    <span class="k">padding</span><span class="o">:</span> <span class="m">.7em</span> <span class="m">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nt">h2</span> <span class="p">{</span>
+    <span class="k">font-size</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span>
+    <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">.5em</span> <span class="m">0</span><span class="p">;</span>
+    <span class="k">background</span><span class="o">:</span> <span class="m">#444</span><span class="p">;</span>
+    <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="o">-</span><span class="k">block</span><span class="p">;</span>
+    <span class="k">padding</span><span class="o">:</span> <span class="m">.5em</span> <span class="m">1.2em</span><span class="p">;</span>
+    <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+    <span class="k">left</span><span class="o">:</span> <span class="m">-1em</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c">/* search layout start (you can skip it) */</span>
+  <span class="nc">.search-form</span> <span class="p">{</span>
+    <span class="k">text-align</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span>
+    <span class="n">input</span> <span class="err">{</span>
+      <span class="k">border</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+      <span class="k">padding</span><span class="o">:</span> <span class="m">.5em</span><span class="p">;</span>
+      <span class="k">background</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span><span class="m">255</span><span class="o">,</span><span class="m">255</span><span class="o">,.</span><span class="m">5</span><span class="p">);</span>
+      <span class="k">color</span><span class="o">:</span> <span class="m">#555</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="err">}</span>
+
+  <span class="nc">.wrap</span> <span class="p">{</span>
+    <span class="k">display</span><span class="o">:</span> <span class="n">table</span><span class="p">;</span>
+    <span class="k">background</span><span class="o">:</span> <span class="m">#888</span><span class="p">;</span>
+    <span class="k">margin-right</span><span class="o">:</span> <span class="m">.5em</span><span class="p">;</span>
+    <span class="k">padding</span><span class="o">:</span> <span class="m">.5em</span><span class="p">;</span>
+    <span class="k">width</span><span class="o">:</span> <span class="m">46</span><span class="o">%</span><span class="p">;</span>
+    <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span>
+    Search single page by CSS:not<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://blog.mukispace.com/pure-css-tooltip-data-tag‎/&quot;</span> <span class="na">target=</span><span class="s">&quot;_blank&quot;</span><span class="nt">&gt;</span>(http://blog.mukispace.com/full-text-search-by-css/)‎<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;section&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;search-form&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;search-input&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;type name to search&quot;</span> <span class="nt">/&gt;&lt;button&gt;</span>Search<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;style </span><span class="na">id=</span><span class="s">&quot;m-search&quot;</span><span class="nt">&gt;&lt;/style&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrap&quot;</span> <span class="na">data-index=</span><span class="s">&quot;ju chu ko&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://lorempixel.com/40/40/people/1&quot;</span> <span class="na">border=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Ju Chu Ko<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrap&quot;</span> <span class="na">data-index=</span><span class="s">&quot;browny lin&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://lorempixel.com/40/40/people/2&quot;</span> <span class="na">border=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Browny Lin<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrap&quot;</span> <span class="na">data-index=</span><span class="s">&quot;妙卡甜心&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://lorempixel.com/40/40/people/3&quot;</span> <span class="na">border=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>妙卡甜心<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrap&quot;</span> <span class="na">data-index=</span><span class="s">&quot;mr.壞&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://lorempixel.com/40/40/people/4&quot;</span> <span class="na">border=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Mr.壞<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrap&quot;</span> <span class="na">data-index=</span><span class="s">&quot;come on&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://lorempixel.com/40/40/people/5&quot;</span> <span class="na">border=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Come On!<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrap&quot;</span> <span class="na">data-index=</span><span class="s">&quot;lester&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://lorempixel.com/40/40/people/6&quot;</span> <span class="na">border=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Lester<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrap&quot;</span> <span class="na">data-index=</span><span class="s">&quot;林大中&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://lorempixel.com/40/40/people/7&quot;</span> <span class="na">border=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>林大中<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrap&quot;</span> <span class="na">data-index=</span><span class="s">&quot;高國滑&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://lorempixel.com/40/40/people/8&quot;</span> <span class="na">border=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>高國滑<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrap&quot;</span> <span class="na">data-index=</span><span class="s">&quot;kun1342&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://lorempixel.com/40/40/people/9&quot;</span> <span class="na">border=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Kun1342<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrap&quot;</span> <span class="na">data-index=</span><span class="s">&quot;jimmy ku&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://lorempixel.com/40/40/people/10&quot;</span> <span class="na">border=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Jummy Ku<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+
+
+  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">oldIE</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">attachEvent</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">oldIE</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#search-input&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;change paste keyup&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="kd">var</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">$mSearch</span><span class="p">,</span> <span class="nx">rule</span><span class="p">;</span>
+
+      <span class="nx">value</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">oldIE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.wrap&#39;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;display&#39;</span><span class="p">,</span> <span class="s1">&#39;block&#39;</span><span class="p">);</span>
+          <span class="k">return</span><span class="p">;</span>
+        <span class="p">};</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.wrap&#39;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;display&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.wrap:not([data-index*=&quot;&#39;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&quot;])&#39;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;display&#39;</span><span class="p">,</span> <span class="s1">&#39;block&#39;</span><span class="p">);</span>
+
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">$mSearch</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#m-search&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$mSearch</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+          <span class="k">return</span><span class="p">;</span>
+        <span class="p">};</span>
+
+        <span class="nx">rule</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+        <span class="nx">rule</span> <span class="o">+=</span> <span class="s1">&#39;.wrap:not([data-index*=&quot;&#39;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&quot;]){display:none;}&#39;</span><span class="p">;</span>
+        <span class="nx">$mSearch</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">rule</span><span class="p">);</span>
+      <span class="p">}</span>
+
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<p>至於多重條件篩選的話，這裏有兩種情況:</p>
+<ol>
+<li>一個欄位，只要符合兩種資料的其中一種就做顯示</li>
+<li>兩個欄位，兩個分別對兩種資料做篩選出皆符合的資料</li>
+</ol>
+<p>以 name 和 phone 和 address 為例，如果有兩個欄位，一個欄位是可以搜尋 name 和 phone，另一個欄位是搜尋 address，兩個欄位可以一起作用，要實作這種情況，用 <code>:not</code> 再把不符合的隱藏掉似乎就做不太到，但是如果是先隱藏，再根據條件顯示的話似乎就可行:</p>
+<div class="highlight"><pre><span class="nc">.wrap</span> <span class="p">{</span>
+    <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.wrap</span><span class="o">[</span><span class="nt">data-address</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span><span class="o">][</span><span class="nt">data-name</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span><span class="o">]</span> <span class="p">{</span>
+    <span class="k">display</span><span class="o">:</span> <span class="k">block</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.wrap</span><span class="o">[</span><span class="nt">data-address</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span><span class="o">][</span><span class="nt">data-phone</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span><span class="o">]</span> <span class="p">{</span>
+    <span class="k">display</span><span class="o">:</span> <span class="k">block</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>從這邊可以看到一些規則，要同時符合(and)的話，就 append 那個 attribute selector；只要符合其中一個就好的話，就另外加一條規則就可以，以此類推，然後再加上欄位是否為空值，要不要加進去判斷之類的檢查就可以了。不過這個方法有個不便的地方是要知道原來元素的 <code>display</code> 是啥 type 就是，如果是 table，你給它設 <code>block</code>，顯示可能就會炸了。</p>
+<p>Ref:</p>
+<ul>
+<li><a href="https://css-tricks.com/multiple-attribute-values/">Multiple Attribute Values</a></li>
+<li><a href="http://stackoverflow.com/questions/12340737/css-multiple-attribute-selector">CSS: multiple attribute selector</a></li>
+</ul>
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/web.html">web</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/css.html">css</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>

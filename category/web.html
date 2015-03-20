@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-03-21T00:00:00" pubdate>
+                            Sat 21 March 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1417/css_instant_search_compatibility/" rel="bookmark"><h1>CSS Instant Search Compatibility</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>會看這個主要是很久之前看到的這篇文章: <a href="http://blog.mukispace.com/full-text-search-by-css/">使用 CSS:not 與 data-index 即時搜尋頁面</a>。</p>
+<p>最近剛好又用到，所以順便研究了一下 IE 的相容性問題，其中比較明顯的是 <code>:not</code> 這個 pseudo class 在 IE 上的相容性不太好: <a href="http://www.w3schools.com/cssref/sel_not.asp">CSS3 :not Selector</a>，IE 的支援從 9 才開始，不過我實際測 IE8 似乎也是可行，IE7 就真的不行了。</p>
+<p>本來想到的解法是先把所有的都 <code>display:none</code>，然後再篩選符合的去做對應的 display，ex: <code>table</code> or <code>block</code>，不過後來測試會死在把 css 塞進已存在的 style 這步，查了一下發現<a href="http://stackoverflow.com/questions/2692770/adding-css-rules-with-text-method-to-style-element-does-not-work-in-ie">舊 IE 對 style ...</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-03-18T19:30:00" pubdate>
                             Wed 18 March 2015
                         </time>
@@ -63,7 +79,7 @@
 
 
 <span class="c1">// 假如某個 dropdown 的 id 是 a</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.ui.dropdown&#39;</span><span class="p">).</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">dropdown</span><span class="p">(</span><span class="s1">&#39;restore defaults&#39;</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.ui.dropdown&#39;</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">dropdown</span><span class="p">(</span><span class="s1">&#39;restore defaults&#39;</span><span class="p">);</span>
 </pre></div>
 
 

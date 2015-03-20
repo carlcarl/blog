@@ -14,7 +14,7 @@
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Semantic UI dropdown restore default" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1416/semantic_ui_dropdown_restore_default/" />
-                <meta property="og:description" content="鬼打牆了很久，後來才找到一個方法可以做。 // dropdown init: $('.ui.dropdown').dropdown(); // 假如某個 dropdown 的 id 是 a $('.ui.dropdown').has('#a').dropdown('restore defaults'); 我有試圖用某個特定 id 做 dropdown init，再用這個 element 做 restore default，不過居然還是會有錯誤...。總之目前用這樣解。總覺得對 semantic UI 的怨念原來越深了...。 Ref: https://github.com/Semantic-Org/Semantic-UI/issues/1717" />
+                <meta property="og:description" content="鬼打牆了很久，後來才找到一個方法可以做。 // dropdown init: $('.ui.dropdown').dropdown(); // 假如某個 dropdown 的 id 是 a $('.ui.dropdown').is('#a').dropdown('restore defaults'); 我有試圖用某個特定 id 做 dropdown init，再用這個 element 做 restore default，不過居然還是會有錯誤...。總之目前用這樣解。總覺得對 semantic UI 的怨念原來越深了...。 Ref: https://github.com/Semantic-Org/Semantic-UI/issues/1717" />
                     <meta property="article:tag" content="semantic" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -66,7 +66,7 @@
 
 
 <span class="c1">// 假如某個 dropdown 的 id 是 a</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.ui.dropdown&#39;</span><span class="p">).</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">dropdown</span><span class="p">(</span><span class="s1">&#39;restore defaults&#39;</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.ui.dropdown&#39;</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">dropdown</span><span class="p">(</span><span class="s1">&#39;restore defaults&#39;</span><span class="p">);</span>
 </pre></div>
 
 
