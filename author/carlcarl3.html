@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-05-27T23:30:00" pubdate>
+                            Tue 27 May 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1398/simple_ipython_notebook_extension/" rel="bookmark"><h1>Simple IPython notebook extension</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近練習寫了一個 <a href="http://ipython.org/">IPython</a> 的 notebook extension，查了一些資料就開始著手了。首先是一個簡單的 template，可以在 <a href="http://ipython.org/ipython-doc/rel-0.12.1/config/extensions/index.html#extensions-overview">IPython extensions</a> 這邊找到:</p>
+<div class="highlight"><pre><span class="c"># myextension.py</span>
+
+<span class="k">def</span> <span class="nf">load_ipython_extension</span><span class="p">(</span><span class="n">ipython</span><span class="p">):</span>
+    <span class="c"># The ``ipython`` argument is the currently active</span>
+    <span class="c"># :class:`InteractiveShell` instance that can be used in any way.</span>
+    <span class="c"># This allows you do to things like register new magics, plugins or</span>
+    <span class="c"># aliases.</span>
+
+<span class="k">def</span> <span class="nf">unload_ipython_extension</span><span class="p">(</span><span class="n">ipython ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-05-20T11:30:00" pubdate>
                             Tue 20 May 2014
                         </time>
@@ -244,29 +267,6 @@ schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="
 
 
 <p>記得這邊的 <code>disk1s1 ...</code></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-25T23:00:00" pubdate>
-                            Sat 25 January 2014
-                        </time>
-                        <a href="http://blog.carlcarl.me/1388/shell_script_set_current_working_directory/" rel="bookmark"><h1>Shell script set current working directory</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在 <a href="http://stackoverflow.com/questions/3349105/bash-script-set-current-working-directory-to-the-directory-of-the-script">stackoverflow</a> 上看到的，好像很常會用到所以先記下來，兩種方法:</p>
-<div class="highlight"><pre><span class="c"># First method</span>
-<span class="nb">cd</span> <span class="k">${</span><span class="nv">0</span><span class="p">%\*</span><span class="k">}</span>
-
-<span class="c"># Second method</span>
-<span class="nb">cd</span> <span class="s2">&quot;$(dirname &quot;</span><span class="nv">$0</span><span class="s2">&quot;)&quot;</span>
-</pre></div>
-
-
-<p>第一個是用 <a href="http://stackoverflow.com/questions/6393551/what-is-the-meaning-of-0-in-a-bash-script">parameter expansion</a>。</p>
                     </section>
                 </article>
                 <hr/>

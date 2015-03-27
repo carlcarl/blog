@@ -51,6 +51,25 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-05-28T00:00:00" pubdate>
+                            Thu 28 May 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1418/jquery_data_attribute/" rel="bookmark"><h1>jQuery Data Attribute</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近開始用 <code>data-*</code> 的 attribute，後來看到 jQuery 也有 <code>.data()</code> 的 method 可以用，<code>data()</code> 可以存不只 <code>String</code> type 的資料，也可以存 <code>Number</code> or <code>Boolean</code> 之類的，不過用了之後才發現不是那麼好用，因為假如我把 data attribute 寫在 html 裡的話，ex: </p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">data-value=</span><span class="s">&quot;123&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></div>
+
+
+<p>我用 <code>data('value')</code> 取出來的值會是 <code>Number</code> type，也就是說，如果能轉的話，它就會自動幫你轉，在很多情況下，這不會是想要的行為，而且一旦不小心，就會造成不同型態比較的錯誤，所以就我自己來說，還是使用 <code>attr('data-value ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-02-22T23:00:00" pubdate>
                             Sun 22 February 2015
                         </time>
@@ -261,27 +280,6 @@ event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有�
     maintain。</li>
 <li>使用這個 library 的時候，也能夠保護到內部的 private variable
     不被直接做 access ...</li></ul>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-07-06T03:49:00" pubdate>
-                            Fri 06 July 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/525/html-script-speed-up-with-defer/" rel="bookmark"><h1>HTML script speed up with defer</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在 <a href="http://blog.xuite.net/vexed/tech/61308318">script tag 屬性 async defer 差別</a> 這邊看到了 script tag 有 async
-和 defer 的用法，所以就來試試看。大致測試了一下，速度的確有快了一些(大概加快50 ~ 100ms
-左右吧XD)。以下大概講一下我的測試範例內容：</p>
-<div class="highlight"><pre><span class="c">&lt;!-- </span>
-<span class="c">這是原本的程式</span>
-<span class="c">a-b.js 需要 a.js, 而 a-c.js 需要 a.js, 這是這 3 個 js 檔的相依關係</span>
-<span class="c">最後會從 a-c.js 裡呼叫 library 來執行</span>
-<span class="c">由於 async 屬性並不適合用來處理有相依性的 js 檔案 ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

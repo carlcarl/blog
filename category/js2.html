@@ -51,6 +51,27 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-07-06T03:49:00" pubdate>
+                            Fri 06 July 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/525/html-script-speed-up-with-defer/" rel="bookmark"><h1>HTML script speed up with defer</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 <a href="http://blog.xuite.net/vexed/tech/61308318">script tag 屬性 async defer 差別</a> 這邊看到了 script tag 有 async
+和 defer 的用法，所以就來試試看。大致測試了一下，速度的確有快了一些(大概加快50 ~ 100ms
+左右吧XD)。以下大概講一下我的測試範例內容：</p>
+<div class="highlight"><pre><span class="c">&lt;!-- </span>
+<span class="c">這是原本的程式</span>
+<span class="c">a-b.js 需要 a.js, 而 a-c.js 需要 a.js, 這是這 3 個 js 檔的相依關係</span>
+<span class="c">最後會從 a-c.js 裡呼叫 library 來執行</span>
+<span class="c">由於 async 屬性並不適合用來處理有相依性的 js 檔案 ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-05-09T04:24:00" pubdate>
                             Wed 09 May 2012
                         </time>
