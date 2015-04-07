@@ -51,6 +51,21 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-04-07T14:00:00" pubdate>
+                            Tue 07 April 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1419/c_cgi_resources/" rel="bookmark"><h1>C CGI Resources</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>CGI 的 C 範例，大部分都是很簡單的，找不太到比較完整的資料，只找到 C++ 的，不過還是可以參考看看：<a href="http://www.tutorialspoint.com/cplusplus/cpp_web_programming.htm">http://www.tutorialspoint.com/cplusplus/cpp_web_programming.htm</a>，裡頭有介紹到如何拿 GET, POST 的資料，還有一些常見的 header 欄位。</p>
+<p>另外找了一下，怎麼切 cookie 裡的字串比較好，不過也是沒找到比較正統的做法，只看到這種做法：<a href="http://www.gnu-darwin.orgwww.gnu-darwin.org/www001/src/ports/security/zxid/work/zxid-0.22/zxidcdc.c">http://www.gnu-darwin.orgwww.gnu-darwin.org/www001/src/ports/security/zxid/work/zxid-0.22/zxidcdc.c</a>，直接用 <code>strstr</code> 找到想要的欄位這樣。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-02-03T20:00:00" pubdate>
                             Tue 03 February 2015
                         </time>

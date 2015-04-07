@@ -70,6 +70,21 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-04-07T14:00:00" pubdate>
+                            Tue 07 April 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1419/c_cgi_resources/" rel="bookmark"><h1>C CGI Resources</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>CGI 的 C 範例，大部分都是很簡單的，找不太到比較完整的資料，只找到 C++ 的，不過還是可以參考看看：<a href="http://www.tutorialspoint.com/cplusplus/cpp_web_programming.htm">http://www.tutorialspoint.com/cplusplus/cpp_web_programming.htm</a>，裡頭有介紹到如何拿 GET, POST 的資料，還有一些常見的 header 欄位。</p>
+<p>另外找了一下，怎麼切 cookie 裡的字串比較好，不過也是沒找到比較正統的做法，只看到這種做法：<a href="http://www.gnu-darwin.orgwww.gnu-darwin.org/www001/src/ports/security/zxid/work/zxid-0.22/zxidcdc.c">http://www.gnu-darwin.orgwww.gnu-darwin.org/www001/src/ports/security/zxid/work/zxid-0.22/zxidcdc.c</a>，直接用 <code>strstr</code> 找到想要的欄位這樣。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-03-21T00:00:00" pubdate>
                             Sat 21 March 2015
                         </time>
@@ -229,35 +244,6 @@
                     </header>
                     <section class="post-content">
                         <p><a href="https://www.packtpub.com/index">Packt</a> 最近有一個新活動，活動的內容是每天提供一本免費的電子書給讀者，不過只限到 3/5，而且每天的部分，過了就沒了，所以要看的動作要快囉~~。 有需要的可以點進去這個連結看看: <a href="http://bit.ly/1zNpVt0">http://bit.ly/1zNpVt0</a>。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-02-03T20:00:00" pubdate>
-                            Tue 03 February 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1409/c_ppoll_and_pselect/" rel="bookmark"><h1>C ppoll and pselect</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>通常 <code>ppoll</code> 和 <code>pselect</code> 會搭配 <code>sigprocmask</code> 使用，先透過 <code>sigprocmask</code> block signal，然後在 <code>ppoll</code> 和 <code>pselect</code> 這邊再 unblock signal 做處理，例如常見的 daemon reload 可以這樣做：</p>
-<div class="highlight"><pre><span class="c1">// C</span>
-<span class="k">volatile</span> <span class="kt">sig_atomic_t</span> <span class="n">reload_flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">terminate_flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-<span class="k">static</span> <span class="kt">void</span> <span class="nf">sig_handler</span><span class="p">(</span><span class="kt">int</span> <span class="n">sig</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">sig</span> <span class="o">==</span> <span class="n">SIGHUP</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">reload_flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">sig</span> <span class="o">==</span> <span class="n">SIGTERM</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">terminate_flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// A</span>
-<span class="kt">sigset_t</span> <span class="n">mask</span><span class="p">,</span> <span class="n">orig_mask ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>
