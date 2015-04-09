@@ -6,14 +6,16 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog - json</title>
+        <title>    JSON-C Resources
+</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="carlcarl's blog" />
-                <meta property="og:url" content="http://blog.carlcarl.me" />
-                <meta property="og:description" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="JSON-C Resources" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1420/json_c_resources/" />
+                <meta property="og:description" content="找了一些 JSON-C 的使用範例: JSON parser in C language - json-c，簡單 JSON 的 maker 和 parser，不過沒有 array 的例子。 C 語言產生 json 檔，有 array 的例子可以參考。 A simple and complete json parser，包含很多例子，可是都會省略掉 free 的動作，要自己記得加。 不過最上面兩個都有一個同樣的問題，就是多做了幾次不必要的 free，最後的 json_object_put 其實只要對最上頭的 root 做一次就好，這個 function 會將其中有參照的 object 都做 free ..." />
+                    <meta property="article:tag" content="json" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -56,6 +58,7 @@
                         </time>
                         <a href="http://blog.carlcarl.me/1420/json_c_resources/" rel="bookmark"><h1>JSON-C Resources</h1></a>
                     </header>
+
                     <section class="post-content">
                         <p>找了一些 JSON-C 的使用範例:</p>
 <ul>
@@ -63,41 +66,34 @@
 <li><a href="http://www.oknow.co/2014/06/c-json.html">C 語言產生 json 檔</a>，有 array 的例子可以參考。</li>
 <li><a href="https://linuxprograms.wordpress.com/category/json-c/">A simple and complete json parser</a>，包含很多例子，可是都會省略掉 free 的動作，要自己記得加。</li>
 </ul>
-<p>不過最上面兩個都有一個同樣的問題，就是多做了幾次不必要的 free，最後的 <code>json_object_put</code> 其實只要對最上頭的 root 做一次就好，這個 function 會將其中有參照的 object 都做 free ...</p>
+<p>不過最上面兩個都有一個同樣的問題，就是多做了幾次不必要的 free，最後的 <code>json_object_put</code> 其實只要對最上頭的 root 做一次就好，這個 function 會將其中有參照的 object 都做 free 掉的動作，相關問題可以參照以下連結:</p>
+<ul>
+<li><a href="stackoverflow.com/questions/8746155/memory-leak-using-json-c">Memory Leak Using JSON-C</a></li>
+<li><a href="stackoverflow.com/questions/18382897/how-to-clean-a-json-object-created-by-json-object-new-string">How to clean a json object created by “json_object_new_string”?</a></li>
+</ul>
                     </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/c.html">c</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/json.html">json</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
                 </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-05-23T16:25:00" pubdate>
-                            Thu 23 May 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/852/python-cant-use-a-string-pattern-on-a-bytes-like-object/" rel="bookmark"><h1>Python: can't use a string pattern on a bytes-like object</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近嘗試將 Python2 的程式轉成
-Python3，看起來好像很順利，不過在執行的時候就出現了 Excepion
-囧，內容就是
-<code>can't use a string pattern on a bytes-like object</code>，看了一下，是 <code>json</code>
-的 <code>loads</code> 在轉<code>httplib</code> <code>read</code> 的 output 出現問題，而原來在 Python2
-中並不會出現這個問題，原來程式如下：  </p>
-<div class="highlight"><pre><span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</pre></div>
-
-
-<p>後來查了一下資料才發現，這邊的 <code>read</code>，似乎讀出的資料是 <code>byte</code> 的
-type，還需要做 encode ...</p>
-                    </section>
-                </article>
-                <hr/>
             </li>
         </ol>
-        <div class="paginator">
-            Page 1 / 1
-        </div>
-
     </div>
         </div>
 
