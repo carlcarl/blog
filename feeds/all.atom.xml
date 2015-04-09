@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-04-10T01:00:00+08:00</updated><entry><title>JSON-C Resources</title><link href="http://blog.carlcarl.me/1420/json_c_resources/" rel="alternate"></link><updated>2015-04-10T01:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-04-10:1420/json_c_resources/</id><summary type="html">&lt;p&gt;找了一些 JSON-C 的使用範例:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-04-10T01:30:00+08:00</updated><entry><title>JavaScript setTimeout focus</title><link href="http://blog.carlcarl.me/1421/javascript_settimeout_focus/" rel="alternate"></link><updated>2015-04-10T01:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-04-10:1421/javascript_settimeout_focus/</id><summary type="html">&lt;p&gt;stackoverflow 上可以看到幾個關於呼叫 &lt;code&gt;focus()&lt;/code&gt; 沒有作用的問題：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/4191200/jquery-textarea-focus"&gt;jQuery Textarea focus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="stackoverflow.com/questions/8380759/why-isnt-this-textarea-focusing-with-focus"&gt;Why isn't this textarea focusing with .focus()?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其中有幾個答案提供了這種解法:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;setTimeout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#reply_message&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;focus&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;看起來還滿詭異的，為啥用個 timeout function 就可以解了，查了一下，這篇感覺是正解: &lt;a href="http://blog.csdn.net/lsk_jd/article/details/6080772"&gt;JS setTimeout延迟时间为0的详解&lt;/a&gt;。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;JavaScript 引擎在执行 onkeypress 时，由于没有多线程的同步执行，不可能同时去处理刚创建元素的 focus 和 select 事件，由于这两个事件都不在队列中，在完成 onkeypress 后，JavaScript 引擎已经丢弃了这两个事件，正如你看到的例子 1 的情况。而在例子 2 中，由于setTimeout可以把任务从某个队列中跳脱成为新队列，因而能够得到期望的结果。
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="js"></category></entry><entry><title>JSON-C Resources</title><link href="http://blog.carlcarl.me/1420/json_c_resources/" rel="alternate"></link><updated>2015-04-10T01:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-04-10:1420/json_c_resources/</id><summary type="html">&lt;p&gt;找了一些 JSON-C 的使用範例:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="blog.yslin.tw/2012/06/json-parser-in-c-language-json-c.html"&gt;JSON parser in C language - json-c&lt;/a&gt;，簡單 JSON 的 maker 和 parser，不過沒有 array 的例子。&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.oknow.co/2014/06/c-json.html"&gt;C 語言產生 json 檔&lt;/a&gt;，有 array 的例子可以參考。&lt;/li&gt;

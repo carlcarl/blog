@@ -51,6 +51,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-04-10T01:30:00" pubdate>
+                            Fri 10 April 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1421/javascript_settimeout_focus/" rel="bookmark"><h1>JavaScript setTimeout focus</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>stackoverflow 上可以看到幾個關於呼叫 <code>focus()</code> 沒有作用的問題：</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/4191200/jquery-textarea-focus">jQuery Textarea focus</a></li>
+<li><a href="stackoverflow.com/questions/8380759/why-isnt-this-textarea-focusing-with-focus">Why isn't this textarea focusing with .focus()?</a></li>
+</ul>
+<p>其中有幾個答案提供了這種解法:</p>
+<div class="highlight"><pre><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#reply_message&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+<span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+
+
+<p>看起來還滿詭異的，為啥用個 timeout function 就可以解了，查了一下，這篇感覺是正解: <a href="http://blog.csdn.net/lsk_jd/article/details/6080772">JS setTimeout延迟时间为0的详解</a>。</p>
+<div class="highlight"><pre>JavaScript 引擎在执行 onkeypress 时，由于没有多线程的同步执行，不可能同时去处理刚创建元素的 focus 和 select 事件，由于这两个事件都不在队列中，在完成 onkeypress 后，JavaScript 引擎已经丢弃了这两个事件，正如你看到的例子 1 的情况。而在例子 ...</pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-03-28T00:00:00" pubdate>
                             Sat 28 March 2015
                         </time>
@@ -244,42 +271,6 @@ event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有�
 <p>以可讀性來講，因為我大部分畫 canvas 都是放在一個 function 裡，大致用幾個註解分幾個段落，其實就知道各部份的流程，換成物件的方式後，整個 function 感覺並沒有更好讀，而且程式沒有比較短=.=。</p>
 <p>然後我用一個固定的測試流程來作測試(這個流程不包括前面的 js file loading，是讀完後才開始作操作測試)，測試的結果原本是 200ms，換成 KineticJS 之後是 800ms，整個很不划算 ~.~。</p>
 <p>雖然 KineticJS 有提供 layer ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-07-23T02:03:00" pubdate>
-                            Mon 23 July 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/537/javascript-library-simple-structure/" rel="bookmark"><h1>Javascript Library simple structure</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前在找 Javascript 這方面的 library
-該怎麼寫，看了一些資料，覺得以下這種方式不錯  </p>
-<div class="highlight"><pre><span class="c1">// library example</span>
-<span class="kd">var</span> <span class="nx">animal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;tom&#39;</span><span class="p">;</span> <span class="c1">// private variable</span>
-
-    <span class="kd">var</span> <span class="nx">API</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;getName&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="nx">name</span><span class="p">;}</span>
-    <span class="p">};</span>
-    <span class="k">return</span> <span class="nx">API</span><span class="p">;</span>
-<span class="p">}(</span><span class="nx">windows</span><span class="p">);</span>
-
-<span class="nx">animal</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span> <span class="c1">// call API</span>
-</pre></div>
-
-
-<p>這樣寫法的優點：</p>
-<ul>
-<li>透過將這個 library 當作一個物件並呼叫其中的
-    function，使用上較不會跟其他 library function 混淆，也較好
-    maintain。</li>
-<li>使用這個 library 的時候，也能夠保護到內部的 private variable
-    不被直接做 access ...</li></ul>
                     </section>
                 </article>
                 <hr/>
