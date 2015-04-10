@@ -51,6 +51,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-07-27T20:19:00" pubdate>
+                            Fri 27 July 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/546/fix-mongodb-default-allocate-space-too-larger/" rel="bookmark"><h1>fix mongodb default allocate space too larger</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近在做 VM template 的時候才發現到這個問題，安裝好 mongodb 之後，在
+<code>/var/lib/mongodb/journal/</code> 下面可以發現 mongodb 佔用了 3 GB 的 journal
+檔案。</p>
+<p>當然，如果硬碟夠大或是沒啥必要的話，這其實可以不用去理它，但是我由於需要加快利用
+VM template 安裝系統的速度，而 template 的大小會影響中間網路傳送
+template 的時間，因此還是希望能避免不必要的空間浪費。</p>
+<p>而其實 mongodb 本身有提供一個參數 <code>smallfiles</code>
+，這個參數可以讓這些預先生成的 journal 檔案一個從 1G 降到約 13X MB
+左右，所以總共 3 個 journal file ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-07-23T02:03:00" pubdate>
                             Mon 23 July 2012
                         </time>
@@ -275,35 +297,12 @@ VLC。但是預設的情況下播放還是會透明，必須到 Interface -&gt; 
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-23T19:56:00" pubdate>
-                            Wed 23 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/473/cloudstack/" rel="bookmark"><h1>CloudStack comment</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><img alt="CloudStack" src="http://i.imgur.com/QqDmZipl.png" title="Selection_49cef6" />
-用 CloudStack 也算用了一段時間了，來講一下心得好了 XD。 當初會看到是在
-Youtube 上面看到教學影片，覺得安裝還滿方便的，而且是 Citrix
-推出的，所以搭配 XenServer 的效果看起來還不錯，所以就來裝裝看了。</p>
-<p>安裝算是還滿簡單的，跟 OpenStack 比起來......( 感覺 OpenStack
-還是比較注重在 KVM
-上)，網路架構配置也不用太花腦筋，我自己是只配置一張網卡在 CloudStack
-的架構上，並未將外網和內網分開，照理來說分開來會比較好啦，但是覺得這樣做，以後就能直接拿一般的
-PC(單網卡) 來擴充當 compute node。management ip address 和 guest ip
-address 就直接分在同個網段下的不同區域，例如 192.168.1 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl11.html">
                         <i class="fa fa-arrow-circle-left"></i>
                     </a>
-            Page 12 / 20
+            Page 12 / 21
                 <a href="http://blog.carlcarl.me/author/carlcarl13.html">
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>

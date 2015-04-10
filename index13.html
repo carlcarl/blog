@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-23T19:56:00" pubdate>
+                            Wed 23 May 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/473/cloudstack/" rel="bookmark"><h1>CloudStack comment</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="CloudStack" src="http://i.imgur.com/QqDmZipl.png" title="Selection_49cef6" />
+用 CloudStack 也算用了一段時間了，來講一下心得好了 XD。 當初會看到是在
+Youtube 上面看到教學影片，覺得安裝還滿方便的，而且是 Citrix
+推出的，所以搭配 XenServer 的效果看起來還不錯，所以就來裝裝看了。</p>
+<p>安裝算是還滿簡單的，跟 OpenStack 比起來......( 感覺 OpenStack
+還是比較注重在 KVM
+上)，網路架構配置也不用太花腦筋，我自己是只配置一張網卡在 CloudStack
+的架構上，並未將外網和內網分開，照理來說分開來會比較好啦，但是覺得這樣做，以後就能直接拿一般的
+PC(單網卡) 來擴充當 compute node。management ip address 和 guest ip
+address 就直接分在同個網段下的不同區域，例如 192.168.1 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-05-09T17:38:00" pubdate>
                             Wed 09 May 2012
                         </time>
@@ -304,34 +327,12 @@ server 端的 response 加上 content type="application/json"
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-04-03T21:56:00" pubdate>
-                            Tue 03 April 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/342/django-ajax-file-upload/" rel="bookmark"><h1>Django ajax file upload</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>原本以為很簡單可以完成的東西，結果花了我不少時間解決囧。</p>
-<p>Ajax 檔案上傳我用的是 <a href="http://www.phpletter.com/Our-Projects/AjaxFileUpload/">ajaxfileupload</a> 這個 jQuery 套件，問題在於
-Django 會檢查 csrf 的問題，如果我不在 settings.py 裡的
-<code>MIDDLEWARE_CLASSES</code> 加上
-<code>django.middleware.csrf.CsrfViewMiddleware</code>，上傳會出現 syntax
-error，如果我加上了，則是會跟我說 csrf token 找不到。</p>
-<p>後來找到的解決辦法就是在 views.py 裡拿到 csrf token 並傳到 template
-中，然後再改寫 ajaxfileupload.js 中的內容，讓它支援傳送參數，接著將 csrf
-token 當作參數傳送回去就 OK ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/index12.html">
                         <i class="fa fa-arrow-circle-left"></i>
                     </a>
-            Page 13 / 20
+            Page 13 / 21
                 <a href="http://blog.carlcarl.me/index14.html">
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>

@@ -51,6 +51,38 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-12-22T21:30:00" pubdate>
+                            Sun 22 December 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1382/django_template_check_if_in_debug_mode/" rel="bookmark"><h1>Django template check if in debug mode</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>找了一下在 template 中確認是否在 debug mode 底下的方法，找了很多，不過好像都有點繞圈子，後來發現其實 Django 內建還是有<a href="http://www.djangobook.com/en/2.0/chapter09.html">簡單的方法</a>。</p>
+<p>在 <code>settings.py</code> 裡，先確認 <code>debug</code> 是 <code>True</code>，然後再加上：</p>
+<div class="highlight"><pre><span class="n">INTERNAL_IPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+    <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>之後在 template 裡就可以這樣用:</p>
+<div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nb">debug</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nb">debug</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">else</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">production</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endif</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+
+
+<p>如果到 production 的話，就將 <code>debug</code> 設為 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-12-08T17:00:00" pubdate>
                             Sun 08 December 2013
                         </time>
@@ -252,47 +284,12 @@ orz。</p>
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-09-19T00:09:00" pubdate>
-                            Thu 19 September 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/" rel="bookmark"><h1>Python multiprocessing share counter</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>找了一下，以下是基本的寫法：</p>
-<div class="highlight"><pre><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="n">counter_lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
-    <span class="k">global</span> <span class="n">counter</span>
-    <span class="k">with</span> <span class="n">counter_lock</span><span class="p">:</span>
-        <span class="n">counter</span><span class="o">.</span><span class="n">value</span> <span class="o">-=</span> <span class="mi">1</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-        <span class="k">global</span> <span class="n">counter</span>
-        <span class="n">counter</span> <span class="o">=</span> <span class="n">args</span>
-    <span class="n">data_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
-    <span class="k">global</span> <span class="n">counter</span>
-    <span class="n">counter</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">))</span>
-    <span class="n">pool</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span>
-        <span class="n">initializer</span><span class="o">=</span><span class="n">init</span><span class="p">,</span>
-        <span class="n">initargs</span><span class="o">=</span><span class="p">(</span><span class="n">counter</span><span class="p">,)</span>
-    <span class="p">)</span>
-    <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">countdown</span><span class="p">,</span> <span class="n">data_list ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/author/carlcarl4.html">
                         <i class="fa fa-arrow-circle-left"></i>
                     </a>
-            Page 5 / 20
+            Page 5 / 21
                 <a href="http://blog.carlcarl.me/author/carlcarl6.html">
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>

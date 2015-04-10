@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog - makefile</title>
+        <title>carlcarl's blog</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
@@ -51,74 +51,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-10T16:00:00" pubdate>
-                            Fri 10 April 2015
+                        <time class="post-time" datetime="2011-03-14T15:21:00" pubdate>
+                            Mon 14 March 2011
                         </time>
-                        <a href="http://blog.carlcarl.me/1422/makefile_notes/" rel="bookmark"><h1>Makefile Notes</h1></a>
+                        <a href="http://blog.carlcarl.me/5/screenrc-setting/" rel="bookmark"><h1>screenrc setting</h1></a>
                     </header>
                     <section class="post-content">
-                        <h2>Implicit Make Rule</h2>
-<div class="highlight"><pre><span class="nf">%.o</span><span class="o">:</span><span class="m">%.c</span>
-    <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -c <span class="nv">$&lt;</span> -o <span class="nv">$@</span>
+                        <p>在<a href="http://antontw.blogspot.com/2007/04/screenrc-screenrc.html">大步向前走</a>看到不錯的設定檔 把顏色稍微改一下!</p>
+<p><img alt="screenrc" src="http://i.imgur.com/yCkhXdUl.png" title="screenrc" /></p>
+<div class="highlight"><pre>caption always &quot;%{= rk} %{= bY} [%n]%t @ %H %{-} %= %{= rr} %l %{-} | %{= rG} %Y-%m-%d %{-} &quot;
+hardstatus alwayslastline &quot; %-Lw%{= Bw}%n%f %t%{-  }%+Lw %=| %0c:%s &quot;
 </pre></div>
 
 
-<ul>
-<li><a href="http://stackoverflow.com/questions/2754966/cflags-vs-cppflags">CFLAGS vs CPPFLAGS</a></li>
-</ul>
-<h2>Target-specific Variables</h2>
-<p>ex:</p>
-<div class="highlight"><pre><span class="nf">target1</span><span class="o">:</span> <span class="m">CFLAGS = -IINCLUDEPATH1</span>
-<span class="nf">target1</span><span class="o">:</span> <span class="m">LDLIBS = -lLIB1</span>
-<span class="nf">target1</span><span class="o">:</span> <span class="m">target1.o misc.o</span>
-</pre></div>
-
-
-<ul>
-<li><a href="http://stackoverflow.com/questions/3261737/makefile-change-variable-value-depending-on-a-target">Makefile - change variable value depending on a target</a></li>
-<li><a href="http://stackoverflow.com/questions/2711963/change-makefile-variable-value">Change Makefile variable value</a></li>
-<li><a href="http://stackoverflow.com/questions/1305665/how-to-compile-different-c-files-with-different-cflags-using-makefile">How to compile different c files with different CFLAGS using Makefile ...</a></li></ul>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-08-13T15:50:00" pubdate>
-                            Tue 13 August 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1267/c-define-debug-function/" rel="bookmark"><h1>C define debug function</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>參考<a href="http://www.makelinux.net/ldd3/chp-4-sect-2">這篇</a>，然後做了點修改。</p>
-<div class="highlight"><pre>#undef CM_DBG
-#ifdef LTE_CM_DEBUG
-#   define CM_DBG(fmt, args...) do{   
-    printf(&quot;  (%d/%s): &quot;fmt, __LINE__, __FILE__, ## args);   
-}while(0)
-#else
-#   define CM_DBG(fmt, args...)
-#endif
-
-#undef CM_DBGG
-#define CM_DBGG(fmt, args...) do{   
-    printf(&quot;  (%d/%s): &quot;fmt, __LINE__, __FILE__, ## args);   
-}while(0)
-</pre></div>
-
-
-<p>大致除了命名外還做了點修改：</p>
-<ol>
-<li>把 <code>printk</code> 的部分拿掉，因為我不需要。</li>
-<li><code>CM_DBGG</code> 改成跟原本功能一樣 ...</li></ol>
+<p>參數設定的話在<a href="http://cytseng.twbbs.org/?p=26">小明的網誌</a>可以看到。</p>
                     </section>
                 </article>
                 <hr/>
             </li>
         </ol>
         <div class="paginator">
-            Page 1 / 1
+                    <a href="http://blog.carlcarl.me/index20.html">
+                        <i class="fa fa-arrow-circle-left"></i>
+                    </a>
+            Page 21 / 21
         </div>
 
     </div>

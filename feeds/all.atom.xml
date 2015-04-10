@@ -1,5 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-04-10T01:30:00+08:00</updated><entry><title>JavaScript setTimeout focus</title><link href="http://blog.carlcarl.me/1421/javascript_settimeout_focus/" rel="alternate"></link><updated>2015-04-10T01:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-04-10:1421/javascript_settimeout_focus/</id><summary type="html">&lt;p&gt;stackoverflow 上可以看到幾個關於呼叫 &lt;code&gt;focus()&lt;/code&gt; 沒有作用的問題：&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-04-10T16:00:00+08:00</updated><entry><title>Makefile Notes</title><link href="http://blog.carlcarl.me/1422/makefile_notes/" rel="alternate"></link><updated>2015-04-10T16:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-04-10:1422/makefile_notes/</id><summary type="html">&lt;h2&gt;Implicit Make Rule&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;%.o&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;%.c&lt;/span&gt;
+    &lt;span class="k"&gt;$(&lt;/span&gt;CC&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;CPPFLAGS&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;CFLAGS&lt;span class="k"&gt;)&lt;/span&gt; -c &lt;span class="nv"&gt;$&amp;lt;&lt;/span&gt; -o &lt;span class="nv"&gt;$@&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/2754966/cflags-vs-cppflags"&gt;CFLAGS vs CPPFLAGS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Target-specific Variables&lt;/h2&gt;
+&lt;p&gt;ex:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;target1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;CFLAGS = -IINCLUDEPATH1&lt;/span&gt;
+&lt;span class="nf"&gt;target1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;LDLIBS = -lLIB1&lt;/span&gt;
+&lt;span class="nf"&gt;target1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;target1.o misc.o&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/3261737/makefile-change-variable-value-depending-on-a-target"&gt;Makefile - change variable value depending on a target&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/2711963/change-makefile-variable-value"&gt;Change Makefile variable value&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/1305665/how-to-compile-different-c-files-with-different-cflags-using-makefile"&gt;How to compile different c files with different CFLAGS using Makefile?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/2517999/what-is-the-best-approach-to-use-different-cflags-for-the-same-source-files"&gt;What is the best approach to use different CFLAGS for the same source files?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;LDFLAGS &amp;amp; LDLIBS&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;LDLIBS&lt;/code&gt; is for libraries, &lt;code&gt;LDFLAGS&lt;/code&gt; should be used for flags/search paths (-L)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/13249610/how-to-use-ldflags-in-makefile"&gt;How to use LDFLAGS in makefile&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Auto Dependency&lt;/h2&gt;
+&lt;p&gt;ex:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;Gpp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; g++
+&lt;span class="nv"&gt;srcs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;wildcard *.cpp&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;objs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;srcs:.cpp&lt;span class="o"&gt;=&lt;/span&gt;.o&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;deps&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;srcs:.cpp&lt;span class="o"&gt;=&lt;/span&gt;.d&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="nf"&gt;test&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;$(objs)&lt;/span&gt;
+    &lt;span class="k"&gt;$(&lt;/span&gt;Gpp&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;$^&lt;/span&gt; -o &lt;span class="nv"&gt;$@&lt;/span&gt;
+
+&lt;span class="nf"&gt;%.o&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;%.cpp&lt;/span&gt;
+    &lt;span class="k"&gt;$(&lt;/span&gt;Gpp&lt;span class="k"&gt;)&lt;/span&gt; -MMD -MP -c &lt;span class="nv"&gt;$&amp;lt;&lt;/span&gt; -o &lt;span class="nv"&gt;$@&lt;/span&gt;
+
+&lt;span class="nf"&gt;.PHONY&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;clean&lt;/span&gt;
+
+&lt;span class="c"&gt;# $(RM) is rm -f by default&lt;/span&gt;
+&lt;span class="nf"&gt;clean&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;$(&lt;/span&gt;RM&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;objs&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;deps&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="nb"&gt;test&lt;/span&gt;
+
+&lt;span class="cp"&gt;-include $(deps)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://codereview.stackexchange.com/questions/2547/makefile-dependency-generation"&gt;makefile dependency generation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/8025766/makefile-auto-dependency-generation"&gt;Makefile (Auto-Dependency Generation)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Others&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://chunchaichang.blogspot.tw/2010/12/makefile.html"&gt;http://chunchaichang.blogspot.tw/2010/12/makefile.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://maxubuntu.blogspot.tw/2010/02/makefile.html"&gt;Makefile範例教學&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/2481269/how-to-make-simple-c-makefile"&gt;How to make SIMPLE C++ Makefile?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.chemie.fu-berlin.de/chemnet/use/info/make/make_10.html"&gt;http://www.chemie.fu-berlin.de/chemnet/use/info/make/make_10.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="makefile"></category></entry><entry><title>JavaScript setTimeout focus</title><link href="http://blog.carlcarl.me/1421/javascript_settimeout_focus/" rel="alternate"></link><updated>2015-04-10T01:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-04-10:1421/javascript_settimeout_focus/</id><summary type="html">&lt;p&gt;stackoverflow 上可以看到幾個關於呼叫 &lt;code&gt;focus()&lt;/code&gt; 沒有作用的問題：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://stackoverflow.com/questions/4191200/jquery-textarea-focus"&gt;jQuery Textarea focus&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="stackoverflow.com/questions/8380759/why-isnt-this-textarea-focusing-with-focus"&gt;Why isn't this textarea focusing with .focus()?&lt;/a&gt;&lt;/li&gt;
