@@ -37,6 +37,10 @@ file lock 有幾個 function 可以用:
 
 再來就是 file lock 的 file，裡面要填啥內容，一般是都填 process 的 pid 就是，在弄一些設定的時候也比較不會有問題: [Writing own daemon. systemd error: Failed to read PID from file: Invalid argument]。
 
+
+Linux lock file 的 path 通常都放在 `/var/run/` 底下，檔案可以命名為 `<your_process>.pid`，`your_process` 改成你的 process 名稱。另外，假如執行這個 process 的 user 不是 root 的話，會有 pid 檔案建立權限的問題，所以可以考慮用 root 執行一個 script，script 裡在 `/var/run/` 下建立一個資料夾，再 `chown` + `chmod` 它，pid file 指定在這個資料夾底下，接著再用 `start-stop-daemon` 加上指定 exec 的 user 的參數來執行 process 就可以了。不過既然要用 `start-stop-daemon` 的話，乾脆 pid file 也給它管理就好啦(好像有點在打自己臉= =|||)，不過 `start-stop-daemon` 也不是每個 Linux distro 都有的樣子。
+
+
 簡單範例如下:
 
 	:::c
