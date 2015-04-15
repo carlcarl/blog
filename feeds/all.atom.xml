@@ -40,6 +40,7 @@
 &lt;li&gt;&lt;a href="blog.csdn.net/wallwind/article/details/7816221"&gt;linux系统编程之struct flock 结构体&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;再來就是 file lock 的 file，裡面要填啥內容，一般是都填 process 的 pid 就是，在弄一些設定的時候也比較不會有問題: &lt;a href="unix.stackexchange.com/questions/118132/writing-own-daemon-systemd-error-failed-to-read-pid-from-file-invalid-argumen"&gt;Writing own daemon. systemd error: Failed to read PID from file: Invalid argument&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;Linux lock file 的 path 通常都放在 &lt;code&gt;/var/run/&lt;/code&gt; 底下，檔案可以命名為 &lt;code&gt;&amp;lt;your_process&amp;gt;.pid&lt;/code&gt;，&lt;code&gt;your_process&lt;/code&gt; 改成你的 process 名稱。另外，假如執行這個 process 的 user 不是 root 的話，會有 pid 檔案建立權限的問題，所以可以考慮用 root 執行一個 script，script 裡在 &lt;code&gt;/var/run/&lt;/code&gt; 下建立一個資料夾，再 &lt;code&gt;chown&lt;/code&gt; + &lt;code&gt;chmod&lt;/code&gt; 它，pid file 指定在這個資料夾底下，接著再用 &lt;code&gt;start-stop-daemon&lt;/code&gt; 加上指定 exec 的 user 的參數來執行 process 就可以了。不過既然要用 &lt;code&gt;start-stop-daemon&lt;/code&gt; 的話，乾脆 pid file 也給它管理就好啦(好像有點在打自己臉= =|||)，不過 &lt;code&gt;start-stop-daemon&lt;/code&gt; 也不是每個 Linux distro 都有的樣子。&lt;/p&gt;
 &lt;p&gt;簡單範例如下:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;write_pid_file&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
