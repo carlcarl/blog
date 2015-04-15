@@ -1,5 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-04-10T16:00:00+08:00</updated><entry><title>Makefile Notes</title><link href="http://blog.carlcarl.me/1422/makefile_notes/" rel="alternate"></link><updated>2015-04-10T16:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-04-10:1422/makefile_notes/</id><summary type="html">&lt;h2&gt;Implicit Make Rule&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-04-15T15:00:00+08:00</updated><entry><title>Linux Single Instance Lock</title><link href="http://blog.carlcarl.me/1423/linux_single_instance_lock/" rel="alternate"></link><updated>2015-04-15T15:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-04-15:1423/linux_single_instance_lock/</id><summary type="html">&lt;p&gt;要實作 single instance 有幾種方式:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;file lock&lt;/li&gt;
+&lt;li&gt;inet socket lock&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sem_open&lt;/code&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;參照一些 daemon 的作法，感覺 file lock 較常見。inet socket bind 的作法有點麻煩，因爲還要找個 port 來 bind，所以不考慮，unix socket 大略等同於 file lock 的作法，不過步驟太煩雜，所以也不考慮，semaphore(&lt;code&gt;sem_open&lt;/code&gt;)的作法看似比較好，因為 lock 是在 kernel 裡做管理，不用另外建 file，不過還是有一些問題在: &lt;a href="http://stackoverflow.com/questions/2053679/how-do-i-recover-a-semaphore-when-the-process-that-decremented-it-to-zero-crashe"&gt;How do I recover a semaphore when the process that decremented it to zero crashes?&lt;/a&gt;，一旦出問題就沒有 recover 的辦法，相對來講 file lock 比較算是可以接受的作法，就算出問題，把檔案移除掉就好XD，一般人也不會那麼閒會去動這檔案，所以最後還是決定用 file lock 的作法。&lt;/p&gt;
+&lt;p&gt;file lock 有幾個 function 可以用:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fcntl&lt;/li&gt;
+&lt;li&gt;flock&lt;/li&gt;
+&lt;li&gt;lockf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;相關比較可以參考以下連結：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://blog.csdn.net/qifengzou/article/details/37714025"&gt;Linux下各种编程锁的比较&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="stackoverflow.com/questions/5339200/how-to-create-a-single-instance-application-in-c-or-c"&gt;How to create a single instance application in C or C++&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="stackoverflow.com/questions/575328/fcntl-lockf-which-is-better-to-use-for-file-locking"&gt;fcntl, lockf, which is better to use for file locking?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;看起來 &lt;code&gt;flock&lt;/code&gt; 和 &lt;code&gt;lockf&lt;/code&gt; 有一些小缺點，像是 NFS 的支援性之類的，所以就乾脆用最原始的 &lt;code&gt;fcntl&lt;/code&gt;。&lt;code&gt;fcntl&lt;/code&gt; 的 usage 可以參考: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="stackoverflow.com/questions/16988256/how-to-lock-and-unlock-pid-file-with-fcntl"&gt;How to lock and unlock pid file with “fcntl()”&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://man7.org/linux/man-pages/man2/fcntl.2.html"&gt;man fcntl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="blog.csdn.net/wallwind/article/details/7816221"&gt;linux系统编程之struct flock 结构体&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;再來就是 file lock 的 file，裡面要填啥內容，一般是都填 process 的 pid 就是，在弄一些設定的時候也比較不會有問題: &lt;a href="unix.stackexchange.com/questions/118132/writing-own-daemon-systemd-error-failed-to-read-pid-from-file-invalid-argumen"&gt;Writing own daemon. systemd error: Failed to read PID from file: Invalid argument&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;簡單範例如下:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;write_pid_file&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;lock_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PID_FILE_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;O_RDWR&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;O_CREAT&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;O_TRUNC&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mo"&gt;0644&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lock_file&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ERROR&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;flock&lt;/span&gt; &lt;span class="n"&gt;fl&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;fl&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;l_type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;F_WRLCK&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;fl&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;l_whence&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;SEEK_SET&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;fl&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;l_start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;fl&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;l_len&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fcntl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lock_file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;F_SETLK&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;fl&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lock_file&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ERROR&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;pids&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="n"&gt;snprintf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pids&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pids&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;%d&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;getpid&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="kt"&gt;size_t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lock_file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pids&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pids&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="n"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pids&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lock_file&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ERROR&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;OK&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="linux"></category><category term="c"></category></entry><entry><title>Makefile Notes</title><link href="http://blog.carlcarl.me/1422/makefile_notes/" rel="alternate"></link><updated>2015-04-10T16:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-04-10:1422/makefile_notes/</id><summary type="html">&lt;h2&gt;Implicit Make Rule&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;%.o&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;%.c&lt;/span&gt;
     &lt;span class="k"&gt;$(&lt;/span&gt;CC&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;CPPFLAGS&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;CFLAGS&lt;span class="k"&gt;)&lt;/span&gt; -c &lt;span class="nv"&gt;$&amp;lt;&lt;/span&gt; -o &lt;span class="nv"&gt;$@&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;

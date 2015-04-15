@@ -51,6 +51,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-09-30T18:15:00" pubdate>
+                            Fri 30 September 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/46/doxygen-show-files-with-directory-level/" rel="bookmark"><h1>doxygen show files with directory level</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>因為 project 的檔案太多，用 doxygen parse過後檔案還是多的要死，想說有沒有分資料夾階層顯示的方式。找了很久，後來找到一個折衷的方法，那就是在 config 檔中作以下設定。</p>
+<div class="highlight"><pre>SHOW_DIRECTORIES = YES
+</pre></div>
+
+
+<p>以下是顯示出來的樣子......。好吧，個人是覺得有點陽春，可以的話如果有收合的功能就更好了，只能希望之後的版本會有囉。</p>
+<p><img alt="doxygen_dir.png" src="http://i.imgur.com/WlsqsDB.png" title="doxygen_dir.png" />  </p>
+<p>參考網址：</p>
+<p><a href="http://stackoverflow.com/questions/6874800/directories-within-file-list-in-doxygen">http://stackoverflow.com/questions/6874800/directories-within-file-list-in-doxygen</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-09-07T12:09:00" pubdate>
                             Wed 07 September 2011
                         </time>
@@ -312,32 +334,6 @@ sudo apt-get install mongodb-10gen
 <span class="n">load</span> <span class="n">pptp_def</span>
 <span class="n">pptp_def</span><span class="o">:</span>
 <span class="kd">set</span> <span class="n">iface ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-07-16T12:11:00" pubdate>
-                            Sat 16 July 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/36/ubuntu-vpn-server-with-pptp/" rel="bookmark"><h1>Ubuntu VPN Server with pptp</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近想架 VPN Server，查了一下資料，最常見的好像是 <code>OpenVPN</code> 和 <code>pptp</code> 兩種方法。pptp 的方式比較簡單，但是相對於 OpenVPN 較為不安全，是說我們系上的好像也是用 pptp，所以我想問題應該不大吧</p>
-<p>網路環境：</p>
-<ul>
-<li>使用Public IP</li>
-<li>單網卡</li>
-</ul>
-<h3>首先要先安裝 <code>pptpd</code></h3>
-<div class="highlight"><pre>sudo apt-get install pptpd
-</pre></div>
-
-
-<h3>接著修改 <code>/etc/pptpd.conf</code></h3>
-<p>這邊 <code>localip</code> 是 Server 連線之後要用的 IP，基本上跟 Server 本身的 Public IP沒有關係，可以給個 private ip 就 ok 了，<code>remoteip</code> 是給 ...</p>
                     </section>
                 </article>
                 <hr/>

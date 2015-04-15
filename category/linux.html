@@ -51,6 +51,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-04-15T15:00:00" pubdate>
+                            Wed 15 April 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1423/linux_single_instance_lock/" rel="bookmark"><h1>Linux Single Instance Lock</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>要實作 single instance 有幾種方式:</p>
+<ul>
+<li>file lock</li>
+<li>inet socket lock</li>
+<li><code>sem_open</code> </li>
+</ul>
+<p>參照一些 daemon 的作法，感覺 file lock 較常見。inet socket bind 的作法有點麻煩，因爲還要找個 port 來 bind，所以不考慮，unix socket 大略等同於 file lock 的作法，不過步驟太煩雜，所以也不考慮，semaphore(<code>sem_open</code>)的作法看似比較好，因為 lock 是在 kernel 裡做管理，不用另外建 file，不過還是有一些問題在: <a href="http://stackoverflow.com/questions/2053679/how-do-i-recover-a-semaphore-when-the-process-that-decremented-it-to-zero-crashe">How do I recover a ...</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-08-11T00:30:00" pubdate>
                             Mon 11 August 2014
                         </time>
@@ -233,29 +253,6 @@
 <p>參考資料:<br />
 <a href="http://stackoverflow.com/questions/1909188/define-make-variable-at-rule-execution-time">Define make variable at rule execution time</a><br />
 <a href="http://stackoverflow.com/questions/2019989/how-to-assign-the-output-of-a-command-to-a-makefile-variable">How to assign the output of a command to a Makefile variable</a>  </p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-05T02:15:00" pubdate>
-                            Sat 05 October 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1375/tig-broken-in-tmux/" rel="bookmark"><h1>tig broken in tmux</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>這個問題已經困擾我滿久了，在 <a href="http://tmux.sourceforge.net">tmux</a> 裡用 <a href="https://github.com/jonas/tig">tig</a>
-畫面會一直破碎，不過一直找不到原因，最近想到，於是又找看看有沒有解法，後來試了<a href="https://wiki.archlinux.org/index.php/tmux">一篇</a>裡面的做法就
-OK 了 QQ。</p>
-<p>靈感是在查資料的時候看到有人是因為在 <code>tmux.conf</code> 裡設定了
-<code>default-terminal=xterm</code> 想到的，中間有試了一下 screen，發現 tig 在
-screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</code>，而我在 tmux
-下得到的輸出卻是 <code>xterm-256color</code>，想說朝這個方向去找資料。這邊先找了
-<code>tmux.conf</code> 中，但是我並沒有設定這個東西，看了
-<code>.zshrc</code>，原來我是在這邊設定了
-<code>export TERM ...</code></p>
                     </section>
                 </article>
                 <hr/>
