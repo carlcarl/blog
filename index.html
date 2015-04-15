@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-04-15T17:00:00" pubdate>
+                            Wed 15 April 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1424/web_radio_buttons_layout/" rel="bookmark"><h1>Web Radio Buttons Layout</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>研究了一下 radio buttons 該怎麼排比較好:</p>
+<ul>
+<li><a href="ux.stackexchange.com/questions/18103/should-radio-options-be-displayed-vertically-or-horizontally">Should radio options be displayed vertically or horizontally?</a></li>
+<li><a href="http://ux.stackexchange.com/questions/21085/yes-no-radio-buttons-vertical-or-horizontal">Yes/No radio buttons: Vertical or horizontal</a></li>
+<li><a href="ux.stackexchange.com/questions/48041/multiple-choice-forms-with-radio-should-the-choices-be-arranged-horizontally-v">Multiple choice forms with radio: Should the choices be arranged horizontally, vertically, or in a square?</a></li>
+</ul>
+<p>個人結論：垂直排列會是比較好的作法，水平排列相對會有些問題:</p>
+<ul>
+<li>寬度限制，即使原本放得進去，翻譯之後就不一定了，如果要支持多國語言的話。</li>
+<li>數量一多的話，會較為雜亂，除非 space 間隔有設好。</li>
+</ul>
+<p>不過在一些情況下，水平排列還是 OK ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-04-15T15:00:00" pubdate>
                             Wed 15 April 2015
                         </time>
@@ -240,22 +265,6 @@
 <p><a href="https://developer.apple.com/swift/">Swift</a> 是之前就還滿想學的程式語言，可是一直沒花時間研究，其實比較想做個東西，然後用 Swift 來做的，不過沒啥 idea，而且開發者帳號又要繳年費orz。</p>
 <p>之前也有試著找 Swift 的學習資源，不過覺得還是有點太分散，沒有一個完整的介紹。這本 <a href="https://www.packtpub.com/application-development/swift-essentials">Swift Essentials</a> 是最近看到的一本介紹 Swift &amp; iOS 開發的書，內容一開始先介紹了 Swift 的語法和使用，也有提供很多的語法範例，有些範例還會挑比較特殊的例子，相對的就會比較花時間理解，但是理解之後的幫助個人覺得比舉一些簡單的例子還要多就是，是說偶爾還是會有一些奇怪的範例，讓人搞不太懂為啥要這樣舉例就是囧。</p>
 <p>Swift 本身的語法都有一些其他程式語言的影子，不過又會有一些些微的不同，有時候不注意就會搞錯用法。像是 <code>switch case</code> 不用 <code>break</code>，<code>--i</code> 和 <code>i--</code> 所回傳的值不同，然後還有類似 C 的 <code>goto</code> 用法，基本上這本書都會提到這些東西 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-02-27T00:30:00" pubdate>
-                            Fri 27 February 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1414/mod_wsgi_with_newer_python_version/" rel="bookmark"><h1>mod_wsgi with newer python version</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在執行 Apache + mos_msgi + Django 的時候出現了問題：<code>no module named importlib</code>。</p>
-<p>因為系統是比較舊的 Ubuntu，Python 版本是 2.6，我 Django 是用 1.7，不相容 Python 2.6 以下，所以自己又另外裝了 Python 2.7。本來以為把 virtualenv 設定好後就沒事了，結果因為系統提供的 mod_wsgi 是用 Python 2.6 編譯的，沒有 <code>importlib</code> 這個 module，所以就掛了。</p>
-<p>解法很直接，另外下載 mod_wsgi 的 source code ...</p>
                     </section>
                 </article>
                 <hr/>

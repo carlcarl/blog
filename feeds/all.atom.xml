@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-04-15T15:00:00+08:00</updated><entry><title>Linux Single Instance Lock</title><link href="http://blog.carlcarl.me/1423/linux_single_instance_lock/" rel="alternate"></link><updated>2015-04-15T15:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-04-15:1423/linux_single_instance_lock/</id><summary type="html">&lt;p&gt;要實作 single instance 有幾種方式:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-04-15T17:00:00+08:00</updated><entry><title>Web Radio Buttons Layout</title><link href="http://blog.carlcarl.me/1424/web_radio_buttons_layout/" rel="alternate"></link><updated>2015-04-15T17:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-04-15:1424/web_radio_buttons_layout/</id><summary type="html">&lt;p&gt;研究了一下 radio buttons 該怎麼排比較好:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="ux.stackexchange.com/questions/18103/should-radio-options-be-displayed-vertically-or-horizontally"&gt;Should radio options be displayed vertically or horizontally?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://ux.stackexchange.com/questions/21085/yes-no-radio-buttons-vertical-or-horizontal"&gt;Yes/No radio buttons: Vertical or horizontal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="ux.stackexchange.com/questions/48041/multiple-choice-forms-with-radio-should-the-choices-be-arranged-horizontally-v"&gt;Multiple choice forms with radio: Should the choices be arranged horizontally, vertically, or in a square?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;個人結論：垂直排列會是比較好的作法，水平排列相對會有些問題:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;寬度限制，即使原本放得進去，翻譯之後就不一定了，如果要支持多國語言的話。&lt;/li&gt;
+&lt;li&gt;數量一多的話，會較為雜亂，除非 space 間隔有設好。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不過在一些情況下，水平排列還是 OK 的:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;二選一的情況，左右排列看起來反而會比較清楚。&lt;/li&gt;
+&lt;li&gt;星期幾的選擇，這個還滿特別的，想起來好像真的很少看到垂直排列的。&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="radio"></category></entry><entry><title>Linux Single Instance Lock</title><link href="http://blog.carlcarl.me/1423/linux_single_instance_lock/" rel="alternate"></link><updated>2015-04-15T15:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-04-15:1423/linux_single_instance_lock/</id><summary type="html">&lt;p&gt;要實作 single instance 有幾種方式:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;file lock&lt;/li&gt;
 &lt;li&gt;inet socket lock&lt;/li&gt;
