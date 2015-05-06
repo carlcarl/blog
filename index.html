@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-05-06T23:00:00" pubdate>
+                            Wed 06 May 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1425/python_ftp_download_percent/" rel="bookmark"><h1>Python FTP Download Percent</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>本來是別人寫的一個 ftp download python script，因為不知道到底是不是有在下載中(?)，所以我多加了一個顯示現在 download 幾 percent 的 function:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">ftp_get</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dst_dir</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">ftp_callback</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">file_size</span><span class="p">,</span> <span class="n">dst_file</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ftp_callback</span><span class="p">,</span> <span class="s">&quot;progress_size&quot;</span><span class="p">):</span>
+            <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_size</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ftp_callback</span><span class="p">,</span> <span class="s">&quot;progress_percent&quot;</span><span class="p">):</span>
+            <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_percent</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">dst_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+        <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_size</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_size</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">file_size ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-04-15T17:00:00" pubdate>
                             Wed 15 April 2015
                         </time>
@@ -248,23 +271,6 @@
 <ul>
 <li><a href="https://github.com/Semantic-Org/Semantic-UI/issues/1717">https://github.com/Semantic-Org/Semantic-UI/issues/1717</a></li>
 </ul>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-03-01T02:00:00" pubdate>
-                            Sun 01 March 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1415/review_swift_essentials/" rel="bookmark"><h1>[Review] Swift Essentials</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><img alt="Swift Essentials" src="http://i.imgur.com/CgIAISG.png" /></p>
-<p><a href="https://developer.apple.com/swift/">Swift</a> 是之前就還滿想學的程式語言，可是一直沒花時間研究，其實比較想做個東西，然後用 Swift 來做的，不過沒啥 idea，而且開發者帳號又要繳年費orz。</p>
-<p>之前也有試著找 Swift 的學習資源，不過覺得還是有點太分散，沒有一個完整的介紹。這本 <a href="https://www.packtpub.com/application-development/swift-essentials">Swift Essentials</a> 是最近看到的一本介紹 Swift &amp; iOS 開發的書，內容一開始先介紹了 Swift 的語法和使用，也有提供很多的語法範例，有些範例還會挑比較特殊的例子，相對的就會比較花時間理解，但是理解之後的幫助個人覺得比舉一些簡單的例子還要多就是，是說偶爾還是會有一些奇怪的範例，讓人搞不太懂為啥要這樣舉例就是囧。</p>
-<p>Swift 本身的語法都有一些其他程式語言的影子，不過又會有一些些微的不同，有時候不注意就會搞錯用法。像是 <code>switch case</code> 不用 <code>break</code>，<code>--i</code> 和 <code>i--</code> 所回傳的值不同，然後還有類似 C 的 <code>goto</code> 用法，基本上這本書都會提到這些東西 ...</p>
                     </section>
                 </article>
                 <hr/>

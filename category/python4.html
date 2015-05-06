@@ -51,6 +51,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-09T17:38:00" pubdate>
+                            Wed 09 May 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/444/django-name-array/" rel="bookmark"><h1>Django name array</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在寫 php 的時候，如果想傳多個 checkbox 的值的話，常會在 html
+裏面設定這些 checkbox 的 name 為
+<code>list[]</code>，也就是會加個 <code>[]</code> 在名稱後面，在 php 處理的時候就可以利用
+<code>$_POST['list']</code> 取出這個 array。</p>
+<p>而如果是 django name array
+要處理的話，方式有點不太一樣，它並不會自動去判斷 <code>[]</code>，所以在 django
+這邊還是必須讀 <code>list[]</code> 這樣的名稱，這也表示在 html
+裡，<code>[]</code> 是可以不加的，但是我還是建議加上就是了，至少這樣我覺得會比較好懂。<br />
+來看一下簡單的範例：</p>
+<p>html</p>
+<div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;list[]&quot;</span> <span class="na">value=</span><span class="s">&quot;value ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-04-01T16:05:00" pubdate>
                             Sun 01 April 2012
                         </time>

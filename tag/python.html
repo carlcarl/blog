@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-05-06T23:00:00" pubdate>
+                            Wed 06 May 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1425/python_ftp_download_percent/" rel="bookmark"><h1>Python FTP Download Percent</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>本來是別人寫的一個 ftp download python script，因為不知道到底是不是有在下載中(?)，所以我多加了一個顯示現在 download 幾 percent 的 function:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">ftp_get</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dst_dir</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">ftp_callback</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">file_size</span><span class="p">,</span> <span class="n">dst_file</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ftp_callback</span><span class="p">,</span> <span class="s">&quot;progress_size&quot;</span><span class="p">):</span>
+            <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_size</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ftp_callback</span><span class="p">,</span> <span class="s">&quot;progress_percent&quot;</span><span class="p">):</span>
+            <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_percent</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">dst_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+        <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_size</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_size</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">file_size ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-02-27T00:30:00" pubdate>
                             Fri 27 February 2015
                         </time>
@@ -235,31 +258,6 @@ orz。</p>
             <span class="c"># f is the method decorated</span>
             <span class="k">def</span> <span class="nf">f_retry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
                 <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-05-23T16:25:00" pubdate>
-                            Thu 23 May 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/852/python-cant-use-a-string-pattern-on-a-bytes-like-object/" rel="bookmark"><h1>Python: can't use a string pattern on a bytes-like object</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近嘗試將 Python2 的程式轉成
-Python3，看起來好像很順利，不過在執行的時候就出現了 Excepion
-囧，內容就是
-<code>can't use a string pattern on a bytes-like object</code>，看了一下，是 <code>json</code>
-的 <code>loads</code> 在轉<code>httplib</code> <code>read</code> 的 output 出現問題，而原來在 Python2
-中並不會出現這個問題，原來程式如下：  </p>
-<div class="highlight"><pre><span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</pre></div>
-
-
-<p>後來查了一下資料才發現，這邊的 <code>read</code>，似乎讀出的資料是 <code>byte</code> 的
-type，還需要做 encode ...</p>
                     </section>
                 </article>
                 <hr/>

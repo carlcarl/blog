@@ -51,6 +51,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-10T02:12:00" pubdate>
+                            Mon 10 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/941/python-setup-py-package_data-permission/" rel="bookmark"><h1>Python setup.py package_data permission</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近嘗試把一些額外的 static 檔案加入到 python 的 package
+裡來讓程式操作，後來有查到可以在 setup.py 裡設定
+<code>package_data</code>，照著做之後好像滿順利的，但是在用 root 權限 install
+完，用一般使用者執行就遇到 permission 的錯誤了。</p>
+<p>看了一下安裝目錄下的 static 檔案，結果權限是 <code>400</code>，owner 是
+<code>root</code>，難怪一般使用者無法讀取，想說會不會是因為我的原本檔案權限的關係，檢查了一下，果然是
+<code>400</code>，但是我改了權限再重新安裝居然還是一樣，這時我還想說會不會是原本就有這樣的限制，還查了一堆資料
+orz。</p>
+<p>最後想到，會不會是因為我那些 build 所產生的目錄的關係，於是我把
+<code>xxx.pkg-info</code>，<code>build</code> 和 <code>dist</code>
+這三個資料夾都移除掉後再重新安裝，果然就 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-02T04:45:00" pubdate>
                             Sun 02 June 2013
                         </time>
@@ -292,30 +316,6 @@ client ...</p>
 <p>其中，把 <code>Projects</code> 換成你的 project 位置。</p>
 <hr />
 <h3>輸入 <code>workon 你的project</code> 時，自動切換至 ...</h3>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-09T17:38:00" pubdate>
-                            Wed 09 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/444/django-name-array/" rel="bookmark"><h1>Django name array</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在寫 php 的時候，如果想傳多個 checkbox 的值的話，常會在 html
-裏面設定這些 checkbox 的 name 為
-<code>list[]</code>，也就是會加個 <code>[]</code> 在名稱後面，在 php 處理的時候就可以利用
-<code>$_POST['list']</code> 取出這個 array。</p>
-<p>而如果是 django name array
-要處理的話，方式有點不太一樣，它並不會自動去判斷 <code>[]</code>，所以在 django
-這邊還是必須讀 <code>list[]</code> 這樣的名稱，這也表示在 html
-裡，<code>[]</code> 是可以不加的，但是我還是建議加上就是了，至少這樣我覺得會比較好懂。<br />
-來看一下簡單的範例：</p>
-<p>html</p>
-<div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;list[]&quot;</span> <span class="na">value=</span><span class="s">&quot;value ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

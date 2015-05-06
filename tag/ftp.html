@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-05-06T23:00:00" pubdate>
+                            Wed 06 May 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1425/python_ftp_download_percent/" rel="bookmark"><h1>Python FTP Download Percent</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>本來是別人寫的一個 ftp download python script，因為不知道到底是不是有在下載中(?)，所以我多加了一個顯示現在 download 幾 percent 的 function:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">ftp_get</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dst_dir</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">ftp_callback</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">file_size</span><span class="p">,</span> <span class="n">dst_file</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ftp_callback</span><span class="p">,</span> <span class="s">&quot;progress_size&quot;</span><span class="p">):</span>
+            <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_size</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ftp_callback</span><span class="p">,</span> <span class="s">&quot;progress_percent&quot;</span><span class="p">):</span>
+            <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_percent</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">dst_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+        <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_size</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_size</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">file_size ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-27T23:00:00" pubdate>
                             Mon 27 January 2014
                         </time>
