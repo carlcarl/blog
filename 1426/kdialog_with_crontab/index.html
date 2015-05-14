@@ -6,14 +6,16 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog - KDE</title>
+        <title>    kdialog with crontab
+</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="carlcarl's blog" />
-                <meta property="og:url" content="http://blog.carlcarl.me" />
-                <meta property="og:description" content="carlcarl's blog" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="kdialog with crontab" />
+                <meta property="og:url" content="http://blog.carlcarl.me/1426/kdialog_with_crontab/" />
+                <meta property="og:description" content="環境是用 KDE plasma 5, script 範例: #!/bin/sh export DISPLAY=:0 export QT_PLUGIN_PATH=/usr/lib/plugins:/usr/lib/qt5/plugins:/usr/lib/qt5/plugins:/lib/kde5/plugins/ export KDE_FULL_SESSION=true # Fix warning export XDG_RUNTIME_DIR=/run/user/1000 kdialog --msnbox "hello" --title "title" 因為 crontab 不知道這個 UI 顯示是要顯示在哪個螢幕上，所以要指定 DISPLAY，KDE_FULL_SESSION ..." />
+                    <meta property="article:tag" content="kde" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -56,6 +58,7 @@
                         </time>
                         <a href="http://blog.carlcarl.me/1426/kdialog_with_crontab/" rel="bookmark"><h1>kdialog with crontab</h1></a>
                     </header>
+
                     <section class="post-content">
                         <p>環境是用 KDE plasma 5, script 範例:</p>
 <div class="highlight"><pre><span class="c">#!/bin/sh</span>
@@ -71,67 +74,34 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
 </pre></div>
 
 
-<p>因為 crontab 不知道這個 UI 顯示是要顯示在哪個螢幕上，所以要指定 <code>DISPLAY</code>，<code>KDE_FULL_SESSION ...</code></p>
+<p>因為 crontab 不知道這個 UI 顯示是要顯示在哪個螢幕上，所以要指定 <code>DISPLAY</code>，<code>KDE_FULL_SESSION</code> 也會影響。<code>QT_PLUGIN_PATH</code> 我是直接複製我 GUI 使用者的設定，這邊可以看到是 qt5，如果是用 KDE 4 的話，大概是用 qt4，不確定就是，如果少掉這個設定，kdialog 會 fallback 成比較醜的介面，看起來不太舒服。</p>
+<p>Ref:</p>
+<ul>
+<li><a href="https://forums.opensuse.org/showthread.php/443251-Trying-to-use-kdialog-in-cron">Trying to use kdialog in cron</a></li>
+</ul>
                     </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="http://blog.carlcarl.me/category/linux.html">linux</a></p>
+                        <p>Tags: <a href="http://blog.carlcarl.me/tag/kde.html">kde</a>, </p>
+                    </aside>
+                    <hr/>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'carlcarl';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
                 </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-12-02T08:45:00" pubdate>
-                            Sun 02 December 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/726/kde-hide-decoration/" rel="bookmark"><h1>KDE hide decoration</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前為了隱藏 KDE 視窗的 decoration
-找方法找好久，結果後來不經意就看到了這個資訊囧，不過可惜只能透過改設定檔的方式，GUI
-上似乎沒有這個設定。</p>
-<p>修改 <code>.kde4/share/config/kwinrc</code>，找到 <code>[Windows]</code>，在下一行加上：</p>
-<div class="highlight"><pre><span class="n">BorderlessMaximizedWindows</span><span class="o">=</span><span class="nb">true</span>
-</pre></div>
-
-
-<p>如果找不到 <code>[Windows]</code> ，就自己在檔案裡面補上去就可以了：</p>
-<div class="highlight"><pre><span class="k">[Windows]</span>
-<span class="na">BorderlessMaximizedWindows</span><span class="o">=</span><span class="s">true</span>
-</pre></div>
-
-
-<p>用好之後，可以再搭配 <a href="http://kde-apps.org/content/show.php?content=143971">KWin Button applet
-improved</a>，個人覺得還滿方便的～。</p>
-<p>參考網址：<br />
-<a href="http://majewsky.wordpress.com/2010/03/24/the-kwin-button-applet/">http://majewsky.wordpress.com/2010/03/24/the-kwin-button-applet/</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-28T10:57:00" pubdate>
-                            Mon 28 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/482/kde-oxygen-transparent-error-with-playing-video/" rel="bookmark"><h1>KDE oxygen-transparent error with playing video</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近改用 Chakra + KDE 的環境，另外再裝了 oxygen-transparent
-這個佈景主題，但是卻發現一個問題，那就是 Qt based
-的影片播放器會因為這個主題而出問題，影片播放會變透明，什麼都看不到囧，只有聲音。</p>
-<p>目前還找不太到很好的解決方案，只想到一個比較簡單的替代方案，就是使用
-VLC。但是預設的情況下播放還是會透明，必須到 Interface -&gt; Preference
-底下，使用 custom skin，VLC 就會使用他自己的佈景主題，既然是用它自己的佈景主題，影片播放自然就不會因為系統套用 oxygen transparent 的主題而受到影響了。</p>
-<p>不過目前用一用，偶爾還是會怪怪的，但是就撐著加減用吧，因為我不太想換系統的佈景主題XD。</p>
-                    </section>
-                </article>
-                <hr/>
             </li>
         </ol>
-        <div class="paginator">
-            Page 1 / 1
-        </div>
-
     </div>
         </div>
 

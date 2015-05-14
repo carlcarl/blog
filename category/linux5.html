@@ -51,6 +51,35 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-10-27T20:41:00" pubdate>
+                            Thu 27 October 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/47/ssh-slow/" rel="bookmark"><h1>ssh slow</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>貌似是學校最近 DNS 常出問題還是怎樣，ssh 的速度非常緩慢，後來決定把 config 檔案改一改，改完之後速度果然快很多= =+。</p>
+<p>修改 <code>/etc/ssh/sshd_config</code>，以下是修改內容：</p>
+<div class="highlight"><pre>UseDNS no
+GSSAPIAuthentication no
+</pre></div>
+
+
+<p>修改完後執行：</p>
+<div class="highlight"><pre>sudo /etc/init.d/ssh restart
+</pre></div>
+
+
+<p>收工~，不過如果 DNS 沒問題的話，可能修改這個設定速度不會差太多。</p>
+<p>參考網址：</p>
+<p><a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://jeffxie.blog.51cto.com/1365360/293869</a><br />
+<a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://www.dk101.com/Discuz/viewthread.php?tid=157716</a>  </p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-09-30T18:15:00" pubdate>
                             Fri 30 September 2011
                         </time>
@@ -298,39 +327,6 @@ endif
         index   index.php;
     }
     location /phpmyadmin ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-06-13T10:44:00" pubdate>
-                            Mon 13 June 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/23/linux-check-dist-io/" rel="bookmark"><h1>Linux check disk IO</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>讀取速度 輸入下面這行指令</p>
-<div class="highlight"><pre>hdparm -t /dev/sda
-</pre></div>
-
-
-<p><code>/dev/sda</code> 可以換成想測的硬碟裝置</p>
-<p>輸入之後會產生類似以下的輸出</p>
-<div class="highlight"><pre>Timing buffered disk reads:  1168 MB in  3.00 seconds = 389.29 MB/sec
-</pre></div>
-
-
-<p>組 RAID5 速度快很多= =+</p>
-<p>寫入速度 輸入下面這行指令</p>
-<div class="highlight"><pre><span class="nb">time </span>sh -c <span class="s2">&quot;dd if=/dev/zero of=tmp.dd bs=1000k count=100; sync&quot;</span>
-</pre></div>
-
-
-<p>會產生類似以下的輸入</p>
-<div class="highlight"><pre>100+0 records in
-100 ...</pre></div>
                     </section>
                 </article>
                 <hr/>

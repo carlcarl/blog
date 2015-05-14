@@ -51,6 +51,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-04-07T22:58:00" pubdate>
+                            Sun 07 April 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/813/ajax-with-mobile-keyboard-go-button/" rel="bookmark"><h1>ajax with mobile keyboard go button</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近弄 ajax 在手機上測的時候發現按 keyboard 上的 go 按鈕不會自動
+submit，所以看了一下是怎麼回事。找了一些資料加上自己測試了一下，發現原來
+go 按鈕跟 enter 是一樣的 event。</p>
+<p>我最後決定的做法是將原本 ajax 要 submit 的 部分先用 form tag
+包起來，ajax 的按鈕則改成 <code>&lt;button type="submit"&gt;&lt;/button&gt;</code>，<code>type</code> 用
+<code>submit</code> 可以使得在按 enter 或是 手機上按 go 的時候能 trigger submit 的
+event，這邊用 <code>&lt;input&gt;</code> 也是可以，不過因為我有用一些 icon 在按鈕中 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-03-17T23:33:00" pubdate>
                             Sun 17 March 2013
                         </time>
@@ -263,37 +283,6 @@ TonyQ 的「網站效能調整」，感覺上就滿實用的，後來也有去�
 <p>參考資料：  </p>
 <p><a href="http://stackoverflow.com/questions/12975098/using-neocomplcache-and-clang-complete">http://stackoverflow.com/questions/12975098/using-neocomplcache-and-clang-complete</a><br />
 <a href="https://github.com/Shougo/neocomplcache/issues/276">https://github.com/Shougo/neocomplcache/issues/276</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-12-02T08:45:00" pubdate>
-                            Sun 02 December 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/726/kde-hide-decoration/" rel="bookmark"><h1>KDE hide decoration</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前為了隱藏 KDE 視窗的 decoration
-找方法找好久，結果後來不經意就看到了這個資訊囧，不過可惜只能透過改設定檔的方式，GUI
-上似乎沒有這個設定。</p>
-<p>修改 <code>.kde4/share/config/kwinrc</code>，找到 <code>[Windows]</code>，在下一行加上：</p>
-<div class="highlight"><pre><span class="n">BorderlessMaximizedWindows</span><span class="o">=</span><span class="nb">true</span>
-</pre></div>
-
-
-<p>如果找不到 <code>[Windows]</code> ，就自己在檔案裡面補上去就可以了：</p>
-<div class="highlight"><pre><span class="k">[Windows]</span>
-<span class="na">BorderlessMaximizedWindows</span><span class="o">=</span><span class="s">true</span>
-</pre></div>
-
-
-<p>用好之後，可以再搭配 <a href="http://kde-apps.org/content/show.php?content=143971">KWin Button applet
-improved</a>，個人覺得還滿方便的～。</p>
-<p>參考網址：<br />
-<a href="http://majewsky.wordpress.com/2010/03/24/the-kwin-button-applet/">http://majewsky.wordpress.com/2010/03/24/the-kwin-button-applet/</a></p>
                     </section>
                 </article>
                 <hr/>

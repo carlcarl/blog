@@ -98,7 +98,7 @@
 </pre></div>
 
 
-<p>關鍵點在於 <code>ftp.retrbinary('RETR %s/%s' % (ftp_dir, ftp_file[0]), lambda chunk: ftp_callback(chunk, file_size, dst_file))</code> 的最後一個參數，是一個 callback function 接受一個參數為這次 download 的 chunk，每次在 download 完一個 chunk 後就會呼叫這個 function，所以可以先用 <code>file_size = ftp.size(ftp_dir + '/' + ftp_file[0])</code> 拿到總大小，然後在 callback 中用 <code>len(chunk)</code> 算這次拿到的 chunk 大小，做累加就可以算出現在 download 幾 percent 了。累計的部分用 function 的 attribute 來做累加，算是一個小 tricky 的地方就是。percent 輸出的部分就用 <code>sys.stdout.write</code> 才有辦法用 <code>\r</code> 回到一行的最開始，再把同樣一行洗掉就可以了。</p>
+<p>關鍵點在於 <code>ftp.retrbinary('RETR %s/%s' % (ftp_dir, ftp_file[0]), lambda chunk: ftp_callback(chunk, file_size, dst_file))</code> 的最後一個參數，是一個 callback function，接受一個參數為這次 download 的 chunk，chunk 是一個檔案的其中一小塊部分，每次在 download 完一個 chunk 後就會自動呼叫這個 function，所以可以先用 <code>file_size = ftp.size(ftp_dir + '/' + ftp_file[0])</code> 拿到檔案的總大小，然後在 callback 中用 <code>len(chunk)</code> 算這次拿到的 chunk 大小，做累加就可以算出現在 download 到幾 percent 了。累計的部分用 function 的 attribute 來做累加，算是一個小 tricky 的地方。percent 輸出的部分則用 <code>sys.stdout.write</code>，這樣才能用 <code>\r</code> 回到一行的最開始，並把這一行洗掉。</p>
 <p>Ref:</p>
 <ul>
 <li><a href="http://stackoverflow.com/questions/12060033/pass-a-value-to-the-ftp-retrbinary-callback">Pass a value to the ftp.retrbinary callback</a></li>

@@ -51,6 +51,34 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-05-14T15:20:00" pubdate>
+                            Thu 14 May 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1426/kdialog_with_crontab/" rel="bookmark"><h1>kdialog with crontab</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>環境是用 KDE plasma 5, script 範例:</p>
+<div class="highlight"><pre><span class="c">#!/bin/sh</span>
+
+<span class="nb">export </span><span class="nv">DISPLAY</span><span class="o">=</span>:0
+<span class="nb">export </span><span class="nv">QT_PLUGIN_PATH</span><span class="o">=</span>/usr/lib/plugins:/usr/lib/qt5/plugins:/usr/lib/qt5/plugins:/lib/kde5/plugins/
+<span class="nb">export </span><span class="nv">KDE_FULL_SESSION</span><span class="o">=</span><span class="nb">true</span>
+
+<span class="c"># Fix warning</span>
+<span class="nb">export </span><span class="nv">XDG_RUNTIME_DIR</span><span class="o">=</span>/run/user/1000
+
+kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="s2">&quot;title&quot;</span>
+</pre></div>
+
+
+<p>因為 crontab 不知道這個 UI 顯示是要顯示在哪個螢幕上，所以要指定 <code>DISPLAY</code>，<code>KDE_FULL_SESSION ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-05-06T23:00:00" pubdate>
                             Wed 06 May 2015
                         </time>
@@ -243,34 +271,6 @@
                         <p>會看這個主要是很久之前看到的這篇文章: <a href="http://blog.mukispace.com/full-text-search-by-css/">使用 CSS:not 與 data-index 即時搜尋頁面</a>。</p>
 <p>最近剛好又用到，所以順便研究了一下 IE 的相容性問題，其中比較明顯的是 <code>:not</code> 這個 pseudo class 在 IE 上的相容性不太好: <a href="http://www.w3schools.com/cssref/sel_not.asp">CSS3 :not Selector</a>，IE 的支援從 9 才開始，不過我實際測 IE8 似乎也是可行，IE7 就真的不行了。</p>
 <p>本來想到的解法是先把所有的都 <code>display:none</code>，然後再篩選符合的去做對應的 display，ex: <code>table</code> or <code>block</code>，不過後來測試會死在把 css 塞進已存在的 style 這步，查了一下發現<a href="http://stackoverflow.com/questions/2692770/adding-css-rules-with-text-method-to-style-element-does-not-work-in-ie">舊 IE 對 style ...</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-03-18T19:30:00" pubdate>
-                            Wed 18 March 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1416/semantic_ui_dropdown_restore_default/" rel="bookmark"><h1>Semantic UI dropdown restore default</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>鬼打牆了很久，後來才找到一個方法可以做。</p>
-<div class="highlight"><pre><span class="c1">// dropdown init:</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.ui.dropdown&#39;</span><span class="p">).</span><span class="nx">dropdown</span><span class="p">();</span>
-
-
-<span class="c1">// 假如某個 dropdown 的 id 是 a</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.ui.dropdown&#39;</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">dropdown</span><span class="p">(</span><span class="s1">&#39;restore defaults&#39;</span><span class="p">);</span>
-</pre></div>
-
-
-<p>我有試圖用某個特定 id 做 dropdown init，再用這個 element 做 restore default，不過居然還是會有錯誤...。總之目前用這樣解。總覺得對 semantic UI 的怨念原來越深了...。</p>
-<p>Ref:</p>
-<ul>
-<li><a href="https://github.com/Semantic-Org/Semantic-UI/issues/1717">https://github.com/Semantic-Org/Semantic-UI/issues/1717</a></li>
-</ul>
                     </section>
                 </article>
                 <hr/>

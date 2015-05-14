@@ -51,6 +51,29 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-11-29T23:00:00" pubdate>
+                            Fri 29 November 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1380/define_makefile_variable_in_rule/" rel="bookmark"><h1>Define Makefile variable in rule</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>沒在寫啥 Makefile，要用的時候才發現不會在 rule 裡面 assign variable XD。具體用法如下:</p>
+<div class="highlight"><pre><span class="nf">all</span><span class="o">:</span> 
+    <span class="k">$(</span><span class="nb">eval </span>tmp :<span class="o">=</span> <span class="k">$(</span>shell <span class="nb">echo </span>1<span class="k">))</span>
+    @echo <span class="k">$(</span>tmp<span class="k">)</span>
+</pre></div>
+
+
+<p>參考資料:<br />
+<a href="http://stackoverflow.com/questions/1909188/define-make-variable-at-rule-execution-time">Define make variable at rule execution time</a><br />
+<a href="http://stackoverflow.com/questions/2019989/how-to-assign-the-output-of-a-command-to-a-makefile-variable">How to assign the output of a command to a Makefile variable</a>  </p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-10-05T02:15:00" pubdate>
                             Sat 05 October 2013
                         </time>
@@ -260,36 +283,6 @@ vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的
 <p>參考網址：<br />
 <a href="https://bbs.archlinux.org/viewtopic.php?id=122091">https://bbs.archlinux.org/viewtopic.php?id=122091</a><br />
 <a href="https://wiki.archlinux.org/index.php/Vim">https://wiki.archlinux.org/index ...</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-06-09T01:29:00" pubdate>
-                            Sat 09 June 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/512/chakra-firefox-kde-opensuse-repo/" rel="bookmark"><h1>Chakra firefox-kde-opensuse repo</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>2012/10/14 更新<br />
-firefox-kde-opensuse 已經進 chakra 的 bundle 了，就叫 firefox ，以後從
-bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
-畢竟不是官方的，所以更新維護上可能也會有點問題。</p>
-<hr />
-<p>因為 firefox-kde-opensuse 要自己編太麻煩了，所以加個 repo
-這樣以後安裝比較省時，是說要不是 <a href="http://www.plurk.com/maxwux">Whiksy</a>
-有提供我還真的不知道原來有......。<br />
-以下複製到 <code>/etc/pacman.conf</code> 中：</p>
-<div class="highlight"><pre><span class="k">[chakra-gtk-repo]</span>
-<span class="na">Server</span> <span class="o">=</span> <span class="s">http://chakra-gtk-repo.tk/repo/x86_64/</span>
-<span class="k">[packccr]</span>
-<span class="na">Server</span> <span class="o">=</span> <span class="s">http://repo.stephenmac.com/</span>
-</pre></div>
-
-
-<p>這樣就 OK ...</p>
                     </section>
                 </article>
                 <hr/>

@@ -51,6 +51,36 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-06-09T01:29:00" pubdate>
+                            Sat 09 June 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/512/chakra-firefox-kde-opensuse-repo/" rel="bookmark"><h1>Chakra firefox-kde-opensuse repo</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>2012/10/14 更新<br />
+firefox-kde-opensuse 已經進 chakra 的 bundle 了，就叫 firefox ，以後從
+bundle 裡安裝即可，就不用加以下的 repo ，而且 repo
+畢竟不是官方的，所以更新維護上可能也會有點問題。</p>
+<hr />
+<p>因為 firefox-kde-opensuse 要自己編太麻煩了，所以加個 repo
+這樣以後安裝比較省時，是說要不是 <a href="http://www.plurk.com/maxwux">Whiksy</a>
+有提供我還真的不知道原來有......。<br />
+以下複製到 <code>/etc/pacman.conf</code> 中：</p>
+<div class="highlight"><pre><span class="k">[chakra-gtk-repo]</span>
+<span class="na">Server</span> <span class="o">=</span> <span class="s">http://chakra-gtk-repo.tk/repo/x86_64/</span>
+<span class="k">[packccr]</span>
+<span class="na">Server</span> <span class="o">=</span> <span class="s">http://repo.stephenmac.com/</span>
+</pre></div>
+
+
+<p>這樣就 OK ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-06-07T02:31:00" pubdate>
                             Thu 07 June 2012
                         </time>
@@ -270,26 +300,6 @@ ntp server
 <p>後來查到一個好像更好的辦法，就是用 <code>tzselect</code> 這個指令，執行後會出現互動式介面，照著選時區，設定完就正常啦～～。</p>
 <p>參考網址：<br />
 <a href="http://bbs.bitscn.com/146159">http://bbs.bitscn.com/146159</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-19T16:06:00" pubdate>
-                            Sun 19 February 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/262/xenserver-enable-snmpd/" rel="bookmark"><h1>xenserver enable snmpd</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>我用的 xenserver 版本為「5.6」，6 以上的版本就不能確定能否這樣做囉。</p>
-<h3>首先要先修改防火牆規則</h3>
-<p>xenserver 雖然本身就有 snmpd 了，不過只單純打開 snmpd 是沒用的，會被防火牆擋下。用 vi
-    編輯 <code>/etc/sysconfig/iptables</code>，找到 <code>-A RH-Firewall-1-INPUT –p udp
-    –dport 5353</code> 這行：</p>
-<div class="highlight"><pre>-A RH-Firewall-1-INPUT -p ah -j ACCEPT
--A RH-Firewall-1-INPUT -d 224.0.0.251 -p udp -m udp --dport 5353 -j ...</pre></div>
                     </section>
                 </article>
                 <hr/>

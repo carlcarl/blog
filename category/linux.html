@@ -51,6 +51,34 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-05-14T15:20:00" pubdate>
+                            Thu 14 May 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1426/kdialog_with_crontab/" rel="bookmark"><h1>kdialog with crontab</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>環境是用 KDE plasma 5, script 範例:</p>
+<div class="highlight"><pre><span class="c">#!/bin/sh</span>
+
+<span class="nb">export </span><span class="nv">DISPLAY</span><span class="o">=</span>:0
+<span class="nb">export </span><span class="nv">QT_PLUGIN_PATH</span><span class="o">=</span>/usr/lib/plugins:/usr/lib/qt5/plugins:/usr/lib/qt5/plugins:/lib/kde5/plugins/
+<span class="nb">export </span><span class="nv">KDE_FULL_SESSION</span><span class="o">=</span><span class="nb">true</span>
+
+<span class="c"># Fix warning</span>
+<span class="nb">export </span><span class="nv">XDG_RUNTIME_DIR</span><span class="o">=</span>/run/user/1000
+
+kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="s2">&quot;title&quot;</span>
+</pre></div>
+
+
+<p>因為 crontab 不知道這個 UI 顯示是要顯示在哪個螢幕上，所以要指定 <code>DISPLAY</code>，<code>KDE_FULL_SESSION ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-04-15T15:00:00" pubdate>
                             Wed 15 April 2015
                         </time>
@@ -230,29 +258,6 @@
 <p>大部份其實都有了，SD 卡則是自己另外買了一張 <a href="http://shopping.pchome.com.tw/?mod=item&amp;func=exhibit&amp;IT_NO=DGAG0H-A79608303&amp;SR_NO=DGAG0H&amp;ROWNO=25">SanDisk Extreme SDHC UHS-I 16GB</a>，USB hub 可能之後也會需要，不過還不知道要買哪一個，這邊有 <a href="http://elinux.org/RPi_Powered_USB_Hubs">USB hubs 的清單</a> 可以看。OS 則是用 Arch。</p>
 <h2>燒錄 image 到 SD 卡</h2>
 <p>在 Mac 和 Linux 底下可以直接用 <code>dd</code>，ex: <code>dd bs=1M if=Path/to/archlinux-hf-2013-02-11.img of ...</code></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-11-29T23:00:00" pubdate>
-                            Fri 29 November 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1380/define_makefile_variable_in_rule/" rel="bookmark"><h1>Define Makefile variable in rule</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>沒在寫啥 Makefile，要用的時候才發現不會在 rule 裡面 assign variable XD。具體用法如下:</p>
-<div class="highlight"><pre><span class="nf">all</span><span class="o">:</span> 
-    <span class="k">$(</span><span class="nb">eval </span>tmp :<span class="o">=</span> <span class="k">$(</span>shell <span class="nb">echo </span>1<span class="k">))</span>
-    @echo <span class="k">$(</span>tmp<span class="k">)</span>
-</pre></div>
-
-
-<p>參考資料:<br />
-<a href="http://stackoverflow.com/questions/1909188/define-make-variable-at-rule-execution-time">Define make variable at rule execution time</a><br />
-<a href="http://stackoverflow.com/questions/2019989/how-to-assign-the-output-of-a-command-to-a-makefile-variable">How to assign the output of a command to a Makefile variable</a>  </p>
                     </section>
                 </article>
                 <hr/>
