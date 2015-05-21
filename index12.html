@@ -51,6 +51,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-09-04T01:54:00" pubdate>
+                            Tue 04 September 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/606/test-kineticjs-apply-canvas/" rel="bookmark"><h1>Test KineticJS apply canvas</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>寫起來跟以前寫 Java 作類似東西的感覺很像，東西基本上都已經用物件包好，然後還有提供 layer
+讓你可以很方便的在不同 layer 放你要的物件。  </p>
+<p>我嘗試把我原本<a href="https://github.com/carlcarl/CaGo/blob/master/js/cago.js">播放棋譜</a>的 canvas 改成套用 KineticJS，不過後來發現，因為我的 canvas
+操作沒很複雜，所以真的是太大材小用了...。</p>
+<p>以可讀性來講，因為我大部分畫 canvas 都是放在一個 function 裡，大致用幾個註解分幾個段落，其實就知道各部份的流程，換成物件的方式後，整個 function 感覺並沒有更好讀，而且程式沒有比較短=.=。</p>
+<p>然後我用一個固定的測試流程來作測試(這個流程不包括前面的 js file loading，是讀完後才開始作操作測試)，測試的結果原本是 200ms，換成 KineticJS 之後是 800ms，整個很不划算 ~.~。</p>
+<p>雖然 KineticJS 有提供 layer ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-08-28T00:01:00" pubdate>
                             Tue 28 August 2012
                         </time>
@@ -273,28 +293,6 @@ OK 了，方法很簡單，在你的 VM 裡執行：</p>
 
 
 <p>然後重開 VM，這樣就會根據 DHCP ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-06-17T22:47:00" pubdate>
-                            Sun 17 June 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/515/chakra-vim-not-support-pythoncomplete/" rel="bookmark"><h1>Chakra vim not support pythoncomplete</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近在 Chakra 上用 vim 寫 python
-的時候才突然發現這個問題，原因似乎是因為 vim 在編譯的時候沒有加上 python
-的編譯參數，解決這個問題很簡單，只要改安裝 <code>vim-qt-git</code> 就 OK
-了，因為它所提供的 vim 是有支援 pythoncomplete 的。vim-qt-git
-本身包含一套完整的 vim 以及加上 GUI 的套件，所以安裝的時候會要求將原本的
-vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的補完功能了。</p>
-<p>參考網址：<br />
-<a href="https://bbs.archlinux.org/viewtopic.php?id=122091">https://bbs.archlinux.org/viewtopic.php?id=122091</a><br />
-<a href="https://wiki.archlinux.org/index.php/Vim">https://wiki.archlinux.org/index ...</a></p>
                     </section>
                 </article>
                 <hr/>

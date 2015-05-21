@@ -51,6 +51,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-06-10T22:29:00" pubdate>
+                            Mon 10 June 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/961/php-unable-to-allocate-memory-for-pool/" rel="bookmark"><h1>PHP: Unable to allocate memory for pool</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>其實本來一開始的問題是 nginx 突然出現 <code>404 bad gateway</code>，後來去看 log
+才發現這個錯誤，所以看來如果出現 bad gateway
+的問題的話，可能就是跟後端的連線出了問題這樣。</p>
+<p>查了一下資料，發現到<a href="http://www.cyberciti.biz/faq/linux-unix-php-warning-unable-to-allocate-memory-for-pool/">這篇</a>說可能是 php apc
+的關係，剛好我也有裝，於是跟著把 <code>apc.shm_size</code> 調大之後並重開就 OK 了。</p>
+<p>不過老實說不能確定是因為重開，還是因為 cache
+有調大的關係。可能之後還要再觀察看看，目前過了幾天，看起來是都沒問題這樣～～。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-10T02:12:00" pubdate>
                             Mon 10 June 2013
                         </time>
@@ -265,30 +285,6 @@ period update 的方式做更新，由於中間測量的 function
                         <p>最近常在用 <code>popen</code> 呼叫系統指令，並讀取執行的結果作判斷，而有時候會有想確認內容是否會為空的需求，因為 popen return 的是一個 file descriptor，本來想說能不能用 <code>ftell</code>
 找出大小來做判斷，不過<a href="http://stackoverflow.com/questions/7705338/ftell-function-giving-1-in-c-for-stdout">後來證明不行</a>，pipe 跟一般的檔案還是有差別。</p>
 <p>找了一堆資料，後來只想到用 <code>fgetc</code> 來讀，再用讀不讀得到值作為判斷 orz，不知道有沒有其他更好的解法就是。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-04-14T23:45:00" pubdate>
-                            Sun 14 April 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/827/appfog-deploy-pyramid/" rel="bookmark"><h1>appfog deploy pyramid</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>這篇是參考
-<a href="http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/">http://antoineleclair.ca/2012/08/28/deploying-a-pyramid-app-on-appfog/</a>
-這篇所講的，其實他講的就差不多了，但是漏掉了一些細節，所以幫忙補完一下。  </p>
-<p><a href="https://www.appfog.com/">appfog</a> 的 deploy 相對 <a href="https://www.openshift.com/">openshift</a> 來說，算是簡單很多 (不過
-openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
-<a href="http://www.pylonsproject.org/">pyramid</a> 來講，主要就是在 project 根目錄新增一個 <code>wsgi.py</code>
-的檔案，內容引用文章連結內的程式：</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">paste.deploy</span> <span class="kn">import</span> <span class="n">loadapp</span>
-
-<span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&#39;python setup.py develop ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

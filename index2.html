@@ -51,6 +51,25 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-03-28T00:00:00" pubdate>
+                            Sat 28 March 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1418/jquery_data_attribute/" rel="bookmark"><h1>jQuery Data Attribute</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近開始用 <code>data-*</code> 的 attribute，後來看到 jQuery 也有 <code>.data()</code> 的 method 可以用，<code>data()</code> 可以存不只 <code>String</code> type 的資料，也可以存 <code>Number</code> or <code>Boolean</code> 之類的，不過用了之後才發現不是那麼好用，因為假如我把 data attribute 寫在 html 裡的話，ex: </p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">data-value=</span><span class="s">&quot;123&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></div>
+
+
+<p>我用 <code>data('value')</code> 取出來的值會是 <code>Number</code> type，也就是說，如果能轉的話，它就會自動幫你轉，在很多情況下，這不會是想要的行為，而且一旦不小心，就會造成不同型態比較的錯誤，所以就我自己來說，還是使用 <code>attr('data-value ...</code></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-03-21T00:00:00" pubdate>
                             Sat 21 March 2015
                         </time>
@@ -239,21 +258,6 @@
 
 <span class="c1">// A</span>
 <span class="kt">sigset_t</span> <span class="n">mask</span><span class="p">,</span> <span class="n">orig_mask ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-02-03T15:00:00" pubdate>
-                            Tue 03 February 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1408/c_unix_socket/" rel="bookmark"><h1>C UNIX Socket</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>可以參考這個連結的 code: <a href="kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-">Unix Domain Socket</a>，我後來發現我們 project 裡的 code 也是參考這邊的= =|||，不過的確是還缺少一些東西，像是可以再加上 <code>select</code> 或是 <code>pselect</code> 來另外處理 signal，我自己是用 <code>pselect</code> 就是，有想過用 <code>ppoll</code> 來做，不過實際會聽的連線很少，感覺沒必要就直接用 <code>pselect</code> 了。</p>
-<p>修正一下，之後還是改用 <code>ppoll</code> 好了XD，查了一下資料，就算是一個 socket，<code>poll</code> 還是比 <code>select</code> 快～～，參照 <a href="http://www.intelliproject.net/articles/showArticle/index/io_multiplexing">Comparative measurements and analysis of I/O event notification mechanisms</a>。<code>epoll ...</code></p>
                     </section>
                 </article>
                 <hr/>

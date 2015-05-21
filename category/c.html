@@ -51,6 +51,36 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-05-21T12:00:00" pubdate>
+                            Thu 21 May 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1428/c_coroutine/" rel="bookmark"><h1>C Coroutine</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <h2>Coroutines in C</h2>
+<ul>
+<li><a href="http://www.chiark.greenend.org.uk/~sgtatham/coroutines.html">http://www.chiark.greenend.org.uk/~sgtatham/coroutines.html</a></li>
+</ul>
+<h2>怎么理解coroutine ？</h2>
+<ul>
+<li><a href="http://www.zhihu.com/question/21483863">http://www.zhihu.com/question/21483863</a></li>
+</ul>
+<h2>libtask</h2>
+<ul>
+<li><a href="https://github.com/jamwt/libtask">https://github.com/jamwt/libtask</a></li>
+</ul>
+<h2>protothreads (Use switch; stackless)</h2>
+<ul>
+<li><a href="http://coolshell.cn/articles/10975.html">http://coolshell.cn/articles/10975.html</a></li>
+<li><a href="http://dunkels.com/adam/pt/examples.html#codelock">http://dunkels.com/adam/pt/examples.html#codelock</a></li>
+<li><a href="http://www.it165.net/os/html/201503/12134.html">http://www.it165.net/os/html/201503 ...</a></li></ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-05-21T11:00:00" pubdate>
                             Thu 21 May 2015
                         </time>
@@ -253,40 +283,12 @@
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-04-27T00:23:00" pubdate>
-                            Sat 27 April 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/838/linux-kernel-space-get-time-interval/" rel="bookmark"><h1>Linux kernel space get time interval</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前聽到可以用 <code>jiffies</code>
-來抓時間，可是我自己測的結果是前後抓的時間會都一樣囧。查了一下
-stackoverflow，也有<a href="http://stackoverflow.com/questions/4655711/measuring-execution-time-of-a-function-inside-linux-kernel">一個遇到一樣的問題</a>，我猜可能 <code>jiffies</code> 也是用
-period update 的方式做更新，由於中間測量的 function
-太快，導致來不及更新就拿到了一樣的值這樣。而在下面的回答中看到可以用
-<code>do_gettimeofday()</code> 來抓時間區間，簡單範例如下：  </p>
-<div class="highlight"><pre><span class="cp">#include &lt;linux/time.h&gt;</span>
-<span class="c1">// ...</span>
-<span class="k">struct</span> <span class="n">timeval</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">;</span>
-<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
-
-<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">begin</span><span class="p">);</span>
-<span class="c1">// Do something here</span>
-<span class="n">do_gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">end</span><span class="p">);</span>
-
-<span class="c1">// Get milliseconds </span>
-<span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">-</span> <span class="n">begin</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
-<span class="n">val</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
-            Page 1 / 1
+            Page 1 / 2
+                <a href="http://blog.carlcarl.me/category/c2.html">
+                    <i class="fa fa-arrow-circle-right"></i>
+                </a>
         </div>
 
     </div>
