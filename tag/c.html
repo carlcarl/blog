@@ -51,6 +51,27 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-05-21T11:00:00" pubdate>
+                            Thu 21 May 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1427/c_search_h/" rel="bookmark"><h1>C search.h</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>TL;DR: 不要用 search.h 裡的 function.</p>
+<p>最近需要改寫別人的程式，裡面有用到 search.h 裡的 function: <code>hsearch</code>，hsearch 其實就是 hash table，搭配其他的一些 function 就可以不用自己實作。但是，這個 hsearch 的缺點卻非常多:</p>
+<ol>
+<li>hash table 的 size 必須是固定的</li>
+<li>沒有 method 可以 traverse 整個 table 的 entry</li>
+<li>記憶體管理很麻煩，可能還必須自己再 maintain 一個 linked list 才行</li>
+</ol>
+<p>這邊是 wiki 上的範例: <a href="http://rosettacode.org/wiki/Associative_arrays/Creation/C#To_delete_or_iterate">http://rosettacode ...</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-04-15T15:00:00" pubdate>
                             Wed 15 April 2015
                         </time>

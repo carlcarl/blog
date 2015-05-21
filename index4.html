@@ -51,6 +51,44 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-05-20T11:30:00" pubdate>
+                            Tue 20 May 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1397/py2exe_note/" rel="bookmark"><h1>py2exe note</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>setup.py 簡單範例:</p>
+<div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="c"># encoding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">find_packages</span>
+<span class="kn">import</span> <span class="nn">py2exe</span>
+<span class="k">assert</span> <span class="n">py2exe</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s">&#39;&lt;your_package_name&gt;&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s">&#39;&lt;your_package_description&gt;&#39;</span><span class="p">,</span>
+    <span class="n">author</span><span class="o">=</span><span class="s">&#39;&lt;author name&gt;&#39;</span><span class="p">,</span>
+    <span class="n">author_email</span><span class="o">=</span><span class="s">&#39;author email&#39;</span><span class="p">,</span>
+    <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(),</span>
+    <span class="n">license</span><span class="o">=</span><span class="s">&#39;MIT&#39;</span><span class="p">,</span>
+    <span class="n">console</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;xxx.py&#39;</span><span class="p">],</span>
+    <span class="n">data_files</span><span class="o">=</span><span class="p">[</span>
+        <span class="s">&#39;xxx.conf.sample&#39;</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p><code>assert py2exe</code> 是因為 editor 會警告 <code>py2exe</code> import ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-05-18T02:00:00" pubdate>
                             Sun 18 May 2014
                         </time>
@@ -229,35 +267,6 @@ schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="
 
 
 <p>第一個是用 <a href="http://stackoverflow.com/questions/6393551/what-is-the-meaning-of-0-in-a-bash-script">parameter expansion</a>。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-21T03:00:00" pubdate>
-                            Tue 21 January 2014
-                        </time>
-                        <a href="http://blog.carlcarl.me/1387/raspberry_pi_bt_transmission/" rel="bookmark"><h1>Raspberry Pi BT Transmission</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>研究了一下怎麼在 <a href="http://www.raspberrypi.org">raspberry pi</a> + <a href="https://www.archlinux.org">ArchLinux</a> 上用 BT，好像都是用 <a href="http://www.transmissionbt.com">transmission</a>，所以我就跟著用了XD，下面是一些步驟。</p>
-<h2>安裝 transmission daemon</h2>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">transmission</span><span class="o">-</span><span class="n">cli</span>
-</pre></div>
-
-
-<h2>Run transmission daemon</h2>
-<p>由於一開始沒有設定檔，要先跑過才有，所以先跑一下，是說要這樣做也太囧。</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">transmission</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">transmission</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">stop</span> <span class="n">transmission</span>
-</pre></div>
-
-
-<h2>修改設定檔</h2>
-<p>設定檔位置在 <code>/var/lib/transmission/.config/transmission-daemon/settings.json</code> (這位置好爛)，我自己的設定檔如下，後方的 <code>M ...</code></p>
                     </section>
                 </article>
                 <hr/>

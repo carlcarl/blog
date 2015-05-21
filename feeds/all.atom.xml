@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-05-14T15:20:00+08:00</updated><entry><title>kdialog with crontab</title><link href="http://blog.carlcarl.me/1426/kdialog_with_crontab/" rel="alternate"></link><updated>2015-05-14T15:20:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-05-14:1426/kdialog_with_crontab/</id><summary type="html">&lt;p&gt;環境是用 KDE plasma 5, script 範例:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-05-21T11:00:00+08:00</updated><entry><title>C search.h</title><link href="http://blog.carlcarl.me/1427/c_search_h/" rel="alternate"></link><updated>2015-05-21T11:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-05-21:1427/c_search_h/</id><summary type="html">&lt;p&gt;TL;DR: 不要用 search.h 裡的 function.&lt;/p&gt;
+&lt;p&gt;最近需要改寫別人的程式，裡面有用到 search.h 裡的 function: &lt;code&gt;hsearch&lt;/code&gt;，hsearch 其實就是 hash table，搭配其他的一些 function 就可以不用自己實作。但是，這個 hsearch 的缺點卻非常多:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;hash table 的 size 必須是固定的&lt;/li&gt;
+&lt;li&gt;沒有 method 可以 traverse 整個 table 的 entry&lt;/li&gt;
+&lt;li&gt;記憶體管理很麻煩，可能還必須自己再 maintain 一個 linked list 才行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;這邊是 wiki 上的範例: &lt;a href="http://rosettacode.org/wiki/Associative_arrays/Creation/C#To_delete_or_iterate"&gt;http://rosettacode.org/wiki/Associative_arrays/Creation/C#To_delete_or_iterate&lt;/a&gt;，如果還要再寫一個 linked list，那還不如 hash table 就自己實作算了= =。&lt;/p&gt;
+&lt;p&gt;後來改看 &lt;code&gt;tsearch&lt;/code&gt;，t 是 tree search，比起 &lt;code&gt;hsearch&lt;/code&gt;，可以 traverse 整個 tree，size 也是 dynamic，然後記憶體管理的話，也有額外的 callback function 可以自己做 free，完全就是好用多了，除了時間複雜度比較高以外，但是，後來還是遇到了問題......，那就是 tsearch return 的 pointer，它的 return pointer 型態是 &lt;code&gt;void*&lt;/code&gt;，但是回傳的值是存 node 記憶體位址的變數的記憶體位址(好像有點饒舌...)，我本來以為會直接就是 node 的記憶體位址，於是我用: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;XXX&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;ptr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;ptr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;XXX&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;tsearch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;blahblah&lt;/span&gt;&lt;span class="p"&gt;...);&lt;/span&gt;
+&lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;%s&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ptr&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;xxx&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;結果卻印出一堆亂碼，後來找了很久，找到這篇: &lt;a href="https://stackoverflow.com/questions/21840116/dont-understand-how-tsearch-return-pointers-work"&gt;Don't understand how tsearch return pointers work&lt;/a&gt;，才發現原來不是這樣...。所以正確寫法應該是&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;XXX&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;ptr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;ptr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;XXX&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;tsearch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;blahblah&lt;/span&gt;&lt;span class="p"&gt;...);&lt;/span&gt;
+&lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;%s&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;ptr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;xxx&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;就是一個不管怎麼用都會撞到牆的概念，感覺自己寫好像還比較快...。&lt;/p&gt;</summary><category term="c"></category></entry><entry><title>kdialog with crontab</title><link href="http://blog.carlcarl.me/1426/kdialog_with_crontab/" rel="alternate"></link><updated>2015-05-14T15:20:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-05-14:1426/kdialog_with_crontab/</id><summary type="html">&lt;p&gt;環境是用 KDE plasma 5, script 範例:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/sh&lt;/span&gt;
 
 &lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;DISPLAY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;:0
@@ -13,7 +35,7 @@ kdialog --msnbox &lt;span class="s2"&gt;&amp;quot;hello&amp;quot;&lt;/span&gt; -
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;因為 crontab 不知道這個 UI 顯示是要顯示在哪個螢幕上，所以要指定 &lt;code&gt;DISPLAY&lt;/code&gt;，&lt;code&gt;KDE_FULL_SESSION&lt;/code&gt; 也會影響。&lt;code&gt;QT_PLUGIN_PATH&lt;/code&gt; 我是直接複製我 GUI 使用者的設定，這邊可以看到是 qt5，如果是用 KDE 4 的話，大概是用 qt4，不確定就是，如果少掉這個設定，kdialog 會 fallback 成比較醜的介面，看起來不太舒服。&lt;/p&gt;
+&lt;p&gt;因為 crontab 不知道這個 UI 顯示是要顯示在哪個螢幕上，所以要指定 &lt;code&gt;DISPLAY&lt;/code&gt;，&lt;code&gt;KDE_FULL_SESSION&lt;/code&gt; 也會影響。&lt;code&gt;QT_PLUGIN_PATH&lt;/code&gt; 我是直接複製我 GUI 使用者的設定，這邊可以看到是 qt5，如果是用 KDE 4 的話，大概是用 qt4，不確定就是，如果少掉這個設定，kdialog 會 fallback 成比較醜的介面，看起來不太舒服。接著在 crontab 裡設定執行上述的 script 即可。&lt;/p&gt;
 &lt;p&gt;Ref:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://forums.opensuse.org/showthread.php/443251-Trying-to-use-kdialog-in-cron"&gt;Trying to use kdialog in cron&lt;/a&gt;&lt;/li&gt;

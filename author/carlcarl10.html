@@ -51,6 +51,36 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-04-09T13:35:00" pubdate>
+                            Tue 09 April 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/819/python-pyramid-jsonp/" rel="bookmark"><h1>Python Pyramid jsonp</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>Python 的 Pyramid Framework 有支援 jsonp 的 renderer，看了一下
+doc，設置還算簡單，不過好像漏了個小地方。  </p>
+<p>首先要先在 <code>Configurator</code> 的檔案加入下面內容 (官方 doc 裡面沒提到要從哪邊
+ <code>import JSONP</code>)：</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyramid.renderers</span> <span class="kn">import</span> <span class="n">JSONP</span>
+<span class="c"># 這裡使用 &#39;callback&#39; 當作預設的 callback function 名稱</span>
+<span class="n">config</span><span class="o">.</span><span class="n">add_renderer</span><span class="p">(</span><span class="s">&#39;jsonp&#39;</span><span class="p">,</span> <span class="n">JSONP</span><span class="p">(</span><span class="n">param_name</span><span class="o">=</span><span class="s">&#39;callback&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>然後在 view 裡面將 <code>renderer</code> 改用 <code>jsonp</code>，這邊你還是可以加上 <code>route_name</code>
+等參數：</p>
+<div class="highlight"><pre><span class="nd">@view_config</span><span class="p">(</span><span class="n">renderer</span><span class="o">=</span><span class="s">&#39;jsonp&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>這樣就完成了 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-04-07T22:58:00" pubdate>
                             Sun 07 April 2013
                         </time>
@@ -261,28 +291,6 @@ WebConf。(這次的 WebConf 官方網站作得還滿不錯的，再加上這背
 TonyQ 的「網站效能調整」，感覺上就滿實用的，後來也有去找 slide
 來看；「敏捷 Web 開發之 Python 工具菜單」這場也沒有聽到，後來看了一下相片，似乎聽的人不多，可能是因為~~打對台的講者太強大了~~大家聽一整天程式相關的議題都累了，所以都想聽聽其他領域的分享吧。</p>
 <p>「在家也能架出好網站」是我覺得很實用的主題，我後來也有把這份 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-01-10T20:33:00" pubdate>
-                            Thu 10 January 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/738/another-plugin-set-completefunc-disabled-neocomplcache/" rel="bookmark"><h1>Another plugin set completefunc! Disabled neocomplcache</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近替 vim 加上了 cscope
-的設定後，<code>neocomplcache</code>突然有時候會出現問題，查了一下資料發現只要加上一行就可以解決了：</p>
-<div class="highlight"><pre><span class="nb">let </span>g:neocomplcache_force_overwrite_completefunc <span class="o">=</span> 1
-</pre></div>
-
-
-<p>參考資料：  </p>
-<p><a href="http://stackoverflow.com/questions/12975098/using-neocomplcache-and-clang-complete">http://stackoverflow.com/questions/12975098/using-neocomplcache-and-clang-complete</a><br />
-<a href="https://github.com/Shougo/neocomplcache/issues/276">https://github.com/Shougo/neocomplcache/issues/276</a></p>
                     </section>
                 </article>
                 <hr/>

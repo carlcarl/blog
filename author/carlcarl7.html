@@ -51,6 +51,31 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-08-07T15:31:00" pubdate>
+                            Wed 07 August 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1262/javascript-parseint-and-number/" rel="bookmark"><h1>Javascript parseInt and Number</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>這個是查資料時看到的 benchmark <a href="http://jsperf.com/performance-of-parseint">performance of parseInt()</a></p>
+<p>簡單歸納幾點：</p>
+<ol>
+<li><code>parseInt</code> 基本上幾乎是比 <code>Number</code>
+    還要快的，兩者雖然用法有點不同，不過純粹做轉換的話，<code>parseInt</code>
+    會比較快。</li>
+<li><code>parseInt('4')</code> 跟 <code>parseInt('4', 10)</code>
+    在不同瀏覽器的效能也不一樣。不過直覺來看，感覺應該是 <code>parseInt('4')</code>
+    會比較快說，因為不需要驗證參數。就個人來說，還是直接 <code>parseInt('4')</code>
+    就好。</li>
+<li>new 會帶來多的 overhead，所以 new Number 又比 Number 慢。</li>
+</ol>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-08-06T15:38:00" pubdate>
                             Tue 06 August 2013
                         </time>
@@ -254,29 +279,6 @@ extension 以 Opera 和 Chrome 為主，因為兩個基本上架構可以共通�
 在 <code>onload</code> 之後還會有個它自己 loading
 的頁面，處理起來就變麻煩很多，因為除了要觀察 dom 來判斷何時才算真的
 ready 以外，另外就是 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-28T20:29:00" pubdate>
-                            Fri 28 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1107/javascript-style-width-offsetwidth/" rel="bookmark"><h1>javascript style.width offsetWidth</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>查了一些資料，看起來 <code>style.width</code> 是如果 css 沒指定 element 的 width
-的話，就會拿到空值，即使它本身的確佔有一個大小。這時候如果想拿到實際大小的話可以用
-<code>offsetWidth</code>，另外要注意的是 <code>offsetWidth</code> 是
-<code>readonly</code>，所以如果要設寬度，還是得從 <code>style.width</code> 著手。還有 <a href="http://jsperf.com/style-width-vs-offsetwidth1/5">這篇</a>
-是 <code>style.width</code> 和 <code>offsetWidth</code> 的效能比較，看來 <code>offsetWidth</code>
-效能好很多，看來以後抓寬度就直接抓這個值就好了@@。</p>
-<p>參考資料：<br />
-<a href="http://zhuweiwu.com/?p=86">原生js获取宽高与jquery获取宽高的方法的关系</a><br />
-<a href="http://bbs.csdn.net/topics/80381570">offsetWidth和width有什么不同啊?</a><br />
-<a href="http://stackoverflow.com/questions/4787527/how-to-find-the-width-of-a-div">How to find the width of a div</a></p>
                     </section>
                 </article>
                 <hr/>
