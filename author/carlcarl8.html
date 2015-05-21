@@ -51,6 +51,27 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-12T02:15:00" pubdate>
+                            Fri 12 July 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1120/osx-mavericks-betaheader-file-position/" rel="bookmark"><h1>OSX Mavericks Beta header file position</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>Beta 版的 header file 位置有些不同，看到幾個地方都傳出災情：</p>
+<ul>
+<li><a href="https://github.com/mxcl/homebrew/pull/20938">gpg-agent: Set correct stdint.h header path for Mac OSX Mavericks</a></li>
+<li><a href="https://github.com/jfahrenkrug/WWDC-Downloader/issues/5">The gem doesn't yet build in Mavericks</a></li>
+<li><a href="https://github.com/josegonzalez/homebrew-php/issues/591">Installation fails on OS X Mavericks</a></li>
+</ul>
+<p>原本的 <code>/usr/include</code> 已經不見了，找了一下，位置是在：</p>
+<div class="highlight"><pre><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode5</span><span class="o">-</span><span class="n">DP</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="p">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="mf">.9 ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-07-03T18:46:00" pubdate>
                             Wed 03 July 2013
                         </time>
@@ -267,25 +288,6 @@ buffer 的部分 render 上去呢？以下是我的鍵盤猜測：</p>
 1000Hz，反正一般的銀幕也看不出來:P。</p>
 <p>以一個簡單的例子來實驗，假如我在一開始把一個方形塗上顏色然後 clear
 掉 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-11T03:43:00" pubdate>
-                            Tue 11 June 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/967/java-paintcomponent-paint-duplicate/" rel="bookmark"><h1>Java paintComponent paint duplicate</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>之前寫 Java 的時候遇到的小問題，在實作 <code>JPanel</code> 的 <code>paintComponent</code>
-時，發現怎麼畫完後會出現多餘的重複物件。</p>
-<p>後來找了一下資料，在 stackoverflow
-發現<a href="http://stackoverflow.com/questions/13773315/java-paintcomponent-paints-a-copy-of-the-top-gui-panel-for-no-apparent-reason">有人有一樣的問題</a>。解決方法也很簡單，只要在 <code>paintComponent</code>
-一開始加上
-<code>super.paintComponent(g);</code>，可惜的是不懂為啥不呼叫的話會出現這樣的結果就是。</p>
                     </section>
                 </article>
                 <hr/>

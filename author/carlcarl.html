@@ -51,6 +51,30 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-05-21T14:30:00" pubdate>
+                            Thu 21 May 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1429/html_input_label_ux/" rel="bookmark"><h1>HTML Input Label UX</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>幾篇關於 HTML input 和 label 該怎麼擺放會比較好的討論。</p>
+<ul>
+<li><a href="https://ux.stackexchange.com/questions/8873/why-might-right-aligned-field-labels-be-better">Why might right aligned field labels be better?</a></li>
+<li><a href="https://ux.stackexchange.com/questions/54446/forms-side-by-side-or-vertical-for-label-and-text-input">Forms: side-by-side or vertical for label and text-input?</a></li>
+<li><a href="https://ux.stackexchange.com/questions/48903/label-align-location-for-input-box">Label align location for input box</a></li>
+</ul>
+<p>總結下來的簡單結論就是:</p>
+<ul>
+<li>垂直排會比左右排好，可是也不是所有情況都適合垂直排就是。</li>
+<li>左右排的話，label 靠右，input 靠左，這樣會比較容易辨識。</li>
+</ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-05-21T12:00:00" pubdate>
                             Thu 21 May 2015
                         </time>
@@ -272,21 +296,6 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
 <li><a href="https://linuxprograms.wordpress.com/category/json-c/">A simple and complete json parser</a>，包含很多例子，可是都會省略掉 free 的動作，要自己記得加。</li>
 </ul>
 <p>不過最上面兩個都有一個同樣的問題，就是多做了幾次不必要的 free，最後的 <code>json_object_put</code> 其實只要對最上頭的 root 做一次就好，這個 function 會將其中有參照的 object 都做 free ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-07T14:00:00" pubdate>
-                            Tue 07 April 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1419/c_cgi_resources/" rel="bookmark"><h1>C CGI Resources</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>CGI 的 C 範例，大部分都是很簡單的，找不太到比較完整的資料，只找到 C++ 的，不過還是可以參考看看：<a href="http://www.tutorialspoint.com/cplusplus/cpp_web_programming.htm">http://www.tutorialspoint.com/cplusplus/cpp_web_programming.htm</a>，裡頭有介紹到如何拿 GET, POST 的資料，還有一些常見的 header 欄位。</p>
-<p>另外找了一下，怎麼切 cookie 裡的字串比較好，不過也是沒找到比較正統的做法，只看到這種做法：<a href="http://www.gnu-darwin.orgwww.gnu-darwin.org/www001/src/ports/security/zxid/work/zxid-0.22/zxidcdc.c">http://www.gnu-darwin.orgwww.gnu-darwin.org/www001/src/ports/security/zxid/work/zxid-0.22/zxidcdc.c</a>，直接用 <code>strstr</code> 找到想要的欄位這樣。</p>
                     </section>
                 </article>
                 <hr/>

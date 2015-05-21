@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-05-21T12:00:00+08:00</updated><entry><title>C Coroutine</title><link href="http://blog.carlcarl.me/1428/c_coroutine/" rel="alternate"></link><updated>2015-05-21T12:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-05-21:1428/c_coroutine/</id><summary type="html">&lt;h2&gt;Coroutines in C&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-05-21T14:30:00+08:00</updated><entry><title>HTML Input Label UX</title><link href="http://blog.carlcarl.me/1429/html_input_label_ux/" rel="alternate"></link><updated>2015-05-21T14:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-05-21:1429/html_input_label_ux/</id><summary type="html">&lt;p&gt;幾篇關於 HTML input 和 label 該怎麼擺放會比較好的討論。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://ux.stackexchange.com/questions/8873/why-might-right-aligned-field-labels-be-better"&gt;Why might right aligned field labels be better?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ux.stackexchange.com/questions/54446/forms-side-by-side-or-vertical-for-label-and-text-input"&gt;Forms: side-by-side or vertical for label and text-input?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ux.stackexchange.com/questions/48903/label-align-location-for-input-box"&gt;Label align location for input box&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;總結下來的簡單結論就是:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;垂直排會比左右排好，可是也不是所有情況都適合垂直排就是。&lt;/li&gt;
+&lt;li&gt;左右排的話，label 靠右，input 靠左，這樣會比較容易辨識。&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="html"></category></entry><entry><title>C Coroutine</title><link href="http://blog.carlcarl.me/1428/c_coroutine/" rel="alternate"></link><updated>2015-05-21T12:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-05-21:1428/c_coroutine/</id><summary type="html">&lt;h2&gt;Coroutines in C&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://www.chiark.greenend.org.uk/~sgtatham/coroutines.html"&gt;http://www.chiark.greenend.org.uk/~sgtatham/coroutines.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
