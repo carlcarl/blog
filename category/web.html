@@ -51,6 +51,25 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-05-25T17:40:00" pubdate>
+                            Mon 25 May 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1430/csrf/" rel="bookmark"><h1>CSRF 資料</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>預防 Cross-Site Request Forgery (CSRF) 的一些資料，以下兩個連結講了蠻多的:</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/20504846/why-is-it-common-to-put-csrf-prevention-tokens-in-cookies">Why is it common to put CSRF prevention tokens in cookies?</a></li>
+<li><a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet#Double_Submit_Cookies">Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet</a></li>
+</ul>
+<p>其中看到比較特別的是 Double Submit Cookies。將 CSRF token 放到 POST 和 cookie 欄位中，接著 server 只要比對兩者一樣不一樣就可以了，還滿有趣的。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-04-15T17:00:00" pubdate>
                             Wed 15 April 2015
                         </time>
@@ -259,34 +278,12 @@ Link 如果在下面的情況是 OK 的：</p>
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-02-22T03:07:00" pubdate>
-                            Fri 22 February 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/788/bootstrap-input-align/" rel="bookmark"><h1>bootstrap input align</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>使用 bootstrap 的 input element 的時候遇到 text 和 button
-位置不齊的情況，去 stackoverflow 找了一下就看到<a href="http://stackoverflow.com/questions/10615872/bootstrap-align-input-with-button">解決的辦法</a>了：  </p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">&quot;search&quot;</span> <span class="na">id=</span><span class="s">&quot;search&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn&quot;</span><span class="nt">&gt;</span>button<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</pre></div>
-
-
-<p>簡單說就是在外面那層加上 <code>form-horizontal</code> 這個 class 屬性，另外
-<code>input-append</code> 雖然也可以達到類似的效果，不過由於 input element
-會貼在一起，所以不建議用。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
-            Page 1 / 1
+            Page 1 / 2
+                <a href="http://blog.carlcarl.me/category/web2.html">
+                    <i class="fa fa-arrow-circle-right"></i>
+                </a>
         </div>
 
     </div>

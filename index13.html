@@ -51,6 +51,27 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-07-06T03:49:00" pubdate>
+                            Fri 06 July 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/525/html-script-speed-up-with-defer/" rel="bookmark"><h1>HTML script speed up with defer</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在 <a href="http://blog.xuite.net/vexed/tech/61308318">script tag 屬性 async defer 差別</a> 這邊看到了 script tag 有 async
+和 defer 的用法，所以就來試試看。大致測試了一下，速度的確有快了一些(大概加快50 ~ 100ms
+左右吧XD)。以下大概講一下我的測試範例內容：</p>
+<div class="highlight"><pre><span class="c">&lt;!-- </span>
+<span class="c">這是原本的程式</span>
+<span class="c">a-b.js 需要 a.js, 而 a-c.js 需要 a.js, 這是這 3 個 js 檔的相依關係</span>
+<span class="c">最後會從 a-c.js 裡呼叫 library 來執行</span>
+<span class="c">由於 async 屬性並不適合用來處理有相依性的 js 檔案 ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-06-18T18:07:00" pubdate>
                             Mon 18 June 2012
                         </time>
@@ -261,45 +282,6 @@ address 就直接分在同個網段下的不同區域，例如 192.168.1 ...</p>
 來看一下簡單的範例：</p>
 <p>html</p>
 <div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;list[]&quot;</span> <span class="na">value=</span><span class="s">&quot;value ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-09T04:24:00" pubdate>
-                            Wed 09 May 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/438/javascript-check-if-array-and-empty/" rel="bookmark"><h1>Javascript check if array and empty</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>列出一些我覺得比較 OK 的方法，至於其他還有一些方法可以參考最下方的網址。  
-判斷是否為 array 的方式：</p>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">xxx</span> <span class="o">=</span> <span class="p">[];</span>
-
-<span class="c1">// 第1種：先用 if 判斷瀏覽器是否支援此method 然後再執行</span>
-<span class="k">if</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
-
-<span class="c1">// 第2種</span>
-<span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">xxx</span><span class="p">)</span> <span class="o">===</span> <span class="s1">&#39;[object Array]&#39;</span>
-
-<span class="c1">// 第3種</span>
-<span class="mi">3</span><span class="p">.</span> <span class="nx">xxx</span> <span class="k">instanceof</span> <span class="nb">Array</span>
-</pre></div>
-
-
-<p>判斷 array 是否為 empty的方式：</p>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">xxx</span> <span class="o">=</span> <span class="p">[];</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Array is empty&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>另外如果還要判斷在 array ...</p>
                     </section>
                 </article>
                 <hr/>

@@ -51,6 +51,25 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-05-25T17:40:00" pubdate>
+                            Mon 25 May 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1430/csrf/" rel="bookmark"><h1>CSRF 資料</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>預防 Cross-Site Request Forgery (CSRF) 的一些資料，以下兩個連結講了蠻多的:</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/20504846/why-is-it-common-to-put-csrf-prevention-tokens-in-cookies">Why is it common to put CSRF prevention tokens in cookies?</a></li>
+<li><a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet#Double_Submit_Cookies">Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet</a></li>
+</ul>
+<p>其中看到比較特別的是 Double Submit Cookies。將 CSRF token 放到 POST 和 cookie 欄位中，接著 server 只要比對兩者一樣不一樣就可以了，還滿有趣的。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-05-21T14:30:00" pubdate>
                             Thu 21 May 2015
                         </time>
@@ -276,26 +295,6 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
 
 <p>看起來還滿詭異的，為啥用個 timeout function 就可以解了，查了一下，這篇感覺是正解: <a href="http://blog.csdn.net/lsk_jd/article/details/6080772">JS setTimeout延迟时间为0的详解</a>。</p>
 <div class="highlight"><pre>JavaScript 引擎在执行 onkeypress 时，由于没有多线程的同步执行，不可能同时去处理刚创建元素的 focus 和 select 事件，由于这两个事件都不在队列中，在完成 onkeypress 后，JavaScript 引擎已经丢弃了这两个事件，正如你看到的例子 1 的情况。而在例子 ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-10T01:00:00" pubdate>
-                            Fri 10 April 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1420/json_c_resources/" rel="bookmark"><h1>JSON-C Resources</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>找了一些 JSON-C 的使用範例:</p>
-<ul>
-<li><a href="blog.yslin.tw/2012/06/json-parser-in-c-language-json-c.html">JSON parser in C language - json-c</a>，簡單 JSON 的 maker 和 parser，不過沒有 array 的例子。</li>
-<li><a href="http://www.oknow.co/2014/06/c-json.html">C 語言產生 json 檔</a>，有 array 的例子可以參考。</li>
-<li><a href="https://linuxprograms.wordpress.com/category/json-c/">A simple and complete json parser</a>，包含很多例子，可是都會省略掉 free 的動作，要自己記得加。</li>
-</ul>
-<p>不過最上面兩個都有一個同樣的問題，就是多做了幾次不必要的 free，最後的 <code>json_object_put</code> 其實只要對最上頭的 root 做一次就好，這個 function 會將其中有參照的 object 都做 free ...</p>
                     </section>
                 </article>
                 <hr/>

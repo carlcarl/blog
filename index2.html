@@ -51,6 +51,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-04-10T01:00:00" pubdate>
+                            Fri 10 April 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1420/json_c_resources/" rel="bookmark"><h1>JSON-C Resources</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>找了一些 JSON-C 的使用範例:</p>
+<ul>
+<li><a href="blog.yslin.tw/2012/06/json-parser-in-c-language-json-c.html">JSON parser in C language - json-c</a>，簡單 JSON 的 maker 和 parser，不過沒有 array 的例子。</li>
+<li><a href="http://www.oknow.co/2014/06/c-json.html">C 語言產生 json 檔</a>，有 array 的例子可以參考。</li>
+<li><a href="https://linuxprograms.wordpress.com/category/json-c/">A simple and complete json parser</a>，包含很多例子，可是都會省略掉 free 的動作，要自己記得加。</li>
+</ul>
+<p>不過最上面兩個都有一個同樣的問題，就是多做了幾次不必要的 free，最後的 <code>json_object_put</code> 其實只要對最上頭的 root 做一次就好，這個 function 會將其中有參照的 object 都做 free ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-04-07T14:00:00" pubdate>
                             Tue 07 April 2015
                         </time>
@@ -230,20 +250,6 @@
 <ul>
 <li><a href="http://stackoverflow.com/questions/17816515/detect-an-ajax-request">Detect an ajax request</a></li>
 </ul>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-02-20T02:00:00" pubdate>
-                            Fri 20 February 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1410/packt_free_learning/" rel="bookmark"><h1>Packt Free Learning Campaign</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><a href="https://www.packtpub.com/index">Packt</a> 最近有一個新活動，活動的內容是每天提供一本免費的電子書給讀者，不過只限到 3/5，而且每天的部分，過了就沒了，所以要看的動作要快囉~~。 有需要的可以點進去這個連結看看: <a href="http://bit.ly/1zNpVt0">http://bit.ly/1zNpVt0</a>。</p>
                     </section>
                 </article>
                 <hr/>
