@@ -6,6 +6,8 @@
 &lt;/ul&gt;
 &lt;p&gt;其中看到比較特別的是 Double Submit Cookies。將 CSRF token 放到 POST 和 cookie 欄位中，接著 server 只要比對兩者一樣不一樣就可以了，還滿有趣的。&lt;/p&gt;</summary><category term=""></category></entry><entry><title>HTML Input Label UX</title><link href="http://blog.carlcarl.me/1429/html_input_label_ux/" rel="alternate"></link><updated>2015-05-21T14:30:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-05-21:1429/html_input_label_ux/</id><summary type="html">&lt;p&gt;幾篇關於 HTML input 和 label 該怎麼擺放會比較好的討論。&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.uxmatters.com/mt/archives/2010/01/label-alignment-in-long-forms-paper-prototyping-for-engineers.php"&gt;Label Alignment in Long Forms | Paper Prototyping for Engineers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="www.sitepoint.com/definitive-guide-form-label-positioning/"&gt;The Definitive Guide to Form Label Positioning&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ux.stackexchange.com/questions/8873/why-might-right-aligned-field-labels-be-better"&gt;Why might right aligned field labels be better?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ux.stackexchange.com/questions/54446/forms-side-by-side-or-vertical-for-label-and-text-input"&gt;Forms: side-by-side or vertical for label and text-input?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ux.stackexchange.com/questions/48903/label-align-location-for-input-box"&gt;Label align location for input box&lt;/a&gt;&lt;/li&gt;
