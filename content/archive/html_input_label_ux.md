@@ -9,6 +9,8 @@ Slug: html_input_label_ux
 
 幾篇關於 HTML input 和 label 該怎麼擺放會比較好的討論。
 
+* [Label Alignment in Long Forms | Paper Prototyping for Engineers]
+* [The Definitive Guide to Form Label Positioning]
 * [Why might right aligned field labels be better?]
 * [Forms: side-by-side or vertical for label and text-input?]
 * [Label align location for input box]
@@ -20,6 +22,8 @@ Slug: html_input_label_ux
 * 垂直排會比左右排好，可是也不是所有情況都適合垂直排就是。
 * 左右排的話，label 靠右，input 靠左，這樣會比較容易辨識。
 
+[Label Alignment in Long Forms | Paper Prototyping for Engineers]: http://www.uxmatters.com/mt/archives/2010/01/label-alignment-in-long-forms-paper-prototyping-for-engineers.php
+[The Definitive Guide to Form Label Positioning]: www.sitepoint.com/definitive-guide-form-label-positioning/
 [Why might right aligned field labels be better?]: https://ux.stackexchange.com/questions/8873/why-might-right-aligned-field-labels-be-better
 [Forms: side-by-side or vertical for label and text-input?]: https://ux.stackexchange.com/questions/54446/forms-side-by-side-or-vertical-for-label-and-text-input
 [Label align location for input box]: https://ux.stackexchange.com/questions/48903/label-align-location-for-input-box
