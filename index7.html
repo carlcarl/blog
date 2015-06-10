@@ -51,6 +51,35 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-09-09T02:10:00" pubdate>
+                            Mon 09 September 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1302/brunch-watch-stylesheet-dependency/" rel="bookmark"><h1>brunch watch stylesheet dependency</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>之前在改網站的 style，明明套用了 brunch，但是修改後，卻沒辦法自動產生
+build 好的 css，這個問題一直困擾我很久，每次都要重新跑一次
+<code>brunch watch --server</code> 實在是很不爽，今天晚上剛好有一點時間就來修了。</p>
+<p>網站是用 <code>less</code>，然後有一個主要的 less 檔來 <code>@import</code> 其他在 <code>less</code>
+資料夾底下的 .less 檔，目錄架構大概像底下這樣：</p>
+<div class="highlight"><pre>├── less
+│   ├── archives.less
+│   ├── index.less
+└── less_proxy.less
+</pre></div>
+
+
+<p>然後 <code>config.ls</code> (這邊是用 livescript) 裡對應的設定部分：</p>
+<div class="highlight"><pre><span class="nv">stylesheets:</span>
+  <span class="nv">joinTo:</span>
+    <span class="s">&#39;css/app.css&#39;</span><span class="o">:</span> <span class="sr">/^app\/styles\/\w+\.less ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-08-28T01:40:00" pubdate>
                             Wed 28 August 2013
                         </time>
@@ -282,26 +311,6 @@ information。</p>
 方法。格式可以選 JSON 然後把 callback 名稱拿掉，下完 query
 就可以產生一段網址，以新竹的例子來說就是:</p>
 <div class="highlight"><pre>http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D%22TWXX0009%22%20and%20u%3D%22c%22&amp;format=json&amp;diagnostics=true&amp;callback ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-14T17:57:00" pubdate>
-                            Sun 14 July 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1194/tree-command-exclude-multiple-direcories/" rel="bookmark"><h1>tree command exclude multiple direcories</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <h3>安裝</h3>
-<p>一般 Linux 好像都會有裝，不過 OSX 上預設沒有，下個 <code>brew install tree</code>
-裝就 OK 了。</p>
-<h3>使用</h3>
-<p>man 了一下，用 <code>-I pattern</code> 就可以略過資料夾，那如果有多個呢？本來猜是
-<code>-I pattern1 pattern2</code>，結果不是囧，<code>-I pattern1 -I pattern2</code>
-也不是囧。後來才看到<a href="http://unix.stackexchange.com/questions/61074/tree-command-for-multiple-includes-and-excludes">用法</a>應該是 <code>-I pattern1|pattern2</code> 才對 orz。</p>
                     </section>
                 </article>
                 <hr/>

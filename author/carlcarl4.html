@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-08-15T20:00:00" pubdate>
+                            Fri 15 August 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1401/django_essentials_review/" rel="bookmark"><h1>Django Essentials review</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><img alt="Django Essentials" src="http://i.imgur.com/nLMpucb.jpg" /></p>
+<p>這本書的內容是從頭開始講 Django 的使用和開發。大致看過後，我覺得非常適合想學 Django 的初學者。這本書會從一開始 for 各種 OS 的安裝開始講起，可能有些人會覺得有些囉嗦，不過這樣的確可以替新手省下很多時間XD。Django 版本的話這版是用 1.6，要注意的是 Python 是用 3 而不是 2，有些人可能會滿 care 這點的就是。</p>
+<p>接下來包括 Template, Model, View, Form 都會講到個別的用法，也會提到一些需要注意的地方，像 Model 就提到了如何 extend UserProfile 也有提到如何用 South 做 Migration，不過在之後的 Django 1.7 版本，就會內建 migration ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-08-11T00:30:00" pubdate>
                             Mon 11 August 2014
                         </time>
@@ -245,26 +261,6 @@ schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="
 <p>書本身的章節並不多，主要分成四個章節：Profiling, Numpy, Cython, Parallel Processing. 不過跟我預想的其實不太一樣，我當初其實以為會是有關寫法，記憶體控制或是 Python 特殊演算法的介紹，不過這本書其實比較偏向這幾個工具或 lib 的使用和一些技巧這樣，我覺得是比較可惜的地方。現在自己的 Python 程式其實比較少注意在效能方面，所以其實還對這些工具的使用沒有太大的感覺XD，希望之後有機會可以試著用這些工具來 tune 一些 performance 的問題。</p>
 <p>而我比較有興趣的應該是最後的 parallel processing 的部分，這部分應該算是在平常就會常接觸到的用法，另外就是還有一定會提到的 synchronization 和 locks 的問題，書中的話有用一些簡單的例子來說明為何在 MultiProcesses 下需要注意這個問題，不過算是滿基本的就是，如果還能有較進階一點的用法和例子，我覺得是會更好。</p>
 <p>就個人而言，不太算是我的菜，大概是因為跟我預想的 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-02-08T02:00:00" pubdate>
-                            Sat 08 February 2014
-                        </time>
-                        <a href="http://blog.carlcarl.me/1391/check_if_command_exist/" rel="bookmark"><h1>Check if command exist</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>本來直覺是用 <code>which</code>，不過查了一下資料，在 <a href="https://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script">How to check if a program exists from a bash script?</a> 發現有幾個不建議用 <code>which</code> 的理由：</p>
-<ol>
-<li>cost 太大，需要另外 call 一個 process 來處理</li>
-<li>exit status 在一些系統並沒有定義</li>
-<li>很多 operating system 會對 <code>which</code> 做額外的 tweak，可能會有其他的 side effect</li>
-</ol>
-<p>在解答中建議可以用 <code>hash</code>, <code>command</code>, <code>type</code> 等指令來判斷，其中 <code>command</code> 的 exit code 在 POSIX ...</p>
                     </section>
                 </article>
                 <hr/>

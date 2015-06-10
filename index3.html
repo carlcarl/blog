@@ -51,6 +51,25 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-02-22T23:00:00" pubdate>
+                            Sun 22 February 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1411/ajax_request_header/" rel="bookmark"><h1>Ajax Request Header</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>小筆記一下～。</p>
+<p>看了一下 browser 丟出的 request header 有包含 <code>X_REQUESTED_WITH</code>，不過在 Server side 收到的會在前面加個 <code>HTTP_</code>，所以會變成 <code>HTTP_X_REQUESTED_WITH</code>。值的話則是 <code>XMLHttpRequest</code>。</p>
+<p>Ref:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/17816515/detect-an-ajax-request">Detect an ajax request</a></li>
+</ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-02-20T02:00:00" pubdate>
                             Fri 20 February 2015
                         </time>
@@ -243,22 +262,6 @@
                     <section class="post-content">
                         <p>前幾天收到 <a href="http://bit.ly/1AKtu5i">packt</a> 的訊息，不過因為有點忙，拖到現在才 po。</p>
 <p>到 2015/01/06 為止，在上面買電子書書和影片只要 5 塊美金！這優惠還滿優渥的，有興趣的可以上去參考購買看看啦~~。有需要的可以點<a href="http://bit.ly/1AKtu5i">此連結</a>。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-08-15T20:00:00" pubdate>
-                            Fri 15 August 2014
-                        </time>
-                        <a href="http://blog.carlcarl.me/1401/django_essentials_review/" rel="bookmark"><h1>Django Essentials review</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p><img alt="Django Essentials" src="http://i.imgur.com/nLMpucb.jpg" /></p>
-<p>這本書的內容是從頭開始講 Django 的使用和開發。大致看過後，我覺得非常適合想學 Django 的初學者。這本書會從一開始 for 各種 OS 的安裝開始講起，可能有些人會覺得有些囉嗦，不過這樣的確可以替新手省下很多時間XD。Django 版本的話這版是用 1.6，要注意的是 Python 是用 3 而不是 2，有些人可能會滿 care 這點的就是。</p>
-<p>接下來包括 Template, Model, View, Form 都會講到個別的用法，也會提到一些需要注意的地方，像 Model 就提到了如何 extend UserProfile 也有提到如何用 South 做 Migration，不過在之後的 Django 1.7 版本，就會內建 migration ...</p>
                     </section>
                 </article>
                 <hr/>

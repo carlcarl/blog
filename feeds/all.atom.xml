@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-05-25T17:40:00+08:00</updated><entry><title>CSRF 資料</title><link href="http://blog.carlcarl.me/1430/csrf/" rel="alternate"></link><updated>2015-05-25T17:40:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-05-25:1430/csrf/</id><summary type="html">&lt;p&gt;預防 Cross-Site Request Forgery (CSRF) 的一些資料，以下兩個連結講了蠻多的:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>carlcarl's blog</title><link href="http://blog.carlcarl.me/" rel="alternate"></link><link href="http://blog.carlcarl.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.carlcarl.me/</id><updated>2015-06-10T15:00:00+08:00</updated><entry><title>Shellcheck</title><link href="http://blog.carlcarl.me/1431/shellcheck/" rel="alternate"></link><updated>2015-06-10T15:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-06-10:1431/shellcheck/</id><summary type="html">&lt;p&gt;最近發現的工具: &lt;a href="http://www.shellcheck.net/about.html"&gt;Shellcheck&lt;/a&gt;，可以檢查 shell 的 syntax，還不錯用。&lt;/p&gt;
+&lt;p&gt;usage: &lt;code&gt;shellcheck xxx.sh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;除了會顯示錯誤外，也會警告一些用法或是沒用到的 variable，紅色的代表錯誤，咖啡色的通常是沒用到的 variable，綠色比較偏向 style 和寫法的改進。&lt;/p&gt;
+&lt;p&gt;如果想關掉某些 warning 的話，譬如 &lt;code&gt;SC2129: Consider using { cmd1; cmd2; } &amp;gt;&amp;gt; file instead of individual redirects.&lt;/code&gt; 就可以下 &lt;code&gt;shellcheck -e 2129 xxx.sh&lt;/code&gt;，如果嫌麻煩的話，可以另外自己設一個 alias，譬如: &lt;code&gt;alias sc="shellcheck -e 2129"&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;如果自己想裝來試試看的話：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install cabal-install
+sudo cabal update
+sudo cabal install shellcheck --global
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;另外雖然 shell 本身也有類似的可以用:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sh -n xxx.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是沒辦法檢查到所有的錯誤，所以並不是很好用。&lt;/p&gt;</summary><category term="shellcheck"></category></entry><entry><title>CSRF 資料</title><link href="http://blog.carlcarl.me/1430/csrf/" rel="alternate"></link><updated>2015-05-25T17:40:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-05-25:1430/csrf/</id><summary type="html">&lt;p&gt;預防 Cross-Site Request Forgery (CSRF) 的一些資料，以下兩個連結講了蠻多的:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://stackoverflow.com/questions/20504846/why-is-it-common-to-put-csrf-prevention-tokens-in-cookies"&gt;Why is it common to put CSRF prevention tokens in cookies?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet#Double_Submit_Cookies"&gt;Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet&lt;/a&gt;&lt;/li&gt;

@@ -51,6 +51,24 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-06-10T15:00:00" pubdate>
+                            Wed 10 June 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1431/shellcheck/" rel="bookmark"><h1>Shellcheck</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近發現的工具: <a href="http://www.shellcheck.net/about.html">Shellcheck</a>，可以檢查 shell 的 syntax，還不錯用。</p>
+<p>usage: <code>shellcheck xxx.sh</code></p>
+<p>除了會顯示錯誤外，也會警告一些用法或是沒用到的 variable，紅色的代表錯誤，咖啡色的通常是沒用到的 variable，綠色比較偏向 style 和寫法的改進。</p>
+<p>如果想關掉某些 warning 的話，譬如 <code>SC2129: Consider using { cmd1; cmd2; } &gt;&gt; file instead of individual redirects.</code> 就可以下 <code>shellcheck -e 2129 xxx.sh</code>，如果嫌麻煩的話，可以另外自己設一個 alias，譬如: <code>alias sc="shellcheck -e 2129"</code>。</p>
+<p>如果自己想裝來試試看的話 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-05-25T17:40:00" pubdate>
                             Mon 25 May 2015
                         </time>
@@ -269,33 +287,6 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
 <li><a href="http://stackoverflow.com/questions/3261737/makefile-change-variable-value-depending-on-a-target">Makefile - change variable value depending on a target</a></li>
 <li><a href="http://stackoverflow.com/questions/2711963/change-makefile-variable-value">Change Makefile variable value</a></li>
 <li><a href="http://stackoverflow.com/questions/1305665/how-to-compile-different-c-files-with-different-cflags-using-makefile">How to compile different c files with different CFLAGS using Makefile ...</a></li></ul>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-10T01:30:00" pubdate>
-                            Fri 10 April 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1421/javascript_settimeout_focus/" rel="bookmark"><h1>JavaScript setTimeout focus</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>stackoverflow 上可以看到幾個關於呼叫 <code>focus()</code> 沒有作用的問題：</p>
-<ul>
-<li><a href="http://stackoverflow.com/questions/4191200/jquery-textarea-focus">jQuery Textarea focus</a></li>
-<li><a href="stackoverflow.com/questions/8380759/why-isnt-this-textarea-focusing-with-focus">Why isn't this textarea focusing with .focus()?</a></li>
-</ul>
-<p>其中有幾個答案提供了這種解法:</p>
-<div class="highlight"><pre><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#reply_message&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
-<span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
-</pre></div>
-
-
-<p>看起來還滿詭異的，為啥用個 timeout function 就可以解了，查了一下，這篇感覺是正解: <a href="http://blog.csdn.net/lsk_jd/article/details/6080772">JS setTimeout延迟时间为0的详解</a>。</p>
-<div class="highlight"><pre>JavaScript 引擎在执行 onkeypress 时，由于没有多线程的同步执行，不可能同时去处理刚创建元素的 focus 和 select 事件，由于这两个事件都不在队列中，在完成 onkeypress 后，JavaScript 引擎已经丢弃了这两个事件，正如你看到的例子 1 的情况。而在例子 ...</pre></div>
                     </section>
                 </article>
                 <hr/>
