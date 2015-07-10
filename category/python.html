@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-07-11T01:00:00" pubdate>
+                            Sat 11 July 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1432/python3_aiopg/" rel="bookmark"><h1>Python3 aiopg</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><code>aiopg</code> 是一個使用了 <code>aysncio</code> + <code>psycopg2</code> 的一個 library，最近在用的時候想到一個問題：aiopg 的 connection 能不能在各個 coroutine 間 share，從想法上是覺得好像不行，查了一下，看起來應該是會有問題：<a href="http://initd.org/psycopg/docs/advanced.html#green-support">Support for coroutine libraries</a>，所以就變成必須在各個 coroutine 裡建 connection，頂多就變成從 pool 裡面拿這樣。</p>
+<p>另外 <code>aiopg</code> 在 transaction 的部分也要注意：<a href="https://aiopg.readthedocs.org/en/stable/core.html#aiopg-core-transactions">Transactions</a>，<code>BEGIN</code> 和 <code>COMMIT</code> 必須用 execute 的方式，而 method 的部分則不給使用。</p>
+<p>再來就是 <code>psycopg2</code> 不是每個 method 在 <code>aiopg</code> 上都會有 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-05-06T23:00:00" pubdate>
                             Wed 06 May 2015
                         </time>
@@ -242,38 +258,6 @@ schtasks <span class="n">/CREATE</span> <span class="n">/TN</span> <span class="
 <p>這本書頁數並沒有說很多，約 130 頁左右，看起來不會說很吃力。書中每一章都會對一至兩種 pattern 做解釋，然後說明優缺點，並附上一個不算偷懶的 example，還算好理解的就是，不過覺得有點可惜的是如果有加上沒有應用和應用後的一些實際比較就更好了。</p>
 <p>而這本書本身應該會比較適合剛學 Python 一些時間的中 ~ 新手，例如第一章講 MVC 其實我自己就覺得不是很必要了，不過就適合不是很熟的人吧。接下來幾章則會講到 Singleton pattern，Factory Method, Facade pattern, Proxy pattern, Observer pattern, Command pattern 和 Template Method design pattern 這些。</p>
 <p>而上述的這些 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-12-22T21:30:00" pubdate>
-                            Sun 22 December 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1382/django_template_check_if_in_debug_mode/" rel="bookmark"><h1>Django template check if in debug mode</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>找了一下在 template 中確認是否在 debug mode 底下的方法，找了很多，不過好像都有點繞圈子，後來發現其實 Django 內建還是有<a href="http://www.djangobook.com/en/2.0/chapter09.html">簡單的方法</a>。</p>
-<p>在 <code>settings.py</code> 裡，先確認 <code>debug</code> 是 <code>True</code>，然後再加上：</p>
-<div class="highlight"><pre><span class="n">INTERNAL_IPS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s">&#39;127.0.0.1&#39;</span><span class="p">,</span>
-    <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-
-
-<p>之後在 template 裡就可以這樣用:</p>
-<div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nb">debug</span> <span class="o">%</span><span class="p">}</span>
-<span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nb">debug</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
-<span class="p">{</span><span class="o">%</span> <span class="k">else</span> <span class="o">%</span><span class="p">}</span>
-<span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">production</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
-<span class="p">{</span><span class="o">%</span> <span class="nx">endif</span> <span class="o">%</span><span class="p">}</span>
-</pre></div>
-
-
-<p>如果到 production 的話，就將 <code>debug</code> 設為 ...</p>
                     </section>
                 </article>
                 <hr/>

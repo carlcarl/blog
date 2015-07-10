@@ -51,6 +51,28 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-09-07T12:09:00" pubdate>
+                            Wed 07 September 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/45/nodejs-express-fail/" rel="bookmark"><h1>nodejs express fail</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="http://i.imgur.com/itGPLvWl.png"><img alt="1315397444-1533326740" src="http://i.imgur.com/itGPLvWl.png" /></a></p>
+<p>之前好不容易決定要用 express 這個 framework，可是安裝完執行 project 後卻出現錯誤，拜了 google 大神之後才發現，好像是他不會去找裝在系統中的 express library。事實上，如果有用 npm 裝其他的 module，應該也有可能會出現一樣的錯誤：找不到 module 啊～～。</p>
+<p>後來在<a href="http://stackoverflow.com/questions/5919629/express-module-not-found-when-installed-with-npm#_=_">stackoverflow也看到有人有同樣的問題</a>，雖然原 PO 已經選了其中一個回答當作答案，不過顯然那個答案的作法：每次安裝就要複製 library 實在是不怎麼簡潔。後來在文章下面的回答中有看到一個更好的作法：</p>
+<div class="highlight"><pre>npm link express
+</pre></div>
+
+
+<p>問題就輕鬆的解決掉了。</p>
+<p>如果之後裝了其他 module，在使用的時候也出現找不到 module 的錯誤，用 <code>npm link module名稱</code> 就能解決了。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-09-05T18:51:00" pubdate>
                             Mon 05 September 2011
                         </time>
@@ -320,34 +342,12 @@ sudo apt-get install mongodb-10gen
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-07-13T16:24:00" pubdate>
-                            Wed 13 July 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/35/svn-delete-only-in-repo/" rel="bookmark"><h1>svn delete only in repo</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>版本管理一些檔案像是測資之類的可能會不小心用 svn add 起來，但是有些測資檔案很大，實在不想上傳，所以就想要將檔案從 svn 版本中移除。</p>
-<p>之前都很笨的先備份檔案，做刪除，然後再複製回來，後來查資料才發現有參數可以用:</p>
-<div class="highlight"><pre>svn delete --keep-local file
-</pre></div>
-
-
-<p>這樣就能保留這個檔案了～。</p>
-<p>參考網頁:<br />
-<a href="http://www.lampblog.net/2011/01/svn-delete%EF%BC%8D%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/">http://www.lampblog.net/2011/01/svn-delete</a></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/index17.html">
                         <i class="fa fa-arrow-circle-left"></i>
                     </a>
-            Page 18 / 21
+            Page 18 / 22
                 <a href="http://blog.carlcarl.me/index19.html">
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>

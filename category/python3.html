@@ -51,6 +51,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2013-07-14T05:11:00" pubdate>
+                            Sun 14 July 2013
+                        </time>
+                        <a href="http://blog.carlcarl.me/1131/python-pyramid-with-grunt-js/" rel="bookmark"><h1>Python Pyramid with Grunt.js</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>這幾天試玩了一下
+<a href="http://gruntjs.com">Grunt.js</a>，感覺還不錯方便，所以來筆記一些自己的設定。一開始還在想
+<a href="http://www.pylonsproject.org">Pyramid</a> 和 Grunt 要怎麼結合，雖然有 Google
+了一下，不過好像都沒有一個比較準確的答案，所以這邊我就照自己想的來做
+XD。</p>
+<p>我主要在 Grunt 中用的功能有：</p>
+<ol>
+<li>minify 和 combine css, js</li>
+<li>監控檔案的變化，有變動的話就做 1 的步驟</li>
+<li>做完 1 的步驟就自動 reload browser (livereload)</li>
+</ol>
+<p>livereload 這邊是透過 Grunt bind 一個 port
+並監視檔案的變化，接著網頁的部分加入這個 port 底下所提供的
+javascript，一旦檔案發生變化，Grunt 就會 push 消息 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2013-06-10T02:12:00" pubdate>
                             Mon 10 June 2013
                         </time>
@@ -285,37 +312,6 @@ doc，設置還算簡單，不過好像漏了個小地方。  </p>
 端會開個 service 讓 client 連，所以 client 端必須能夠知道 server 端的 IP
 或者是 host name ，client 端連上來後，server 端可以決定是否接受這個
 client ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-08-28T00:01:00" pubdate>
-                            Tue 28 August 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" rel="bookmark"><h1>virtualenvwrapper setting</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近為了方便，加了幾個 virtualenvwrapper 的設定。  </p>
-<h3>使用 <code>mkvirtualenv</code> 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。</h3>
-<p>在 <code>~/.virtualenv/postmkvirtualenv</code>裡加入：</p>
-<div class="highlight"><pre><span class="nv">proj_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$VIRTUAL_ENV</span>|awk -F<span class="s1">&#39;/&#39;</span> <span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
-
-<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
-<span class="k">    </span>mkdir ~/Projects/<span class="nv">$proj_name</span>
-<span class="k">fi</span>
-
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;${PWD##*/}&quot;</span> !<span class="o">=</span> <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
-<span class="k">    </span><span class="nb">cd</span> ~/Projects/<span class="nv">$proj_name</span>
-<span class="k">fi</span>
-</pre></div>
-
-
-<p>其中，把 <code>Projects</code> 換成你的 project 位置。</p>
-<hr />
-<h3>輸入 <code>workon 你的project</code> 時，自動切換至 ...</h3>
                     </section>
                 </article>
                 <hr/>

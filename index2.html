@@ -51,6 +51,40 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-04-10T16:00:00" pubdate>
+                            Fri 10 April 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1422/makefile_notes/" rel="bookmark"><h1>Makefile Notes</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <h2>Implicit Make Rule</h2>
+<div class="highlight"><pre><span class="nf">%.o</span><span class="o">:</span><span class="m">%.c</span>
+    <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -c <span class="nv">$&lt;</span> -o <span class="nv">$@</span>
+</pre></div>
+
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/2754966/cflags-vs-cppflags">CFLAGS vs CPPFLAGS</a></li>
+</ul>
+<h2>Target-specific Variables</h2>
+<p>ex:</p>
+<div class="highlight"><pre><span class="nf">target1</span><span class="o">:</span> <span class="m">CFLAGS = -IINCLUDEPATH1</span>
+<span class="nf">target1</span><span class="o">:</span> <span class="m">LDLIBS = -lLIB1</span>
+<span class="nf">target1</span><span class="o">:</span> <span class="m">target1.o misc.o</span>
+</pre></div>
+
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/3261737/makefile-change-variable-value-depending-on-a-target">Makefile - change variable value depending on a target</a></li>
+<li><a href="http://stackoverflow.com/questions/2711963/change-makefile-variable-value">Change Makefile variable value</a></li>
+<li><a href="http://stackoverflow.com/questions/1305665/how-to-compile-different-c-files-with-different-cflags-using-makefile">How to compile different c files with different CFLAGS using Makefile ...</a></li></ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-04-10T01:30:00" pubdate>
                             Fri 10 April 2015
                         </time>
@@ -237,37 +271,12 @@
                 </article>
                 <hr/>
             </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-02-22T23:10:00" pubdate>
-                            Sun 22 February 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1412/sqlite_datetime_group_by/" rel="bookmark"><h1>SQLite datetime group by</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>SQLite 裡的 <code>datetime</code> 其實也只是 string 而已，所以用的方式跟 MySQL 之類的不同，MySQL 可以直接 <code>Date(xxx)</code> 或是 <code>Month(xxx)</code> 之類的做擷取，不過 SQLite 要用 <code>strftime</code> 來做，例如:</p>
-<div class="highlight"><pre><span class="k">SELECT</span> <span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="p">)</span> <span class="k">AS</span> <span class="k">year</span><span class="p">,</span> 
-   <span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%m&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="p">)</span> <span class="k">AS</span> <span class="k">month</span><span class="p">,</span> 
-   <span class="k">sum</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span> <span class="k">AS</span> <span class="n">Amount</span> 
-<span class="k">FROM</span> <span class="n">mytable</span> 
-<span class="k">GROUP</span> <span class="k">BY</span> <span class="k">year</span>
-</pre></div>
-
-
-<p>Ref:</p>
-<ul>
-<li><a href="stackoverflow.com/questions/1639906/sql-combining-group-by-and-sum">SQL combining GROUP BY and SUM ...</a></li></ul>
-                    </section>
-                </article>
-                <hr/>
-            </li>
         </ol>
         <div class="paginator">
                     <a href="http://blog.carlcarl.me/index.html">
                         <i class="fa fa-arrow-circle-left"></i>
                     </a>
-            Page 2 / 21
+            Page 2 / 22
                 <a href="http://blog.carlcarl.me/index3.html">
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>

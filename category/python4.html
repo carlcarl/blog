@@ -51,6 +51,37 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-08-28T00:01:00" pubdate>
+                            Tue 28 August 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" rel="bookmark"><h1>virtualenvwrapper setting</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近為了方便，加了幾個 virtualenvwrapper 的設定。  </p>
+<h3>使用 <code>mkvirtualenv</code> 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。</h3>
+<p>在 <code>~/.virtualenv/postmkvirtualenv</code>裡加入：</p>
+<div class="highlight"><pre><span class="nv">proj_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$VIRTUAL_ENV</span>|awk -F<span class="s1">&#39;/&#39;</span> <span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
+
+<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span>mkdir ~/Projects/<span class="nv">$proj_name</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;${PWD##*/}&quot;</span> !<span class="o">=</span> <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span><span class="nb">cd</span> ~/Projects/<span class="nv">$proj_name</span>
+<span class="k">fi</span>
+</pre></div>
+
+
+<p>其中，把 <code>Projects</code> 換成你的 project 位置。</p>
+<hr />
+<h3>輸入 <code>workon 你的project</code> 時，自動切換至 ...</h3>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-05-09T17:38:00" pubdate>
                             Wed 09 May 2012
                         </time>
