@@ -42,7 +42,7 @@ Slug: c-getopt-usage
     	case ':':
         	puts("oops");
         	break;
-    	case '?'
+		case '?':
         	puts("wrong command");
         	break;
     	}
