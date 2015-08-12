@@ -84,7 +84,7 @@
 <ul>
 <li><a href="https://stackoverflow.com/questions/16988256/how-to-lock-and-unlock-pid-file-with-fcntl">How to lock and unlock pid file with “fcntl()”</a></li>
 <li><a href="http://man7.org/linux/man-pages/man2/fcntl.2.html">man fcntl</a></li>
-<li><a href="https://blog.csdn.net/wallwind/article/details/7816221">linux系统编程之struct flock 结构体</a></li>
+<li><a href="http://blog.csdn.net/wallwind/article/details/7816221">linux系统编程之struct flock 结构体</a></li>
 </ul>
 <p>再來就是 file lock 的 file，裡面要填啥內容，一般是都填 process 的 pid 就是，在弄一些設定的時候也比較不會有問題: <a href="https://unix.stackexchange.com/questions/118132/writing-own-daemon-systemd-error-failed-to-read-pid-from-file-invalid-argumen">Writing own daemon. systemd error: Failed to read PID from file: Invalid argument</a>。</p>
 <p>Linux lock file 的 path 通常都放在 <code>/var/run/</code> 底下，檔案可以命名為 <code>&lt;your_process&gt;.pid</code>，<code>your_process</code> 改成你的 process 名稱。另外，假如執行這個 process 的 user 不是 root 的話，會有 pid 檔案建立權限的問題，所以可以考慮用 root 執行一個 script，script 裡在 <code>/var/run/</code> 下建立一個資料夾，再 <code>chown</code> + <code>chmod</code> 它，pid file 指定在這個資料夾底下，接著再用 <code>start-stop-daemon</code> 加上指定 exec 的 user 的參數來執行 process 就可以了。不過既然要用 <code>start-stop-daemon</code> 的話，乾脆 pid file 也給它管理就好啦(好像有點在打自己臉= =|||)，不過 <code>start-stop-daemon</code> 也不是每個 Linux distro 都有的樣子。</p>
