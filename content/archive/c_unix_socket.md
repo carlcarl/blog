@@ -36,7 +36,7 @@ Ref:
 [passing a struct over TCP (SOCK_STREAM) socket in C]: https://stackoverflow.com/questions/8000851/passing-a-struct-over-tcp-sock-stream-socket-in-c
 [Protocol Buffers]: https://code.google.com/p/protobuf/
 [With a single file descriptor, Is there any performance difference between select, poll and epoll and …?]: http://stackoverflow.com/questions/5647503/with-a-single-file-descriptor-is-there-any-performance-difference-between-selec/28294561#28294561
-[unix domain socket]: kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-
+[unix domain socket]: http://kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-
 [poll vs select vs event-based]: http://daniel.haxx.se/docs/poll-vs-select.html
 [poll、ppoll 浅析]: http://blog.csdn.net/feng19870412/article/details/9001857
 [select / poll / epoll: practical difference for system architects]: http://www.ulduzsoft.com/2014/01/select-poll-epoll-practical-difference-for-system-architects/

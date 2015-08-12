@@ -114,7 +114,7 @@ Ref:
 [/src/lirc_srv.c]: https://searchcode.com/codesearch/view/555780/
 [sigprocmask 阻塞进程]: http://blog.csdn.net/muge0913/article/details/7334771
 [小学一下volatile和sig_atomic_t类型.]: http://blog.csdn.net/realdragon2/article/details/2935533
-[Proper usage of volatile sig_atomic_t]: stackoverflow.com/questions/8488791/proper-usage-of-volatile-sig-atomic-t#_=_
+[Proper usage of volatile sig_atomic_t]: https://stackoverflow.com/questions/8488791/proper-usage-of-volatile-sig-atomic-t#_=_
 [Linux select() vs ppoll() vs pselect()]: http://stackoverflow.com/questions/9774986/linux-select-vs-ppoll-vs-pselect
 [Using pselect() to avoid a signal race]: http://www.linuxprogrammingblog.com/code-examples/using-pselect-to-avoid-a-signal-race
 [catching signals while reading from pipe with select()]: http://stackoverflow.com/questions/6962150/catching-signals-while-reading-from-pipe-with-select

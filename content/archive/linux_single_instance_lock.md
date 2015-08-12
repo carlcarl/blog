@@ -72,12 +72,12 @@ Linux lock file 的 path 通常都放在 `/var/run/` 底下，檔案可以命名
 
 
 
-[How do I recover a semaphore when the process that decremented it to zero crashes?]: http://stackoverflow.com/questions/2053679/how-do-i-recover-a-semaphore-when-the-process-that-decremented-it-to-zero-crashe
+[How do I recover a semaphore when the process that decremented it to zero crashes?]: https://stackoverflow.com/questions/2053679/how-do-i-recover-a-semaphore-when-the-process-that-decremented-it-to-zero-crashe
 [Linux下各种编程锁的比较]: http://blog.csdn.net/qifengzou/article/details/37714025
-[How to create a single instance application in C or C++]: stackoverflow.com/questions/5339200/how-to-create-a-single-instance-application-in-c-or-c
-[fcntl, lockf, which is better to use for file locking?]: stackoverflow.com/questions/575328/fcntl-lockf-which-is-better-to-use-for-file-locking
-[How to lock and unlock pid file with “fcntl()”]: stackoverflow.com/questions/16988256/how-to-lock-and-unlock-pid-file-with-fcntl
+[How to create a single instance application in C or C++]: https://stackoverflow.com/questions/5339200/how-to-create-a-single-instance-application-in-c-or-c
+[fcntl, lockf, which is better to use for file locking?]: https://stackoverflow.com/questions/575328/fcntl-lockf-which-is-better-to-use-for-file-locking
+[How to lock and unlock pid file with “fcntl()”]: https://stackoverflow.com/questions/16988256/how-to-lock-and-unlock-pid-file-with-fcntl
 [man fcntl]: http://man7.org/linux/man-pages/man2/fcntl.2.html
-[Writing own daemon. systemd error: Failed to read PID from file: Invalid argument]: unix.stackexchange.com/questions/118132/writing-own-daemon-systemd-error-failed-to-read-pid-from-file-invalid-argumen
-[linux系统编程之struct flock 结构体]: blog.csdn.net/wallwind/article/details/7816221
+[Writing own daemon. systemd error: Failed to read PID from file: Invalid argument]: https://unix.stackexchange.com/questions/118132/writing-own-daemon-systemd-error-failed-to-read-pid-from-file-invalid-argumen
+[linux系统编程之struct flock 结构体]: https://blog.csdn.net/wallwind/article/details/7816221
 
