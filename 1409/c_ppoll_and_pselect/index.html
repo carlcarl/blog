@@ -127,7 +127,7 @@
 <p><code>A</code> 這段先將 <code>SIGTERM</code> 和 <code>SIGHUP</code> block 起來，接著在 <code>B</code> 這邊設定這兩種 signal 的 callback，<code>C</code> 這裏的 callback function 中則去設定 flag，這裏的 <code>sig_atomic_t</code> 是表示這個 type 變數的操作保證是 atomic 的，通常會是 <code>int</code> 就是，資料的部分可以參考:</p>
 <ul>
 <li><a href="http://blog.csdn.net/realdragon2/article/details/2935533">小学一下volatile和sig_atomic_t类型.</a></li>
-<li><a href="stackoverflow.com/questions/8488791/proper-usage-of-volatile-sig-atomic-t#_=_">Proper usage of volatile sig_atomic_t</a></li>
+<li><a href="https://stackoverflow.com/questions/8488791/proper-usage-of-volatile-sig-atomic-t#_=_">Proper usage of volatile sig_atomic_t</a></li>
 </ul>
 <p><code>D</code> 的部分，就是在 interrupt 進來之後，判斷這些 flag，做更進一步的處理。</p>
 <p>至於 <code>pselect</code> 的部分可以參考這邊: </p>

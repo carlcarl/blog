@@ -63,7 +63,7 @@
                     </header>
 
                     <section class="post-content">
-                        <p>可以參考這個連結的 code: <a href="kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-">Unix Domain Socket</a>，我後來發現我們 project 裡的 code 也是參考這邊的= =|||，不過的確是還缺少一些東西，像是可以再加上 <code>select</code> 或是 <code>pselect</code> 來另外處理 signal，我自己是用 <code>pselect</code> 就是，有想過用 <code>ppoll</code> 來做，不過實際會聽的連線很少，感覺沒必要就直接用 <code>pselect</code> 了。</p>
+                        <p>可以參考這個連結的 code: <a href="http://kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-">Unix Domain Socket</a>，我後來發現我們 project 裡的 code 也是參考這邊的= =|||，不過的確是還缺少一些東西，像是可以再加上 <code>select</code> 或是 <code>pselect</code> 來另外處理 signal，我自己是用 <code>pselect</code> 就是，有想過用 <code>ppoll</code> 來做，不過實際會聽的連線很少，感覺沒必要就直接用 <code>pselect</code> 了。</p>
 <p>修正一下，之後還是改用 <code>ppoll</code> 好了XD，查了一下資料，就算是一個 socket，<code>poll</code> 還是比 <code>select</code> 快～～，參照 <a href="http://www.intelliproject.net/articles/showArticle/index/io_multiplexing">Comparative measurements and analysis of I/O event notification mechanisms</a>。<code>epoll</code>看起來還是不用考慮，因為 event-based 在基本處理上的 overhead 都會比較大，只有一個 socket 的話還會比 poll 慢，上面連結內的數據也是顯示如此。</p>
 <p>另外就是傳送資料的方式，因為是 local UNIX socket，所以就直接用 struct 轉了(炸)，如果是不同機器上用 TCP socket 的話，這樣其實會有 endian 和 padding 的問題，參照以下連結:</p>
 <ul>
@@ -74,7 +74,7 @@
 <p>Ref:</p>
 <ul>
 <li><a href="http://stackoverflow.com/questions/5647503/with-a-single-file-descriptor-is-there-any-performance-difference-between-selec/28294561#28294561">With a single file descriptor, Is there any performance difference between select, poll and epoll and …?</a></li>
-<li><a href="kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-">unix domain socket</a></li>
+<li><a href="http://kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-">unix domain socket</a></li>
 <li><a href="http://daniel.haxx.se/docs/poll-vs-select.html">poll vs select vs event-based</a></li>
 <li><a href="http://blog.csdn.net/feng19870412/article/details/9001857">poll、ppoll 浅析</a></li>
 <li><a href="http://www.ulduzsoft.com/2014/01/select-poll-epoll-practical-difference-for-system-architects/">select / poll / epoll: practical difference for system architects</a></li>

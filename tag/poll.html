@@ -86,7 +86,7 @@
                         <a href="http://blog.carlcarl.me/1408/c_unix_socket/" rel="bookmark"><h1>C UNIX Socket</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>可以參考這個連結的 code: <a href="kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-">Unix Domain Socket</a>，我後來發現我們 project 裡的 code 也是參考這邊的= =|||，不過的確是還缺少一些東西，像是可以再加上 <code>select</code> 或是 <code>pselect</code> 來另外處理 signal，我自己是用 <code>pselect</code> 就是，有想過用 <code>ppoll</code> 來做，不過實際會聽的連線很少，感覺沒必要就直接用 <code>pselect</code> 了。</p>
+                        <p>可以參考這個連結的 code: <a href="http://kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-">Unix Domain Socket</a>，我後來發現我們 project 裡的 code 也是參考這邊的= =|||，不過的確是還缺少一些東西，像是可以再加上 <code>select</code> 或是 <code>pselect</code> 來另外處理 signal，我自己是用 <code>pselect</code> 就是，有想過用 <code>ppoll</code> 來做，不過實際會聽的連線很少，感覺沒必要就直接用 <code>pselect</code> 了。</p>
 <p>修正一下，之後還是改用 <code>ppoll</code> 好了XD，查了一下資料，就算是一個 socket，<code>poll</code> 還是比 <code>select</code> 快～～，參照 <a href="http://www.intelliproject.net/articles/showArticle/index/io_multiplexing">Comparative measurements and analysis of I/O event notification mechanisms</a>。<code>epoll ...</code></p>
                     </section>
                 </article>

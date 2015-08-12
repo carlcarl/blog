@@ -63,7 +63,7 @@
 <li>inet socket lock</li>
 <li><code>sem_open</code> </li>
 </ul>
-<p>參照一些 daemon 的作法，感覺 file lock 較常見。inet socket bind 的作法有點麻煩，因爲還要找個 port 來 bind，所以不考慮，unix socket 大略等同於 file lock 的作法，不過步驟太煩雜，所以也不考慮，semaphore(<code>sem_open</code>)的作法看似比較好，因為 lock 是在 kernel 裡做管理，不用另外建 file，不過還是有一些問題在: <a href="http://stackoverflow.com/questions/2053679/how-do-i-recover-a-semaphore-when-the-process-that-decremented-it-to-zero-crashe">How do I recover a ...</a></p>
+<p>參照一些 daemon 的作法，感覺 file lock 較常見。inet socket bind 的作法有點麻煩，因爲還要找個 port 來 bind，所以不考慮，unix socket 大略等同於 file lock 的作法，不過步驟太煩雜，所以也不考慮，semaphore(<code>sem_open</code>)的作法看似比較好，因為 lock 是在 kernel 裡做管理，不用另外建 file，不過還是有一些問題在: <a href="https://stackoverflow.com/questions/2053679/how-do-i-recover-a-semaphore-when-the-process-that-decremented-it-to-zero-crashe">How do I recover a ...</a></p>
                     </section>
                 </article>
                 <hr/>

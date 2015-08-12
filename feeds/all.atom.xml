@@ -167,7 +167,7 @@ kdialog --msnbox &lt;span class="s2"&gt;&amp;quot;hello&amp;quot;&lt;/span&gt; -
 &lt;li&gt;inet socket lock&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;sem_open&lt;/code&gt; &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;參照一些 daemon 的作法，感覺 file lock 較常見。inet socket bind 的作法有點麻煩，因爲還要找個 port 來 bind，所以不考慮，unix socket 大略等同於 file lock 的作法，不過步驟太煩雜，所以也不考慮，semaphore(&lt;code&gt;sem_open&lt;/code&gt;)的作法看似比較好，因為 lock 是在 kernel 裡做管理，不用另外建 file，不過還是有一些問題在: &lt;a href="http://stackoverflow.com/questions/2053679/how-do-i-recover-a-semaphore-when-the-process-that-decremented-it-to-zero-crashe"&gt;How do I recover a semaphore when the process that decremented it to zero crashes?&lt;/a&gt;，一旦出問題就沒有 recover 的辦法，相對來講 file lock 比較算是可以接受的作法，就算出問題，把檔案移除掉就好XD，一般人也不會那麼閒會去動這檔案，所以最後還是決定用 file lock 的作法。&lt;/p&gt;
+&lt;p&gt;參照一些 daemon 的作法，感覺 file lock 較常見。inet socket bind 的作法有點麻煩，因爲還要找個 port 來 bind，所以不考慮，unix socket 大略等同於 file lock 的作法，不過步驟太煩雜，所以也不考慮，semaphore(&lt;code&gt;sem_open&lt;/code&gt;)的作法看似比較好，因為 lock 是在 kernel 裡做管理，不用另外建 file，不過還是有一些問題在: &lt;a href="https://stackoverflow.com/questions/2053679/how-do-i-recover-a-semaphore-when-the-process-that-decremented-it-to-zero-crashe"&gt;How do I recover a semaphore when the process that decremented it to zero crashes?&lt;/a&gt;，一旦出問題就沒有 recover 的辦法，相對來講 file lock 比較算是可以接受的作法，就算出問題，把檔案移除掉就好XD，一般人也不會那麼閒會去動這檔案，所以最後還是決定用 file lock 的作法。&lt;/p&gt;
 &lt;p&gt;file lock 有幾個 function 可以用:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;fcntl&lt;/li&gt;
@@ -177,16 +177,16 @@ kdialog --msnbox &lt;span class="s2"&gt;&amp;quot;hello&amp;quot;&lt;/span&gt; -
 &lt;p&gt;相關比較可以參考以下連結：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://blog.csdn.net/qifengzou/article/details/37714025"&gt;Linux下各种编程锁的比较&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="stackoverflow.com/questions/5339200/how-to-create-a-single-instance-application-in-c-or-c"&gt;How to create a single instance application in C or C++&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="stackoverflow.com/questions/575328/fcntl-lockf-which-is-better-to-use-for-file-locking"&gt;fcntl, lockf, which is better to use for file locking?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/5339200/how-to-create-a-single-instance-application-in-c-or-c"&gt;How to create a single instance application in C or C++&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/575328/fcntl-lockf-which-is-better-to-use-for-file-locking"&gt;fcntl, lockf, which is better to use for file locking?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;看起來 &lt;code&gt;flock&lt;/code&gt; 和 &lt;code&gt;lockf&lt;/code&gt; 有一些小缺點，像是 NFS 的支援性之類的，所以就乾脆用最原始的 &lt;code&gt;fcntl&lt;/code&gt;。&lt;code&gt;fcntl&lt;/code&gt; 的 usage 可以參考: &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="stackoverflow.com/questions/16988256/how-to-lock-and-unlock-pid-file-with-fcntl"&gt;How to lock and unlock pid file with “fcntl()”&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/16988256/how-to-lock-and-unlock-pid-file-with-fcntl"&gt;How to lock and unlock pid file with “fcntl()”&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://man7.org/linux/man-pages/man2/fcntl.2.html"&gt;man fcntl&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="blog.csdn.net/wallwind/article/details/7816221"&gt;linux系统编程之struct flock 结构体&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.csdn.net/wallwind/article/details/7816221"&gt;linux系统编程之struct flock 结构体&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;再來就是 file lock 的 file，裡面要填啥內容，一般是都填 process 的 pid 就是，在弄一些設定的時候也比較不會有問題: &lt;a href="unix.stackexchange.com/questions/118132/writing-own-daemon-systemd-error-failed-to-read-pid-from-file-invalid-argumen"&gt;Writing own daemon. systemd error: Failed to read PID from file: Invalid argument&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;再來就是 file lock 的 file，裡面要填啥內容，一般是都填 process 的 pid 就是，在弄一些設定的時候也比較不會有問題: &lt;a href="https://unix.stackexchange.com/questions/118132/writing-own-daemon-systemd-error-failed-to-read-pid-from-file-invalid-argumen"&gt;Writing own daemon. systemd error: Failed to read PID from file: Invalid argument&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;Linux lock file 的 path 通常都放在 &lt;code&gt;/var/run/&lt;/code&gt; 底下，檔案可以命名為 &lt;code&gt;&amp;lt;your_process&amp;gt;.pid&lt;/code&gt;，&lt;code&gt;your_process&lt;/code&gt; 改成你的 process 名稱。另外，假如執行這個 process 的 user 不是 root 的話，會有 pid 檔案建立權限的問題，所以可以考慮用 root 執行一個 script，script 裡在 &lt;code&gt;/var/run/&lt;/code&gt; 下建立一個資料夾，再 &lt;code&gt;chown&lt;/code&gt; + &lt;code&gt;chmod&lt;/code&gt; 它，pid file 指定在這個資料夾底下，接著再用 &lt;code&gt;start-stop-daemon&lt;/code&gt; 加上指定 exec 的 user 的參數來執行 process 就可以了。不過既然要用 &lt;code&gt;start-stop-daemon&lt;/code&gt; 的話，乾脆 pid file 也給它管理就好啦(好像有點在打自己臉= =|||)，不過 &lt;code&gt;start-stop-daemon&lt;/code&gt; 也不是每個 Linux distro 都有的樣子。&lt;/p&gt;
 &lt;p&gt;簡單範例如下:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;write_pid_file&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -635,7 +635,7 @@ kdialog --msnbox &lt;span class="s2"&gt;&amp;quot;hello&amp;quot;&lt;/span&gt; -
 &lt;p&gt;&lt;code&gt;A&lt;/code&gt; 這段先將 &lt;code&gt;SIGTERM&lt;/code&gt; 和 &lt;code&gt;SIGHUP&lt;/code&gt; block 起來，接著在 &lt;code&gt;B&lt;/code&gt; 這邊設定這兩種 signal 的 callback，&lt;code&gt;C&lt;/code&gt; 這裏的 callback function 中則去設定 flag，這裏的 &lt;code&gt;sig_atomic_t&lt;/code&gt; 是表示這個 type 變數的操作保證是 atomic 的，通常會是 &lt;code&gt;int&lt;/code&gt; 就是，資料的部分可以參考:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://blog.csdn.net/realdragon2/article/details/2935533"&gt;小学一下volatile和sig_atomic_t类型.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="stackoverflow.com/questions/8488791/proper-usage-of-volatile-sig-atomic-t#_=_"&gt;Proper usage of volatile sig_atomic_t&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/8488791/proper-usage-of-volatile-sig-atomic-t#_=_"&gt;Proper usage of volatile sig_atomic_t&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;D&lt;/code&gt; 的部分，就是在 interrupt 進來之後，判斷這些 flag，做更進一步的處理。&lt;/p&gt;
 &lt;p&gt;至於 &lt;code&gt;pselect&lt;/code&gt; 的部分可以參考這邊: &lt;/p&gt;
@@ -663,7 +663,7 @@ kdialog --msnbox &lt;span class="s2"&gt;&amp;quot;hello&amp;quot;&lt;/span&gt; -
 &lt;li&gt;&lt;a href="http://www.ulduzsoft.com/2014/01/select-poll-epoll-practical-difference-for-system-architects/"&gt;select / poll / epoll: practical difference for system architects&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://gist.github.com/aspyct/3462238"&gt;aspyct / signal.c&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://cboard.cprogramming.com/c-programming/158125-sockets-using-poll.html"&gt;Sockets using poll()&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="poll"></category><category term="select"></category></entry><entry><title>C UNIX Socket</title><link href="http://blog.carlcarl.me/1408/c_unix_socket/" rel="alternate"></link><updated>2015-02-03T15:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-02-03:1408/c_unix_socket/</id><summary type="html">&lt;p&gt;可以參考這個連結的 code: &lt;a href="kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-"&gt;Unix Domain Socket&lt;/a&gt;，我後來發現我們 project 裡的 code 也是參考這邊的= =|||，不過的確是還缺少一些東西，像是可以再加上 &lt;code&gt;select&lt;/code&gt; 或是 &lt;code&gt;pselect&lt;/code&gt; 來另外處理 signal，我自己是用 &lt;code&gt;pselect&lt;/code&gt; 就是，有想過用 &lt;code&gt;ppoll&lt;/code&gt; 來做，不過實際會聽的連線很少，感覺沒必要就直接用 &lt;code&gt;pselect&lt;/code&gt; 了。&lt;/p&gt;
+&lt;/ul&gt;</summary><category term="poll"></category><category term="select"></category></entry><entry><title>C UNIX Socket</title><link href="http://blog.carlcarl.me/1408/c_unix_socket/" rel="alternate"></link><updated>2015-02-03T15:00:00+08:00</updated><author><name>carlcarl</name></author><id>tag:blog.carlcarl.me,2015-02-03:1408/c_unix_socket/</id><summary type="html">&lt;p&gt;可以參考這個連結的 code: &lt;a href="http://kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-"&gt;Unix Domain Socket&lt;/a&gt;，我後來發現我們 project 裡的 code 也是參考這邊的= =|||，不過的確是還缺少一些東西，像是可以再加上 &lt;code&gt;select&lt;/code&gt; 或是 &lt;code&gt;pselect&lt;/code&gt; 來另外處理 signal，我自己是用 &lt;code&gt;pselect&lt;/code&gt; 就是，有想過用 &lt;code&gt;ppoll&lt;/code&gt; 來做，不過實際會聽的連線很少，感覺沒必要就直接用 &lt;code&gt;pselect&lt;/code&gt; 了。&lt;/p&gt;
 &lt;p&gt;修正一下，之後還是改用 &lt;code&gt;ppoll&lt;/code&gt; 好了XD，查了一下資料，就算是一個 socket，&lt;code&gt;poll&lt;/code&gt; 還是比 &lt;code&gt;select&lt;/code&gt; 快～～，參照 &lt;a href="http://www.intelliproject.net/articles/showArticle/index/io_multiplexing"&gt;Comparative measurements and analysis of I/O event notification mechanisms&lt;/a&gt;。&lt;code&gt;epoll&lt;/code&gt;看起來還是不用考慮，因為 event-based 在基本處理上的 overhead 都會比較大，只有一個 socket 的話還會比 poll 慢，上面連結內的數據也是顯示如此。&lt;/p&gt;
 &lt;p&gt;另外就是傳送資料的方式，因為是 local UNIX socket，所以就直接用 struct 轉了(炸)，如果是不同機器上用 TCP socket 的話，這樣其實會有 endian 和 padding 的問題，參照以下連結:&lt;/p&gt;
 &lt;ul&gt;
@@ -674,7 +674,7 @@ kdialog --msnbox &lt;span class="s2"&gt;&amp;quot;hello&amp;quot;&lt;/span&gt; -
 &lt;p&gt;Ref:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://stackoverflow.com/questions/5647503/with-a-single-file-descriptor-is-there-any-performance-difference-between-selec/28294561#28294561"&gt;With a single file descriptor, Is there any performance difference between select, poll and epoll and …?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-"&gt;unix domain socket&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://kezeodsnx.pixnet.net/blog/post/33616080-unix-domain-socket-"&gt;unix domain socket&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://daniel.haxx.se/docs/poll-vs-select.html"&gt;poll vs select vs event-based&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://blog.csdn.net/feng19870412/article/details/9001857"&gt;poll、ppoll 浅析&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.ulduzsoft.com/2014/01/select-poll-epoll-practical-difference-for-system-architects/"&gt;select / poll / epoll: practical difference for system architects&lt;/a&gt;&lt;/li&gt;
