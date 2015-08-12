@@ -79,5 +79,5 @@ Linux lock file 的 path 通常都放在 `/var/run/` 底下，檔案可以命名
 [How to lock and unlock pid file with “fcntl()”]: https://stackoverflow.com/questions/16988256/how-to-lock-and-unlock-pid-file-with-fcntl
 [man fcntl]: http://man7.org/linux/man-pages/man2/fcntl.2.html
 [Writing own daemon. systemd error: Failed to read PID from file: Invalid argument]: https://unix.stackexchange.com/questions/118132/writing-own-daemon-systemd-error-failed-to-read-pid-from-file-invalid-argumen
-[linux系统编程之struct flock 结构体]: https://blog.csdn.net/wallwind/article/details/7816221
+[linux系统编程之struct flock 结构体]: http://blog.csdn.net/wallwind/article/details/7816221
 
