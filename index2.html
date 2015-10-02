@@ -51,6 +51,26 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-04-15T15:00:00" pubdate>
+                            Wed 15 April 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1423/linux_single_instance_lock/" rel="bookmark"><h1>Linux Single Instance Lock</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>要實作 single instance 有幾種方式:</p>
+<ul>
+<li>file lock</li>
+<li>inet socket lock</li>
+<li><code>sem_open</code> </li>
+</ul>
+<p>參照一些 daemon 的作法，感覺 file lock 較常見。inet socket bind 的作法有點麻煩，因爲還要找個 port 來 bind，所以不考慮，unix socket 大略等同於 file lock 的作法，不過步驟太煩雜，所以也不考慮，semaphore(<code>sem_open</code>)的作法看似比較好，因為 lock 是在 kernel 裡做管理，不用另外建 file，不過還是有一些問題在: <a href="https://stackoverflow.com/questions/2053679/how-do-i-recover-a-semaphore-when-the-process-that-decremented-it-to-zero-crashe">How do I recover a ...</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-04-10T16:00:00" pubdate>
                             Fri 10 April 2015
                         </time>
@@ -236,37 +256,6 @@
                         <p>在執行 Apache + mos_msgi + Django 的時候出現了問題：<code>no module named importlib</code>。</p>
 <p>因為系統是比較舊的 Ubuntu，Python 版本是 2.6，我 Django 是用 1.7，不相容 Python 2.6 以下，所以自己又另外裝了 Python 2.7。本來以為把 virtualenv 設定好後就沒事了，結果因為系統提供的 mod_wsgi 是用 Python 2.6 編譯的，沒有 <code>importlib</code> 這個 module，所以就掛了。</p>
 <p>解法很直接，另外下載 mod_wsgi 的 source code ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-02-22T23:30:00" pubdate>
-                            Sun 22 February 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1413/c_naming_rule/" rel="bookmark"><h1>C Naming Rule</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>最近看到的幾個 naming 的問題。</p>
-<h2><code>_t</code> 結尾的變數</h2>
-<p><code>_t</code> 結尾的變數是 for POSIX 的，盡量避免這樣命名。</p>
-<h2><code>_</code> 開頭的變數</h2>
-<p>像是 <code>int _num;</code> 這樣，或是 <code>ifndef</code> 會用到:</p>
-<div class="highlight"><pre><span class="cp">#ifndef _HEADER_H</span>
-<span class="cp">#define _HEADER_H</span>
-<span class="cp">#endif</span>
-</pre></div>
-
-
-<p>可是同樣的，<code>_</code> 或是 <code>__</code> 開頭的，都是 reserved names，所以一樣能避免就避免。</p>
-<p>Ref:</p>
-<ul>
-<li><a href="stackoverflow.com/questions/3538170/standard-for-typedefing">Standard for typedef'ing</a></li>
-<li><a href="http://www.gnu.org/software/libc/manual/html_node/Reserved-Names.html">Reserved Names</a></li>
-<li><a href="stackoverflow.com/questions/10077025/ifndef-syntax-for-include-guards-in-c">#ifndef syntax for include guards in C++</a></li>
-<li><a href="stackoverflow.com/questions/3799478/c-ifndef-for-include-files-why-is-all-caps-used-for-the-header-file">c++ #ifndef ...</a></li></ul>
                     </section>
                 </article>
                 <hr/>

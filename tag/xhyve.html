@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>carlcarl's blog</title>
+        <title>carlcarl's blog - xhyve</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <meta property="og:site_name" content="carlcarl's blog" />
@@ -51,48 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-14T16:11:00" pubdate>
-                            Mon 14 March 2011
+                        <time class="post-time" datetime="2015-10-03T02:00:00" pubdate>
+                            Sat 03 October 2015
                         </time>
-                        <a href="http://blog.carlcarl.me/6/pixnet-paste-code/" rel="bookmark"><h1>Pixnet paste code</h1></a>
+                        <a href="http://blog.carlcarl.me/1433/osx_xhyve/" rel="bookmark"><h1>OS X xhyve virtualization</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>在側邊欄位設定裡 -&gt; 頁尾描述的部分貼上下面的 code</p>
-<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://alexgorbatchev.com/pub/sh/current/scripts/shBrushBash.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-14T15:21:00" pubdate>
-                            Mon 14 March 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/5/screenrc-setting/" rel="bookmark"><h1>screenrc setting</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>在<a href="http://antontw.blogspot.com/2007/04/screenrc-screenrc.html">大步向前走</a>看到不錯的設定檔 把顏色稍微改一下!</p>
-<p><img alt="screenrc" src="http://i.imgur.com/yCkhXdUl.png" title="screenrc" /></p>
-<div class="highlight"><pre>caption always &quot;%{= rk} %{= bY} [%n]%t @ %H %{-} %= %{= rr} %l %{-} | %{= rG} %Y-%m-%d %{-} &quot;
-hardstatus alwayslastline &quot; %-Lw%{= Bw}%n%f %t%{-  }%+Lw %=| %0c:%s &quot;
-</pre></div>
-
-
-<p>參數設定的話在<a href="http://cytseng.twbbs.org/?p=26">小明的網誌</a>可以看到。</p>
+                        <p><a href="https://github.com/mist64/xhyve">xhyve</a> 是最近看到的虛擬化技術，源自於 <a href="https://www.freebsd.org/">FreeBSD</a> 的 <a href="http://bhyve.org/">bhyve</a>，試了一下，大致上沒啥問題，還滿順利的。</p>
+<p>範例是照這篇 <a href="http://blog.holidayworking.org/entry/2015/06/15/xhyve_を試してみた">xhyve を試してみた</a> 來做，從 xhyve-&gt;docker-&gt;ubuntu 這樣，感覺之後拿來在 OSX 上弄 docker 相關的部署會蠻方便的，另外還有一篇 <a href="http://www.vpsee.com/2015/06/mac-os-x-hypervisor-xhyve-based-on-bhyve/">Mac OS X 上基於 FreeBSD/bhyve 的虛擬技術 xhyve</a>，中文講解，流程是直接從 xhyve-&gt;ubuntu，然後是透過 iso 檔安裝的方式，不過步驟就阿雜多了。</p>
+<p>以後要想辦法逼自己多筆記一些資料啊，這樣懶下去不是辦法XD。</p>
                     </section>
                 </article>
                 <hr/>
             </li>
         </ol>
         <div class="paginator">
-                    <a href="http://blog.carlcarl.me/index21.html">
-                        <i class="fa fa-arrow-circle-left"></i>
-                    </a>
-            Page 22 / 22
+            Page 1 / 1
         </div>
 
     </div>

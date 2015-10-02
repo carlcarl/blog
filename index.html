@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-10-03T02:00:00" pubdate>
+                            Sat 03 October 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1433/osx_xhyve/" rel="bookmark"><h1>OS X xhyve virtualization</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p><a href="https://github.com/mist64/xhyve">xhyve</a> 是最近看到的虛擬化技術，源自於 <a href="https://www.freebsd.org/">FreeBSD</a> 的 <a href="http://bhyve.org/">bhyve</a>，試了一下，大致上沒啥問題，還滿順利的。</p>
+<p>範例是照這篇 <a href="http://blog.holidayworking.org/entry/2015/06/15/xhyve_を試してみた">xhyve を試してみた</a> 來做，從 xhyve-&gt;docker-&gt;ubuntu 這樣，感覺之後拿來在 OSX 上弄 docker 相關的部署會蠻方便的，另外還有一篇 <a href="http://www.vpsee.com/2015/06/mac-os-x-hypervisor-xhyve-based-on-bhyve/">Mac OS X 上基於 FreeBSD/bhyve 的虛擬技術 xhyve</a>，中文講解，流程是直接從 xhyve-&gt;ubuntu，然後是透過 iso 檔安裝的方式，不過步驟就阿雜多了。</p>
+<p>以後要想辦法逼自己多筆記一些資料啊，這樣懶下去不是辦法XD。</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-07-11T01:00:00" pubdate>
                             Sat 11 July 2015
                         </time>
@@ -249,26 +265,6 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
 <li>數量一多的話，會較為雜亂，除非 space 間隔有設好。</li>
 </ul>
 <p>不過在一些情況下，水平排列還是 OK ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-15T15:00:00" pubdate>
-                            Wed 15 April 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1423/linux_single_instance_lock/" rel="bookmark"><h1>Linux Single Instance Lock</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>要實作 single instance 有幾種方式:</p>
-<ul>
-<li>file lock</li>
-<li>inet socket lock</li>
-<li><code>sem_open</code> </li>
-</ul>
-<p>參照一些 daemon 的作法，感覺 file lock 較常見。inet socket bind 的作法有點麻煩，因爲還要找個 port 來 bind，所以不考慮，unix socket 大略等同於 file lock 的作法，不過步驟太煩雜，所以也不考慮，semaphore(<code>sem_open</code>)的作法看似比較好，因為 lock 是在 kernel 裡做管理，不用另外建 file，不過還是有一些問題在: <a href="https://stackoverflow.com/questions/2053679/how-do-i-recover-a-semaphore-when-the-process-that-decremented-it-to-zero-crashe">How do I recover a ...</a></p>
                     </section>
                 </article>
                 <hr/>
