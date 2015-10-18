@@ -54,7 +54,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-04T21:26:00" pubdate>
+                        <time class="post-time" datetime="2013-10-04T21:26:00+08:00" pubdate>
                             Fri 04 October 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
@@ -120,17 +120,17 @@ git checkout --orphan gh-pages
 變成會在 <code>gh-pages/html/</code> 底下再建一個 <code>html</code> 資料夾，所以 Makefile
 還有一個地方要改：</p>
 <div class="highlight"><pre><span class="nf">html</span><span class="o">:</span>
-<span class="k">$(</span>SPHINXBUILD<span class="k">)</span> -b html <span class="k">$(</span>ALLSPHINXOPTS<span class="k">)</span> <span class="k">$(</span>BUILDDIR<span class="k">)</span>/html
-@echo
-@echo <span class="s2">&quot;Build finished. The HTML pages are in $(BUILDDIR)/html.&quot;</span>
+<span class="k">$(</span><span class="nv">SPHINXBUILD</span><span class="k">)</span> <span class="err">-b</span> <span class="err">html</span> <span class="k">$(</span><span class="nv">ALLSPHINXOPTS</span><span class="k">)</span> <span class="k">$(</span><span class="nv">BUILDDIR</span><span class="k">)</span><span class="err">/html</span>
+<span class="err">@echo</span>
+<span class="err">@echo</span> <span class="s2">&quot;Build finished. The HTML pages are in $(BUILDDIR)/html.&quot;</span>
 </pre></div>
 
 
 <p>改成</p>
 <div class="highlight"><pre><span class="nf">html</span><span class="o">:</span>
-<span class="k">$(</span>SPHINXBUILD<span class="k">)</span> -b html <span class="k">$(</span>ALLSPHINXOPTS<span class="k">)</span> <span class="k">$(</span>BUILDDIR<span class="k">)</span>
-@echo
-@echo <span class="s2">&quot;Build finished. The HTML pages are in $(BUILDDIR).&quot;</span>
+<span class="k">$(</span><span class="nv">SPHINXBUILD</span><span class="k">)</span> <span class="err">-b</span> <span class="err">html</span> <span class="k">$(</span><span class="nv">ALLSPHINXOPTS</span><span class="k">)</span> <span class="k">$(</span><span class="nv">BUILDDIR</span><span class="k">)</span>
+<span class="err">@echo</span>
+<span class="err">@echo</span> <span class="s2">&quot;Build finished. The HTML pages are in $(BUILDDIR).&quot;</span>
 </pre></div>
 
 

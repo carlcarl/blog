@@ -14,7 +14,7 @@
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="OSX Mavericks Beta header file position" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1120/osx-mavericks-betaheader-file-position/" />
-                <meta property="og:description" content="Beta 版的 header file 位置有些不同，看到幾個地方都傳出災情： gpg-agent: Set correct stdint.h header path for Mac OSX Mavericks The gem doesn't yet build in Mavericks Installation fails on OS X Mavericks 原本的 /usr/include 已經不見了，找了一下，位置是在： /Applications/Xcode5-DP.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9 ..." />
+                <meta property="og:description" content="Beta 版的 header file 位置有些不同，看到幾個地方都傳出災情： gpg-agent: Set correct stdint.h header path for Mac OSX Mavericks The gem doesn't yet build in Mavericks Installation fails on OS X Mavericks 原本的 /usr/include 已經不見了，找了一下，位置是在： /Applications/Xcode5-DP.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk ..." />
                     <meta property="article:tag" content="mac" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -53,7 +53,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-12T02:15:00" pubdate>
+                        <time class="post-time" datetime="2013-07-12T02:15:00+08:00" pubdate>
                             Fri 12 July 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1120/osx-mavericks-betaheader-file-position/" rel="bookmark"><h1>OSX Mavericks Beta header file position</h1></a>
@@ -67,7 +67,7 @@
 <li><a href="https://github.com/josegonzalez/homebrew-php/issues/591">Installation fails on OS X Mavericks</a></li>
 </ul>
 <p>原本的 <code>/usr/include</code> 已經不見了，找了一下，位置是在：</p>
-<div class="highlight"><pre><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode5</span><span class="o">-</span><span class="n">DP</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="p">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="mf">.9</span><span class="p">.</span><span class="n">sdk</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span><span class="o">/</span>
+<div class="highlight"><pre>/Applications/Xcode5-DP.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/include/
 </pre></div>
 
 

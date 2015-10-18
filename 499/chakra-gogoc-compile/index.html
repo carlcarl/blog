@@ -54,7 +54,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-06-07T02:31:00" pubdate>
+                        <time class="post-time" datetime="2012-06-07T02:31:00+08:00" pubdate>
                             Thu 07 June 2012
                         </time>
                         <a href="http://blog.carlcarl.me/499/chakra-gogoc-compile/" rel="bookmark"><h1>Chakra gogoc compile</h1></a>
@@ -82,12 +82,12 @@ tar -xf gogoc-1_2-RELEASE.tar.gz
 
 <p>3.正式編譯（這邊如果還是有錯的話，就是相依套件的問題，可以參考它的
     <code>INSTALL</code> 檔案中的套件相依性解說）：</p>
-<div class="highlight"><pre><span class="n">make</span> <span class="n">all</span>
+<div class="highlight"><pre>make all
 </pre></div>
 
 
 <p>4.以 root 權限安裝：</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">make</span> <span class="n">installdir</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">gogoc</span> <span class="n">install</span>
+<div class="highlight"><pre>sudo make installdir=/usr/local/gogoc install
 </pre></div>
 
 
@@ -108,9 +108,9 @@ tar -xf gogoc-1_2-RELEASE.tar.gz
 
 <p>8.如果執行的時候出現以下錯誤不代表失敗，可以利用
 <a href="http://test-ipv6.com/">http://test-ipv6.com/</a> 這個網站實際測試，如果滿分就 OK 囉。</p>
-<div class="highlight"><pre><span class="n">TSP</span> <span class="n">version</span> <span class="n">not</span> <span class="n">supported</span> <span class="n">by</span> <span class="n">server</span><span class="o">:</span> <span class="mf">2.0.2</span><span class="p">.</span>
-<span class="n">Failed</span> <span class="n">to</span> <span class="n">retrieve</span> <span class="n">TSP</span> <span class="n">capabilities</span><span class="p">.</span>
-<span class="n">Disconnected</span><span class="p">.</span> <span class="n">Retrying</span><span class="p">.</span>
+<div class="highlight"><pre>TSP version not supported by server: 2.0.2.
+Failed to retrieve TSP capabilities.
+Disconnected. Retrying.
 </pre></div>
 
 

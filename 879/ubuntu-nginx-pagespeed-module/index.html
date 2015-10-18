@@ -55,7 +55,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-03T21:25:00" pubdate>
+                        <time class="post-time" datetime="2013-06-03T21:25:00+08:00" pubdate>
                             Mon 03 June 2013
                         </time>
                         <a href="http://blog.carlcarl.me/879/ubuntu-nginx-pagespeed-module/" rel="bookmark"><h1>Ubuntu nginx pagespeed module</h1></a>
@@ -97,8 +97,8 @@ sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/sbin/nginx
 
 <p>如果在之前有裝過 nginx 的話，在 <code>/etc/init.d/</code> 底下應該有個 nginx 的
 init script，我是直接用這個，不過還要加點修改：</p>
-<div class="highlight"><pre><span class="cp"># DAEMON 改成這樣</span>
-<span class="n">DAEMON</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nginx</span>
+<div class="highlight"><pre># DAEMON 改成這樣
+DAEMON=/usr/local/sbin/nginx
 </pre></div>
 
 
@@ -146,7 +146,7 @@ sudo chown www-data:www-data /var/ngx_pagespeed_cache
 
 
 <p>接著放個網頁並試試看以下指令，有的話就代表成功了</p>
-<div class="highlight"><pre>curl -I -p 你的網址 | grep X-Page-Speed
+<div class="highlight"><pre>curl -I -p 你的網址 <span class="p">|</span> grep X-Page-Speed
 </pre></div>
 
 

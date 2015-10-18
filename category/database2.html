@@ -51,7 +51,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-31T15:26:00" pubdate>
+                        <time class="post-time" datetime="2012-05-31T15:26:00+08:00" pubdate>
                             Thu 31 May 2012
                         </time>
                         <a href="http://blog.carlcarl.me/495/mysql-table_cache-fail/" rel="bookmark"><h1>MySQL table_cache fail</h1></a>
@@ -77,7 +77,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-29T22:42:00" pubdate>
+                        <time class="post-time" datetime="2012-05-29T22:42:00+08:00" pubdate>
                             Tue 29 May 2012
                         </time>
                         <a href="http://blog.carlcarl.me/486/mysql-insert-if-duplicate-then-update/" rel="bookmark"><h1>MySQL insert if duplicate then update</h1></a>
@@ -98,7 +98,7 @@ operation，如果在 SELECT 完之後有其他人也進行 SELECT
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-17T21:43:00" pubdate>
+                        <time class="post-time" datetime="2012-02-17T21:43:00+08:00" pubdate>
                             Fri 17 February 2012
                         </time>
                         <a href="http://blog.carlcarl.me/254/quorum-read/" rel="bookmark"><h1>Quorum read</h1></a>
@@ -120,7 +120,7 @@ HBase（不過我不太喜歡要分一堆角色的分散式系統，感覺在架
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-12-17T18:00:00" pubdate>
+                        <time class="post-time" datetime="2011-12-17T18:00:00+08:00" pubdate>
                             Sat 17 December 2011
                         </time>
                         <a href="http://blog.carlcarl.me/226/mysql-db-engine-with-log-archive/" rel="bookmark"><h1>MySQL DB engine with log: Archive</h1></a>
@@ -151,7 +151,7 @@ index 和 update。）</p>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-12-10T00:22:00" pubdate>
+                        <time class="post-time" datetime="2011-12-10T00:22:00+08:00" pubdate>
                             Sat 10 December 2011
                         </time>
                         <a href="http://blog.carlcarl.me/170/mysql-change-engine-of-all-tables/" rel="bookmark"><h1>MySQL change engine of all tables</h1></a>
@@ -176,7 +176,7 @@ engine，不過為了這個寫 php 總是覺得很奇怪。後來查到另外一
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-09-05T18:12:00" pubdate>
+                        <time class="post-time" datetime="2011-09-05T18:12:00+08:00" pubdate>
                             Mon 05 September 2011
                         </time>
                         <a href="http://blog.carlcarl.me/43/mongodb-rockmongo/" rel="bookmark"><h1>MongoDB Web management tool： rockmongo</h1></a>
@@ -194,7 +194,7 @@ sudo pecl install mongo
 
 
 <p>接著在 php.ini 裡面加上一行：</p>
-<div class="highlight"><pre><span class="n">extension</span><span class="o">=</span><span class="n">mongo</span><span class="p">.</span><span class="n">so</span>
+<div class="highlight"><pre>extension=mongo.so
 </pre></div>
 
 
@@ -209,7 +209,7 @@ sudo pecl install mongo
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-09-04T14:28:00" pubdate>
+                        <time class="post-time" datetime="2011-09-04T14:28:00+08:00" pubdate>
                             Sun 04 September 2011
                         </time>
                         <a href="http://blog.carlcarl.me/42/ubuntu-11-04-install-mongodb/" rel="bookmark"><h1>Ubuntu 11.04 install mongoDB</h1></a>
@@ -233,7 +233,7 @@ sudo apt-get install mongodb-10gen
 
 
 <p>裝完之後就會自動當作 daemon 來執行，要確認的話可以輸入：</p>
-<div class="highlight"><pre>sudo netstat -antp | grep mongo
+<div class="highlight"><pre>sudo netstat -antp <span class="p">|</span> grep mongo
 </pre></div>
 
 

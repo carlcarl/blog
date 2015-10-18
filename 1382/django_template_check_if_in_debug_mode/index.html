@@ -53,7 +53,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-12-22T21:30:00" pubdate>
+                        <time class="post-time" datetime="2013-12-22T21:30:00+08:00" pubdate>
                             Sun 22 December 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1382/django_template_check_if_in_debug_mode/" rel="bookmark"><h1>Django template check if in debug mode</h1></a>
@@ -70,11 +70,11 @@
 
 
 <p>之後在 template 裡就可以這樣用:</p>
-<div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nb">debug</span> <span class="o">%</span><span class="p">}</span>
-<span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nb">debug</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
-<span class="p">{</span><span class="o">%</span> <span class="k">else</span> <span class="o">%</span><span class="p">}</span>
-<span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">production</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
-<span class="p">{</span><span class="o">%</span> <span class="nx">endif</span> <span class="o">%</span><span class="p">}</span>
+<div class="highlight"><pre><span class="cp">{%</span> <span class="k">if</span> <span class="nv">debug</span> <span class="cp">%}</span>
+<span class="nt">&lt;span&gt;</span>This is debug<span class="nt">&lt;/span&gt;</span>
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+<span class="nt">&lt;span&gt;</span>This is production<span class="nt">&lt;/span&gt;</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </pre></div>
 
 

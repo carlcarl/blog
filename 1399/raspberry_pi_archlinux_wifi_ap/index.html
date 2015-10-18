@@ -53,7 +53,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-06-04T02:30:00" pubdate>
+                        <time class="post-time" datetime="2014-06-04T02:30:00+08:00" pubdate>
                             Wed 04 June 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1399/raspberry_pi_archlinux_wifi_ap/" rel="bookmark"><h1>Raspberry-pi Archlinux wifi ap</h1></a>
@@ -97,14 +97,14 @@ broadcast=192.168.42.255
 
 
 <p><code>address</code> 的部分就自己設個範圍，預設是由有線出去，所以這邊就不用加上 gateway 了。編輯完就可以 enable 這個 service:</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">network</span><span class="o">-</span><span class="n">wireless</span><span class="err">@</span><span class="n">wlan0</span><span class="p">.</span><span class="n">service</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">network</span><span class="o">-</span><span class="n">wireless</span><span class="err">@</span><span class="n">wlan0</span><span class="p">.</span><span class="n">service</span>
+<div class="highlight"><pre>sudo systemctl <span class="nb">enable </span>network-wireless@wlan0.service
+sudo systemctl start network-wireless@wlan0.service
 </pre></div>
 
 
 <h2>設置 dnsmasq</h2>
 <p>安裝 <code>dnsmasq</code>:</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">yaourt</span> <span class="o">-</span><span class="n">S</span> <span class="n">dnsmasq</span>
+<div class="highlight"><pre>sudo yaourt -S dnsmasq
 </pre></div>
 
 
@@ -122,7 +122,7 @@ sudo systemctl start dnsmasq
 
 <h2>設置 hostapd</h2>
 <p>安裝 <code>hostapd</code>:</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">yaourt</span> <span class="o">-</span><span class="n">S</span> <span class="n">hostapd</span><span class="o">-</span><span class="mi">8188</span><span class="n">eu</span>
+<div class="highlight"><pre>sudo yaourt -S hostapd-8188eu
 </pre></div>
 
 
@@ -160,13 +160,13 @@ net.ipv6.conf.all.forwarding=1
 
 
 <p>設定 <code>iptables</code> 並啟動 service:</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">A</span> <span class="n">POSTROUTING</span> <span class="o">-</span><span class="n">o</span> <span class="n">internet0</span> <span class="o">-</span><span class="n">j</span> <span class="n">MASQUERADE</span>
-<span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">FORWARD</span> <span class="o">-</span><span class="n">i</span> <span class="n">net0</span> <span class="o">-</span><span class="n">o</span> <span class="n">internet0</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
-<span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">FORWARD</span> <span class="o">-</span><span class="n">m</span> <span class="n">conntrack</span> <span class="o">--</span><span class="n">ctstate</span> <span class="n">RELATED</span><span class="p">,</span><span class="n">ESTABLISHED</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
+<div class="highlight"><pre>sudo iptables -t nat -A POSTROUTING -o internet0 -j MASQUERADE
+sudo iptables -A FORWARD -i net0 -o internet0 -j ACCEPT
+sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 
-<span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;iptables-save &gt; /etc/iptables/iptables.rules&quot;</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">iptables</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">iptables</span>
+sudo sh -c <span class="s2">&quot;iptables-save &gt; /etc/iptables/iptables.rules&quot;</span>
+sudo systemctl <span class="nb">enable </span>iptables
+sudo systemctl start iptables
 </pre></div>
 
 

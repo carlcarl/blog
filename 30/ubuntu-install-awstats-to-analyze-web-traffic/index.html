@@ -53,7 +53,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-07-04T13:04:00" pubdate>
+                        <time class="post-time" datetime="2011-07-04T13:04:00+08:00" pubdate>
                             Mon 04 July 2011
                         </time>
                         <a href="http://blog.carlcarl.me/30/ubuntu-install-awstats-to-analyze-web-traffic/" rel="bookmark"><h1>ubuntu install awstats to analyze web traffic</h1></a>
@@ -82,7 +82,7 @@
 <li>找到 <code>#LoadPlugin="decodeutfkeys"</code> 的部份，將前面的 <code>#</code> 刪掉，這個能讓 utf 編碼的關鍵字能夠正常顯示(這邊是參考網路上的教學，至於不加會不會有問題，倒是沒有實際測試過)</li>
 </ul>
 <p>接著到 <code>/usr/share/awstats/lang</code> 底下修改語系檔，將 <code>awstats-tw.txt</code> 將內容的 <code>big</code> 改成 <code>utf-8</code> 並用 <code>utf-8</code> 的編碼存成 <code>awstats-utf8.txt</code> 檔案</p>
-<div class="highlight"><pre>sudo cat awstats-tw.txt | sed -e <span class="s1">&#39;s/big5/utf-8/&#39;</span> | iconv -f big5 -t utf8 &gt; awstats-tw-utf8.txt
+<div class="highlight"><pre>sudo cat awstats-tw.txt <span class="p">|</span> sed -e <span class="s1">&#39;s/big5/utf-8/&#39;</span> <span class="p">|</span> iconv -f big5 -t utf8 &gt; awstats-tw-utf8.txt
 </pre></div>
 
 

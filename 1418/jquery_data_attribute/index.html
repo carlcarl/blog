@@ -53,7 +53,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-03-28T00:00:00" pubdate>
+                        <time class="post-time" datetime="2015-03-28T00:00:00+08:00" pubdate>
                             Sat 28 March 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1418/jquery_data_attribute/" rel="bookmark"><h1>jQuery Data Attribute</h1></a>
@@ -66,6 +66,8 @@
 
 
 <p>我用 <code>data('value')</code> 取出來的值會是 <code>Number</code> type，也就是說，如果能轉的話，它就會自動幫你轉，在很多情況下，這不會是想要的行為，而且一旦不小心，就會造成不同型態比較的錯誤，所以就我自己來說，還是使用 <code>attr('data-value')</code> 的方式，可以保證一定是拿到字串，但是 <code>data()</code> 還是有它的好處，就是它的內部實作有做 cache，所以讀取上會快些，因為不用 access 到 DOM。</p>
+<p>2015/10/18 補充:<br />
+根據這篇 <a href="http://jsperf.com/jquery-performance-test-attr-vs-data/3">jsperf</a> 的測試，看來連 get 也不會比較快，那 <code>data()</code> 還真的是沒啥優點...。</p>
 <p>Ref:</p>
 <ul>
 <li><a href="http://www.sitepoint.com/jquery-data-html5-custom-data-attributes/">jQuery.data() with HTML5 Custom Data Attributes</a></li>

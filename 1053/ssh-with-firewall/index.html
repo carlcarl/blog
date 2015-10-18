@@ -53,7 +53,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-19T00:19:00" pubdate>
+                        <time class="post-time" datetime="2013-06-19T00:19:00+08:00" pubdate>
                             Wed 19 June 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1053/ssh-with-firewall/" rel="bookmark"><h1>ssh with firewall</h1></a>
@@ -70,7 +70,7 @@ XD，有需要的人建議點進去看看唄～～。)</p>
 
 <div class="highlight"><pre><span class="c"># 在 local 開一個 9999 的 port 轉到 `example.com` 的 22 port，</span>
 <span class="c"># 接下來只要把 proxy 的設定指到 localhost 的 9999 就可以了。</span>
-ssh -NfD 9999 user@example.com
+ssh -NfD <span class="m">9999</span> user@example.com
 </pre></div>
 
 
@@ -84,11 +84,11 @@ ssh -NfD 9999 user@example.com
 ssh -NfR 9999:localhost:22 user@example.com
  
 <span class="c"># 在 example.com 上連這個 port 即可。</span>
-ssh -p 9999 -l user localhost
+ssh -p <span class="m">9999</span> -l user localhost
  
 <span class="c"># 如果需要 ssh 以外的連線，仿照第一個方法，加個 9998 的 port，</span>
 <span class="c"># proxy 設定改成 example.com 9998 port 即可。</span>
-ssh -p 9999 -l user -D 9998 localhost
+ssh -p <span class="m">9999</span> -l user -D <span class="m">9998</span> localhost
 </pre></div>
 
 

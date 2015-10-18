@@ -53,7 +53,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-03-20T18:36:00" pubdate>
+                        <time class="post-time" datetime="2011-03-20T18:36:00+08:00" pubdate>
                             Sun 20 March 2011
                         </time>
                         <a href="http://blog.carlcarl.me/11/c-getopt-usage/" rel="bookmark"><h1>C getopt usage</h1></a>
@@ -83,17 +83,17 @@
 <span class="p">{</span>
     <span class="k">switch</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
     <span class="p">{</span>
-    <span class="k">case</span> <span class="sc">&#39;a&#39;</span>:
+    <span class="k">case</span> <span class="sc">&#39;a&#39;</span><span class="o">:</span>
         <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="sc">&#39;b&#39;</span>:
+    <span class="k">case</span> <span class="sc">&#39;b&#39;</span><span class="o">:</span>
         <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="sc">&#39;f&#39;</span>:
+    <span class="k">case</span> <span class="sc">&#39;f&#39;</span><span class="o">:</span>
         <span class="n">puts</span><span class="p">(</span><span class="n">optarg</span><span class="p">);</span>
         <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="err">&#39;</span>:<span class="err">&#39;</span><span class="o">:</span>
+    <span class="k">case</span> <span class="sc">&#39;:&#39;</span><span class="o">:</span>
         <span class="n">puts</span><span class="p">(</span><span class="s">&quot;oops&quot;</span><span class="p">);</span>
         <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="sc">&#39;?&#39;</span>:
+    <span class="k">case</span> <span class="sc">&#39;?&#39;</span><span class="o">:</span>
         <span class="n">puts</span><span class="p">(</span><span class="s">&quot;wrong command&quot;</span><span class="p">);</span>
         <span class="k">break</span><span class="p">;</span>
     <span class="p">}</span>

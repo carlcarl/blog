@@ -51,7 +51,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-12-22T21:30:00" pubdate>
+                        <time class="post-time" datetime="2013-12-22T21:30:00+08:00" pubdate>
                             Sun 22 December 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1382/django_template_check_if_in_debug_mode/" rel="bookmark"><h1>Django template check if in debug mode</h1></a>
@@ -67,11 +67,11 @@
 
 
 <p>之後在 template 裡就可以這樣用:</p>
-<div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nb">debug</span> <span class="o">%</span><span class="p">}</span>
-<span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nb">debug</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
-<span class="p">{</span><span class="o">%</span> <span class="k">else</span> <span class="o">%</span><span class="p">}</span>
-<span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">production</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
-<span class="p">{</span><span class="o">%</span> <span class="nx">endif</span> <span class="o">%</span><span class="p">}</span>
+<div class="highlight"><pre><span class="cp">{%</span> <span class="k">if</span> <span class="nv">debug</span> <span class="cp">%}</span>
+<span class="nt">&lt;span&gt;</span>This is debug<span class="nt">&lt;/span&gt;</span>
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+<span class="nt">&lt;span&gt;</span>This is production<span class="nt">&lt;/span&gt;</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </pre></div>
 
 
@@ -83,7 +83,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-12-08T17:00:00" pubdate>
+                        <time class="post-time" datetime="2013-12-08T17:00:00+08:00" pubdate>
                             Sun 08 December 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1381/review_kivy_interactive_applications_in_python/" rel="bookmark"><h1>[review] kivy interactive applications in python</h1></a>
@@ -99,7 +99,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-11-15T00:19:00" pubdate>
+                        <time class="post-time" datetime="2013-11-15T00:19:00+08:00" pubdate>
                             Fri 15 November 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1379/python_celery_crontab/" rel="bookmark"><h1>Python celery crontab</h1></a>
@@ -122,7 +122,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-04T21:26:00" pubdate>
+                        <time class="post-time" datetime="2013-10-04T21:26:00+08:00" pubdate>
                             Fri 04 October 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
@@ -148,7 +148,7 @@ subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-02T02:32:00" pubdate>
+                        <time class="post-time" datetime="2013-10-02T02:32:00+08:00" pubdate>
                             Wed 02 October 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1331/python-sphinx-simple-example/" rel="bookmark"><h1>Python Sphinx simple example</h1></a>
@@ -184,7 +184,7 @@ orz。</p>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-09-19T00:09:00" pubdate>
+                        <time class="post-time" datetime="2013-09-19T00:09:00+08:00" pubdate>
                             Thu 19 September 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1315/python-multiprocessing-share-counter/" rel="bookmark"><h1>Python multiprocessing share counter</h1></a>
@@ -219,7 +219,7 @@ orz。</p>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-08-06T15:38:00" pubdate>
+                        <time class="post-time" datetime="2013-08-06T15:38:00+08:00" pubdate>
                             Tue 06 August 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1249/python-functools-wraps-note/" rel="bookmark"><h1>Python functools.wraps note</h1></a>
@@ -251,7 +251,7 @@ attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</cod
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-08-04T02:35:00" pubdate>
+                        <time class="post-time" datetime="2013-08-04T02:35:00+08:00" pubdate>
                             Sun 04 August 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1240/python-fibonacci-number/" rel="bookmark"><h1>Python fibonacci number</h1></a>
@@ -272,7 +272,7 @@ attribute，會發現 print 出的是 'hello'，這是因為 <code>test ...</cod
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-25T17:11:00" pubdate>
+                        <time class="post-time" datetime="2013-07-25T17:11:00+08:00" pubdate>
                             Thu 25 July 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1230/python-logging-stream/" rel="bookmark"><h1>Python logging stream</h1></a>
@@ -299,7 +299,7 @@ assign 成這個物件。</p>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-16T18:30:00" pubdate>
+                        <time class="post-time" datetime="2013-07-16T18:30:00+08:00" pubdate>
                             Tue 16 July 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1212/python-yahoo-weather/" rel="bookmark"><h1>Python Yahoo weather</h1></a>

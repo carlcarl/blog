@@ -53,7 +53,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-27T16:41:00" pubdate>
+                        <time class="post-time" datetime="2013-06-27T16:41:00+08:00" pubdate>
                             Thu 27 June 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1080/linux-conntrack-delete-destination-nat/" rel="bookmark"><h1>Linux conntrack delete destination NAT</h1></a>
@@ -82,14 +82,14 @@ shell 程式必須用 c 產生，判斷有沒有殺掉的部分就用
 <code>popen("conntrack -L conntrack | grep xxx.xxx.xxx.xxx", "r")</code> 做，轉成
 shell 的話大概如下，這邊迴圈就不寫了:P：</p>
 <div class="highlight"><pre><span class="c"># 因為有可能拿到複數個，所以需要用雙引號包起來</span>
-<span class="nv">outside_ip</span><span class="o">=</span><span class="s2">&quot;$(conntrack -L conntrack -g -r xxx.xxx.xxx.xxx | awk &#39;{ print $5 }&#39; | cut -f2 -d=)&quot;</span>
+<span class="nv">outside_ip</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>conntrack -L conntrack -g -r xxx.xxx.xxx.xxx <span class="p">|</span> awk <span class="s1">&#39;{ print $5 }&#39;</span> <span class="p">|</span> cut -f2 -d<span class="o">=</span><span class="k">)</span><span class="s2">&quot;</span>
 conntrack -D conntrack -g -r xxx.xxx.xxx.xxx
 
-<span class="nv">check</span><span class="o">=</span><span class="s2">&quot;$(conntrack -L conntrack | grep xxx.xxx.xxx.xxx)&quot;</span>
-<span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;$check&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="nv">check</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>conntrack -L conntrack <span class="p">|</span> grep xxx.xxx.xxx.xxx<span class="k">)</span><span class="s2">&quot;</span>
+<span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;</span><span class="nv">$check</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
     <span class="c"># -r 表示如果前面給的參數是空的話，就不執行後面的指令</span>
-    <span class="nb">echo</span> <span class="nv">$outside_ip</span> | xargs -r conntrack -D conntrack -d
-    <span class="nb">echo</span> <span class="nv">$outside_ip</span> | xargs -r conntrack -D conntrack -s
+    <span class="nb">echo</span> <span class="nv">$outside_ip</span> <span class="p">|</span> xargs -r conntrack -D conntrack -d
+    <span class="nb">echo</span> <span class="nv">$outside_ip</span> <span class="p">|</span> xargs -r conntrack -D conntrack -s
 <span class="k">fi</span>
 </pre></div>
 

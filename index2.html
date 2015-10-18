@@ -51,7 +51,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-15T15:00:00" pubdate>
+                        <time class="post-time" datetime="2015-04-15T15:00:00+08:00" pubdate>
                             Wed 15 April 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1423/linux_single_instance_lock/" rel="bookmark"><h1>Linux Single Instance Lock</h1></a>
@@ -71,14 +71,14 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-10T16:00:00" pubdate>
+                        <time class="post-time" datetime="2015-04-10T16:00:00+08:00" pubdate>
                             Fri 10 April 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1422/makefile_notes/" rel="bookmark"><h1>Makefile Notes</h1></a>
                     </header>
                     <section class="post-content">
                         <h2>Implicit Make Rule</h2>
-<div class="highlight"><pre><span class="nf">%.o</span><span class="o">:</span><span class="m">%.c</span>
+<div class="highlight"><pre><span class="nf">%.o</span><span class="o">:</span>%.<span class="n">c</span>
     <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -c <span class="nv">$&lt;</span> -o <span class="nv">$@</span>
 </pre></div>
 
@@ -88,16 +88,16 @@
 </ul>
 <h2>Target-specific Variables</h2>
 <p>ex:</p>
-<div class="highlight"><pre><span class="nf">target1</span><span class="o">:</span> <span class="m">CFLAGS = -IINCLUDEPATH1</span>
-<span class="nf">target1</span><span class="o">:</span> <span class="m">LDLIBS = -lLIB1</span>
-<span class="nf">target1</span><span class="o">:</span> <span class="m">target1.o misc.o</span>
+<div class="highlight"><pre><span class="nf">target1</span><span class="o">:</span> <span class="n">CFLAGS</span> = -<span class="n">IINCLUDEPATH</span>1
+<span class="nf">target1</span><span class="o">:</span> <span class="n">LDLIBS</span> = -<span class="n">lLIB</span>1
+<span class="nf">target1</span><span class="o">:</span> <span class="n">target</span>1.<span class="n">o</span> <span class="n">misc</span>.<span class="n">o</span>
 </pre></div>
 
 
 <ul>
 <li><a href="http://stackoverflow.com/questions/3261737/makefile-change-variable-value-depending-on-a-target">Makefile - change variable value depending on a target</a></li>
 <li><a href="http://stackoverflow.com/questions/2711963/change-makefile-variable-value">Change Makefile variable value</a></li>
-<li><a href="http://stackoverflow.com/questions/1305665/how-to-compile-different-c-files-with-different-cflags-using-makefile">How to compile different c files with different CFLAGS using Makefile ...</a></li></ul>
+<li><a href="http://stackoverflow.com/questions/1305665/how-to-compile-different-c-files-with-different-cflags-using-makefile">How to compile different c files with different ...</a></li></ul>
                     </section>
                 </article>
                 <hr/>
@@ -105,7 +105,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-10T01:30:00" pubdate>
+                        <time class="post-time" datetime="2015-04-10T01:30:00+08:00" pubdate>
                             Fri 10 April 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1421/javascript_settimeout_focus/" rel="bookmark"><h1>JavaScript setTimeout focus</h1></a>
@@ -132,7 +132,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-10T01:00:00" pubdate>
+                        <time class="post-time" datetime="2015-04-10T01:00:00+08:00" pubdate>
                             Fri 10 April 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1420/json_c_resources/" rel="bookmark"><h1>JSON-C Resources</h1></a>
@@ -152,7 +152,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-07T14:00:00" pubdate>
+                        <time class="post-time" datetime="2015-04-07T14:00:00+08:00" pubdate>
                             Tue 07 April 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1419/c_cgi_resources/" rel="bookmark"><h1>C CGI Resources</h1></a>
@@ -167,7 +167,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-03-28T00:00:00" pubdate>
+                        <time class="post-time" datetime="2015-03-28T00:00:00+08:00" pubdate>
                             Sat 28 March 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1418/jquery_data_attribute/" rel="bookmark"><h1>jQuery Data Attribute</h1></a>
@@ -186,7 +186,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-03-21T00:00:00" pubdate>
+                        <time class="post-time" datetime="2015-03-21T00:00:00+08:00" pubdate>
                             Sat 21 March 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1417/css_instant_search_compatibility/" rel="bookmark"><h1>CSS Instant Search Compatibility</h1></a>
@@ -202,7 +202,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-03-18T19:30:00" pubdate>
+                        <time class="post-time" datetime="2015-03-18T19:30:00+08:00" pubdate>
                             Wed 18 March 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1416/semantic_ui_dropdown_restore_default/" rel="bookmark"><h1>Semantic UI dropdown restore default</h1></a>
@@ -230,7 +230,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-03-01T02:00:00" pubdate>
+                        <time class="post-time" datetime="2015-03-01T02:00:00+08:00" pubdate>
                             Sun 01 March 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1415/review_swift_essentials/" rel="bookmark"><h1>[Review] Swift Essentials</h1></a>
@@ -247,7 +247,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-02-27T00:30:00" pubdate>
+                        <time class="post-time" datetime="2015-02-27T00:30:00+08:00" pubdate>
                             Fri 27 February 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1414/mod_wsgi_with_newer_python_version/" rel="bookmark"><h1>mod_wsgi with newer python version</h1></a>

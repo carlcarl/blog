@@ -51,14 +51,14 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-10T16:00:00" pubdate>
+                        <time class="post-time" datetime="2015-04-10T16:00:00+08:00" pubdate>
                             Fri 10 April 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1422/makefile_notes/" rel="bookmark"><h1>Makefile Notes</h1></a>
                     </header>
                     <section class="post-content">
                         <h2>Implicit Make Rule</h2>
-<div class="highlight"><pre><span class="nf">%.o</span><span class="o">:</span><span class="m">%.c</span>
+<div class="highlight"><pre><span class="nf">%.o</span><span class="o">:</span>%.<span class="n">c</span>
     <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -c <span class="nv">$&lt;</span> -o <span class="nv">$@</span>
 </pre></div>
 
@@ -68,16 +68,16 @@
 </ul>
 <h2>Target-specific Variables</h2>
 <p>ex:</p>
-<div class="highlight"><pre><span class="nf">target1</span><span class="o">:</span> <span class="m">CFLAGS = -IINCLUDEPATH1</span>
-<span class="nf">target1</span><span class="o">:</span> <span class="m">LDLIBS = -lLIB1</span>
-<span class="nf">target1</span><span class="o">:</span> <span class="m">target1.o misc.o</span>
+<div class="highlight"><pre><span class="nf">target1</span><span class="o">:</span> <span class="n">CFLAGS</span> = -<span class="n">IINCLUDEPATH</span>1
+<span class="nf">target1</span><span class="o">:</span> <span class="n">LDLIBS</span> = -<span class="n">lLIB</span>1
+<span class="nf">target1</span><span class="o">:</span> <span class="n">target</span>1.<span class="n">o</span> <span class="n">misc</span>.<span class="n">o</span>
 </pre></div>
 
 
 <ul>
 <li><a href="http://stackoverflow.com/questions/3261737/makefile-change-variable-value-depending-on-a-target">Makefile - change variable value depending on a target</a></li>
 <li><a href="http://stackoverflow.com/questions/2711963/change-makefile-variable-value">Change Makefile variable value</a></li>
-<li><a href="http://stackoverflow.com/questions/1305665/how-to-compile-different-c-files-with-different-cflags-using-makefile">How to compile different c files with different CFLAGS using Makefile ...</a></li></ul>
+<li><a href="http://stackoverflow.com/questions/1305665/how-to-compile-different-c-files-with-different-cflags-using-makefile">How to compile different c files with different ...</a></li></ul>
                     </section>
                 </article>
                 <hr/>
@@ -85,7 +85,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-08-13T15:50:00" pubdate>
+                        <time class="post-time" datetime="2013-08-13T15:50:00+08:00" pubdate>
                             Tue 13 August 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1267/c-define-debug-function/" rel="bookmark"><h1>C define debug function</h1></a>

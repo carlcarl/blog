@@ -52,7 +52,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-07-16T12:11:00" pubdate>
+                        <time class="post-time" datetime="2011-07-16T12:11:00+08:00" pubdate>
                             Sat 16 July 2011
                         </time>
                         <a href="http://blog.carlcarl.me/36/ubuntu-vpn-server-with-pptp/" rel="bookmark"><h1>Ubuntu VPN Server with pptp</h1></a>
@@ -110,7 +110,7 @@ ip，但是封包在 Server 這邊傳不出去，因為沒設定，所以接下�
 
 <h3>最後是修改 <code>/etc/sysctl.conf</code></h3>
 <p>找到以下這行，將前面的 <code>#</code> 給刪掉， <code>#</code> 是代表註解，這樣才有forward 封包的功能</p>
-<div class="highlight"><pre><span class="c"># net.ipv4.ip_forward=1</span>
+<div class="highlight"><pre># net.ipv4.ip_forward=1
 </pre></div>
 
 

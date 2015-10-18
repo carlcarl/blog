@@ -53,7 +53,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-04-24T15:22:00" pubdate>
+                        <time class="post-time" datetime="2011-04-24T15:22:00+08:00" pubdate>
                             Sun 24 April 2011
                         </time>
                         <a href="http://blog.carlcarl.me/18/zend-framework-add-acl-setting/" rel="bookmark"><h1>Zend Framework add Acl setting</h1></a>
@@ -151,7 +151,7 @@
         <span class="nv">$controller</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">controller</span><span class="p">;</span>
         <span class="nv">$action</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">action</span><span class="p">;</span>
         <span class="nv">$module</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">module</span><span class="p">;</span>
-        <span class="nv">$resource</span> <span class="o">=</span> <span class="nx">strtolower</span><span class="p">(</span><span class="nv">$controller</span><span class="p">);</span> <span class="c1">//前面提到會轉小寫做判斷</span>
+        <span class="nv">$resource</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$controller</span><span class="p">);</span> <span class="c1">//前面提到會轉小寫做判斷</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_acl</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="nv">$resource</span><span class="p">))</span> <span class="c1">//沒加入判斷的controller 預設通過</span>
         <span class="p">{</span>
             <span class="nv">$resource</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>

@@ -55,7 +55,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-05T02:15:00" pubdate>
+                        <time class="post-time" datetime="2013-10-05T02:15:00+08:00" pubdate>
                             Sat 05 October 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1375/tig-broken-in-tmux/" rel="bookmark"><h1>tig broken in tmux</h1></a>
@@ -73,7 +73,7 @@ screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</
 <code>.zshrc</code>，原來我是在這邊設定了
 <code>export TERM=xterm-256color</code>，於是我參看上面連結裡的內容在設定 <code>TERM</code>
 下面再加上了一行就 OK 了：</p>
-<div class="highlight"><pre><span class="p">[</span> <span class="o">-</span><span class="n">n</span> <span class="s">&quot;$TMUX&quot;</span> <span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">export</span> <span class="n">TERM</span><span class="o">=</span><span class="n">screen</span><span class="o">-</span><span class="mi">256</span><span class="n">color</span>
+<div class="highlight"><pre><span class="x">[ -n &quot;</span><span class="p">$</span><span class="nv">TMUX</span><span class="x">&quot; ] &amp;&amp; export TERM=screen-256color</span>
 </pre></div>
                     </section>
                     <hr/>

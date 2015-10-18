@@ -14,7 +14,7 @@
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Makefile Notes" />
                 <meta property="og:url" content="http://blog.carlcarl.me/1422/makefile_notes/" />
-                <meta property="og:description" content="Implicit Make Rule %.o:%.c $(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@ CFLAGS vs CPPFLAGS Target-specific Variables ex: target1: CFLAGS = -IINCLUDEPATH1 target1: LDLIBS = -lLIB1 target1: target1.o misc.o Makefile - change variable value depending on a target Change Makefile variable value How to compile different c files with different CFLAGS using Makefile ..." />
+                <meta property="og:description" content="Implicit Make Rule %.o:%.c $(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@ CFLAGS vs CPPFLAGS Target-specific Variables ex: target1: CFLAGS = -IINCLUDEPATH1 target1: LDLIBS = -lLIB1 target1: target1.o misc.o Makefile - change variable value depending on a target Change Makefile variable value How to compile different c files with different ..." />
                     <meta property="article:tag" content="makefile" />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -53,7 +53,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-10T16:00:00" pubdate>
+                        <time class="post-time" datetime="2015-04-10T16:00:00+08:00" pubdate>
                             Fri 10 April 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1422/makefile_notes/" rel="bookmark"><h1>Makefile Notes</h1></a>
@@ -61,7 +61,7 @@
 
                     <section class="post-content">
                         <h2>Implicit Make Rule</h2>
-<div class="highlight"><pre><span class="nf">%.o</span><span class="o">:</span><span class="m">%.c</span>
+<div class="highlight"><pre><span class="nf">%.o</span><span class="o">:</span>%.<span class="n">c</span>
     <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -c <span class="nv">$&lt;</span> -o <span class="nv">$@</span>
 </pre></div>
 
@@ -71,9 +71,9 @@
 </ul>
 <h2>Target-specific Variables</h2>
 <p>ex:</p>
-<div class="highlight"><pre><span class="nf">target1</span><span class="o">:</span> <span class="m">CFLAGS = -IINCLUDEPATH1</span>
-<span class="nf">target1</span><span class="o">:</span> <span class="m">LDLIBS = -lLIB1</span>
-<span class="nf">target1</span><span class="o">:</span> <span class="m">target1.o misc.o</span>
+<div class="highlight"><pre><span class="nf">target1</span><span class="o">:</span> <span class="n">CFLAGS</span> = -<span class="n">IINCLUDEPATH</span>1
+<span class="nf">target1</span><span class="o">:</span> <span class="n">LDLIBS</span> = -<span class="n">lLIB</span>1
+<span class="nf">target1</span><span class="o">:</span> <span class="n">target</span>1.<span class="n">o</span> <span class="n">misc</span>.<span class="n">o</span>
 </pre></div>
 
 
@@ -95,13 +95,13 @@
 <span class="nv">objs</span> <span class="o">=</span> <span class="k">$(</span>srcs:.cpp<span class="o">=</span>.o<span class="k">)</span>
 <span class="nv">deps</span> <span class="o">=</span> <span class="k">$(</span>srcs:.cpp<span class="o">=</span>.d<span class="k">)</span>
 
-<span class="nf">test</span><span class="o">:</span> <span class="m">$(objs)</span>
+<span class="nf">test</span><span class="o">:</span> <span class="k">$(</span><span class="nv">objs</span><span class="k">)</span>
     <span class="k">$(</span>Gpp<span class="k">)</span> <span class="nv">$^</span> -o <span class="nv">$@</span>
 
-<span class="nf">%.o</span><span class="o">:</span> <span class="m">%.cpp</span>
+<span class="nf">%.o</span><span class="o">:</span> %.<span class="n">cpp</span>
     <span class="k">$(</span>Gpp<span class="k">)</span> -MMD -MP -c <span class="nv">$&lt;</span> -o <span class="nv">$@</span>
 
-<span class="nf">.PHONY</span><span class="o">:</span> <span class="m">clean</span>
+<span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
 
 <span class="c"># $(RM) is rm -f by default</span>
 <span class="nf">clean</span><span class="o">:</span>

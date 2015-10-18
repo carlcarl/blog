@@ -54,7 +54,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-31T15:26:00" pubdate>
+                        <time class="post-time" datetime="2012-05-31T15:26:00+08:00" pubdate>
                             Thu 31 May 2012
                         </time>
                         <a href="http://blog.carlcarl.me/495/mysql-table_cache-fail/" rel="bookmark"><h1>MySQL table_cache fail</h1></a>
@@ -74,8 +74,8 @@
 中去查，<code>table_cache</code> 卻還是預設 64 的情形，<code>max_connections</code>
 的值也會同樣被降低。</p>
 <p>要預防這種情形就必須修改 <code>ulimit</code> 限制，在 <code>/etc/security/limits.conf</code> 加上</p>
-<div class="highlight"><pre><span class="n">mysql</span> <span class="n">soft</span> <span class="n">nofile</span> <span class="mi">4096</span>
-<span class="n">mysql</span> <span class="n">hard</span> <span class="n">nofile</span> <span class="mi">8192</span>
+<div class="highlight"><pre>mysql soft nofile 4096
+mysql hard nofile 8192
 </pre></div>
 
 

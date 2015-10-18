@@ -14,7 +14,7 @@
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="c edit code but Make only show up to date" />
                 <meta property="og:url" content="http://blog.carlcarl.me/33/c-edit-code-but-make-only-show-up-to-date/" />
-                <meta property="og:description" content="感覺好像是很初學的問題，不過我還是不知道原來這個會有關係 orz 在 Makefile 裡記得要加dependency file 例如檔案是 test.cpp, test.h, test2.cpp, test2.h 要編譯成一個執行檔 test: g++ -o test test.o test2.o test.o: g++ -c test.cpp test2.o: g++ -c test2.cpp 要改成 test: test.o test2.o g++ -o test test.o test2.o ..." />
+                <meta property="og:description" content="感覺好像是很初學的問題，不過我還是不知道原來這個會有關係 orz 在 Makefile 裡記得要加dependency file 例如檔案是 test.cpp, test.h, test2.cpp, test2.h 要編譯成一個執行檔 test: g++ -o test test.o test2.o test.o: g++ -c test.cpp test2.o: g++ -c test2.cpp 要改成 test: test.o test2.o g++ -o test test.o test2 ..." />
             <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -52,7 +52,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-07-13T07:12:00" pubdate>
+                        <time class="post-time" datetime="2011-07-13T07:12:00+08:00" pubdate>
                             Wed 13 July 2011
                         </time>
                         <a href="http://blog.carlcarl.me/33/c-edit-code-but-make-only-show-up-to-date/" rel="bookmark"><h1>c edit code but Make only show up to date</h1></a>
@@ -72,11 +72,11 @@
 
 
 <p>要改成</p>
-<div class="highlight"><pre><span class="nf">test</span><span class="o">:</span> <span class="m">test.o test2.o</span>
+<div class="highlight"><pre><span class="nf">test</span><span class="o">:</span> <span class="n">test</span>.<span class="n">o</span> <span class="n">test</span>2.<span class="n">o</span>
     g++ -o <span class="nb">test </span>test.o test2.o
-<span class="nf">test.o</span><span class="o">:</span> <span class="m">test.h test.cpp</span>
+<span class="nf">test.o</span><span class="o">:</span> <span class="n">test</span>.<span class="n">h</span> <span class="n">test</span>.<span class="n">cpp</span>
     g++ -c test.cpp
-<span class="nf">test2.o</span><span class="o">:</span> <span class="m">test2.h test2.cpp</span>
+<span class="nf">test2.o</span><span class="o">:</span> <span class="n">test</span>2.<span class="n">h</span> <span class="n">test</span>2.<span class="n">cpp</span>
     g++ -c test2.cpp
 </pre></div>
 

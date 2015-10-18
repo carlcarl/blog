@@ -51,7 +51,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-08-11T00:30:00" pubdate>
+                        <time class="post-time" datetime="2014-08-11T00:30:00+08:00" pubdate>
                             Mon 11 August 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1400/raspberry_pi_cookbook_for_python_programmers/" rel="bookmark"><h1>Raspberry Pi Cookbook for Python Programmers</h1></a>
@@ -69,7 +69,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-06-04T02:30:00" pubdate>
+                        <time class="post-time" datetime="2014-06-04T02:30:00+08:00" pubdate>
                             Wed 04 June 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1399/raspberry_pi_archlinux_wifi_ap/" rel="bookmark"><h1>Raspberry-pi Archlinux wifi ap</h1></a>
@@ -87,7 +87,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-21T03:00:00" pubdate>
+                        <time class="post-time" datetime="2014-01-21T03:00:00+08:00" pubdate>
                             Tue 21 January 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1387/raspberry_pi_bt_transmission/" rel="bookmark"><h1>Raspberry Pi BT Transmission</h1></a>
@@ -95,20 +95,20 @@
                     <section class="post-content">
                         <p>研究了一下怎麼在 <a href="http://www.raspberrypi.org">raspberry pi</a> + <a href="https://www.archlinux.org">ArchLinux</a> 上用 BT，好像都是用 <a href="http://www.transmissionbt.com">transmission</a>，所以我就跟著用了XD，下面是一些步驟。</p>
 <h2>安裝 transmission daemon</h2>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">transmission</span><span class="o">-</span><span class="n">cli</span>
+<div class="highlight"><pre>sudo pacman -S transmission-cli
 </pre></div>
 
 
 <h2>Run transmission daemon</h2>
 <p>由於一開始沒有設定檔，要先跑過才有，所以先跑一下，是說要這樣做也太囧。</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">transmission</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">transmission</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">stop</span> <span class="n">transmission</span>
+<div class="highlight"><pre>sudo systemctl <span class="nb">enable </span>transmission
+sudo systemctl start transmission
+sudo systemctl stop transmission
 </pre></div>
 
 
 <h2>修改設定檔</h2>
-<p>設定檔位置在 <code>/var/lib/transmission/.config/transmission-daemon/settings.json</code> (這位置好爛)，我自己的設定檔如下，後方的 <code>M ...</code></p>
+<p>設定檔位置在 <code>/var/lib/transmission/.config/transmission-daemon/settings.json</code> (這位置好爛)，我自己的設定檔如下，後方的 <code>M</code> 表示新增或改過的 ...</p>
                     </section>
                 </article>
                 <hr/>
@@ -116,7 +116,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-21T02:30:00" pubdate>
+                        <time class="post-time" datetime="2014-01-21T02:30:00+08:00" pubdate>
                             Tue 21 January 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1386/raspberry_pi_beginner/" rel="bookmark"><h1>Raspberry Pi beginner</h1></a>

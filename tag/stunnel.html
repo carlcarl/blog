@@ -51,7 +51,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-22T15:18:00" pubdate>
+                        <time class="post-time" datetime="2013-06-22T15:18:00+08:00" pubdate>
                             Sat 22 June 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1070/stunnel-mac-client/" rel="bookmark"><h1>stunnel Mac client</h1></a>
@@ -62,17 +62,17 @@
 的，試了一下網路上的一些設定，總算有可以 work
 的了，以下是我的設定，比較要注意的就是 <code>cert</code> 的位置要設對，另外就是
 <code>connect</code> 的 <code>host</code> 要改成你 stunnel server 的位置：</p>
-<div class="highlight"><pre><span class="n">setuid</span> <span class="o">=</span> <span class="n">nobody</span>
-<span class="n">setgid</span> <span class="o">=</span> <span class="n">nogroup</span>
-<span class="n">pid</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">stunnel</span><span class="p">.</span><span class="n">pid</span>
+<div class="highlight"><pre>setuid = nobody
+setgid = nogroup
+pid = /tmp/stunnel.pid
 
-<span class="n">cert</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">stunnel</span><span class="o">/</span><span class="n">client</span><span class="p">.</span><span class="n">pem</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">yes</span>
+cert = /usr/local/etc/stunnel/client.pem
+client = yes
 
-<span class="n">debug</span> <span class="o">=</span> <span class="mi">7</span>
+debug = 7
 
-<span class="n">sslVersion</span> <span class="o">=</span> <span class="n">SSLv3</span>
-<span class="n">verify ...</span></pre></div>
+sslVersion = SSLv3
+verify ...</pre></div>
                     </section>
                 </article>
                 <hr/>

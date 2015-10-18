@@ -52,7 +52,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-05-26T09:05:00" pubdate>
+                        <time class="post-time" datetime="2011-05-26T09:05:00+08:00" pubdate>
                             Thu 26 May 2011
                         </time>
                         <a href="http://blog.carlcarl.me/22/ubuntu-eucalyptus-installation/" rel="bookmark"><h1>Ubuntu Eucalyptus installation</h1></a>
@@ -72,7 +72,7 @@
 <p>如果出現以上的錯誤就是要裝 <code>openjdk-6-jre-headless</code>。</p>
 <h3>記得先執行 service</h3>
 <p>下面這行還滿方便的，不過記得要先到 <code>/etc/init.d/</code>底下作: </p>
-<div class="highlight"><pre><span class="k">for </span>service in euca*; <span class="k">do </span>start <span class="nv">$service</span>;<span class="k">done</span>
+<div class="highlight"><pre><span class="k">for</span> service in euca*<span class="p">;</span> <span class="k">do</span> start <span class="nv">$service</span><span class="p">;</span><span class="k">done</span>
 </pre></div>
 
 

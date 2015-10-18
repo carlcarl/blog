@@ -51,7 +51,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-27T23:00:00" pubdate>
+                        <time class="post-time" datetime="2014-01-27T23:00:00+08:00" pubdate>
                             Mon 27 January 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1390/osx_mavericks_ftp_in_finder/" rel="bookmark"><h1>OSX Mavericks ftp in finder</h1></a>
@@ -67,7 +67,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-26T01:00:00" pubdate>
+                        <time class="post-time" datetime="2014-01-26T01:00:00+08:00" pubdate>
                             Sun 26 January 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1389/osx_mavericks_ext4/" rel="bookmark"><h1>OSX Mavericks ext4</h1></a>
@@ -89,7 +89,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-24T18:57:00" pubdate>
+                        <time class="post-time" datetime="2013-10-24T18:57:00+08:00" pubdate>
                             Thu 24 October 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1377/mac_osx_user_ogiginal_thumbnail_location/" rel="bookmark"><h1>Mac OSX user original thumbnail location</h1></a>
@@ -105,7 +105,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-07-12T02:15:00" pubdate>
+                        <time class="post-time" datetime="2013-07-12T02:15:00+08:00" pubdate>
                             Fri 12 July 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1120/osx-mavericks-betaheader-file-position/" rel="bookmark"><h1>OSX Mavericks Beta header file position</h1></a>
@@ -118,7 +118,7 @@
 <li><a href="https://github.com/josegonzalez/homebrew-php/issues/591">Installation fails on OS X Mavericks</a></li>
 </ul>
 <p>原本的 <code>/usr/include</code> 已經不見了，找了一下，位置是在：</p>
-<div class="highlight"><pre><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode5</span><span class="o">-</span><span class="n">DP</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="p">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="mf">.9 ...</span></pre></div>
+<div class="highlight"><pre>/Applications/Xcode5-DP.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk ...</pre></div>
                     </section>
                 </article>
                 <hr/>
@@ -126,7 +126,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-22T15:18:00" pubdate>
+                        <time class="post-time" datetime="2013-06-22T15:18:00+08:00" pubdate>
                             Sat 22 June 2013
                         </time>
                         <a href="http://blog.carlcarl.me/1070/stunnel-mac-client/" rel="bookmark"><h1>stunnel Mac client</h1></a>
@@ -137,17 +137,17 @@
 的，試了一下網路上的一些設定，總算有可以 work
 的了，以下是我的設定，比較要注意的就是 <code>cert</code> 的位置要設對，另外就是
 <code>connect</code> 的 <code>host</code> 要改成你 stunnel server 的位置：</p>
-<div class="highlight"><pre><span class="n">setuid</span> <span class="o">=</span> <span class="n">nobody</span>
-<span class="n">setgid</span> <span class="o">=</span> <span class="n">nogroup</span>
-<span class="n">pid</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">stunnel</span><span class="p">.</span><span class="n">pid</span>
+<div class="highlight"><pre>setuid = nobody
+setgid = nogroup
+pid = /tmp/stunnel.pid
 
-<span class="n">cert</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">stunnel</span><span class="o">/</span><span class="n">client</span><span class="p">.</span><span class="n">pem</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">yes</span>
+cert = /usr/local/etc/stunnel/client.pem
+client = yes
 
-<span class="n">debug</span> <span class="o">=</span> <span class="mi">7</span>
+debug = 7
 
-<span class="n">sslVersion</span> <span class="o">=</span> <span class="n">SSLv3</span>
-<span class="n">verify ...</span></pre></div>
+sslVersion = SSLv3
+verify ...</pre></div>
                     </section>
                 </article>
                 <hr/>
@@ -155,7 +155,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-03-13T15:36:00" pubdate>
+                        <time class="post-time" datetime="2013-03-13T15:36:00+08:00" pubdate>
                             Wed 13 March 2013
                         </time>
                         <a href="http://blog.carlcarl.me/799/osx-svn-checkout-fail/" rel="bookmark"><h1>OSX svn checkout fail</h1></a>
@@ -177,7 +177,7 @@ hdiutil create -size 100m -fs <span class="s2">&quot;Case-sensitive HFS+&quot;</
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-10-22T01:05:00" pubdate>
+                        <time class="post-time" datetime="2012-10-22T01:05:00+08:00" pubdate>
                             Mon 22 October 2012
                         </time>
                         <a href="http://blog.carlcarl.me/709/mac-virtualenvwrapper-no-module-named-setuptools-error/" rel="bookmark"><h1>Mac virtualenvwrapper "No module named setuptools" error</h1></a>

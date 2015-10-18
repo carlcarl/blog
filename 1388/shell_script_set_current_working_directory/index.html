@@ -53,7 +53,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-25T23:00:00" pubdate>
+                        <time class="post-time" datetime="2014-01-25T23:00:00+08:00" pubdate>
                             Sat 25 January 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1388/shell_script_set_current_working_directory/" rel="bookmark"><h1>Shell script set current working directory</h1></a>
@@ -62,10 +62,10 @@
                     <section class="post-content">
                         <p>在 <a href="http://stackoverflow.com/questions/3349105/bash-script-set-current-working-directory-to-the-directory-of-the-script">stackoverflow</a> 上看到的，好像很常會用到所以先記下來，兩種方法:</p>
 <div class="highlight"><pre><span class="c"># First method</span>
-<span class="nb">cd</span> <span class="k">${</span><span class="nv">0</span><span class="p">%\*</span><span class="k">}</span>
+<span class="nb">cd</span> <span class="si">${</span><span class="nv">0</span><span class="p">%</span><span class="se">\*</span><span class="si">}</span>
 
 <span class="c"># Second method</span>
-<span class="nb">cd</span> <span class="s2">&quot;$(dirname &quot;</span><span class="nv">$0</span><span class="s2">&quot;)&quot;</span>
+<span class="nb">cd</span> <span class="s2">&quot;</span><span class="k">$(</span>dirname <span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 
 

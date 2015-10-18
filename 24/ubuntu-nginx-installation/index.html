@@ -52,7 +52,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-06-13T15:51:00" pubdate>
+                        <time class="post-time" datetime="2011-06-13T15:51:00+08:00" pubdate>
                             Mon 13 June 2011
                         </time>
                         <a href="http://blog.carlcarl.me/24/ubuntu-nginx-installation/" rel="bookmark"><h1>Ubuntu Nginx installation</h1></a>
@@ -125,59 +125,59 @@ ln -s /etc/nginx/sites-available/default
 <span class="nv">PID_DIR</span><span class="o">=</span>/var/run/php-fastcgi
 <span class="nv">PID_FILE</span><span class="o">=</span>/var/run/php-fastcgi/php-fastcgi.pid
 <span class="nv">RET_VAL</span><span class="o">=</span>0
-<span class="k">case</span> <span class="s2">&quot;$1&quot;</span> in
+<span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> in
 start<span class="o">)</span>
     <span class="k">if</span> <span class="o">[[</span> ! -d <span class="nv">$PID_DIR</span> <span class="o">]]</span> 
     <span class="k">then</span>
-<span class="k">        </span>mkdir <span class="nv">$PID_DIR</span>
+        mkdir <span class="nv">$PID_DIR</span>
         chown <span class="nv">$FASTCGI_USER</span>:<span class="nv">$FASTCGI_GROUP</span> <span class="nv">$PID_DIR</span>
-        chmod 0770 <span class="nv">$PID_DIR</span>
+        chmod <span class="m">0770</span> <span class="nv">$PID_DIR</span>
     <span class="k">fi</span>
-<span class="k">    if</span> <span class="o">[[</span> -r <span class="nv">$PID_FILE</span> <span class="o">]]</span>
+    <span class="k">if</span> <span class="o">[[</span> -r <span class="nv">$PID_FILE</span> <span class="o">]]</span>
     <span class="k">then</span>
-<span class="k">        </span><span class="nb">echo</span> <span class="s2">&quot;php-fastcgi already running with PID `cat $PID_FILE`&quot;</span>
+        <span class="nb">echo</span> <span class="s2">&quot;php-fastcgi already running with PID `cat </span><span class="nv">$PID_FILE</span><span class="s2">`&quot;</span>
         <span class="nv">RET_VAL</span><span class="o">=</span>1
     <span class="k">else</span>
         <span class="nv">$PHP_SCRIPT</span>
         <span class="nv">RET_VAL</span><span class="o">=</span><span class="nv">$?</span>
     <span class="k">fi</span>
-;;
+<span class="p">;;</span>
 stop<span class="o">)</span>
     <span class="k">if</span> <span class="o">[[</span> -r <span class="nv">$PID_FILE</span> <span class="o">]]</span>
     <span class="k">then</span>
-<span class="k">        </span><span class="nb">kill</span> <span class="sb">`</span>cat <span class="nv">$PID_FILE</span><span class="sb">`</span>
+        <span class="nb">kill</span> <span class="sb">`</span>cat <span class="nv">$PID_FILE</span><span class="sb">`</span>
         rm <span class="nv">$PID_FILE</span>
         <span class="nv">RET_VAL</span><span class="o">=</span><span class="nv">$?</span>
     <span class="k">else</span>
-<span class="k">        </span><span class="nb">echo</span> <span class="s2">&quot;Could not find PID file $PID_FILE&quot;</span>
+        <span class="nb">echo</span> <span class="s2">&quot;Could not find PID file </span><span class="nv">$PID_FILE</span><span class="s2">&quot;</span>
         <span class="nv">RET_VAL</span><span class="o">=</span>1
     <span class="k">fi</span>
-;;
+<span class="p">;;</span>
 restart<span class="o">)</span>
     <span class="k">if</span> <span class="o">[[</span> -r <span class="nv">$PID_FILE</span> <span class="o">]]</span>
     <span class="k">then</span>
-<span class="k">        </span><span class="nb">kill</span> <span class="sb">`</span>cat <span class="nv">$PID_FILE</span><span class="sb">`</span>
+        <span class="nb">kill</span> <span class="sb">`</span>cat <span class="nv">$PID_FILE</span><span class="sb">`</span>
         rm <span class="nv">$PID_FILE</span>
         <span class="nv">RET_VAL</span><span class="o">=</span><span class="nv">$?</span>
     <span class="k">else</span>
-<span class="k">        </span><span class="nb">echo</span> <span class="s2">&quot;Could not find PID file $PID_FILE&quot;</span>
+        <span class="nb">echo</span> <span class="s2">&quot;Could not find PID file </span><span class="nv">$PID_FILE</span><span class="s2">&quot;</span>
     <span class="k">fi</span>
     <span class="nv">$PHP_SCRIPT</span>
     <span class="nv">RET_VAL</span><span class="o">=</span><span class="nv">$?</span>
-;;
+<span class="p">;;</span>
 status<span class="o">)</span>
     <span class="k">if</span> <span class="o">[[</span> -r <span class="nv">$PID_FILE</span> <span class="o">]]</span>
     <span class="k">then</span>
-<span class="k">        </span><span class="nb">echo</span> <span class="s2">&quot;php-fastcgi running with PID `cat $PID_FILE`&quot;</span>
+        <span class="nb">echo</span> <span class="s2">&quot;php-fastcgi running with PID `cat </span><span class="nv">$PID_FILE</span><span class="s2">`&quot;</span>
         <span class="nv">RET_VAL</span><span class="o">=</span><span class="nv">$?</span>
     <span class="k">else</span>
-<span class="k">        </span><span class="nb">echo</span> <span class="s2">&quot;Could not find PID file $PID_FILE, php-fastcgi does not appear to be running&quot;</span>
+        <span class="nb">echo</span> <span class="s2">&quot;Could not find PID file </span><span class="nv">$PID_FILE</span><span class="s2">, php-fastcgi does not appear to be running&quot;</span>
     <span class="k">fi</span>
-;;
+<span class="p">;;</span>
 *<span class="o">)</span>
     <span class="nb">echo</span> <span class="s2">&quot;Usage: php-fastcgi {start|stop|restart|status}&quot;</span>
     <span class="nv">RET_VAL</span><span class="o">=</span>1
-;;
+<span class="p">;;</span>
 <span class="k">esac</span>
 <span class="nb">exit</span> <span class="nv">$RET_VAL</span>
 </pre></div>
@@ -193,7 +193,7 @@ update-rc.d php-fastcgi defaults
 
 <p>第一行是將這個檔案加上執行權限，<code>update-rc.d</code> 將這個檔案加入預設開機就會執行的服務，後面兩行就是執行這兩個服務了。</p>
 <p>接下來可以在 <code>/var/www/nginx-default</code> 底下建立一個 <code>index.php</code>，裡面可以加上以下的內容來驗證是否正確:</p>
-<div class="highlight"><pre>&lt;?php phpinfo<span class="o">()</span>; ?&gt;
+<div class="highlight"><pre>&lt;?php phpinfo<span class="o">()</span><span class="p">;</span> ?&gt;
 </pre></div>
 
 

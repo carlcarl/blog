@@ -52,7 +52,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-07-22T09:43:00" pubdate>
+                        <time class="post-time" datetime="2011-07-22T09:43:00+08:00" pubdate>
                             Fri 22 July 2011
                         </time>
                         <a href="http://blog.carlcarl.me/37/freebsd-use-mpd-to-build-vpn/" rel="bookmark"><h1>FreeBSD use mpd to build VPN</h1></a>
@@ -116,7 +116,7 @@ carlcarl2  carlcarl2password
 
 
 <h3>修改 <code>/etc/rc.conf</code>，加上:</h3>
-<div class="highlight"><pre><span class="n">mpd_enable</span><span class="o">=</span><span class="s">&quot;YES&quot;</span>
+<div class="highlight"><pre>mpd_enable=&quot;YES&quot;
 </pre></div>
 
 
@@ -127,12 +127,12 @@ carlcarl2  carlcarl2password
 
 <p>到這裡為止你用 VPN 連線應該是能夠連到你的 VPN Server 了，但是還是沒辦法連外，例如想要用瀏覽器看 google 網頁應該是不行的，所以還要再另外設定 NAT(natd) 和 firewall(ipfw)。</p>
 <h3>首先先修改 <code>/etc/rc.conf</code>，加上:</h3>
-<div class="highlight"><pre><span class="n">ifconfig_bge0_alias0</span><span class="o">=</span><span class="s">&quot;inet 192.168.88.1  netmask 255.255.255.0&quot;</span>
-<span class="n">gateway_enable</span><span class="o">=</span><span class="s">&quot;YES&quot;</span>
-<span class="n">firewall_enable</span><span class="o">=</span><span class="s">&quot;YES&quot;</span>
-<span class="n">firewall_script</span><span class="o">=</span><span class="s">&quot;/root/ipfw.rules&quot;</span>
-<span class="n">natd_enable</span><span class="o">=</span><span class="s">&quot;YES&quot;</span>
-<span class="n">natd_interface</span><span class="o">=</span><span class="s">&quot;bge0&quot;</span>
+<div class="highlight"><pre>ifconfig_bge0_alias0=&quot;inet 192.168.88.1  netmask 255.255.255.0&quot;
+gateway_enable=&quot;YES&quot;
+firewall_enable=&quot;YES&quot;
+firewall_script=&quot;/root/ipfw.rules&quot;
+natd_enable=&quot;YES&quot;
+natd_interface=&quot;bge0&quot;
 </pre></div>
 
 

@@ -51,7 +51,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-06-02T04:45:00" pubdate>
+                        <time class="post-time" datetime="2013-06-02T04:45:00+08:00" pubdate>
                             Sun 02 June 2013
                         </time>
                         <a href="http://blog.carlcarl.me/865/python-decorate-method-inside-class/" rel="bookmark"><h1>Python decorate method inside class</h1></a>
@@ -76,7 +76,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-05-23T16:25:00" pubdate>
+                        <time class="post-time" datetime="2013-05-23T16:25:00+08:00" pubdate>
                             Thu 23 May 2013
                         </time>
                         <a href="http://blog.carlcarl.me/852/python-cant-use-a-string-pattern-on-a-bytes-like-object/" rel="bookmark"><h1>Python: can't use a string pattern on a bytes-like object</h1></a>
@@ -101,7 +101,7 @@ type，還需要做 encode ...</p>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2013-04-14T23:45:00" pubdate>
+                        <time class="post-time" datetime="2013-04-14T23:45:00+08:00" pubdate>
                             Sun 14 April 2013
                         </time>
                         <a href="http://blog.carlcarl.me/827/appfog-deploy-pyramid/" rel="bookmark"><h1>appfog deploy pyramid</h1></a>
@@ -125,7 +125,7 @@ openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-08-28T00:01:00" pubdate>
+                        <time class="post-time" datetime="2012-08-28T00:01:00+08:00" pubdate>
                             Tue 28 August 2012
                         </time>
                         <a href="http://blog.carlcarl.me/598/virtualenvwrapper-setting/" rel="bookmark"><h1>virtualenvwrapper setting</h1></a>
@@ -134,14 +134,14 @@ openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
                         <p>最近為了方便，加了幾個 virtualenvwrapper 的設定。  </p>
 <h3>使用 <code>mkvirtualenv</code> 建立 virtualenv 時，自動建立資料夾並移到資料夾位置下。</h3>
 <p>在 <code>~/.virtualenv/postmkvirtualenv</code>裡加入：</p>
-<div class="highlight"><pre><span class="nv">proj_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$VIRTUAL_ENV</span>|awk -F<span class="s1">&#39;/&#39;</span> <span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
+<div class="highlight"><pre><span class="nv">proj_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$VIRTUAL_ENV</span><span class="p">|</span>awk -F<span class="s1">&#39;/&#39;</span> <span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
 
-<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
-<span class="k">    </span>mkdir ~/Projects/<span class="nv">$proj_name</span>
+<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&quot;~/Projects/</span><span class="nv">$proj_name</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    mkdir ~/Projects/<span class="nv">$proj_name</span>
 <span class="k">fi</span>
 
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;${PWD##*/}&quot;</span> !<span class="o">=</span> <span class="s2">&quot;~/Projects/$proj_name&quot;</span> <span class="o">]</span>; <span class="k">then</span>
-<span class="k">    </span><span class="nb">cd</span> ~/Projects/<span class="nv">$proj_name</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;~/Projects/</span><span class="nv">$proj_name</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">cd</span> ~/Projects/<span class="nv">$proj_name</span>
 <span class="k">fi</span>
 </pre></div>
 
@@ -156,7 +156,7 @@ openshift 也有一堆 quickstart 的 github repo 可以直接用就是)，以
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-06-17T22:47:00" pubdate>
+                        <time class="post-time" datetime="2012-06-17T22:47:00+08:00" pubdate>
                             Sun 17 June 2012
                         </time>
                         <a href="http://blog.carlcarl.me/515/chakra-vim-not-support-pythoncomplete/" rel="bookmark"><h1>Chakra vim not support pythoncomplete</h1></a>
@@ -178,7 +178,7 @@ vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-05-09T17:38:00" pubdate>
+                        <time class="post-time" datetime="2012-05-09T17:38:00+08:00" pubdate>
                             Wed 09 May 2012
                         </time>
                         <a href="http://blog.carlcarl.me/444/django-name-array/" rel="bookmark"><h1>Django name array</h1></a>
@@ -202,7 +202,7 @@ vim 移除掉，允許移除後，就能順利安裝並使用 pythoncomplete 的
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-04-03T21:56:00" pubdate>
+                        <time class="post-time" datetime="2012-04-03T21:56:00+08:00" pubdate>
                             Tue 03 April 2012
                         </time>
                         <a href="http://blog.carlcarl.me/342/django-ajax-file-upload/" rel="bookmark"><h1>Django ajax file upload</h1></a>
@@ -224,7 +224,7 @@ token 當作參數傳送回去就 OK ...</p>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-04-01T16:05:00" pubdate>
+                        <time class="post-time" datetime="2012-04-01T16:05:00+08:00" pubdate>
                             Sun 01 April 2012
                         </time>
                         <a href="http://blog.carlcarl.me/335/python-documentation-epydoc/" rel="bookmark"><h1>python documentation: epydoc</h1></a>
@@ -243,7 +243,7 @@ token 當作參數傳送回去就 OK ...</p>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-11-27T16:53:00" pubdate>
+                        <time class="post-time" datetime="2011-11-27T16:53:00+08:00" pubdate>
                             Sun 27 November 2011
                         </time>
                         <a href="http://blog.carlcarl.me/135/dotcloud-django-admin-login-error/" rel="bookmark"><h1>DotCloud Django admin login error</h1></a>

@@ -51,7 +51,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-05-14T15:20:00" pubdate>
+                        <time class="post-time" datetime="2015-05-14T15:20:00+08:00" pubdate>
                             Thu 14 May 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1426/kdialog_with_crontab/" rel="bookmark"><h1>kdialog with crontab</h1></a>
@@ -79,7 +79,7 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-15T15:00:00" pubdate>
+                        <time class="post-time" datetime="2015-04-15T15:00:00+08:00" pubdate>
                             Wed 15 April 2015
                         </time>
                         <a href="http://blog.carlcarl.me/1423/linux_single_instance_lock/" rel="bookmark"><h1>Linux Single Instance Lock</h1></a>
@@ -99,7 +99,7 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-08-11T00:30:00" pubdate>
+                        <time class="post-time" datetime="2014-08-11T00:30:00+08:00" pubdate>
                             Mon 11 August 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1400/raspberry_pi_cookbook_for_python_programmers/" rel="bookmark"><h1>Raspberry Pi Cookbook for Python Programmers</h1></a>
@@ -117,7 +117,7 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-06-04T02:30:00" pubdate>
+                        <time class="post-time" datetime="2014-06-04T02:30:00+08:00" pubdate>
                             Wed 04 June 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1399/raspberry_pi_archlinux_wifi_ap/" rel="bookmark"><h1>Raspberry-pi Archlinux wifi ap</h1></a>
@@ -135,7 +135,7 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-05-14T16:30:00" pubdate>
+                        <time class="post-time" datetime="2014-05-14T16:30:00+08:00" pubdate>
                             Wed 14 May 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1395/tcp_tw_recycle_note/" rel="bookmark"><h1>tcp_tw_recycle note</h1></a>
@@ -159,7 +159,7 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-05-05T21:30:00" pubdate>
+                        <time class="post-time" datetime="2014-05-05T21:30:00+08:00" pubdate>
                             Mon 05 May 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1394/restart_uwsgi_using_git_push/" rel="bookmark"><h1>Restart uwsgi using git push</h1></a>
@@ -175,7 +175,7 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-02-08T02:00:00" pubdate>
+                        <time class="post-time" datetime="2014-02-08T02:00:00+08:00" pubdate>
                             Sat 08 February 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1391/check_if_command_exist/" rel="bookmark"><h1>Check if command exist</h1></a>
@@ -195,7 +195,7 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-25T23:00:00" pubdate>
+                        <time class="post-time" datetime="2014-01-25T23:00:00+08:00" pubdate>
                             Sat 25 January 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1388/shell_script_set_current_working_directory/" rel="bookmark"><h1>Shell script set current working directory</h1></a>
@@ -203,10 +203,10 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
                     <section class="post-content">
                         <p>在 <a href="http://stackoverflow.com/questions/3349105/bash-script-set-current-working-directory-to-the-directory-of-the-script">stackoverflow</a> 上看到的，好像很常會用到所以先記下來，兩種方法:</p>
 <div class="highlight"><pre><span class="c"># First method</span>
-<span class="nb">cd</span> <span class="k">${</span><span class="nv">0</span><span class="p">%\*</span><span class="k">}</span>
+<span class="nb">cd</span> <span class="si">${</span><span class="nv">0</span><span class="p">%</span><span class="se">\*</span><span class="si">}</span>
 
 <span class="c"># Second method</span>
-<span class="nb">cd</span> <span class="s2">&quot;$(dirname &quot;</span><span class="nv">$0</span><span class="s2">&quot;)&quot;</span>
+<span class="nb">cd</span> <span class="s2">&quot;</span><span class="k">$(</span>dirname <span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 
 
@@ -218,7 +218,7 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-21T03:00:00" pubdate>
+                        <time class="post-time" datetime="2014-01-21T03:00:00+08:00" pubdate>
                             Tue 21 January 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1387/raspberry_pi_bt_transmission/" rel="bookmark"><h1>Raspberry Pi BT Transmission</h1></a>
@@ -226,20 +226,20 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
                     <section class="post-content">
                         <p>研究了一下怎麼在 <a href="http://www.raspberrypi.org">raspberry pi</a> + <a href="https://www.archlinux.org">ArchLinux</a> 上用 BT，好像都是用 <a href="http://www.transmissionbt.com">transmission</a>，所以我就跟著用了XD，下面是一些步驟。</p>
 <h2>安裝 transmission daemon</h2>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">transmission</span><span class="o">-</span><span class="n">cli</span>
+<div class="highlight"><pre>sudo pacman -S transmission-cli
 </pre></div>
 
 
 <h2>Run transmission daemon</h2>
 <p>由於一開始沒有設定檔，要先跑過才有，所以先跑一下，是說要這樣做也太囧。</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">transmission</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">transmission</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">stop</span> <span class="n">transmission</span>
+<div class="highlight"><pre>sudo systemctl <span class="nb">enable </span>transmission
+sudo systemctl start transmission
+sudo systemctl stop transmission
 </pre></div>
 
 
 <h2>修改設定檔</h2>
-<p>設定檔位置在 <code>/var/lib/transmission/.config/transmission-daemon/settings.json</code> (這位置好爛)，我自己的設定檔如下，後方的 <code>M ...</code></p>
+<p>設定檔位置在 <code>/var/lib/transmission/.config/transmission-daemon/settings.json</code> (這位置好爛)，我自己的設定檔如下，後方的 <code>M</code> 表示新增或改過的 ...</p>
                     </section>
                 </article>
                 <hr/>
@@ -247,7 +247,7 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-21T02:30:00" pubdate>
+                        <time class="post-time" datetime="2014-01-21T02:30:00+08:00" pubdate>
                             Tue 21 January 2014
                         </time>
                         <a href="http://blog.carlcarl.me/1386/raspberry_pi_beginner/" rel="bookmark"><h1>Raspberry Pi beginner</h1></a>

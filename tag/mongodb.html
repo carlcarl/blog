@@ -51,7 +51,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-11-15T07:33:00" pubdate>
+                        <time class="post-time" datetime="2012-11-15T07:33:00+08:00" pubdate>
                             Thu 15 November 2012
                         </time>
                         <a href="http://blog.carlcarl.me/721/mongodb-uptime-query/" rel="bookmark"><h1>MongoDB uptime query</h1></a>
@@ -86,7 +86,7 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-10-12T03:19:00" pubdate>
+                        <time class="post-time" datetime="2012-10-12T03:19:00+08:00" pubdate>
                             Fri 12 October 2012
                         </time>
                         <a href="http://blog.carlcarl.me/680/php-mongodb-query-timing/" rel="bookmark"><h1>PHP MongoDB query timing</h1></a>
@@ -111,7 +111,7 @@ query 的時機，所以在測試的時候，query 其實都沒有發出，難�
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-10-09T03:21:00" pubdate>
+                        <time class="post-time" datetime="2012-10-09T03:21:00+08:00" pubdate>
                             Tue 09 October 2012
                         </time>
                         <a href="http://blog.carlcarl.me/671/mongodb-split-chunk/" rel="bookmark"><h1>MongoDB split chunk</h1></a>
@@ -139,7 +139,7 @@ query 的時機，所以在測試的時候，query 其實都沒有發出，難�
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-10-09T02:15:00" pubdate>
+                        <time class="post-time" datetime="2012-10-09T02:15:00+08:00" pubdate>
                             Tue 09 October 2012
                         </time>
                         <a href="http://blog.carlcarl.me/663/mongodb-check-status-command/" rel="bookmark"><h1>MongoDB check status command</h1></a>
@@ -184,7 +184,7 @@ mongostat
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-09-14T05:05:00" pubdate>
+                        <time class="post-time" datetime="2012-09-14T05:05:00+08:00" pubdate>
                             Fri 14 September 2012
                         </time>
                         <a href="http://blog.carlcarl.me/645/mongodb-aggregation-group-count-sort/" rel="bookmark"><h1>mongodb aggregation group count sort</h1></a>
@@ -207,7 +207,7 @@ mongostat
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-08-13T22:16:00" pubdate>
+                        <time class="post-time" datetime="2012-08-13T22:16:00+08:00" pubdate>
                             Mon 13 August 2012
                         </time>
                         <a href="http://blog.carlcarl.me/589/mongodb-php-connection/" rel="bookmark"><h1>mongodb php connection</h1></a>
@@ -237,7 +237,7 @@ mongostat
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2012-07-27T20:19:00" pubdate>
+                        <time class="post-time" datetime="2012-07-27T20:19:00+08:00" pubdate>
                             Fri 27 July 2012
                         </time>
                         <a href="http://blog.carlcarl.me/546/fix-mongodb-default-allocate-space-too-larger/" rel="bookmark"><h1>fix mongodb default allocate space too larger</h1></a>
@@ -259,7 +259,7 @@ template 的時間，因此還是希望能避免不必要的空間浪費。</p>
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-09-05T18:12:00" pubdate>
+                        <time class="post-time" datetime="2011-09-05T18:12:00+08:00" pubdate>
                             Mon 05 September 2011
                         </time>
                         <a href="http://blog.carlcarl.me/43/mongodb-rockmongo/" rel="bookmark"><h1>MongoDB Web management tool： rockmongo</h1></a>
@@ -277,7 +277,7 @@ sudo pecl install mongo
 
 
 <p>接著在 php.ini 裡面加上一行：</p>
-<div class="highlight"><pre><span class="n">extension</span><span class="o">=</span><span class="n">mongo</span><span class="p">.</span><span class="n">so</span>
+<div class="highlight"><pre>extension=mongo.so
 </pre></div>
 
 
@@ -292,7 +292,7 @@ sudo pecl install mongo
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2011-09-04T14:28:00" pubdate>
+                        <time class="post-time" datetime="2011-09-04T14:28:00+08:00" pubdate>
                             Sun 04 September 2011
                         </time>
                         <a href="http://blog.carlcarl.me/42/ubuntu-11-04-install-mongodb/" rel="bookmark"><h1>Ubuntu 11.04 install mongoDB</h1></a>
@@ -316,7 +316,7 @@ sudo apt-get install mongodb-10gen
 
 
 <p>裝完之後就會自動當作 daemon 來執行，要確認的話可以輸入：</p>
-<div class="highlight"><pre>sudo netstat -antp | grep mongo
+<div class="highlight"><pre>sudo netstat -antp <span class="p">|</span> grep mongo
 </pre></div>
 
 
