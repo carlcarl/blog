@@ -8,6 +8,8 @@ SITEURL = 'http://blog.carlcarl.me'
 DISQUS_SITENAME = u'carlcarl'
 GITHUB_URL = u'https://github.com/carlcarl'
 
+PATH = 'content'
+
 TIMEZONE = 'Asia/Taipei'
 
 DEFAULT_LANG = u'en'
