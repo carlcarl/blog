@@ -15,6 +15,8 @@ Slug: jquery_data_attribute
 
 我用 `data('value')` 取出來的值會是 `Number` type，也就是說，如果能轉的話，它就會自動幫你轉，在很多情況下，這不會是想要的行為，而且一旦不小心，就會造成不同型態比較的錯誤，所以就我自己來說，還是使用 `attr('data-value')` 的方式，可以保證一定是拿到字串，但是 `data()` 還是有它的好處，就是它的內部實作有做 cache，所以讀取上會快些，因為不用 access 到 DOM。
 
+2015/10/18 補充:  
+根據這篇 [jsperf] 的測試，看來連 get 也不會比較快，那 `data()` 還真的是沒啥優點...。
 
 Ref:
 
@@ -26,4 +28,4 @@ Ref:
 [jQuery.data() with HTML5 Custom Data Attributes]: http://www.sitepoint.com/jquery-data-html5-custom-data-attributes/ 
 [Example]: http://jsfiddle.net/KwjvA/
 [jQuery data() vs attr(data)]: http://stackoverflow.com/questions/9444679/jquery-data-vs-attrdata
-
+[jsperf]: http://jsperf.com/jquery-performance-test-attr-vs-data/3
