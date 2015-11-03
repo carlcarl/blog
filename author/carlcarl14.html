@@ -51,6 +51,27 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-05-29T22:42:00+08:00" pubdate>
+                            Tue 29 May 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/486/mysql-insert-if-duplicate-then-update/" rel="bookmark"><h1>MySQL insert if duplicate then update</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>在做壓力測試的時候發現出來的數值不太對，後來看了一下，發現是因為程式裏面是拿
+SELECT 出來的資料加 1 並給 UPDATE 來使用，但是這樣並不是一個 atomic 的
+operation，如果在 SELECT 完之後有其他人也進行 SELECT
+就變成會拿一樣的資料且都加 1，兩個做完 UPDATE 的結果就會只是加 1
+過的數據，但是預期的結果應該要是加 2 的。  </p>
+<p>查了一下資料，發現有個簡單的語法可以使用：</p>
+<div class="highlight"><pre><span class="cm">/* If id is the UNIQUE KEY */</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="n">num</span><span class="o">=</span><span class="n">num</span><span class="o">+</span><span class="mi">1 ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-05-28T10:57:00+08:00" pubdate>
                             Mon 28 May 2012
                         </time>
@@ -292,33 +313,6 @@ seminar.....。</p>
 算是非常物超所值XD，車票錢反而還花比較多(有點辛酸就是了
 為什麼我不在台北QQ</p>
 <p>很久沒打心得了，感覺打得很不順\~\~，詳細的心得就懶得 po 了XD。</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-04-08T02:09:00+08:00" pubdate>
-                            Sun 08 April 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/366/github-readme-with-image/" rel="bookmark"><h1>github readme with image</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>github readme 的圖片目前看到比較方便的作法好像都是放在程式的資料夾裡面
-push 上去，然後再利用連結去連圖片。</p>
-<p>github 圖片連結通常是這樣的格式：  </p>
-<p>「http://github.com/<code>yourname</code>/<code>your-repository</code>/raw/master/<code>your-folder</code>/<code>xxx.png</code>」</p>
-<p>要自己設定的：<code>yourname</code>, <code>your-repository</code>, <code>your-folder</code>, <code>xxx.png</code>。</p>
-<ul>
-<li><code>yourname</code>: 你的帳號。</li>
-<li><code>your-respository</code>: 你的 project 名稱。</li>
-<li><code>your-folder</code>: 你放圖片的資料夾名稱，如果是直接放在 project
-    的目錄底下的話，就可以省略這個。</li>
-<li><code>xxx.png</code>: 你的圖片名稱。</li>
-</ul>
-<p>另外再附上 markdown 寫法：</p>
-<div class="highlight"><pre><span class="o">!</span><span class="p">[</span><span class="n">alt</span> <span class="n">text</span><span class="p">](</span><span class="nl">http</span><span class="p">:</span><span class="c1">//github.com/yourname/your-repository/raw ...</span></pre></div>
                     </section>
                 </article>
                 <hr/>

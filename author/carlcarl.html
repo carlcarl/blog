@@ -51,6 +51,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-11-03T21:30:00+08:00" pubdate>
+                            Tue 03 November 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1434/sqlite_nested_transaction/" rel="bookmark"><h1>SQLite nested transaction</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>遇到 SQLite 需要 nested transaction 的情況，查了一下，似乎沒辦法直接用 <code>TRANSACTION</code> 做。後來是看到另外一個語法 <code>SAVEPOINT</code> 可以解決這樣的問題，而且一般的 SQL DB 好像也都支援。以下是相關的用法：</p>
+<div class="highlight"><pre><span class="n">SAVEPOINT</span> <span class="n">savepoint_name</span>
+
+<span class="n">RELEASE</span> <span class="n">savepoint_name</span>
+
+<span class="k">ROLLBACK</span> <span class="k">TO</span> <span class="n">SAVEPOINT</span> <span class="n">savepoint_name</span>
+</pre></div>
+
+
+<p><code>savepoint_name</code> 就取自己要的名稱，需要做 nested 的情況下就用不同的 <code>savepoint_name</code>，也可以外層用 <code>SAVEPOINT</code>，內層用 <code>TRANSACTION</code>；但是不能外層是 <code>TRANSACTION</code>，內層用 <code>SAVEPOINT</code> 這樣。</p>
+<p>參考資料：</p>
+<ul>
+<li><a href="http://www.runoob.com/sqlite/sqlite-syntax.html">SQLite 語法</a></li>
+<li><a href="http://stackoverflow.com/questions/13455733/how-to-use-savepoints-in-sqlite3-in-objective-c">How to use savepoints in SQLite3 ...</a></li></ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-10-03T02:00:00+08:00" pubdate>
                             Sat 03 October 2015
                         </time>
@@ -240,31 +267,6 @@ kdialog --msnbox <span class="s2">&quot;hello&quot;</span> --title <span class="
         <span class="n">dst_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
         <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_size</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
         <span class="n">tmp</span> <span class="o">=</span> <span class="n">ftp_callback</span><span class="o">.</span><span class="n">progress_size</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">file_size ...</span></pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2015-04-15T17:00:00+08:00" pubdate>
-                            Wed 15 April 2015
-                        </time>
-                        <a href="http://blog.carlcarl.me/1424/web_radio_buttons_layout/" rel="bookmark"><h1>Web Radio Buttons Layout</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>研究了一下 radio buttons 該怎麼排比較好:</p>
-<ul>
-<li><a href="ux.stackexchange.com/questions/18103/should-radio-options-be-displayed-vertically-or-horizontally">Should radio options be displayed vertically or horizontally?</a></li>
-<li><a href="http://ux.stackexchange.com/questions/21085/yes-no-radio-buttons-vertical-or-horizontal">Yes/No radio buttons: Vertical or horizontal</a></li>
-<li><a href="ux.stackexchange.com/questions/48041/multiple-choice-forms-with-radio-should-the-choices-be-arranged-horizontally-v">Multiple choice forms with radio: Should the choices be arranged horizontally, vertically, or in a square?</a></li>
-</ul>
-<p>個人結論：垂直排列會是比較好的作法，水平排列相對會有些問題:</p>
-<ul>
-<li>寬度限制，即使原本放得進去，翻譯之後就不一定了，如果要支持多國語言的話。</li>
-<li>數量一多的話，會較為雜亂，除非 space 間隔有設好。</li>
-</ul>
-<p>不過在一些情況下，水平排列還是 OK ...</p>
                     </section>
                 </article>
                 <hr/>

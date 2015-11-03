@@ -51,6 +51,21 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-01-15T01:00:00+08:00" pubdate>
+                            Wed 15 January 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1384/backbone_js_some_tips/" rel="bookmark"><h1>backbone.js some tips</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>用了個簡單的網站改成用 <a href="http://backbonejs.org">backbone.js</a> 來套，之所以用 backbone 是因為不太喜歡在 html 上加一堆 attributes，backbone 這樣偏純 js，再加上 <a href="http://underscorejs.org">underscore</a> 做 template 的方式覺得比較適合我，以後如果有興趣再碰看看 <a href="http://emberjs.com">ember.js</a> 吧，<a href="http://angularjs.org">angular.js</a> 現階段感覺還蠻流行的，不過就不太想碰就是 XD。</p>
+<p>套完 backbone 之後，程式硬是多出了一倍的量，不知道到底有沒有幫助到我(炸)，而且 backbone 官網的 docuemtn 常會漏掉一些重要的資訊，讓我卡超久= =，這邊順便記錄一下這樣。架構的話，看到有篇 stackoverflow 上的問題，他的 example code 我還蠻喜歡的，也許可以參考看看: <a href="http://stackoverflow.com/questions/13257722/backbone-parsing-json-response">Backbone ...</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-01-02T00:40:00+08:00" pubdate>
                             Thu 02 January 2014
                         </time>
@@ -234,32 +249,6 @@ screen 中是 OK 的，<code>echo $TERM</code> 得到的輸出是 <code>screen</
 <code>tmux.conf</code> 中，但是我並沒有設定這個東西，看了
 <code>.zshrc</code>，原來我是在這邊設定了
 <code>export TERM ...</code></p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2013-10-04T21:26:00+08:00" pubdate>
-                            Fri 04 October 2013
-                        </time>
-                        <a href="http://blog.carlcarl.me/1365/sphinx-and-github-pages/" rel="bookmark"><h1>sphinx and github pages</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>就之前產生的 sphinx document，接下來是如何 deploy 到 github page 上。</p>
-<p>這個文章是根據 <a href="http://raxcloud.blogspot.tw/2013/02/documenting-python-code-using-sphinx.html">Documenting python code using sphinx and github</a> 和
-<a href="http://datadesk.latimes.com/posts/2012/01/sphinx-on-github/">Sphinx documentation on GitHub</a>
-整理而成的，兩個地方的資料都不錯，不過都沒有很完美，所以就寫了這篇。</p>
-<h2>建立 github page repo</h2>
-<p>這邊看到大部分的做法都是直接在 project 根目錄下直接開另外一個
-branch，不過我後來在上面連結看到一個不錯的做法，就是直接把 branch 建立在
-subdirectory 下。首先先在 project 根目錄下建立一個 gh-pages 的資料夾：</p>
-<div class="highlight"><pre>mkdir gh-pages
-</pre></div>
-
-
-<p>接著利用 <code>git-new-workdir</code> 這個指令建立一個 ...</p>
                     </section>
                 </article>
                 <hr/>

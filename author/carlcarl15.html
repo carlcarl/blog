@@ -51,6 +51,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2012-04-08T02:09:00+08:00" pubdate>
+                            Sun 08 April 2012
+                        </time>
+                        <a href="http://blog.carlcarl.me/366/github-readme-with-image/" rel="bookmark"><h1>github readme with image</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>github readme 的圖片目前看到比較方便的作法好像都是放在程式的資料夾裡面
+push 上去，然後再利用連結去連圖片。</p>
+<p>github 圖片連結通常是這樣的格式：  </p>
+<p>「http://github.com/<code>yourname</code>/<code>your-repository</code>/raw/master/<code>your-folder</code>/<code>xxx.png</code>」</p>
+<p>要自己設定的：<code>yourname</code>, <code>your-repository</code>, <code>your-folder</code>, <code>xxx.png</code>。</p>
+<ul>
+<li><code>yourname</code>: 你的帳號。</li>
+<li><code>your-respository</code>: 你的 project 名稱。</li>
+<li><code>your-folder</code>: 你放圖片的資料夾名稱，如果是直接放在 project
+    的目錄底下的話，就可以省略這個。</li>
+<li><code>xxx.png</code>: 你的圖片名稱。</li>
+</ul>
+<p>另外再附上 markdown 寫法：</p>
+<div class="highlight"><pre><span class="o">!</span><span class="p">[</span><span class="n">alt</span> <span class="n">text</span><span class="p">](</span><span class="nl">http</span><span class="p">:</span><span class="c1">//github.com/yourname/your-repository/raw ...</span></pre></div>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2012-04-06T04:39:00+08:00" pubdate>
                             Fri 06 April 2012
                         </time>
@@ -237,31 +264,6 @@ received</code>，查了老半天，還跟其他台的 git 比較設定，還是
     –dport 5353</code> 這行：</p>
 <div class="highlight"><pre>-A RH-Firewall-1-INPUT -p ah -j ACCEPT
 -A RH-Firewall-1-INPUT -d 224.0.0.251 -p udp -m udp --dport 5353 -j ...</pre></div>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2012-02-19T00:55:00+08:00" pubdate>
-                            Sun 19 February 2012
-                        </time>
-                        <a href="http://blog.carlcarl.me/258/vsphere-failed-to-open-disk-scsi00/" rel="bookmark"><h1>[vsphere]Failed to open disk scsi0:0</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>今天想試試看利用網路上的 Virtual Appliance 開 VM，下載完後利用 client
-介面就可以上傳到 datastore，可是在新增 VM，並選擇完 vmdk
-檔後，開啟VM時就出現了錯誤訊息囧。</p>
-<p>錯誤訊息內容: <code>Failed to open disk scsi0:0: Unsupported and/or invalid
-disk type 7.</code></p>
-<p>Google 了一下，似乎是下載下來後還要做轉換（後來看官方的安裝手冊也是的確講要這樣做 orz）。<br />
-首先要先連到有和上傳的 datastore 連線的 esxi server，接著進到 <code>/vmfs/volumes/你的datastore/</code>，利用以下指令做轉換：</p>
-<div class="highlight"><pre>vmkfstools -i 你原來的vmdk檔 轉完的vmdk檔名
-</pre></div>
-
-
-<p>兩個檔案名稱不要重複，轉完之後 ...</p>
                     </section>
                 </article>
                 <hr/>

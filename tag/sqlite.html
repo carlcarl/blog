@@ -51,6 +51,33 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2015-11-03T21:30:00+08:00" pubdate>
+                            Tue 03 November 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1434/sqlite_nested_transaction/" rel="bookmark"><h1>SQLite nested transaction</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>遇到 SQLite 需要 nested transaction 的情況，查了一下，似乎沒辦法直接用 <code>TRANSACTION</code> 做。後來是看到另外一個語法 <code>SAVEPOINT</code> 可以解決這樣的問題，而且一般的 SQL DB 好像也都支援。以下是相關的用法：</p>
+<div class="highlight"><pre><span class="n">SAVEPOINT</span> <span class="n">savepoint_name</span>
+
+<span class="n">RELEASE</span> <span class="n">savepoint_name</span>
+
+<span class="k">ROLLBACK</span> <span class="k">TO</span> <span class="n">SAVEPOINT</span> <span class="n">savepoint_name</span>
+</pre></div>
+
+
+<p><code>savepoint_name</code> 就取自己要的名稱，需要做 nested 的情況下就用不同的 <code>savepoint_name</code>，也可以外層用 <code>SAVEPOINT</code>，內層用 <code>TRANSACTION</code>；但是不能外層是 <code>TRANSACTION</code>，內層用 <code>SAVEPOINT</code> 這樣。</p>
+<p>參考資料：</p>
+<ul>
+<li><a href="http://www.runoob.com/sqlite/sqlite-syntax.html">SQLite 語法</a></li>
+<li><a href="http://stackoverflow.com/questions/13455733/how-to-use-savepoints-in-sqlite3-in-objective-c">How to use savepoints in SQLite3 ...</a></li></ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2015-02-22T23:10:00+08:00" pubdate>
                             Sun 22 February 2015
                         </time>

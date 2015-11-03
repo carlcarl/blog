@@ -51,6 +51,34 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2011-12-04T23:12:00+08:00" pubdate>
+                            Sun 04 December 2011
+                        </time>
+                        <a href="http://blog.carlcarl.me/159/apache-prevent-executing-php-in-specific-directory/" rel="bookmark"><h1>apache prevent executing php in specific directory</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>最近剛修復的問題，其實也滿常見的，不過有時候總是會忽略這種簡單的問題orz。</p>
+<p>如果要預防使用者將 php 檔案上傳後去執行的話，只要在 apache 的 config
+檔中加入以下設定：</p>
+<div class="highlight"><pre>AllowOverride None
+php_flag engine off
+Allow from all
+</pre></div>
+
+
+<p><code>Directory</code> 後面的 <code>/var/www/upload</code>
+記得使用自己要的路徑，設定完並重開 apache 後，如果是在這個目錄底下的
+php，就會改成下載 php 而不是執行
+php。另外還有一種方法也是可以作，不過是用副檔名的方法作過濾，顯然還是上面的方法會比較好囉。</p>
+<p>參考網址：<br />
+<a href="http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html">http://www.yunsec.net/a/special/linux/safe/2010/0517/3924.html</a></p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2011-11-27T17:10:00+08:00" pubdate>
                             Sun 27 November 2011
                         </time>
@@ -282,35 +310,6 @@ pylint：</p>
                         <p>最近用了一個 public ip 開了個 svn + trac server，大致上都還滿順利的，不過在測試寄信到 mail
 server 的時候卻出現了錯誤，看了一下 log 檔，訊息是 <code>Client host rejected: cannot find your hostname allow ip</code>。</p>
 <p>不知道可能是 mail server 找不到 svn server 的 hostname 還是怎樣，然後試了一些方法好像也都不行，最後想說直接在 <code>/etc/hosts</code> 裡直接加上「ip」和自定義「hostname」看看，結果就 OK 哩，個人覺得這個方法算是還滿不錯的，不過前提是要有 mail server ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2011-10-27T20:41:00+08:00" pubdate>
-                            Thu 27 October 2011
-                        </time>
-                        <a href="http://blog.carlcarl.me/47/ssh-slow/" rel="bookmark"><h1>ssh slow</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>貌似是學校最近 DNS 常出問題還是怎樣，ssh 的速度非常緩慢，後來決定把 config 檔案改一改，改完之後速度果然快很多= =+。</p>
-<p>修改 <code>/etc/ssh/sshd_config</code>，以下是修改內容：</p>
-<div class="highlight"><pre>UseDNS no
-GSSAPIAuthentication no
-</pre></div>
-
-
-<p>修改完後執行：</p>
-<div class="highlight"><pre>sudo /etc/init.d/ssh restart
-</pre></div>
-
-
-<p>收工~，不過如果 DNS 沒問題的話，可能修改這個設定速度不會差太多。</p>
-<p>參考網址：</p>
-<p><a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://jeffxie.blog.51cto.com/1365360/293869</a><br />
-<a href="http://www.dk101.com/Discuz/viewthread.php?tid=157716">http://www.dk101.com/Discuz/viewthread.php?tid=157716</a>  </p>
                     </section>
                 </article>
                 <hr/>

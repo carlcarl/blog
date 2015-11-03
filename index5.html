@@ -51,6 +51,22 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
+                        <time class="post-time" datetime="2014-05-05T21:30:00+08:00" pubdate>
+                            Mon 05 May 2014
+                        </time>
+                        <a href="http://blog.carlcarl.me/1394/restart_uwsgi_using_git_push/" rel="bookmark"><h1>Restart uwsgi using git push</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>因為一 push 完都要 ssh 進去重開 uwsgi server，實在很麻煩，所以 google 了一下有沒有什麼好的做法，雖然說用 <a href="http://www.fabfile.org">fabric</a> 進去下指令也是可以，不過想看看有沒有利用 git push 的 hook 來做的例子。</p>
+<h2>如何 restart uwsgi</h2>
+<p>查了一些資料，一般要 restart uwsgi 就要 root 權限，不過可以在 uwsgi 的設定檔中設定 <code>touch-reload</code> 這個參數，以我的 .ini 設定格式的話就是設 <code>touch-reload = /your_path/reload</code> 設完這個路徑後，一旦你在 <code>/your_path/</code> 底下 touch 了一個檔案叫做 <code>reload</code>，uwsgi 就會跟著 ...</p>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
                         <time class="post-time" datetime="2014-04-24T15:00:00+08:00" pubdate>
                             Thu 24 April 2014
                         </time>
@@ -236,21 +252,6 @@ sudo systemctl stop transmission
 <p>這本書頁數並沒有說很多，約 130 頁左右，看起來不會說很吃力。書中每一章都會對一至兩種 pattern 做解釋，然後說明優缺點，並附上一個不算偷懶的 example，還算好理解的就是，不過覺得有點可惜的是如果有加上沒有應用和應用後的一些實際比較就更好了。</p>
 <p>而這本書本身應該會比較適合剛學 Python 一些時間的中 ~ 新手，例如第一章講 MVC 其實我自己就覺得不是很必要了，不過就適合不是很熟的人吧。接下來幾章則會講到 Singleton pattern，Factory Method, Facade pattern, Proxy pattern, Observer pattern, Command pattern 和 Template Method design pattern 這些。</p>
 <p>而上述的這些 ...</p>
-                    </section>
-                </article>
-                <hr/>
-            </li>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-01-15T01:00:00+08:00" pubdate>
-                            Wed 15 January 2014
-                        </time>
-                        <a href="http://blog.carlcarl.me/1384/backbone_js_some_tips/" rel="bookmark"><h1>backbone.js some tips</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>用了個簡單的網站改成用 <a href="http://backbonejs.org">backbone.js</a> 來套，之所以用 backbone 是因為不太喜歡在 html 上加一堆 attributes，backbone 這樣偏純 js，再加上 <a href="http://underscorejs.org">underscore</a> 做 template 的方式覺得比較適合我，以後如果有興趣再碰看看 <a href="http://emberjs.com">ember.js</a> 吧，<a href="http://angularjs.org">angular.js</a> 現階段感覺還蠻流行的，不過就不太想碰就是 XD。</p>
-<p>套完 backbone 之後，程式硬是多出了一倍的量，不知道到底有沒有幫助到我(炸)，而且 backbone 官網的 docuemtn 常會漏掉一些重要的資訊，讓我卡超久= =，這邊順便記錄一下這樣。架構的話，看到有篇 stackoverflow 上的問題，他的 example code 我還蠻喜歡的，也許可以參考看看: <a href="http://stackoverflow.com/questions/13257722/backbone-parsing-json-response">Backbone ...</a></p>
                     </section>
                 </article>
                 <hr/>

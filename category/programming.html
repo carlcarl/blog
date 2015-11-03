@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>carlcarl's blog - programming</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <meta property="og:site_name" content="carlcarl's blog" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="carlcarl's blog" />
+                <meta property="og:url" content="http://blog.carlcarl.me" />
+                <meta property="og:description" content="carlcarl's blog" />
+            <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/normalize.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/main.css">
+
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/blog.css">
+    <link rel="stylesheet" href="http://blog.carlcarl.me/theme/css/github.css">
+        <link href="http://blog.carlcarl.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="carlcarl's blog Atom Feed" />
+        <script src="http://blog.carlcarl.me/theme/js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+        <h1><a id="site-title" href="http://blog.carlcarl.me"><i class="fa fa-coffee"></i> carlcarl's blog</a></h1>
+        <p id="site-desc"></p>
+    <nav>
+        <ul id="nav-links">
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
+    </p>
+    <p>
+        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2015-11-03T21:30:00+08:00" pubdate>
+                            Tue 03 November 2015
+                        </time>
+                        <a href="http://blog.carlcarl.me/1434/sqlite_nested_transaction/" rel="bookmark"><h1>SQLite nested transaction</h1></a>
+                    </header>
+                    <section class="post-content">
+                        <p>遇到 SQLite 需要 nested transaction 的情況，查了一下，似乎沒辦法直接用 <code>TRANSACTION</code> 做。後來是看到另外一個語法 <code>SAVEPOINT</code> 可以解決這樣的問題，而且一般的 SQL DB 好像也都支援。以下是相關的用法：</p>
+<div class="highlight"><pre><span class="n">SAVEPOINT</span> <span class="n">savepoint_name</span>
+
+<span class="n">RELEASE</span> <span class="n">savepoint_name</span>
+
+<span class="k">ROLLBACK</span> <span class="k">TO</span> <span class="n">SAVEPOINT</span> <span class="n">savepoint_name</span>
+</pre></div>
+
+
+<p><code>savepoint_name</code> 就取自己要的名稱，需要做 nested 的情況下就用不同的 <code>savepoint_name</code>，也可以外層用 <code>SAVEPOINT</code>，內層用 <code>TRANSACTION</code>；但是不能外層是 <code>TRANSACTION</code>，內層用 <code>SAVEPOINT</code> 這樣。</p>
+<p>參考資料：</p>
+<ul>
+<li><a href="http://www.runoob.com/sqlite/sqlite-syntax.html">SQLite 語法</a></li>
+<li><a href="http://stackoverflow.com/questions/13455733/how-to-use-savepoints-in-sqlite3-in-objective-c">How to use savepoints in SQLite3 ...</a></li></ul>
+                    </section>
+                </article>
+                <hr/>
+            </li>
+        </ol>
+        <div class="paginator">
+            Page 1 / 1
+        </div>
+
+    </div>
+        </div>
+
+<script>
+    var _gaq=[['_setAccount','UA-24249240-5'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+        <script src="http://blog.carlcarl.me/theme/js/main.js"></script>
+    </body>
+</html>
